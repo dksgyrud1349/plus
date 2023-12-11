@@ -310,9 +310,7 @@
 								</div>
 							</div>
 						</li>
-						<li>
-						    <a href="${pageContext.request.contextPath}/bbs/list">커뮤니티</a>
-						</li>
+						
 						<li>
 							<a href="#">고객센터</a>
 							<div class="cbp-hrsub">
@@ -347,18 +345,30 @@
 								</div>
 							</div>
 						</li>
+						
 						<li>
-							<a href="${pageContext.request.contextPath}/bbs/list">사이트맵</a>
+						    <li onclick="urlOk('/bbs/list')" class="menubtn">커뮤니티</a>
+						</li>
+						
+						<li>
+							<li onclick="urlOk('/bbs/list')" class="menubtn">사이트맵</li>
 						</li>
 					</ul>
 				</nav>
 			</div>
+		<style>
 		
+		</style>
 		
 		<script src="${pageContext.request.contextPath}/resources/js/menu.js"></script>
 		<script>
+			function urlOk(url) {
+			    window.location.href = "${pageContext.request.contextPath}" + url;
+			  }
+		
 			$(function() {
 				cbpHorizontalMenu.init();
 			});
 		</script>
+
 	<!-- header end-->

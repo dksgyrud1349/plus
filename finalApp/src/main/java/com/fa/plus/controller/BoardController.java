@@ -205,7 +205,7 @@ public class BoardController {
 		} catch (Exception e) {
 		}
 
-		return "redirect:/photo/article?num=" + dto.getNum() + "&page=" + page;
+		return "redirect:/bbs/article?num=" + dto.getNum() + "&page=" + page;
 	}
 	
 	

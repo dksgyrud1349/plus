@@ -24,24 +24,23 @@
 	display: inline-block;
 }
 
-.cbp-hrmenu > ul > li > a {
+.cbp-hrmenu > ul > li > a, .menubtn {
 	font-weight: 700;
 	padding: 1em 2em;
 	color: #999;
 	display: inline-block;
   	transition: 1s;
+  	cursor: pointer;
   	
 }
 
-.cbp-hrmenu > ul > li > a:hover {
+.cbp-hrmenu > ul > li > a:hover, .menubtn:hover {
   transition: width 0.2s ease-in-out;
   transform: translateY(15%);
+  color: #47a3da;
   
 }
 
-.cbp-hrmenu > ul > li > a:hover {
-	color: #47a3da;
-}
 
 .cbp-hrmenu .cbp-hrsub {
 	display: none;

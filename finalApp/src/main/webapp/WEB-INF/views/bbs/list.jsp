@@ -44,9 +44,9 @@ function searchList() {
 }
 </script>
 
-<div class="container">
-	<div class="body-container">	
-		<div class="body-title">
+<div class="container" style="margin-top:10%; width:65%">
+    <div class="body-container mt-5">
+        <div class="body-title">
 			<h3><i class="bi bi-app"></i> 게시판 </h3>
 		</div>
 		
