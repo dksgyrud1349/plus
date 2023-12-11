@@ -33,7 +33,7 @@
 </main>
 </div>
 
-<footer style="background: beige; width: 100%; height: 300px; text-align: center;">
+<footer style="width: 100%; height: 250px;">
     <tiles:insertAttribute name="footer"/>
 </footer>
 
