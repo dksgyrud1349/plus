@@ -1,5 +1,9 @@
 package com.fa.plus.domain;
 
+/**
+ * @author user
+ *
+ */
 public class Board {
     private long num;
     private String userId;
@@ -10,7 +14,7 @@ public class Board {
     private int hitCount;
 	
 	private int boardLikeCount;
-	
+	private int replyCount;
 	private String photoName;
 
 	public long getNum() {
@@ -83,6 +87,14 @@ public class Board {
 
 	public void setPhotoName(String photoName) {
 		this.photoName = photoName;
+	}
+
+	public int getReplyCount() {
+		return replyCount;
+	}
+
+	public void setReplyCount(int replyCount) {
+		this.replyCount = replyCount;
 	}
 	
 }	

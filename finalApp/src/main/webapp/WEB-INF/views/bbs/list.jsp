@@ -86,13 +86,8 @@ function searchList() {
 								<c:if test="${dto.replyCount!=0}">(${dto.replyCount})</c:if>
 							</td>
 							<td>${dto.userName}</td>
-							<td>${dto.reg_date}</td>
+							<td>${dto.regDate}</td>
 							<td>${dto.hitCount}</td>
-							<td>
-								<c:if test="${not empty dto.saveFilename}">
-									<a href="${pageContext.request.contextPath}/bbs/download?num=${dto.num}" class="text-reset"><i class="bi bi-file-arrow-down"></i></a>
-								</c:if>
-							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -110,7 +105,7 @@ function searchList() {
 							<select name="schType" class="form-select">
 								<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
 								<option value="userName" ${schType=="userName"?"selected":""}>작성자</option>
-								<option value="reg_date" ${schType=="reg_date"?"selected":""}>등록일</option>
+								<option value="regDate" ${schType=="regDate"?"selected":""}>등록일</option>
 								<option value="subject" ${schType=="subject"?"selected":""}>제목</option>
 								<option value="content" ${schType=="content"?"selected":""}>내용</option>
 							</select>

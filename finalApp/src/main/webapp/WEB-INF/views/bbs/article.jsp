@@ -12,11 +12,11 @@
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
-<c:if test="${sessionScope.member.userId==dto.userId||sessionScope.member.membership>50}">
+<c:if test="${sessionScope.member.userId==dto.userId||sessionScope.member.membership>90}">
 	<script type="text/javascript">
 		function deleteBoard() {
 		    if(confirm('게시글을 삭제 하시 겠습니까 ? ')) {
-			    let query = 'num=${dto.num}&${query}';
+			    let query = 'num=${dto.num}&${query}&photoName=${dto.photoName}';
 			    let url = '${pageContext.request.contextPath}/bbs/delete?' + query;
 		    	location.href = url;
 		    }
@@ -47,10 +47,15 @@
 							이름 : ${dto.userName}
 						</td>
 						<td align="right">
-							${dto.reg_date} | 조회 ${dto.hitCount}
+							${dto.regDate} | 조회 ${dto.hitCount}
 						</td>
 					</tr>
-					
+					<tr>
+						<td colspan="2" style="border-bottom: none;">
+							<img src="${pageContext.request.contextPath}/uploads/bbs/${dto.photoName}" 
+								class="img-fluid img-thumbnail w-100 h-auto">
+						</td>
+					</tr>
 					<tr>
 						<td colspan="2" valign="top" height="200" style="border-bottom: none;">
 							${dto.content}
@@ -60,17 +65,6 @@
 					<tr>
 						<td colspan="2" class="text-center p-3" style="border-bottom: none;">
 							<button type="button" class="btn btn-outline-secondary btnSendBoardLike" title="좋아요"><i class="bi ${userBoardLiked ? 'bi-hand-thumbs-up-fill':'bi-hand-thumbs-up' }"></i>&nbsp;&nbsp;<span id="boardLikeCount">${dto.boardLikeCount}</span></button>
-						</td>
-					</tr>
-					
-					<tr>
-						<td colspan="2">
-							<c:if test="${not empty dto.saveFilename}">
-								<p class="border text-secondary my-1 p-2">
-									<i class="bi bi-folder2-open"></i>
-									<a href="${pageContext.request.contextPath}/bbs/download?num=${dto.num}">${dto.originalFilename}</a>
-								</p>
-							</c:if>						
 						</td>
 					</tr>
 					
@@ -106,7 +100,7 @@
 						</c:choose>
 				    	
 						<c:choose>
-				    		<c:when test="${sessionScope.member.userId==dto.userId || sessionScope.member.membership>50}">
+				    		<c:when test="${sessionScope.member.userId==dto.userId || sessionScope.member.membership>90}">
 				    			<button type="button" class="btn btn-light" onclick="deleteBoard();">삭제</button>
 				    		</c:when>
 				    		<c:otherwise>
@@ -129,7 +123,7 @@
 					<table class="table table-borderless reply-form">
 						<tr>
 							<td>
-								<textarea class='form-control' name="content"></textarea>
+								<textarea class='form-control' name="reContent"></textarea>
 							</td>
 						</tr>
 						<tr>
@@ -253,7 +247,7 @@ $(function(){
 		content = encodeURIComponent(content);
 		
 		let url = '${pageContext.request.contextPath}/bbs/insertReply';
-		let query = 'num=' + num + '&content=' + content + '&answer=0';
+		let query = 'num=' + num + '&reContent=' + content;
 		
 		const fn = function(data){
 			$tb.find('textarea').val('');
@@ -354,107 +348,6 @@ $(function(){
 	});
 });
 
-// 댓글별 답글 리스트
-function listReplyAnswer(answer) {
-	let url = '${pageContext.request.contextPath}/bbs/listReplyAnswer';
-	let query = 'answer=' + answer;
-	let selector = '#listReplyAnswer' + answer;
-	
-	const fn = function(data){
-		$(selector).html(data);
-	};
-	ajaxFun(url, 'get', query, 'text', fn);
-}
-
-// 댓글별 답글 개수
-function countReplyAnswer(answer) {
-	let url = '${pageContext.request.contextPath}/bbs/countReplyAnswer';
-	let query = 'answer=' + answer;
-	
-	const fn = function(data){
-		let count = data.count;
-		let selector = '#answerCount' + answer;
-		$(selector).html(count);
-	};
-	
-	ajaxFun(url, 'post', query, 'json', fn);
-}
-
-// 답글 버튼(댓글별 답글 등록폼 및 답글리스트)
-$(function(){
-	$('.reply').on('click', '.btnReplyAnswerLayout', function(){
-		const $trReplyAnswer = $(this).closest('tr').next();
-		
-		let isVisible = $trReplyAnswer.is(':visible');
-		let replyNum = $(this).attr('data-replyNum');
-			
-		if(isVisible) {
-			$trReplyAnswer.hide();
-		} else {
-			$trReplyAnswer.show();
-            
-			// 답글 리스트
-			listReplyAnswer(replyNum);
-			
-			// 답글 개수
-			countReplyAnswer(replyNum);
-		}
-	});
-	
-});
-
-// 댓글별 답글 등록
-$(function(){
-	$('.reply').on('click', '.btnSendReplyAnswer', function(){
-		let num = '${dto.num}';
-		let replyNum = $(this).attr('data-replyNum');
-		const $td = $(this).closest('td');
-		
-		let content = $td.find('textarea').val().trim();
-		if(! content) {
-			$td.find('textarea').focus();
-			return false;
-		}
-		
-		let url = '${pageContext.request.contextPath}/bbs/insertReply';
-		// let formData = 'num=' + num + '&content=' + encodeURIComponent(content) + '&answer=' + replyNum;
-		let formData = {num:num, content:content, answer:replyNum}; // formData를 객체로 전송하면 인코딩하면 안됨
-		
-		const fn = function(data){
-			$td.find('textarea').val('');
-			
-			var state = data.state;
-			if(state === 'true') {
-				listReplyAnswer(replyNum);
-				countReplyAnswer(replyNum);
-			}
-		};
-		
-		ajaxFun(url, 'post', formData, 'json', fn);
-	});
-});
-
-// 댓글별 답글 삭제
-$(function(){
-	$('.reply').on('click', '.deleteReplyAnswer', function(){
-		if(! confirm('게시물을 삭제하시겠습니까 ? ')) {
-		    return false;
-		}
-		
-		let replyNum = $(this).attr('data-replyNum');
-		let answer = $(this).attr('data-answer');
-		
-		let url = '${pageContext.request.contextPath}/bbs/deleteReply';
-		let query = 'replyNum=' + replyNum + '&mode=answer';
-		
-		const fn = function(data){
-			listReplyAnswer(answer);
-			countReplyAnswer(answer);
-		};
-		
-		ajaxFun(url, 'post', query, 'json', fn);
-	});
-});
 
 // 댓글 숨김기능
 $(function(){
@@ -496,43 +389,4 @@ $(function(){
 });
 
 
-// 답글 숨김기능
-$(function(){
-	$('.reply').on('click', '.hideReplyAnswer', function(){
-		let $menu = $(this);
-		
-		let replyNum = $(this).attr('data-replyNum');
-		let showReply = $(this).attr('data-showReply');
-		
-		let msg = '댓글을 숨김 하시겠습니까 ? ';
-		if(showReply === '0') {
-			msg = '댓글 숨김을 해제 하시겠습니까 ? ';
-		}
-		if(! confirm(msg)) {
-			return false;
-		}
-		
-		showReply = showReply === '1' ? '0' : '1';
-		
-		let url = '${pageContext.request.contextPath}/bbs/replyShowHide';
-		let query = 'replyNum=' + replyNum + '&showReply='+showReply;
-		
-		const fn = function(data){
-			if(data.state === 'true') {
-				let $item = $($menu).closest('.row').next('div');
-				if(showReply === '1') {
-					$item.removeClass('text-primary').removeClass('text-opacity-50');
-					$menu.attr('data-showReply', '1');
-					$menu.html('숨김');
-				} else {
-					$item.addClass('text-primary').addClass('text-opacity-50');
-					$menu.attr('data-showReply', '0');
-					$menu.html('표시');
-				}
-			}
-		};
-		
-		ajaxFun(url, 'post', query, 'json', fn);
-	});
-});
 </script>
