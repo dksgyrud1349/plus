@@ -124,4 +124,14 @@ public class MemberController {
 		//	세션이 만료 된 경우
 		return ".member.expired";
 	}
+	
+	@GetMapping("idFind")
+	public String idFind() throws Exception {
+		return ".member.idFind";
+	}
+	
+	@GetMapping("pwdFind")
+	public String pwdFind() throws Exception {
+		return ".member.pwdFind";
+	}
 }

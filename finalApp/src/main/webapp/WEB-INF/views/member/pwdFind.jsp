@@ -5,7 +5,28 @@
 <style type="text/css">
 .body-container {
 	max-width: 800px;
+}	
+.btn-confirm {
+ background-color: #007BFF;
+border: none;
+ color: white;
 }
+						
+.btn-cancel {
+background-color: #6C757D;
+ border: none;
+ color: white;
+}
+						
+						
+.btn-confirm:hover {
+ background-color: #0056b3;
+}
+						
+.btn-cancel:hover {
+background-color: #5a6268;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -24,10 +45,10 @@ function sendOk() {
 }
 </script>
 
+
 <div class="container">
 	<div class="body-container">	
-
-        <div class="row justify-content-md-center">
+		<div class="row justify-content-md-center">
             <div class="col-md-7 pt-5">
                 <div class="border mt-5 p-4">
                     <form name="pwdForm" method="post" class="row g-3">
@@ -40,18 +61,29 @@ function sendOk() {
                         <div class="d-grid">
                             <input type="text" name="userId" class="form-control form-control-lg" placeholder="아이디">
                         </div>
-                        <div class="d-grid">
-                            <button type="button" class="btn btn-lg btn-primary" onclick="sendOk();">확인 <i class="bi bi-check2"></i> </button>
+                     
+                    	<div class="d-grid">
+                            <input type="text" name="userpwd" class="form-control form-control-lg" placeholder="이메일">
                         </div>
-                    </form>
-                </div>
-
-                <div class="d-grid">
-					<p class="form-control-plaintext text-center py-3">${message}</p>
-                </div>
-
-            </div>
+                        <div class="d-grid">
+	                        <div class="btn-group" role="group" aria-label="Basic example">
+	                            <button type="button" class="btn btn-lg btn-primary" onclick="sendOk();">확인 <i class="bi bi-check2"></i> </button>
+	                			<button type="button" class="btn btn-lg btn-cancel" onclick="history.back();">취소 <i class="bi bi-check2"></i> </button>
+	                		</div>
+                		</div>
+                	</form>
+				<hr class="mt-4">
+                    <div class="col-12">
+                        <p class="text-center mb-0">
+                        	<a href="${pageContext.request.contextPath}/member/idFind" class="text-decoration-none me-2">아이디 찾기</a>
+                        	<a href="${pageContext.request.contextPath}/member/member" class="text-decoration-none">회원가입</a>
+                        </p>
+                    </div>
+	                <div class="d-grid">
+						<p class="form-control-plaintext text-center py-3">${message}</p>
+	                </div>
+				</div>
+        	</div>
         </div>
-	        
 	</div>
 </div>
