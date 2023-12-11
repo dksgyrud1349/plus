@@ -94,7 +94,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</ul>
 		<div class="card-body">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  <a href="#" class="card-link" style="float: right; margin: 4% auto">자세히보기</a>
+		  <a href="${pageContext.request.contextPath}/" class="card-link" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
 	  </div>
 

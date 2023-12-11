@@ -311,7 +311,7 @@
 							</div>
 						</li>
 						<li>
-						    <a href="#">커뮤니티</a>
+						    <a href="${pageContext.request.contextPath}/bbs/list"">커뮤니티</a>
 						</li>
 						<li>
 							<a href="#">고객센터</a>
