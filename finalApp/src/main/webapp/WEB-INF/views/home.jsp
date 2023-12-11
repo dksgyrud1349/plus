@@ -45,16 +45,16 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  </div>
 
 	  <div class="row" style="margin: 3% auto;">
-		<button type="button" class="btn btn-light col" style="background: url('${pageContext.request.contextPath}/resources/images/center.jpg');">
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/center.jpg');">
   			<p class="cbtn_1">데이트</p>
 		</button>
-		<button type="button" class="btn btn-light col" style="background: url('${pageContext.request.contextPath}/resources/images/center.jpg');">
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/center.jpg');">
 			<p class="cbtn_1">공예</p>
 		</button>
-		<button type="button" class="btn btn-light col" style="background: url('${pageContext.request.contextPath}/resources/images/center.jpg');">
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/center.jpg');">
 			<p class="cbtn_1">핸드 메이드</p>
 		</button>
-		<button type="button" class="btn btn-light col" style="background: url('${pageContext.request.contextPath}/resources/images/center.jpg');">
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/center.jpg');">
 			<p class="cbtn_1">건강·운동</p>
 		</button>
 	  </div>

@@ -406,13 +406,13 @@ dd .num {
 }
 
 
-.btn-light:nth-child(2),
-.btn-light:nth-child(3),
-.btn-light:nth-child(4){
+.cbtn:nth-child(2),
+.cbtn:nth-child(3),
+.cbtn:nth-child(4){
 	margin-left: 30px;
 }
 
-.btn-light {
+.cbtn {
   width: 150px;
   height: 150px;
   border-radius: 25px;
@@ -427,7 +427,7 @@ dd .num {
   transition: transform 0.3s ease;
 }
 
-.btn-light:hover {
+.cbtn:hover {
   transform: scale(1.1);
 }
 
