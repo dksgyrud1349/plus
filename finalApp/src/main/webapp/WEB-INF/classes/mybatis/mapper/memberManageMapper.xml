@@ -63,7 +63,7 @@
 	</select>
 	
 	<update id="updateFailureCountReset" parameterType="String">
-		UPDATE member1 SET failure_cnt = 0
+		UPDATE member1 SET failureCnt = 0
 		WHERE userId = #{userId}
 	</update>
 	
@@ -73,7 +73,7 @@
     
     <insert id="insertMemberState" parameterType="com.fa.plus.admin.domain.MemberManage">
 		INSERT INTO memberState(num, userId, stateCode, memo, adminId, stateDate)
-			VALUES (memberState_seq.NEXTVAL, #{userId}, #{stateCode}, #{memo, jdbcType=VARCHAR2}, #{adminId}, SYSDATE)
+			VALUES (memberState_seq.NEXTVAL, #{userId}, #{stateCode}, #{memo, jdbcType=VARCHAR}, #{adminId}, SYSDATE)
 	</insert>
 	
 	<select id="listMemberState" parameterType="String" resultType="com.fa.plus.admin.domain.MemberManage">

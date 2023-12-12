@@ -2,14 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<style type="text/css">
-.body-main {
-	max-width: 930px;
-}
-</style>
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tabs.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
+
 
 <script type="text/javascript">
 $(function(){
@@ -94,6 +89,8 @@ function profile(userId) {
 		  close: function(event, ui) {
 		  }
 	});
+	
+	dlg.dialog("widget").css("background-color", "#cccccc");
 
 	let url = "${pageContext.request.contextPath}/admin/memberManage/profile";
 	let query = "userId="+userId;
@@ -171,8 +168,11 @@ function selectStateChange() {
 }
 </script>
 
-<div class="body-container">
-    <div class="body-title">
+<main class="wrapper" style="margin:5% auto; width:80%;">
+	<div id="layoutSidenav_content">
+		 	<div class="container-fluid px-5">
+				<div class="body-container">
+		    			<div class="body-title">
 		<h2><i class="fa-solid fa-user-group"></i> 회원 관리 </h2>
     </div>
     
@@ -262,5 +262,8 @@ function selectStateChange() {
     	
 	</div>
 </div>
+</div>
+</div>
+</main>
 
 <div id="member-dialog" style="display: none;"></div>

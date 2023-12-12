@@ -2,10 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tabs.css" type="text/css">
+
 <style type="text/css">
-.body-main {
-	max-width: 930px;
-}
+
 
 #chart-container {
 	width: 476px;
@@ -16,7 +16,6 @@
 	text-align: center;
 }
 </style>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tabs.css" type="text/css">
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-3d.js"></script>
@@ -81,8 +80,11 @@ $(function(){
 });
 </script>
 
-<div class="body-container">
-    <div class="body-title">
+<main class="wrapper" style="margin:5% auto; width:80%;">
+	<div id="layoutSidenav_content">
+		 	<div class="container-fluid px-5">
+				<div class="body-container">
+		    			<div class="body-title">
 		<h2><i class="fa-solid fa-user-group"></i> 회원 관리 </h2>
     </div>
     
@@ -100,3 +102,6 @@ $(function(){
     	
 	</div>
 </div>
+</div>
+</div>
+</main>

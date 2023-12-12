@@ -87,7 +87,7 @@
 				<tr>
 					<td class="ps-5">${vo.memo} (${vo.stateCode})</td>
 					<td class="text-center">${vo.adminId}</td>
-					<td class="text-center">${vo.regDate}</td>
+					<td class="text-center">${vo.stateDate}</td>
 				</tr>
 			</c:forEach>
 	  
