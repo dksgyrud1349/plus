@@ -24,9 +24,9 @@
 	</tr>
 	<tr>
 		<td class="text-center bg-light">회원가입일</td>
-		<td class="ps-5">${dto.register_date}</td>
+		<td class="ps-5">${dto.regDate}</td>
 		<td class="text-center bg-light">최근로그인</td>
-		<td class="ps-5">${dto.last_login}</td>
+		<td class="ps-5">${dto.lastLogin}</td>
 	</tr>
 	
 	<tr>
@@ -69,7 +69,7 @@
 	
 	<input type="hidden" name="memberIdx" value="${dto.memberIdx}">
 	<input type="hidden" name="userId" value="${dto.userId}">
-	<input type="hidden" name="registerId" value="${sessionScope.member.userId}">
+	<input type="hidden" name="adminId" value="${sessionScope.member.userId}">
 </form>
 
 <div id="memberStateDetaile" style="display: none;">
@@ -86,8 +86,8 @@
 			<c:forEach var="vo" items="${listState}">
 				<tr>
 					<td class="ps-5">${vo.memo} (${vo.stateCode})</td>
-					<td class="text-center">${vo.registerId}</td>
-					<td class="text-center">${vo.reg_date}</td>
+					<td class="text-center">${vo.adminId}</td>
+					<td class="text-center">${vo.regDate}</td>
 				</tr>
 			</c:forEach>
 	  

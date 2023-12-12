@@ -46,7 +46,7 @@
                             </a>
                             <div class="collapse" id="MemberLayout" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">회원 관리</a>
+                                    <a class="nav-link" href="<c:url value='/admin/memberManage/list'/>">회원 관리</a>
                                     <a class="nav-link" href="#">사업자 관리</a>
                                 </nav>
                             </div>
