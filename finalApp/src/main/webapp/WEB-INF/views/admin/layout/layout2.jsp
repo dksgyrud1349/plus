@@ -31,7 +31,7 @@
 
 <tiles:insertAttribute name="left"/>
 
-<main class="wrapper" style="margin:5% auto; width:70%;">
+<main class="wrapper" style="margin:0% auto;">
 	<tiles:insertAttribute name="body"/>
 </main>
 
