@@ -146,7 +146,6 @@ public class NoticeController {
 			return "redirect:/notice/list?" + query;
 		}
 
-		dto.setContent(dto.getContent().replaceAll("\n", "<br>"));
 
 		// 이전 글, 다음 글
 		Map<String, Object> map = new HashMap<String, Object>();

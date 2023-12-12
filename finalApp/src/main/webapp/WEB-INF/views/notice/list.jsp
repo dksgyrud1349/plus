@@ -7,7 +7,6 @@
 	max-width: 800px;
 }
 </style>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
 <script type="text/javascript">
 function searchList() {
@@ -16,7 +15,7 @@ function searchList() {
 }
 </script>
 
-<div class="container">
+<div class="container" style="margin-top:10%; width: 65%">
 	<div class="body-container">	
 		<div class="body-title">
 			<h3><i class="bi bi-clipboard"></i> 공지사항 </h3>
