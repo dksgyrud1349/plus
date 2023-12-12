@@ -30,6 +30,7 @@ public class Member {
 	private String photo;
 	private String content;
 	private String nickName;
+	private String pwdDate;
 	
 	public long getMemberIdx() {
 		return memberIdx;
@@ -204,5 +205,11 @@ public class Member {
 	}
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
+	}
+	public String getPwdDate() {
+		return pwdDate;
+	}
+	public void setPwdDate(String pwdDate) {
+		this.pwdDate = pwdDate;
 	}
 }
