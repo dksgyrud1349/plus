@@ -21,6 +21,7 @@ public class NoticeManage {
 	private long fileSize;
 	private int fileCount;
 	
+	
 	// 스프링에서 파일 받기
 	private List<MultipartFile> selectFile;
 	private long gap;

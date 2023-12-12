@@ -356,9 +356,7 @@
 					</ul>
 				</nav>
 			</div>
-		<style>
-		
-		</style>
+
 		
 		<script src="${pageContext.request.contextPath}/resources/js/menu.js"></script>
 		<script>

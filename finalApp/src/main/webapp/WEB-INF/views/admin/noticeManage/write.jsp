@@ -4,7 +4,6 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
 
-
 <style>
 .delete-file { cursor: pointer; }
 .delete-file:hover { color: #0d58ba; }
