@@ -5,8 +5,8 @@ public class Notice {
 	private String subject;
 	private String content;
 	private int hitCount;
-	private int notice;
-	private int showNotice;
+	private int notice; // 중요 공지 표시
+	private int showNotice; // 공개 여부
 	private String regDate;
 	
 	private String userId;
@@ -15,6 +15,7 @@ public class Notice {
 	private String saveFileName;
 	private String originalFileName;
 	private long fileSize;
+	private int fileCount;
 	
 	public long getNum() {
 		return num;
@@ -88,6 +89,11 @@ public class Notice {
 	public void setFileSize(long fileSize) {
 		this.fileSize = fileSize;
 	}
-	
+	public int getFileCount() {
+		return fileCount;
+	}
+	public void setFileCount(int fileCount) {
+		this.fileCount = fileCount;
+	}
 	
 }
