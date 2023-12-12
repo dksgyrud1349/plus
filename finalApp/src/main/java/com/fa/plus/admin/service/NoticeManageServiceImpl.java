@@ -15,6 +15,7 @@ import com.fa.plus.common.FileManager;
 
 @Service
 public class NoticeManageServiceImpl implements NoticeManageService {
+	
 	@Autowired
 	private NoticeManageMapper mapper;
 

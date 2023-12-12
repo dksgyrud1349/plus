@@ -18,6 +18,8 @@ public class Notice {
 	private long fileSize;
 	private int fileCount;
 	
+	private long gap;
+	
 	public long getNum() {
 		return num;
 	}
@@ -102,5 +104,10 @@ public class Notice {
 	public void setFileCount(int fileCount) {
 		this.fileCount = fileCount;
 	}
-	
+	public long getGap() {
+		return gap;
+	}
+	public void setGap(long gap) {
+		this.gap = gap;
+	}
 }
