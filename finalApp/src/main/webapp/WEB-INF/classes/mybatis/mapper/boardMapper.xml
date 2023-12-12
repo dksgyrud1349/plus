@@ -160,7 +160,7 @@
 		FROM reply r
 		JOIN member1 m ON r.userId = m.userId
 		LEFT OUTER JOIN (
-			SELECT replyNum, COUNT(DECODE(replyLike, 1, 1)) likeCount
+			SELECT replyNum, COUNT(DECODE(bReplyLike, 1, 1)) likeCount
 			FROM replyLike
 			GROUP BY replyNum
 		) c ON r.replyNum = c.replyNum
@@ -177,15 +177,15 @@
 		WHERE replyNum=#{replyNum}
 	</delete>
 	
-	<!-- 좋아요/싫어요 추가 -->
+	<!-- 좋아요 추가 -->
 	<insert id="insertReplyLike" parameterType="map">
-		INSERT INTO replyLike(replyNum, userId)
-		VALUES (#{replyNum}, #{userId})
+		INSERT INTO replyLike(replyNum, userId, bReplyLike)
+		VALUES (#{replyNum}, #{userId}, 1)
 	</insert>
 	
-	<!-- 좋아요/싫어요 개수 -->
+	<!-- 좋아요 -->
 	<select id="replyLikeCount" parameterType="map" resultType="map">
-		SELECT COUNT(*) FROM replyLike WHERE replyNum=#{replyNum}
+		SELECT COUNT(DECODE(breplyLike, 1, 1)) likeCount FROM replyLike WHERE replyNum=#{replyNum}
 	</select>
 	
 	<!-- 댓글 보이기/숨기기 -->

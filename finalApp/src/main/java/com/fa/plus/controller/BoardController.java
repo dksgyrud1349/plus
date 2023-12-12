@@ -375,10 +375,8 @@ public class BoardController {
 
 			// 마이바티스의 resultType이 map인 경우 int는 BigDecimal로 넘어옴
 			int likeCount = ((BigDecimal) countMap.get("LIKECOUNT")).intValue();
-			int disLikeCount = ((BigDecimal)countMap.get("DISLIKECOUNT")).intValue();
 			
 			model.put("likeCount", likeCount);
-			model.put("disLikeCount", disLikeCount);
 			model.put("state", state);
 			return model;
 		}

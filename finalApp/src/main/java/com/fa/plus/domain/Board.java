@@ -1,5 +1,7 @@
 package com.fa.plus.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * @author user
  *
@@ -17,6 +19,8 @@ public class Board {
 	private int replyCount;
 	private String photoName;
 
+	private MultipartFile selectFile;
+	
 	public long getNum() {
 		return num;
 	}
@@ -96,7 +100,12 @@ public class Board {
 	public void setReplyCount(int replyCount) {
 		this.replyCount = replyCount;
 	}
-	
+	public MultipartFile getSelectFile() {
+		return selectFile;
+	}
+	public void setSelectFile(MultipartFile selectFile) {
+		this.selectFile = selectFile;
+	}
 }	
 
 

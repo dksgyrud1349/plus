@@ -7,6 +7,8 @@ public class Reply {
 	private String userName;	
 	private String reContent;
 	private String reRegDate;
+	private int showReply;
+	private int likeCount;
 	
 	public long getReplyNum() {
 		return replyNum;
@@ -44,7 +46,17 @@ public class Reply {
 	public void setReRegDate(String reRegDate) {
 		this.reRegDate = reRegDate;
 	}
-	
-	
+	public int getShowReply() {
+		return showReply;
+	}
+	public void setShowReply(int showReply) {
+		this.showReply = showReply;
+	}
+	public int getLikeCount() {
+		return likeCount;
+	}
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
 	
 }

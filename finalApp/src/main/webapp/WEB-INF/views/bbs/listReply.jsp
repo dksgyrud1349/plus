@@ -15,7 +15,7 @@
 					<div class='col-1'><i class='bi bi-person-circle text-muted icon'></i></div>
 					<div class='col-auto align-self-center'>
 						<div class='name'>${vo.userName}</div>
-						<div class='date'>${vo.reg_date}</div>
+						<div class='date'>${vo.reRegDate}</div>
 					</div>
 				</div>
 			</td>
@@ -27,7 +27,7 @@
 							<div class='deleteReply reply-menu-item' data-replyNum='${vo.replyNum}' data-pageNo='${pageNo}'>삭제</div>
 							<div class='hideReply reply-menu-item' data-replyNum='${vo.replyNum}' data-showReply='${vo.showReply}'>${vo.showReply == 1 ? "숨김":"표시"}</div>
 						</c:when>
-						<c:when test="${sessionScope.member.membership > 50}">
+						<c:when test="${sessionScope.member.membership > 90}">
 							<div class='deleteReply reply-menu-item' data-replyNum='${vo.replyNum}' data-pageNo='${pageNo}'>삭제</div>
 							<div class='blockReply reply-menu-item'>차단</div>
 						</c:when>
@@ -40,32 +40,16 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan='2' valign='top' class="${vo.showReply == 0 ? 'text-primary text-opacity-50':''}">${vo.content}</td>
+			<td colspan='2' valign='top' class="${vo.showReply == 0 ? 'text-primary text-opacity-50':''}">${vo.reContent}</td>
 		</tr>
 
 		<tr>
-			<td>
-				<button type='button' class='btn btn-light btnReplyAnswerLayout' data-replyNum='${vo.replyNum}'>답글 <span id="answerCount${vo.replyNum}">${vo.answerCount}</span></button>
-			</td>
-			<td align='right'>
+			<td colspan='2' align='right'>
 				<button type='button' class='btn btn-light btnSendReplyLike' data-replyNum='${vo.replyNum}' data-replyLike='1' title="좋아요"><i class="bi bi-hand-thumbs-up"></i> <span>${vo.likeCount}</span></button>
-				<button type='button' class='btn btn-light btnSendReplyLike' data-replyNum='${vo.replyNum}' data-replyLike='0' title="싫어요"><i class="bi bi-hand-thumbs-down"></i> <span>${vo.disLikeCount}</span></button>	        
 			</td>
 		</tr>
 	
-	    <tr class='reply-answer'>
-	        <td colspan='2'>
-	        	<div class='border rounded'>
-		            <div id='listReplyAnswer${vo.replyNum}' class='answer-list'></div>
-		            <div>
-		                <textarea class="form-control m-2"></textarea>
-		            </div>
-					<div class='text-end pe-2 pb-1'>
-						<button type='button' class='btn btn-light btnSendReplyAnswer' data-replyNum='${vo.replyNum}'>답글 등록</button>
-		            </div>
-	            </div>
-			</td>
-	    </tr>
+	    
 	</c:forEach>
 </table>
 
