@@ -17,7 +17,7 @@ function searchList() {
 	f.submit();
 }
 </script>
-	<div id="layoutSidenav_content">
+	<div id="layoutSidenav_content me-5">
 		<main>
 		 	<div class="container-fluid px-5">
 				<div class="body-container">
@@ -80,7 +80,7 @@ function searchList() {
 										</c:if>
 									</td>
 									<td>${dto.userName}</td>
-									<td>${dto.reg_date}</td>
+									<td>${dto.regDate}</td>
 									<td>${dto.hitCount}</td>
 									<td>
 										<c:if test="${dto.fileCount != 0}">
@@ -105,9 +105,9 @@ function searchList() {
 							<td align="center">
 								<form name="searchForm" action="${pageContext.request.contextPath}/admin/noticeManage/list" method="post">
 									<select name="schType" class="form-select">
-										<option value="all" ${schType=="all"?"selected":""}>모두</option>
+										<option value="all" ${schType=="all"?"selected":""}>제목 & 내용</option>
 										<option value="userName" ${schType=="userName"?"selected":""}>작성자</option>
-										<option value="reg_date" ${schType=="reg_date"?"selected":""}>등록일</option>
+										<option value="regDate" ${schType=="regDate"?"selected":""}>등록일</option>
 										<option value="subject" ${schType=="subject"?"selected":""}>제목</option>
 										<option value="content" ${schType=="content"?"selected":""}>내용</option>
 									</select>
