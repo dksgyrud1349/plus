@@ -4,10 +4,8 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
 
-<style type="text/css">
-.body-main {
-	max-width: 900px;
-}
+
+<style>
 .delete-file { cursor: pointer; }
 .delete-file:hover { color: #0d58ba; }
 </style>
@@ -36,12 +34,12 @@
     }
 </script>
 <div id="layoutSidenav_content">
-<div class="body-container">
-    <div class="body-title">
-		<h2><i class="fas fa-clipboard-list"></i> 공지사항 </h2>
-    </div>
+	<div class="body-container">
+	    <div class="body-title">
+			<h2><i class="fas fa-clipboard-list"></i> 공지사항 </h2>
+	    </div>
     
-    <div class="body-main">
+    	<div class="body-main">
     	
 		<form name="noticeForm" method="post" enctype="multipart/form-data">
 			<table class="table table-border border-top2 table-form">
@@ -107,7 +105,9 @@
 					<td align="center">
 						<button type="button" class="btn btn-dark" onclick="submitContents(this.form);">${mode=='update'?'수정완료':'등록하기'}</button>
 						<button type="reset" class="btn">다시입력</button>
-						<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/admin/noticeManage/list';">${mode=='update'?'수정취소':'등록취소'}</button>
+						<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/admin/noticeManage/list';">
+							${mode=='update'?'수정취소':'등록취소'}
+						</button>
 						<c:if test="${mode=='update'}">
 							<input type="hidden" name="num" value="${dto.num}">
 							<input type="hidden" name="page" value="${page}">

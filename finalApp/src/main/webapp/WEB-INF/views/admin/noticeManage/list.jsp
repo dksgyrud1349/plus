@@ -17,7 +17,7 @@ function searchList() {
 	f.submit();
 }
 </script>
-	<div id="layoutSidenav_content me-5">
+	<div id="layoutSidenav_content">
 		<main>
 		 	<div class="container-fluid px-5">
 				<div class="body-container">
