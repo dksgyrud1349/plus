@@ -223,7 +223,7 @@ function selectStateChange() {
 							<td>${dto.userName}</td>
 							<td>${dto.birth}</td>
 							<td>${dto.tel}</td>
-							<td>${dto.membership==1?"일반회원":(dto.membership==31?"강사":"기타")}</td>
+							<td>${dto.membership==1?"일반회원":(dto.membership==10?"플러스":"기타")}</td>
 							<td>${dto.enabled==1?"활성":"잠금"}</td>
 							<td>${dto.email}</td>
 						</tr>
