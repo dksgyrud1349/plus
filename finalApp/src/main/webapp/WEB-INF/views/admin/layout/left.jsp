@@ -107,7 +107,7 @@
                             <div class="collapse" id="FAQLayout" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="https://pf.kakao.com/_cbxcnG">채팅(1:1문의)</a>
-                                    <a class="nav-link" href="#">공지사항</a>
+                                    <a class="nav-link" href="<c:url value='/admin/noticeManage/list'/>">공지사항</a>
                                     <a class="nav-link" href="#">FAQ</a>
                                     <a class="nav-link" href="#">쿠폰</a>
                                 </nav>
