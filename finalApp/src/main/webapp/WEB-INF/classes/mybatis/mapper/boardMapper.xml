@@ -24,8 +24,8 @@
 		          OR DBMS_LOB.INSTR(content, #{kwd}) &gt; 0 )
 			</when>
 			<when test="schType == 'regDate' ">
-			   ( TO_CHAR(regDate, 'YYYYMMDD') = #{kwd}
-		          OR TO_CHAR(regDate, 'YYYY-MM-DD') = #{kwd} )
+			   ( TO_CHAR(c.regDate, 'YYYYMMDD') = #{kwd}
+		          OR TO_CHAR(c.regDate, 'YYYY-MM-DD') = #{kwd} )
 			</when>
 			<when test="schType == 'content'">
 			    DBMS_LOB.INSTR(content, #{kwd}) &gt; 0
@@ -48,7 +48,7 @@
 	</select>
 	
 	<select id="listBoard" parameterType="map" resultType="com.fa.plus.domain.Board">
-		SELECT c.num, c.userId, userName, subject, 
+		SELECT c.num, c.userId, m.userName, subject, 
 			   TO_CHAR(c.regDate, 'YYYY-MM-DD') regDate,
 			   hitCount, photoName,
 			   NVL(replyCount, 0) replyCount
@@ -64,7 +64,7 @@
 				<include refid="where-list"/>
 			</if>
 		</where>
-		ORDER BY num DESC
+		ORDER BY c.num DESC
 		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
 	</select>
 	
