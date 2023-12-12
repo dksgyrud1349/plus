@@ -17,8 +17,8 @@ function searchList() {
 	f.submit();
 }
 </script>
+<main class="wrapper" style="margin:5% auto; width:60%;">
 	<div id="layoutSidenav_content">
-		<main>
 		 	<div class="container-fluid px-5">
 				<div class="body-container">
 		    			<div class="body-title">
@@ -123,5 +123,5 @@ function searchList() {
 				</div>
 			</div>
 		</div>
-	</main>
-</div>
+	</div>
+</main>

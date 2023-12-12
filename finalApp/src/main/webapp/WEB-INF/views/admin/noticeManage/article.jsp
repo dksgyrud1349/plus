@@ -22,9 +22,11 @@
 		}
 	}
 </script>
-<div id="layoutSidenav_content">
-<div class="body-container">
-    <div class="body-title">
+<main class="wrapper" style="margin:5% auto; width:60%;">
+	<div id="layoutSidenav_content">
+		 	<div class="container-fluid px-5">
+				<div class="body-container">
+		    			<div class="body-title">
 		<h2><i class="fas fa-clipboard-list"></i> 공지사항 </h2>
     </div>
     
@@ -111,3 +113,5 @@
 	</div>
 </div>
 </div>
+</div>
+</main>

@@ -31,9 +31,9 @@
 
 <tiles:insertAttribute name="left"/>
 
-<main class="wrapper" style="margin:0% auto;">
-	<tiles:insertAttribute name="body"/>
-</main>
+
+<tiles:insertAttribute name="body"/>
+
 
 <div id="loadingLayout" style="display:none; position: absolute; left: 0; top:0; width: 100%; height: 100%; z-index: 9000; background: #eee;">
 	<div class="loader"></div>

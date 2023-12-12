@@ -33,9 +33,11 @@
         return true;
     }
 </script>
+<main class="wrapper" style="margin:5% auto; width:80%;">
 <div id="layoutSidenav_content">
-	<div class="body-container">
-	    <div class="body-title">
+		<div class="container-fluid px-5">
+			<div class="body-container">
+		    <div class="body-title">
 			<h2><i class="fas fa-clipboard-list"></i> 공지사항 </h2>
 	    </div>
     
@@ -116,10 +118,11 @@
 				</tr>
 			</table>
 		</form>
-
+		</div>
 	</div>
-</div>
-</div>
+	</div>
+	</div>
+</main>
 
 <c:if test="${mode=='update'}">
 	<script type="text/javascript">
