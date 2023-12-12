@@ -230,7 +230,7 @@
 											<li><a href="#">프로듀싱 클래스</a></li>
 											<li>&nbsp;</li>
 											<li>&nbsp;</li>
-											<li><a href="#" style="text-decoration: underline;">&gt;&gt;모든 원데이 클래스 보러가기</a></li>
+											<li><a href="${pageContext.request.contextPath}/product/list" style="text-decoration: underline;">&gt;&gt;모든 원데이 클래스 보러가기</a></li>
 										</ul>
 									</div>
 								</div>
@@ -238,7 +238,7 @@
 						</li>
 						<li>
 							<a href="#">원데이 플러스</a>
-							<div class="cbp-hrsub">
+							<div class="cbp-hrsub" style="background: url('/finalApp/resources/images/beach1.jpg');">
 								<div class="cbp-hrsub-inner">
 									<div>
 										<h4>인기 콘텐츠</h4>
@@ -313,7 +313,7 @@
 						
 						<li>
 							<a href="#">고객센터</a>
-							<div class="cbp-hrsub">
+							<div class="cbp-hrsub" style="background: url('/finalApp/resources/images/beach1.jpg');">
 								<div class="cbp-hrsub-inner"> 
 									<div>
 										<h4>문의</h4>

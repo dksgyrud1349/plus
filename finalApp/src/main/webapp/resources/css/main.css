@@ -22,13 +22,13 @@ body {
 }
 
 a {
-	color: #999;
+	color: black;									
+	font-weight: bold;								
 	text-decoration: none;
 }
 
 a:hover {
 	color: #47a3da;
-	
 }
 
 .container > header {
@@ -458,5 +458,3 @@ dd .num {
 .cardreview img{
 	height: 60%;
 }
-
-

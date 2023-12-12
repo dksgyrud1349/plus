@@ -45,7 +45,7 @@
 .cbp-hrmenu .cbp-hrsub {
 	display: none;
 	position: absolute;
-	background: #47a3da;
+	background: #F4FFFF;												/*  */
 	width: 100%;
 	left: 0;
 	border: 10px double lightgrey;
@@ -145,6 +145,3 @@
 		padding: 0 2em;
 	}
 }
-
-
-
