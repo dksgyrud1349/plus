@@ -37,16 +37,18 @@
 <nav class="footer-container">
 	<div class="footer container-row container">
 		<div class="col-3 left ps-5 me-5">
-		    <p class="contact" style="font-size: x-large;">원데이 플러스</p>        
-		    <div class="text contact">일상의 따듯한 휴식과 새로운 경험, 원데이 플러스</div>        
-		    <div class="text contact">Let’s make more chance with Oneday Plus</div>        
+		    <p style="font-size: x-large;">원데이 플러스</p>        
+		    <p class="text">일상의 따듯한 휴식과 새로운 경험, 원데이 플러스<br>
+		    	Let’s make more chance with Oneday Plus</p>        
 
-			<p class="text middle" style="font-size: x-large; color: green;">1588-6535</p>        
-			<div class="text middle">평일 10:00 ~ 18:00</div>        
-			<div class="text middle">(점심시간 13:00 - 14:00 제외 · 주말/공휴일 제외)</div>        
+			<p style="font-size: x-large; color: green;">1588-6535</p>
+			<p class="text">	평일 10:00 ~ 18:00<br>
+				(점심시간 13:00 - 14:00 제외 · 주말/공휴일 제외)      
+			</p>
 		</div>
 		
 		<div class="col-6 center ps-5">
+			<div class="text">&nbsp;</div>
 			<div class="text">&nbsp;</div>
 			<hr>
 			<div class="text">주식회사 레디킨즈 | 대표 정종학 | 사업자등록번호 : 285-81-02364 | 통신판매번호 : 2021-부산금정-0652</div>
