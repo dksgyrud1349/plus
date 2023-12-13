@@ -2,10 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
-cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js
-cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.5/angular.min.js
-
 <script type="text/javascript">
 function sendLogin() {
     const f = document.loginForm;
