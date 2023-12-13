@@ -347,11 +347,11 @@
 						</li>
 						
 						<li>
-						    <li onclick="urlOk('/bbs/list')" class="menubtn">커뮤니티</a>
+						    <li onclick="urlOk('/bbs/list')" class="menubtn">커뮤니티</li>
 						</li>
 						
 						<li>
-							<li onclick="urlOk('/event/progress/list"')" class="menubtn">사이트맵</li>
+							<li onclick="urlOk('/event/progress/list')" class="menubtn">사이트맵</li>
 						</li>
 
 					</ul>
