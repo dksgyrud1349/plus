@@ -42,7 +42,7 @@ $(function(){
 
 </script>
 
-<div class="container">
+<div class="container" style="margin-top: 10%; width: 65%;">
 	<div class="body-container">	
 		<div class="body-title">
 			<h3><i class="bi bi-calendar-event"></i> 이벤트 게시물</h3>

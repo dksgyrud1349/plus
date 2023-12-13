@@ -42,7 +42,7 @@ function searchList() {
 }
 </script>
 
-<div class="container">
+<div class="container" style="margin-top: 10%; width: 65%;">
 	<div class="body-container">	
 		<div class="body-title">
 			<h3><i class="bi bi-calendar-event"></i> 이벤트 </h3>
@@ -84,7 +84,7 @@ function searchList() {
 							<tr>
 								<td>${dataCount - (page-1) * size - status.index}</td>
 								<td class="left">
-									<a href="${articleUrl}&num=${dto.num}" class="text-reset">${dto.title}</a>
+									<a href="${articleUrl}&eventNum=${dto.eventNum}" class="text-reset">${dto.subject}</a>
 								</td>
 								<td>${dto.startDate}</td>
 								<td>${dto.endDate}</td>

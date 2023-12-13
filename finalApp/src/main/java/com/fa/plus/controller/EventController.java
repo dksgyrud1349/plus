@@ -101,7 +101,7 @@ public class EventController {
 	@GetMapping("{category}/article")
 	public String article(
 			@PathVariable String category,
-			@RequestParam long num,
+			@RequestParam long eventNum,
 			@RequestParam String page,
 			@RequestParam(defaultValue = "all") String schType,
 			@RequestParam(defaultValue = "") String kwd,
@@ -117,10 +117,10 @@ public class EventController {
 		}
 
 		if(category.equals("progress")) {
-			service.updateHitCount(num);
+			service.updateHitCount(eventNum);
 		}
 
-		Event dto = service.findById(num);
+		Event dto = service.findById(eventNum);
 		if (dto == null) {
 			return "redirect:/event/" + category + "/list?" + query;
 		}
@@ -131,7 +131,7 @@ public class EventController {
 		map.put("showEvent", 1);
 		map.put("schType", schType);
 		map.put("kwd", kwd);
-		map.put("num", num);
+		map.put("num", eventNum);
 
 		Event prevDto = service.findByPrev(map);
 		Event nextDto = service.findByNext(map);
