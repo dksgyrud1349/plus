@@ -7,14 +7,7 @@
 <style type="text/css">
 
 
-#chart-container {
-	width: 476px;
-	box-sizing: border-box;
-	padding: 20px;
-	height: 400px;
-	border: 1px solid #ccc;
-	text-align: center;
-}
+
 </style>
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -93,12 +86,13 @@ $(function(){
 		<div>
 			<ul class="tabs">
 				<li id="tab-0" data-tab="0"><i class="fa-solid fa-person"></i>&nbsp;회원 리스트</li>
-				<li id="tab-1" data-tab="1"><i class="fa-solid fa-chart-column"></i>&nbsp;회원 분석</li>
+				<li id="tab-1" data-tab="1"><i class="fa-solid fa-chart-column"></i>&nbsp;연령대 분석</li>
 			</ul>
 		</div>
-		<div id="tab-content" style="padding: 20px 10px 0;">
+		<div id="tab-content" style="margin:10px auto">
 			<div id="chart-container"></div>
 		</div>
+
     	
 	</div>
 </div>

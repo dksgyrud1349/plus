@@ -181,7 +181,7 @@ function selectStateChange() {
 		<div>
 			<ul class="tabs">
 				<li id="tab-0" data-tab="0"><i class="fa-solid fa-person"></i>&nbsp;회원 리스트</li>
-				<li id="tab-1" data-tab="1"><i class="fa-solid fa-chart-column"></i>&nbsp;회원 분석</li>
+				<li id="tab-1" data-tab="1"><i class="fa-solid fa-chart-column"></i>&nbsp;연령대 분석</li>
 			</ul>
 		</div>
 		<div id="tab-content" style="padding: 20px 10px 0;">

@@ -303,7 +303,7 @@
 										<ul>
 											<li class="mt-3"><img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" style="width: 300px; border-radius: 20px;"></li>
 											<li><a href="#">- 오늘만 추가 쿠폰 지급</a></li>
-											<li><a href="#"style="text-decoration: underline;">&gt;&gt; 이벤트 페이지 바로가기</a></li>
+											<li><a href="${pageContext.request.contextPath}/event/progress/list" style="text-decoration: underline;">&gt;&gt; 이벤트 페이지 바로가기</a></li>
 										</ul>
 										
 									</div>
@@ -338,7 +338,7 @@
 										<ul>
 											<li class="mt-5"><img src="${pageContext.request.contextPath}/resources/images/center.jpg" width="400px;" 
 											style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;"></li>
-											<li><a href="#"style="text-decoration: underline;">&gt;&gt;고객센터 바로가기</a></li>
+											<li><a href="${pageContext.request.contextPath}/notice/list"style="text-decoration: underline;">&gt;&gt;고객센터 바로가기</a></li>
 										</ul>
 
 									</div>
@@ -351,7 +351,7 @@
 						</li>
 						
 						<li>
-							<li onclick="urlOk('/event/progress/list')" class="menubtn">사이트맵</li>
+							<li onclick="urlOk('/')" class="menubtn">사이트맵</li>
 						</li>
 
 					</ul>
