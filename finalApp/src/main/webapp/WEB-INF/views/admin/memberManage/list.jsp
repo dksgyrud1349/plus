@@ -168,28 +168,27 @@ function selectStateChange() {
 }
 </script>
 
-<main class="wrapper" style="margin:5% auto; width:80%;">
-	<div id="layoutSidenav_content">
+<main class="wrapper" style="margin:0 auto; width:100%;" >
+	<div id="layoutSidenav_content" style="background:	#F8F8FF;">
 		 	<div class="container-fluid px-5">
-				<div class="body-container">
-		    			<div class="body-title">
-		<h2><i class="fa-solid fa-user-group"></i> 회원 관리 </h2>
-    </div>
-    
+				<div class="body-container" style="width:80%; margin:5% auto; ">
     <div class="body-main">
     	
 		<div>
 			<ul class="tabs">
-				<li id="tab-0" data-tab="0"><i class="fa-solid fa-person"></i>&nbsp;회원 리스트</li>
-				<li id="tab-1" data-tab="1"><i class="fa-solid fa-chart-column"></i>&nbsp;연령대 분석</li>
+				<li id="tab-0" data-tab="0">
+					<i class="fa-solid fa-person"></i>&nbsp;회원 리스트
+				</li>
+				<li id="tab-1" data-tab="1">
+					<i class="fa-solid fa-chart-column"></i>&nbsp;연령대 분석
+				</li>
 			</ul>
 		</div>
-		<div id="tab-content" style="padding: 20px 10px 0;">
-		
+		<div id="tab-content" style="padding: 20px 0px 0;">
 			<table class="table">
 				<tr>
-					<td align="left" width="50%">
-						${dataCount}개(${page}/${total_page} 페이지)
+					<td align="left" width="70%" style="font-weight:bold">
+						전체 사용자 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}명</font> (${page}/${total_page} 페이지)
 					</td>
 					<td align="right">
 						<select id="selectEnabled" class="form-select" onchange="searchList();">
@@ -200,69 +199,89 @@ function selectStateChange() {
 					</td>
 				</tr>
 			</table>
-				
-			<table class="table table-border table-list">
-				<thead>
-					<tr> 
-						<th width="60">번호</th>
-						<th width="120">아이디</th>
-						<th width="100">이름</th>
-						<th width="100">생년월일</th>
-						<th width="120">전화번호</th>
-						<th width="80">회원구분</th>
-						<th width="60">상태</th>
-						<th>이메일</th>
-					</tr>
-				</thead>
-				
-				<tbody>
-					<c:forEach var="dto" items="${list}" varStatus="status">
-						<tr class="hover" onclick="profile('${dto.userId}');"> 
-							<td>${dataCount - (page-1) * size - status.index}</td>
-							<td>${dto.userId}</td>
-							<td>${dto.userName}</td>
-							<td>${dto.birth}</td>
-							<td>${dto.tel}</td>
-							<td>${dto.membership==1?"일반회원":(dto.membership==10?"플러스":"기타")}</td>
-							<td>${dto.enabled==1?"활성":"잠금"}</td>
-							<td>${dto.email}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-					 
-			<div class="page-navigation">
-				${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
-			</div>
-					
-			<table class="table">
-				<tr>
-					<td align="left" width="100">
-						<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/admin/memberManage/list';">새로고침</button>
-					</td>
-					<td align="center">
-						<form name="searchForm" action="${pageContext.request.contextPath}/admin/memberManage/list" method="post">
-							<select name="schType" class="form-select">
-								<option value="userId"     ${schType=="userId" ? "selected":""}>아이디</option>
-								<option value="userName"   ${schType=="userName" ? "selected":""}>이름</option>
-								<option value="email"      ${schType=="email" ? "selected":""}>이메일</option>
-								<option value="tel"        ${schType=="tel" ? "selected":""}>전화번호</option>
-							</select>
-							<input type="text" name="kwd" class="form-control" value="${kwd}">
-							<input type="hidden" name="enabled" value="${enabled}">
-							<input type="hidden" name="page" value="1">
-							<button type="button" class="btn" onclick="searchList()">검색</button>
-						</form>
-					</td>
-					<td align="right" width="100">&nbsp;</td>
-				</tr>
-			</table>
+			
+			<div class="card mb-5 w-80 text-center" style="margin:0 auto">
+                            <div class="card-header">
+                                <h3>
+                                	<i class="fa-solid fa-user-group"></i> 회원 관리 
+	                            <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/memberManage/list';" style="float:right;">
+	                                	새로고침
+	                            </button>
+	                            </h3>
+	                            
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>번호</th>
+												<th>아이디</th>
+												<th>이름</th>
+												<th>생년월일</th>
+												<th>전화번호</th>
+												<th>회원구분</th>
+												<th>상태</th>
+												<th>이메일</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+										<c:forEach var="dto" items="${list}" varStatus="status">
+											<tr class="hover" onclick="profile('${dto.userId}');"> 
+												<td>${dataCount - (page-1) * size - status.index}</td>
+												<td>${dto.userId}</td>
+												<td>${dto.userName}</td>
+												<td>${dto.birth}</td>
+												<td>${dto.tel}</td>
+												<td>${dto.membership==1?"일반회원":(dto.membership==10?"플러스":"기타")}</td>
+												<td>${dto.enabled==1?"활성":"잠금"}</td>
+												<td>${dto.email}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+                                </table>
+                                
+                                <div class="page-navigation" >
+									${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
+								</div>
+								
+								<table class="table">
+									<tr>
+										<td  align="center">
+											<form name="searchForm" action="${pageContext.request.contextPath}/admin/memberManage/list" method="post" style="width:300px;">
+												<div class="input-group mb-3">
+												
+												<select name="schType" class="form-select">
+													<option value="userId"     ${schType=="userId" ? "selected":""}>아이디</option>
+													<option value="userName"   ${schType=="userName" ? "selected":""}>이름</option>
+													<option value="email"      ${schType=="email" ? "selected":""}>이메일</option>
+													<option value="tel"        ${schType=="tel" ? "selected":""}>전화번호</option>
+												</select>
+												<input type="text" name="kwd" class="form-control" value="${kwd}">
+												<input type="hidden" name="enabled" value="${enabled}">
+												<input type="hidden" name="page" value="1">
+												<button type="button" class="btn btn-outline-secondary" onclick="searchList()" style="">
+													검색
+												</button>
+												</div>
+											</form>
+										</td>
+									</tr>
+								</table>
+                            </div>
+                        </div>
+                    </div>
+			
+			
 		
 		</div>
     	
 	</div>
 </div>
 </div>
+
+						
 </div>
 </main>
 

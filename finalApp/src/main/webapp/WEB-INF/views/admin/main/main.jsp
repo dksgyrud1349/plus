@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <main class="wrapper" style="margin:0% auto;">
 <div id="layoutSidenav_content">
                 <main>
@@ -308,8 +309,5 @@
                     </div>
                 </div>
              </main>
-             <footer class="py-4 bg-light mt-auto">
-                    
-            </footer>
          </div>
       </main>
