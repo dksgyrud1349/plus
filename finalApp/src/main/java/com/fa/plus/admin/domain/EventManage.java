@@ -1,6 +1,6 @@
-package com.fa.plus.domain;
+package com.fa.plus.admin.domain;
 
-public class Event {
+public class EventManage {
 	private long evnetNum;
 	private String userId;
 	private String subject;
@@ -85,5 +85,4 @@ public class Event {
 	public void setEventImg(String eventImg) {
 		this.eventImg = eventImg;
 	}
-	
 }
