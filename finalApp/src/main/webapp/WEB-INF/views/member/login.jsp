@@ -2,6 +2,36 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
+cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js
+cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.5/angular.min.js
+
+<script type="text/javascript">
+function sendLogin() {
+    const f = document.loginForm;
+	let str;
+	
+	str = f.userId.value.trim();
+    if(!str) {
+        f.userId.focus();
+        return;
+    }
+
+    str = f.userPwd.value.trim();
+    if(!str) {
+        f.userPwd.focus();
+        return;
+    }
+
+    f.action = "${pageContext.request.contextPath}/member/login";
+    f.submit();
+}
+</script>
+		    				
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 
 
 <script type="text/javascript">
@@ -36,24 +66,29 @@ function sendLogin() {
             <div class="col-md-6 offset-md-3">
                 <div class="border mt-5 p-4">
                     <form name="loginForm" action="" method="post" class="row g-3">
-                        <h3 class="text-center"><i class="bi bi-lock"></i> 회원 로그인</h3>
+                    	<h4 class="text-center">Welcome</h4>
+                        <h3 class="text-center">Oneday Plus</h3>
                         <div class="col-12">
                             <label class="mb-1">아이디</label>
                             <input type="text" name="userId" class="form-control" placeholder="아이디">
                         </div>
                         <div class="col-12">
                             <label class="mb-1">패스워드</label>
-                            <input type="password" name="userPwd" class="form-control" autocomplete="off" 
-                            	placeholder="패스워드">
+                            <div>
+                            	
+                            	<span><input type="password" name="userPwd" class="form-control" autocomplete="off" 
+                            			placeholder="패스워드" >
+                            	</span>
+                            </div>
                         </div>
                         <div class="col-12">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="rememberMe">
-                                <label class="form-check-label" for="rememberMe"> 아이디 저장</label>
+                                <label class="form-check-label" for="rememberMe"> 로그인 상태 유지</label>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <button type="button" class="btn btn-primary float-end" onclick="sendLogin();">&nbsp;Login&nbsp;<i class="bi bi-check2"></i></button>
+                        <div>
+                            <button type="button" class="btn btn-primary col-12" onclick="sendLogin();">&nbsp;Login&nbsp;<i class="bi bi-check2"></i></button>
                         </div>
                     </form>
                     <hr class="mt-4">
