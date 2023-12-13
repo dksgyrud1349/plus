@@ -37,6 +37,7 @@ public class BoardController {
 	@Autowired
 	private MyUtil myUtil;
 	
+	
 	@RequestMapping(value = "list")
 	public String list(@RequestParam(value = "page", defaultValue = "1") int current_page,
 			@RequestParam(defaultValue = "all") String schType,
