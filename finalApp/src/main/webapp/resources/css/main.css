@@ -196,6 +196,7 @@ z-index: 2;
 	}
 	.card-container {
 		flex-wrap: wrap;
+		
 	}
 
 	.card {
@@ -346,6 +347,7 @@ dd .num {
 
 .card-body a:hover{
 	color: #4b4b4b;
+	
 }
 
 .card{
@@ -376,7 +378,7 @@ dd .num {
 
 .explain {
     position: absoulute;
-    background: #F4FFFF;
+    background: #FFFFFF;
     border-radius: 10em;
     padding: 15px 80px;
 	color: #228B22;

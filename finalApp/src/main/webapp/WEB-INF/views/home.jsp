@@ -294,6 +294,8 @@ for (let i = 0; i < reviewBars.length; i++) {
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
 		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
+		
+		
 	  </div>
 	  <button class="nav-btn-right" onclick="showNext()" style="background: white; border: none;"><i class="bi bi-caret-right"></i></button>
 	  </div>
@@ -303,7 +305,8 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<img src="${pageContext.request.contextPath}/resources/images/baner_2.jpg" width="100%" height="150px" style="border-radius: 20px;">
 	  </div>
 
-
+	
+		
 	  
 	<script>
         const cardContainer = document.getElementById('card-container');
@@ -335,6 +338,7 @@ for (let i = 0; i < reviewBars.length; i++) {
         }
         showCards(currentIndex);
     </script>
+    
     
     <div class="container">
 	  <div class="row" style="margin: 3% auto;">

@@ -351,8 +351,9 @@
 						</li>
 						
 						<li>
-							<li onclick="urlOk('/bbs/list')" class="menubtn">사이트맵</li>
+							<li onclick="urlOk('/event/progress/list"')" class="menubtn">사이트맵</li>
 						</li>
+
 					</ul>
 				</nav>
 			</div>
