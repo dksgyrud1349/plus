@@ -16,7 +16,7 @@
 	<script type="text/javascript">
 		function deleteBoard() {
 		    if(confirm('게시글을 삭제 하시 겠습니까 ? ')) {
-			    let query = 'num=${dto.num}&${query}&photoName=${dto.photoName}';
+			    let query = 'num=${dto.num}&${query}';
 			    let url = '${pageContext.request.contextPath}/bbs/delete?' + query;
 		    	location.href = url;
 		    }
@@ -48,12 +48,6 @@
 						</td>
 						<td align="right">
 							${dto.regDate} | 조회 ${dto.hitCount}
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2" style="border-bottom: none;">
-							<img src="${pageContext.request.contextPath}/uploads/bbs/${dto.photoName}" 
-								class="img-fluid img-thumbnail w-100 h-auto">
 						</td>
 					</tr>
 					<tr>

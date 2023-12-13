@@ -1,13 +1,11 @@
 package com.fa.plus.service;
 
 import java.util.List;
-
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fa.plus.common.FileManager;
 import com.fa.plus.domain.Board;
 import com.fa.plus.domain.Reply;
 import com.fa.plus.mapper.BoardMapper;
@@ -18,18 +16,11 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	private BoardMapper mapper;
 	
-	@Autowired
-	private FileManager fileManager;
-	
 	@Override
 	public void insertBoard(Board dto, String pathname) throws Exception {
 		try {
-			String saveFilename = fileManager.doFileUpload(dto.getSelectFile(), pathname);
-			if (saveFilename != null) {
-				dto.setPhotoName(saveFilename);
-
-				mapper.insertBoard(dto);
-			}
+			mapper.insertBoard(dto);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -116,17 +107,6 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void updateBoard(Board dto, String pathname) throws Exception {
 		try {
-			// 업로드한 파일이 존재한 경우
-			String saveFilename = fileManager.doFileUpload(dto.getSelectFile(), pathname);
-
-			if (saveFilename != null) {
-				// 이전 파일 지우기
-				if (dto.getPhotoName().length() != 0) {
-					fileManager.doFileDelete(dto.getPhotoName(), pathname);
-				}
-
-				dto.setPhotoName(saveFilename);
-			}
 			
 			mapper.updateBoard(dto);
 		} catch (Exception e) {
@@ -142,9 +122,7 @@ public class BoardServiceImpl implements BoardService{
 			if (dto == null || (membership < 91 && ! dto.getUserId().equals(userId))) {
 				return;
 			}
-			if(pathname != null) {
-				fileManager.doFileDelete(pathname);
-			}
+			
 			mapper.deleteBoard(num);
 		} catch (Exception e) {
 			e.printStackTrace();
