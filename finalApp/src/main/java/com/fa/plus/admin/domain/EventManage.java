@@ -6,13 +6,18 @@ public class EventManage {
 	private String subject;
 	private String eContent;
 	private String startDate;
+	private String sday;
+	private String stime;
 	private String endDate;
+	private String eday;
+	private String etime;
 	private String eventKind;
 	private int discountMoney;
 	private double discountPercent;
 	private int showEvent;
 	private int hitCount;
 	private String eventImg;
+	
 	public long getEvnetNum() {
 		return evnetNum;
 	}
@@ -43,11 +48,35 @@ public class EventManage {
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
+	public String getSday() {
+		return sday;
+	}
+	public void setSday(String sday) {
+		this.sday = sday;
+	}
+	public String getStime() {
+		return stime;
+	}
+	public void setStime(String stime) {
+		this.stime = stime;
+	}
 	public String getEndDate() {
 		return endDate;
 	}
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
+	}
+	public String getEday() {
+		return eday;
+	}
+	public void setEday(String eday) {
+		this.eday = eday;
+	}
+	public String getEtime() {
+		return etime;
+	}
+	public void setEtime(String etime) {
+		this.etime = etime;
 	}
 	public String getEventKind() {
 		return eventKind;
@@ -85,4 +114,5 @@ public class EventManage {
 	public void setEventImg(String eventImg) {
 		this.eventImg = eventImg;
 	}
+	
 }
