@@ -41,7 +41,6 @@
   
 }
 
-
 .cbp-hrmenu .cbp-hrsub {
 	display: none;
 	position: absolute;
@@ -98,7 +97,12 @@
 	animation: menu 0.7s;
 }
 
-
+.my-hr1{
+	border: 0;
+	height: 2px;
+	background: #ccc;
+	width: 80%;
+}
 
 
 /* 반응형 */

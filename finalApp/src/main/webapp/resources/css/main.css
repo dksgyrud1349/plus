@@ -23,12 +23,11 @@ body {
 
 a {
 	color: black;									
-	font-weight: bold;								
+	font-weight: 600;								
 	text-decoration: none;
 }
-
 a:hover {
-	color: #47a3da;
+	color: green;
 }
 
 .container > header {
@@ -275,19 +274,76 @@ dd .num {
 
 
 
+.explainbtn{
+	transition: transform 0.3s ease;
+}
+
+.explainbtn:hover {
+    transform: scale(1.1); 
+    background:#fff;
+  	color:#1AAB8A;
+}
 
 
 .card-link{
-	background-color: #47a3da;
-	border: none;
+	background-color: #5AD18F;
+	border: 1px solid #5AD18F;
 	border-radius:  25px;
 	padding: 10px 20px;
 	margin-left: 10px;
 	cursor: pointer;
 	float: right;
-	transition: background-color 0.3s ease;
-
+	transition: transform 0.3s ease;
 }
+
+.card-link:hover{
+	transform: scale(1.1); 
+    background:#fff;
+}
+.card-link:hover:after {
+	content: '';
+  	position: absolute;
+  	left: 20px;
+  	bottom: 10px;
+  	width: 60%;
+  	height: 1.5px;
+  	background: #5AD18F;
+	opacity: 1;
+	transition: transform 0.5s, opacity 0.5s; 
+  	pointer-events: none;
+}
+
+
+.card-link1{
+	background-color: #aaaaaa;
+	border: 1px solid #aaaaaa;
+	border-radius:  25px;
+	padding: 10px 20px;
+	margin-left: 10px;
+	cursor: pointer;
+	float: right;
+	transition: transform 0.3s ease;
+}
+
+.card-link1:hover{
+	transform: scale(1.1); 
+    background:#fff;
+}
+.card-link1:hover:after {
+	content: '';
+  	position: absolute;
+  	color: #1AAB8A;
+  	left: 20px;
+  	bottom: 10px;
+  	width: 66%;
+  	height: 1.5px;
+  	background: #aaaaaa;
+	opacity: 1;
+	transition: transform 0.5s, opacity 0.5s; 
+  	pointer-events: none;
+}
+
+
 .card-body a:hover{
 	color: #4b4b4b;
 }
@@ -320,18 +376,17 @@ dd .num {
 
 .explain {
     position: absoulute;
-    background: #47a3da;
-    border-radius: 0.4em;
-    padding: 15px;
-	color: #fff;
+    background: #F4FFFF;
+    border-radius: 10em;
+    padding: 15px 80px;
+	color: #228B22;
     margin-top: 10px;
     display: none;
+    border: 2px solid #50C8FF;    
 }
 
 .explain:after {
-    position: absolute;
     left: 50%;
-    border: 2px solid transparent;
 }
 
 .explainbtn{
@@ -340,6 +395,8 @@ dd .num {
 
 .explainbtn:hover {
     transform: scale(1.1); 
+    background:#fff;
+  	color:#1AAB8A;
 }
 
 .review {

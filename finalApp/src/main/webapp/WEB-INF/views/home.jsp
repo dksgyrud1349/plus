@@ -94,7 +94,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</ul>
 		<div class="card-body">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  <a href="${pageContext.request.contextPath}/" class="card-link" style="float: right; margin: 4% auto">자세히보기</a>
+		  <a href="${pageContext.request.contextPath}/" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
 	  </div>
 
@@ -112,7 +112,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  <a href="#" class="card-link" style="float: right; margin: 4% auto">자세히보기</a>
+		  <a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
 	  </div>
 
@@ -130,7 +130,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 		  <a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  <a href="#" class="card-link" style="float: right; margin: 4% auto">자세히보기</a>
+		  <a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
 	  </div>
 
@@ -148,7 +148,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link" style="float: right; margin: 4% auto">자세히보기</a>
+		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
 	  </div>
 
@@ -166,7 +166,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link" style="float: right; margin: 4% auto">자세히보기</a>
+		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
 	  </div>
 
@@ -184,7 +184,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link" style="float: right; margin: 4% auto">자세히보기</a>
+		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
 	  </div>
 
@@ -202,7 +202,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link" style="float: right; margin: 4% auto">자세히보기</a>
+		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
 	  </div>
 
@@ -220,7 +220,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link" style="float: right; margin: 4% auto">자세히보기</a>
+		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
 	  </div>
 
@@ -238,7 +238,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link" style="float: right; margin: 4% auto">자세히보기</a>
+		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
 	  </div>
 
@@ -256,7 +256,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link" style="float: right; margin: 4% auto">자세히보기</a>
+		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
 	  </div>
 
@@ -274,7 +274,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</ul>
 		<div class="card-body " style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link" style="float: right; margin: 4% auto">자세히보기</a>
+		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
 	  </div>
 
@@ -292,7 +292,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link" style="float: right; margin: 4% auto">자세히보기</a>
+		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
 	  </div>
 	  <button class="nav-btn-right" onclick="showNext()" style="background: white; border: none;"><i class="bi bi-caret-right"></i></button>
@@ -339,32 +339,32 @@ for (let i = 0; i < reviewBars.length; i++) {
     <div class="container">
 	  <div class="row" style="margin: 3% auto;">
 	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#date')"> #이색데이트 </button>
-	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#group')"> #단체 </button>
-	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#wood')"> #목공 </button>
-	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#family')"> #가족 </button>
-	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#lover')"> #연인 </button>
-	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#date2')"> #데이트 </button>
+	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#lover')"> #반려동물 </button>
+	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#wood')"> #향수 </button>
+	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#family')"> #선물 </button>
+	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#group')"> #단체 </button>	    
+	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#date2')"> #댄스 </button>
 	  </div>
-	  	<div id="date" class="explain">이색데이트 설명</div>
-	  	<div id="group" class="explain">단체 설명</div>
-	    <div id="wood" class="explain">목공 설명</div>
-	    <div id="family" class="explain">가족 설명</div>
-	    <div id="lover" class="explain">연인 설명</div>
-	    <div id="date2" class="explain">데이트 설명</div>
+	  	<div id="date" class="explain">항상 같은 데이트코스에서 벗어나 새로운 추억을 쌓고싶진 않으신가요? <br>소중한 사람과 함께하기 좋은 새로운 이색 데이트 루틴을 원하시면 방문해보세요~</div>
+	    <div id="lover" class="explain">반려동물을 위한 무언가를 만들어보고싶지 않으신가요? 소중한 반려동물, 좋은 것만 주고 싶은게 집사의 마음이잖아요 ㅎ <br>사랑을 가득 담아 아이들에게 특별한 추억을 선물해주세요!</div>
+	    <div id="wood" class="explain">나에게서 이런 향이 났으면 좋겠다, 생각해 보신 적 있으신가요? 내가 좋아하는 향을 찾고, 예쁘게 향수병도 꾸며보아요!<br>혼자만의 힐링, 커플 데이트, 우정 체험으로 모두 좋습니다!! </div>
+	    <div id="family" class="explain">겨울의 쌀쌀해진 날씨에 부담없는 따듯한 선물하나 직접 만들어보는건 어떠시나요? <br>가족, 애인, 친구에게 고마운 마음을 전해보아요.</div>
+	  	<div id="group" class="explain">동호회모임, 친구들과의 모임, 회사단체클래스등 쉽게 접하지 못했던 여러 단체클래스를 소개해드립니다~</div>	    
+	    <div id="date2" class="explain">춤을 한번도 배워본 적 없는 분들, 혹은 그냥 즐기며 스트레스 풀고 싶으신 분들, 가볍고 재미있는 분위기에서 경험해봐요~</div>
 	
 	  <div class="row" style="margin: 3% auto;">
 	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#indoor')"> #실내운동 </button>
-	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#leather')"> #가죽 </button>
+	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#leather')"> #목공 </button>
 	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#leisure')"> #레저 </button>
 	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#flower')"> #플라워 </button>
-	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#sports')"> #스포츠 </button>
+	    <button type="button" class="btn btn-info col-sm explainbtn" onclick="toggleExplain('#sports')"> #쿠킹 </button>
 	  </div>
 	</div>
-	    <div id="indoor" class="explain">실내운동 설명</div>
-	    <div id="leather" class="explain">가죽 설명</div>
-	    <div id="leisure" class="explain">레저 설명</div>
-	    <div id="flower" class="explain">플라워 설명</div>
-	    <div id="sports" class="explain">스포츠 설명</div>
+	    <div id="indoor" class="explain">밖으로 돌아다니기는 부담스럽고 집에만 있기에는 너무 답답하시나요? <br>원데이플러스에서 다양한 실내운동을 즐겨봐요!</div>
+	    <div id="leather" class="explain">부담없이 의미있는 체험을 원하시는 분들! <br>친구 연인 가족 누구와 함께해도 부담되지않고,쉽고 재미있게 우리만의 추억을 쌓을수 있는 목공체험은 어떠신가요?</div>
+	    <div id="leisure" class="explain">레저스포츠 취미를 갖는건 어떠신가요? 관심이 있었지만 혼자 시작하기에 부담되셨나요? <br>원데이플러스에서 부담없이 새로운 추억을 만들어드립니다~</div>
+	    <div id="flower" class="explain">벌써 코 앞으로 다가온 크리스마스! 나만의 크리스마스 트리를 조화가 아닌 생화로 직접 만들어 보는 건 어떨까요?</div>
+	    <div id="sports" class="explain">살면서 스스로 여러 쿠킹경험도 가져볼만하지 않아요? <br>초보자도 재미있고 쉽게 만들 수 있도록 도와드려요. 힐링하시는 마음만 가지고 즐겨봐요~</div>
 	
 	
 	<script>
