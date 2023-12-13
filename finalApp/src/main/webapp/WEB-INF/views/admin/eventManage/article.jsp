@@ -68,14 +68,12 @@ $(function(){
 							이벤트 기간 : ${dto.startDate} ~ ${dto.endDate} 
 						</td>
 					</tr>
-					<c:if test="${dto.eventImg} != null">
-						<tr>
+					<tr>
 							<td colspan="2" style="border-bottom: none;">
 								<img src="${pageContext.request.contextPath}/uploads/photo/${dto.eventImg}" 
 									class="img-fluid img-thumbnail w-100 h-auto">
 							</td>
 						</tr>
-					</c:if>
 					<tr style="border-bottom: none;">
 						<td colspan="2" valign="top" height="200">
 							${dto.eContent}
