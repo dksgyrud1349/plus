@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.EventMapper">
+	<sql id="where-list">
+		<choose>
+			<when test="schType == 'all' ">
+			   ( INSTR(subject, #{kwd}) &gt; 0
+		          OR DBMS_LOB.INSTR(eContent, #{kwd}) &gt; 0 )
+			</when>
+			<otherwise>
+			   ( TO_CHAR(${schType}, 'YYYYMMDD') = #{kwd}
+		          OR TO_CHAR(${schType}, 'YYYY-MM-DD') = #{kwd} )
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<sql id="period-list">
+		<choose>
+			<when test="category == 'progress' ">
+				( startDate &lt;= SYSDATE  AND endDate &gt; SYSDATE )
+			</when>
+			<when test="category == 'upcoming' ">
+				( startDate &gt;= SYSDATE )
+			</when>
+			<when test="category == 'ended' ">
+				( endDate &lt; SYSDATE )
+			</when>
+		</choose>
+	</sql>
+	
+	<!-- 글개수 -->
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM event
+		<where>
+			<if test="showEvent != null and showEvent == 1">
+				showEvent = 1
+			</if>
+			<if test="category != 'all' ">
+				AND <include refid="period-list"/>
+			</if>
+			<if test="kwd!=null and kwd!='' ">
+				AND <include refid="where-list"/>
+			</if>
+		</where>   
+	</select>
+	
+	<!-- 글리스트 -->
+	<select id="listEvent" parameterType="map" resultType="com.fa.plus.domain.Event">
+		SELECT eventNum, subject, hitCount, showEvent,
+			   TO_CHAR(startDate,'YYYY-MM-DD HH24:MI') startDate,
+			   TO_CHAR(endDate, 'YYYY-MM-DD HH24:MI') endDate, eventKind
+		FROM event e
+		<where>
+			<if test="showEvent != null and showEvent == 1">
+				showEvent = 1
+			</if>
+			<if test="category != 'all' ">
+				AND <include refid="period-list"/>
+			</if>
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="where-list"/>
+			</if>
+		</where>
+		ORDER BY endDate DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<!-- 글보기 -->
+	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.Event">
+		SELECT eventNum, e.userId, userName, subject, eContent, 
+			TO_CHAR(startDate,'YYYY-MM-DD HH24:MI') startDate,
+			TO_CHAR(endDate, 'YYYY-MM-DD HH24:MI') endDate, 
+			showEvent, hitCount, eventKind, eventImg, discountMoney, discountPercent
+		FROM event e
+		JOIN member1 m ON e.userId = m.userId
+		WHERE eventNum = #{eventNum}
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="updateHitCount" parameterType="Long">
+		UPDATE event SET hitCount = hitCount+1 WHERE eventNum = #{eventNum}
+	</update>
+	
+	<!-- 이전글 -->
+	<select id="findByPrev" parameterType="map" resultType="com.fa.plus.domain.Event">
+		SELECT eventNum, subject
+		FROM event
+		<where>
+			<if test="showEvent != null and showEvent == 1">
+				showEvent = 1
+			</if>
+			<if test="category != 'all' ">
+				AND <include refid="period-list"/>
+			</if>
+			<if test="kwd != null and kwd != '' ">
+				AND <include refid="where-list"/>
+			</if>
+			AND (eventNum &gt; #{eventNum})
+		</where>
+		ORDER BY endDate ASC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+
+	<!-- 다음글 -->
+	<select id="findByNext" parameterType="map" resultType="com.fa.plus.domain.Event">
+		SELECT eventNum, subject
+		FROM event
+		<where>
+			<if test="showEvent != null and showEvent == 1">
+				showEvent = 1
+			</if>
+			<if test="category != 'all' ">
+				AND <include refid="period-list"/>
+			</if>
+			<if test="kwd != null and kwd != '' ">
+				AND <include refid="where-list"/>
+			</if>
+			AND (eventNum &lt; #{eventNum})
+		</where>
+		ORDER BY endDate DESC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+	
+	
+</mapper>
