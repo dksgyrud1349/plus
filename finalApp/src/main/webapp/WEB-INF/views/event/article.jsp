@@ -81,8 +81,9 @@ $(function(){
 						</tr>
 						
 						<tr>
-							<td colspan="2" valign="top" height="200">
-								${dto.eventImg}
+							<td colspan="2" style="border-bottom: none;">
+								<img src="${pageContext.request.contextPath}/uploads/photo/${dto.eventImg}" 
+									class="img-fluid img-thumbnail w-100 h-auto">
 							</td>
 						</tr>
 						<tr>
