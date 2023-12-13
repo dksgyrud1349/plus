@@ -101,7 +101,8 @@
             f.eContent.focus();
             return false;
         }
-
+    	
+    	
     	f.action = "${pageContext.request.contextPath}/admin/eventManage/${category}/${mode}";
 
         return true;
@@ -125,7 +126,7 @@
 			</ul>
 		</div>
 		<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
-			<form name="eventForm" method="post">
+			<form name="eventForm" method="post" enctype="multipart/form-data">
 				<table class="table table-border border-top2 table-form">
 					<tr> 
 						<td>제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
@@ -184,7 +185,7 @@
 					<tr>
 						<td>첨&nbsp;&nbsp;&nbsp;&nbsp;부</td>
 						<td> 
-							<input type="file" name="eventImg" class="form-control" multiple>
+							<input type="file" name="selectFile" accept="image/*" class="form-control" multiple>
 						</td>
 					</tr>
 				  
@@ -198,6 +199,7 @@
 							<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/list';">${mode=='update'?'수정취소':'등록취소'}</button>
 							<c:if test="${mode=='update'}">
 								<input type="hidden" name="eventNum" value="${dto.eventNum}">
+								<input type="hidden" name="eventImg" value="${dto.eventImg}">
 								<input type="hidden" name="page" value="${page}">
 							</c:if>
 						</td>

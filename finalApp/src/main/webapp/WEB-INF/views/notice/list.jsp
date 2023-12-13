@@ -50,8 +50,8 @@ function searchList() {
 								<a href="${articleUrl}&num=${dto.num}" class="text-reset">${dto.subject}</a>
 							</td>
 							<td>관리자</td>
-							<td>${dto.regDate}</td>
-							<td>${dto.hitCount}</td>
+							<td class="text-center">${dto.regDate}</td>
+							<td class="text-center">${dto.hitCount}</td>
 							<td>
 								<c:if test="${dto.fileCount != 0}">
 									<a href="${pageContext.request.contextPath}/notice/zipdownload?num=${dto.num}" class="text-reset"><i class="bi bi-file-arrow-down"></i></a>

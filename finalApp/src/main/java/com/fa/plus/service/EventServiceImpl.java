@@ -1,13 +1,13 @@
 package com.fa.plus.service;
 
 import java.util.List;
-
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fa.plus.domain.Event;
+import com.fa.plus.domain.EventReply;
 import com.fa.plus.mapper.EventMapper;
 
 @Service
@@ -42,9 +42,9 @@ public class EventServiceImpl implements EventService {
 	}
 	
 	@Override
-	public void updateHitCount(long num) throws Exception {
+	public void updateHitCount(long eventNum) throws Exception {
 		try {
-			mapper.updateHitCount(num);
+			mapper.updateHitCount(eventNum);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -52,11 +52,11 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public Event findById(long num) {
+	public Event findById(long eventNum) {
 		Event dto = null;
 		
 		try {
-			dto = mapper.findById(num);
+			dto = mapper.findById(eventNum);
 			
 			if(dto != null) {
 				dto.setSday(dto.getStartDate().substring(0, 10));
@@ -98,6 +98,99 @@ public class EventServiceImpl implements EventService {
 		}
 		
 		return dto;
+	}
+
+	@Override
+	public void insertEventLike(Map<String, Object> map) throws Exception {
+		try {
+			mapper.insertEventLike(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public void deleteEventLike(Map<String, Object> map) throws Exception {
+		try {
+			mapper.deleteEventLike(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public int eventLikeCount(long eventNum) {
+		int result = 0;
+		try {
+			result = mapper.eventLikeCount(eventNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public boolean userEventLiked(Map<String, Object> map) {
+		boolean result = false;
+		try {
+			Event dto = mapper.userEventLiked(map);
+			if(dto != null) {
+				result = true; 
+			}
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	@Override
+	public void insertReply(EventReply dto) throws Exception {
+		try {
+			mapper.insertReply(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public List<EventReply> listReply(Map<String, Object> map) {
+		List<EventReply> list = null;
+		
+		try {
+			list = mapper.listReply(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public int replyCount(Map<String, Object> map) {
+		int result = 0;
+		
+		try {
+			result = mapper.replyCount(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	@Override
+	public void deleteReply(Map<String, Object> map) throws Exception {
+		try {
+			mapper.deleteReply(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 	
 }

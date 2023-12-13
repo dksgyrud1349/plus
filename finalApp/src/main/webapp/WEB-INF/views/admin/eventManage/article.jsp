@@ -7,7 +7,7 @@
 
 <script type="text/javascript">
 function deleteOk() {
-	let query = 'eventNum=${dto.eventNum}&${query}';
+	let query = 'eventNum=${dto.eventNum}&${query}&eventImg=${dto.eventImg}';
 	let url = '${pageContext.request.contextPath}/admin/eventManage/${category}/delete?' + query;
 
 	if(confirm('위 자료를 삭제 하시 겠습니까 ? ')) {
@@ -68,8 +68,14 @@ $(function(){
 							이벤트 기간 : ${dto.startDate} ~ ${dto.endDate} 
 						</td>
 					</tr>
-				
-					
+					<c:if test="${dto.eventImg} != null">
+						<tr>
+							<td colspan="2" style="border-bottom: none;">
+								<img src="${pageContext.request.contextPath}/uploads/photo/${dto.eventImg}" 
+									class="img-fluid img-thumbnail w-100 h-auto">
+							</td>
+						</tr>
+					</c:if>
 					<tr style="border-bottom: none;">
 						<td colspan="2" valign="top" height="200">
 							${dto.eContent}

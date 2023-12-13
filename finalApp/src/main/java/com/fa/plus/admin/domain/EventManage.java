@@ -1,5 +1,7 @@
 package com.fa.plus.admin.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class EventManage {
 	private long eventNum;
 	private String userId;
@@ -18,6 +20,8 @@ public class EventManage {
 	private int showEvent;
 	private int hitCount;
 	private String eventImg;
+	
+	private MultipartFile selectFile;
 	
 	public long getEventNum() {
 		return eventNum;
@@ -121,5 +125,10 @@ public class EventManage {
 	public void setEventImg(String eventImg) {
 		this.eventImg = eventImg;
 	}
-	
+	public MultipartFile getSelectFile() {
+		return selectFile;
+	}
+	public void setSelectFile(MultipartFile selectFile) {
+		this.selectFile = selectFile;
+	}
 }

@@ -3,6 +3,7 @@ package com.fa.plus.domain;
 public class EventReply {
 	private long replyNum;
 	private String userId;
+	private String userName;
 	private long eventNum;
 	private String erContent;
 	private String regDate;
@@ -18,6 +19,12 @@ public class EventReply {
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public long getEventNum() {
 		return eventNum;

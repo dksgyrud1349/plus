@@ -8,15 +8,23 @@ import org.springframework.stereotype.Service;
 
 import com.fa.plus.admin.domain.EventManage;
 import com.fa.plus.admin.mapper.EventManageMapper;
+import com.fa.plus.common.FileManager;
 
 @Service
 public class EventManageServiceImpl implements EventManageService {
 	@Autowired
 	private EventManageMapper mapper;
 	
+	@Autowired
+	private FileManager fileManager;
+	
 	@Override
-	public void insertEvent(EventManage dto) throws Exception {
+	public void insertEvent(EventManage dto, String pathname) throws Exception {
 		try {
+			String saveFilename = fileManager.doFileUpload(dto.getSelectFile(), pathname);
+			if (saveFilename != null) {
+				dto.setEventImg(saveFilename);;
+			}
 			dto.setStartDate(dto.getSday() + " " + dto.getStime() + ":00");
 			dto.setEndDate(dto.getEday() + " " + dto.getEtime() + ":00");
 			
@@ -28,8 +36,19 @@ public class EventManageServiceImpl implements EventManageService {
 	}
 
 	@Override
-	public void updateEvent(EventManage dto) throws Exception {
+	public void updateEvent(EventManage dto, String pathname) throws Exception {
 		try {
+			// 업로드한 파일이 존재한 경우
+			String saveFilename = fileManager.doFileUpload(dto.getSelectFile(), pathname);
+
+			if (saveFilename != null) {
+				// 이전 파일 지우기
+				if (dto.getEventImg().length() != 0) {
+					fileManager.doFileDelete(dto.getEventImg(), pathname);
+				}
+
+				dto.setEventImg(saveFilename);
+			}
 			dto.setStartDate(dto.getSday() + " " + dto.getStime() + ":00");
 			dto.setEndDate(dto.getEday() + " " + dto.getEtime() + ":00");
 			
@@ -41,9 +60,12 @@ public class EventManageServiceImpl implements EventManageService {
 	}
 
 	@Override
-	public void deleteEvent(long num) throws Exception {
+	public void deleteEvent(long eventNum, String pathname) throws Exception {
 		try {
-			mapper.deleteEvent(num);
+			if (pathname != null) {
+				fileManager.doFileDelete(pathname);
+			}
+			mapper.deleteEvent(eventNum);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -77,9 +99,9 @@ public class EventManageServiceImpl implements EventManageService {
 	}
 	
 	@Override
-	public void updateHitCount(long num) throws Exception {
+	public void updateHitCount(long eventNum) throws Exception {
 		try {
-			mapper.updateHitCount(num);
+			mapper.updateHitCount(eventNum);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -87,11 +109,11 @@ public class EventManageServiceImpl implements EventManageService {
 	}
 
 	@Override
-	public EventManage findById(long num) {
+	public EventManage findById(long eventNum) {
 		EventManage dto = null;
 		
 		try {
-			dto = mapper.findById(num);
+			dto = mapper.findById(eventNum);
 			
 			if(dto != null) {
 				dto.setSday(dto.getStartDate().substring(0, 10));

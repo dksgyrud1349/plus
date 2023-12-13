@@ -1,5 +1,6 @@
 package com.fa.plus.admin.controller;
 
+import java.io.File;
 import java.net.URLDecoder;
 
 import java.net.URLEncoder;
@@ -115,11 +116,14 @@ public class EventManageController {
 			@PathVariable String category,
 			EventManage dto, HttpSession session) throws Exception {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		String root = session.getServletContext().getRealPath("/");
+		String path = root + "uploads" + File.separator + "photo";
 
 		try {
 			dto.setUserId(info.getUserId());
-			service.insertEvent(dto);
+			service.insertEvent(dto, path);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return "redirect:/admin/eventManage/all/list";
@@ -194,9 +198,11 @@ public class EventManageController {
 			@PathVariable String category,
 			@RequestParam String page,
 			HttpSession session) throws Exception {
+		String root = session.getServletContext().getRealPath("/");
+		String pathname = root + "uploads" + File.separator + "photo";
 
 		try {
-			service.updateEvent(dto);
+			service.updateEvent(dto, pathname);
 		} catch (Exception e) {
 		}
 		
@@ -207,6 +213,7 @@ public class EventManageController {
 	public String delete(
 			@PathVariable String category,
 			@RequestParam long eventNum,
+			@RequestParam String eventImg,
 			@RequestParam String page,
 			@RequestParam(defaultValue = "all") String schType,
 			@RequestParam(defaultValue = "") String kwd,
@@ -217,9 +224,11 @@ public class EventManageController {
 		if (kwd.length() != 0) {
 			query += "&schType=" + schType + "&kwd=" + URLEncoder.encode(kwd, "UTF-8");
 		}
-		
+		String root = session.getServletContext().getRealPath("/");
+		String pathname = root + "uploads" + File.separator + "photo" + File.separator + eventImg;
+
 		try {
-			service.deleteEvent(eventNum);
+			service.deleteEvent(eventNum, pathname);
 		} catch (Exception e) {
 			
 		}

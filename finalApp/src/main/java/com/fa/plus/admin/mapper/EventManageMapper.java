@@ -13,13 +13,13 @@ import com.fa.plus.admin.domain.EventManage;
 public interface EventManageMapper {
 	public void insertEvent(EventManage dto) throws SQLException;
 	public void updateEvent(EventManage dto) throws SQLException;
-	public void deleteEvent(long num) throws SQLException;
+	public void deleteEvent(long eventNum) throws SQLException;
 	
 	public int dataCount(Map<String, Object> map);
 	public List<EventManage> listEvent(Map<String, Object> map);
 
-	public EventManage findById(long num);
-	public void updateHitCount(long num) throws SQLException;
+	public EventManage findById(long eventNum);
+	public void updateHitCount(long eventNum) throws SQLException;
 	public EventManage findByPrev(Map<String, Object> map);
 	public EventManage findByNext(Map<String, Object> map);
 }

@@ -18,6 +18,9 @@ public class Event {
 	private int hitCount;
 	private String eventImg;
 	
+	private int eventLikeCount;
+	private int replyCount;
+	
 	public long getEventNum() {
 		return eventNum;
 	}
@@ -114,7 +117,17 @@ public class Event {
 	public void setEventImg(String eventImg) {
 		this.eventImg = eventImg;
 	}
-	
-	
+	public int getEventLikeCount() {
+		return eventLikeCount;
+	}
+	public void setEventLikeCount(int eventLikeCount) {
+		this.eventLikeCount = eventLikeCount;
+	}
+	public int getReplyCount() {
+		return replyCount;
+	}
+	public void setReplyCount(int replyCount) {
+		this.replyCount = replyCount;
+	}
 	
 }
