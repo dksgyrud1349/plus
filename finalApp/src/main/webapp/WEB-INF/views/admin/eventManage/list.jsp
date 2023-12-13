@@ -22,9 +22,11 @@ $(function(){
 	});
 });
 </script>
-
-<div class="body-container">
-    <div class="body-title">
+<main class="wrapper" style="margin:5% auto; width:80%;">
+	<div id="layoutSidenav_content">
+		 	<div class="container-fluid px-5">
+				<div class="body-container">
+		    			<div class="body-title">
 		<h2><i class="fa-regular fa-calendar"></i> 이벤트 </h2>
     </div>
     
@@ -66,7 +68,7 @@ $(function(){
 						<tr> 
 							<td>${dataCount - (page-1) * size - status.index}</td>
 							<td class="left">
-								<a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
+								<a href="${articleUrl}&eventNum=${dto.eventNum}">${dto.subject}</a>
 							</td>
 							<td>${dto.startDate}</td>
 							<td>${dto.endDate}</td>
@@ -106,3 +108,6 @@ $(function(){
 		</div>    
 	</div>
 </div>
+</div>
+</div>
+</main>

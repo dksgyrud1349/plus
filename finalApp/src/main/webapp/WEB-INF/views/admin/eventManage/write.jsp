@@ -107,9 +107,11 @@
         return true;
     }
 </script>
-
-<div class="body-container">
-    <div class="body-title">
+<main class="wrapper" style="margin:5% auto; width:80%;">
+<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container">
+		    <div class="body-title">
 		<h2><i class="fa-regular fa-calendar"></i> 이벤트 </h2>
     </div>
     
@@ -156,6 +158,14 @@
 						</td>
 					</tr>
 					
+					<tr>
+						<td>이벤트 종류</td>
+						<td> 
+							<p> <input type="text" name="eventKind" class="form-control" value="${dto.eventKind}"> </p>
+							<p class="help-block">이벤트 종류</p>
+						</td>
+					</tr>
+					
 					<tr> 
 						<td>출력여부</td>
 						<td> 
@@ -170,6 +180,13 @@
 							<textarea name="eContent" id="ir1" class="form-control">${dto.eContent}</textarea>
 						</td>
 					</tr>
+					
+					<tr>
+						<td>첨&nbsp;&nbsp;&nbsp;&nbsp;부</td>
+						<td> 
+							<input type="file" name="eventImg" class="form-control" multiple>
+						</td>
+					</tr>
 				  
 				</table>
 					
@@ -180,7 +197,7 @@
 							<button type="reset" class="btn">다시입력</button>
 							<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/list';">${mode=='update'?'수정취소':'등록취소'}</button>
 							<c:if test="${mode=='update'}">
-								<input type="hidden" name="num" value="${dto.num}">
+								<input type="hidden" name="eventNum" value="${dto.eventNum}">
 								<input type="hidden" name="page" value="${page}">
 							</c:if>
 						</td>
@@ -191,6 +208,9 @@
 		    	
 	</div>
 </div>
+</div>
+</div>
+</main>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">

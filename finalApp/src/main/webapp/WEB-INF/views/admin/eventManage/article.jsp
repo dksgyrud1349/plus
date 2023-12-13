@@ -61,8 +61,11 @@ $(function(){
 });
 </script>
 
-<div class="body-container">
-    <div class="body-title">
+<main class="wrapper" style="margin:5% auto; width:60%;">
+	<div id="layoutSidenav_content">
+		 	<div class="container-fluid px-5">
+				<div class="body-container">
+		    			<div class="body-title">
 		<h2><i class="fa-regular fa-calendar"></i> 이벤트 </h2>
     </div>
     
@@ -190,6 +193,9 @@ $(function(){
 		</div>		
 	</div>
 </div>
+</div>
+</div>
+</main>
 
 <script type="text/javascript">
 $(function(){

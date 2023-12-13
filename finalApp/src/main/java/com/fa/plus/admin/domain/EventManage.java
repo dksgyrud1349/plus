@@ -1,7 +1,7 @@
 package com.fa.plus.admin.domain;
 
 public class EventManage {
-	private long evnetNum;
+	private long eventNum;
 	private String userId;
 	private String subject;
 	private String eContent;
@@ -18,11 +18,11 @@ public class EventManage {
 	private int hitCount;
 	private String eventImg;
 	
-	public long getEvnetNum() {
-		return evnetNum;
+	public long getEventNum() {
+		return eventNum;
 	}
-	public void setEvnetNum(long evnetNum) {
-		this.evnetNum = evnetNum;
+	public void setEventNum(long eventNum) {
+		this.eventNum = eventNum;
 	}
 	public String getUserId() {
 		return userId;
