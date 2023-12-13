@@ -3,6 +3,7 @@ package com.fa.plus.admin.domain;
 public class EventManage {
 	private long eventNum;
 	private String userId;
+	private String userName;
 	private String subject;
 	private String eContent;
 	private String startDate;
@@ -29,6 +30,12 @@ public class EventManage {
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getSubject() {
 		return subject;

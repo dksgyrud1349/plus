@@ -128,7 +128,7 @@ public class EventManageController {
 	@GetMapping("{category}/article")
 	public String article(
 			@PathVariable String category,
-			@RequestParam long num,
+			@RequestParam long eventNum,
 			@RequestParam String page,
 			@RequestParam(defaultValue = "all") String schType,
 			@RequestParam(defaultValue = "") String kwd,
@@ -142,7 +142,7 @@ public class EventManageController {
 					"&kwd=" + URLEncoder.encode(kwd, "UTF-8");
 		}
 
-		EventManage dto = service.findById(num);
+		EventManage dto = service.findById(eventNum);
 		if (dto == null) {
 			return "redirect:/event/" + category + "/list?" + query;
 		}
@@ -152,7 +152,7 @@ public class EventManageController {
 		map.put("category", category);
 		map.put("schType", schType);
 		map.put("kwd", kwd);
-		map.put("num", num);
+		map.put("eventNum", eventNum);
 
 		EventManage prevDto = service.findByPrev(map);
 		EventManage nextDto = service.findByNext(map);
@@ -171,12 +171,12 @@ public class EventManageController {
 	@GetMapping("{category}/update")
 	public String updateForm(
 			@PathVariable String category,
-			@RequestParam long num,
+			@RequestParam long eventNum,
 			@RequestParam String page,
 			HttpSession session,
 			Model model) throws Exception {
 
-		EventManage dto = service.findById(num);
+		EventManage dto = service.findById(eventNum);
 		
 		if (dto == null) {
 			return "redirect:/event/" + category + "/list?page=" + page;
@@ -206,7 +206,7 @@ public class EventManageController {
 	@GetMapping("{category}/delete")
 	public String delete(
 			@PathVariable String category,
-			@RequestParam long num,
+			@RequestParam long eventNum,
 			@RequestParam String page,
 			@RequestParam(defaultValue = "all") String schType,
 			@RequestParam(defaultValue = "") String kwd,
@@ -219,7 +219,7 @@ public class EventManageController {
 		}
 		
 		try {
-			service.deleteEvent(num);
+			service.deleteEvent(eventNum);
 		} catch (Exception e) {
 			
 		}
