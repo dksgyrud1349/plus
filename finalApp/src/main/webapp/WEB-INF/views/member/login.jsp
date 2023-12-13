@@ -2,11 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<style type="text/css">
-.body-container {
-	max-width: 800px;
-}
-</style>
+
 
 <script type="text/javascript">
 function sendLogin() {
@@ -30,8 +26,11 @@ function sendLogin() {
 }
 </script>
 
-<div class="container">
-	<div class="body-container">	
+<main class="wrapper" style="margin:5% auto; width:80%;">
+	<div id="layoutSidenav_content">
+		 	<div class="container-fluid px-5">
+				<div class="body-container">
+		    				
 
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -76,3 +75,5 @@ function sendLogin() {
 
 	</div>
 </div>
+</div>
+</main>
