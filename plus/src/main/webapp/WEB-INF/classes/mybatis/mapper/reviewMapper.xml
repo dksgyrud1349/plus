@@ -10,7 +10,7 @@
 	</insert>
 	
 	<insert id="insertReviewFile" parameterType="com.fa.plus.domain.Review">
-		INSERT INTO reviewPhoto(fileNum, reviewNum, filename)
+		INSERT INTO reviewPhoto(photoNum, reviewNum, filename)
 			VALUES(reviewPhoto_seq.NEXTVAL, #{reviewNum}, #{filename})
 	</insert>
 	
@@ -23,32 +23,34 @@
 			   COUNT(DECODE(reviewScore, 4, 1)) score4, 
 			   COUNT(DECODE(reviewScore, 5, 1)) score5 
 		FROM review r
-		JOIN order o ON r.orderNum = o.orderNum
-		JOIN lesson c ON o.classNum = c.classNum
+		JOIN orders o ON r.orderNum = o.orderNum
+        JOIN lessonDetail cd ON cd.detailNum = o.detailNum
+		JOIN lesson c ON cd.classNum = c.classNum
 		WHERE c.classNum = #{classNum} AND showReview = 1
 	</select>
 
 	<select id="listReview" parameterType="map" resultType="com.fa.plus.domain.Review">
-		SELECT reviewNum, r.memberIdx, userName, reviewScore, reviewContent, replyContent, 
-			o.classNum, className, filename, r.orderNum
+		SELECT r.reviewNum, r.memberIdx, userName, reviewScore, reviewContent, replyContent, 
+			cd.classNum, className, filename, r.orderNum,
 			TO_CHAR(reviewDate, 'YYYY-MM-DD') reviewDate, 
 			TO_CHAR(replyDate, 'YYYY-MM-DD') replyDate
 		FROM review r
 		JOIN member1 m ON r.memberIdx = m.memberIdx 
-		JOIN order o ON r.orderNum = o.orederNum
-		JOIN Lesson c ON o.classNum = c.classNum
+		JOIN orders o ON r.orderNum = o.orderNum
+        JOIN LessonDetail cd ON o.detailNum = cd.detailNum
+		JOIN Lesson c ON cd.classNum = c.classNum
 		LEFT OUTER JOIN (
-			SELECT reivewNum, LISTAGG(filename, ',') WITHIN GROUP(ORDER BY fileNum) filename
+			SELECT reviewNum, LISTAGG(filename, ',') WITHIN GROUP(ORDER BY photoNum) filename
             FROM reviewPhoto
-            GROUP BY reivewNum	
-		) f ON r.num = f.num
+            GROUP BY reviewNum	
+		) f ON r.reviewNum = f.reviewNum;
 		WHERE r.classNum = #{classNum} AND showReview = 1
 		<choose>
 			<when test="sortNo==2">
-				ORDER BY score DESC, reviewDate DESC
+				ORDER BY reviewScore DESC, reviewDate DESC
 			</when>
 			<when test="sortNo==3">
-				ORDER BY score ASC, reviewDate DESC
+				ORDER BY reviewScore ASC, reviewDate DESC
 			</when>
 			<otherwise>
 				ORDER BY reviewDate DESC
@@ -59,17 +61,17 @@
 	
 	<select id="dataCount2" parameterType="map" resultType="Integer">
 		SELECT NVL(COUNT(*), 0)
-		FROM productReview
+		FROM review
 		<where>
 			<if test="memberIdx != null">
 				memberIdx = #{memberIdx}
 			</if>
 			<if test="mode != null">
 				<if test="mode == 2">
-					AND ( answer IS NOT NULL )
+					AND ( replyContent IS NOT NULL )
 				</if>
 				<if test="mode == 3">
-					AND ( answer IS NULL )
+					AND ( replyContent IS NULL )
 				</if>
 			</if>
 		</where>
@@ -77,17 +79,17 @@
 	
 	<!-- 내가 쓴 리뷰 확인 -->
 	<select id="listReview2" parameterType="map" resultType="com.fa.plus.domain.Review">
-		SELECT r.reviewNum, r.memberIdx, o.classNum, m.userName, score, reviewContent, 
-			replyContent, r.orderNum, filename, showReview,
-			reviewDate, replyDate, c.className, 
+		SELECT r.reviewNum, r.memberIdx, o.detailNum, cd.classNum, userName, reviewScore, reviewContent, 
+			replyContent, r.orderNum, filename, showReview, c.className,
+			TO_CHAR(reviewDate, 'YYYY-MM-DD') reviewDate, TO_CHAR(replyDate, 'YYYY-MM-DD') replyDate,  
 			TO_CHAR(startTime, 'YYYY-MM-DD HH24:MI')startTime, TO_CHAR(endTime, 'YYYY-MM-DD HH24:MI')endTime
 		FROM review r
 		JOIN member1 m ON r.memberIdx = m.memberIdx 
-		JOIN order o ON r.orderNum = o.orderNum
-		JOIN lesson c ON o.classNum = c.classNum
-		JOIN lessonDetail cd ON cd.classNum = c.classNum 
+		JOIN orders o ON r.orderNum = o.orderNum
+        JOIN LessonDetail cd ON o.detailNum = cd.detailNum
+		JOIN Lesson c ON cd.classNum = c.classNum 
 		LEFT OUTER JOIN (
-			SELECT reviewNum, LISTAGG(filename, ',') WITHIN GROUP(ORDER BY fileNum) filename
+			SELECT reviewNum, LISTAGG(filename, ',') WITHIN GROUP(ORDER BY photoNum) filename
             FROM reviewPhoto
             GROUP BY reviewNum	
 		) f ON r.reviewNum=f.reviewNum
@@ -97,10 +99,10 @@
 			</if>
 			<if test="mode != null">
 				<if test="mode == 2">
-					AND ( answer IS NOT NULL )
+					AND ( replyContent IS NOT NULL )
 				</if>
 				<if test="mode == 3">
-					AND ( answer IS NULL )
+					AND ( replyContent IS NULL )
 				</if>
 			</if>
 		</where>
@@ -109,12 +111,12 @@
 	</select>
 	
 	<update id="updateReview" parameterType="com.fa.plus.domain.Review">
-		UPDATE review SET answerContent = #{answerContent}, answerDate = SYSDATE, showReview = #{showReview}
+		UPDATE review SET replyContent = #{replyContent}, replyDate = SYSDATE, showReview = #{showReview}
 		WHERE reviewNum = #{reviewNum}
 	</update>
 	
 	<select id="listReviewFile" parameterType="long" resultType="com.fa.plus.domain.Review">
-		SELECT fileNum, reviewNum, filename
+		SELECT photoNum, reviewNum, filename
 		FROM reviewPhoto
 		WHERE reviewNum = #{reviewNum}
 	</select>
