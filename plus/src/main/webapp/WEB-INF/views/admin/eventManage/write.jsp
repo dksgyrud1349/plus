@@ -66,7 +66,6 @@
     		return false;
     	}
 
-
     	if(! isValidDateFormat(f.eday.value)) {
     		alert("날짜를 입력하세요.");
     		f.eday.focus();
@@ -93,7 +92,6 @@
     		f.eday.focus();
     		return false;
     	}
-    	
         
     	str = f.eContent.value;
     	if( !str || str === "<p><br></p>" ) {
@@ -102,116 +100,141 @@
             return false;
         }
     	
-    	
     	f.action = "${pageContext.request.contextPath}/admin/eventManage/${category}/${mode}";
 
         return true;
     }
 </script>
-<main class="wrapper" style="margin:5% auto; width:80%;">
-<div id="layoutSidenav_content">
+
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
-			<div class="body-container">
-		    <div class="body-title">
-		<h2><i class="fa-regular fa-calendar"></i> 이벤트 </h2>
-    </div>
-    
-    <div class="body-main">
-		<div>
-			<ul class="tabs">
-				<li id="tab-all" data-category="all">전체 이벤트</li>
-				<li id="tab-progress" data-category="progress">진행중인 이벤트</li>
-				<li id="tab-ended" data-category="ended">종료된 이벤트</li>
-				<li id="tab-upcoming" data-category="upcoming">진행 예정인 이벤트</li>
-			</ul>
+			<div class="body-container" style="width:80%; margin:5% auto; ">
+				<div class="body-main">
+					<div>
+						<ul class="tabs">
+							<li id="tab-all" data-category="all">전체 이벤트</li>
+							<li id="tab-progress" data-category="progress">진행중인 이벤트</li>
+							<li id="tab-ended" data-category="ended">종료된 이벤트</li>
+							<li id="tab-upcoming" data-category="upcoming">진행 예정인 이벤트</li>
+						</ul>
+					</div>
+					
+					<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+				    	<table class="table">
+							<tr>
+								<td align="left" width="50%">
+									&nbsp;
+								</td>
+								<td align="right">
+									&nbsp;
+								</td>
+							</tr>
+						</table>
+						
+						<div class="card mb-5 w-80" style="margin:0 auto">
+				        	<div class="card-header text-center">
+				            	<h3>
+				                	<i class="fa-regular fa-calendar"></i> 이벤트 관리 
+					            </h3>
+					        </div>					
+					
+							<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+								<form name="eventForm" method="post" enctype="multipart/form-data">
+									<table class="table table-border border-top2 table-form">
+										<tr> 
+											<td>제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
+											<td> 
+												<input type="text" name="subject" maxlength="100" class="form-control" value="${dto.subject}">
+											</td>
+										</tr>
+						
+										<tr>
+											<td>시작일자</td>
+											<td> 
+												<input type="date" name="sday" class="form-control" value="${dto.sday}">
+												<input type="time" name="stime" class="form-control" value="${dto.stime}">
+											</td>
+										</tr>
+						
+										<tr>
+											<td>종료일자</td>
+											<td> 
+												<input type="date" name="eday" class="form-control" value="${dto.eday}">
+												<input type="time" name="etime" class="form-control" value="${dto.etime}">
+											</td>
+										</tr>
+						
+										<tr>
+											<td>할인금액</td>
+											<td> 
+												<p> <input type="text" name="discountMoney" class="form-control" value="${dto.discountMoney}"> </p>
+												<p class="help-block">할인금액을 입력해주세요.</p>
+											</td>
+										</tr>
+										
+										<tr>
+											<td>할인율</td>
+											<td> 
+												<p> <input type="text" name="discountPercent" class="form-control" value="${dto.discountPercent}"> </p>
+												<p class="help-block">할인율을 입력해주세요.</p>
+											</td>
+										</tr>
+										
+										<tr>
+											<td>이벤트 종류</td>
+											<td> 
+												<p> <input type="text" name="eventKind" class="form-control" value="${dto.eventKind}"> </p>
+												<p class="help-block">이벤트 종류</p>
+											</td>
+										</tr>
+										
+										<tr> 
+											<td>출력여부</td>
+											<td> 
+												<input type="checkbox" name="showEvent" id="showEvent" class="form-check-input" value="1" ${mode=="write" || dto.showEvent==1 ? "checked":"" }>
+												<label for="showEvent" class="form-check-label">표시</label>
+											</td>
+										</tr>
+									
+										<tr> 
+											<td valign="top">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
+											<td valign="top"> 
+												<textarea name="eContent" id="ir1" class="form-control">${dto.eContent}</textarea>
+											</td>
+										</tr>
+										
+										<tr>
+											<td>첨&nbsp;&nbsp;&nbsp;&nbsp;부</td>
+											<td> 
+												<input type="file" name="selectFile" accept="image/*" class="form-control" multiple>
+											</td>
+										</tr>
+									  
+									</table>
+										
+									<table class="table">
+										<tr> 
+											<td align="center">
+												<button type="button" class="btn btn-dark" onclick="submitContents(this.form);">${mode=='update'?'수정완료':'등록하기'}</button>
+												<button type="reset" class="btn btn-success">다시입력</button>
+												<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/list';">${mode=='update'?'수정취소':'등록취소'}</button>
+												<c:if test="${mode=='update'}">
+													<input type="hidden" name="eventNum" value="${dto.eventNum}">
+													<input type="hidden" name="eventImg" value="${dto.eventImg}">
+													<input type="hidden" name="page" value="${page}">
+												</c:if>
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>		
+						</div> 	
+					</div>
+				</div>
+			</div>
 		</div>
-		<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
-			<form name="eventForm" method="post" enctype="multipart/form-data">
-				<table class="table table-border border-top2 table-form">
-					<tr> 
-						<td>제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
-						<td> 
-							<input type="text" name="subject" maxlength="100" class="form-control" value="${dto.subject}">
-						</td>
-					</tr>
-	
-					<tr>
-						<td>시작일자</td>
-						<td> 
-							<input type="date" name="sday" class="form-control" value="${dto.sday}">
-							<input type="time" name="stime" class="form-control" value="${dto.stime}">
-						</td>
-					</tr>
-	
-					<tr>
-						<td>종료일자</td>
-						<td> 
-							<input type="date" name="eday" class="form-control" value="${dto.eday}">
-							<input type="time" name="etime" class="form-control" value="${dto.etime}">
-						</td>
-					</tr>
-	
-					<tr>
-						<td>할인금액</td>
-						<td> 
-							<p> <input type="text" name="discountMoney" class="form-control" value="${dto.discountMoney}"> </p>
-							<p class="help-block">할인금액</p>
-						</td>
-					</tr>
-					
-					<tr>
-						<td>이벤트 종류</td>
-						<td> 
-							<p> <input type="text" name="eventKind" class="form-control" value="${dto.eventKind}"> </p>
-							<p class="help-block">이벤트 종류</p>
-						</td>
-					</tr>
-					
-					<tr> 
-						<td>출력여부</td>
-						<td> 
-							<input type="checkbox" name="showEvent" id="showEvent" class="form-check-input" value="1" ${mode=="write" || dto.showEvent==1 ? "checked":"" }>
-							<label for="showEvent" class="form-check-label">표시</label>
-						</td>
-					</tr>
-				
-					<tr> 
-						<td valign="top">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
-						<td valign="top"> 
-							<textarea name="eContent" id="ir1" class="form-control">${dto.eContent}</textarea>
-						</td>
-					</tr>
-					
-					<tr>
-						<td>첨&nbsp;&nbsp;&nbsp;&nbsp;부</td>
-						<td> 
-							<input type="file" name="selectFile" accept="image/*" class="form-control" multiple>
-						</td>
-					</tr>
-				  
-				</table>
-					
-				<table class="table">
-					<tr> 
-						<td align="center">
-							<button type="button" class="btn btn-dark" onclick="submitContents(this.form);">${mode=='update'?'수정완료':'등록하기'}</button>
-							<button type="reset" class="btn">다시입력</button>
-							<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/list';">${mode=='update'?'수정취소':'등록취소'}</button>
-							<c:if test="${mode=='update'}">
-								<input type="hidden" name="eventNum" value="${dto.eventNum}">
-								<input type="hidden" name="eventImg" value="${dto.eventImg}">
-								<input type="hidden" name="page" value="${page}">
-							</c:if>
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>		
-		    	
 	</div>
-</div>
-</div>
-</div>
 </main>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>

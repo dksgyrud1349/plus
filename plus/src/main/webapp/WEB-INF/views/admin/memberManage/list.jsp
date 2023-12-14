@@ -222,7 +222,7 @@ function selectStateChange() {
 				                	<h3>
 				                      <i class="fa-solid fa-user-group"></i> 회원 관리 
 					                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/memberManage/list';" style="float:right;">
-					                    	새로고침
+					                    	<i class="fa-solid fa-arrow-rotate-left"></i>
 					                    </button>
 					                </h3>
 					             </div>
@@ -278,7 +278,7 @@ function selectStateChange() {
 															<input type="text" name="kwd" class="form-control" value="${kwd}">
 															<input type="hidden" name="enabled" value="${enabled}">
 															<input type="hidden" name="page" value="1">
-															<button type="button" class="btn btn-outline-secondary" onclick="searchList()" style="">
+															<button type="button" class="btn btn-outline-secondary" onclick="searchList()">
 																검색
 															</button>
 														</div>
