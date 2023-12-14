@@ -5,8 +5,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
 
 <style>
-.delete-file { cursor: pointer; }
-.delete-file:hover { color: #0d58ba; }
+	.delete-file { cursor: pointer; }
+	.delete-file:hover { color: #0d58ba; }
 </style>
 
 <script type="text/javascript">
@@ -32,94 +32,113 @@
         return true;
     }
 </script>
-<main class="wrapper" style="margin:5% auto; width:80%;">
-<div id="layoutSidenav_content">
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
-			<div class="body-container">
-		    <div class="body-title">
-			<h2><i class="fas fa-clipboard-list"></i> 공지사항 </h2>
-	    </div>
-    
-    	<div class="body-main">
-    	
-		<form name="noticeForm" method="post" enctype="multipart/form-data">
-			<table class="table table-border border-top2 table-form">
-				<tr> 
-					<td>제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
-					<td> 
-						<input type="text" name="subject" maxlength="100" class="form-control" value="${dto.subject}">
-					</td>
-				</tr>
-			
-				<tr> 
-					<td>공지여부</td>
-					<td> 
-						<input type="checkbox" name="notice" id="notice" class="form-check-input" value="1" ${dto.notice==1 ? "checked":"" }>
-						<label for="notice" class="form-check-label">공지</label>
-					</td>
-				</tr>
-
-				<tr> 
-					<td>출력여부</td>
-					<td> 
-						<input type="checkbox" name="showNotice" id="showNotice" class="form-check-input" value="1" ${mode=="write" || dto.showNotice==1 ? "checked":"" }>
-						<label for="showNotice" class="form-check-label">표시</label>
-					</td>
-				</tr>
-			  
-				<tr> 
-					<td>작성자</td>
-					<td> 
-						<p class="form-control-plaintext">${sessionScope.member.userName}</p>
-					</td>
-				</tr>
-			
-				<tr> 
-					<td valign="top">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
-					<td valign="top"> 
-						<textarea name="content" id="ir1" class="form-control" style="max-width: 97%; height: 290px;">${dto.content}</textarea>
-					</td>
-				</tr>
-			  
-				<tr>
-					<td>첨&nbsp;&nbsp;&nbsp;&nbsp;부</td>
-					<td> 
-						<input type="file" name="selectFile" class="form-control" multiple>
-					</td>
-				</tr>
-	              
-				<c:if test="${mode=='update'}">
-					<c:forEach var="vo" items="${listFile}">
-						<tr> 
-							<td>첨부된파일</td>
-							<td> 
-								<span class="delete-file" data-fileNum="${vo.fileNum}"><i class="fa-solid fa-trash-can"></i></span> 
-								${vo.originalFilename}
-							</td>
-						  </tr>
-					</c:forEach>
-				</c:if>
-			</table>
+			<div class="body-container" style="width:80%; margin:5% auto; ">
+				<div class="body-main">
 				
-			<table class="table">
-				<tr> 
-					<td align="center">
-						<button type="button" class="btn btn-dark" onclick="submitContents(this.form);">${mode=='update'?'수정완료':'등록하기'}</button>
-						<button type="reset" class="btn">다시입력</button>
-						<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/admin/noticeManage/list';">
-							${mode=='update'?'수정취소':'등록취소'}
-						</button>
-						<c:if test="${mode=='update'}">
-							<input type="hidden" name="num" value="${dto.num}">
-							<input type="hidden" name="page" value="${page}">
-						</c:if>
-					</td>
-				</tr>
-			</table>
-		</form>
+				<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+				    	<table class="table">
+							<tr>
+								<td align="left" width="50%">
+									&nbsp;
+								</td>
+								<td align="right">
+									&nbsp;
+								</td>
+							</tr>
+						</table>
+						
+						<div class="card mb-5 w-80" style="margin:0 auto">
+				        	<div class="card-header text-center">
+				            	<h3>
+				                	<i class="fas fa-clipboard-list"></i> 공지사항 관리
+					            </h3>
+					        </div>
+					        
+						    <div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+								<form name="noticeForm" method="post" enctype="multipart/form-data">
+									<table class="table table-border border-top2 table-form">
+										<tr> 
+											<td>제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
+											<td> 
+												<input type="text" name="subject" maxlength="100" class="form-control" value="${dto.subject}">
+											</td>
+										</tr>
+									
+										<tr> 
+											<td>공지여부</td>
+											<td> 
+												<input type="checkbox" name="notice" id="notice" class="form-check-input" value="1" ${dto.notice==1 ? "checked":"" }>
+												<label for="notice" class="form-check-label">공지</label>
+											</td>
+										</tr>
+						
+										<tr> 
+											<td>출력여부</td>
+											<td> 
+												<input type="checkbox" name="showNotice" id="showNotice" class="form-check-input" value="1" ${mode=="write" || dto.showNotice==1 ? "checked":"" }>
+												<label for="showNotice" class="form-check-label">표시</label>
+											</td>
+										</tr>
+									  
+										<tr> 
+											<td>작성자</td>
+											<td> 
+												<p class="form-control-plaintext">${sessionScope.member.userName}</p>
+											</td>
+										</tr>
+									
+										<tr> 
+											<td valign="top">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
+											<td valign="top"> 
+												<textarea name="content" id="ir1" class="form-control" style="max-width: 97%; height: 290px;">${dto.content}</textarea>
+											</td>
+										</tr>
+									  
+										<tr>
+											<td>첨&nbsp;&nbsp;&nbsp;&nbsp;부</td>
+											<td> 
+												<input type="file" name="selectFile" class="form-control" multiple>
+											</td>
+										</tr>
+							              
+										<c:if test="${mode=='update'}">
+											<c:forEach var="vo" items="${listFile}">
+												<tr> 
+													<td>첨부된파일</td>
+													<td> 
+														<span class="delete-file" data-fileNum="${vo.fileNum}"><i class="fa-solid fa-trash-can"></i></span> 
+														${vo.originalFilename}
+													</td>
+												  </tr>
+											</c:forEach>
+										</c:if>
+									</table>
+										
+									<table class="table">
+										<tr> 
+											<td align="center">
+												<button type="button" class="btn btn-dark" onclick="submitContents(this.form);">${mode=='update'?'수정완료':'등록하기'}</button>
+												<button type="reset" class="btn btn-success">다시입력</button>
+												<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/noticeManage/list';">
+													${mode=='update'?'수정취소':'등록취소'}
+												</button>
+												<c:if test="${mode=='update'}">
+													<input type="hidden" name="num" value="${dto.num}">
+													<input type="hidden" name="page" value="${page}">
+												</c:if>
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	</div>
 	</div>
 </main>
 
