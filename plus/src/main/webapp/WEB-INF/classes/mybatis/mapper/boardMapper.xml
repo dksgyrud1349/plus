@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.BoardMapper">
+	<insert id="insertBoard" parameterType="com.fa.plus.domain.Board">
+		INSERT INTO commu(num, userId, subject, content, hitCount, regDate)
+			VALUES(commu_seq.NEXTVAL, #{userId}, #{subject}, #{content}, 0, SYSDATE)
+	</insert>
+	
+	<update id="updateBoard" parameterType="com.fa.plus.domain.Board">
+		UPDATE commu SET subject=#{subject}, content=#{content}
+		WHERE num = #{num}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="Long">
+		DELETE FROM commu WHERE num = #{num}
+	</delete>
+	
+	<sql id="where-list">
+		<choose>
+			<when test="schType == 'all' ">
+			   ( INSTR(subject, #{kwd}) &gt; 0
+		          OR DBMS_LOB.INSTR(content, #{kwd}) &gt; 0 )
+			</when>
+			<when test="schType == 'regDate' ">
+			   ( TO_CHAR(c.regDate, 'YYYYMMDD') = #{kwd}
+		          OR TO_CHAR(c.regDate, 'YYYY-MM-DD') = #{kwd} )
+			</when>
+			<when test="schType == 'content'">
+			    DBMS_LOB.INSTR(content, #{kwd}) &gt; 0
+			</when>
+			<otherwise>
+			    INSTR(${schType}, #{kwd}) &gt; 0
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM commu c
+		JOIN member1 m ON c.userId=m.userId
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+		</where>   
+	</select>
+	
+	<select id="listBoard" parameterType="map" resultType="com.fa.plus.domain.Board">
+		SELECT c.num, c.userId, m.userName, subject, 
+			   TO_CHAR(c.regDate, 'YYYY-MM-DD') regDate,
+			   hitCount,
+			   NVL(replyCount, 0) replyCount
+		FROM commu c
+		JOIN member1 m ON c.userId=m.userId
+		LEFT OUTER JOIN (
+			SELECT num, COUNT(*) replyCount FROM reply
+			WHERE showReply=1
+			GROUP BY num
+		) d ON c.num = d.num
+		<where>
+			<if test="kwd != null and kwd != ''">
+				<include refid="where-list"/>
+			</if>
+		</where>
+		ORDER BY c.num DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<!-- 글보기 -->
+	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.Board">
+		SELECT c.num, c.userId, userName, subject, content,
+			   hitCount, c.regDate,
+			   NVL(boardLikeCount, 0) boardLikeCount
+		FROM commu c
+		JOIN member1 m ON c.userId=m.userId
+		LEFT OUTER JOIN (
+			SELECT num, COUNT(*) boardLikeCount FROM commuLike
+			GROUP BY num
+		) bc ON c.num = bc.num
+		WHERE c.num = #{num}
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="updateHitCount" parameterType="Long">
+		UPDATE commu SET hitCount=hitCount+1 WHERE num = #{num}
+	</update>
+	
+	<!-- AND 가 필요 없는 경우 자동으로 제거 됨 -->
+	<!-- 이전글 -->
+	<select id="findByPrev" parameterType="map" resultType="com.fa.plus.domain.Board">
+		SELECT num, subject
+		FROM commu c
+		JOIN member1 m ON c.userId=m.userId
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+			AND (num &gt; #{num})
+		</where>
+		ORDER BY num ASC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+
+	<!-- 다음글 -->
+	<select id="findByNext" parameterType="map" resultType="com.fa.plus.domain.Board">
+		SELECT num, subject
+		FROM commu b
+		JOIN member1 m ON b.userId=m.userId
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+			AND (num &lt; #{num})
+		</where>
+		ORDER BY num DESC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+	
+	<!-- 게시 글 좋아요 추가 -->
+	<insert id="insertBoardLike" parameterType="map">
+		INSERT INTO commuLike(num, userId) VALUES (#{num}, #{userId})
+	</insert>
+
+	<!-- 게시 글 좋아요 삭제 -->
+	<delete id="deleteBoardLike" parameterType="map">
+		DELETE FROM commuLike WHERE num = #{num} AND userId = #{userId}
+	</delete>
+      
+	<!-- 게시글 좋아요 개수 -->
+	<select id="boardLikeCount" parameterType="Long" resultType="Integer">
+		SELECT COUNT(*) FROM commuLike WHERE num=#{num}
+	</select>
+
+	<!-- 게시글 좋아요 여부 -->
+	<select id="userBoardLiked" parameterType="map" resultType="com.fa.plus.domain.Board">
+		SELECT num, userId FROM commuLike WHERE num = #{num} AND userId = #{userId}
+	</select>
+	
+	<!-- 댓글 -->
+	<insert id="insertReply" parameterType="com.fa.plus.domain.Reply">
+		INSERT INTO reply(replyNum, num, userId, reContent, showReply, reRegDate)
+		VALUES (reply_seq.NEXTVAL, #{num}, #{userId}, #{reContent}, 1, SYSDATE)
+	</insert>
+
+	<select id="replyCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM reply
+		WHERE num=#{num}
+		<if test="membership lt 91">
+			AND ( showReply=1 OR ( showReply=0 AND userId=#{userId} ) )
+		</if>
+	</select>
+	
+	<!-- 댓글리스트 -->
+	<select id="listReply" parameterType="map" resultType="com.fa.plus.domain.Reply">
+		SELECT r.replyNum, r.userId, userName, num, reContent, r.reRegDate, NVL(showReply, 1) showReply, 
+			   NVL(likeCount, 0) likeCount
+		FROM reply r
+		JOIN member1 m ON r.userId = m.userId
+		LEFT OUTER JOIN (
+			SELECT replyNum, COUNT(DECODE(bReplyLike, 1, 1)) likeCount
+			FROM replyLike
+			GROUP BY replyNum
+		) c ON r.replyNum = c.replyNum
+		WHERE num=#{num}
+		<if test="membership lt 91">
+			AND ( showReply=1 OR ( showReply=0 AND r.userId=#{userId} ) )
+		</if>
+		ORDER BY r.replyNum DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<delete id="deleteReply" parameterType="map">
+		DELETE FROM reply
+		WHERE replyNum=#{replyNum}
+	</delete>
+	
+	<!-- 좋아요 추가 -->
+	<insert id="insertReplyLike" parameterType="map">
+		INSERT INTO replyLike(replyNum, userId, bReplyLike)
+		VALUES (#{replyNum}, #{userId}, 1)
+	</insert>
+	
+	<!-- 좋아요 -->
+	<select id="replyLikeCount" parameterType="map" resultType="map">
+		SELECT COUNT(DECODE(breplyLike, 1, 1)) likeCount FROM replyLike WHERE replyNum=#{replyNum}
+	</select>
+	
+	<!-- 댓글 보이기/숨기기 -->
+	<update id="updateReplyShowHide" parameterType="map">
+		UPDATE reply SET showReply = #{showReply}
+		WHERE replyNum = #{replyNum} AND userId = #{userId}
+	</update>
+	
+	
+</mapper>
