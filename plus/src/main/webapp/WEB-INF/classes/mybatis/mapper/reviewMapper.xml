@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.ReviewMapper">
+	<insert id="insertReview" parameterType="com.fa.plus.domain.Review">
+		INSERT INTO review(reviewNum, reviewScore, reviewSubject, reviewContent,
+				reviewDate, showReview, memberIdx, orderNum)
+			VALUES(review_seq.NEXTVAL, #{reviewScore}, #{reviewSubject}, #{reviewContent}, 
+				SYSDATE, 1, #{memberIdx}, #{orderNum})
+	</insert>
+	
+	<insert id="insertReviewFile" parameterType="com.fa.plus.domain.Review">
+		INSERT INTO reviewPhoto(fileNum, reviewNum, filename)
+			VALUES(reviewPhoto_seq.NEXTVAL, #{reviewNum}, #{filename})
+	</insert>
+	
+	<select id="findByReviewSummary" parameterType="map" resultType="com.fa.plus.domain.Summary">
+		SELECT NVL(COUNT(*), 0) count,
+			   ROUND(NVL(AVG(reviewScore), 0), 1) ave,
+			   COUNT(DECODE(reviewScore, 1, 1)) score1, 
+			   COUNT(DECODE(reviewScore, 2, 1)) score2, 
+			   COUNT(DECODE(reviewScore, 3, 1)) score3, 
+			   COUNT(DECODE(reviewScore, 4, 1)) score4, 
+			   COUNT(DECODE(reviewScore, 5, 1)) score5 
+		FROM review r
+		JOIN order o ON r.orderNum = o.orderNum
+		JOIN lesson c ON o.classNum = c.classNum
+		WHERE c.classNum = #{classNum} AND showReview = 1
+	</select>
+
+	<select id="listReview" parameterType="map" resultType="com.fa.plus.domain.Review">
+		SELECT reviewNum, r.memberIdx, userName, reviewScore, reviewContent, replyContent, 
+			o.classNum, className, filename, r.orderNum
+			TO_CHAR(reviewDate, 'YYYY-MM-DD') reviewDate, 
+			TO_CHAR(replyDate, 'YYYY-MM-DD') replyDate
+		FROM review r
+		JOIN member1 m ON r.memberIdx = m.memberIdx 
+		JOIN order o ON r.orderNum = o.orederNum
+		JOIN Lesson c ON o.classNum = c.classNum
+		LEFT OUTER JOIN (
+			SELECT reivewNum, LISTAGG(filename, ',') WITHIN GROUP(ORDER BY fileNum) filename
+            FROM reviewPhoto
+            GROUP BY reivewNum	
+		) f ON r.num = f.num
+		WHERE r.classNum = #{classNum} AND showReview = 1
+		<choose>
+			<when test="sortNo==2">
+				ORDER BY score DESC, reviewDate DESC
+			</when>
+			<when test="sortNo==3">
+				ORDER BY score ASC, reviewDate DESC
+			</when>
+			<otherwise>
+				ORDER BY reviewDate DESC
+			</otherwise>
+		</choose>
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<select id="dataCount2" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM productReview
+		<where>
+			<if test="memberIdx != null">
+				memberIdx = #{memberIdx}
+			</if>
+			<if test="mode != null">
+				<if test="mode == 2">
+					AND ( answer IS NOT NULL )
+				</if>
+				<if test="mode == 3">
+					AND ( answer IS NULL )
+				</if>
+			</if>
+		</where>
+	</select>
+	
+	<!-- 내가 쓴 리뷰 확인 -->
+	<select id="listReview2" parameterType="map" resultType="com.fa.plus.domain.Review">
+		SELECT r.reviewNum, r.memberIdx, o.classNum, m.userName, score, reviewContent, 
+			replyContent, r.orderNum, filename, showReview,
+			reviewDate, replyDate, c.className, 
+			TO_CHAR(startTime, 'YYYY-MM-DD HH24:MI')startTime, TO_CHAR(endTime, 'YYYY-MM-DD HH24:MI')endTime
+		FROM review r
+		JOIN member1 m ON r.memberIdx = m.memberIdx 
+		JOIN order o ON r.orderNum = o.orderNum
+		JOIN lesson c ON o.classNum = c.classNum
+		JOIN lessonDetail cd ON cd.classNum = c.classNum 
+		LEFT OUTER JOIN (
+			SELECT reviewNum, LISTAGG(filename, ',') WITHIN GROUP(ORDER BY fileNum) filename
+            FROM reviewPhoto
+            GROUP BY reviewNum	
+		) f ON r.reviewNum=f.reviewNum
+		<where>
+			<if test="memberIdx != null">
+				r.memberIdx = #{memberIdx}
+			</if>
+			<if test="mode != null">
+				<if test="mode == 2">
+					AND ( answer IS NOT NULL )
+				</if>
+				<if test="mode == 3">
+					AND ( answer IS NULL )
+				</if>
+			</if>
+		</where>
+		ORDER BY reviewDate DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<update id="updateReview" parameterType="com.fa.plus.domain.Review">
+		UPDATE review SET answerContent = #{answerContent}, answerDate = SYSDATE, showReview = #{showReview}
+		WHERE reviewNum = #{reviewNum}
+	</update>
+	
+	<select id="listReviewFile" parameterType="long" resultType="com.fa.plus.domain.Review">
+		SELECT fileNum, reviewNum, filename
+		FROM reviewPhoto
+		WHERE reviewNum = #{reviewNum}
+	</select>
+	
+	<delete id="deleteReview" parameterType="long">
+		DELETE FROM review
+		WHERE reviewNum = #{reviewNum}
+	</delete>
+</mapper>
