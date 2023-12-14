@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.LessonMapper">
+	<sql id="where-list">
+		<choose>
+			<when test="schType == 'all' ">
+			   ( INSTR(className, #{kwd}) &gt; 0
+		          OR DBMS_LOB.INSTR(content, #{kwd}) &gt; 0 )
+			</when>
+			<when test="schType == 'nickName' ">
+			   ( INSTR(nickName, #{kwd}) &gt; 0 )
+			</when>
+			<when test="schType == 'regDate' ">
+			   ( TO_CHAR(regDate, 'YYYYMMDD') = #{kwd}
+		          OR TO_CHAR(regDate, 'YYYY-MM-DD') = #{kwd} )
+			</when>
+			<when test="schType == 'className' ">
+			   ( INSTR(className, #{kwd}) &gt; 0 )
+			</when>
+			<when test="schType == 'content'">
+			    DBMS_LOB.INSTR(content, #{kwd}) &gt; 0
+			</when>
+			<otherwise>
+			    INSTR(${schType}, #{kwd}) &gt; 0
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM lesson
+		WHERE showClass = 0
+		<where>
+			<if test="kwd != null and kwd != ''">
+				<include refid="where-list"/>
+			</if>
+		</where>
+	</select>
+	
+	<select id="allLessonList" parameterType="map" resultType="com.fa.plus.domain.Lesson">
+		SELECT classNum, className, price, firstPhoto, addr1, nickName
+		FROM lesson le
+		JOIN member m ON m.memberIdx = le.memberIdx
+		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
+		JOIN plus pl ON m1.userId = pl.userId
+		<where>
+			<if test="kwd != null and kwd != ''">
+				<include refid="where-list"/>
+			</if>
+		</where>
+		<choose>
+			<when test="schType == highPrice">
+				ORDER BY price DESC
+			</when>
+			<when test="schType == lowPrice">
+				ORDER BY price ASC
+			</when>
+		</choose>
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+</mapper>
