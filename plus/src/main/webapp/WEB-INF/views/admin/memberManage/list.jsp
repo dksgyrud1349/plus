@@ -76,21 +76,44 @@ function profile(userId) {
 		       " 수정 " : function() {
 		    	   updateOk(); 
 		       },
-		       " 삭제 " : function() {
-		    	   deleteOk(userId);
-			   },
 		       " 닫기 " : function() {
 		    	   $(this).dialog("close");
 		       }
 		  },
-		  height: 550,
-		  width: 800,
+		  height: 600,
+		  width: 900,
 		  title: "회원상세정보",
 		  close: function(event, ui) {
+			  
 		  }
 	});
 	
-	dlg.dialog("widget").css("background-color", "#cccccc");
+	dlg.dialog("widget").css({
+        "background-color": "lightgray",
+        "z-index": 10000,
+        "boder" : "1px solid #ccc",
+        "padding": "3px",
+        "text-align": "center"
+    });
+	
+	$('#memberStateDetaile').closest('.ui-dialog').find('.ui-dialog-buttonset').css({
+        'text-align': 'center',
+        'padding': '15px',
+        'margin': '5px auto',
+        'boder':'none'
+    });
+	
+	dlg.closest('.ui-dialog').find('.ui-dialog-titlebar-close').css({
+        'position': 'absolute',
+        'right': '10px'
+    });
+	
+	dlg.closest('.ui-dialog').find('.ui-dialog-title').css({
+        'font-size': '20px'
+    });
+	
+
+
 
 	let url = "${pageContext.request.contextPath}/admin/memberManage/profile";
 	let query = "userId="+userId;
@@ -134,12 +157,12 @@ function memberStateDetaileView() {
 		  modal: true,
 		  minHeight: 100,
 		  maxHeight: 450,
-		  width: 750,
-		  title: '계정상태 상세',
-		  close: function(event, ui) {
-			   $(this).dialog("destroy"); // 이전 대화상자가 남아 있으므로 필요
-		  }
+		  width: 750
 	  });
+	 $('#memberStateDetaile').dialog("widget").css({
+	        "z-index": 10000,
+	        "margin": "70px"
+	 });
 }
 
 function selectStateChange() {

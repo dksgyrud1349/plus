@@ -2,9 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<h3 style="font-size: 15px; padding-top: 10px;"><i class="fa-solid fa-angles-right"></i> 회원 정보</h3>
 
-<table class="table td-border mx-auto my-10" style="width: 99%;">
+<h3 style="font-size: 15px; padding-top: 10px; float:left;"><i class="fa-solid fa-angles-right"></i> 회원 정보</h3>
+
+<table class="table td-border mx-auto my-10" style="width: 99%; text-align:left;">
 	<tr>
 		<td width="15%" class="text-center bg-light">회원번호</td>
 		<td width="35%" class="ps-5">${dto.memberIdx}</td>
@@ -31,21 +32,28 @@
 	</tr>
 	
 	<tr>
-		<td class="text-center bg-light">계정상태</td>
+		<td class="text-center bg-light">총 구매액</td>
+		<td class="ps-5">미완성</td>
+		<td class="text-center bg-light">적립 총 금액</td>
+		<td class="ps-5">미완성</td>
+	</tr>
+	
+	<tr>
+		<td class="text-center bg-light" style="vertical-align:middle">계정상태</td>
 		<td colspan="3" class="ps-5">
 			${dto.enabled==1?"활성":"잠금"}
 			<c:if test="${dto.enabled==0 && not empty memberState}">, ${memberState.memo}</c:if>
-			&nbsp;<span class="btn" onclick="memberStateDetaileView();" style="cursor: pointer;">자세히</span>
+			&nbsp;<span class="btn btn-outline-secondary" onclick="memberStateDetaileView();" style="cursor: pointer; margin-left:10px;">자세히</span>
 		</td>
 	</tr>
 </table>
 
 <form id="deteailedMemberForm" name="deteailedMemberForm" method="post">
-	<h3 style="font-size: 15px; padding-top: 10px;"><i class="fa-solid fa-angles-right"></i> 유저 상태 변경</h3>
+	<h3 style="font-size: 20px; padding-top: 10px;"><i class="fa-solid fa-angles-right"></i> 유저 상태 변경 <i class="fa-solid fa-angles-left"></i></h3>
 	
 	<table class="table td-border mx-auto my-5">
 		<tr>
-			<td width="15%" class="text-center bg-light">계정상태</td>
+			<td width="15%" class="text-center bg-light" style="vertical-align:middle">계정상태</td>
 			<td class="ps-5">
 				<select class="form-select" name="stateCode" id="stateCode" onchange="selectStateChange()">
 					<option value="">::상태코드::</option>
@@ -61,7 +69,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td class="pe-7 text-center bg-light">메 모</td>
+			<td class="pe-7 text-center bg-light" style="vertical-align:middle">메 모</td>
 			<td class="ps-5">
 				<input type="text" name="memo" id="memo" class="form-control" style="width: 95%;">
 			</td>
@@ -73,7 +81,7 @@
 	<input type="hidden" name="adminId" value="${sessionScope.member.userId}">
 </form>
 
-<div id="memberStateDetaile" style="display: none;">
+<div id="memberStateDetaile" style="display: none; z-index:10001;">
 	<table class="table table-border mx-auto my-10">
 		<thead>
 			<tr class="bg-light border-top2">
