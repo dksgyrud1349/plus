@@ -49,7 +49,12 @@ function sendLogin() {
 	border-bottom:1px solid #cccccc;
 	border-radius:0px;
 }
-
+.sign-up{
+	background: #FFE65A;
+}
+.log-in{
+	background: #288CFF;
+}
 </style>
 
 <main class="wrapper" style="margin:5% auto; width:80%;">
@@ -63,7 +68,7 @@ function sendLogin() {
                 <div class="border mt-5 p-4">
                     <form name="loginForm" action="" method="post" class="row g-3">
                     	<h4 class="text-center" style="margin-top:24px;">Welcome</h4>
-                        <h3 class="text-center" style="margin-top:8px;">Oneday Plus</h3>
+                        <h3 class="text-center" style="margin-top:8px;"><i class="bi bi-calendar2-plus"></i>&nbsp;원데이 플러스</h3>
                         	<div class="col-12">
                             	<label class="mb-1 ps-1">아이디</label>
 	                            	<input type="text" name="userId" class="form-control box ps-4 idpwd" placeholder="아이디">
@@ -81,9 +86,9 @@ function sendLogin() {
                             </div>
                         </div>
                         <div>
-                            <button type="button" style="border-radius: 100px;" class="btn btn-primary col-12 mt-3" onclick="sendLogin();">&nbsp;로그인&nbsp;<i class="bi bi-check2"></i></button>
-                           <a><button type="button" style="border-radius: 100px;" class="btn btn-white btn-outline-warning border border-black text-black col-12 mt-3"
-                              onclick="sendLogin();">&nbsp;회원가입&nbsp;<i class="bi bi-cursor"></i></button></a>
+                            <button type="button" style="border-radius: 100px;" class="btn btn-outline-primary text-white col-12 mt-3 log-in" onclick="sendLogin();">&nbsp;로그인&nbsp;<i class="bi bi-unlock"></i></button>
+                           <a><button type="button" style="border-radius: 100px;" class="btn btn-outline-warning border border-black text-black col-12 mt-3 sign-up"
+                              onclick="sendLogin();">&nbsp;회원가입&nbsp;<i class="bi bi-send"></i></button></a>
                             
                         </div>
                     </form>
@@ -100,7 +105,6 @@ function sendLogin() {
                 <div class="d-grid">
 						<p class="form-control-plaintext text-center text-primary">${message}</p>
                 </div>
-
             </div>
         </div>
 

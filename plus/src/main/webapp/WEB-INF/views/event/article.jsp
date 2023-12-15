@@ -40,7 +40,7 @@ $(function(){
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
+			<div class="body-container pt-5" style="width:100%; margin:5% auto;">
 				<div class="body-main">
 
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
