@@ -27,7 +27,7 @@
 
 	<select id="dataCount" parameterType="map" resultType="Integer">
 		SELECT NVL(COUNT(*), 0)
-		FROM faq
+		FROM faq f
 		JOIN member1 m ON f.userId = m.userId
 		JOIN faqCategory c ON f.cateNum = c.cateNum
 		<where>
