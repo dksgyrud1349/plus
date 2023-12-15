@@ -127,4 +127,17 @@ public class LessonController {
 		model.put("listSubCategory", listSubCategory);
 		return model;
 	}
+	
+	@GetMapping("lessonDetail")
+	public String buyRequest(Model model
+			) throws Exception{
+		
+		try {
+			
+		} catch (Exception e) {
+			return "redirect:/product/list";
+		}
+		
+		return ".product.buy";
+	}
 }
