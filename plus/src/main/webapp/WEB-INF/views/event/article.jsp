@@ -3,10 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-.body-container {
-	max-width: 850px;
-}
-
 .nav-tabs .nav-link {
 	min-width: 170px;
 	background: #f3f5f7;
@@ -41,13 +37,11 @@ $(function(){
 
 </script>
 
-<div class="container" style="margin-top: 10%; width: 65%;">
-	<div class="body-container">	
-		<div class="body-title">
-			<h3><i class="bi bi-calendar-event"></i> 이벤트 게시물</h3>
-		</div>
-		
-		<div class="body-main">
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
+				<div class="body-main">
 
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">
@@ -58,12 +52,31 @@ $(function(){
 				</li>
 			</ul>
 			
-			<div class="tab-content pt-2" id="nav-tabContent">
+			<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+						<table class="table">
+							<tr>
+								<td align="left" width="50%">
+									&nbsp;
+								</td>
+								<td align="right">
+									&nbsp;
+								</td>
+							</tr>
+						</table>
+						
+						<div class="card mb-5 w-80" style="margin:0 auto;">
+					    	<div class="card-header text-center">
+					    		<h3>
+					    			<i class="bi bi-calendar-event"></i> 이벤트
+					    		</h3>
+					    	</div>
 			
-				<table class="table mb-0">
+			
+			<div class="table table-hover board-list " id="nav-tabContent">
+				<table class="table">
 					<thead>
 						<tr>
-							<td colspan="2" align="center">
+							<td colspan="2" style="text-align:center; vertical-align: middle;">
 								${dto.subject}
 							</td>
 						</tr>
@@ -80,7 +93,7 @@ $(function(){
 						</tr>
 						
 							<tr>
-								<td colspan="2" style="border-bottom: none;">
+								<td colspan="2" style="border-bottom: none;" class="text-center">
 									<img src="${pageContext.request.contextPath}/uploads/photo/${dto.eventImg}" 
 										class="img-fluid img-thumbnail w-100 h-auto">
 								</td>
@@ -127,7 +140,7 @@ $(function(){
 					<tr>
 						<td width="50%">&nbsp;</td>
 						<td class="text-end">
-							<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list?${query}';">리스트</button>
+							<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list?${query}';">리스트</button>
 						</td>
 					</tr>
 				</table>
@@ -146,18 +159,21 @@ $(function(){
 							</tr>
 							<tr>
 							   <td align='right'>
-							        <button type='button' class='btn btn-light btnSendReply'>댓글 등록</button>
+							        <button type='button' class='btn btn-success btnSendReply'>댓글 등록</button>
 							    </td>
 							 </tr>
 						</table>
 					</form>
-					
 					<div id="listReply"></div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+</div>
+</div>
+</div>
+</main>
 
 <script type="text/javascript">
 function login() {
