@@ -501,4 +501,3 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  </div>
 	  
 	</div>
-	<hr style="border: 3px dotted #47a3da;">
