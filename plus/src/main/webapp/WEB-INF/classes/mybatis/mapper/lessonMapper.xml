@@ -29,35 +29,65 @@
 	
 	<select id="dataCount" parameterType="map" resultType="Integer">
 		SELECT NVL(COUNT(*), 0)
-		FROM lesson
-		WHERE showClass = 0
+		FROM lesson le
+		JOIN subCategory sc ON le.subNum = sc.subNum
+		JOIN mainCategory mc ON sc.mainNum = mc.mainNum
 		<where>
+			showClass = 0
 			<if test="kwd != null and kwd != ''">
-				<include refid="where-list"/>
+				AND <include refid="where-list"/>
+			</if>
+			<if test="mainNum != 0">
+				AND mc.mainNum = #{mainNum} 
+			</if>
+			<if test="subNum != 0">
+				AND sc.subNum = #{subNum}
 			</if>
 		</where>
 	</select>
 	
 	<select id="allLessonList" parameterType="map" resultType="com.fa.plus.domain.Lesson">
-		SELECT classNum, className, price, firstPhoto, addr1, nickName
+		SELECT classNum, className, price, firstPhoto, addr1, nickName, le.subNum
 		FROM lesson le
 		JOIN member m ON m.memberIdx = le.memberIdx
 		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
 		JOIN plus pl ON m1.userId = pl.userId
+		JOIN subCategory sc ON le.subNum = sc.subNum
+		JOIN mainCategory mc ON sc.mainNum = mc.mainNum
 		<where>
+			le.showClass = 0
+			<if test="mainNum != 0">
+				AND mc.mainNum = #{mainNum} 
+			</if>
+			<if test="subNum != 0">
+				AND sc.subNum = #{subNum}
+			</if>
 			<if test="kwd != null and kwd != ''">
-				<include refid="where-list"/>
+				AND <include refid="where-list"/>
 			</if>
 		</where>
 		<choose>
-			<when test="schType == highPrice">
+			<when test="schType == 'highPrice'">
 				ORDER BY price DESC
 			</when>
-			<when test="schType == lowPrice">
+			<when test="schType == 'lowPrice'">
 				ORDER BY price ASC
 			</when>
 		</choose>
 		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<!-- 메인 카테고리 목록 -->
+	<select id="listMainCategory" resultType="com.fa.plus.domain.Lesson">
+		SELECT mainNum, mainName
+		FROM maincategory
+	</select>
+	
+	<!-- 서브 카테고리 목록 -->
+	<select id="listSubCategory" parameterType="Long" resultType="com.fa.plus.domain.Lesson">
+		SELECT subNum, subName
+		FROM subcategory
+		WHERE mainNum = #{mainNum}
 	</select>
 	
 </mapper>

@@ -3,10 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-.body-container {
-	max-width: 850px;
-}
-
 .nav-tabs .nav-link {
 	min-width: 170px;
 	background: #f3f5f7;
@@ -42,13 +38,12 @@ function searchList() {
 }
 </script>
 
-<div class="container" style="margin-top: 10%; width: 65%;">
-	<div class="body-container">	
-		<div class="body-title">
-			<h3><i class="bi bi-calendar-event"></i> 이벤트 </h3>
-		</div>
-		
-		<div class="body-main">
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
+				<div class="body-main">
+			
 
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">
@@ -59,16 +54,31 @@ function searchList() {
 				</li>
 			</ul>
 			
-			<div class="tab-content pt-2" id="nav-tabContent">
 			
-		        <div class="row board-list-header">
-		            <div class="col-auto me-auto">
-		            	${dataCount}개(${page}/${total_page} 페이지)
-		            </div>
-		            <div class="col-auto">&nbsp;</div>
-		        </div>				
+			
+			<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+						<table class="table">
+							<tr>
+								<td align="left" width="50%">
+									총 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}개</font> (${page}/${total_page} 페이지)
+								</td>
+								<td align="right">
+									&nbsp;
+								</td>
+							</tr>
+						</table>
+						
+						<div class="card mb-5 w-80 text-center" style="margin:0 auto">
+					    	<div class="card-header">
+					    		<h3>
+					    			<i class="bi bi-calendar-event"></i> 이벤트
+					    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list';" title="새로고침" style="float:right;">
+						            	<i class="fa-solid fa-arrow-rotate-left"></i>
+						            </button>
+					    		</h3>
+					    		<hr>			
 				
-				<table class="table table-hover board-list">
+				<table class="table table-hover board-list mt-4">
 					<thead class="table-light">
 						<tr>
 							<th width="60">번호</th>
@@ -98,33 +108,28 @@ function searchList() {
 					${dataCount == 0 ? "등록된 이벤트가 없습니다." : paging}
 				</div>
 	
-				<div class="row board-list-footer">
-					<div class="col">
-						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list';" title="새로고침"><i class="bi bi-arrow-counterclockwise"></i></button>
-					</div>
-					<div class="col-6 text-center">
-						<form class="row" name="searchForm" action="${pageContext.request.contextPath}/event/${category}/list" method="post">
-							<div class="col-auto p-1">
+				<table class="table">
+					<tr>
+						<td align="center">
+						<form class="row" name="searchForm" action="${pageContext.request.contextPath}/event/${category}/list" method="post" style="width:300px; margin-left:15px;">
+							<div class="input-group mb-1">
 								<select name="schType" class="form-select">
 									<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
 									<option value="startDate" ${schType=="startDate"?"selected":""}>시작일</option>
 									<option value="endDate" ${schType=="endDate"?"selected":""}>종료일</option>
 								</select>
-							</div>
-							<div class="col-auto p-1">
 								<input type="text" name="kwd" value="${kwd}" class="form-control">
-							</div>
-							<div class="col-auto p-1">
 								<button type="button" class="btn btn-light" onclick="searchList()"> <i class="bi bi-search"></i> </button>
 							</div>
 						</form>
-					</div>
-					<div class="col text-end">
-						&nbsp;
+						</td>
+						</tr>
+						</table>
 					</div>
 				</div>
-			
 			</div>
 		</div>
 	</div>
+	</div>
 </div>
+</main>

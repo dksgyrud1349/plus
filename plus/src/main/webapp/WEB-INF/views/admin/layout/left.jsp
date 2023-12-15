@@ -71,8 +71,8 @@
                             <div class="collapse" id="communityLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<c:url value='/admin/eventManage/all/list'/>">이벤트 게시판 관리</a>
-                                    <a class="nav-link" href="#">리뷰 관리</a>
-                                    <a class="nav-link" href="#">커뮤니티 게시판</a>
+                                    <a class="nav-link" href="<c:url value='/admin/review/list'/>">리뷰 관리</a>
+                                    <a class="nav-link" href="<c:url value='/admin/communityManage/list'/>">커뮤니티 게시판</a>
                                 </nav>
                             </div>
                             

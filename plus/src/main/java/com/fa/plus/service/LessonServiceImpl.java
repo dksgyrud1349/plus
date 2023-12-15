@@ -43,4 +43,26 @@ public class LessonServiceImpl implements LessonService{
 		return result;
 	}
 
+	@Override
+	public List<Lesson> listMainCategory() {
+		List<Lesson> list = null;
+		try {
+			list = mapper.listMainCategory();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public List<Lesson> listSubCategory(long mainNum) {
+		List<Lesson> list = null;
+		try {
+			list = mapper.listSubCategory(mainNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }
