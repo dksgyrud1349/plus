@@ -164,7 +164,6 @@ $(function(){
 							 </tr>
 						</table>
 					</form>
-					
 					<div id="listReply"></div>
 				</div>
 			</div>
