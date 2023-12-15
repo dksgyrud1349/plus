@@ -72,8 +72,8 @@ function sendOk() {
                 </div>
                 <div class="row mt-3">
                     <div class="col text-center">
-                        <button type="button" class="btn mail-send btn-outline-success b text-light fs-5" style="height:60px" onclick="sendOk()">
-                            이메일 전송하기&nbsp;<i class="bi bi-cursor"></i>
+                        <button type="button" class="btn mail-send btn-outline-success text-light fs-5" style="height:60px" onclick="sendOk()">
+                            이메일 전송하기&nbsp;<i class="bi bi-send"></i>
                         </button>
                         <hr>
                     </div>
