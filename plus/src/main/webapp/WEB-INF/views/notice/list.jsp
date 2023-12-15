@@ -54,6 +54,7 @@ function searchList() {
 									<thead class="table-light ">
 									<thead style="background-color: white;">
 									
+									
 										<tr>
 											<th width="60">번호</th>
 											<th>제목</th>
