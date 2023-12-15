@@ -79,7 +79,6 @@ function sendOk() {
                     </div>
                 </div>
             </form>
-
                     <div class="col-12">
                         <p class="text-center mb-0">
                         	<a href="${pageContext.request.contextPath}/member/member" class="text-decoration-none ms-3 me-2">회원가입</a>

@@ -15,7 +15,6 @@ background-color: #6C757D;
  color: white;
 }
 						
-						
 .btn-confirm:hover {
  background-color: #0056b3;
 }
