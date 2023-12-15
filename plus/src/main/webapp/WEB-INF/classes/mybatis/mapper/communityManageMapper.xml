@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.admin.mapper.CommunityManageMapper">
+	<sql id="where-list">
+		<choose>
+			<when test="schType == 'all' ">
+			   ( INSTR(subject, #{kwd}) &gt; 0
+		          OR DBMS_LOB.INSTR(content, #{kwd}) &gt; 0 )
+			</when>
+			<when test="schType == 'regDate' ">
+			   ( TO_CHAR(c.regDate, 'YYYYMMDD') = #{kwd}
+		          OR TO_CHAR(c.regDate, 'YYYY-MM-DD') = #{kwd} )
+			</when>
+			<when test="schType == 'content'">
+			    DBMS_LOB.INSTR(content, #{kwd}) &gt; 0
+			</when>
+			<otherwise>
+			    INSTR(${schType}, #{kwd}) &gt; 0
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<select id="communityList" parameterType="map" resultType="com.fa.plus.admin.domain.CommunityManage">
+		SELECT c.num, c.userId, m.userName, subject, 
+			   TO_CHAR(c.regDate, 'YYYY-MM-DD') regDate,
+			   hitCount,
+			   NVL(replyCount, 0) replyCount
+		FROM commu c
+		JOIN member1 m ON c.userId=m.userId
+		LEFT OUTER JOIN (
+			SELECT num, COUNT(*) replyCount FROM reply
+			WHERE showReply=1
+			GROUP BY num
+		) d ON c.num = d.num
+		<where>
+			<if test="kwd != null and kwd != ''">
+				<include refid="where-list"/>
+			</if>
+		</where>
+		ORDER BY c.num DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM commu co
+		<where>
+			<if test="kwd != null and kwd != ''">
+				<include refid="where-list"/>
+			</if>
+		</where>
+	</select>
+	<delete id="deleteCommunity">
+		DELETE FROM commu WHERE num = #{num}
+	</delete>
+	
+	<select id="replyCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM reply
+		WHERE num=#{num}
+	</select>
+	
+	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.Board">
+		SELECT c.num, c.userId, m.userName, subject, content,
+			   hitCount, c.regDate
+		FROM commu c
+		JOIN member1 m ON c.userId = m.userId
+		WHERE c.num = #{num}
+	</select>
+</mapper>
