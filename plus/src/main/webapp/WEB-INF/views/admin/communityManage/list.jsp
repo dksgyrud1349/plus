@@ -3,9 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-.body-container {
-	max-width: 800px;
-}
 
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
@@ -44,90 +41,106 @@ function searchList() {
 }
 </script>
 
-<div class="container">
-	<div class="body-container">	
-		<div class="body-title">
-			<h3><i class="bi bi-app"></i> 게시판 </h3>
-		</div>
-		
-		<div class="body-main">
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content" style="background: #F8F8FF;">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width:80%; margin:5% auto; ">
+				<div class="body-main">
+					<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">	
+						<table class="table">
+							<tr>
+								<td align="left" width="50%">
+								총 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}개</font> (${page}/${total_page} 페이지) 
+								</td>
+								<td align="right">
+									&nbsp;
+								</td>
+							</tr>
+						</table>
+							
+						<div class="card mb-5 w-80 " style="margin:0 auto">
+			            	<div class="card-header text-center">
+			                	<h3>
+			                      <i class="bi bi-app"></i> 커뮤니티 관리
+				                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/list';" title="새로고침" style="float:right;">
+				                    	<i class="fa-solid fa-arrow-rotate-left"></i>
+				                    </button>
+				                </h3>
+				             </div>
 
-	        <div class="row board-list-header">
-	            <div class="col-auto me-auto dataCount"></div>
-	            <div class="col-auto">&nbsp;</div>
-	        </div>				
+						<table class="table table-hover table-list">
+							<thead>
+								<tr>
+									<th width="60">번호</th>
+									<th>제목</th>
+									<th width="100">작성자</th>
+									<th width="100">작성일</th>
+									<th width="70">조회수</th>
+									<th width="50">파일</th>
+								</tr>
+							</thead>
+						<tbody>
+						<c:forEach var="dto" items="${list}" varStatus="status">
+							<tr>
+								<td>${dataCount - (page-1) * size - status.index}</td>
+								<td class="left">
+									<c:url var="url" value="/bbs/article">
+										<c:param name="num" value="${dto.num}"/>
+										<c:param name="page" value="${page}"/>
+										<c:if test="${not empty kwd}">
+											<c:param name="schType" value="${schType}"/>
+											<c:param name="kwd" value="${kwd}"/>
+										</c:if>									
+									</c:url>
+									<a href="${url}" class="text-reset">${dto.subject}</a>
+									<c:if test="${dto.replyCount!=0}">(${dto.replyCount})</c:if>
+								</td>
+								<td>${dto.userName}</td>
+								<td>${dto.reg_date}</td>
+								<td>${dto.hitCount}</td>
+								<td>
+									<c:if test="${not empty dto.saveFilename}">
+										<a href="${pageContext.request.contextPath}/bbs/download?num=${dto.num}" class="text-reset"><i class="bi bi-file-arrow-down"></i></a>
+									</c:if>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			
-			<table class="table table-hover board-list">
-				<thead class="table-light">
-					<tr>
-						<th width="60">번호</th>
-						<th>제목</th>
-						<th width="100">작성자</th>
-						<th width="100">작성일</th>
-						<th width="70">조회수</th>
-						<th width="50">파일</th>
-					</tr>
-				</thead>
+				<div class="page-navigation">
+					${dataCount == 0 ? "등록된 이벤트가 없습니다." : paging}
+				</div>
+
 				
-				<tbody>
-					<c:forEach var="dto" items="${list}" varStatus="status">
-						<tr>
-							<td>${dataCount - (page-1) * size - status.index}</td>
-							<td class="left">
-								<c:url var="url" value="/bbs/article">
-									<c:param name="num" value="${dto.num}"/>
-									<c:param name="page" value="${page}"/>
-									<c:if test="${not empty kwd}">
-										<c:param name="schType" value="${schType}"/>
-										<c:param name="kwd" value="${kwd}"/>
-									</c:if>									
-								</c:url>
-								<a href="${url}" class="text-reset">${dto.subject}</a>
-								<c:if test="${dto.replyCount!=0}">(${dto.replyCount})</c:if>
-							</td>
-							<td>${dto.userName}</td>
-							<td>${dto.reg_date}</td>
-							<td>${dto.hitCount}</td>
-							<td>
-								<c:if test="${not empty dto.saveFilename}">
-									<a href="${pageContext.request.contextPath}/bbs/download?num=${dto.num}" class="text-reset"><i class="bi bi-file-arrow-down"></i></a>
-								</c:if>
-							</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			
-			<div class="page-navigation"></div>
-
-			<div class="row board-list-footer">
-				<div class="col">
-					<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/bbs/list';" title="새로고침"><i class="bi bi-arrow-counterclockwise"></i></button>
-				</div>
-				<div class="col-6 text-center">
-					<form class="row" name="searchForm" action="${pageContext.request.contextPath}/bbs/list" method="post">
-						<div class="col-auto p-1">
-							<select name="schType" class="form-select">
-								<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
-								<option value="userName" ${schType=="userName"?"selected":""}>작성자</option>
-								<option value="reg_date" ${schType=="reg_date"?"selected":""}>등록일</option>
-								<option value="subject" ${schType=="subject"?"selected":""}>제목</option>
-								<option value="content" ${schType=="content"?"selected":""}>내용</option>
-							</select>
-						</div>
-						<div class="col-auto p-1">
-							<input type="text" name="kwd" value="${kwd}" class="form-control">
-						</div>
-						<div class="col-auto p-1">
-							<button type="button" class="btn btn-light" onclick="searchList()"> <i class="bi bi-search"></i> </button>
-						</div>
-					</form>
-				</div>
-				<div class="col text-end">
-					<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/bbs/write';">글올리기</button>
-				</div>
+				<table class="table">
+					<tr>
+						<td align="center">
+							<form class="row" name="searchForm" action="${pageContext.request.contextPath}/" method="post" style="width:300px; margin-left:100px">
+								<div class="input-group mb-3">
+									<select name="schType" class="form-select">
+										<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
+										<option value="userName" ${schType=="userName"?"selected":""}>작성자</option>
+										<option value="reg_date" ${schType=="reg_date"?"selected":""}>등록일</option>
+										<option value="subject" ${schType=="subject"?"selected":""}>제목</option>
+										<option value="content" ${schType=="content"?"selected":""}>내용</option>
+									</select>
+								
+									<input type="text" name="kwd" value="${kwd}" class="form-control">
+									<button type="button" class="btn btn-success" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+								</div>
+							</form>
+						</td>
+				
+						<td align="right" width="120">
+							
+						</td>
+					</tr>
+				</table>
 			</div>
-
 		</div>
 	</div>
 </div>
+</div>
+</div>
+</main>
