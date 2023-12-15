@@ -241,7 +241,7 @@ $(function(){
 						</div>
 						<div class="mt-3">
 							<c:forEach var="dto" items="${list}">
-								<!-- 
+								 
 						<div class="mt-3 p-2 border-bottom payment-list">
 							<div class="row pb-2">
 								<div class="col-6">
@@ -294,11 +294,10 @@ $(function(){
 								</div>								
 								
 							</div>
-							 -->
+							 
 								<c:if test="${dto.reviewWrite == 0}">
-									<!-- 리뷰쓰기 -->
-									<div class="review-form border border-secondary p-3 mt-2"
-										style="display: none;">
+									<!-- 리뷰쓰기 reviewWrite(payment domain) -->
+									<div class="review-form border border-secondary p-3 mt-2" style="display: none;">
 										<form name="reviewForm">
 											<div class="p-1">
 												<p class="star">
@@ -307,8 +306,8 @@ $(function(){
 													<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
 													<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
 													<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
-													<input type="hidden" name="score" value="5"> <input
-														type="hidden" name="orderNum" value="${dto.orderNum}">
+													<input type="hidden" name="reviewScore" value="5">
+													<input type="hidden" name="orderNum" value="${dto.orderNum}">
 												</p>
 											</div>
 											<div class="p-1">
@@ -316,15 +315,12 @@ $(function(){
 											</div>
 											<div class="p-1">
 												<div class="img-grid">
-													<img class="item img-add"
-														src="${pageContext.request.contextPath}/resources/images/add_photo.png">
+													<img class="item img-add" src="${pageContext.request.contextPath}/resources/images/add_photo.png">
 												</div>
-												<input type="file" name="selectFile" accept="image/*"
-													multiple class="form-control" style="display: none;">
+												<input type="file" name="selectFile" accept="image/*" multiple class="form-control" style="display: none;">
 											</div>
 											<div class="p-1 text-end">
-												<button type="button"
-													class="btn btn-dark btnReviewSend ps-5 pe-5">등록하기</button>
+												<button type="button" class="btn btn-dark btnReviewSend ps-5 pe-5">등록하기</button>
 											</div>
 										</form>
 									</div>
@@ -361,30 +357,24 @@ $(function(){
 	</div>
 
 	<!-- 구매취소/교환요청/반품요청 대화상자  -->
-	<div class="modal fade" id="orderDetailUpdateDialogModal" tabindex="-1"
-		aria-labelledby="orderDetailUpdateDialogModalLabel" aria-hidden="true">
+	<div class="modal fade" id="orderDetailUpdateDialogModal" tabindex="-1" aria-labelledby="orderDetailUpdateDialogModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="orderDetailUpdateDialogModalLabel">구매취소</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body pt-1">
 					<div class="p-1">
-						<form name="userOrderDetailForm" method="post"
-							class="row justify-content-center">
+						<form name="userOrderDetailForm" method="post" class="row justify-content-center">
 							<div class="col-7 p-1">
-								<input type="text" name="stateMemo" class="form-control"
-									placeholder="사유를 입력 하세요">
+								<input type="text" name="stateMemo" class="form-control" placeholder="사유를 입력 하세요">
 							</div>
 							<div class="col-auto p-1">
-								<input type="hidden" name="page" value="${page}"> <input
-									type="hidden" name="orderDetailNum"> <input
-									type="hidden" name="detailState">
-								<button type="button"
-									class="btn btn-light btnUserOrderDetailUpdateOk">요청하기
-								</button>
+								<input type="hidden" name="page" value="${page}">
+								<input type="hidden" name="orderDetailNum">
+								<input type="hidden" name="detailState">
+								<button type="button" class="btn btn-light btnUserOrderDetailUpdateOk">요청하기 </button>
 							</div>
 						</form>
 					</div>
@@ -392,6 +382,7 @@ $(function(){
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </main>
 
@@ -420,7 +411,7 @@ $(function(){
 		}
 		
 		let s = $(this).closest(".review-form").find(".star .on").length;
-		$(this).closest(".review-form").find("input[name=score").val(s);
+		$(this).closest(".review-form").find("input[name=reviewScore]").val(s);
 		
 		// e.preventDefault(); // 화면 위로 이동 안되게
 		return false;
@@ -507,7 +498,7 @@ $(function(){
 		const f = this.closest("form");
 		let s;
 		
-		if(f.score.value === "0") {
+		if(f.reviewScore.value === "0") {
 			alert("평점은 1점부터 가능합니다.")	;
 			return false;
 		}
