@@ -44,6 +44,11 @@ function sendLogin() {
 
     text-indent: 25px;
 }
+.idpwd{
+	border:none;
+	border-bottom:1px solid #cccccc;
+	border-radius:0px;
+}
 
 </style>
 
@@ -61,12 +66,11 @@ function sendLogin() {
                         <h3 class="text-center" style="margin-top:8px;">Oneday Plus</h3>
                         	<div class="col-12">
                             	<label class="mb-1 ps-1">아이디</label>
-	                            	<input type="text" name="userId" class="form-control box ps-4" style="border-radius: 100px;" placeholder="아이디">
+	                            	<input type="text" name="userId" class="form-control box ps-4 idpwd" placeholder="아이디">
                         	</div>
                         		<div class="col-12">
                             		<label class="mb-1 ps-1">패스워드</label>
-                            			<input type="password" name="userPwd" class="form-control box1 ps-4" style="border-radius: 100px;" 
-                            					autocomplete="off" placeholder="패스워드" >
+                            			<input type="password" name="userPwd" class="form-control box1 ps-4 idpwd"autocomplete="off" placeholder="패스워드" >
                             			<div class="mt-1" style="font-size:11px; color:#a0a0a0">특수문자,영문,숫자 조합 8자 이상으로 입력해주세요.
                             	</div>
                         	</div>

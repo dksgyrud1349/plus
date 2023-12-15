@@ -52,8 +52,8 @@
 			<div class="text">&nbsp;</div>
 			<div class="text">&nbsp;</div>
 			<hr>
-			<div class="text">주식회사 원데이플러스 | 대표자명: 김정균 | 이메일: wjdrbs0433@gmail.com</div>
-			<div class="text">주소: 천안시 동남구 청당4로60 청당한양수자인블루시티 109동 1003호 | 전화번호: 010-9293-0433</div>
+			<div class="text">주식회사 원데이플러스 | 대표자명: 김정균 | 이메일: flarkr8852@gmail.com</div>
+			<div class="text">주소: 충청남도 천안시 서북구 남부순환로339길 세종빌딩 109동 1003호 | 전화번호: 010-4666-0455</div>
 			<div class="text">팩스번호 : 02-555-1121 | 사업자등록번호 : 05-555-41121 | 직업정보제공사업 신고번호:서울청 제 2019-21호</div>
 			<div class="text">(주)원데이플러스는 클래스수업중개자로서 개별 판매자가 아니며 개별 판매자가 제공하는 서비스에 대한 이행, 계약사항 등과 관련한 의무와 책임은 거래당사자에게 있습니다.</div>
 		</div>
@@ -63,6 +63,7 @@
             	<button class="btn btn-outline-secondary dropdown-toggle left-toggle" 
             		id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
             		style="width:150px;">
+            		
                 	고객센터
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
