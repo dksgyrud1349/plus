@@ -11,4 +11,6 @@ import com.fa.plus.domain.Lesson;
 public interface LessonMapper {
 	public List<Lesson> allLessonList(Map<String, Object> map);
 	public int dataCount(Map<String, Object> map);
+	public List<Lesson> listMainCategory();
+	public List<Lesson> listSubCategory(long mainNum);
 }
