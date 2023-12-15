@@ -10,7 +10,7 @@
 					TO_DATE(#{endDate}, 'YYYY-MM-DD HH24:MI:SS'), #{showEvent}, 0, 
 				#{eventKind}, #{discountMoney, jdbcType=INTEGER}, #{discountPercent, jdbcType=DOUBLE}, #{eventImg, jdbcType=VARCHAR})
 	</insert>
-	
+
 	<sql id="where-list">
 		<choose>
 			<when test="schType == 'all' ">

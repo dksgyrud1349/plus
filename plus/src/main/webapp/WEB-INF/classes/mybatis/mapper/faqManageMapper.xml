@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.admin.mapper.FaqManageMapper">
+
+	<insert id="insertFaq" parameterType="com.fa.plus.admin.domain.FaqManage">
+		INSERT faq INTO (num, subject, content, regDate, userId, cateNum)
+			VALUES (faq_seq.NEXTVAL, #{subject}, #{content}, SYSDATE, #{userId}, #{cateNum})
+	</insert>
+	
+	<sql id="where-list">
+		<choose>
+			<when test="schType == 'all' ">
+			   ( INSTR(subject, #{kwd}) &gt; 0
+		          OR INSTR(content, #{kwd}) &gt; 0 
+		          OR INSTR(LOWER(faqName), LOWER(#{kwd})) &gt; 0 )
+			</when>
+			<when test="schType == 'regDate' ">
+			   ( TO_CHAR(regDate, 'YYYYMMDD') = #{kwd}
+		          OR TO_CHAR(regDate, 'YYYY-MM-DD') = #{kwd} )
+			</when>
+			<otherwise>
+			    ( INSTR(${schType}, #{kwd}) &gt; 0 )
+			</otherwise>
+		</choose>
+	</sql>
+
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM faq
+		JOIN member1 m ON f.userId = m.userId
+		JOIN faqCategory c ON f.cateNum = c.cateNum
+		<where>
+			<if test="cateNum != 0">
+				( c.cateNum = #{cateNum} )
+			</if>
+			<if test="kwd!=null and kwd!='' ">
+				AND <include refid="where-list"/>
+			</if>
+			AND c.showFaq = 1
+		</where>
+	</select>
+
+	<select id="listFaq" parameterType="map" resultType="com.fa.plus.admin.domain.FaqManage">
+		SELECT f.num, f.userId, userName, subject, TO_CHAR(f.regDate, 'YYYY-MM-DD') regDate,
+			content, c.cateNum, faqName, orderNo
+		FROM faq f
+		JOIN member1 m ON f.userId = m.userId
+		JOIN faqCategory c ON f.cateNum = c.cateNum
+		<where>
+			<if test="cateNum !=0">
+				( c.cateNum = #{cateNum} )
+			</if>
+			<if test="kwd!=null and kwd!='' ">
+				AND <include refid="where-list"/>
+			</if>
+			AND c.showFaq = 1
+		</where>
+		ORDER BY orderNo, num DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<select id="findById" parameterType="Long" resultType="com.fa.plus.admin.domain.FaqManage">
+		SELECT f.num, f.userId, userName, subject, content, f.regDate, f.cateNum, c.faqName
+		FROM faq f
+		JOIN member1 m ON f.userId = m.userId
+		JOIN faqCategory c ON f.cateNum = c.cateNum
+		WHERE f.num = #{num}
+	</select>
+	
+	<select id="findByPrev" parameterType="map" resultType="com.fa.plus.admin.domain.FaqManage">
+		SELECT f.num, subject
+		FROM faq f
+		JOIN member1 m ON f.userId=m.userId
+		JOIN faqCategory c ON f.cateNum = c.cateNum
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+			AND (f.num &gt; #{num})
+		</where>
+		ORDER BY num ASC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+
+	<select id="findByNext" parameterType="map" resultType="com.fa.plus.admin.domain.FaqManage">
+		SELECT f.num, subject
+		FROM faq f
+		JOIN member1 m ON f.userId=m.userId
+		JOIN faqCategory c ON f.cateNum = c.cateNum
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+			AND (f.num &lt; #{num})
+		</where>
+		ORDER BY num DESC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+
+	<update id="updateFaq" parameterType="com.fa.plus.admin.domain.FaqManage">
+		UPDATE faq SET cateNum=#{cateNum}, subject=#{subject},
+			content=#{content}
+		WHERE num = #{num}
+	</update>
+
+	<delete id="deleteFaq" parameterType="map">
+		DELETE FROM faq WHERE num = #{num}
+	</delete>
+	
+	<!-- 카테고리 -->
+	<insert id="insertCategory" parameterType="com.fa.plus.admin.domain.FaqManage">
+		INSERT INTO faqCategory(cateNum, faqName, showFaq, orderNo, showUser)
+			VALUES (faqCategory_seq.NEXTVAL, #{faqName}, #{showFaq}, #{orderNo}, #{showUser})
+	</insert>
+	
+
+	<select id="listCategory" parameterType="map" resultType="com.fa.plus.admin.domain.FaqManage">
+		SELECT cateNum, faqName, showFaq, orderNo, showUser
+		FROM faqCategory
+		<where>
+			<if test="mode=='show'">
+				showFaq = 1
+			</if>
+		</where>
+		ORDER BY orderNo
+	</select>
+	
+	<update id="updateCategory" parameterType="com.fa.plus.admin.domain.FaqManage">
+		UPDATE faqCategory SET faqName=#{faqName}, showFaq=#{showFaq}, orderNo=#{orderNo}, showUser = #{showUser}
+		WHERE cateNum = #{cateNum}
+	</update>
+	
+	<delete id="deleteCategory" parameterType="Long">
+		DELETE FROM faqCategory
+		WHERE cateNum = #{cateNum}
+	</delete>
+
+</mapper>
