@@ -3,9 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-.body-container {
-	max-width: 800px;
-}	
 .btn-confirm {
  background-color: #007BFF;
 border: none;
@@ -46,8 +43,10 @@ function sendOk() {
 </script>
 
 
-<div class="container">
-	<div class="body-container">	
+<main class="wrapper" style="margin:5% auto; width:80%;">
+	<div id="layoutSidenav_content">
+		 	<div class="container-fluid px-5">
+				<div class="body-container">	
 		<div class="row justify-content-md-center">
             <div class="col-md-7 pt-5">
                 <div class="border mt-5 p-4">
@@ -87,3 +86,5 @@ function sendOk() {
         </div>
 	</div>
 </div>
+</div>
+</main>
