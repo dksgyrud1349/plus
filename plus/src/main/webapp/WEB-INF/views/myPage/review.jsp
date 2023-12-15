@@ -44,7 +44,7 @@
 }
 
 .score-star .on {
-	color: #00D8FF;
+	color: #FFF612;
 }
 
 .md-img img {
@@ -131,35 +131,31 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 
 					<ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
 						<li class="nav-item" role="presentation">
-							<button class="nav-link ${mode=='review'?'active':'' }"
-								id="tab-1" data-bs-toggle="tab" data-bs-target="#tab-pane-1"
-								type="button" role="tab" aria-controls="1" aria-selected="false">
-								리뷰</button>
+							<button class="nav-link ${mode=='review'?'active':'' }" id="tab-1" data-bs-toggle="tab" data-bs-target="#tab-pane-1"
+								type="button" role="tab" aria-controls="1" aria-selected="false"> 클래스 리뷰
+							</button>
 						</li>
 						<li class="nav-item" role="presentation">
-							<button class="nav-link ${mode=='inquiry'?'active':'' }"
-								id="tab-2" data-bs-toggle="tab" data-bs-target="#tab-pane-2"
-								type="button" role="tab" aria-controls="2" aria-selected="false">
-								클래스 문의</button>
+							<button class="nav-link ${mode=='qna'?'active':'' }" id="tab-2" data-bs-toggle="tab" data-bs-target="#tab-pane-2"
+								type="button" role="tab" aria-controls="2" aria-selected="false"> 클래스 문의
+							</button>
 						</li>
 					</ul>
 
 					<div class="tab-content pt-2" id="myTabContent">
 						<div class="tab-pane fade ${mode=='review'?'active show':'' }"
-							id="tab-pane-1" role="tabpanel" aria-labelledby="tab-1"
-							tabindex="0">
+							id="tab-pane-1" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
 							<div class="mt-3 pt-3 border-bottom">
-								<p class="fs-4 fw-semibold">상품 리뷰</p>
+								<p class="fs-4 fw-semibold">클래스 리뷰</p>
 							</div>
 
 							<div class="mt-2 list-review"></div>
 						</div>
 
 						<div class="tab-pane fade ${mode=='qna'?'active show':'' }"
-							id="tab-pane-2" role="tabpanel" aria-labelledby="tab-2"
-							tabindex="0">
+							id="tab-pane-2" role="tabpanel" aria-labelledby="tab-2" tabindex="0">
 							<div class="mt-3 pt-3 border-bottom">
-								<p class="fs-4 fw-semibold">상품 문의 사항</p>
+								<p class="fs-4 fw-semibold">클래스 문의</p>
 							</div>
 
 							<div class="mt-1 p-2 list-question"></div>
@@ -171,7 +167,8 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 		</div>
 	</div>
 </main>
-		<script type="text/javascript">
+
+<script type="text/javascript">
 // review -------------
 function listReview(page) {
 	let url = '${pageContext.request.contextPath}/review/list2';
@@ -194,25 +191,27 @@ function printReview(data) {
 	for(let item of data.list) {
 		let reviewNum = item.reviewNum;
 		let userName = item.userName;
-		let score = item.score;
+		let reviewScore = item.reviewScore;
 		let reviewContent = item.reviewContent;
 		let reviewDate = item.reviewDate;
 		let replyContent = item.replyContent;
 		let replyDate = item.replyDate;
 		let listFilename = item.listFilename;
 		
+		let className = item.className;
+		let plusName = item.plusName;
 		let orderNum = item.orderNum;
 		let startDate = item.startDate;
 		let endDate = item.endDate;
 		
 		out += '<div class="mt-3 border-bottom">';
 		out += '  <div class="p-2 fw-semibold">';
-		out +=        className+'('+ startDate+'/'+endDate+')';
+		out +=        className + '('+ startDate+'/'+endDate+')';
 		out += '  </div>';
 		out += '  <div class="row p-2">';
 		out += '    <div class="col-auto pt-0 ps-2 pe-1 score-star">';
 		for(let i=1; i<=5; i++) {
-			out += '  <span class="item fs-6 ' + (score>=i ? 'on' : '') + '"><i class="bi bi-star-fill"></i></span>';
+			out += '  <span class="item fs-6 ' + (reviewScore>=i ? 'on' : '') + '"><i class="bi bi-star-fill"></i></span>';
 		}
 		out += '    </div>';
 		out += '    <div class="col text-end"><span>'+reviewDate+'</span>';
@@ -230,11 +229,11 @@ function printReview(data) {
 			out += '</div>';
 		}
 		
-		if(answer) {
+		if(replyContent) {
 			out += '  <div class="p-3 pt-0">';
 			out += '    <div class="bg-light">';
 			out += '      <div class="p-2 pb-0">';
-			out += '        <label class="text-bg-primary px-2"> 플러스 </label> <label>' + replyDate + '</label>';
+			out += '        <label class="text-bg-primary px-2">'+ plusName +'</label> <label>' + replyDate + '</label>';
 			out += '      </div>';
 			out += '      <div class="p-2 pt-1">' + replyContent + '</div>';
 			out += '    </div>';
@@ -256,7 +255,7 @@ $(function(){
 	});
 });
 
-// question -------------
+// question ------------- inquiry로 변경해야 함...
 function listQuestion(page) {
 	let url = '${pageContext.request.contextPath}/qna/list2';
 	let query = 'pageNo='+page;

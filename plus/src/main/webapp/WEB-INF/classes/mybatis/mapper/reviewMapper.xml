@@ -30,15 +30,10 @@
 	</select>
 
 	<select id="listReview" parameterType="map" resultType="com.fa.plus.domain.Review">
-		SELECT r.reviewNum, r.memberIdx, userName, reviewScore, reviewContent, replyContent, 
-			cd.classNum, className, filename, r.orderNum,
-			TO_CHAR(reviewDate, 'YYYY-MM-DD') reviewDate, 
-			TO_CHAR(replyDate, 'YYYY-MM-DD') replyDate
-		FROM review r
-		JOIN member1 m ON r.memberIdx = m.memberIdx 
-		JOIN orders o ON r.orderNum = o.orderNum
-        JOIN LessonDetail cd ON o.detailNum = cd.detailNum
-		JOIN Lesson c ON cd.classNum = c.classNum
+		SELECT r.reviewNum, m.userName, reviewScore, reviewContent, 
+			replyContent, r.orderNum, filename, showReview, c.className, cm.userName AS plusName, 
+			TO_CHAR(reviewDate, 'YYYY-MM-DD') reviewDate, TO_CHAR(replyDate, 'YYYY-MM-DD') replyDate,  
+			TO_CHAR(startTime, 'YYYY-MM-DD HH24:MI')startTime, TO_CHAR(endTime, 'YYYY-MM-DD HH24:MI') endTime
 		LEFT OUTER JOIN (
 			SELECT reviewNum, LISTAGG(filename, ',') WITHIN GROUP(ORDER BY photoNum) filename
             FROM reviewPhoto
@@ -79,8 +74,8 @@
 	
 	<!-- 내가 쓴 리뷰 확인 -->
 	<select id="listReview2" parameterType="map" resultType="com.fa.plus.domain.Review">
-		SELECT r.reviewNum, r.memberIdx, o.detailNum, cd.classNum, userName, reviewScore, reviewContent, 
-			replyContent, r.orderNum, filename, showReview, c.className,
+		SELECT r.reviewNum, reviewScore, reviewContent, 
+			replyContent, r.orderNum, filename, showReview, c.className, cm.userName AS plusName,
 			TO_CHAR(reviewDate, 'YYYY-MM-DD') reviewDate, TO_CHAR(replyDate, 'YYYY-MM-DD') replyDate,  
 			TO_CHAR(startTime, 'YYYY-MM-DD HH24:MI')startTime, TO_CHAR(endTime, 'YYYY-MM-DD HH24:MI')endTime
 		FROM review r
@@ -88,6 +83,7 @@
 		JOIN orders o ON r.orderNum = o.orderNum
         JOIN LessonDetail cd ON o.detailNum = cd.detailNum
 		JOIN Lesson c ON cd.classNum = c.classNum 
+		JOIN member1 cm ON c.memberIdx = cm.memberIdx
 		LEFT OUTER JOIN (
 			SELECT reviewNum, LISTAGG(filename, ',') WITHIN GROUP(ORDER BY photoNum) filename
             FROM reviewPhoto

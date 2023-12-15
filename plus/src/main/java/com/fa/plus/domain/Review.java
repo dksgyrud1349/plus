@@ -18,6 +18,7 @@ public class Review {
 	private long memberIdx;
 	private long orderNum;
 	private long classNum;
+	private String className;
 	private String userName;
 	
 	private long photoNum;
@@ -123,6 +124,14 @@ public class Review {
 		this.classNum = classNum;
 	}
 	
+	public String getClassName() {
+		return className;
+	}
+
+	public void setClassName(String className) {
+		this.className = className;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
