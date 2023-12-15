@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-
+ 
 </style>
 
 <script type="text/javascript">
@@ -15,33 +15,45 @@ function searchList() {
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
-		<div class="container-fluid px-5">
+		   
+		<div class="container-fluid px-7">
 			<div class="body-container" style="width:100%; margin:5% auto; ">
 				<div class="body-main">
 					<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+						</div>
 						<table class="table">
 							<tr>
 								<td align="left" width="50%">
-									총 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}개</font> (${page}/${total_page} 페이지)
+									총 <font style="color:black; font-weight:bold; text-decoration:underline">${dataCount}개</font> (${page}/${total_page} 페이지)
 								</td>
-								<td align="right">
+								<td align="right">	
 									&nbsp;
 								</td>
 							</tr>
 						</table>
 					
-						<div class="card mb-5 w-80 text-center" style="margin:0 auto">
-					    	<div class="card-header">
+					<div style="background-color: white;">
+									
+						<div class="card mb-5 w-80" style="margin:0 auto; border: 1px solid #cccccc;">
+					    	 <div style="background-color: white;">
+
+
+                            <div class="card-header" style="text-align: center;">
+					    	
 					    		<h3>
-					    			<i class="fas fa-clipboard-list"></i> 공지사항
+					    		
+					    			<i class="fas fa-clipboard-list"  ></i> 공지사항
+					    			
 					    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/notice/list';" title="새로고침" style="float:right;">
-						            	<i class="fa-solid fa-arrow-rotate-left"></i>
+						            	<i class="fa-solid fa-arrow-rotate-right"></i>
 						            </button>
 					    		</h3>
-					    		<hr>		
-				
-								<table class="table table-hover board-list mt-4">
-									<thead class="table-light">
+					    	
+							</div>
+								<table class="table table-hover board-list mt-7">
+									<thead class="table-light ">
+									<thead style="background-color: white;">
+									
 										<tr>
 											<th width="60">번호</th>
 											<th>제목</th>
@@ -51,18 +63,34 @@ function searchList() {
 											<th width="50">파일</th>
 										</tr>
 									</thead>
-									
+													
+							<!-- 								
+							<thead>
+						    <tr>
+						      <th scope="col">번호</th>
+						      <th scope="col">제목</th>
+						      <th scope="col">작성자</th>
+						      <th scope="col">작성일</th>
+						      <th scope="col">조회수</th>
+						      <th scope="col">파일</th>
+						    </tr>
+						  </thead>
+								 -->							
 									<tbody>
+									
 										<c:forEach var="dto" items="${noticeList}">
 											<tr>
 												<td><span class="badge bg-primary">공지</span></td>
-												<td class="left">
+												<td class="right">
 													<a href="${articleUrl}&num=${dto.num}" class="text-reset">${dto.subject}</a>
 												</td>
+											
+												
 												<td>관리자</td>
 												<td class="text-center">${dto.regDate}</td>
 												<td class="text-center">${dto.hitCount}</td>
 												<td>
+												
 													<c:if test="${dto.fileCount != 0}">
 														<a href="${pageContext.request.contextPath}/notice/zipdownload?num=${dto.num}" class="text-reset"><i class="bi bi-file-arrow-down"></i></a>
 													</c:if>
@@ -77,6 +105,7 @@ function searchList() {
 													<a href="${articleUrl}&num=${dto.num}" class="text-reset">${dto.subject}</a>
 													<c:if test="${dto.gap < 10}">
 														<span class="badge text-bg-info">New</span>
+														
 													</c:if>
 												</td>
 												<td>관리자</td>

@@ -26,10 +26,10 @@
 					</table>
 				
 				
-					<div class="card mb-5 w-80 " style="margin:0 auto">
+					<div class="card mb-5 w-80" style="margin:0 auto; border: 1px solid #cccccc;">
 				    	<div class="card-header text-center">
 				    		<h3>
-				    			<i class="fas fa-clipboard-list"></i> 공지사항
+				    			<i class="fas fa-clipboard-list" ></i> 공지사항
 				    		</h3>
 				    	</div>
 
@@ -91,6 +91,7 @@
 					
 					<table class="table table-borderless">
 						<tr>
+							
 							<td width="50%">&nbsp;</td>
 							<td class="text-end">
 								<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/notice/list?${query}';">리스트</button>
