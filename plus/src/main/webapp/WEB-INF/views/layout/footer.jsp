@@ -32,10 +32,14 @@
 .left-toggle{
 	margin-right: 30px;
 }
-
+.hr-1{
+	width: 1296px;
+	margin: 0 auto;
+}
 </style>
+<hr class="mt-4 hr-1">
 <nav class="footer-container">
-	<div class="footer container-row container">
+	<div class="footer container-row container mt-4">
 		<div class="col-3 left ps-5 me-5">
 		    <p style="font-size: x-large; color: blue;"><i class="bi bi-calendar-plus-fill" style="color: blue;"></i>&nbsp;원데이 플러스</p>        
 		    <p class="text">일상의 따듯한 휴식과 새로운 경험, 원데이 플러스<br>
@@ -71,7 +75,7 @@
                 	<li><a class="dropdown-item" href="#">자주하는 질문</a></li>
                 	<li><a class="dropdown-item" href="#">1:1문의</a></li>
                 	<li><a class="dropdown-item" href="#">공지사항</a></li>
-                	<li><a class="dropdown-item" href="#">커뮤니티</a></li>
+                	<li><a class="dropdown-item" href="#">서비스 이용약관</a></li>
 				</ul>            	
 			</div>
 		</div>
