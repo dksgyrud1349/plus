@@ -34,7 +34,7 @@
                                     관리자 페이지
                                 </a>
                                 <div class="sb-sidenav-menu-heading">main</div>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="${pageContext.request.contextPath}/">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     사용자 페이지
                                 </a>
@@ -109,7 +109,7 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="https://pf.kakao.com/_cbxcnG">채팅(1:1문의)</a>
                                     <a class="nav-link" href="<c:url value='/admin/noticeManage/list'/>">공지사항</a>
-                                    <a class="nav-link" href="#">FAQ</a>
+                                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/faqManage/main">FAQ</a>
                                 </nav>
                             </div>
                         </div>

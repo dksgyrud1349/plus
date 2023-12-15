@@ -1,6 +1,7 @@
 package com.fa.plus.admin.controller;
 
 import java.net.URLDecoder;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,8 +52,11 @@ public class FaqManageController {
 	// AJAX-Text(HTML)
 	@RequestMapping(value = "list")
 	public String list(@RequestParam(value = "pageNo", defaultValue = "1") int current_page,
-			@RequestParam(defaultValue = "all") String schType, @RequestParam(defaultValue = "") String kwd,
-			@RequestParam(defaultValue = "0") int cateNum, HttpServletRequest req, Model model) throws Exception {
+			@RequestParam(defaultValue = "all") String schType, 
+			@RequestParam(defaultValue = "") String kwd,
+			@RequestParam(defaultValue = "0") int cateNum, 
+			HttpServletRequest req, 
+			Model model) throws Exception {
 
 		int size = 10;
 		int total_page = 0;

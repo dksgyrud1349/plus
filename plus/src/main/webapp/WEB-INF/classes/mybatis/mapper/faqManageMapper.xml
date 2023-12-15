@@ -4,7 +4,7 @@
 <mapper namespace="com.fa.plus.admin.mapper.FaqManageMapper">
 
 	<insert id="insertFaq" parameterType="com.fa.plus.admin.domain.FaqManage">
-		INSERT faq INTO (num, subject, content, regDate, userId, cateNum)
+		INSERT INTO faq (num, subject, content, regDate, userId, cateNum)
 			VALUES (faq_seq.NEXTVAL, #{subject}, #{content}, SYSDATE, #{userId}, #{cateNum})
 	</insert>
 	

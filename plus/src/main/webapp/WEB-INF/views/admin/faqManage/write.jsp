@@ -4,9 +4,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
 <style type="text/css">
-.body-main {
-	max-width: 900px;
-}
+
 </style>
 
 <style type="text/css">
@@ -100,12 +98,14 @@ function sendOk() {
 }
 </script>
 
-<div class="body-container">
-    <div class="body-title">
-		<h2><i class="fa-solid fa-clipboard-question"></i> 자주하는 질문 </h2>
-    </div>
-    
+<main class="wrapper" style="margin:0 auto; width:100%;" >
+	<div id="layoutSidenav_content" style="background: #F8F8FF;">
+		 	<div class="container-fluid px-5">
+				<div class="body-container" style="width:80%; margin:5% auto; ">
+				
     <div class="body-main">
+		<h2><i class="fa-solid fa-clipboard-question"></i> 자주하는 질문 </h2>
+    
     
 		<form name="faqForm" method="post">
 			<table class="table table-border border-top2 table-form">
@@ -196,7 +196,9 @@ function sendOk() {
 		
 	</div>
 </div>
-
+</div>
+</div>
+</main>
 <script type="text/javascript">
 function login() {
 	location.href = '${pageContext.request.contextPath}/member/login';
@@ -280,7 +282,7 @@ $(function(){
 	// 카테고리 등록
 	$("#category-dialog").on("click", ".btnCategoryAddOk", function(){	
 		const $tr = $(this).closest("tr");
-		let category = $tr.find("input[name=faqName]").val().trim();
+		let faqName = $tr.find("input[name=faqName]").val().trim();
 		let showFaq = $tr.find("select[name=showFaq]").val().trim();
 		let showUser = $tr.find("select[name=showUser]").val().trim();
 		let orderNo = $tr.find("input[name=orderNo]").val().trim();
