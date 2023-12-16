@@ -44,42 +44,44 @@ function check() {
 				        </div>
 		
 						<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
-							<table class="table mt-5 write-form">
-								<tr>
-									<td class="bg-light col-sm-2" scope="row">제 목</td>
-									<td>
-										<input type="text" name="subject" class="form-control" value="${dto.subject}">
-									</td>
-								</tr>
-			        
-								<tr>
-									<td class="bg-light col-sm-2" scope="row">작성자명</td>
-			 						<td>
-										<p class="form-control-plaintext">${sessionScope.member.userName}</p>
-									</td>
-								</tr>
-			
-								<tr>
-									<td class="bg-light col-sm-2" scope="row">내 용</td>
-									<td>
-										<textarea name="content" id="ir1" class="form-control" style="width: 99%; height: 300px;">${dto.content}</textarea>
-									</td>
-								</tr>
-							</table>
+							<form name="boardForm" method="post" enctype="multipart/form-data">	
+								<table class="table mt-5 write-form">
+									<tr>
+										<td class="bg-light col-sm-2" scope="row">제 목</td>
+										<td>
+											<input type="text" name="subject" class="form-control" value="${dto.subject}">
+										</td>
+									</tr>
+				        
+									<tr>
+										<td class="bg-light col-sm-2" scope="row">작성자명</td>
+				 						<td>
+											<p class="form-control-plaintext">${sessionScope.member.userName}</p>
+										</td>
+									</tr>
 				
-							<table class="table table-borderless">
-			 					<tr>
-									<td class="text-center">
-										<button type="button" class="btn btn-dark" onclick="submitContents(this.form);">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
-										<button type="reset" class="btn btn-success">다시입력</button>
-										<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/bbs/list';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
-										<c:if test="${mode=='update'}">
-											<input type="hidden" name="num" value="${dto.num}">
-											<input type="hidden" name="page" value="${page}">
-										</c:if>
-									</td>
-								</tr>
-							</table>
+									<tr>
+										<td class="bg-light col-sm-2" scope="row">내 용</td>
+										<td>
+											<textarea name="content" id="ir1" class="form-control" style="width: 99%; height: 300px;">${dto.content}</textarea>
+										</td>
+									</tr>
+								</table>
+					
+								<table class="table table-borderless">
+				 					<tr>
+										<td class="text-center">
+											<button type="button" class="btn btn-dark" onclick="submitContents(this.form);">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
+											<button type="reset" class="btn btn-success">다시입력</button>
+											<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/bbs/list';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
+											<c:if test="${mode=='update'}">
+												<input type="hidden" name="num" value="${dto.num}">
+												<input type="hidden" name="page" value="${page}">
+											</c:if>
+										</td>
+									</tr>
+								</table>
+							</form>
 						</div>
 					</div>
 				</div>

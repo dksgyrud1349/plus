@@ -7,7 +7,6 @@
 .board-article img { max-width: 650px; }
 
 </style>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
 <c:if test="${sessionScope.member.userId==dto.userId||sessionScope.member.membership>90}">
 	<script type="text/javascript">
