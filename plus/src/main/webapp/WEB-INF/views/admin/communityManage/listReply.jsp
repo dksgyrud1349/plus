@@ -20,7 +20,7 @@
 				</div>
 			</td>
 			<td width='50%' align='right' class='align-middle'>
-				<span class='reply-dropdown'><i class='bi bi-three-dots-vertical'></i></span>
+				
 				<div class="reply-menu">
 					<c:choose>
 						<c:when test="${sessionScope.member.membership > 90}">

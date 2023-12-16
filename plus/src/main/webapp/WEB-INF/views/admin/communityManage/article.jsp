@@ -97,26 +97,12 @@
 							    	</c:choose>
 								</td>
 								<td class="text-end">
-									<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/bbs/list?${query}';">리스트</button>
+									<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/communityManage/list?${query}';">리스트</button>
 								</td>
 							</tr>
 						</table>
 						
 						<div class="reply">
-							<form name="replyForm" method="post">
-								<div class='form-header'>
-									<span class="bold">댓글</span><span> - 타인을 비방하거나 개인정보를 유출하는 글의 게시를 삼가해 주세요.</span>
-								</div>
-								
-								<table class="table table-borderless reply-form">
-									<tr>
-										<td>
-											<textarea class='form-control' name="reContent"></textarea>
-										</td>
-									</tr>
-
-								</table>
-							</form>
 							<div id="listReply"></div>
 						</div>
 					</div>
