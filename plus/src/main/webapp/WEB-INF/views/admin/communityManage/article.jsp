@@ -68,7 +68,7 @@
 									<td colspan="2">
 										이전글 :
 										<c:if test="${not empty prevDto}">
-											<a href="${pageContext.request.contextPath}/bbs/article?${query}&num=${prevDto.num}">${prevDto.subject}</a>
+											<a href="${pageContext.request.contextPath}/admin/communityManage/article?${query}&num=${prevDto.num}">${prevDto.subject}</a>
 										</c:if>
 									</td>
 								</tr>
@@ -76,7 +76,7 @@
 									<td colspan="2">
 										다음글 :
 										<c:if test="${not empty nextDto}">
-											<a href="${pageContext.request.contextPath}/bbs/article?${query}&num=${nextDto.num}">${nextDto.subject}</a>
+											<a href="${pageContext.request.contextPath}/admin/communityManage/article?${query}&num=${nextDto.num}">${nextDto.subject}</a>
 										</c:if>
 									</td>
 								</tr>
@@ -161,7 +161,7 @@ $(function(){
 			return false;
 		}
 		
-		let url = '${pageContext.request.contextPath}/bbs/insertBoardLike';
+		let url = '${pageContext.request.contextPath}/admin/communityManage/insertBoardLike';
 		let num = '${dto.num}';
 		let query = 'num=' + num + '&userLiked=' + userLiked;
 		
@@ -193,7 +193,7 @@ $(function(){
 });
 
 function listPage(page) {
-	let url = '${pageContext.request.contextPath}/bbs/listReply';
+	let url = '${pageContext.request.contextPath}/admin/communityManage/listReply';
 	let query = 'num=${dto.num}&pageNo=' + page;
 	let selector = '#listReply';
 	
@@ -216,7 +216,7 @@ $(function(){
 		let replyNum = $(this).attr('data-replyNum');
 		let page = $(this).attr('data-pageNo');
 		
-		let url = '${pageContext.request.contextPath}/bbs/deleteReply';
+		let url = '${pageContext.request.contextPath}/admin/communityManage/deleteReply';
 		let query = 'replyNum=' + replyNum + '&mode=reply';
 		
 		const fn = function(data){
