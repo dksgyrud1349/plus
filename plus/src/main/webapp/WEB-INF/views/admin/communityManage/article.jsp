@@ -7,7 +7,6 @@
 .board-article img { max-width: 650px; }
 
 </style>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
 <c:if test="${sessionScope.member.userId==dto.userId||sessionScope.member.membership>90}">
 	<script type="text/javascript">
@@ -205,59 +204,7 @@ function listPage(page) {
 	ajaxFun(url, 'get', query, 'text', fn);
 }
 
-// 리플 등록
-$(function(){
-	$('.btnSendReply').click(function(){
-		let num = '${dto.num}';
-		const $tb = $(this).closest('table');
 
-		let content = $tb.find('textarea').val().trim();
-		if(! content) {
-			$tb.find('textarea').focus();
-			return false;
-		}
-		content = encodeURIComponent(content);
-		
-		let url = '${pageContext.request.contextPath}/bbs/insertReply';
-		let query = 'num=' + num + '&reContent=' + content;
-		
-		const fn = function(data){
-			$tb.find('textarea').val('');
-			
-			let state = data.state;
-			if(state === 'true') {
-				listPage(1);
-			} else if(state === 'false') {
-				alert('댓글을 추가 하지 못했습니다.');
-			}
-		};
-		
-		ajaxFun(url, 'post', query, 'json', fn);
-	});
-});
-
-// 삭제, 신고 메뉴
-$(function(){
-	$('.reply').on('click', '.reply-dropdown', function(){
-		const $menu = $(this).next('.reply-menu');
-		if($menu.is(':visible')) {
-			$menu.fadeOut(100);
-		} else {
-			$('.reply-menu').hide();
-			$menu.fadeIn(100);
-
-			let pos = $(this).offset(); // 선택한 요소 집합의 첫 번째 요소의 위치를 HTML 문서를 기준으로 반환
-			$menu.offset( {left:pos.left-70, top:pos.top+20} );
-		}
-	});
-	
-	$('.reply').on('click', function() {
-		if($(event.target.parentNode).hasClass('reply-dropdown')) {
-			return false;
-		}
-		$(".reply-menu").hide();
-	});
-});
 
 // 댓글 삭제
 $(function(){
@@ -280,85 +227,4 @@ $(function(){
 		ajaxFun(url, 'post', query, 'json', fn);
 	});
 });
-
-// 댓글 좋아요 / 싫어요
-$(function(){
-	// 댓글 좋아요 / 싫어요 등록
-	$('.reply').on('click', '.btnSendReplyLike', function(){
-		let replyNum = $(this).attr('data-replyNum');
-		let replyLike = $(this).attr('data-replyLike');
-		const $btn = $(this);
-		
-		let msg = '게시물이 마음에 들지 않으십니까 ?';
-		if(replyLike === '1') {
-			msg = '게시물에 공감하십니까 ?';
-		}
-		
-		if(! confirm(msg)) {
-			return false;
-		}
-		
-		let url = '${pageContext.request.contextPath}/bbs/insertReplyLike';
-		let query = 'replyNum=' + replyNum + '&replyLike=' + replyLike;
-		
-		const fn = function(data){
-			let state = data.state;
-			if(state === 'true') {
-				let likeCount = data.likeCount;
-				let disLikeCount = data.disLikeCount;
-				
-				$btn.parent('td').children().eq(0).find('span').html(likeCount);
-				$btn.parent('td').children().eq(1).find('span').html(disLikeCount);
-			} else if(state === 'liked') {
-				alert('게시물 공감 여부는 한번만 가능합니다. !!!');
-			} else {
-				alert('게시물 공감 여부 처리가 실패했습니다. !!!');
-			}
-		};
-		
-		ajaxFun(url, 'post', query, 'json', fn);
-	});
-});
-
-
-// 댓글 숨김기능
-$(function(){
-	$('.reply').on('click', '.hideReply', function(){
-		let $menu = $(this);
-		
-		let replyNum = $(this).attr('data-replyNum');
-		let showReply = $(this).attr('data-showReply');
-		let msg = '댓글을 숨김 하시겠습니까 ? ';
-		if(showReply === '0') {
-			msg = '댓글 숨김을 해제 하시겠습니까 ? ';
-		}
-		if(! confirm(msg)) {
-			return false;
-		}
-		
-		showReply = showReply === '1' ? '0' : '1';
-		
-		let url = '${pageContext.request.contextPath}/bbs/replyShowHide';
-		let query = 'replyNum=' + replyNum + '&showReply=' + showReply;
-		
-		const fn = function(data){
-			if(data.state === 'true') {
-				let $item = $($menu).closest('tr').next('tr').find('td');
-				if(showReply === "1") {
-					$item.removeClass('text-primary').removeClass('text-opacity-50');
-					$menu.attr('data-showReply', '1');
-					$menu.html('숨김');
-				} else {
-					$item.addClass('text-primary').addClass('text-opacity-50');
-					$menu.attr('data-showReply', '0');
-					$menu.html('표시');
-				}
-			}
-		};
-		
-		ajaxFun(url, 'post', query, 'json', fn);
-	});
-});
-
-
 </script>

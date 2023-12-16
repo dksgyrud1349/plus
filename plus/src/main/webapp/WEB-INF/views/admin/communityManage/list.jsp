@@ -5,7 +5,6 @@
 <style type="text/css">
 
 </style>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/paginate-boot.js"></script>
 
@@ -102,7 +101,7 @@ function searchList() {
 					</tbody>
 				</table>
 			
-				<div class="page-navigation">
+				<div class="page-navigation dataCount">
 					${dataCount == 0 ? "등록된 이벤트가 없습니다." : paging}
 				</div>
 
