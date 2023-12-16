@@ -8,12 +8,12 @@
 
 </style>
 
-<c:if test="${sessionScope.member.userId==dto.userId||sessionScope.member.membership>90}">
+<c:if test="${sessionScope.member.membership>90}">
 	<script type="text/javascript">
 		function deleteBoard() {
 		    if(confirm('게시글을 삭제 하시 겠습니까 ? ')) {
 			    let query = 'num=${dto.num}&${query}';
-			    let url = '${pageContext.request.contextPath}/community/delete?' + query;
+			    let url = '${pageContext.request.contextPath}/admin/communityManage/delete?' + query;
 		    	location.href = url;
 		    }
 		}
@@ -87,7 +87,7 @@
 							<tr>
 								<td width="50%">
 									<c:choose>
-							    		<c:when test="${sessionScope.member.userId==dto.userId || sessionScope.member.membership>90}">
+							    		<c:when test="${sessionScope.member.membership>90}">
 							    			<button type="button" class="btn btn-success" onclick="deleteBoard();">삭제</button>
 							    		</c:when>
 							    		<c:otherwise>
