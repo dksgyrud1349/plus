@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.fa.plus.admin.domain.CommunityManage;
+import com.fa.plus.admin.domain.ReplyManage;
 
 @Mapper
 public interface CommunityManageMapper {

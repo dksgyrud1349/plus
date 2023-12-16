@@ -76,7 +76,6 @@ function searchList() {
 									<th width="100">작성자</th>
 									<th width="100">작성일</th>
 									<th width="70">조회수</th>
-									<th width="50">파일</th>
 								</tr>
 							</thead>
 						<tbody>
@@ -98,11 +97,6 @@ function searchList() {
 								<td>${dto.userName}</td>
 								<td>${dto.regDate}</td>
 								<td>${dto.hitCount}</td>
-								<td>
-									<c:if test="${not empty dto.saveFilename}">
-										<a href="${pageContext.request.contextPath}/admin/communityManage/download?num=${dto.num}" class="text-reset"><i class="bi bi-file-arrow-down"></i></a>
-									</c:if>
-								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -121,7 +115,7 @@ function searchList() {
 									<select name="schType" class="form-select">
 										<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
 										<option value="userName" ${schType=="userName"?"selected":""}>작성자</option>
-										<option value="reg_date" ${schType=="reg_date"?"selected":""}>등록일</option>
+										<option value="reg_date" ${schType=="regDate"?"selected":""}>등록일</option>
 										<option value="subject" ${schType=="subject"?"selected":""}>제목</option>
 										<option value="content" ${schType=="content"?"selected":""}>내용</option>
 									</select>

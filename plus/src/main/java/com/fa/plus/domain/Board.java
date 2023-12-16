@@ -1,9 +1,5 @@
 package com.fa.plus.domain;
 
-/**
- * @author user
- *
- */
 public class Board {
     private long num;
     private String userId;
