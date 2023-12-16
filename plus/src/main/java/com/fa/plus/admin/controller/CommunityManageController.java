@@ -117,10 +117,36 @@ public class CommunityManageController {
 		map.put("kwd", kwd);
 		map.put("num", num);
 		
+		CommunityManage prevDto = communityManageService.findByPrev(map);
+		CommunityManage nextDto = communityManageService.findByNext(map);
+		
 		model.addAttribute("dto", dto);
+		model.addAttribute("prevDto", prevDto);
+		model.addAttribute("nextDto", nextDto);
 		model.addAttribute("page", page);
 		model.addAttribute("query", query);
 		
 		return ".admin.communityManage.article";
 	}
+	
+	@GetMapping("delete")
+	public String delete(@RequestParam long num,
+			@RequestParam String page,
+			@RequestParam(defaultValue = "all") String schType,
+			@RequestParam(defaultValue = "") String kwd,
+			HttpSession session) throws Exception {
+
+		kwd = URLDecoder.decode(kwd, "utf-8");
+		String query = "page=" + page;
+		if (kwd.length() != 0) {
+			query += "&schType=" + schType + "&kwd=" + URLEncoder.encode(kwd, "UTF-8");
+		}
+
+		communityManageService.deleteCommunity(num);
+
+		return "redirect:/admin/communityManage/list?" + query;
+
+	}
+	
+	
 }

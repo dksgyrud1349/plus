@@ -5,7 +5,6 @@
 <style type="text/css">
 
 </style>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/paginate-boot.js"></script>
 
@@ -106,7 +105,7 @@ function searchList() {
 								</tbody>
 							</table>
 			
-							<div class="page-navigation"></div>
+							<div class="page-navigation dataCount" ></div>
 			
 							<table class="table">
 									<tr>
