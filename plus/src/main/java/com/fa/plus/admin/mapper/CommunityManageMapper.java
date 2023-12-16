@@ -7,12 +7,24 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.fa.plus.admin.domain.CommunityManage;
+import com.fa.plus.domain.Reply;
 
 @Mapper
 public interface CommunityManageMapper {
-	public List<CommunityManage> communityList(Map<String, Object> map);
 	public int dataCount(Map<String, Object> map);
+	public List<CommunityManage> communityList(Map<String, Object> map);
 	public void deleteCommunity(long num) throws SQLException;
-	public int replyCount(Map<String, Object> map);
+	
 	public CommunityManage findById(long num);
+	public CommunityManage findByPrev(Map<String, Object> map);
+	public CommunityManage findByNext(Map<String, Object> map);
+
+	public int CommunityLikeCount(long num);
+	
+	public int replyCount(Map<String, Object> map);
+	public List<ReplyManage> listReply(Map<String, Object> map);
+	public void deleteReply(Map<String, Object> map) throws SQLException;
+	
+	public Map<String, Object> replyLikeCount(Map<String, Object> map);
+	
 }

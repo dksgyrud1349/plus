@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fa.plus.admin.mapper.CommunityManageMapper">
+<mapper namespace="com.fa.plus.mapper.CommunityManageMapper">
+	<insert id="insertBoard" parameterType="com.fa.plus.domain.CommunityManage">
+		INSERT INTO commu(num, userId, subject, content, hitCount, regDate)
+			VALUES(commu_seq.NEXTVAL, #{userId}, #{subject}, #{content}, 0, SYSDATE)
+	</insert>
+	
+	<delete id="deleteBoard" parameterType="Long">
+		DELETE FROM commu WHERE num = #{num}
+	</delete>
+	
 	<sql id="where-list">
 		<choose>
 			<when test="schType == 'all' ">
@@ -21,7 +30,18 @@
 		</choose>
 	</sql>
 	
-	<select id="communityList" parameterType="map" resultType="com.fa.plus.admin.domain.CommunityManage">
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM commu c
+		JOIN member1 m ON c.userId=m.userId
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+		</where>   
+	</select>
+	
+	<select id="listCommunity" parameterType="map" resultType="com.fa.plus.domain.CommunityManage">
 		SELECT c.num, c.userId, m.userName, subject, 
 			   TO_CHAR(c.regDate, 'YYYY-MM-DD') regDate,
 			   hitCount,
@@ -42,30 +62,93 @@
 		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
 	</select>
 	
-	<select id="dataCount" parameterType="map" resultType="Integer">
-		SELECT NVL(COUNT(*), 0)
-		FROM commu co
+	<!-- 글보기 -->
+	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.CommunityManage">
+		SELECT c.num, c.userId, userName, subject, content,
+			   hitCount, c.regDate,
+			   NVL(boardLikeCount, 0) boardLikeCount
+		FROM commu c
+		JOIN member1 m ON c.userId=m.userId
+		LEFT OUTER JOIN (
+			SELECT num, COUNT(*) boardLikeCount FROM commuLike
+			GROUP BY num
+		) bc ON c.num = bc.num
+		WHERE c.num = #{num}
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="updateHitCount" parameterType="Long">
+		UPDATE commu SET hitCount=hitCount+1 WHERE num = #{num}
+	</update>
+	
+	<!-- AND 가 필요 없는 경우 자동으로 제거 됨 -->
+	<!-- 이전글 -->
+	<select id="findByPrev" parameterType="map" resultType="com.fa.plus.domain.CommunityManage">
+		SELECT num, subject
+		FROM commu c
+		JOIN member1 m ON c.userId=m.userId
 		<where>
-			<if test="kwd != null and kwd != ''">
+			<if test="kwd != null and kwd != '' ">
 				<include refid="where-list"/>
 			</if>
+			AND (num &gt; #{num})
 		</where>
+		ORDER BY num ASC
+		FETCH FIRST 1 ROWS ONLY
 	</select>
-	<delete id="deleteCommunity">
-		DELETE FROM commu WHERE num = #{num}
-	</delete>
+
+	<!-- 다음글 -->
+	<select id="findByNext" parameterType="map" resultType="com.fa.plus.domain.CommunityManage">
+		SELECT num, subject
+		FROM commu b
+		JOIN member1 m ON b.userId=m.userId
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+			AND (num &lt; #{num})
+		</where>
+		ORDER BY num DESC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
 	
+      
+	<!-- 게시글 좋아요 개수 -->
+	<select id="boardLikeCount" parameterType="Long" resultType="Integer">
+		SELECT COUNT(*) FROM commuLike WHERE num=#{num}
+	</select>
+	
+	<!-- 댓글 -->
+
 	<select id="replyCount" parameterType="map" resultType="Integer">
 		SELECT NVL(COUNT(*), 0)
 		FROM reply
 		WHERE num=#{num}
+		<if test="membership lt 91">
+			AND ( showReply=1 OR ( showReply=0 AND userId=#{userId} ) )
+		</if>
 	</select>
 	
-	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.Board">
-		SELECT c.num, c.userId, m.userName, subject, content,
-			   hitCount, c.regDate
-		FROM commu c
-		JOIN member1 m ON c.userId = m.userId
-		WHERE c.num = #{num}
+	<!-- 댓글리스트 -->
+	<select id="listReply" parameterType="map" resultType="com.fa.plus.domain.ReplyManage">
+		SELECT r.replyNum, r.userId, userName, num, reContent, r.reRegDate, NVL(showReply, 1) showReply, 
+			   NVL(likeCount, 0) likeCount
+		FROM reply r
+		JOIN member1 m ON r.userId = m.userId
+		LEFT OUTER JOIN (
+			SELECT replyNum, COUNT(DECODE(bReplyLike, 1, 1)) likeCount
+			FROM replyLike
+			GROUP BY replyNum
+		) c ON r.replyNum = c.replyNum
+		WHERE num=#{num}
+		ORDER BY r.replyNum DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
 	</select>
+	
+	<delete id="deleteReply" parameterType="map">
+		DELETE FROM reply
+		WHERE replyNum=#{replyNum}
+	</delete>
+	
+	
 </mapper>
