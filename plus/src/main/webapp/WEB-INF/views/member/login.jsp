@@ -68,7 +68,7 @@ function sendLogin() {
                 <div class="border mt-5 p-4">
                     <form name="loginForm" action="" method="post" class="row g-3">
                     	<h4 class="text-center" style="margin-top:24px;">Welcome</h4>
-                        <h3 class="text-center" style="margin-top:8px;"><i class="bi bi-calendar2-plus"></i>&nbsp;원데이 플러스</h3>
+                        <h3 class="text-center" style="margin-top:8px; font-weight:bold;"><i class="bi bi-calendar2-plus"></i>&nbsp;원데이 플러스</h3>
                         	<div class="col-12">
                             	<label class="mb-1 ps-1">아이디</label>
 	                            	<input type="text" name="userId" class="form-control box ps-4 idpwd" placeholder="아이디">

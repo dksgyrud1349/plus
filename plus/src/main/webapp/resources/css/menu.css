@@ -44,7 +44,7 @@
 .cbp-hrmenu .cbp-hrsub {
 	display: none;
 	position: absolute;
-	background: #F4FFFF;												/*  */
+	background: #fff;												/*  */
 	width: 100%;
 	left: 0;
 	border: 10px double lightgrey;
@@ -85,7 +85,7 @@
 	padding: 2em 0 0.6em;
 	margin: 0;
 	font-size: 160%;
-	font-weight: 300;
+	font-weight: 700;
 }
 
 
@@ -100,7 +100,7 @@
 .my-hr1{
 	border: 0;
 	height: 2px;
-	background: #ccc;
+	background: #828282;
 	width: 80%;
 }
 

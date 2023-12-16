@@ -28,6 +28,23 @@
 		a:hover, button[type="button"]:hover, .btn:hover, #cbp-hrmenu a:hover, #cbp-hrmenu li:hover{
 	  		cursor: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="red" class="bi bi-balloon-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.49 10.92C19.412 3.382 11.28-2.387 8 .986 4.719-2.387-3.413 3.382 7.51 10.92l-.234.468a.25.25 0 1 0 .448.224l.04-.08c.009.17.024.315.051.45.068.344.208.622.448 1.102l.013.028c.212.422.182.85.05 1.246-.135.402-.366.751-.534 1.003a.25.25 0 0 0 .416.278l.004-.007c.166-.248.431-.646.588-1.115.16-.479.212-1.051-.076-1.629-.258-.515-.365-.732-.419-1.004a2.376 2.376 0 0 1-.037-.289l.008.017a.25.25 0 1 0 .448-.224l-.235-.468ZM6.726 1.269c-1.167-.61-2.8-.142-3.454 1.135-.237.463-.36 1.08-.202 1.85.055.27.467.197.527-.071.285-1.256 1.177-2.462 2.989-2.528.234-.008.348-.278.14-.386Z"/></svg>') 20 20, auto;
 		}
+		.side{
+		border-radius: 100px;
+		
+		}
+		.iconscroll{
+			background: #b4b4b4;
+			border-radius: 20px;
+			margin-right: 3%;
+			margin-top: 4%; 
+			text-align: center;
+			padding: 1% 1%;
+			z-index: 3;
+		}
+		.btn-outline-light{
+			margin-top: 37.5%;	
+		}
+		
 	</style>
 	
 </head>
@@ -49,13 +66,19 @@
 
 <div id="scroll" class="iconscroll" style="position:absolute;right:0;top:0;" > 
 	<table> 
-		<tr><td><button type="button" class="btn btn-outline-light"><i class="bi bi-person"></i></button></td> </tr>
-		<tr><td><button type="button" class="btn btn-outline-light"><i class="bi bi bi-alarm"></i></button></td> </tr>
-		<tr><td><button type="button" class="btn btn-outline-light"><i class="bi bi-cart4"></i></button></td> </tr>
-		<tr><td><button type="button" class="btn btn-outline-light"><i class="bi bi-credit-card-2-front"></i></button></td> </tr>
-		<tr><td><button type="button" class="btn btn-outline-light"><i class="bi bi-calendar2-event"></i></button></td> </tr>
-		<tr><td><button type="button" class="btn btn-outline-light"><i class="bi bi-person-fill-gear"></i></button></td> </tr>
-	</table> 
+		<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top:16px;" onclick="#"><i class="bi bi-person"></i></button></td> </tr>
+		<td class="fs-6 fw-light text-white">로그인<div class="border-bottom pt-3"></div></td>
+		<tr><td><button type="button" class="btn btn-outline-light side" onclick="#"><i class="bi bi bi-alarm"></i></button></td> </tr>
+		<td class="fs-6 fw-light text-white">이벤트<div class="border-bottom pt-3"></div></td>
+		<tr><td><button type="button" class="btn btn-outline-light side" onclick="#"><i class="bi bi-cart4"></i></button></td> </tr>
+		<td class="fs-6 fw-light text-white">문의<div class="border-bottom pt-3"></div></td>
+		<tr><td><button type="button" class="btn btn-outline-light side" onclick="#"><i class="bi bi-credit-card-2-front"></i></button></td> </tr>
+		<td class="fs-6 fw-light text-white">공지사항<div class="border-bottom pt-3"></div></td>
+		<tr><td><button type="button" class="btn btn-outline-light side" onclick="#"><i class="bi bi-calendar2-event"></i></button></td> </tr>
+		<td class="fs-6 fw-light text-white">커뮤니티<div class="border-bottom pt-3"></div></td>
+		<tr><td><button type="button" class="btn btn-outline-light side" onclick="#"><i class="bi bi-camera"></i></button></td> </tr>
+		<td class="fs-6 fw-light text-white pb-2">포토 갤러리</td>
+	</table> <!-- 로그인, 이벤트, 문의, 공지사항, 커뮤니티 -->
 </div>
 	<span id="brr"></span>
 

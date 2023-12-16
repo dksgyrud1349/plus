@@ -16,6 +16,19 @@ for (let i = 0; i < reviewBars.length; i++) {
 	addSliceAnimation(i);
 }
 </script>
+<style>
+.recommend{
+  	margin: 0px auto;
+  	overflow: hidden;
+  	border-radius: 20px 20px 0 0;
+}
+.recommend img{
+	transition: all 0.2s linear;
+}
+.recommend img:hover{
+	transform: scale(1.2);
+}
+</style>
 
 	<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
 		<div class="carousel-indicators">
@@ -45,16 +58,16 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  </div>
 
 	  <div class="row" style="margin: 3% auto;">
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/center.jpg');">
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/couple.jpg'); background-size: cover;">
   			<p class="cbtn_1">데이트</p>
 		</button>
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/center.jpg');">
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/pottery.jpg'); background-size: cover;">
 			<p class="cbtn_1">공예</p>
 		</button>
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/center.jpg');">
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/handmade.jpg'); background-size: cover;">
 			<p class="cbtn_1">핸드 메이드</p>
 		</button>
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/center.jpg');">
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/exercise.jpg'); background-size: cover;">
 			<p class="cbtn_1">건강·운동</p>
 		</button>
 	  </div>
@@ -71,7 +84,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  <!-- card - 1-->
 	  
 
-	  
+	  <!--  -->
 	  
 	  <hr style="border: 3px dotted #47a3da;">
 	  <div class="card-container d-flex justify-content-between" id="card-container">
@@ -81,34 +94,38 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</button>
 
 	  <div class="card" style="width: 18rem;">
-		<img src="${pageContext.request.contextPath}/resources/images/wood_1.jpg" class="card-img-top" alt="...">
-		 <div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
-		<div class="card-body">
-		  <h5 class="card-title">목공 클래스</h5>
-		  <p class="card-text">클래스 설명-1<br>클래스 설명-1<br>클래스 설명-1</p>
+	  	<div class="recommend">
+			<img src="${pageContext.request.contextPath}/resources/images/wood_1.jpg" class="card-img-top " alt="...">
 		</div>
-		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름</li>
-		  <li class="list-group-item">가격 : 10,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강남구 123번길 123</li>
-		</ul>
-		<div class="card-body">
-			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  <a href="${pageContext.request.contextPath}/" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
-		</div>
+			 <div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
+			<div class="card-body">
+			  <h5 class="card-title">[서울]목공 클래스</h5>
+			  <p class="card-text">-&nbsp;원하는 목재와 사이즈를 선택가능.<br>-&nbsp;버닝펜으로 자신만의 문구완성.<br>-&nbsp;퀄리티높은 나만의 도마 완성.</p>
+			</div>
+			<ul class="list-group list-group-flush">
+			  <li class="list-group-item">강사이름 : 이승준</li>
+			  <li class="list-group-item">가격 : 30,000원</li>
+			  <li class="list-group-item">주소 : 서울특별시 강남구 123번길 123</li>
+			</ul>
+			<div class="card-body">
+				<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
+			  <a href="${pageContext.request.contextPath}/" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
+			</div>
 	  </div>
 
 	  <div class="card" style="width: 18rem;">
+	  <div class="recommend">
 		<img src="${pageContext.request.contextPath}/resources/images/pouch_1.jpg" class="card-img-top" alt="...">
+	  </div>
 		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
 		<div class="card-body">
-			<h5 class="card-title">지갑 / 파우치 클래스</h5>
-			<p class="card-text">클래스 설명-1<br>클래스 설명-1<br>클래스 설명-1</p>
+			<h5 class="card-title">[서울]지갑 / 파우치 클래스</h5>
+			<p class="card-text">-&nbsp;엣지코트, 이니셜불박 무료<br>-&nbsp;일상생활에서 사용하기에 유용.<br>-&nbsp;데이트, 취미, 모임활동 모두적합</p>
 		</div>
 		<ul class="list-group list-group-flush">
-			<li class="list-group-item">강사이름</li>
-		  <li class="list-group-item">가격 : 10,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강남구 123번길 123</li>
+			<li class="list-group-item">강사이름 : 신유라</li>
+		  <li class="list-group-item">가격 : 50,000원</li>
+		  <li class="list-group-item">주소 : 서울특별시 송파구 송파대로 555 (우)05510</li>
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
@@ -117,34 +134,38 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  </div>
 
 	  <div class="card" style="width: 18rem;">
+	  <div class="recommend">
 		<img src="${pageContext.request.contextPath}/resources/images/flower_1.jpg" class="card-img-top" alt="...">
+	  </div>
 		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
 		<div class="card-body">
-			<h5 class="card-title">플라워 클래스</h5>
-			<p class="card-text">클래스 설명-1<br>클래스 설명-1<br>클래스 설명-1</p>
+			<h5 class="card-title">[대구]플라워 클래스</h5>
+			<p class="card-text">-&nbsp;홀더는 직접말린 생화를 이용<br>-&nbsp;티라이트있으면 지속사용가능<br>-&nbsp;지인에게 선물하기좋은 힐링수업</p>
 		</div>
 		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름</li>
-		  <li class="list-group-item">가격 : 10,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강남구 123번길 123</li>
+			<li class="list-group-item">강사이름 : 이민주</li>
+		  	<li class="list-group-item">가격 : 35,000원</li>
+		  	<li class="list-group-item">주소 : 대전 중구 대종로451번길 엑스포로 107</li>
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
-		  <a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
+			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
 		  <a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
 		</div>
 	  </div>
 
 	  <div class="card" style="width: 18rem;">
+	  <div class="recommend">
 		<img src="${pageContext.request.contextPath}/resources/images/flower_2.jpg" class="card-img-top" alt="...">
+	  </div>	
 		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
 		<div class="card-body">
-			<h5 class="card-title">플라워 클래스</h5>
-			<p class="card-text">클래스 설명-1<br>클래스 설명-1<br>클래스 설명-1</p>
+			<h5 class="card-title">[서울]보컬 트레이닝 클래스</h5>
+			<p class="card-text">-&nbsp;호흡,발성 카피 및 분석<br>-&nbsp;본인 원하는곡 선정<br>-&nbsp;악보 및 수업에 필요 준비물 구비</p>
 		</div>
 		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름</li>
-		  <li class="list-group-item">가격 : 10,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강남구 123번길 123</li>
+		  <li class="list-group-item">강사이름 : 안정희</li>
+		  <li class="list-group-item">가격 : 40,000원</li>
+		  <li class="list-group-item">주소 : 서울특별시 마포구 월드컵북로 321 (우)03488</li>
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
@@ -153,16 +174,18 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  </div>
 
 	  <div class="card" style="width: 18rem;">
+	  <div class="recommend">
 		<img src="${pageContext.request.contextPath}/resources/images/pouch_1.jpg" class="card-img-top" alt="...">
+	  </div>	
 		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
 		<div class="card-body">
-			<h5 class="card-title">원데이 클래스 이름-5</h5>
-			<p class="card-text">클래스 설명-1<br>클래스 설명-1<br>클래스 설명-1</p>
+			<h5 class="card-title">[천안]스콘 만들기 클래스</h5>
+			<p class="card-text">-&nbsp;레시피가 제공되는 수업.<br>-&nbsp;비교적 난이도쉬운 베이킹수업.<br>-&nbsp;맛있는 커피와 간식도 제공.</p>
 		</div>
 		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름</li>
-		  <li class="list-group-item">가격 : 10,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강남구 123번길 123</li>
+		  <li class="list-group-item">강사이름 : 김정현</li>
+		  <li class="list-group-item">가격 : 40,000원</li>
+		  <li class="list-group-item">주소 : 충청남도 천안시 동남구 담방로21번길</li>
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
@@ -171,16 +194,18 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  </div>
 
 	  <div class="card" style="width: 18rem;">
+	  <div class="recommend">
 		<img src="${pageContext.request.contextPath}/resources/images/flower_1.jpg" class="card-img-top" alt="...">
+	  </div>	
 		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
 		<div class="card-body">
-			<h5 class="card-title">원데이 클래스 이름-6</h5>
-			<p class="card-text">클래스 설명-1<br>클래스 설명-1<br>클래스 설명-1</p>
+			<h5 class="card-title">[성남]필라테스 클래스</h5>
+			<p class="card-text">-&nbsp;스트레스 해소/자세교정/다이어트<br>-&nbsp;4:1 소그룹 필라테스 수업<br>-&nbsp;필라테스 처음 접하시는분 환영</p>
 		</div>
 		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름</li>
-		  <li class="list-group-item">가격 : 10,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강남구 123번길 123</li>
+		  <li class="list-group-item">강사이름 : 김예진</li>
+		  <li class="list-group-item">가격 : 25,000원</li>
+		  <li class="list-group-item">주소 : 경기도 성남시 분당구 판교로726번길 2</li>
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
@@ -189,16 +214,18 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  </div>
 
 	  <div class="card" style="width: 18rem;">
+	  <div class="recommend">
 		<img src="${pageContext.request.contextPath}/resources/images/flower_2.jpg" class="card-img-top" alt="...">
+	  </div>	
 		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
 		<div class="card-body">
-			<h5 class="card-title">원데이 클래스 이름-7</h5>
-			<p class="card-text">클래스 설명-1<br>클래스 설명-1<br>클래스 설명-1</p>
+			<h5 class="card-title">[서울]스쿠버다이빙 클래스</h5>
+			<p class="card-text">-&nbsp;다이빙 방법 설명뒤 즉시 체험<br>-&nbsp;수중 인생샷 촬영<br>-&nbsp;부부와 커플 이색취미</p>
 		</div>
 		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름</li>
-		  <li class="list-group-item">가격 : 10,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강남구 123번길 123</li>
+		  <li class="list-group-item">강사이름 : 최강남</li>
+		  <li class="list-group-item">가격 : 65,000원</li>
+		  <li class="list-group-item">주소 : 서울특별시 강서구 등촌동 513-11</li>
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
@@ -207,16 +234,18 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  </div>
 
 	  <div class="card" style="width: 18rem;">
+	  <div class="recommend">
 		<img src="${pageContext.request.contextPath}/resources/images/wood_1.jpg" class="card-img-top" alt="...">
+	  </div>	
 		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
 		<div class="card-body">
-			<h5 class="card-title">원데이 클래스 이름-8</h5>
-			<p class="card-text">클래스 설명-1<br>클래스 설명-1<br>클래스 설명-1</p>
+			<h5 class="card-title">[수원]드로우 페인팅 클래스</h5>
+			<p class="card-text">-&nbsp;설명-스케치-채색까지 현장지도<br>-&nbsp;감성 인테리어 소품<br>-&nbsp;모든재료 준비물 구비</p>
 		</div>
 		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름</li>
-		  <li class="list-group-item">가격 : 10,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강남구 123번길 123</li>
+		  <li class="list-group-item">강사이름 : 정유진</li>
+		  <li class="list-group-item">가격 : 30,000원</li>
+		  <li class="list-group-item">주소 : 경기도 수원시 권선구 세권로315번길 33-6</li>
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
@@ -225,16 +254,18 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  </div>
 
 	  <div class="card" style="width: 18rem;">
+	  <div class="recommend">
 		<img src="${pageContext.request.contextPath}/resources/images/flower_1.jpg" class="card-img-top" alt="...">
+	  </div>	
 		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
 		<div class="card-body">
-			<h5 class="card-title">원데이 클래스 이름-9</h5>
-			<p class="card-text">클래스 설명-1<br>클래스 설명-1<br>클래스 설명-1</p>
+			<h5 class="card-title">[용인]쿠키 만들기 클래스</h5>
+			<p class="card-text">-&nbsp;1:1수업 가능<br>-&nbsp;2명이상 수강시 인기빵 지급.<br>-&nbsp;레시피 제공</p>
 		</div>
 		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름</li>
-		  <li class="list-group-item">가격 : 10,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강남구 123번길 123</li>
+		  <li class="list-group-item">강사이름 : 박세리</li>
+		  <li class="list-group-item">가격 : 35,000원</li>
+		  <li class="list-group-item">주소 : 경기도 용인시 처인구 포곡읍 전대리 1387</li>
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
@@ -243,16 +274,18 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  </div>
 
 	  <div class="card" style="width: 18rem;">
+	  <div class="recommend">
 		<img src="${pageContext.request.contextPath}/resources/images/flower_2.jpg" class="card-img-top" alt="...">
+	  </div>	
 		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
 		<div class="card-body">
-			<h5 class="card-title">원데이 클래스 이름-10</h5>
-			<p class="card-text">클래스 설명-1<br>클래스 설명-1<br>클래스 설명-1</p>
+			<h5 class="card-title">[대구]코딩 클래스</h5>
+			<p class="card-text">-&nbsp;원하는 프로그램 개별맞춤<br>-&nbsp;기초다지기 액기스 수업<br>-&nbsp;시간협상후 개별레슨 가능</p>
 		</div>
 		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름</li>
-		  <li class="list-group-item">가격 : 10,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강남구 123번길 123</li>
+		  <li class="list-group-item">강사이름 : 김호준</li>
+		  <li class="list-group-item">가격 : 50,000원</li>
+		  <li class="list-group-item">주소 : 대구광역시 서구 통학로15길 15-2</li>
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
@@ -261,16 +294,18 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  </div>
 
 	  <div class="card" style="width: 18rem;">
+	  <div class="recommend">
 		<img src="${pageContext.request.contextPath}/resources/images/wood_1.jpg" class="card-img-top" alt="...">
+	  </div>	
 		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
 		<div class="card-body">
-			<h5 class="card-title">원데이 클래스 이름-11</h5>
-			<p class="card-text">클래스 설명-1<br>클래스 설명-1<br>클래스 설명-1</p>
+			<h5 class="card-title">[서울]반려동물 훈련 클래스</h5>
+			<p class="card-text">-&nbsp;원하는 훈련 개별맞춤<br>-&nbsp;다양한 사진스팟<br>-&nbsp;반려동물 간식제공</p>
 		</div>
 		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름</li>
-		  <li class="list-group-item">가격 : 10,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강남구 123번길 123</li>
+		  <li class="list-group-item">강사이름 : 이웅종</li>
+		  <li class="list-group-item">가격 : 40,000원</li>
+		  <li class="list-group-item">주소 : 서울특별시 강남구 봉은사로 944</li>
 		</ul>
 		<div class="card-body " style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
@@ -279,16 +314,18 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  </div>
 
 	  <div class="card" style="width: 18rem;">
+	  <div class="recommend">
 		<img src="${pageContext.request.contextPath}/resources/images/pouch_1.jpg" class="card-img-top" alt="...">
+	  </div>	
 		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
 		<div class="card-body">
-			<h5 class="card-title">원데이 클래스 이름-12</h5>
-			<p class="card-text">클래스 설명-1<br>클래스 설명-1<br>클래스 설명-1</p>
+			<h5 class="card-title">[광주]플라워 클래스</h5>
+			<p class="card-text">-&nbsp;런던 스타일 플라워 제작<br>-&nbsp;런던느낌 스타일링과 포장지사용<br>-&nbsp;필요한 재료,도구 모두구비</p>
 		</div>
 		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름</li>
-		  <li class="list-group-item">가격 : 10,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강남구 123번길 123</li>
+		  <li class="list-group-item">강사이름 : 이소리</li>
+		  <li class="list-group-item">가격 : 30,000원</li>
+		  <li class="list-group-item">주소 : 광주광역시 광산구 우산동 1598-3</li>
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
@@ -297,8 +334,36 @@ for (let i = 0; i < reviewBars.length; i++) {
 		
 		
 	  </div>
-	  <button class="nav-btn-right" onclick="showNext()" style="background: white; border: none;"><i class="bi bi-caret-right"></i></button>
+	  <button class="nav-btn-right" onclick="showNext()" style="background: white; border: none;"><i class="bi bi-caret-right"></i>
+	  </button>
 	  </div>
+	  <!-- 	<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-indicators">
+		  <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+		  <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+		  <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		</div>
+		<div class="carousel-inner">
+		  <div class="carousel-item active" data-bs-interval="10000">
+			<img src="${pageContext.request.contextPath}/resources/images/keyimage1.jpg" class="d-block w-100" alt="Slide 1">
+		  </div>
+		  <div class="carousel-item" data-bs-interval="2000">
+			<img src="${pageContext.request.contextPath}/resources/images/keyimage2.jpg" class="d-block w-100" alt="Slide 2">
+		  </div>
+		  <div class="carousel-item">
+			<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="d-block w-100" alt="Slide 3">
+		  </div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+		  <span class="bi bi-caret-left-fill" aria-hidden="true"></span>
+		  <span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+		  <span class="bi bi-caret-right-fill" aria-hidden="true"></span>
+		  <span class="visually-hidden">Next</span>
+		</button>
+	  </div>
+	   -->
 		<hr style="border: 3px dotted #47a3da;">
 	  
 	  <div class="mt-5" >
@@ -377,7 +442,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  }
 	</script>
     
-
+	
 <h1 class="mt-5">실시간 리뷰</h1>
 <hr style="border: 3px dotted #47a3da;">
 <div class="review">
@@ -385,10 +450,10 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  <div class="cardreview">
 		<img src="${pageContext.request.contextPath}/resources/images/review_1.jpg" alt="Menu Image">
 		<div class="card_content">
-			1번 리뷰 + 별점<br>
-			원데이 클래스 이름<br>
-			리뷰 내용<br>
-			작성자
+			초코가 말을 잘들어요! ★★★★★<br>
+			[서울]반려동물 훈련 클래스<br>
+			우리집 강아지가 달라졌어요~^^<br>
+			김준호
 		</div>
 	 </div>
 	</div>
@@ -397,10 +462,10 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<div class="cardreview">
 		  <img src="${pageContext.request.contextPath}/resources/images/review_2.jpg" alt="Menu Image">
 		  <div class="card_content">
-			2번 리뷰 + 별점<br>
-			원데이 클래스 이름<br>
-			리뷰 내용<br>
-			작성자
+			생각보다 재밌어요. ★★★★☆<br>
+			[서울]목공 클래스<br>
+			생각했던것보다 재밌고 색다른경험이었습니다.<br>
+			이정환
 		</div>
 	   </div>
 	  </div>
@@ -408,10 +473,10 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<div class="cardreview">
 		  <img src="${pageContext.request.contextPath}/resources/images/review_3.jpg" alt="Menu Image">
 		  <div class="card_content">
-			3번 리뷰 + 별점<br>
-			원데이 클래스 이름<br>
-			리뷰 내용<br>
-			작성자
+			완전 색다른경험! ★★★★★<br>
+			[서울]스쿠버다이빙 클래스<br>
+			너무좋은 경험이고 여행 다녀온기분이에요. 다음에 또올게요~<br>
+			이설화
 		</div>
 	   </div>
 	  </div>
@@ -420,10 +485,10 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<div class="cardreview">
 		  <img src="${pageContext.request.contextPath}/resources/images/review_4.jpg" alt="Menu Image">
 		  <div class="card_content">
-			4번 리뷰 + 별점<br>
-			원데이 클래스 이름<br>
-			리뷰 내용<br>
-			작성자
+			스콧 개맛집! ★★★★★<br>
+			[천안]스콘 만들기 클래스<br>
+			스콘은 역시 천안~!<br>
+			선경호
 		</div>
 	   </div>
 	  </div>
@@ -432,10 +497,10 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<div class="cardreview">
 		  <img src="${pageContext.request.contextPath}/resources/images/review_5.jpg" alt="Menu Image">
 		  <div class="card_content">
-			5번 리뷰 + 별점<br>
-			원데이 클래스 이름<br>
-			리뷰 내용<br>
-			작성자
+			강추합니다!! ★★★★★<br>
+			[광주]런던 플라워 클래스<br>
+			꽃을 좋아하시는분이면 이 클래스 강추! 꼭 들어보세요.<br>
+			김지혜
 		</div>
 	   </div>
 	  </div>
@@ -444,10 +509,10 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<div class="cardreview">
 		  <img src="${pageContext.request.contextPath}/resources/images/review_6.jpg" alt="Menu Image">
 		  <div class="card_content">
-			6번 리뷰 + 별점<br>
-			원데이 클래스 이름<br>
-			리뷰 내용<br>
-			작성자
+			맛있어요. ★★★★☆<br>
+			[용인]수제쿠키 만들기 클래스<br>
+			쿠키 잘~먹고갑니다~ ^^7<br>
+			박정화
 		</div>
 	   </div>
 	  </div>
@@ -456,10 +521,10 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<div class="cardreview">
 		  <img src="${pageContext.request.contextPath}/resources/images/review_7.jpg" alt="Menu Image">
 		  <div class="card_content">
-			7번 리뷰 + 별점<br>
-			원데이 클래스 이름<br>
-			리뷰 내용<br>
-			작성자
+			재밌어요! ★★★★★<br>
+			[서울]지갑 / 파우치 클래스<br>
+			찾았다 내 인생지갑!! 지갑도 너무 만족스럽고 클래스도 재밌었어요~<br>
+			최지연
 		</div>
 	   </div>
 	  </div>
@@ -468,10 +533,10 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<div class="cardreview">
 		  <img src="${pageContext.request.contextPath}/resources/images/review_8.jpg" alt="Menu Image">
 		  <div class="card_content">
-			8번 리뷰 + 별점<br>
-			원데이 클래스 이름<br>
-			리뷰 내용<br>
-			작성자
+			오늘거의 이승철빙의. ★★★★★<br>
+			[서울]보컬 트레이닝 클래스<br>
+			밖으로~ 나가버리고~~<br>
+			강지수
 		</div>
 	   </div>
 	  </div>
@@ -480,10 +545,10 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<div class="cardreview">
 		  <img src="${pageContext.request.contextPath}/resources/images/review_9.jpg" alt="Menu Image">
 		  <div class="card_content">
-			9번 리뷰 + 별점<br>
-			원데이 클래스 이름<br>
-			리뷰 내용<br>
-			작성자
+			완전재밌어요! ★★★★★<br>
+			[성남]필라테스 클래스<br>
+			평소 자세교정이 필요했는데 재미도 챙기고 몸도 챙긴기분이에요. 감사합니다~<br>
+			선예지
 		</div>
 	   </div>
 	  </div>
@@ -492,10 +557,10 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<div class="cardreview">
 		  <img src="${pageContext.request.contextPath}/resources/images/review_10.jpg" alt="Menu Image">
 		  <div class="card_content">
-			10번 리뷰 + 별점<br>
-			원데이 클래스 이름<br>
-			리뷰 내용<br>
-			작성자
+			수업이 재밌어요ㅋㅋ ★★★★★<br>
+			[수원]드로우 페인팅 클래스<br>
+			정쌤 페인팅수업 들으면서 너무웃기고 너무재밌었어요!bb<br>
+			최수진
 		</div>
 	   </div>
 	  </div>

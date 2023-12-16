@@ -91,6 +91,44 @@
 	      transform:rotateX(-85deg);
 	   }
 	}
+	.tltle{
+		font-weight: bold;
+		font-size: 200%;
+	}
+	.bar:focus{
+		text-decoration: underline;
+		text-underline-position : under;
+		text-decoration-color: #47a3da;
+		text-decoration-thickness: 2px;
+		color: #47a3da;	
+	}
+	.menu:hover{
+		text-decoration: underline;
+		text-underline-position : under;
+		text-decoration-thickness: 2px;
+		text-decoration-color: #47a3da;
+		font-weight: 900;
+		color: #47a3da;
+	}
+	.menu:focus{
+		color: #47a3da;
+		text-decoration: underline;
+		text-underline-position : under;
+	}
+	.go-ahead{
+		text-decoration: underline; 
+		text-underline-position : under; 
+		font-size: 18px;
+		color: #FFA98F;
+	}
+	.go-ahead:hover{
+		font-size: 18px;
+		color: #FF7F50;
+	}
+	.go-ahead:focus{
+		font-size: 18px;
+		color: #FF7F50;
+	}
 </style>
 
 
@@ -190,83 +228,84 @@
 				<nav id="cbp-hrmenu" class="cbp-hrmenu">
 					<ul>
 						<li>
-							<a href="#">원데이 클래스</a>
+							<a href="#" class="bar">원데이 클래스</a><span class="border-end"></span>
 							<div class="cbp-hrsub">
 								<div class="cbp-hrsub-inner"> 
 									<div>
-										<h4>베스트 &amp; 클래스<hr class="my-hr1"></h4>
+										<h4 class="tltle">베스트 &amp; 클래스<hr class="my-hr1"></h4>
 										<ul>
-											<li><a href="#">향수 공방</a></li>
-											<li><a href="#">쿠킹 클래스</a></li>
-											<li><a href="#">드로잉 클래스</a></li>
-											<li><a href="#">다이어트 클래스</a></li>
-											<li><a href="#">보컬 클래스</a></li>
-											<li><a href="#">댄스 클래스</a></li>
-											<li><a href="#">도예 클래스</a></li>
+											<li><a href="#" class="menu">향수 공방</a></li>
+											<li><a href="#" class="menu">쿠킹 클래스</a></li>
+											<li><a href="#" class="menu">드로잉 클래스</a></li>
+											<li><a href="#" class="menu">다이어트 클래스</a></li>
+											<li><a href="#" class="menu">보컬 클래스</a></li>
+											<li><a href="#" class="menu">댄스 클래스</a></li>
+											<li><a href="#" class="menu">도예 클래스</a></li>
 										</ul>
 									</div>
 									
 									<div>
-										<h4>SALE<hr class="my-hr1"></h4>
+										<h4 class="tltle">SALE<hr class="my-hr1"></h4>
 										<ul>
-											<li><a href="#">전통공예 클래스</a></li>
-											<li><a href="#">플라워 공예 클래스</a></li>
-											<li><a href="#">가죽 공예 클래스</a></li>
+											<li><a href="#" class="menu">전통공예 클래스</a></li>
+											<li><a href="#" class="menu">플라워 공예 클래스</a></li>
+											<li><a href="#" class="menu">가죽 공예 클래스</a></li>
 										</ul>
-										<h4>이벤트 클래스<hr class="my-hr1"></h4>
+										<h4 class="tltle">이벤트 클래스<hr class="my-hr1"></h4>
 										<ul>
-											<li><a href="#">드럼 클래스</a></li>
-											<li><a href="#">수채화 클래스</a></li>
+											<li><a href="#" class="menu">드럼 클래스</a></li>
+											<li><a href="#" class="menu">수채화 클래스</a></li>
 										</ul>
 									</div>
 
 									<div>
-										<h4>NEW 클래스<hr class="my-hr1"></h4>
+										<h4 class="tltle">NEW 클래스<hr class="my-hr1"></h4>
 										<ul>
-											<li><a href="#">댄스 클래스</a></li>
-											<li><a href="#">쿠킹 클래스</a></li>
-											<li><a href="#">목공예 클래스</a></li>
-											<li><a href="#">네일아트 클래스</a></li>
-											<li><a href="#">프로듀싱 클래스</a></li>
+											<li><a href="#" class="menu">댄스 클래스</a></li>
+											<li><a href="#" class="menu">쿠킹 클래스</a></li>
+											<li><a href="#" class="menu">목공예 클래스</a></li>
+											<li><a href="#" class="menu">네일아트 클래스</a></li>
+											<li><a href="#" class="menu">프로듀싱 클래스</a></li>
 											<li>&nbsp;</li>
 											<li>&nbsp;</li>
-											<li><a href="${pageContext.request.contextPath}/product/list" style="text-decoration: underline;">&gt;&gt;모든 원데이 클래스 보러가기</a></li>
+											<li><a href="${pageContext.request.contextPath}/product/list" class="go-ahead">
+											&gt;&gt;모든 원데이 클래스 보러가기&nbsp;<i class="bi bi-calendar2-plus"></i></a></li>
 										</ul>
 									</div>
 								</div>
 							</div>
 						</li>
 						<li>
-							<a href="#">원데이 플러스</a>
-							<div class="cbp-hrsub" style="background: url('/finalApp/resources/images/beach1.jpg');">
+							<a href="#" class="bar">원데이 플러스</a><span class="border-end"></span>
+							<div class="cbp-hrsub">
 								<div class="cbp-hrsub-inner">
 									<div>
-										<h4>인기 콘텐츠<hr class="my-hr1"></h4>
+										<h4 class="tltle">인기 콘텐츠<hr class="my-hr1"></h4>
 										<ul>
-											<li><a href="#">핸드 메이드</a></li>
-											<li><a href="#">필라테스</a></li>
-											<li><a href="#">스포츠</a></li>
+											<li><a href="#" class="menu">핸드 메이드</a></li>
+											<li><a href="#" class="menu">필라테스</a></li>
+											<li><a href="#" class="menu">스포츠</a></li>
 										</ul>
-										<h4>추천 콘텐츠<hr class="my-hr1"></h4>
+										<h4 class="tltle">추천 콘텐츠<hr class="my-hr1"></h4>
 										<ul>
-											<li><a href="#">플라워 가드닝</a></li>
-											<li><a href="#">쿠킹</a></li>
-										</ul>
-									</div>
-									<div>
-										<h4>추천 키워드<hr class="my-hr1"></h4>
-										<ul>
-											<li><a href="#">#재미</a></li>
-											<li><a href="#">#추억</a></li>
-											<li><a href="#">#데이트</a></li>
-											<li><a href="#">#이색데이트</a></li>
-											<li><a href="#">#가족</a></li>
-											<li><a href="#">#단체</a></li>
-											<li><a href="#">#음악</a></li>
+											<li><a href="#" class="menu">플라워 가드닝</a></li>
+											<li><a href="#" class="menu">쿠킹</a></li>
 										</ul>
 									</div>
 									<div>
-										<h4>원데이 추천 플러스<hr class="my-hr1"></h4>
+										<h4 class="tltle">추천 키워드<hr class="my-hr1"></h4>
+										<ul>
+											<li><a href="#" class="menu">#재미</a></li>
+											<li><a href="#" class="menu">#추억</a></li>
+											<li><a href="#" class="menu">#데이트</a></li>
+											<li><a href="#" class="menu">#이색데이트</a></li>
+											<li><a href="#" class="menu">#가족</a></li>
+											<li><a href="#" class="menu">#단체</a></li>
+											<li><a href="#" class="menu">#음악</a></li>
+										</ul>
+									</div>
+									<div>
+										<h4 class="tltle">원데이 추천 플러스<hr class="my-hr1"></h4>
 										<ul>
 											<img src="${pageContext.request.contextPath}/resources/images/center.jpg"  
 												style="width: 400px; border-radius: 20px; 
@@ -277,33 +316,36 @@
 							</div>
 						</li>
 						<li>
-							<a href="#">이벤트</a>
+							<a href="#" class="bar">이벤트</a><span class="border-end"></span>
 							<div class="cbp-hrsub">
 								<div class="cbp-hrsub-inner"> 
 									<div>
-										<h4>첫 구매 이벤트<hr class="my-hr1"></h4>
+										<h4 class="tltle">첫 구매 이벤트<hr class="my-hr1"></h4>
 										<ul>
-											<li class="mt-3"><img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" style="width: 300px; border-radius: 20px;"></li>
-											<li><a href="#">- 첫 구매시 쿠폰 지급</a></li>
-											<li><a href="#"style="text-decoration: underline;">&gt;&gt; 원데이 클래스 보러가기</a></li>
+											<li class="mt-3"><img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" style="width: 300px; height: 200px; background-size: cover; border-radius: 20px;"></li>
+											<li><a href="#" class="menu">- 첫 구매시 쿠폰 지급</a></li>
+											<li><a href="#" class="go-ahead">&gt;&gt;
+												원데이 클래스 보러가기&nbsp;<i class="bi bi-calendar2-minus"></i></a></li>
 										</ul>
 										
 									</div>
 									<div>
-										<h4>리뷰 이벤트<hr class="my-hr1"></h4>
+										<h4 class="tltle">리뷰 이벤트<hr class="my-hr1"></h4>
 										<ul>
-											<li class="mt-3"><img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" style="width: 300px; border-radius: 20px;"></li>
-											<li><a href="#">- 리뷰 작성 시 포인트 지급</a></li>
-											<li><a href="#"style="text-decoration: underline;">&gt;&gt; 리뷰 게시판 바로가기</a></li>
+											<li class="mt-3"><img src="${pageContext.request.contextPath}/resources/images/review.jpg" style="width: 300px; height: 200px; background-size: cover; border-radius: 20px;"></li>
+											<li><a href="#" class="menu">- 리뷰 작성 시 포인트 지급</a></li>
+											<li><a href="#" class="go-ahead">
+												&gt;&gt; 리뷰 게시판 바로가기&nbsp;<i class="bi bi-pencil"></i></a></li>
 										</ul>
 										
 									</div>
 									<div>
-										<h4>추가 쿠폰 이벤트<hr class="my-hr1"></h4>
+										<h4 class="tltle">추가 쿠폰 이벤트<hr class="my-hr1"></h4>
 										<ul>
-											<li class="mt-3"><img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" style="width: 300px; border-radius: 20px;"></li>
-											<li><a href="#">- 오늘만 추가 쿠폰 지급</a></li>
-											<li><a href="${pageContext.request.contextPath}/event/progress/list" style="text-decoration: underline;">&gt;&gt; 이벤트 페이지 바로가기</a></li>
+											<li class="mt-3"><img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" style="width: 300px; height: 200px; background-size: cover; border-radius: 20px;"></li>
+											<li><a href="#" class="menu">- 오늘만 추가 쿠폰 지급</a></li>
+											<li><a href="${pageContext.request.contextPath}/event/progress/list" class="go-ahead">
+												&gt;&gt; 이벤트 페이지 바로가기&nbsp;<i class="bi bi-balloon-heart"></i></a></li>
 										</ul>
 										
 									</div>
@@ -312,33 +354,33 @@
 						</li>
 						
 						<li>
-							<a href="#">고객센터</a>
-							<div class="cbp-hrsub" style="background: url('/finalApp/resources/images/beach1.jpg');">
+							<a href="#" class="bar">고객센터</a><span class="border-end"></span>
+							<div class="cbp-hrsub">
 								<div class="cbp-hrsub-inner"> 
 									<div>
-										<h4>문의<hr class="my-hr1"></h4>
+										<h4 class="tltle">문의<hr class="my-hr1"></h4>
 										<ul>
-											<li><a href="#">자주 묻는 질문</a></li>
-											<li><a href="#">신고 / 제안 / 문의</a></li>
-											<li><a href="#">실시간 1:1 문의</a></li>
+											<li><a href="#" class="menu">자주 묻는 질문</a></li>
+											<li><a href="#" class="menu">신고 / 제안 / 문의</a></li>
+											<li><a href="#" class="menu">실시간 1:1 문의</a></li>
 										</ul>
 									</div>
 									<div>
-										<h4>공지사항<hr class="my-hr1"></h4>
+										<h4 class="tltle">공지사항<hr class="my-hr1"></h4>
 										<ul>
-											<li><a href="#">공지사항1</a></li>
-											<li><a href="#">공지사항2</a></li>
-											<li><a href="#">공지사항3</a></li>
-											<li><a href="#">공지사항4</a></li>
-											<li><a href="#">공지사항5</a></li>
-											<li><a href="#">공지사항6</a></li>
+											<li><a href="#" class="menu">공지사항1</a></li>
+											<li><a href="#" class="menu">공지사항2</a></li>
+											<li><a href="#" class="menu">공지사항3</a></li>
+											<li><a href="#" class="menu">공지사항4</a></li>
+											<li><a href="#" class="menu">공지사항5</a></li>
+											<li><a href="#" class="menu">공지사항6</a></li>
 										</ul>
 									</div>
 									<div>
 										<ul>
 											<li class="mt-5"><img src="${pageContext.request.contextPath}/resources/images/center.jpg" width="400px;" 
 											style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;"></li>
-											<li><a href="${pageContext.request.contextPath}/notice/list"style="text-decoration: underline;">&gt;&gt;고객센터 바로가기</a></li>
+											<li><a href="${pageContext.request.contextPath}/notice/list"style="text-decoration: underline; text-underline-position : under;">&gt;&gt;고객센터 바로가기</a></li>
 										</ul>
 
 									</div>
@@ -347,11 +389,15 @@
 						</li>
 						
 						<li>
-						    <li onclick="urlOk('/bbs/list')" class="menubtn">커뮤니티</li>
+						    <li onclick="urlOk('/bbs/list')" class="menubtn bar">커뮤니티</li><span class="border-end"></span>
 						</li>
 						
 						<li>
-							<li onclick="urlOk('/')" class="menubtn">사이트맵</li>
+							<li onclick="urlOk('/')" class="menubtn bar">사이트맵</li><span class="border-end"></span>
+						</li>
+						
+						<li>
+							<li onclick="urlOk('/')" class="menubtn bar">사이트맵</li>
 						</li>
 
 					</ul>
