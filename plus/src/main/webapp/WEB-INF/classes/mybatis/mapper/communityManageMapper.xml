@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fa.plus.mapper.CommunityManageMapper">
-	<insert id="insertBoard" parameterType="com.fa.plus.domain.CommunityManage">
-		INSERT INTO commu(num, userId, subject, content, hitCount, regDate)
-			VALUES(commu_seq.NEXTVAL, #{userId}, #{subject}, #{content}, 0, SYSDATE)
-	</insert>
+<mapper namespace="com.fa.plus.admin.mapper.CommunityManageMapper">
 	
-	<delete id="deleteBoard" parameterType="Long">
+	<delete id="deleteCommunity" parameterType="Long">
 		DELETE FROM commu WHERE num = #{num}
 	</delete>
 	
@@ -41,7 +37,7 @@
 		</where>   
 	</select>
 	
-	<select id="listCommunity" parameterType="map" resultType="com.fa.plus.domain.CommunityManage">
+	<select id="communityList" parameterType="map" resultType="com.fa.plus.admin.domain.CommunityManage">
 		SELECT c.num, c.userId, m.userName, subject, 
 			   TO_CHAR(c.regDate, 'YYYY-MM-DD') regDate,
 			   hitCount,
@@ -63,7 +59,7 @@
 	</select>
 	
 	<!-- 글보기 -->
-	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.CommunityManage">
+	<select id="findById" parameterType="Long" resultType="com.fa.plus.admin.domain.CommunityManage">
 		SELECT c.num, c.userId, userName, subject, content,
 			   hitCount, c.regDate,
 			   NVL(boardLikeCount, 0) boardLikeCount
@@ -76,14 +72,9 @@
 		WHERE c.num = #{num}
 	</select>
 	
-	<!-- 조회수 증가 -->
-	<update id="updateHitCount" parameterType="Long">
-		UPDATE commu SET hitCount=hitCount+1 WHERE num = #{num}
-	</update>
-	
 	<!-- AND 가 필요 없는 경우 자동으로 제거 됨 -->
 	<!-- 이전글 -->
-	<select id="findByPrev" parameterType="map" resultType="com.fa.plus.domain.CommunityManage">
+	<select id="findByPrev" parameterType="map" resultType="com.fa.plus.admin.domain.CommunityManage">
 		SELECT num, subject
 		FROM commu c
 		JOIN member1 m ON c.userId=m.userId
@@ -98,7 +89,7 @@
 	</select>
 
 	<!-- 다음글 -->
-	<select id="findByNext" parameterType="map" resultType="com.fa.plus.domain.CommunityManage">
+	<select id="findByNext" parameterType="map" resultType="com.fa.plus.admin.domain.CommunityManage">
 		SELECT num, subject
 		FROM commu b
 		JOIN member1 m ON b.userId=m.userId
@@ -114,7 +105,7 @@
 	
       
 	<!-- 게시글 좋아요 개수 -->
-	<select id="boardLikeCount" parameterType="Long" resultType="Integer">
+	<select id="communityLikeCount" parameterType="Long" resultType="Integer">
 		SELECT COUNT(*) FROM commuLike WHERE num=#{num}
 	</select>
 	
@@ -130,7 +121,7 @@
 	</select>
 	
 	<!-- 댓글리스트 -->
-	<select id="listReply" parameterType="map" resultType="com.fa.plus.domain.ReplyManage">
+	<select id="listReply" parameterType="map" resultType="com.fa.plus.admin.domain.ReplyManage">
 		SELECT r.replyNum, r.userId, userName, num, reContent, r.reRegDate, NVL(showReply, 1) showReply, 
 			   NVL(likeCount, 0) likeCount
 		FROM reply r

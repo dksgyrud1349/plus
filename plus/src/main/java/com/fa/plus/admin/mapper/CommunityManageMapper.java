@@ -7,7 +7,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.fa.plus.admin.domain.CommunityManage;
-import com.fa.plus.domain.Reply;
 
 @Mapper
 public interface CommunityManageMapper {
@@ -19,7 +18,7 @@ public interface CommunityManageMapper {
 	public CommunityManage findByPrev(Map<String, Object> map);
 	public CommunityManage findByNext(Map<String, Object> map);
 
-	public int CommunityLikeCount(long num);
+	public int communityLikeCount(long num);
 	
 	public int replyCount(Map<String, Object> map);
 	public List<ReplyManage> listReply(Map<String, Object> map);
