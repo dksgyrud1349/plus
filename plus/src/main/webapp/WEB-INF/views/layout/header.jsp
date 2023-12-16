@@ -153,17 +153,19 @@
 				<nav>
 				<c:choose>
 					<c:when test="${empty sessionScope.member}">
-						<a href="#" class="icon-arrow-left bi bi-cart4" data-info="위시리스트"></a>
-						<a href="${pageContext.request.contextPath}/member/member" class="icon-drop bi bi-person" data-info="로그인/회원가입"></a>
+						<a href="${pageContext.request.contextPath}/member/member" class="icon-drop bi bi-person" data-info="회원가입">회원가입</a>
 						<a href="javascript:dialogLogin();" class="icon-arrow-left bi bi-person-fill-gear" data-info="로그인">로그인</a>
 					</c:when>
-				<c:otherwise>
-					<a href="#" class="icon-arrow-left bi bi-cart4" data-info="위시리스트"></a>
-					<a href="${pageContext.request.contextPath}/member/logout" class="icon-drop bi bi-person" data-info="로그아웃"></a>
-					<c:if test="${sessionScope.member.membership > 90}">
-						<a href="${pageContext.request.contextPath}/admin" class="icon-drop bi bi-gear-wide-connected" data-info="관리자 페이자"></a>
-					</c:if>
-				</c:otherwise>
+					<c:otherwise>
+						<a href="#" class="icon-arrow-left bi bi-cart4" data-info="알림">알림</a>
+						<a href="${pageContext.request.contextPath}/member/logout" class="icon-drop bi bi-person" data-info="로그아웃"></a>
+						<c:if test="${sessionScope.member.membership > 90}">
+							<a href="${pageContext.request.contextPath}/admin" class="icon-drop bi bi-gear-wide-connected" data-info="관리자 페이자"></a>
+						</c:if>
+						<c:if test="${sessionScope.member.membership > 50 && sessionScope.member.membership < 90}">
+							<a href="${pageContext.request.contextPath}/pluszone" class="icon-drop bi bi-gear-wide-connected" data-info="사업자 페이자"></a>
+						</c:if>
+					</c:otherwise>
 				</c:choose>
 				</nav>
 			</header>

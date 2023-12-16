@@ -53,22 +53,22 @@
 	
 	<!-- seller(plus) 부분 주소 추후 수정 필요 -->
 	<!-- seller 쪽 view 파일에서 레이아웃 가져와야 함 -->
-	<!-- 
-	<definition name=".plusLayout" template="/WEB-INF/views/admin/layout/layout2.jsp">
+	
+	<definition name=".plusLayout" template="/WEB-INF/views/pluszone/layout/layout2.jsp">
 	    <put-attribute name="title" value="pluszone" />
-	  	<put-attribute name="left" value="/WEB-INF/views/admin/layout/left.jsp" />
-		<put-attribute name="body" value="/WEB-INF/views/admin/main/main.jsp" />
+	  	<put-attribute name="left" value="/WEB-INF/views/pluszone/layout/left.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/pluszone/main/main.jsp" />
 	</definition>
-	<definition name=".plus.*.*.*" extends=".mainLayout2">
+	<definition name=".pluszone.*.*.*" extends=".plusLayout">
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
 	</definition>
-	<definition name=".plus.*.*" extends=".mainLayout2">
+	<definition name=".pluszone.*.*" extends=".plusLayout">
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
-	<definition name=".plus.*" extends=".mainLayout2">
+	<definition name=".pluszone.*" extends=".plusLayout">
     	  <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
-	 -->
+
 	 
 	<!-- 순서가 바뀌면 안됨(* 많은것이 위에) -->
 	<definition name=".*.*.*" extends=".mainLayout2">
