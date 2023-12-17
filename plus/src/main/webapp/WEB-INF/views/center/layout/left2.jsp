@@ -38,17 +38,36 @@
 	  pointer-events: none; 
 	  cursor: not-allowed; 
 	}
+	.box{
+		width: 200px;
+		height: 50px;
+		color: white;
+		background-color: #333;
+		border: none; 
+		font-weight: bold;
+		font-size: 18px;
+	}
+	.inBox{
+		color: black;
+		width: 200px;
+		height: 50px;
+		font-weight: bold;
+	}
 </style>
 
-<div class="sidebar">
-	<a href="#" style="border:3px solid #fff; margin-bottom:10px">고객센터</a>
-  	<a href="${pageContext.request.contextPath}/faq/list" class="active">자주 묻는 질문(FAQ)</a>
+<div class="sidebar dropdown">
+	<a style="border:3px solid #fff; margin-bottom:10px; margin-right: 1px; color: white;">고객센터</a>
+  	<a href="${pageContext.request.contextPath}/faq/all/list">자주 묻는 질문(FAQ)</a>
   	<a href="${pageContext.request.contextPath}/notice/list">공지사항</a>
-  	<a href="#">채팅(1대1문의)</a>
-  	<a href="#">신고하기</a>
-  	<a href="#">제안하기</a>
-  	<a href="#">문의하기</a>
-  	<a href="#" class="disabled">연락처/위치 안내</a>
+  	<button class="btn btn-secondary dropdown-toggle box" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+    	신고/제안/문의
+  	</button>
+  		<ul class="dropdown-menu dropdown-menu-dark inBox" aria-labelledby="dropdownMenuButton2">
+    		<li><a class="dropdown-item" href="${pageContext.request.contextPath}/declaration/article">신고하기</a></li>
+    		<li><a class="dropdown-item" href="${pageContext.request.contextPath}/proposal/list">제안하기</a></li>
+    		<li><a class="dropdown-item" href="${pageContext.request.contextPath}/inquiry/list">문의하기</a></li>
+  		</ul>
+  	<a href="${pageContext.request.contextPath}/etc/list">연락처/위치 안내</a>
 </div>
 
 
