@@ -142,14 +142,14 @@ public class LessonController {
 			) throws Exception{
 
 		try {
-			long lessonNum = Long.parseLong(lesson);
+			long classNum = Long.parseLong(lesson);
 			
-			Lesson dto = lessonService.findById(lessonNum);
+			Lesson dto = lessonService.findById(classNum);
 			if(dto == null || dto.getShowClass() == 0) {
 				return "redirect:/lesson/main";
 			}
 			
-			List<Lesson> listPhoto = lessonService.listLessonPhoto(lessonNum);
+			List<Lesson> listPhoto = lessonService.listLessonPhoto(classNum);
 			
 			dto.setPhotoName(dto.getFirstPhoto());
 			listPhoto.add(0, dto);
@@ -159,6 +159,7 @@ public class LessonController {
 			
 					
 		} catch (Exception e) {
+			e.printStackTrace();
 			return "redirect:/lesson/main";
 		}
 		

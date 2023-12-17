@@ -100,6 +100,13 @@ $(function(){
 		
 	});
 });
+$(function(){
+	$(".product-item").click(function(){
+		let classNum = $(this).attr("data-productNum");
+		let url = "${pageContext.request.contextPath}/lesson/"+classNum;
+		location.href = url;
+	});
+});
 </script>
 
 <div class="container mt-5 pt-3 ms-5">
@@ -152,7 +159,7 @@ $(function(){
 						<div class="zoom">
 							<img
 								src="https://platum.kr/wp-content/uploads/2020/04/75293002_2452405441699191_8537183120770727936_o.jpg"
-								class="card-img-top" alt="...">
+								class="card-img-top product-item" data-productNum="${dto.classNum}" alt="...">
 						</div>
 						<div class="card-body">
 							<p class="card-text">
@@ -166,9 +173,8 @@ $(function(){
 								<i class="bi bi-star"></i> 5.0 (리뷰 개수)
 							</p>
 							<p class="card-text text-danger fs-3"> <fmt:formatNumber value="${dto.price}" pattern="#,###" /></p>
-							<p class="text-end">
-								<a href="${pageContext.request.contextPath}/lesson/lessonDetail?classNum=${dto.classNum}" class="btn btn-primary">예약하기</a>
-
+							<p class="text-end" >
+								<p class="btn btn-primary">예약하기</p>
 								<button class="btn">
 									<i class="bi bi-heart pt-1"></i>
 								</button>

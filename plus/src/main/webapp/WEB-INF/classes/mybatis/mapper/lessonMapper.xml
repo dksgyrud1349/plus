@@ -11,9 +11,9 @@
 			<when test="schType == 'nickName' ">
 			   ( INSTR(nickName, #{kwd}) &gt; 0 )
 			</when>
-			<when test="schType == 'regDate' ">
-			   ( TO_CHAR(regDate, 'YYYYMMDD') = #{kwd}
-		          OR TO_CHAR(regDate, 'YYYY-MM-DD') = #{kwd} )
+			<when test="schType == 'le.regDate' ">
+			   ( TO_CHAR(le.regDate, 'YYYYMMDD') = #{kwd}
+		          OR TO_CHAR(le.regDate, 'YYYY-MM-DD') = #{kwd} )
 			</when>
 			<when test="schType == 'className' ">
 			   ( INSTR(className, #{kwd}) &gt; 0 )
@@ -47,7 +47,7 @@
 	</select>
 	
 	<select id="allLessonList" parameterType="map" resultType="com.fa.plus.domain.Lesson">
-		SELECT classNum, className, price, firstPhoto, addr1, nickName, le.subNum
+		SELECT le.classNum, className, price, firstPhoto, le.addr1, nickName, le.subNum
 		FROM lesson le
 		JOIN member m ON m.memberIdx = le.memberIdx
 		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
@@ -88,6 +88,33 @@
 		SELECT subNum, subName
 		FROM subcategory
 		WHERE mainNum = #{mainNum}
+	</select>
+	
+	<!-- 이미지 파일 -->
+	<select id="listLessonPhoto" parameterType="Long" resultType="com.fa.plus.domain.Lesson">
+		SELECT photoNum, photoName, classNum
+		FROM lessonPhoto
+		WHERE classNum = #{classNum}
+	</select>
+	
+	<!-- 클래스 상세 페이지 -->
+	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.Lesson">
+	SELECT l.classNum, className, price, l.content, firstPhoto,
+		special, TO_CHAR(startDate, 'YYYY-MM-DD') startDate, TO_CHAR(startDate, 'YYYY-MM-DD') endDate,
+		l.zip, l.addr1, l.addr2, l.showClass, l.mileage, tagNum, subNum, l.memberIdx,
+		photoNum, photoName,
+		NVL(reviewCount, 0) reviewCount, NVL(reviewScore, 0) reviewScore
+	FROM lesson l
+	LEFT OUTER JOIN lessonPhoto lp ON l.classNum = lp.classNum
+	LEFT OUTER JOIN lessonDetail ld ON ld.classNum = l.classNum
+	LEFT OUTER JOIN orders o ON o.detailNum = ld.detailNum
+	LEFT OUTER JOIN ( 
+		SELECT orderNum, ROUND(AVG(reviewScore), 1) reviewScore, COUNT(*) reviewCount
+		FROM review r
+		WHERE showReview = 0
+        GROUP BY orderNum
+	) rc ON rc.orderNum = o.orderNum
+	WHERE l.showClass = 0 AND l.classNum = #{classNum}
 	</select>
 	
 </mapper>
