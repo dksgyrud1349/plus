@@ -74,7 +74,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 			<p class="cbtn_1">건강·운동</p>
 		</button>
 	  </div>
-	 
+	
 	  <div class="mt-5" >
 		<img src="${pageContext.request.contextPath}/resources/images/baner_1.jpg" width="100%" height="250px" style="border-radius: 20px;">
 	  </div>
