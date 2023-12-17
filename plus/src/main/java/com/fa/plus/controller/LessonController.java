@@ -1,6 +1,7 @@
 package com.fa.plus.controller;
 
 import java.net.URLDecoder;
+
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
@@ -9,9 +10,11 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,20 +24,24 @@ import com.fa.plus.domain.Lesson;
 import com.fa.plus.service.LessonService;
 
 @Controller
-@RequestMapping("/product/*")
+@RequestMapping("/lesson/*")
 public class LessonController {
 	@Autowired
 	private LessonService lessonService;
 	
 	@Autowired
+	@Qualifier("myUtil")
 	private MyUtil myUtil;
 	
-	@RequestMapping(value = "list")
-	public String list(@RequestParam(value = "page", defaultValue = "1") int current_page,
+	@RequestMapping(value = "main")
+	public String main(
+				@RequestParam(value = "page", defaultValue = "1") int current_page,
 				@RequestParam(defaultValue = "all") String schType,
 				@RequestParam(defaultValue = "") String kwd, 
 				@RequestParam(defaultValue = "0") long subNum,
-				@RequestParam(defaultValue = "0") long mainNum, HttpServletRequest req, Model model) throws Exception {
+				@RequestParam(defaultValue = "0") long mainNum, 
+				HttpServletRequest req, 
+				Model model) throws Exception {
 		
 		String cp = req.getContextPath();
 		
@@ -86,9 +93,7 @@ public class LessonController {
 		// 글 리스트
 		List<Lesson> list = lessonService.allLessonList(map);
 		
-		String listUrl = cp + "/product/lessonList";
-		String articleUrl = cp + "/product/article?page=" + current_page;
-		
+		String listUrl = cp + "/lesson/main";		
 		String query = "mainNum=" + mainNum + "&subNum=" + subNum;
 		
 		if(kwd.length() != 0) {
@@ -96,8 +101,7 @@ public class LessonController {
 		}
 		
 		if(query.length() != 0) {
-			listUrl = cp + "/product/list?" + query;
-			articleUrl = cp + "/product/article?page=" + current_page + "&" + query;
+			listUrl = cp + "/lesson/main?" + query;
 		}
 		
 		String paging = myUtil.paging(current_page, total_page, listUrl);
@@ -110,13 +114,12 @@ public class LessonController {
 		model.addAttribute("dataCount", dataCount);
 		model.addAttribute("size", size);
 		model.addAttribute("total_page", total_page);
-		model.addAttribute("articleUrl", articleUrl);
 		model.addAttribute("paging", paging);
 		
 		model.addAttribute("schType", schType);
 		model.addAttribute("kwd", kwd);
 		
-		return ".product.lessonList";
+		return ".lesson.lessonList";
 	}
 	
 	@GetMapping("listSubCategory")
@@ -128,16 +131,36 @@ public class LessonController {
 		return model;
 	}
 	
-	@GetMapping("lessonDetail")
-	public String buyRequest(Model model
+	
+	
+	
+	@GetMapping("{lesson}")
+	public String buyRequest(
+			@PathVariable String lesson,
+			Model model
 			) throws Exception{
-		
+
 		try {
+			long lessonNum = Long.parseLong(lesson);
 			
+			Lesson dto = lessonService.findById(lessonNum);
+			if(dto == null || dto.getShowClass() == 0) {
+				return "redirect:/lesson/main";
+			}
+			
+			List<Lesson> listPhoto = lessonService.listLessonPhoto(lessonNum);
+			
+			dto.setPhotoName(dto.getFirstPhoto());
+			listPhoto.add(0, dto);
+			
+			model.addAttribute("dto", dto);
+			model.addAttribute("listPhoto", listPhoto);
+			
+					
 		} catch (Exception e) {
-			return "redirect:/product/list";
+			return "redirect:/lesson/main";
 		}
 		
-		return ".product.buy";
+		return ".lesson.lessonDetail";
 	}
 }

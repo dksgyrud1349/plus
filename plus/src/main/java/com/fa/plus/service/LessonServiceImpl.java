@@ -65,4 +65,30 @@ public class LessonServiceImpl implements LessonService{
 		return list;
 	}
 
+	@Override
+	public Lesson findById(long classNum) {
+		Lesson dto = null;
+		try {
+			dto = mapper.findById(classNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return dto;
+	}
+
+	@Override
+	public List<Lesson> listLessonPhoto(long classNum) {
+		List<Lesson> list = null;
+		
+		try {
+			list = mapper.listLessonPhoto(classNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
 }

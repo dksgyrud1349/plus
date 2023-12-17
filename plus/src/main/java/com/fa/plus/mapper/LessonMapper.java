@@ -1,11 +1,13 @@
 package com.fa.plus.mapper;
 
 import java.util.List;
+
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
 import com.fa.plus.domain.Lesson;
+
 
 @Mapper
 public interface LessonMapper {
@@ -13,9 +15,6 @@ public interface LessonMapper {
 	public int dataCount(Map<String, Object> map);
 	public List<Lesson> listMainCategory();
 	public List<Lesson> listSubCategory(long mainNum);
-	
 	public Lesson findById(long classNum);
-	public Lesson findByPrev(Map<String, Object> map);
-	public Lesson findByNext(Map<String, Object> map);
-
+	public List<Lesson> listLessonPhoto(long classNum);
 }
