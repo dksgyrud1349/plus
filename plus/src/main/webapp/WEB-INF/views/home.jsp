@@ -28,6 +28,9 @@ for (let i = 0; i < reviewBars.length; i++) {
 .recommend img:hover{
 	transform: scale(1.2);
 }
+.c-t{
+	color: #00BFFF;
+}
 </style>
 
 	<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -105,7 +108,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 			<ul class="list-group list-group-flush">
 			  <li class="list-group-item">강사이름 : 이승준</li>
 			  <li class="list-group-item">가격 : 30,000원</li>
-			  <li class="list-group-item">주소 : 서울특별시 강남구 123번길 123</li>
+			  <li class="list-group-item">주소 : 서울특별시 강남구 반송로 148-9 4층 402호</li>
 			</ul>
 			<div class="card-body">
 				<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
@@ -285,7 +288,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<ul class="list-group list-group-flush">
 		  <li class="list-group-item">강사이름 : 김호준</li>
 		  <li class="list-group-item">가격 : 50,000원</li>
-		  <li class="list-group-item">주소 : 대구광역시 서구 통학로15길 15-2</li>
+		  <li class="list-group-item">주소 : 대구광역시 서구 덕소로97번길 6721</li>
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
@@ -305,7 +308,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<ul class="list-group list-group-flush">
 		  <li class="list-group-item">강사이름 : 이웅종</li>
 		  <li class="list-group-item">가격 : 40,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강남구 봉은사로 944</li>
+		  <li class="list-group-item">주소 : 서울특별시 강남구 봉은사로944번길 1554</li>
 		</ul>
 		<div class="card-body " style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
@@ -325,7 +328,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<ul class="list-group list-group-flush">
 		  <li class="list-group-item">강사이름 : 이소리</li>
 		  <li class="list-group-item">가격 : 30,000원</li>
-		  <li class="list-group-item">주소 : 광주광역시 광산구 우산동 1598-3</li>
+		  <li class="list-group-item">주소 : 광주광역시 광산구 우산동 오성로 1773-5</li>
 		</ul>
 		<div class="card-body" style="margin:0 auto;">
 			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
@@ -451,9 +454,9 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<img src="${pageContext.request.contextPath}/resources/images/review_1.jpg" alt="Menu Image">
 		<div class="card_content">
 			초코가 말을 잘들어요! ★★★★★<br>
-			[서울]반려동물 훈련 클래스<br>
+			<span class="c-t">[서울]반려동물 훈련 클래스<br></span>
 			우리집 강아지가 달라졌어요~^^<br>
-			김준호
+			(김준호)
 		</div>
 	 </div>
 	</div>
@@ -463,9 +466,9 @@ for (let i = 0; i < reviewBars.length; i++) {
 		  <img src="${pageContext.request.contextPath}/resources/images/review_2.jpg" alt="Menu Image">
 		  <div class="card_content">
 			생각보다 재밌어요. ★★★★☆<br>
-			[서울]목공 클래스<br>
+			<span class="c-t">[서울]목공 클래스<br></span>
 			생각했던것보다 재밌고 색다른경험이었습니다.<br>
-			이정환
+			(이정환)
 		</div>
 	   </div>
 	  </div>
@@ -474,9 +477,9 @@ for (let i = 0; i < reviewBars.length; i++) {
 		  <img src="${pageContext.request.contextPath}/resources/images/review_3.jpg" alt="Menu Image">
 		  <div class="card_content">
 			완전 색다른경험! ★★★★★<br>
-			[서울]스쿠버다이빙 클래스<br>
+			<span class="c-t">[서울]스쿠버다이빙 클래스<br></span>
 			너무좋은 경험이고 여행 다녀온기분이에요. 다음에 또올게요~<br>
-			이설화
+			(이설화)
 		</div>
 	   </div>
 	  </div>
@@ -486,9 +489,9 @@ for (let i = 0; i < reviewBars.length; i++) {
 		  <img src="${pageContext.request.contextPath}/resources/images/review_4.jpg" alt="Menu Image">
 		  <div class="card_content">
 			스콧 개맛집! ★★★★★<br>
-			[천안]스콘 만들기 클래스<br>
+			<span class="c-t">[천안]스콘 만들기 클래스<br></span>
 			스콘은 역시 천안~!<br>
-			선경호
+			(선경호)
 		</div>
 	   </div>
 	  </div>
@@ -498,9 +501,9 @@ for (let i = 0; i < reviewBars.length; i++) {
 		  <img src="${pageContext.request.contextPath}/resources/images/review_5.jpg" alt="Menu Image">
 		  <div class="card_content">
 			강추합니다!! ★★★★★<br>
-			[광주]런던 플라워 클래스<br>
+			<span class="c-t">[광주]런던 플라워 클래스<br></span>
 			꽃을 좋아하시는분이면 이 클래스 강추! 꼭 들어보세요.<br>
-			김지혜
+			(김지혜)
 		</div>
 	   </div>
 	  </div>
@@ -510,9 +513,9 @@ for (let i = 0; i < reviewBars.length; i++) {
 		  <img src="${pageContext.request.contextPath}/resources/images/review_6.jpg" alt="Menu Image">
 		  <div class="card_content">
 			맛있어요. ★★★★☆<br>
-			[용인]수제쿠키 만들기 클래스<br>
+			<span class="c-t">[용인]수제쿠키 만들기 클래스<br></span>
 			쿠키 잘~먹고갑니다~ ^^7<br>
-			박정화
+			(박정화)
 		</div>
 	   </div>
 	  </div>
@@ -522,9 +525,9 @@ for (let i = 0; i < reviewBars.length; i++) {
 		  <img src="${pageContext.request.contextPath}/resources/images/review_7.jpg" alt="Menu Image">
 		  <div class="card_content">
 			재밌어요! ★★★★★<br>
-			[서울]지갑 / 파우치 클래스<br>
+			<span class="c-t">[서울]지갑 / 파우치 클래스<br></span>
 			찾았다 내 인생지갑!! 지갑도 너무 만족스럽고 클래스도 재밌었어요~<br>
-			최지연
+			(최지연)
 		</div>
 	   </div>
 	  </div>
@@ -534,9 +537,9 @@ for (let i = 0; i < reviewBars.length; i++) {
 		  <img src="${pageContext.request.contextPath}/resources/images/review_8.jpg" alt="Menu Image">
 		  <div class="card_content">
 			오늘거의 이승철빙의. ★★★★★<br>
-			[서울]보컬 트레이닝 클래스<br>
+			<span class="c-t">[서울]보컬 트레이닝 클래스<br></span>
 			밖으로~ 나가버리고~~<br>
-			강지수
+			(강지수)
 		</div>
 	   </div>
 	  </div>
@@ -546,9 +549,9 @@ for (let i = 0; i < reviewBars.length; i++) {
 		  <img src="${pageContext.request.contextPath}/resources/images/review_9.jpg" alt="Menu Image">
 		  <div class="card_content">
 			완전재밌어요! ★★★★★<br>
-			[성남]필라테스 클래스<br>
-			평소 자세교정이 필요했는데 재미도 챙기고 몸도 챙긴기분이에요. 감사합니다~<br>
-			선예지
+			<span class="c-t">[성남]필라테스 클래스<br></span>
+			평소 자세교정 필요했는데 재미도 챙기고 몸도 챙긴기분이에요.감사합니다~<br>
+			(선예지)
 		</div>
 	   </div>
 	  </div>
@@ -558,11 +561,13 @@ for (let i = 0; i < reviewBars.length; i++) {
 		  <img src="${pageContext.request.contextPath}/resources/images/review_10.jpg" alt="Menu Image">
 		  <div class="card_content">
 			수업이 재밌어요ㅋㅋ ★★★★★<br>
-			[수원]드로우 페인팅 클래스<br>
+			<span class="c-t">[수원]드로우 페인팅 클래스<br></span>
 			정쌤 페인팅수업 들으면서 너무웃기고 너무재밌었어요!bb<br>
-			최수진
+			(최수진)
 		</div>
 	   </div>
 	  </div>
 	  
 	</div>
+			
+			

@@ -91,10 +91,6 @@
 	      transform:rotateX(-85deg);
 	   }
 	}
-	.tltle{
-		font-weight: bold;
-		font-size: 200%;
-	}
 	.bar:focus{
 		text-decoration: underline;
 		text-underline-position : under;
@@ -324,7 +320,7 @@
 									<div>
 										<h4 class="tltle">첫 구매 이벤트<hr class="my-hr1"></h4>
 										<ul>
-											<li class="mt-3"><img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" style="width: 300px; height: 200px; background-size: cover; border-radius: 20px;"></li>
+											<li class="mt-3"><img src="${pageContext.request.contextPath}/resources/images/giftvoucher.png" style="width: 300px; height: 200px; background-size: cover; border-radius: 20px;"></li>
 											<li><a href="#" class="menu">- 첫 구매시 쿠폰 지급</a></li>
 											<li><a href="#" class="go-ahead">&gt;&gt;
 												원데이 클래스 보러가기&nbsp;<i class="bi bi-calendar2-minus"></i></a></li>
@@ -344,7 +340,7 @@
 									<div>
 										<h4 class="tltle">추가 쿠폰 이벤트<hr class="my-hr1"></h4>
 										<ul>
-											<li class="mt-3"><img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" style="width: 300px; height: 200px; background-size: cover; border-radius: 20px;"></li>
+											<li class="mt-3"><img src="${pageContext.request.contextPath}/resources/images/megasale.jpg" style="width: 300px; height: 200px; background-size: cover; border-radius: 20px;"></li>
 											<li><a href="#" class="menu">- 오늘만 추가 쿠폰 지급</a></li>
 											<li><a href="${pageContext.request.contextPath}/event/progress/list" class="go-ahead">
 												&gt;&gt; 이벤트 페이지 바로가기&nbsp;<i class="bi bi-balloon-heart"></i></a></li>
