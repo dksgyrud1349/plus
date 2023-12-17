@@ -16,4 +16,5 @@ public interface LessonMapper {
 	public List<Lesson> listSubCategory(long mainNum);
 	public Lesson findById(long classNum);
 	public List<Lesson> listLessonPhoto(long classNum);
+	
 }

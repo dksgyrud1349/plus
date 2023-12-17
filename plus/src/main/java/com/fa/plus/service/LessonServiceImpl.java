@@ -19,6 +19,7 @@ public class LessonServiceImpl implements LessonService{
 	@Autowired
 	private FileManager fileManager;
 	
+	
 	@Override
 	public List<Lesson> allLessonList(Map<String, Object> map) {
 		List<Lesson> list = null;

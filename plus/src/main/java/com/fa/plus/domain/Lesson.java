@@ -220,4 +220,5 @@ public class Lesson {
 	public void setPhotoName(String photoName) {
 		this.photoName = photoName;
 	}
+	
 }

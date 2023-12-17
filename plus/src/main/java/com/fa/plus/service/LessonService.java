@@ -12,5 +12,4 @@ public interface LessonService {
 	public List<Lesson> listSubCategory(long mainNum);
 	public List<Lesson> listLessonPhoto(long classNum);
 	public Lesson findById(long classNum);
-	
 }
