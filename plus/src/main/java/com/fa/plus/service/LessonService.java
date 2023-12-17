@@ -8,7 +8,8 @@ import com.fa.plus.domain.Lesson;
 public interface LessonService {
 	public List<Lesson> allLessonList(Map<String, Object> map);
 	public int dataCount(Map<String, Object> map);
-	
 	public List<Lesson> listMainCategory();
 	public List<Lesson> listSubCategory(long mainNum);
+	public List<Lesson> listLessonPhoto(long classNum);
+	public Lesson findById(long classNum);
 }

@@ -59,7 +59,7 @@
 	<select id="listEvent" parameterType="map" resultType="com.fa.plus.admin.domain.EventManage">
 		SELECT eventNum, subject, hitCount, showEvent,
 			   TO_CHAR(startDate,'YYYY-MM-DD HH24:MI') startDate,
-			   TO_CHAR(endDate, 'YYYY-MM-DD HH24:MI') endDate, eventKind, userId
+			   TO_CHAR(endDate, 'YYYY-MM-DD HH24:MI') endDate, eventKind, userId, eventImg
 		FROM event e
 		<where>
 			<if test="showEvent != null and showEvent == 1">

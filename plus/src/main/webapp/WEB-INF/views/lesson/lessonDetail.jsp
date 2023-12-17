@@ -213,19 +213,20 @@ header.masthead h1, header.masthead .h1 {
                         <div class="row gx-4 gx-lg-5 align-items-center">
                             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg"/></div>
                             <div class="col-md-6">
-                                <div class="small mb-1">쿠킹</div>
-                                <h1 class="display-5 fw-bolder">도원 차돌짬뽕</h1>
+                                <div class="small mb-1">${dto.mainName}</div>
+                                <h1 class="display-5 fw-bolder">${dto.className}</h1>
                                 <div class="fs-5 mb-5">
-                                    <span class="text-decoration-line-through">15,000원</span>
-                                    <span>10,000원</span>
+                                	<span style="color:red">2023-12-17 ~ 2023-12-25</span><br>
+                                    <!-- <span class="text-decoration-line-through">15,000원</span> -->
+                                    <span>${dto.price}</span>
                                 </div>
                                 <p class="lead">
-                                    원데이 클래스 설명들 넣어주세요. <br>
-                                    1. 강사 : 태희형 <br>
-                                    2. ...
+                                   
+                                    1. 강사 :  ${dto.nickName}<br>
+                                    2. 상세주소 : ${dto.addr1} ${dto.addr2}<br><br>
+                                     예약하기를 눌러 예약가능 시간과 안원수를 확인해주세요. 
                                 </p>
                                 <div class="d-flex">
-                                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
                                     <button class="btn btn-outline-dark flex-shrink-0" type="button">
                                         <i class="bi-cart-fill me-1"></i>
                                         예약하기
@@ -344,11 +345,10 @@ header.masthead h1, header.masthead .h1 {
             </div>
         </header>
         
-        
         <!-- Services-->
         <section class="page-section mt-5" id="services">
             <div class="container px-4 px-lg-5">
-                <h2 class="text-center mt-0">술과 안주 추천</h2>
+                <h2 class="text-center mt-0">카테고리 · 해쉬태그</h2>
                 <hr class="divider" />
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-lg-3 col-md-6 text-center">
@@ -444,65 +444,15 @@ header.masthead h1, header.masthead .h1 {
                 </div>
             </div>
         </div>
-        
+        	
         <!-- Call to action-->
         <section class="page-section bg-dark text-white">
             <div class="container px-4 px-lg-5 text-center">
-                <h2 class="mb-4">사진 넘어가는거랑 나가는 버튼 만들어야함</h2>
-                <a href="#" class="btn btn-light btn-xl">수정사항입니다</a>
-            </div>
-        </section>
-        
-        <!-- Contact-->
-        <section class="page-section" id="contact">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8 col-xl-6 text-center">
-                        <h2 class="mt-0">이메일로 전송하기</h2>
-                        <hr class="divider" />
-                        <p class="text-muted mb-5">이메일로 전송되게끔 만들거임</p>
-                    </div>
-                </div>
-                <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-                    <div class="col-lg-6">
-                        
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Name input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                <label for="name">이름</label>
-                            </div>
-                            <!-- Email address input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                <label for="email">이메일</label>
-                            </div>
-                            <!-- Phone number input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                <label for="phone">핸드폰 번호</label>
-                            </div>
-                            <!-- Message input-->
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                <label for="message">메세지</label>
-                            </div>
-                            
-                            <!-- Submit Button-->
-                            <div class="d-grid">
-								<button type="button" class="btn btn-primary btn-xl" id="submitButton" >
-									보내기
-								</button>
-							</div>
-                        </form>
-                    </div>
-                </div>
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-4 text-center mb-5 mb-lg-0">
-                        <i class="bi-phone fs-2 mb-3 text-muted"></i>
-                        <P>고객센터 번호</P>
-                        <div>010-1111-1111</div>
-                    </div>
-                </div>
+                <h2 class="mb-4">clob 내용 넣어야댐</h2>
+                <h2 class="mb-4">clob 내용 넣어야댐</h2>
+                <h2 class="mb-4">clob 내용 넣어야댐</h2>
+                <h2 class="mb-4">clob 내용 넣어야댐</h2>
+                <h2 class="mb-4">clob 내용 넣어야댐</h2>
+                <a href="#" class="btn btn-light btn-xl">예약하러 가기</a>
             </div>
         </section>

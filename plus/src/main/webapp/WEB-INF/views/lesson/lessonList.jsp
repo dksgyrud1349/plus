@@ -35,12 +35,10 @@ textarea:focus, input:focus {
 }
 
 </style>
-<link rel="icon" href="data:;base64,iVBORw0KGgo=">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/paginate-boot.js"></script>
+
 
 <script type="text/javascript">
 function ajaxFun(url, method, formData, dataType, fn, file = false) {
@@ -87,7 +85,7 @@ $(function(){
 			return false;
 		}
 		
-		let url = "${pageContext.request.contextPath}/product/listSubCategory";
+		let url = "${pageContext.request.contextPath}/lesson/listSubCategory";
 		let query = "mainNum="+mainNum;
 		
 		const fn = function(data) {
@@ -169,7 +167,8 @@ $(function(){
 							</p>
 							<p class="card-text text-danger fs-3"> <fmt:formatNumber value="${dto.price}" pattern="#,###" /></p>
 							<p class="text-end">
-								<a href="#" class="btn btn-primary">예약하기</a>
+								<a href="${pageContext.request.contextPath}/lesson/lessonDetail?classNum=${dto.classNum}" class="btn btn-primary">예약하기</a>
+
 								<button class="btn">
 									<i class="bi bi-heart pt-1"></i>
 								</button>

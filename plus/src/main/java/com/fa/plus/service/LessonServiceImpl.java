@@ -19,6 +19,7 @@ public class LessonServiceImpl implements LessonService{
 	@Autowired
 	private FileManager fileManager;
 	
+	
 	@Override
 	public List<Lesson> allLessonList(Map<String, Object> map) {
 		List<Lesson> list = null;
@@ -62,6 +63,32 @@ public class LessonServiceImpl implements LessonService{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return list;
+	}
+
+	@Override
+	public Lesson findById(long classNum) {
+		Lesson dto = null;
+		try {
+			dto = mapper.findById(classNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return dto;
+	}
+
+	@Override
+	public List<Lesson> listLessonPhoto(long classNum) {
+		List<Lesson> list = null;
+		
+		try {
+			list = mapper.listLessonPhoto(classNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return list;
 	}
 
