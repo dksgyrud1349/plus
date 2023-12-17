@@ -39,6 +39,7 @@ textarea:focus, input:focus {
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/paginate-boot.js"></script>
 
+
 <script type="text/javascript">
 function ajaxFun(url, method, formData, dataType, fn, file = false) {
 	const settings = {

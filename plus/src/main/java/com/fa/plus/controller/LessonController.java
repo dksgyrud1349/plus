@@ -54,6 +54,7 @@ public class LessonController {
 		}
 		
 		List<Lesson> listMainCategory = lessonService.listMainCategory();
+		
 		/*
 		if(mainNum == 0 && listMainCategory.size() != 0) {
 			mainNum = listMainCategory.get(0).getMainNum();

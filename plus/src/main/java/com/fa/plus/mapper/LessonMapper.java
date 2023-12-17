@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.fa.plus.domain.Lesson;
 
-
 @Mapper
 public interface LessonMapper {
 	public List<Lesson> allLessonList(Map<String, Object> map);
