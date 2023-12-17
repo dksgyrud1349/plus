@@ -206,6 +206,29 @@ header.masthead h1, header.masthead .h1 {
 }
 </style>
 
+
+<script type="text/javascript">
+function sendOk(mode) {
+	const f = document.buyForm;
+	if(mode === "buy") {
+		// GET 방식으로 전송. 로그인후 결제화면으로 이동하기 위해
+		// 또는 자바스크립트 sessionStorage를 활용 할 수 있음
+		f.method = "get";
+		f.action = "${pageContext.request.contextPath}/order/payment";
+	} else {
+		if(! confirm("선택한 상품을 장바구니에 담으시겠습니까 ? ")) {
+			return false;
+		}
+		
+		f.method = "post";
+		f.action = "${pageContext.request.contextPath}/myPage/saveCart";
+	}
+	
+	f.submit();
+}
+}
+</script>
+
  <header class="masthead p-3">
             <div class="container px-4 px-lg-5 h-100">
                 <section class="py-5">
@@ -227,7 +250,7 @@ header.masthead h1, header.masthead .h1 {
                                      예약하기를 눌러 예약가능 시간과 안원수를 확인해주세요. 
                                 </p>
                                 <div class="d-flex">
-                                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                                    <button class="btn btn-outline-dark flex-shrink-0" type="button" onclick="sendOk('buy');">
                                         <i class="bi-cart-fill me-1"></i>
                                         예약하기
                                     </button>

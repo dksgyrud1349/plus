@@ -270,7 +270,7 @@
 											<li><a href="#" class="menu">프로듀싱 클래스</a></li>
 											<li>&nbsp;</li>
 											<li>&nbsp;</li>
-											<li><a href="${pageContext.request.contextPath}/product/list" class="go-ahead">
+											<li><a href="${pageContext.request.contextPath}/lesson/main" class="go-ahead">
 											&gt;&gt;모든 원데이 클래스 보러가기&nbsp;<i class="bi bi-calendar2-plus"></i></a></li>
 										</ul>
 									</div>
