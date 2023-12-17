@@ -55,6 +55,12 @@
                                 통계
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
+                            
+                             <a class="nav-link" href="${pageContext.request.contextPath}/admin/plusQManage/list">
+                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                원데이 플러스 관리
+                             </a>
+                            
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="#">원데이플러스 통계</a>

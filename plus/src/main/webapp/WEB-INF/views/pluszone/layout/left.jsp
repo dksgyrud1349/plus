@@ -2,8 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
-
 	<nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: black;">
             <a class="navbar-brand ps-3" href="#">원데이 플러스 +</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#">
@@ -28,95 +26,72 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Admin</div>
-                                <a class="nav-link" href="#">
+                            <div class="sb-sidenav-menu-heading">pluszone</div>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/pluszone">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                    관리자 페이지
+                                    플러스 페이지
                                 </a>
                                 <div class="sb-sidenav-menu-heading">main</div>
-                                <a class="nav-link" href="${pageContext.request.contextPath}/">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                    사용자 페이지
-                                </a>
+	                                <a class="nav-link" href="${pageContext.request.contextPath}/">
+	                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+	                                    사용자 페이지
+	                                </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#MemberLayout" aria-expanded="false" aria-controls="MemberLayout">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                사용자 관리
+                                원데이 클래스
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="MemberLayout" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<c:url value='/admin/memberManage/list'/>">회원 관리</a>
-                                    <a class="nav-link" href="#">사업자 관리</a>
-                                </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                통계
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">원데이플러스 통계</a>
-                                    <a class="nav-link" href="#">가입자 수 통계</a>
-                                    <a class="nav-link" href="#">원데이 클래스 통계</a>
-                                </nav>
-                            </div>
-
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#communityLayouts" aria-expanded="false" aria-controls="communityLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                커뮤니티 관리
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="communityLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<c:url value='/admin/eventManage/all/list'/>">이벤트 게시판 관리</a>
-                                    <a class="nav-link" href="<c:url value='/admin/review/list'/>">리뷰 관리</a>
-                                    <a class="nav-link" href="<c:url value='/admin/communityManage/list'/>">커뮤니티 게시판</a>
+                                    <a class="nav-link" href="#">클래스 관리</a>
+                                    <a class="nav-link" href="#">예약 현황</a>
+                                    <a class="nav-link" href="#">자료실</a>
                                 </nav>
                             </div>
                             
+                            <a class="nav-link" href="#">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                일정 관리
+                            </a>
+                            
+                            <a class="nav-link" href="#">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                공지사항
+                            </a>
+                            
+                            <a class="nav-link" href="#">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                매출 현황
+                            </a>
+                            
+                            <div class="sb-sidenav-menu-heading">Addons</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#onedayPages" aria-expanded="false" aria-controls="onedayPages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                원데이 클래스 관리
+                                고객센터
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="onedayPages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        원데이 클래스
+                                        채팅(1:1문의)
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="#">인기 클래스</a>
-                                            <a class="nav-link" href="#">이벤트 클래스</a>
-                                            <a class="nav-link" href="#">할인/특가 클래스</a>
-                                            <a class="nav-link" href="#">전체 클래스</a>
+                                            <a class="nav-link" href="#">사용자 채팅</a>
+                                            <a class="nav-link" href="#">관리자 채팅</a>
                                         </nav>
                                     </div>
-                                        <a class="nav-link" href="#">카테고리 관리</a>
-                                </nav>
-                            </div>
-
-                            <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#FAQLayout" aria-expanded="false" aria-controls="FAQLayout">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                고객센터
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="FAQLayout" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="https://pf.kakao.com/_cbxcnG">채팅(1:1문의)</a>
-                                    <a class="nav-link" href="<c:url value='/admin/noticeManage/list'/>">공지사항</a>
-                                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/faqManage/main">FAQ</a>
+                                        <a class="nav-link" href="#">클래스 등록신청</a>
+                                    	<a class="nav-link" href="#">정산</a>
                                 </nav>
                             </div>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
                         <i class="fas fa-user fa-fw"></i>&nbsp;&nbsp;
-                         <a href="#" style="text-decoration: none; color: white;">홍길동 관리자님</a>
+                         <a href="#" style="text-decoration: none; color: white;">${dto.userName} 플러스님</a>
                     </div>
                 </nav>
             </div>
