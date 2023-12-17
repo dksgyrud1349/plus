@@ -99,22 +99,31 @@
 	
 	<!-- 클래스 상세 페이지 -->
 	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.Lesson">
-	SELECT l.classNum, className, price, l.content, firstPhoto,
-		special, TO_CHAR(startDate, 'YYYY-MM-DD') startDate, TO_CHAR(startDate, 'YYYY-MM-DD') endDate,
-		l.zip, l.addr1, l.addr2, l.showClass, l.mileage, tagNum, subNum, l.memberIdx,
-		photoNum, photoName,
-		NVL(reviewCount, 0) reviewCount, NVL(reviewScore, 0) reviewScore
-	FROM lesson l
-	LEFT OUTER JOIN lessonPhoto lp ON l.classNum = lp.classNum
-	LEFT OUTER JOIN lessonDetail ld ON ld.classNum = l.classNum
-	LEFT OUTER JOIN orders o ON o.detailNum = ld.detailNum
-	LEFT OUTER JOIN ( 
-		SELECT orderNum, ROUND(AVG(reviewScore), 1) reviewScore, COUNT(*) reviewCount
-		FROM review r
-		WHERE showReview = 0
-        GROUP BY orderNum
-	) rc ON rc.orderNum = o.orderNum
-	WHERE l.showClass = 0 AND l.classNum = #{classNum}
+	SELECT *
+        FROM (
+            SELECT 
+                l.classNum, className, price, l.content, firstPhoto,
+                special, TO_CHAR(startDate, 'YYYY-MM-DD') startDate, TO_CHAR(startDate, 'YYYY-MM-DD') endDate,
+                l.zip, l.addr1, l.addr2, l.showClass, l.mileage, tagNum, subNum, l.memberIdx,
+                photoNum, photoName,
+                NVL(reviewCount, 0) reviewCount, NVL(reviewScore, 0) reviewScore,
+                p.nickName
+            FROM lesson l
+            JOIN member1 m ON l.memberIdx = m.memberIdx
+            JOIN plus p ON p.userId = m.userId
+            LEFT OUTER JOIN lessonPhoto lp ON l.classNum = lp.classNum
+            LEFT OUTER JOIN lessonDetail ld ON ld.classNum = l.classNum
+            LEFT OUTER JOIN orders o ON o.detailNum = ld.detailNum
+            LEFT OUTER JOIN ( 
+                SELECT orderNum, ROUND(AVG(reviewScore), 1) reviewScore, COUNT(*) reviewCount
+                FROM review r
+                WHERE showReview = 0
+                GROUP BY orderNum
+            ) rc ON rc.orderNum = o.orderNum
+            WHERE l.showClass = 0 AND l.classNum = #{classNum}
+            ORDER BY l.classNum
+        )
+        WHERE ROWNUM = 1
 	</select>
 	
 </mapper>

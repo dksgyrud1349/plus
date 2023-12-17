@@ -100,13 +100,13 @@ $(function(){
 		
 	});
 });
-$(function(){
-	$(".product-item").click(function(){
-		let classNum = $(this).attr("data-productNum");
-		let url = "${pageContext.request.contextPath}/lesson/"+classNum;
-		location.href = url;
-	});
-});
+$(function() {
+    $(".product-item").click(function() {
+      let classNum = $(this).attr("data-productNum");
+      let url = "${pageContext.request.contextPath}/lesson/detail/" + classNum;
+      location.href = url;
+    });
+  });
 </script>
 
 <div class="container mt-5 pt-3 ms-5">
@@ -158,8 +158,8 @@ $(function(){
 					<div class="card col-4 p-1" style="width: 25rem; height: 43rem;">
 						<div class="zoom">
 							<img
-								src="https://platum.kr/wp-content/uploads/2020/04/75293002_2452405441699191_8537183120770727936_o.jpg"
-								class="card-img-top product-item" data-productNum="${dto.classNum}" alt="...">
+								src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg"
+								class="card-img-top"  alt="...">
 						</div>
 						<div class="card-body">
 							<p class="card-text">
@@ -174,7 +174,7 @@ $(function(){
 							</p>
 							<p class="card-text text-danger fs-3"> <fmt:formatNumber value="${dto.price}" pattern="#,###" /></p>
 							<p class="text-end" >
-								<p class="btn btn-primary">예약하기</p>
+								<button class="btn btn-primary product-item" data-productNum="${dto.classNum}">예약하기</button>
 								<button class="btn">
 									<i class="bi bi-heart pt-1"></i>
 								</button>

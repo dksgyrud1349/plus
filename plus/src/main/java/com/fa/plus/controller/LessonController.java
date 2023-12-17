@@ -135,17 +135,17 @@ public class LessonController {
 	
 	
 	
-	@GetMapping("{lesson}")
+	@GetMapping("detail/{classNum}")
 	public String buyRequest(
-			@PathVariable String lesson,
+			@PathVariable Long classNum,
 			Model model
 			) throws Exception{
 
 		try {
-			long classNum = Long.parseLong(lesson);
+
 			
 			Lesson dto = lessonService.findById(classNum);
-			if(dto == null || dto.getShowClass() == 0) {
+			if(dto == null || dto.getShowClass() == 1) {
 				return "redirect:/lesson/main";
 			}
 			
