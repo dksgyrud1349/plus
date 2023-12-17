@@ -13,4 +13,9 @@ public interface LessonMapper {
 	public int dataCount(Map<String, Object> map);
 	public List<Lesson> listMainCategory();
 	public List<Lesson> listSubCategory(long mainNum);
+	
+	public Lesson findById(long classNum);
+	public Lesson findByPrev(Map<String, Object> map);
+	public Lesson findByNext(Map<String, Object> map);
+
 }

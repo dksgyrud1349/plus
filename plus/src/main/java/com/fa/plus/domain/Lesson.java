@@ -26,6 +26,9 @@ public class Lesson {
 	
 	private String nickName;  // 플러스의 닉네임
 
+	private long photoNum; // 사진 번호
+	private String photoName; // 사진 이름
+	
 	public long getClassNum() {
 		return classNum;
 	}
@@ -201,4 +204,21 @@ public class Lesson {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
+
+	public long getPhotoNum() {
+		return photoNum;
+	}
+
+	public void setPhotoNum(long photoNum) {
+		this.photoNum = photoNum;
+	}
+
+	public String getPhotoName() {
+		return photoName;
+	}
+
+	public void setPhotoName(String photoName) {
+		this.photoName = photoName;
+	}
+	
 }
