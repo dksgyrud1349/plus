@@ -18,8 +18,8 @@
     </insert>
 
     <insert id="insertMember1" parameterType="com.fa.plus.domain.Member">
-		INSERT INTO member1(memberIdx, userId, userName, userPwd, enabled, regDate, pwdDate, failureCnt)
-		VALUES (#{memberIdx}, #{userId}, #{userName}, #{userPwd}, 1, SYSDATE, SYSDATE, 0) 
+		INSERT INTO member1(memberIdx, userId, userName, userPwd, enabled, regDate, pwdDate, failureCnt, totalMileage)
+		VALUES (#{memberIdx}, #{userId}, #{userName}, #{userPwd}, 1, SYSDATE, SYSDATE, 0, 0) 
     </insert>
 
     <insert id="insertMember2" parameterType="com.fa.plus.domain.Member">
@@ -32,8 +32,9 @@
     <update id="insertMember12" parameterType="com.fa.plus.domain.Member">
 		INSERT ALL
 		INTO member1(memberIdx, userId, userName, userPwd, enabled, 
-			regDate, pwdDate, failureCnt, lastLogin)
-		VALUES (#{memberIdx}, #{userId}, #{userName}, #{userPwd}, 1, SYSDATE, SYSDATE, 0, SYSDATE)
+			regDate, pwdDate, failureCnt, lastLogin, totalMileage)
+		VALUES (#{memberIdx}, #{userId}, #{userName}, #{userPwd}, 1, 
+			SYSDATE, SYSDATE, 0, SYSDATE, 0)
 		INTO member2(userId, birth, email, tel, zip, addr1, addr2)
 		VALUES (#{userId}, #{birth}, #{email}, #{tel}, 
 			#{zip, jdbcType=VARCHAR}, #{addr1, jdbcType=VARCHAR}, 
@@ -44,7 +45,7 @@
     
     <select id="findById" parameterType="String" resultType="com.fa.plus.domain.Member">
 		SELECT m.memberIdx, membership, m1.userId, userName, userPwd, enabled,
-			regDate, pwdDate, lastLogin,
+			regDate, pwdDate, lastLogin, totalMileage,
 			TO_CHAR(birth, 'YYYY-MM-DD') birth, email, tel, 
 			zip, addr1, addr2
 		FROM member m 
@@ -56,7 +57,7 @@
 	<select id="findByMemberIdx" parameterType="Long" resultType="com.fa.plus.domain.Member">
 		SELECT m.memberIdx, membership, enabled, 
 			NVL(m1.userId, 'guest') userId, NVL(userName, '손님') userName, userPwd, 
-			regDate, pwdDate, lastLogin,
+			regDate, pwdDate, lastLogin, totalMileage,
 			TO_CHAR(birth, 'YYYY-MM-DD') birth, email, tel,
 			zip, addr1, addr2
 		FROM member m
@@ -65,9 +66,51 @@
 		WHERE m.memberIdx = #{memberIdx}
 	</select>
     
+    <!-- 회원정보 수정  --> 
+    <update id="updateMembership" parameterType="map">
+		UPDATE member SET membership = #{membership}
+		WHERE memberIdx=#{memberIdx}
+    </update>
+
+    <update id="updateMemberEnabled" parameterType="map">
+		UPDATE member1 SET enabled=#{enabled} WHERE userId=#{userId}
+    </update>
     
+    <update id="updateMember1" parameterType="com.fa.plus.domain.Member">
+		UPDATE member1 SET userPwd=#{userPwd}, pwdDate=SYSDATE
+		WHERE userId=#{userId}
+    </update>
+	
+    <update id="updateMember2" parameterType="com.fa.plus.domain.Member">
+		UPDATE member2 SET email=#{email, jdbcType=VARCHAR}, 
+			tel=#{tel, jdbcType=VARCHAR}, birth=#{birth, jdbcType=VARCHAR},
+			zip=#{zip, jdbcType=VARCHAR},
+			addr1=#{addr1, jdbcType=VARCHAR}, addr2=#{addr2, jdbcType=VARCHAR}
+		WHERE userId=#{userId}
+    </update>
     
-    
+    <!-- 패스워드 실패 / 회원 상태 -->
+	<select id="checkFailureCount" parameterType="String" resultType="Integer">
+		SELECT NVL(failureCnt, 0) failureCnt
+		FROM member1
+		WHERE userId = #{userId}
+	</select>
+	
+	<update id="updateFailureCountReset" parameterType="String">
+		UPDATE member1 SET failureCnt = 0
+		WHERE userId = #{userId}
+	</update>
+	
+	<update id="updateFailureCount" parameterType="String">
+		UPDATE member1 SET failureCnt = failureCnt + 1
+		WHERE userId = #{userId}
+	</update>
+
+	<insert id="insertMemberState" parameterType="com.fa.plus.domain.Member">
+		INSERT INTO memberState(num, userId, stateCode, memo, adminId, stateDate)
+		VALUES (memberState_seq.NEXTVAL, #{userId}, #{stateCode}, #{memo}, #{adminId}, SYSDATE)
+	</insert>
+	
     <!-- 권한 테이블 -->
 	<insert id="insertAuthority" parameterType="com.fa.plus.domain.Member">
 		INSERT INTO memberAuthority(userId, authority)

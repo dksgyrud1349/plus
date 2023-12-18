@@ -66,12 +66,12 @@
 		UPDATE member1 SET enabled=#{enabled} WHERE userId=#{userId}
     </update>
     
-    <update id="updatePlus1" parameterType="com.sp.app.domain.Member">
+    <update id="updatePlus1" parameterType="com.fa.plus.pluszone.domain.MemberPlus">
 		UPDATE member1 SET userPwd=#{userPwd}, pwdDate=SYSDATE
 		WHERE userId=#{userId}
     </update>
 	
-    <update id="updatePlus2" parameterType="com.sp.app.domain.Member">
+    <update id="updatePlus2" parameterType="com.fa.plus.pluszone.domain.MemberPlus">
 		UPDATE member2 SET email=#{email, jdbcType=VARCHAR}, 
 			tel=#{tel, jdbcType=VARCHAR}, birth=#{birth, jdbcType=VARCHAR},
 			zip=#{zip, jdbcType=VARCHAR},
@@ -79,7 +79,7 @@
 		WHERE userId=#{userId}
     </update>
     
-    <update id="updatePlus3" parameterType="com.sp.app.domain.Member">
+    <update id="updatePlus3" parameterType="com.fa.plus.pluszone.domain.MemberPlus">
 		UPDATE plus SET photo=#{photo}, content=#{content}, nickName = #{nickName}
 		WHERE userId=#{userId}
     </update>
