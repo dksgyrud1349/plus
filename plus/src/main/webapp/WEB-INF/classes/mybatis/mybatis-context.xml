@@ -52,7 +52,7 @@
     	- MapperScannerConfigurer는 지정한 패키지 아래 모든 인터페이스를 Mapper 인터페이스로 간주되어
     	  Mapper 인터페이스의 객체가 DI 컨테이너에 등록
      -->
-	<mybatis-spring:scan base-package="com.fa.plus.mapper, com.fa.plus.admin.mapper" />
+	<mybatis-spring:scan base-package="com.fa.plus.mapper, com.fa.plus.pluszone.mapper, com.fa.plus.admin.mapper" />
 
 	<!-- 트랜잭션관리자 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

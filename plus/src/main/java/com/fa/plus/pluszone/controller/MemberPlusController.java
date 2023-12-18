@@ -107,7 +107,7 @@ public class MemberPlusController {
 		if (dropout == null) {
 			model.addAttribute("mode", "update");
 		} else {
-			model.addAttribute("mode", "dropout");
+			//model.addAttribute("mode", "dropout");
 		}
 
 		return ".pluszone.pwd";
@@ -136,7 +136,7 @@ public class MemberPlusController {
 			model.addAttribute("message", "패스워드가 일치하지 않습니다.");
 			return ".pluszone.pwd";
 		}
-
+		/*
 		if (mode.equals("dropout")) {
 			// 세션 정보 삭제
 			session.removeAttribute("member");
@@ -151,7 +151,7 @@ public class MemberPlusController {
 
 			return "redirect:/pluszone/complete";
 		}
-		
+		*/
 		// 회원정보수정폼
 			model.addAttribute("dto", dto);
 			model.addAttribute("mode", "update");
@@ -188,7 +188,7 @@ public class MemberPlusController {
 			
 			return ".pluszone.pwdFind";
 		}
-		
+		/*
 		@PostMapping("pwdFind")
 		public String pwdFindSubmit(@RequestParam String userId,
 				RedirectAttributes reAttr,
@@ -201,7 +201,7 @@ public class MemberPlusController {
 			}
 			
 			try {
-				service.generatePwd(dto);
+				//service.generatePwd(dto);
 			} catch (Exception e) {
 				model.addAttribute("message", "이메일 전송이 실패했습니다.");
 				return ".pluszone.pwdFind";
@@ -216,7 +216,7 @@ public class MemberPlusController {
 			
 			return "redirect:/pluszone/complete";
 		}
-		
+		*/
 		@GetMapping("noAuthorized")
 		public String noAuthorized(Model model) {
 			// 접근 권한이 없는 경우

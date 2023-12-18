@@ -166,7 +166,7 @@ public class MemberPlusServiceImpl implements MemberPlusService{
 		}
 		return dto;
 	}
-
+/*
 	@Override
 	public void generatePwd(MemberPlus dto) throws Exception {
 		// 10 자리 임시 패스워드 생성
@@ -203,7 +203,7 @@ public class MemberPlusServiceImpl implements MemberPlusService{
 				}
 		
 	}
-
+*/
 	@Override
 	public boolean isPasswordCheck(String userId, String userPwd) {
 		// 패스워드 비교

@@ -9,6 +9,11 @@
 		WHERE userId = #{userId} AND enabled != 0	
 	</select>
 	
+	<update id="updateLastLogin" parameterType="String">
+		UPDATE member1 SET lastLogin = SYSDATE, failureCnt = 0
+		WHERE userId=#{userId}
+	</update>
+	
 	<select id="memberSeq" resultType="Long">
        SELECT member_seq.NEXTVAL FROM dual 
     </select>

@@ -15,7 +15,7 @@ public interface MemberPlusService {
 	
 	public MemberPlus loginPlusMember(String userId);
 	
-	public void generatePwd(MemberPlus dto) throws Exception;
+	//public void generatePwd(MemberPlus dto) throws Exception;
 	
 	public boolean isPasswordCheck(String userId, String userPwd);
 	public void updatePwd(MemberPlus dto) throws Exception;
