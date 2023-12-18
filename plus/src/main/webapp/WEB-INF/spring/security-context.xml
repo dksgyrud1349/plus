@@ -32,6 +32,16 @@
 	        <intercept-url pattern="/member/idFind" access="permitAll"/>
 	        <intercept-url pattern="/member/expired" access="permitAll"/>
 	        
+	         <!-- 플러스 접근 -->
+	        <intercept-url pattern="/pluszone/member/login" access="permitAll"/>
+	        <intercept-url pattern="/pluszone/member/member" access="permitAll"/>
+	        <intercept-url pattern="/pluszone/member/userIdCheck" access="permitAll"/>
+	        <intercept-url pattern="/pluszone/member/complete" access="permitAll"/>
+	        <intercept-url pattern="/pluszone/member/pwdFind" access="permitAll"/>
+	        <intercept-url pattern="/pluszone/member/idFind" access="permitAll"/>
+	        <intercept-url pattern="/pluszone/member/expired" access="permitAll"/>
+	        
+	        
 	        <intercept-url pattern="/event/progress/list" access="permitAll"/>
 	        <intercept-url pattern="/event/ended/list" access="permitAll"/>
 	        <intercept-url pattern="/event/progress/article" access="permitAll"/>
@@ -53,10 +63,10 @@
 	        <intercept-url pattern="/uploads/photo/**" access="permitAll"/>
 	        
 	        <!-- admin 페이지 -->
-	        <intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_EMP')"/>
+	        <intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN')"/>
 	        
 	        <!-- 모든 페이지 -->
-	        <intercept-url pattern="/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_EMP', 'ROLE_USER')"/>
+	        <intercept-url pattern="/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_PLUS', 'ROLE_USER')"/>
 	        
 	        <!-- 사용자 정의 로그인 폼 -->
 	        <form-login
@@ -85,6 +95,36 @@
 	           <concurrency-control max-sessions="1"
 	              expired-url="/member/expired"/>
 	        </session-management>
+	        
+	        
+	        <!-- 플러스 로그인 폼 -->
+	        <form-login
+	        	login-page="/pluszone/member/login"
+	        	login-processing-url = "/pluszone/member/login"
+	        	username-parameter="userId"
+	        	password-parameter="userPwd"
+	        	default-target-url="/"
+	        	always-use-default-target="true"
+	        	authentication-success-handler-ref="loginSuccessHandler"
+	        	authentication-failure-handler-ref="loginFailureHandler"
+	        />
+	        	
+	        
+	        <!-- 로그 아웃 -->
+	        <logout logout-url="/pluszone/member/logout"
+	        		invalidate-session ="true"
+	        		logout-success-url="/"/>
+	        		
+	        
+	        <!-- 접근 권한이 없는 경우 -->
+	        <access-denied-handler error-page="/pluszone/member/noAuthorized"/>
+	      
+	        <!-- 동일 아이디로 동시에 1명만 로그인(기존 세션 만료) -->
+	        <session-management>
+	           <concurrency-control max-sessions="1"
+	              expired-url="/pluszone/member/expired"/>
+	        </session-management>
+	        
 	      
 	        <!-- AJAX 로그인 검사를 위한 필터 등록 -->
 	        <!-- EXCEPTION_TRANSLATION_FILTER : 보호된 요청을 처리하는 동안 발생하는 예외를 위임 받아 처리함 -->

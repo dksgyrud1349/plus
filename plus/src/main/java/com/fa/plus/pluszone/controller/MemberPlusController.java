@@ -23,18 +23,18 @@ import com.fa.plus.pluszone.domain.MemberPlus;
 import com.fa.plus.pluszone.service.MemberPlusService;
 
 @Controller
-@RequestMapping(value = "/pluszone/*")
+@RequestMapping(value = "/pluszone/member/*")
 public class MemberPlusController {
 	@Autowired
 	MemberPlusService service;
 	
 	@RequestMapping("login")
 	public String loginForm() {
-		return ".pluszone.login";
+		return ".pluszone.member.login";
 	}
 	
 
-	@GetMapping("pluszone")
+	@GetMapping("member")
 	public String memberForm(Model model) {
 		model.addAttribute("mode", "member");
 		return ".pluszone.member";

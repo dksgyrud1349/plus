@@ -399,7 +399,7 @@
 						</li>
 						
 						<li>
-							<li onclick="urlOk('/pluszone/login')" class="menubtn bar">플러스존</li>
+							<li onclick="urlOk('/pluszone/member/login')" class="menubtn bar">플러스존</li>
 						</li>
 
 					</ul>
