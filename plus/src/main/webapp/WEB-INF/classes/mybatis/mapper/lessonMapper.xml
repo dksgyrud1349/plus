@@ -47,7 +47,8 @@
 	</select>
 	
 	<select id="allLessonList" parameterType="map" resultType="com.fa.plus.domain.Lesson">
-		SELECT le.classNum, className, price, firstPhoto, le.addr1, nickName, le.subNum
+		SELECT le.classNum, className, price, firstPhoto, le.addr1, nickName, le.subNum, 
+			TO_CHAR(startDate, 'YYYY-MM-DD') startDate, TO_CHAR(endDate, 'YYYY-MM-DD') endDate
 		FROM lesson le
 		JOIN member m ON m.memberIdx = le.memberIdx
 		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
@@ -103,7 +104,7 @@
         FROM (
             SELECT 
                 l.classNum, className, price, l.content, firstPhoto,
-                special, TO_CHAR(startDate, 'YYYY-MM-DD') startDate, TO_CHAR(startDate, 'YYYY-MM-DD') endDate,
+                special, TO_CHAR(l.startDate, 'YYYY-MM-DD') startDate, TO_CHAR(l.endDate, 'YYYY-MM-DD') endDate,
                 l.zip, l.addr1, l.addr2, l.showClass, l.mileage, tagNum, subNum, l.memberIdx,
                 photoNum, photoName,
                 NVL(reviewCount, 0) reviewCount, NVL(reviewScore, 0) reviewScore,
@@ -126,4 +127,7 @@
         WHERE ROWNUM = 1
 	</select>
 	
+	<insert id="insertLessonLike" parameterType="map">
+		
+	</insert>
 </mapper>

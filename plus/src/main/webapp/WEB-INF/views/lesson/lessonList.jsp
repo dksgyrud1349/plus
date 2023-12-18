@@ -111,9 +111,9 @@ $(function() {
 
 <div class="container mt-5 pt-3 ms-5">
 	<div class="row justify-content-center">
-		<div class="col-8" style="width: 180rem;">
+		<div class="col-8 mt-5" style="width: 180rem;">
 			<h5 class="pb-2 fw-bold fs-2">모든 원데이 클래스</h5>
-			<div class="row d-flex">
+			<div class="row d-flex mt-5">
 				<form action="" name="searchForm" method="post">
 					<div class="col-2 p-3" style="float: left; width: 16.66%;">${dataCount}개(${page}/${total_page} 페이지)</div>
 					<div class="col-2 p-2" style="float: left; width: 16.66%;">
@@ -153,27 +153,30 @@ $(function() {
 					</div>
 				</form>
 			</div>
-			<div class="row">
+			<div class="row mt-5">
 				<c:forEach var="dto" items="${list}" varStatus="status">
-					<div class="card col-4 p-1" style="width: 25rem; height: 43rem;">
+					<div class="card col-4 p-1" style="width: 25rem; height: 35rem;">
 						<div class="zoom">
 							<img
 								src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg"
 								class="card-img-top"  alt="...">
 						</div>
-						<div class="card-body">
+						<div class="card-body" style="height: 15px;">
 							<p class="card-text">
 								<i class="bi bi-person"></i> ${dto.nickName}
 							</p>
-							<h5 class="card-title fs-5 pb-1">${dto.className}</h5>
+							<h5 class="card-title pb-1">${dto.className}</h5>
 							<p class="card-text">
 								<i class="bi bi-geo-alt-fill"></i> ${dto.addr1}
 							</p>
 							<p class="card-text">
+								<i class="bi bi-calendar-check"></i> ${dto.startDate} ~ ${dto.endDate}
+							</p>
+							<p class="card-text">
 								<i class="bi bi-star"></i> 5.0 (리뷰 개수)
 							</p>
-							<p class="card-text text-danger fs-3"> <fmt:formatNumber value="${dto.price}" pattern="#,###" /></p>
-							<p class="text-end" >
+							<span class="card-text text-danger text-start mt-5 fs-5"> <fmt:formatNumber value="${dto.price}" pattern="#,###" /></span>
+							<p class="text-end">
 								<button class="btn btn-primary product-item" data-productNum="${dto.classNum}">예약하기</button>
 								<button class="btn">
 									<i class="bi bi-heart pt-1"></i>
