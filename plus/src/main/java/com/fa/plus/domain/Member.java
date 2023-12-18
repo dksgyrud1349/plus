@@ -27,9 +27,6 @@ public class Member {
 	private String zip;
 	private String addr1;
 	private String addr2;
-	private String photo;
-	private String content;
-	private String nickName;
 	private String pwdDate;
 	
 	public long getMemberIdx() {
@@ -187,24 +184,6 @@ public class Member {
 	}
 	public void setAddr2(String addr2) {
 		this.addr2 = addr2;
-	}
-	public String getPhoto() {
-		return photo;
-	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getNickName() {
-		return nickName;
-	}
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
 	}
 	public String getPwdDate() {
 		return pwdDate;
