@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fa.plus.common.FileManager;
 import com.fa.plus.domain.Lesson;
 import com.fa.plus.mapper.LessonMapper;
 
@@ -15,10 +14,6 @@ public class LessonServiceImpl implements LessonService{
 
 	@Autowired
 	private LessonMapper mapper;
-	
-	@Autowired
-	private FileManager fileManager;
-	
 	
 	@Override
 	public List<Lesson> allLessonList(Map<String, Object> map) {

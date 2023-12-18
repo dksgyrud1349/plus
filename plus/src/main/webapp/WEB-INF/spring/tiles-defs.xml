@@ -34,6 +34,13 @@
 		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
 	</definition>
 	
+	<!-- 플러스 로그 -->
+	<definition name=".pluszone.member.*" template="/WEB-INF/views/layout/layout3.jsp">
+	    <put-attribute name="title" value="OnedayPlus" />
+	  	<put-attribute name="header" value="/WEB-INF/views/layout/subheader.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/pluszone/member/{1}.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+	</definition>
 	
    <!-- 2단 관리자 -->
 	<definition name=".adminLayout" template="/WEB-INF/views/admin/layout/layout2.jsp">
@@ -60,13 +67,13 @@
 		<put-attribute name="body" value="/WEB-INF/views/pluszone/main/main.jsp" />
 	</definition>
 	<definition name=".pluszone.*.*.*" extends=".plusLayout">
-		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/pluszone/{1}/{2}/{3}.jsp"/>
 	</definition>
 	<definition name=".pluszone.*.*" extends=".plusLayout">
-		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/pluszone/{1}/{2}.jsp"/>
 	</definition>
 	<definition name=".pluszone.*" extends=".plusLayout">
-    	  <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
+    	  <put-attribute name="body" value="/WEB-INF/views/pluszone/{1}.jsp" />
 	</definition>
 
 	 

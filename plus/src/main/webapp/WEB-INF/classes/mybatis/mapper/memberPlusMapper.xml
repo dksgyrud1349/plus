@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.pluszone.mapper.MemberPlusMapper">
+
+	<select id="loginPlusMember"  parameterType="String" resultType="com.fa.plus.pluszone.domain.MemberPlus">
+		SELECT m.memberIdx, membership, userId, userName, userPwd, regDate, lastLogin, pwdDate
+		FROM member m
+		JOIN member1 m1 ON m1.memberIdx = m.memberIdx
+		WHERE userId = #{userId} AND enabled != 0 AND membership = 51
+	</select>
+	
+	<update id="updateLastLogin" parameterType="String">
+		UPDATE member1 SET lastLogin = SYSDATE, failureCnt = 0
+		WHERE userId=#{userId}
+	</update>
+	
+	<select id="memberSeq" resultType="Long">
+       SELECT member_seq.NEXTVAL FROM dual 
+    </select>
+
+    <insert id="insertPlus" parameterType="Long">
+		INSERT INTO member(memberIdx, membership) VALUES (#{memberIdx}, 1) 
+    </insert>
+
+    <update id="insertPlus12" parameterType="com.fa.plus.pluszone.domain.MemberPlus">
+		INSERT ALL
+		INTO member1(memberIdx, userId, userName, userPwd, enabled, 
+			regDate, pwdDate, failureCnt, lastLogin, totalMileage)
+		VALUES (#{memberIdx}, #{userId}, #{userName}, #{userPwd}, 1, 
+			SYSDATE, SYSDATE, 0, SYSDATE, 0)
+		INTO member2(userId, birth, email, tel, zip, addr1, addr2)
+		VALUES (#{userId}, #{birth}, #{email}, #{tel}, 
+			#{zip, jdbcType=VARCHAR}, #{addr1, jdbcType=VARCHAR}, 
+			#{addr2, jdbcType=VARCHAR})
+		INTO plus(userId, photo, content, nickName)
+		VALUES (#{userId}, #{photo}, #{content}, #{nickName})
+		SELECT * FROM dual     
+    </update>
+    
+    
+    <select id="findById" parameterType="String" resultType="com.fa.plus.pluszone.domain.MemberPlus">
+		SELECT m.memberIdx, membership, m1.userId, userName, userPwd, enabled,
+			regDate, pwdDate, lastLogin, totalMileage,
+			TO_CHAR(birth, 'YYYY-MM-DD') birth, email, tel, 
+			zip, addr1, addr2,
+			nickName, content, photo
+		FROM member m 
+		JOIN member1 m1 ON m.memberIdx = m1.memberIdx 
+		LEFT OUTER JOIN member2 m2 ON m1.userId = m2.userId
+		LEFT OUTER JOIN plus p ON p.userId = m1.userId
+		WHERE m1.userId = #{userId}
+	</select>
+
+	<select id="findByMemberIdx" parameterType="Long" resultType="com.fa.plus.pluszone.domain.MemberPlus">
+		SELECT m.memberIdx, membership, enabled, 
+			NVL(m1.userId, 'guest') userId, NVL(userName, '손님') userName, userPwd, 
+			regDate, pwdDate, lastLogin, totalMileage,
+			TO_CHAR(birth, 'YYYY-MM-DD') birth, email, tel,
+			zip, addr1, addr2,
+			nickName, content, photo
+		FROM member m
+		LEFT OUTER JOIN member1 m1 ON m.memberIdx = m1.memberIdx
+		LEFT OUTER JOIN member2 m2 ON m1.userId = m2.userId
+		LEFT OUTER JOIN plus p ON p.userId = m1.userId
+		WHERE m.memberIdx = #{memberIdx}
+	</select>
+    
+    <!-- 회원정보 수정  --> 
+    <update id="updatePlusEnabled" parameterType="map">
+		UPDATE member1 SET enabled=#{enabled} WHERE userId=#{userId}
+    </update>
+    
+    <update id="updatePlus1" parameterType="com.fa.plus.pluszone.domain.MemberPlus">
+		UPDATE member1 SET userPwd=#{userPwd}, pwdDate=SYSDATE
+		WHERE userId=#{userId}
+    </update>
+	
+    <update id="updatePlus2" parameterType="com.fa.plus.pluszone.domain.MemberPlus">
+		UPDATE member2 SET email=#{email, jdbcType=VARCHAR}, 
+			tel=#{tel, jdbcType=VARCHAR}, birth=#{birth, jdbcType=VARCHAR},
+			zip=#{zip, jdbcType=VARCHAR},
+			addr1=#{addr1, jdbcType=VARCHAR}, addr2=#{addr2, jdbcType=VARCHAR}
+		WHERE userId=#{userId}
+    </update>
+    
+    <update id="updatePlus3" parameterType="com.fa.plus.pluszone.domain.MemberPlus">
+		UPDATE plus SET photo=#{photo}, content=#{content}, nickName = #{nickName}
+		WHERE userId=#{userId}
+    </update>
+    
+    <!-- 패스워드 실패 / 회원 상태 -->
+	<select id="checkFailureCount" parameterType="String" resultType="Integer">
+		SELECT NVL(failureCnt, 0) failureCnt
+		FROM member1
+		WHERE userId = #{userId}
+	</select>
+	
+	<update id="updateFailureCountReset" parameterType="String">
+		UPDATE member1 SET failureCnt = 0
+		WHERE userId = #{userId}
+	</update>
+	
+	<update id="updateFailureCount" parameterType="String">
+		UPDATE member1 SET failureCnt = failureCnt + 1
+		WHERE userId = #{userId}
+	</update>
+
+	<insert id="insertPlusState" parameterType="com.fa.plus.pluszone.domain.MemberPlus">
+		INSERT INTO memberState(num, userId, stateDate, stateCode, memo, adminId)
+		VALUES (memberState_seq.NEXTVAL, #{userId}, SYSDATE, #{stateCode}, #{memo}, #{adminId})
+	</insert>
+    
+    <!-- 권한 테이블 -->
+	<insert id="insertAuthority" parameterType="com.fa.plus.pluszone.domain.MemberPlus">
+		INSERT INTO memberAuthority(userId, authority)
+		VALUES (#{userId}, #{authority})
+	</insert>
+
+	<update id="updateAuthority" parameterType="com.fa.plus.pluszone.domain.MemberPlus">
+		UPDATE memberAuthority SET authority = #{authority} WHERE userId = #{userId}
+	</update>
+
+</mapper>

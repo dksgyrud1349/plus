@@ -160,10 +160,10 @@
 						<a href="#" class="icon-arrow-left bi bi-cart4" data-info="알림">알림</a>
 						<a href="${pageContext.request.contextPath}/member/logout" class="icon-drop bi bi-person" data-info="로그아웃"></a>
 						<c:if test="${sessionScope.member.membership > 90}">
-							<a href="${pageContext.request.contextPath}/admin" class="icon-drop bi bi-gear-wide-connected" data-info="관리자 페이자"></a>
+							<a href="${pageContext.request.contextPath}/admin" class="icon-drop bi bi-gear-wide-connected" data-info="관리자 페이지"></a>
 						</c:if>
 						<c:if test="${sessionScope.member.membership > 50 && sessionScope.member.membership < 90}">
-							<a href="${pageContext.request.contextPath}/pluszone" class="icon-drop bi bi-gear-wide-connected" data-info="사업자 페이자"></a>
+							<a href="${pageContext.request.contextPath}/pluszone" class="icon-drop bi bi-gear-wide-connected" data-info="사업자 페이지"></a>
 						</c:if>
 					</c:otherwise>
 				</c:choose>
@@ -399,7 +399,7 @@
 						</li>
 						
 						<li>
-							<li onclick="urlOk('/')" class="menubtn bar">사이트맵</li>
+							<li onclick="urlOk('/pluszone/member/login')" class="menubtn bar">플러스존</li>
 						</li>
 
 					</ul>

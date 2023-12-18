@@ -29,6 +29,16 @@ public class Lesson {
 	private long photoNum; // 사진 번호
 	private String photoName; // 사진 이름
 	
+	private int lessonLikeCount;  // 좋아요 개수
+	
+	public int getLessonLikeCount() {
+		return lessonLikeCount;
+	}
+
+	public void setLessonLikeCount(int lessonLikeCount) {
+		this.lessonLikeCount = lessonLikeCount;
+	}
+
 	public long getClassNum() {
 		return classNum;
 	}

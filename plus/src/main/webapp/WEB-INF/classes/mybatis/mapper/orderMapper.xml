@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.OrderMapper">
+	<select id="findByMaxOrderNumber" resultType="String">
+		SELECT orderNum
+		FROM orders
+		ORDER BY oDate DESC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+
+	<insert id="insertOrder" parameterType="com.fa.plus.domain.Order">
+		INSERT INTO orders(orderNum, oDate, tMoney, uMileage, state, 
+			count, memberIdx, detailNum) VALUES (#{orderNum}, SYSDATE, #{tMoney}, 
+			#{uMileage}, 0, #{count}, #{memberIdx}, #{detailNum})
+	</insert>
+   
+	<insert id="insertPayDetail" parameterType="com.fa.plus.domain.Order">
+		INSERT INTO classPayDetail(orderNum, payMethod, orderName, authorNum, authorDate) 
+			VALUES (#{orderNum}, #{payMethod}, #{orderName}, #{authorNum}, TO_DATE(#{authorDate}, 'YYYY-MM-DD HH24:MI:SS') )
+	</insert>
+	
+	<insert id="insertBook" parameterType="com.fa.plus.domain.Order">
+		INSERT INTO book (bookNum, bookState, orderNum)
+			VALUES(book_seq.NEXTVAL, 0, #{orderNum})
+	</insert>
+	
+	<select id="listOrder" parameterType="map" resultType="com.fa.plus.domain.Order">
+		SELECT
+		FROM orders
+		JOIN 
+	</select>
+	
+	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.Order">
+		SELECT classNum, className, firstPhoto, l.memberIdx, nickName
+		FROM lesson l
+		JOIN member1 m1 ON l.memberIdx = m1.memberIdx
+		JOIN plus p ON m1.userId = p.userId
+		WHERE l.classNum = #{classNum}
+	</select>
+	
+	<select id="findByDetailId" parameterType="Long" resultType="com.fa.plus.domain.Order">
+		SELECT detailNum, count, classNum, 
+			TO_CHAR(startTime, 'YYYY-MM-DD HH24:MI') startTime, TO_CHAR(endTime, 'YYYY-MM-DD HH24:MI') endTime
+		FROM lessonDetail
+		WHERE detailNum = #{detailNum}
+	</select>
+	
+</mapper>

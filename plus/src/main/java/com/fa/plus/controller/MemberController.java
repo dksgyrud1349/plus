@@ -3,6 +3,8 @@ package com.fa.plus.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fa.plus.domain.Member;
+import com.fa.plus.domain.SessionInfo;
 import com.fa.plus.service.MemberService;
 
 @Controller
@@ -104,13 +107,91 @@ public class MemberController {
 		return model;
 	}
 	
-	// 플러스(사업자) 회원가입은 신경 쓰지 않음. 승인 절차 이후 로그인 가능하게 만들어야 함.
-	
-	
-	
-	
-	
-	
+	@GetMapping("pwd")
+	public String pwdForm(String dropout, Model model) {
+
+		if (dropout == null) {
+			model.addAttribute("mode", "update");
+		} else {
+			model.addAttribute("mode", "dropout");
+		}
+
+		return ".member.pwd";
+	}
+
+	@PostMapping("pwd")
+	public String pwdSubmit(@RequestParam String userPwd,
+			@RequestParam String mode, 
+			final RedirectAttributes reAttr,
+			HttpSession session,
+			Model model) {
+
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+
+		Member dto = service.findById(info.getUserId());
+		if (dto == null) {
+			session.invalidate();
+			return "redirect:/";
+		}
+
+		// 패스워드 검사 ------------------------------------------------
+		boolean bPwd = service.isPasswordCheck(info.getUserId(), userPwd);
+		
+		if (! bPwd) {
+			model.addAttribute("mode", mode);
+			model.addAttribute("message", "패스워드가 일치하지 않습니다.");
+			return ".member.pwd";
+		}
+		/*
+		if (mode.equals("dropout")) {
+			// 게시판 테이블등 자료 삭제
+
+			// 회원탈퇴 처리
+			
+			  Map<String, Object> map = new HashMap<>();
+			  map.put("memberIdx", info.getMemberIdx());
+			  map.put("userId", info.getUserId());
+			
+
+			// 세션 정보 삭제
+			session.removeAttribute("member");
+			session.invalidate();
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(dto.getUserName() + "님의 회원 탈퇴 처리가 정상적으로 처리되었습니다.<br>");
+			sb.append("메인화면으로 이동 하시기 바랍니다.<br>");
+
+			reAttr.addFlashAttribute("title", "회원 탈퇴");
+			reAttr.addFlashAttribute("message", sb.toString());
+
+			return "redirect:/member/complete";
+		}
+		*/
+		// 회원정보수정폼
+		model.addAttribute("dto", dto);
+		model.addAttribute("mode", "update");
+		return ".member.member";
+	}
+
+	@PostMapping("update")
+	public String updateSubmit(Member dto,
+			final RedirectAttributes reAttr,
+			Model model) {
+
+		try {
+			service.updateMember(dto);
+		} catch (Exception e) {
+		}
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(dto.getUserName() + "님의 회원정보가 정상적으로 변경되었습니다.<br>");
+		sb.append("메인화면으로 이동 하시기 바랍니다.<br>");
+
+		reAttr.addFlashAttribute("title", "회원 정보 수정");
+		reAttr.addFlashAttribute("message", sb.toString());
+
+		return "redirect:/member/complete";
+	}
 	
 	
 	@GetMapping("noAuthorized")
@@ -130,8 +211,65 @@ public class MemberController {
 		return ".member.idFind";
 	}
 	
+	// password
 	@GetMapping("pwdFind")
-	public String pwdFind() throws Exception {
+	public String pwdFind(HttpSession session) throws Exception {
+		SessionInfo info = (SessionInfo)session.getAttribute("member");
+		if(info != null) {
+			return "redirect:/";
+		}
 		return ".member.pwdFind";
+	}
+	@PostMapping("pwdFind")
+	public String pwdFindSubmit(@RequestParam String userId,
+			RedirectAttributes reAttr,
+			Model model) throws Exception {
+		
+		Member dto = service.findById(userId);
+		if(dto == null || dto.getEmail() == null || dto.getEnabled() == 0) {
+			model.addAttribute("message", "등록된 아이디가 아닙니다.");
+			return ".member.pwdFind";
+		}
+		
+		try {
+			//service.generatePwd(dto);
+		} catch (Exception e) {
+			model.addAttribute("message", "이메일 전송이 실패했습니다.");
+			return ".member.pwdFind";
+		}
+		
+		StringBuilder sb=new StringBuilder();
+		sb.append("회원님의 이메일로 임시패스워드를 전송했습니다.<br>");
+		sb.append("로그인 후 패스워드를 변경하시기 바랍니다.<br>");
+		
+		reAttr.addFlashAttribute("title", "패스워드 찾기");
+		reAttr.addFlashAttribute("message", sb.toString());
+		
+		return "redirect:/member/complete";
+	}
+	
+	// 패스워드 수정 폼
+	@GetMapping("updatePwd")
+	public String updatePwdForm() throws Exception {
+		return ".member.updatePwd";
+	}
+
+	@PostMapping("updatePwd")
+	public String updatePwdSubmit(@RequestParam String userPwd, 
+			HttpSession session, Model model) throws Exception {
+
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		Member dto = new Member();
+		dto.setUserId(info.getUserId());
+		dto.setUserPwd(userPwd);
+
+		try {
+			service.updatePwd(dto);
+		} catch (Exception e) {
+			model.addAttribute("message", "변경할 패스워드가 기존 패스워드와 일치합니다.");
+			return ".member.updatePwd";
+		}
+
+		return "redirect:/";
 	}
 }
