@@ -19,6 +19,7 @@ public interface MemberPlusMapper {
 	public void updatePlusEnabled(Map<String, Object> map) throws SQLException;
 	public void updatePlus1(MemberPlus dto) throws SQLException;
 	public void updatePlus2(MemberPlus dto) throws SQLException;
+	public void updatePlus3(MemberPlus dto) throws SQLException;
 	
 	public MemberPlus findById(String userId);
 	public MemberPlus findByMemberIdx(long memberIdx);
