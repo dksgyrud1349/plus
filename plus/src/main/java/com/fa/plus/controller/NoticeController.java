@@ -156,7 +156,6 @@ public class NoticeController {
 		Notice prevDto = service.findByPrev(map);
 		Notice nextDto = service.findByNext(map);
 
-		// 파일
 		List<Notice> listFile = service.listNoticeFile(num);
 
 		model.addAttribute("dto", dto);
