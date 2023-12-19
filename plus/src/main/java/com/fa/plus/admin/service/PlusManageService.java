@@ -10,6 +10,17 @@ import com.fa.plus.admin.domain.Qna;
 public interface PlusManageService {
 	public List<MemberManage> plusList(Map<String, Object> map);
 	public int dataCount(Map<String, Object> map);
+	
+	public void updateMembership(Map<String, Object> map) throws Exception;
+	
+	public MemberManage findById(String userId);
+	public MemberManage findIdx(String userId);
+	public void updateFailureCountReset(String userId) throws Exception;
+	public void updateMemberEnabled(Map<String, Object> map) throws Exception;
+	public void insertMemberState(MemberManage dto) throws Exception;
+	public List<MemberManage> listMemberState(String userId);
+	public MemberManage findByState(String userId);
+	
 	public List<Qna> findByQna(String userId);
 	public List<Answer> answerChart();
 	public List<Answer> answerChart1();

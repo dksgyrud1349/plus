@@ -105,4 +105,109 @@ public class PlusManageServiceImpl implements PlusManageService{
 		}
 		return list;
 	}
+
+	@Override
+	public void updateMembership(Map<String, Object> map) throws Exception {
+		try {
+			mapper.updateMembership(map);
+		} catch (Exception e) {
+		
+		}
+	}
+
+	@Override
+	public MemberManage findById(String userId) {
+		MemberManage dto = null;
+
+		try {
+			dto = mapper.findById(userId);
+
+			if (dto != null) {
+				if (dto.getEmail() != null) {
+					String[] s = dto.getEmail().split("@");
+					dto.setEmail1(s[0]);
+					dto.setEmail2(s[1]);
+				}
+
+				if (dto.getTel() != null) {
+					String[] s = dto.getTel().split("-");
+					dto.setTel1(s[0]);
+					dto.setTel2(s[1]);
+					dto.setTel3(s[2]);
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return dto;
+	}
+
+	@Override
+	public void updateFailureCountReset(String userId) throws Exception {
+		try {
+			mapper.updateFailureCountReset(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public void updateMemberEnabled(Map<String, Object> map) throws Exception {
+		try {
+			mapper.updateMemberEnabled(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public void insertMemberState(MemberManage dto) throws Exception {
+		try {
+			mapper.insertMemberState(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public List<MemberManage> listMemberState(String userId) {
+		List<MemberManage> list = null;
+		
+		try {
+			list = mapper.listMemberState(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public MemberManage findByState(String userId) {
+		MemberManage dto = null;
+
+		try {
+			dto = mapper.findByState(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return dto;
+	}
+
+	@Override
+	public MemberManage findIdx(String userId) {
+		MemberManage dto = null;
+		try {
+			dto = mapper.findIdx(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
 }
