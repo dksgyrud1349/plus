@@ -33,8 +33,6 @@
 		VALUES (#{userId}, #{birth}, #{email}, #{tel}, 
 			#{zip, jdbcType=VARCHAR}, #{addr1, jdbcType=VARCHAR}, 
 			#{addr2, jdbcType=VARCHAR})
-		INTO plus(userId, photo, content, nickName)
-		VALUES (#{userId}, #{photo}, #{content}, #{nickName})
 		SELECT * FROM dual     
     </update>
     
