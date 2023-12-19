@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fa.plus.pluszone.domain.PluszoneAnswer;
-import com.fa.plus.pluszone.domain.PluszoneQuesion;
+import com.fa.plus.pluszone.domain.PluszoneQuestion;
 import com.fa.plus.pluszone.mapper.PluszoneQuestionMapper;
 
 @Service
@@ -27,8 +27,8 @@ public class PluszoneQuestionServiceImpl implements PluszoneQuestionService {
 	}
 
 	@Override
-	public List<PluszoneQuesion> listQuesion() {
-		List<PluszoneQuesion> list = null;
+	public List<PluszoneQuestion> listQuesion() {
+		List<PluszoneQuestion> list = null;
 		try {
 			list = mapper.listQuesion();
 		} catch (Exception e) {

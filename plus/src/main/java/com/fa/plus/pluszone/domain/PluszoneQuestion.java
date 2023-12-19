@@ -1,6 +1,6 @@
 package com.fa.plus.pluszone.domain;
 
-public class PluszoneQuesion {
+public class PluszoneQuestion {
 	
 	private long num;
 	private String subject;

@@ -7,12 +7,12 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.fa.plus.pluszone.domain.PluszoneAnswer;
-import com.fa.plus.pluszone.domain.PluszoneQuesion;
+import com.fa.plus.pluszone.domain.PluszoneQuestion;
 
 @Mapper
 public interface PluszoneQuestionMapper {
 	public void insertAnswer(PluszoneAnswer dto) throws SQLException;
 	
-	public List<PluszoneQuesion> listQuesion();
+	public List<PluszoneQuestion> listQuesion();
 	public List<PluszoneAnswer> listAnswer(Map<String, Object> map);
 }
