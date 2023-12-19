@@ -41,53 +41,15 @@ public class FaqServiceImpl implements FaqService{
 	}
 
 	@Override
-	public Faq findByPrev(Map<String, Object> map) {
-		Faq dto = null;
+	public List<Faq> listCateNum(Map<String, Object> map) {
+		List<Faq> listCateNum = null;
 		
 		try {
-			dto = mapper.findByPrev(map);
+			listCateNum = mapper.listCateNum(map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return dto;
-	}
-
-	@Override
-	public Faq findByNext(Map<String, Object> map) {
-		Faq dto = null;
-		
-		try {
-			dto = mapper.findByNext(map);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return dto;
-	}
-
-
-
-	@Override
-	public Faq findByFaqNum(long num) {
-		Faq dto = null;
-		
-		try {
-			dto = mapper.findByFaqNum(num);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return dto;
-	}
-
-	@Override
-	public List<Faq> listFaqTop() {
-		List<Faq> list = null;
-		
-		try {
-			list = mapper.listFaqTop();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
+		return listCateNum;
 	}
 
 	

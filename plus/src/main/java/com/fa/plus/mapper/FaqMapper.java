@@ -11,9 +11,6 @@ import com.fa.plus.domain.Faq;
 public interface FaqMapper {
 	public int dataCount(Map<String, Object>map);
 	public List<Faq> listFaq(Map<String, Object> map);
-	public void updateHitCount(long Num);
-	public Faq findByPrev(Map<String, Object> map);
-	public Faq findByNext(Map<String, Object> map);
-	public Faq findByFaqNum(long Num);
-	public List<Faq> listFaqTop();
+	public List<Faq> listCateNum(Map<String, Object> map);
+	
 }

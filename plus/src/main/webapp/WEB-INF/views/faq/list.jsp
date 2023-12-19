@@ -94,7 +94,7 @@
 				</select>
 			</div>
 			<div class="kwd">
-				<input type="text" name="kwd" class="form-control" value="${kwd}">
+				<input type="text" name="kwd" class="form-control" value="${dto.regDate}">
 			</div>
 			<div class="kwd2">
 				<button class="btn btn-outline-secondary">
@@ -108,7 +108,7 @@
 	
 	<div class="accordion accordion-flush" id="accordionFlushExample">
 		<div class="accordion-item">
-			<h2 class="accordion-header" id="flush-headingOne">
+			<h2 ${dto.regDate} id="flush-headingOne">
 				<button class="accordion-button collapsed" type="button"
 					data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
 					aria-expanded="false" aria-controls="flush-collapseOne" style="font-weight: bold;">
@@ -126,7 +126,8 @@
 			</div>
 		</div>
 		<div class="accordion-item">
-			<h2 class="accordion-header" id="flush-headingTwo">
+		
+			<h2 class={Dto.content} id="flush-headingTwo">
 				<button class="accordion-button collapsed" type="button"
 					data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
 					aria-expanded="false" aria-controls="flush-collapseTwo" style="font-weight: bold;">
@@ -145,13 +146,13 @@
 			</div>
 		</div>
 		<div class="accordion-item">
-			<h2 class="accordion-header" id="flush-headingThree">
+			<h2 class="${dto.regDate}" id="flush-headingThree">
 				<button class="accordion-button collapsed" type="button"
 					data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
 					aria-expanded="false" aria-controls="flush-collapseThree" style="font-weight: bold;">
 					Accordion Item #3</button>
 			</h2>
-			<div id="flush-collapseThree" class="accordion-collapse collapse"
+			<div id="${dto.regDate}" class="accordion-collapse collapse"
 				aria-labelledby="flush-headingThree"
 				data-bs-parent="#accordionFlushExample">
 				<div class="accordion-body">

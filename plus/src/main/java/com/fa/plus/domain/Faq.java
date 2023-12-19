@@ -7,15 +7,31 @@ public class Faq {
 	private String content;
 	private String reg_Date;
 	private String userId;
+	
 	private long cateNum;
-	private long gap;
+	private String category;
+	private int enabled;
+	private int orderNo;
 	
 	
-	public long getGap() {
-		return gap;
+	
+	public String getCategory() {
+		return category;
 	}
-	public void setGap(long gap) {
-		this.gap = gap;
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public int getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
+	}
+	public int getOrderNo() {
+		return orderNo;
+	}
+	public void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;
 	}
 	public long getNum() {
 		return num;

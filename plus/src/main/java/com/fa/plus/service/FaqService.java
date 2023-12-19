@@ -10,9 +10,6 @@ public interface FaqService {
 
 	public int dataCount(Map<String, Object> map);
 	public List<Faq> listFaq(Map<String, Object>map);
-	public Faq findByPrev(Map<String, Object>map);
-	public Faq findByNext(Map<String, Object>map);
-	public Faq findByFaqNum(long num);
+	public List<Faq> listCateNum(Map<String, Object>map);
 	
-	public List<Faq> listFaqTop();
 }
