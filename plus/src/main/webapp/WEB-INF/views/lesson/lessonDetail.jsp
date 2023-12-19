@@ -209,7 +209,7 @@ header.masthead h1, header.masthead .h1 {
 
 <script type="text/javascript">
 function sendOk(mode) {
-	const f = document.buyForm;
+	const f = document.detailForm;
 	if(mode === "buy") {
 		// GET 방식으로 전송. 로그인후 결제화면으로 이동하기 위해
 		// 또는 자바스크립트 sessionStorage를 활용 할 수 있음
@@ -226,9 +226,9 @@ function sendOk(mode) {
 	
 	f.submit();
 }
-}
-</script>
 
+</script>
+<form name="detailForm" id="detailForm" method="post">
  <header class="masthead p-3">
             <div class="container px-4 px-lg-5 h-100">
                 <section class="py-5">
@@ -367,6 +367,7 @@ function sendOk(mode) {
                 </section>
             </div>
         </header>
+        </form>
         
         <!-- Services-->
         <section class="page-section mt-5" id="services">
