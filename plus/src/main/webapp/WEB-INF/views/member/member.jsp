@@ -201,7 +201,7 @@
 										</div>
 									</div>
 									<c:if test="${mode=='member'}">
-									<div class="mt-1" style="font-size:11px; color:#a0a0a0">아이디는 5~10자 이내이며, 첫글자는 영문자로 시작해야 합니다.</div>
+									<div class="mt-1 help-block" style="font-size:11px; color:#a0a0a0">아이디는 5~10자 이내이며, 첫글자는 영문자로 시작해야 합니다.</div>
 									</c:if>
 								</div>
 							</div>
@@ -330,9 +330,7 @@
 	                                <div>   
 	                                    <input type="checkbox" id="agree" name="agree"
 	                                        class="form-check-input"
-	                                        checked
-	                                        style="margin-left: 0;"
-	                                        onchange="form.sendButton.disabled = !checked">
+	                                        style="margin-left: 0;">
 	                                    <label class="form-check-label mb-1">
 	                                        &nbsp;[선택]&nbsp; 광고성 정보 수신에 모두 동의합니다.
 	                                    </label>

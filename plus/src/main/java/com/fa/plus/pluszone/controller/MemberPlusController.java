@@ -71,7 +71,7 @@ public class MemberPlusController {
 		reAttr.addFlashAttribute("message", sb.toString());
 		reAttr.addFlashAttribute("title", "회원 가입");
 
-		return "redirect:/pluszone/members/complete";
+		return "redirect:/pluszone/member/complete";
 	}
 	
 	@GetMapping("complete")

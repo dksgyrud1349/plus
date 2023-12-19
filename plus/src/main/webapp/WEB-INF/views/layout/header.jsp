@@ -398,10 +398,25 @@
 							<li onclick="urlOk('/')" class="menubtn bar">사이트맵</li><span class="border-end"></span>
 						</li>
 						
-						<li>
-							<li onclick="urlOk('/pluszone/member/login')" class="menubtn bar">플러스존</li>
-						</li>
-
+						<c:choose>
+							<c:when test="${empty sessionScope.member}">
+								<li>
+									<li onclick="urlOk('/pluszone/member/member')" class="menubtn bar">플러스존 등록</li>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<c:if test="${sessionScope.member.membership < 50}">
+									<li>
+										<li onclick="urlOk('/')" class="menubtn bar">플러스존 요청</li>
+									</li>
+								</c:if>
+								<c:if test="${sessionScope.member.membership > 50}">
+									<li>
+										<li onclick="urlOk('/pluszone')" class="menubtn bar">플러스존</li>
+									</li>
+								</c:if>
+							</c:otherwise>
+						</c:choose>
 					</ul>
 				</nav>
 			</div>
