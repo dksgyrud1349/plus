@@ -127,7 +127,23 @@
         WHERE ROWNUM = 1
 	</select>
 	
+	<!-- 게시글 좋아요 추가 -->
 	<insert id="insertLessonLike" parameterType="map">
-		
+		INSERT INTO wishList(wishDate, userId, classNum) VALUES(SYSDATE, #{userId}, #{classNum})
 	</insert>
+	
+	<!-- 게시글 좋아요 삭제 -->
+	<delete id="deleteLessonLike" parameterType="map">
+		DELETE FROM wishList WHERE classNum = #{classNum} AND userId = #{userId}
+	</delete>
+	
+	<!-- 게시글 좋아요 개수 -->
+	<select id="lessonLikeCount" parameterType="Long" resultType="Integer">
+		SELECT COUNT(*) FROM wishList WHERE classNum = #{classNum}
+	</select>
+	
+	<!-- 게시글 좋아요 여부 -->
+	<select id="userLessonLiked" parameterType="map" resultType="com.fa.plus.domain.Lesson">
+		SELECT userId, classNum FROM wishList WHERE classNum = #{classNum} AND userId = #{userId}
+	</select>
 </mapper>

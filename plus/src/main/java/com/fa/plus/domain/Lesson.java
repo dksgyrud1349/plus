@@ -30,7 +30,16 @@ public class Lesson {
 	private String photoName; // 사진 이름
 	
 	private int lessonLikeCount;  // 좋아요 개수
-	
+	private boolean userLessonLiked;
+
+	public boolean isUserLessonLiked() {
+		return userLessonLiked;
+	}
+
+	public void setUserLessonLiked(boolean userLessonLiked) {
+		this.userLessonLiked = userLessonLiked;
+	}
+
 	public int getLessonLikeCount() {
 		return lessonLikeCount;
 	}
