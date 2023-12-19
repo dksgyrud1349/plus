@@ -2,9 +2,68 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<main class="wrapper" style="margin:0% auto;">
-<div id="layoutSidenav_content">
-                <main>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+
+<script type="text/javascript">
+$(function(){
+	let url = "${pageContext.request.contextPath}/adminChart";
+	
+	$.getJSON(url, function(data) {
+		chartsDayOfWeek(data);
+	});	
+		
+	function chartsDayOfWeek(data) {
+		let chartData = [];
+		
+		let m = new Date().getMonth() + 1;
+		let m2 = parseInt(data.dayOfWeek.month.substring(4));
+	      
+	      let title = (m !== 1 && m > m2) || (m === 1 && m2 === 12) ? 
+	               "전월 요일별 판매건수" : "접속자 수 현황";
+	      
+	      document.querySelector('.charts-dayOfWeek-title').innerHTML = title;
+	      
+	         chartData.push(data.dayOfWeek.SUN);
+	         chartData.push(data.dayOfWeek.MON);
+	         chartData.push(data.dayOfWeek.TUE);
+	         chartData.push(data.dayOfWeek.WED);
+	         chartData.push(data.dayOfWeek.THU);
+	         chartData.push(data.dayOfWeek.FRI);
+	         chartData.push(data.dayOfWeek.SAT);
+	      
+	      var chartDom = document.querySelector('.charts-dayOfWeek');
+	      var myChart = echarts.init(chartDom);
+	      var option;
+			
+	    
+	      option = {
+	  	        tooltip : {
+	  	           trigger: 'item'
+	  	        },
+	  	        xAxis: {
+	  	          type: 'category',
+	  	          data: ['일', '월', '화', '수', '목', '금', '토']
+	  	        },
+	  	        yAxis: {
+	  	          type: 'value'
+	  	        },
+	  	        series: [
+	  	          {
+	  	            data: chartData,
+	  	            type: 'bar'
+	  	      }
+	  	    ]
+	      };
+
+	      option && myChart.setOption(option);
+	      
+	}
+});
+</script>
+
+		<div id="layoutSidenav_content">
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">
                             <i class="fas fa-tachometer-alt"></i>
@@ -131,7 +190,7 @@
                                     오늘의 할일  
                                     </div>
                                     <div class="card-body" style="width: 100%; height: 250px;">
-
+										
                                     </div>
                                 </div>
                             </div>
@@ -143,7 +202,7 @@
                                     관리자 정보
                                     </div>
                                     <div class="card-body" style="width: 100%; height: 250px;">
-
+										
                                     </div>
                                 </div>
                             </div>
@@ -167,10 +226,10 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                    접속자 수 현황
+                                    <label class="charts-dayOfWeek-title">접속자 수 현황</label>
                                     </div>
-                                    <div class="card-body" style="width: 100%; height: 250px;">
-
+                                    <div class="card-body charts-dayOfWeek border rounded" style="width: 100%; height: 250px;">
+											
                                     </div>
                                 </div>
                             </div>
@@ -308,6 +367,4 @@
                         </div>
                     </div>
                 </div>
-             </main>
-         </div>
-      </main>
+			</div>
