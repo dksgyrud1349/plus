@@ -15,7 +15,7 @@
 	</select>
 
 	
-	<select id="listAnswer" parameterType="map" resultType="com.fa.plus.pluszone.domain.PluszoneAnswer">
+	<select id="listAnswer" parameterType="String" resultType="com.fa.plus.pluszone.domain.PluszoneAnswer">
 		SELECT a.userId, a.anszoneNum, a.pluszoneNum, subject, content, qu.num
 		FROM pluszoneAns a
         JOIN pluszoneQ q ON a.pluszoneNum = q.pluszoneNum

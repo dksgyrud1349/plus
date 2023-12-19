@@ -37,10 +37,10 @@ public class PluszoneQuestionServiceImpl implements PluszoneQuestionService {
 	}
 
 	@Override
-	public List<PluszoneAnswer> listAnswer(Map<String, Object> map) {
+	public List<PluszoneAnswer> listAnswer(String userId) {
 		List<PluszoneAnswer> list = null;
 		try {
-			list = mapper.listAnswer(map);
+			list = mapper.listAnswer(userId);
 		} catch (Exception e) {
 		}
 		return list;

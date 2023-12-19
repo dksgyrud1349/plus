@@ -10,5 +10,5 @@ public interface PluszoneQuestionService {
 	public void insertAnswer(PluszoneAnswer dto) throws Exception;
 	
 	public List<PluszoneQuestion> listQuesion();
-	public List<PluszoneAnswer> listAnswer(Map<String, Object> map);
+	public List<PluszoneAnswer> listAnswer(String userId);
 }
