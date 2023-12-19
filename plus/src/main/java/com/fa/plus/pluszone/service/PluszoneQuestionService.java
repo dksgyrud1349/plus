@@ -9,5 +9,5 @@ public interface PluszoneQuestionService {
 	public void insertAnswer(PluszoneAnswer dto) throws Exception;
 	
 	public List<PluszoneQuestion> listQuesion();
-	public List<PluszoneAnswer> listAnswer(String userId);
+	public PluszoneAnswer listAnswer(String userId);
 }

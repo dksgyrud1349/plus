@@ -13,5 +13,5 @@ public interface PluszoneQuestionMapper {
 	public void insertAnswer(PluszoneAnswer dto) throws SQLException;
 	
 	public List<PluszoneQuestion> listQuesion();
-	public List<PluszoneAnswer> listAnswer(String userId);
+	public PluszoneAnswer listAnswer(String userId);
 }
