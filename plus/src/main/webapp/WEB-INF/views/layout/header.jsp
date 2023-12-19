@@ -401,13 +401,13 @@
 						<c:choose>
 							<c:when test="${empty sessionScope.member}">
 								<li>
-									<li onclick="urlOk('/pluszone/member/member')" class="menubtn bar">플러스존 등록</li>
+									<li onclick="urlOk('/pluszone/member/member')" class="menubtn bar">플러스존 가입</li>
 								</li>
 							</c:when>
 							<c:otherwise>
 								<c:if test="${sessionScope.member.membership < 50}">
 									<li>
-										<li onclick="urlOk('/')" class="menubtn bar">플러스존 요청</li>
+										<li onclick="urlOk('/pluszone/question/list')" class="menubtn bar">플러스존 요청</li>
 									</li>
 								</c:if>
 								<c:if test="${sessionScope.member.membership > 50}">
