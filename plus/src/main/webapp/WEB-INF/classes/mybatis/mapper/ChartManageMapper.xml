@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.admin.mapper.ChartManageMapper">
+	<select id="dayOfWeekTotalCount" parameterType="String" resultType="map">
+		SELECT
+			COUNT(*) AS total,
+			NVL(COUNT(DECODE(TO_CHAR(lastLogin, 'D'), 1, 1)), 0) AS "SUN",
+			NVL(COUNT(DECODE(TO_CHAR(lastLogin, 'D'), 2, 1)), 0) AS "MON",
+			NVL(COUNT(DECODE(TO_CHAR(lastLogin, 'D'), 3, 1)), 0) AS "TUE",
+			NVL(COUNT(DECODE(TO_CHAR(lastLogin, 'D'), 4, 1)), 0) AS "WED",
+			NVL(COUNT(DECODE(TO_CHAR(lastLogin, 'D'), 5, 1)), 0) AS "THU",
+			NVL(COUNT(DECODE(TO_CHAR(lastLogin, 'D'), 6, 1)), 0) AS "FRI",
+			NVL(COUNT(DECODE(TO_CHAR(lastLogin, 'D'), 7, 1)), 0) AS "SAT"
+		FROM member m
+		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
+		JOIN memberState m2 ON m1.userId = m2.userId
+		WHERE stateCode != 6 AND TO_CHAR(lastLogin, 'YYYYMM') = #{month}
+	</select>
+	
+</mapper>

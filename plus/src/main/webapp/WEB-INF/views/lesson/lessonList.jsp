@@ -107,6 +107,40 @@ $(function() {
       location.href = url;
     });
   });
+
+$(function(){
+	  $('.btnSendLessonLike').click(function(){
+		  const $i = $(this).find('i');
+		  let userLiked = $i.hasClass('bi-heart-fill');
+		  let msg = userLiked ? '게시글 좋아요를 취소하시겠습니까?' : '게시글에 좋아요를 누르시겠습니까?';
+			
+		  if(! confirm( msg )) {
+			  return false;
+		  }
+		  
+		  let url = '${pageContext.request.contextPath}/lesson/insertLessonLike';
+		  let classNum = $(this).attr("data-classNum");
+		  let query = 'classNum=' + classNum + '&userLiked=' + userLiked;
+		  
+		  const fn = function(data){
+			  let state = data.state;
+			  if(state === 'true'){
+				  if(userLiked){
+					  $i.removeClass('bi-heart-fill').addClass('bi-heart');
+				  } else{
+					  $i.removeClass('bi-heart').addClass('bi-heart-fill');
+				  }
+				  let count = data.lessonLikeCount;
+				  $('.'+classNum).text(count);
+			  } else if(state === "liked"){
+				  alert('게시글 좋아요는 한 번만 가능합니다.');
+			  } else if(state === "false"){
+				  alert('게시물 좋아요 여부 처리가 실패하였습니다.');
+			  }
+		  };
+		  ajaxFun(url, 'post', query, 'json', fn);
+	  });
+});
 </script>
 
 <div class="container mt-5 pt-3 ms-5">
@@ -178,8 +212,9 @@ $(function() {
 							<span class="card-text text-danger text-start mt-5 fs-5"> <fmt:formatNumber value="${dto.price}" pattern="#,###" /></span>
 							<p class="text-end">
 								<button class="btn btn-primary product-item" data-productNum="${dto.classNum}">예약하기</button>
-								<button class="btn">
-									<i class="bi bi-heart pt-1"></i>
+								<button type="button" class="btn btnSendLessonLike" title="좋아요" data-classNum="${dto.classNum}">
+									<i class="pt-1 bi ${dto.userLessonLiked ? 'bi-heart-fill' : 'bi-heart'}"></i>
+									<span id="lessonLikeCount" class="${dto.classNum}">${dto.lessonLikeCount}</span>
 								</button>
 							</p>
 						</div>

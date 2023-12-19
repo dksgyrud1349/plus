@@ -8,19 +8,23 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fa.plus.common.MyUtil;
 import com.fa.plus.domain.Lesson;
+import com.fa.plus.domain.SessionInfo;
 import com.fa.plus.service.LessonService;
 
 @Controller
@@ -40,7 +44,7 @@ public class LessonController {
 				@RequestParam(defaultValue = "") String kwd, 
 				@RequestParam(defaultValue = "0") long subNum,
 				@RequestParam(defaultValue = "0") long mainNum, 
-				HttpServletRequest req, 
+				HttpServletRequest req, HttpSession session, 
 				Model model) throws Exception {
 		
 		String cp = req.getContextPath();
@@ -54,6 +58,11 @@ public class LessonController {
 		}
 		
 		List<Lesson> listMainCategory = lessonService.listMainCategory();
+		
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		if(info == null) {
+			return "redirect:/member/login";
+		}
 		
 		/*
 		if(mainNum == 0 && listMainCategory.size() != 0) {
@@ -93,6 +102,22 @@ public class LessonController {
 		
 		// 글 리스트
 		List<Lesson> list = lessonService.allLessonList(map);
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		
+		long classNum = 0;
+		int lessonLikeCount = 0;
+		Boolean userLessonLiked = false;
+		
+		for(Lesson le : list) {
+			classNum = le.getClassNum();
+			lessonLikeCount = lessonService.lessonLikeCount(classNum);
+			le.setLessonLikeCount(lessonLikeCount);
+			
+			map2.put("classNum", classNum);
+			map2.put("userId", info.getUserId());
+			userLessonLiked = lessonService.userLessonLiked(map2);
+			le.setUserLessonLiked(userLessonLiked);
+		}
 		
 		String listUrl = cp + "/lesson/main";		
 		String query = "mainNum=" + mainNum + "&subNum=" + subNum;
@@ -106,7 +131,6 @@ public class LessonController {
 		}
 		
 		String paging = myUtil.paging(current_page, total_page, listUrl);
-		
 		
 		model.addAttribute("list", list);
 		model.addAttribute("listMainCategory", listMainCategory);
@@ -129,6 +153,41 @@ public class LessonController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		List<Lesson> listSubCategory = lessonService.listSubCategory(mainNum);
 		model.put("listSubCategory", listSubCategory);
+		return model;
+	}
+	
+	@PostMapping("insertLessonLike")
+	@ResponseBody
+	public Map<String, Object> insertLessonLike(@RequestParam long classNum, 
+			@RequestParam boolean userLiked,
+			HttpSession session){
+		
+		String state = "true";
+		int lessonLikeCount = 0;
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("classNum", classNum);
+		paramMap.put("userId", info.getUserId());
+		
+		try {
+			if(userLiked) {
+				lessonService.deleteLessonLike(paramMap);
+			} else {
+				lessonService.insertLessonLike(paramMap);
+			}
+		} catch (DuplicateKeyException e) {
+			state = "liked";
+		} catch (Exception e) {
+			state = "false";
+		}
+		
+		lessonLikeCount = lessonService.lessonLikeCount(classNum);
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("state", state);
+		model.put("lessonLikeCount", lessonLikeCount);
+		
 		return model;
 	}
 	

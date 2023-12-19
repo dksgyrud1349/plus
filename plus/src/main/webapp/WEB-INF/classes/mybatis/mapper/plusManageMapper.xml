@@ -13,33 +13,92 @@
 		</choose>
 	</sql>
 	
+	<!-- 사업자 승인 위해 멤버쉽(미승인 시 50)과 권한 부여 51, seller -->
+	<update id="updateMembership" parameterType="map">
+		UPDATE member SET membership = 51
+		WHERE memberIdx=#{memberIdx}
+	</update>
+	
+	<update id="updateAuthority" parameterType="com.fa.plus.admin.domain.MemberManage">
+		UPDATE memberAuthority SET authority = #{authority} WHERE userId = #{userId}
+	</update>
+	
 	<select id="plusList" parameterType="map" resultType="com.fa.plus.admin.domain.MemberManage">
 		SELECT m1.userId, userName, TO_CHAR(birth, 'YYYY-MM-DD') birth, tel, m.membership, enabled, email, m.memberIdx
 		FROM member1 m1
 		JOIN member m ON m1.memberIdx = m.memberIdx
 		JOIN member2 m2 ON m1.userId = m2.userId
 		<where>
-			m.membership = 51
+			m.membership = 51 OR m.membership = 50
 			<if test="kwd != null and kwd != ''">
 				AND <include refid="where-list"/>
 			</if>
 		</where>
 		ORDER BY memberIdx ASC
 		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
-		
 	</select>
+	
 	<select id="dataCount" parameterType="map" resultType="Integer">
 		SELECT NVL(COUNT(*), 0)
 		FROM member1 m1
 		JOIN member m ON m1.memberIdx = m.memberIdx
 		JOIN member2 m2 ON m1.userId = m2.userId
 		<where>
-			m.membership = 51
+			m.membership = 51 OR m.membership = 50
 			<if test="kwd != null and kwd != ''">
 				<include refid="where-list"/>
 			</if>
 		</where>
 	</select>
+	
+	<select id="findById" parameterType="String" resultType="com.fa.plus.admin.domain.MemberManage">
+		SELECT membership, m1.memberIdx, m1.userId, userName, userPwd, enabled,
+			m1.regDate, pwdDate, lastLogin,
+			TO_CHAR(birth, 'YYYY-MM-DD') birth, email, tel, 
+			zip, addr1, addr2,
+			photo, nickName, content
+		FROM member m
+		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
+		LEFT OUTER JOIN member2 m2 ON m1.userId = m2.userId
+		LEFT OUTER JOIN plus p ON p.userId = m1.userId
+		WHERE m1.userId = #{userId} AND (m.membership = 50 OR m.membership = 51)
+	</select>
+	
+	<select id="findIdx" parameterType="String" resultType="com.fa.plus.admin.domain.MemberManage">
+		SELECT membership, m1.memberIdx, userId
+		FROM member1 m1
+		JOIN ON member m ON m1.memberIdx = m.memberIdx
+	</select>
+	
+	<update id="updateFailureCountReset" parameterType="String">
+		UPDATE member1 SET failureCnt = 0
+		WHERE userId = #{userId}
+	</update>
+	
+	<update id="updateMemberEnabled" parameterType="map">
+		UPDATE member1 SET enabled=#{enabled} WHERE userId=#{userId}
+    </update>
+    
+    <insert id="insertMemberState" parameterType="com.fa.plus.admin.domain.MemberManage">
+		INSERT INTO memberState(num, userId, stateCode, memo, adminId, stateDate)
+			VALUES (memberState_seq.NEXTVAL, #{userId}, #{stateCode}, #{memo, jdbcType=VARCHAR}, #{adminId}, SYSDATE)
+	</insert>
+	
+	<select id="listMemberState" parameterType="String" resultType="com.fa.plus.admin.domain.MemberManage">
+		SELECT num, userId, stateCode, memo, adminId, stateDate
+		FROM memberState
+		WHERE userId = #{userId}
+		ORDER BY num DESC
+	</select>
+	
+	<select id="findByState" parameterType="String" resultType="com.fa.plus.admin.domain.MemberManage">
+		SELECT num, userId, stateCode, memo, adminId, stateDate
+		FROM memberState
+		WHERE userId = #{userId}
+		ORDER BY num DESC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+	
 	<select id="findByQna" parameterType="String" resultType="com.fa.plus.admin.domain.Qna">
 		SELECT q.pluszoneNum, content, qCategory, anszoneNum, a.userId, ans1, ans2, ans3, m1.userName
 		FROM pluszoneQ q

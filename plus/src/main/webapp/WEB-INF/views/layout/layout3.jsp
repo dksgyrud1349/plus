@@ -65,18 +65,36 @@
 
 <div id="scroll" class="iconscroll" style="position:absolute;right:0;top:0;" > 
 	<table> 
-		<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="#"><i class="bi bi-person"></i></button></td> </tr>
-		<td class="fs-6 fw-light text-white">로그인<div class="border-bottom" style="margin-top:8px;"></div></td>
-		<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="#"><i class="bi bi-cart4"></i></button></td> </tr>
-		<td class="fs-6 fw-light text-white">원데이클래스<div class="border-bottom" style="margin-top:8px;"></div></td>
-		<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus';"><i class="bi bi-camera"></i></button></td> </tr>
-		<td class="fs-6 fw-light text-white">원데이플러스<div class="border-bottom" style="margin-top:8px;"></div></td>
-		<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="#"><i class="bi bi bi-alarm"></i></button></td> </tr>
-		<td class="fs-6 fw-light text-white">이벤트<div class="border-bottom" style="margin-top:8px;"></div></td>
-		<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="#"><i class="bi bi-credit-card-2-front"></i></button></td> </tr>
-		<td class="fs-6 fw-light text-white">공지사항<div class="border-bottom" style="margin-top:8px;"></div></td>
-		<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="#"><i class="bi bi-calendar2-event"></i></button></td> </tr>
-		<td class="fs-6 fw-light text-white">커뮤니티</td>
+	<c:choose>
+		<c:when test="${empty sessionScope.member}">
+			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="iconOk('/member/login')"><i class="bi bi-person"></i></button></td></tr>
+			<td class="fs-6 fw-light text-white">로그인<div class="border-bottom" style="margin-top:8px;"></div></td>
+			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="#"><i class="bi bi-cart4"></i></button></td></tr>
+			<td class="fs-6 fw-light text-white">원데이클래스<div class="border-bottom" style="margin-top:8px;"></div></td>
+			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus';"><i class="bi bi-camera"></i></button></td> </tr>
+			<td class="fs-6 fw-light text-white">원데이플러스<div class="border-bottom" style="margin-top:8px;"></div></td>
+			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="#"><i class="bi bi bi-alarm"></i></button></td> </tr>
+			<td class="fs-6 fw-light text-white">이벤트<div class="border-bottom" style="margin-top:8px;"></div></td>
+			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="#"><i class="bi bi-credit-card-2-front"></i></button></td> </tr>
+			<td class="fs-6 fw-light text-white">공지사항<div class="border-bottom" style="margin-top:8px;"></div></td>
+			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="#"><i class="bi bi-calendar2-event"></i></button></td> </tr>
+			<td class="fs-6 fw-light text-white">커뮤니티</td>
+		</c:when>
+		<c:otherwise>
+			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="iconOk('/')"><i class="bi bi-person"></i></button></td></tr>
+			<td class="fs-6 fw-light text-white">마이페이지<div class="border-bottom" style="margin-top:8px;"></div></td>
+			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="#"><i class="bi bi-cart4"></i></button></td></tr>
+			<td class="fs-6 fw-light text-white">원데이클래스<div class="border-bottom" style="margin-top:8px;"></div></td>
+			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus';"><i class="bi bi-camera"></i></button></td> </tr>
+			<td class="fs-6 fw-light text-white">원데이플러스<div class="border-bottom" style="margin-top:8px;"></div></td>
+			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="#"><i class="bi bi bi-alarm"></i></button></td> </tr>
+			<td class="fs-6 fw-light text-white">이벤트<div class="border-bottom" style="margin-top:8px;"></div></td>
+			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="#"><i class="bi bi-credit-card-2-front"></i></button></td> </tr>
+			<td class="fs-6 fw-light text-white">공지사항<div class="border-bottom" style="margin-top:8px;"></div></td>
+			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="#"><i class="bi bi-calendar2-event"></i></button></td> </tr>
+			<td class="fs-6 fw-light text-white">커뮤니티</td>
+		</c:otherwise>
+		</c:choose>
 	</table> <!-- 로그인, 이벤트, 문의, 공지사항, 커뮤니티 -->
 </div>
 	<span id="brr"></span>
@@ -88,7 +106,12 @@
 			$( id ).stop().animate({top:position+"px"}, 1);
 		});
 	}
-	scroll_follow( "#scroll" );				
+	scroll_follow( "#scroll" );
+	
+	
+	function iconOk(url) {
+	    window.location.href = "${pageContext.request.contextPath}" + url;
+	  }
 </script>
 
 

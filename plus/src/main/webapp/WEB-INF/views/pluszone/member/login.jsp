@@ -87,8 +87,8 @@ function sendLogin() {
                         </div>
                         <div>
                             <button type="button" style="border-radius: 100px;" class="btn btn-outline-primary text-white col-12 mt-3 log-in" onclick="sendLogin();">&nbsp;로그인&nbsp;<i class="bi bi-unlock"></i></button>
-                           <a><button type="button" style="border-radius: 100px;" class="btn btn-outline-warning border border-black text-black col-12 mt-3 sign-up"
-                              onclick="sendLogin();">&nbsp;회원가입&nbsp;<i class="bi bi-send"></i></button></a>
+                           <a><button type="button" style="border-radius: 100px;" 
+                           class="btn btn-outline-warning border border-black text-black col-12 mt-3 sign-up">&nbsp;회원가입&nbsp;<i class="bi bi-send"></i></button></a>
                             
                         </div>
                     </form>

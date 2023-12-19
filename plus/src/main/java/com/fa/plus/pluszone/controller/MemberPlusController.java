@@ -37,7 +37,7 @@ public class MemberPlusController {
 	@GetMapping("member")
 	public String memberForm(Model model) {
 		model.addAttribute("mode", "member");
-		return ".pluszone.member";
+		return ".pluszone.member.member";
 	}
 	
 	@PostMapping("member")
@@ -60,7 +60,7 @@ public class MemberPlusController {
 		} catch (Exception e) {
 			model.addAttribute("mode", "member");
 			model.addAttribute("message", "회원가입이 실패했습니다.");
-			return ".pluszone.member";
+			return ".pluszone.member.member";
 		}
 
 		StringBuilder sb = new StringBuilder();
@@ -71,7 +71,7 @@ public class MemberPlusController {
 		reAttr.addFlashAttribute("message", sb.toString());
 		reAttr.addFlashAttribute("title", "회원 가입");
 
-		return "redirect:/pluszone/complete";
+		return "redirect:/pluszone/members/complete";
 	}
 	
 	@GetMapping("complete")
@@ -83,7 +83,7 @@ public class MemberPlusController {
 		if (message == null || message.length() == 0) // F5를 누른 경우
 			return "redirect:/";
 
-		return ".pluszone.complete";
+		return ".pluszone.member.complete";
 	}
 	
 	@PostMapping("userIdCheck")
@@ -110,7 +110,7 @@ public class MemberPlusController {
 			//model.addAttribute("mode", "dropout");
 		}
 
-		return ".pluszone.pwd";
+		return ".pluszone.member.pwd";
 	}
 	
 	@PostMapping("pwd")
@@ -134,7 +134,7 @@ public class MemberPlusController {
 		if (!bPwd) {
 			model.addAttribute("mode", mode);
 			model.addAttribute("message", "패스워드가 일치하지 않습니다.");
-			return ".pluszone.pwd";
+			return ".pluszone.member.pwd";
 		}
 		/*
 		if (mode.equals("dropout")) {
@@ -155,7 +155,7 @@ public class MemberPlusController {
 		// 회원정보수정폼
 			model.addAttribute("dto", dto);
 			model.addAttribute("mode", "update");
-			return ".pluszone.member";
+			return ".pluszone.member.member";
 		}
 	
 		@PostMapping("update")
@@ -175,7 +175,7 @@ public class MemberPlusController {
 			reAttr.addFlashAttribute("title", "회원 정보 수정");
 			reAttr.addFlashAttribute("message", sb.toString());
 	
-			return "redirect:/pluszone/complete";
+			return "redirect:/pluszone/member/complete";
 		}
 		
 		// 패스워드 찾기
@@ -186,7 +186,7 @@ public class MemberPlusController {
 				return "redirect:/";
 			}
 			
-			return ".pluszone.pwdFind";
+			return ".pluszone.member.pwdFind";
 		}
 		/*
 		@PostMapping("pwdFind")
@@ -220,19 +220,19 @@ public class MemberPlusController {
 		@GetMapping("noAuthorized")
 		public String noAuthorized(Model model) {
 			// 접근 권한이 없는 경우
-			return ".pluszone.noAuthorized";
+			return ".pluszone.member.noAuthorized";
 		}
 		
 		@RequestMapping(value = "expired")
 		public String expired() throws Exception{
 			//	세션이 만료 된 경우
-			return ".pluszone.expired";
+			return ".pluszone.member.expired";
 		}
 		
 		// 패스워드 수정 폼
 		@GetMapping("updatePwd")
 		public String updatePwdForm() throws Exception{
-			return ".pluszone.updatePwd";
+			return ".pluszone.member.updatePwd";
 		}
 		
 		@PostMapping("updatePwd")
@@ -250,7 +250,7 @@ public class MemberPlusController {
 				service.updatePwd(dto);
 			} catch (Exception e) {
 				model.addAttribute("message", "변경할 패스워드가 기존 패스워드와 일치합니다.");
-				return ".pluszone.updatePwd";
+				return ".pluszone.member.updatePwd";
 			}
 			
 			return "redirect:/";

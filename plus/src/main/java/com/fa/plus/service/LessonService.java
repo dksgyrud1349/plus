@@ -12,4 +12,9 @@ public interface LessonService {
 	public List<Lesson> listSubCategory(long mainNum);
 	public List<Lesson> listLessonPhoto(long classNum);
 	public Lesson findById(long classNum);
+	
+	public void insertLessonLike(Map<String, Object> map) throws Exception;
+	public void deleteLessonLike(Map<String, Object> map) throws Exception;
+	public int lessonLikeCount(long classNum);
+	public boolean userLessonLiked(Map<String, Object> map);
 }

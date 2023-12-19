@@ -20,7 +20,7 @@
     </select>
 
     <insert id="insertPlus" parameterType="Long">
-		INSERT INTO member(memberIdx, membership) VALUES (#{memberIdx}, 1) 
+		INSERT INTO member(memberIdx, membership) VALUES (#{memberIdx}, 50) 
     </insert>
 
     <update id="insertPlus12" parameterType="com.fa.plus.pluszone.domain.MemberPlus">
@@ -33,8 +33,6 @@
 		VALUES (#{userId}, #{birth}, #{email}, #{tel}, 
 			#{zip, jdbcType=VARCHAR}, #{addr1, jdbcType=VARCHAR}, 
 			#{addr2, jdbcType=VARCHAR})
-		INTO plus(userId, photo, content, nickName)
-		VALUES (#{userId}, #{photo}, #{content}, #{nickName})
 		SELECT * FROM dual     
     </update>
     
