@@ -208,12 +208,93 @@ header.masthead h1, header.masthead .h1 {
 
 
 <script type="text/javascript">
+function ajaxFun(url, method, formData, dataType, fn, file = false) {
+	const settings = {
+			type: method, 
+			data: formData,
+			success:function(data) {
+				fn(data);
+			},
+			beforeSend: function(jqXHR) {
+				jqXHR.setRequestHeader('AJAX', true);
+			},
+			complete: function () {
+			},
+			error: function(jqXHR) {
+				if(jqXHR.status === 403) {
+					login();
+					return false;
+				} else if(jqXHR.status === 400) {
+					alert('요청 처리가 실패 했습니다.');
+					return false;
+		    	}
+		    	
+				console.log(jqXHR.responseText);
+			}
+	};
+	
+	if(file) {
+		settings.processData = false;  // file 전송시 필수. 서버로전송할 데이터를 쿼리문자열로 변환여부
+		settings.contentType = false;  // file 전송시 필수. 서버에전송할 데이터의 Content-Type. 기본:application/x-www-urlencoded
+	}
+	
+	$.ajax(url, settings);
+}
+
+$(function(){
+	$("form select[name=classDay]").change(function(){
+		let classDay = $(this).val();
+		
+		$("form select[name=classTime]").find('option').remove().end().append("<option value=''>시간</option>");
+		
+		if(!classDay){
+			return false;
+		}
+		
+		let url = "${pageContext.request.contextPath}/lesson/lessonDtlTime";
+		let query = "classNum="+${dto.classNum}+"&classDay="+classDay;
+		
+		
+		const fn = function(data){
+			$.each(data.lessonDtlTime, function(index, item){
+				let startTime = item.startTime;
+				let endTime = item.endTime;
+				let s = "<option value='" + startTime + "~" + endTime + "'>" + startTime + "~" + endTime + "</option>";
+				$("form select[name=classTime]").append(s);
+			});
+		};
+		
+		ajaxFun(url, "get", query, "json", fn);
+	});
+});
+
 function sendOk(mode) {
 	const f = document.detailForm;
 	if(mode === "buy") {
 		// GET 방식으로 전송. 로그인후 결제화면으로 이동하기 위해
 		// 또는 자바스크립트 sessionStorage를 활용 할 수 있음
-		f.method = "get";
+		let classDay = f.classDay.value;
+		let classTime = f.classTime.value;
+		let classPerson = f.classPerson.value;
+		
+		if( !classDay ) {
+	        alert("수강할 일자를 입력하세요.");
+	        f.classDay.focus();
+	        return;
+	    }
+		
+		if( !classTime ) {
+	        alert("수강할 시간을 입력하세요.");
+	        f.classTime.focus();
+	        return;
+	    }
+		
+		if( !classPerson ) {
+	        alert("수강 인원을 입력하세요.");
+	        f.classPerson.focus();
+	        return;
+	    }
+		
 		f.action = "${pageContext.request.contextPath}/order/payment";
 	} else {
 		if(! confirm("선택한 상품을 장바구니에 담으시겠습니까 ? ")) {
@@ -249,6 +330,22 @@ function sendOk(mode) {
                                     2. 상세주소 : ${dto.addr1} ${dto.addr2}<br><br>
                                      예약하기를 눌러 예약가능 시간과 안원수를 확인해주세요. 
                                 </p>
+                                <div>
+                                	<select name="classDay" id="classDay" style="width: 115px; height: 30px;">
+                                		<option value = "">일자</option>
+                               			<c:forEach var="vo" items="${lessonDtlDate}" varStatus="status">
+                               				<option value="${vo.classDate}">${vo.classDate}</option>
+                               			</c:forEach>
+                                	</select>
+                                	<select name = "classTime" id="classTime" style="width: 120px;  height: 30px;">
+                                		<option value = "">시간</option>
+                                		<c:forEach var="vo" items="${lessonDtlTime}">
+                               				<option value="${vo.startTime}${vo.endTime}">${vo.startTime} ~ ${vo.endTime}</option>
+                               			</c:forEach>
+                                	</select>
+                                	<select name = "classPerson" id="classPerson" style="width: 100px;  height: 30px;">
+                                		<option value = "">인원 수</option>
+                                	</select>
                                 <div class="d-flex">
                                     <button class="btn btn-outline-dark flex-shrink-0" type="button" onclick="sendOk('buy');">
                                         <i class="bi-cart-fill me-1"></i>

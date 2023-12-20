@@ -146,4 +146,23 @@
 	<select id="userLessonLiked" parameterType="map" resultType="com.fa.plus.domain.Lesson">
 		SELECT userId, classNum FROM wishList WHERE classNum = #{classNum} AND userId = #{userId}
 	</select>
+	
+	<select id="getLessonDtlDate" parameterType="Long" resultType="com.fa.plus.domain.LessonDetail">
+		/* lessonMapper.getLessonDtlDate - 강좌상세 페이지_수강 일자 */
+		SELECT DISTINCT(TO_CHAR(classDate, 'YYYY-MM-DD')) AS classDate
+		FROM lessonDetail
+		WHERE classNum = #{classNum}
+	</select>
+	
+	<select id="getLessonDtlTime" parameterType="map" resultType="com.fa.plus.domain.LessonDetail">
+		/* lessonMapper.getLessonDtlTime - 강좌상세 페이지_수강 시간 */
+		SELECT detailNum
+		        , led.classNum
+		        , classDate
+		        , TO_CHAR(classDate, 'HH24:MI') AS startTime
+		        , TO_CHAR(classDate + classTime/24, 'HH24:MI') AS endTime
+		FROM lesson le
+		JOIN lessonDetail led ON le.classNum = led.classNum
+		WHERE (TO_CHAR(classDate, 'YYYY-MM-DD') = #{classDate}) AND led.classNum = #{classNum}
+	</select>
 </mapper>

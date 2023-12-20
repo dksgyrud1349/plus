@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fa.plus.common.MyUtil;
 import com.fa.plus.domain.Lesson;
+import com.fa.plus.domain.LessonDetail;
 import com.fa.plus.domain.SessionInfo;
 import com.fa.plus.service.LessonService;
 
@@ -191,9 +192,13 @@ public class LessonController {
 		return model;
 	}
 	
-	
-	
-	
+	/**
+	 * 강좌상세페이지 이동
+	 * @param classNum
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
 	@GetMapping("detail/{classNum}")
 	public String buyRequest(
 			@PathVariable Long classNum,
@@ -201,21 +206,20 @@ public class LessonController {
 			) throws Exception{
 
 		try {
-
-			
 			Lesson dto = lessonService.findById(classNum);
 			if(dto == null || dto.getShowClass() == 1) {
 				return "redirect:/lesson/main";
 			}
 			
 			List<Lesson> listPhoto = lessonService.listLessonPhoto(classNum);
+			List<LessonDetail> lessonDtlDate = lessonService.getLessonDtlDate(classNum);
 			
 			dto.setPhotoName(dto.getFirstPhoto());
 			listPhoto.add(0, dto);
 			
 			model.addAttribute("dto", dto);
 			model.addAttribute("listPhoto", listPhoto);
-			
+			model.addAttribute("lessonDtlDate", lessonDtlDate);
 					
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -223,5 +227,20 @@ public class LessonController {
 		}
 		
 		return ".lesson.lessonDetail";
+	}
+	
+	// 수강 날짜에 따른 수강 시간 출력
+	@GetMapping("lessonDtlTime")
+	@ResponseBody
+	public Map<String, Object> lessonDtlTime(@RequestParam("classDay") String classDate, @RequestParam long classNum) throws Exception{
+		Map<String, Object> timeInfo = new HashMap<String, Object>();
+		Map<String, Object> param = new HashMap<String, Object>();
+		
+		param.put("classDate", classDate);
+		param.put("classNum", classNum);
+		List<LessonDetail> lessonDtlTime = lessonService.getLessonDtlTime(param);
+		
+		timeInfo.put("lessonDtlTime", lessonDtlTime);
+		return timeInfo;
 	}
 }

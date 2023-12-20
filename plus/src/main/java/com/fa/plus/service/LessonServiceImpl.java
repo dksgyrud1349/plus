@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fa.plus.domain.Lesson;
+import com.fa.plus.domain.LessonDetail;
 import com.fa.plus.mapper.LessonMapper;
 
 @Service
@@ -130,6 +131,34 @@ public class LessonServiceImpl implements LessonService{
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	// 강좌 상세 페이지(수강 날짜)
+	@Override
+	public List<LessonDetail> getLessonDtlDate(long classNum) {
+		List<LessonDetail> list = null;
+			
+		try {
+			list = mapper.getLessonDtlDate(classNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+		return list;
+	}
+		
+		// 강좌 상세 페이지(수강 시간)
+	@Override
+	public List<LessonDetail> getLessonDtlTime(Map<String, Object> map) {
+		List<LessonDetail> list = null;
+			
+		try {
+			list = mapper.getLessonDtlTime(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+		return list;
 	}
 
 }
