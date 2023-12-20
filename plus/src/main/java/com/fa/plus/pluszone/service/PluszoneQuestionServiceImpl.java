@@ -18,7 +18,13 @@ public class PluszoneQuestionServiceImpl implements PluszoneQuestionService {
 	@Override
 	public void insertAnswer(PluszoneAnswer dto) throws Exception {
 		try {
-			mapper.insertAnswer(dto);
+		
+			for(Long plusNum : dto.getPluszoneNums()) {
+				dto.setPluszoneNum(plusNum);
+				
+				mapper.insertAnswer(dto);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;

@@ -24,7 +24,7 @@ function questionOk() {
 				<h5 class="pb-2 fw-bold fs-2 pb-5">
 					<i class="bi bi-book"></i> 플러스 질문지
 				</h5>
-				<form class="questionForm" method="post">
+				<form name="questionForm" method="post">
 					<c:forEach var="dto" items="${list}" varStatus="status">
 						<div>
 							<div class="row border bg-body-secondary">
@@ -35,7 +35,7 @@ function questionOk() {
 							<c:forEach var="vo" items="${sublist}">
 								<c:if test="${dto.num==vo.num}">
 									<div class="form-check form-check-inline mt-3">
-										<input class="form-check-input" type="checkbox" value="${vo.pluszoneNum}">
+										<input class="form-check-input" type="checkbox" name="pluszoneNums" value="${vo.pluszoneNum}">
 								  		<label class="form-check-label">${vo.content}</label>
 									</div>
 								</c:if>

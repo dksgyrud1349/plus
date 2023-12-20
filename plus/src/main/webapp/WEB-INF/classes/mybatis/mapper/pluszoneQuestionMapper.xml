@@ -5,7 +5,7 @@
 
 	<insert id="insertAnswer" parameterType="com.fa.plus.pluszone.domain.PluszoneAnswer">
 		INSERT INTO pluszoneAns (anszoneNum, pluszoneNum, userId)
-			VALUES(pluszone_seq.NEXTVAL, #{pluszoneNum}, #{userId})
+			VALUES(pluszoneans_seq.NEXTVAL, #{pluszoneNum}, #{userId})
 	</insert>
 	
 	<select id="QSubject" resultType="com.fa.plus.pluszone.domain.PluszoneQuestion">
