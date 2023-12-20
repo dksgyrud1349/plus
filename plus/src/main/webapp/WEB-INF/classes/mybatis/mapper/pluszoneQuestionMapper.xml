@@ -8,13 +8,17 @@
 			VALUES(pluszone_seq.NEXTVAL, #{pluszoneNum}, #{userId})
 	</insert>
 	
+	<select id="QSubject" resultType="com.fa.plus.pluszone.domain.PluszoneQuestion">
+		SELECT qu.num, subject
+		FROM pluszoneQue qu
+	</select>
+	
 	<select id="listQuestion" resultType="com.fa.plus.pluszone.domain.PluszoneQuestion">
 		SELECT qu.num, subject, content, q.pluszoneNum
 		FROM pluszoneQue qu
-		JOIN pluszoneQ q ON qu.num = q.num 
+		JOIN pluszoneQ q ON qu.num = q.num
 	</select>
 
-	
 	<select id="listAnswer" parameterType="String" resultType="com.fa.plus.pluszone.domain.PluszoneAnswer">
 		SELECT a.userId, a.anszoneNum, a.pluszoneNum, subject, content, qu.num
 		FROM pluszoneAns a

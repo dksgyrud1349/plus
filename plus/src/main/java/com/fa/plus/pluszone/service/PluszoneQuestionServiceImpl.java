@@ -45,4 +45,14 @@ public class PluszoneQuestionServiceImpl implements PluszoneQuestionService {
 		return dto;
 	}
 
+	@Override
+	public List<PluszoneQuestion> QSubject() {
+		List<PluszoneQuestion> list = null;
+		try {
+			list = mapper.QSubject();
+		} catch (Exception e) {
+		}
+		return list;
+	}
+
 }

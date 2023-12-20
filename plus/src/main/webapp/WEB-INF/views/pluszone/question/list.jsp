@@ -6,7 +6,7 @@
 
 </style>
 <script type="text/javascript">
-function memberOk() {
+function questionOk() {
 	const f = document.questionForm;
 	
 	f.action = "${pageContext.request.contextPath}/pluszone/question/questionOk";
@@ -24,25 +24,28 @@ function memberOk() {
 				<h5 class="pb-2 fw-bold fs-2 pb-5">
 					<i class="bi bi-book"></i> 플러스 질문지
 				</h5>
-				<form class="questionForm">
+				<form class="questionForm" method="post">
 					<c:forEach var="dto" items="${list}" varStatus="status">
 						<div>
 							<div class="row border bg-body-secondary">
 								<div class="col-12 p-2">
-									<span class="fw-semibold text-black fs-5"><i class="bi bi-lightbulb"></i>${status.index} ${dto.subject}</span>
+									<span class="fw-semibold text-black fs-5"><i class="bi bi-lightbulb"></i>${status.index + 1} ${dto.subject}</span>
 								</div>
 							</div>
-							<div class="form-check form-check-inline mt-3">
-								<input class="form-check-input" type="checkbox" value=" ">
-						  		<label class="form-check-label">${dto.content}</label>
-							</div>
+							<c:forEach var="vo" items="${sublist}">
+								<c:if test="${dto.num==vo.num}">
+									<div class="form-check form-check-inline mt-3">
+										<input class="form-check-input" type="checkbox" value="${vo.pluszoneNum}">
+								  		<label class="form-check-label">${vo.content}</label>
+									</div>
+								</c:if>
+							</c:forEach>
 						</div>	
 					</c:forEach>
 					
-					
 					<div class="col-12 mx-2 text-end">
-						<button class="btn btn-outline-success"><span class="fw-semibold text-dark" onclick="questionOk();">등록하기 <i class="bi bi-check-lg"></i></span></button>
-						<button class="btn btn-outline-danger"><span class="fw-semibold text-dark" onclick="location.href='${pageContext.request.contextPath}/';">취소하기 <i class="bi bi-x-lg"></i></span></button>
+						<button type="button" class="btn btn-outline-success"><span class="fw-semibold text-dark" onclick="questionOk();">등록하기 <i class="bi bi-check-lg"></i></span></button>
+						<button type="button" class="btn btn-outline-danger"><span class="fw-semibold text-dark" onclick="location.href='${pageContext.request.contextPath}/';">취소하기 <i class="bi bi-x-lg"></i></span></button>
 					</div>
 				</form>
 			</div>

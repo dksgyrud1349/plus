@@ -26,9 +26,12 @@ public class PluszoneQuestionController {
 	
 	@GetMapping("list")
 	public String list(Model model) {
-		List<PluszoneQuestion> list = service.listQuestion();
+		List<PluszoneQuestion> list = service.QSubject();
+		
+		List<PluszoneQuestion> sublist = service.listQuestion();
 		
 		model.addAttribute("list", list);
+		model.addAttribute("sublist", sublist);
 		
 		return ".pluszone.question.list";
 	}
