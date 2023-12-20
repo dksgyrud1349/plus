@@ -24,4 +24,6 @@ public interface CategoryManageMapper {
 	public int dataCount2(Map<String, Object> map);
 	public List<CategoryManage> listSubCategory(Map<String, Object> map);
 	public CategoryManage findBySub(long subNum);
+	
+	public void deleteSubCategoryAll(long mainNum) throws SQLException;
 }
