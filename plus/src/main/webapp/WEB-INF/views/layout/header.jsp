@@ -405,7 +405,7 @@
 								</li>
 							</c:when>
 							<c:otherwise>
-								<c:if test="${sessionScope.member.membership < 50}">
+								<c:if test="${sessionScope.member.membership == 49}">
 									<li>
 										<li onclick="urlOk('/pluszone/question/list')" class="menubtn bar">플러스존 요청</li>
 									</li>
