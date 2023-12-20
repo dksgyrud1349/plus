@@ -81,7 +81,7 @@
 			<td class="fs-6 fw-light text-white">커뮤니티</td>
 		</c:when>
 		<c:otherwise>
-			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="iconOk('/')"><i class="bi bi-person"></i></button></td></tr>
+			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="iconOk('/myPage/main')"><i class="bi bi-person"></i></button></td></tr>
 			<td class="fs-6 fw-light text-white">마이페이지<div class="border-bottom" style="margin-top:8px;"></div></td>
 			<tr><td><button type="button" class="btn btn-outline-light side" style="margin-top: 16px;" onclick="#"><i class="bi bi-cart4"></i></button></td></tr>
 			<td class="fs-6 fw-light text-white">원데이클래스<div class="border-bottom" style="margin-top:8px;"></div></td>
