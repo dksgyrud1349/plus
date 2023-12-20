@@ -27,5 +27,9 @@
 		JOIN member1 m1 ON a.userId = m1.userId
 		WHERE a.userId = #{userId}
 	</select>
-
+	
+	<update id="updateMembership" parameterType="map">
+		UPDATE member SET membership = 50
+		WHERE memberIdx=#{memberIdx}
+	</update>
 </mapper>

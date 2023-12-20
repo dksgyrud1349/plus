@@ -11,6 +11,7 @@ import com.fa.plus.pluszone.domain.PluszoneQuestion;
 @Mapper
 public interface PluszoneQuestionMapper {
 	public void insertAnswer(PluszoneAnswer dto) throws SQLException;
+	public void updateMembership(PluszoneAnswer dto) throws SQLException;
 	
 	public List<PluszoneQuestion> QSubject();
 	public List<PluszoneQuestion> listQuestion();

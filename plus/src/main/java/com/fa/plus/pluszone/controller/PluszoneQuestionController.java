@@ -45,6 +45,7 @@ public class PluszoneQuestionController {
 
 		try {
 			dto.setUserId(info.getUserId());
+			dto.setMemberIdx(info.getMemberIdx());
 			service.insertAnswer(dto);
 			
 		} catch (Exception e) {

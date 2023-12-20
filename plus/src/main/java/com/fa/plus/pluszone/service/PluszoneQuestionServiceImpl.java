@@ -25,6 +25,8 @@ public class PluszoneQuestionServiceImpl implements PluszoneQuestionService {
 				mapper.insertAnswer(dto);
 			}
 			
+			mapper.updateMembership(dto);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;

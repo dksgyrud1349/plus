@@ -11,6 +11,8 @@ public class PluszoneAnswer {
 	private String subject;
 	private String content;
 	
+	private long memberIdx;
+	
 	private List<Long> pluszoneNums;
 	
 	public List<Long> getPluszoneNums() {
@@ -55,7 +57,11 @@ public class PluszoneAnswer {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	
+	public long getMemberIdx() {
+		return memberIdx;
+	}
+	public void setMemberIdx(long memberIdx) {
+		this.memberIdx = memberIdx;
+	}
 
 }

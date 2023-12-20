@@ -11,4 +11,5 @@ public interface PluszoneQuestionService {
 	public List<PluszoneQuestion> QSubject();
 	public List<PluszoneQuestion> listQuestion();
 	public PluszoneAnswer listAnswer(String userId);
+	
 }

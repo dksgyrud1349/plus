@@ -18,9 +18,9 @@
 	<select id="memberSeq" resultType="Long">
        SELECT member_seq.NEXTVAL FROM dual 
     </select>
-
+	<!-- 미승인된 플러스 49번 / 플러스존 요청 50번 / 승인된 플러스 51번 -->
     <insert id="insertPlus" parameterType="Long">
-		INSERT INTO member(memberIdx, membership) VALUES (#{memberIdx}, 50) 
+		INSERT INTO member(memberIdx, membership) VALUES (#{memberIdx}, 49) 
     </insert>
 
     <update id="insertPlus12" parameterType="com.fa.plus.pluszone.domain.MemberPlus">
