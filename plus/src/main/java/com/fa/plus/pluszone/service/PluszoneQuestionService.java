@@ -8,6 +8,6 @@ import com.fa.plus.pluszone.domain.PluszoneQuestion;
 public interface PluszoneQuestionService {
 	public void insertAnswer(PluszoneAnswer dto) throws Exception;
 	
-	public List<PluszoneQuestion> listQuesion();
+	public List<PluszoneQuestion> listQuestion();
 	public PluszoneAnswer listAnswer(String userId);
 }

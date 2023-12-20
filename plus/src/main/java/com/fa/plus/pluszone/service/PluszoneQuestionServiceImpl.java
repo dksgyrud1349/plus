@@ -26,10 +26,10 @@ public class PluszoneQuestionServiceImpl implements PluszoneQuestionService {
 	}
 
 	@Override
-	public List<PluszoneQuestion> listQuesion() {
+	public List<PluszoneQuestion> listQuestion() {
 		List<PluszoneQuestion> list = null;
 		try {
-			list = mapper.listQuesion();
+			list = mapper.listQuestion();
 		} catch (Exception e) {
 		}
 		return list;

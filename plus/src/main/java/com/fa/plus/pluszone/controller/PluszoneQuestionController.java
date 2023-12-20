@@ -1,6 +1,5 @@
 package com.fa.plus.pluszone.controller;
 
-import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.fa.plus.admin.domain.NoticeManage;
 import com.fa.plus.domain.SessionInfo;
 import com.fa.plus.pluszone.domain.PluszoneAnswer;
 import com.fa.plus.pluszone.domain.PluszoneQuestion;
@@ -28,7 +26,7 @@ public class PluszoneQuestionController {
 	
 	@GetMapping("list")
 	public String list(Model model) {
-		List<PluszoneQuestion> list = service.listQuesion();
+		List<PluszoneQuestion> list = service.listQuestion();
 		
 		model.addAttribute("list", list);
 		
