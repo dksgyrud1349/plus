@@ -289,12 +289,6 @@ function sendOk(mode) {
 	        return;
 	    }
 		
-		if( !classPerson ) {
-	        alert("수강 인원을 입력하세요.");
-	        f.classPerson.focus();
-	        return;
-	    }
-		
 		f.action = "${pageContext.request.contextPath}/order/payment";
 	} else {
 		if(! confirm("선택한 상품을 장바구니에 담으시겠습니까 ? ")) {
@@ -343,10 +337,7 @@ function sendOk(mode) {
                                				<option value="${vo.startTime}${vo.endTime}">${vo.startTime} ~ ${vo.endTime}</option>
                                			</c:forEach>
                                 	</select>
-                                	<select name = "classPerson" id="classPerson" style="width: 100px;  height: 30px;">
-                                		<option value = "">인원 수</option>
-                                	</select>
-                                <div class="d-flex">
+                                <div class="d-flex" style="float: right; margin-bottom: 15px;">
                                     <button class="btn btn-outline-dark flex-shrink-0" type="button" onclick="sendOk('buy');">
                                         <i class="bi-cart-fill me-1"></i>
                                         예약하기
