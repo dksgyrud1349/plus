@@ -41,11 +41,11 @@ public class FaqServiceImpl implements FaqService{
 	}
 
 	@Override
-	public List<Faq> listCateNum(Map<String, Object> map) {
+	public List<Faq> listCategory(Map<String, Object> map) {
 		List<Faq> listCateNum = null;
 		
 		try {
-			listCateNum = mapper.listCateNum(map);
+			listCateNum = mapper.listCategory(map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
