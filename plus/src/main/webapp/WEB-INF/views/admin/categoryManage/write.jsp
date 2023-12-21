@@ -32,18 +32,14 @@
 	border:1px solid #ccc;
 	padding:3px 5px 3px;
 	background-color:#fff;
-	width:100%;
 	font-family:"맑은 고딕", 나눔고딕, 돋움, sans-serif;
-	box-sizing: border-box;
 }
 .table-category button {
 	border:1px solid #ccc;
 	padding:3px 5px 3px;
 	background-color:#fff;
-	width:100%;
 	font-family:"맑은 고딕", 나눔고딕, 돋움, sans-serif;
 	vertical-align: baseline;
-	box-sizing: border-box;
 }
 .table-category input[disabled] {
     pointer-events: none;
@@ -57,7 +53,6 @@
 	width:100%;
 	font-family:"맑은 고딕", 나눔고딕, 돋움, sans-serif;
 	vertical-align: baseline;
-	box-sizing: border-box;
 }
 .table-category select[disabled] {
     pointer-events: none;
@@ -141,24 +136,26 @@ $(function(){
 										서브 카테고리
 									</td> 
 									<td colspan="2"> 
-										<div class="category-layout">
-											<div class="row">
-												<span class="col category-area">
-													<span class="col category-item">
-														<input type="text" name="categorys" class="form-control">
-														<button type="button" class="form-control category-minus">&nbsp;-&nbsp;</button>
-														<input type="hidden" name="subNums">
-													</span>
-												</span>
-											<span class="col">
-												<button type="button" class="btn btnCategoryAdd">추가</button>
-											</span>
+									    <div class="category-layout">
+									    	<div class="category-area">
+									    		<div class=" category-item">
+													<div class="row">
+													    <div class="col">
+															<input type="text" name="categorys" class="form-control">
+														</div>
+														<div class="col">
+															<button type="button" class="form-control category-minus">&nbsp;-&nbsp;</button>
+														    <input type="hidden" name="subNums">
+														</div>
+														<div class="col">
+															<button type="button" class="btn btnCategoryAdd">추가</button>
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
-										
-										</div>
-									</td>
-								</tr>
-							</table>
+									</tr>
+								</table>
 							
 							<table class="table">
 								<tr>

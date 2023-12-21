@@ -98,19 +98,19 @@ function searchList() {
 						
 					<div class="row mt-5">
 					<c:forEach var="dto" items="${list}" varStatus="status">
-						<div class="card col-4 p-1 me-3 mb-5 mx-4" id="box" style="width: 16rem; height: 25rem; border:0.8px solid #cccccc;">
+						<div class="card p-1 me-3 mb-5 mx-4" id="box" style="width: 16rem; height: 30rem; border:0.8px solid #cccccc;">
 							<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="card-img-top"  alt="...">
 							<div class="card-header">
-								<h6 class="card-title pb-1 text-center">
+								<h6 class="card-title pb-1 text-start" style="margin-top:10px;">
 									${dataCount - (page-1) * size - status.index}. <a href="${articleUrl}&eventNum=${dto.eventNum}" class="text-reset">${dto.subject}</a>
 								</h6>
 							</div>
-							<div class="card-body" >
-								<p class="card-text align-middle"> <i class="bi bi-calendar-check"></i> 시작날짜 ${dto.startDate}</p>
+							<div class="card-body">
+								<p class="card-text" style="margin-top:10px;"> <i class="bi bi-calendar-check"></i> 시작날짜 ${dto.startDate}</p>
 								<p class="card-text"> <i class="bi bi-calendar-check"></i> 종료날짜 ${dto.endDate}</p>	
 							</div>
 							<div class="card-footer">
-								<p class="card-end" style="float:right;"> ${dto.hitCount}</p>
+								<p class="card-end" style="float:right; margin-top:10px;"><i class="bi bi-eye-fill"></i> ${dto.hitCount}</p>
 							</div>
 						</div>
 					</c:forEach>
