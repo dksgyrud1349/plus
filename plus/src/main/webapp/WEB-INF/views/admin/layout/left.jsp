@@ -99,6 +99,7 @@
                                             <a class="nav-link" href="#">이벤트 클래스</a>
                                             <a class="nav-link" href="#">할인/특가 클래스</a>
                                             <a class="nav-link" href="#">전체 클래스</a>
+                                            <a class="nav-link" href="<c:url value='/admin/lessonManage/list'/>">클래스 승인관리</a>
                                         </nav>
                                     </div>
                                         <a class="nav-link" href="#">카테고리 관리</a>
