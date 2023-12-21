@@ -202,7 +202,7 @@ public class LessonController {
 	@GetMapping("detail/{classNum}")
 	public String buyRequest(
 			@PathVariable Long classNum,
-			Model model
+			Model model, HttpSession session
 			) throws Exception{
 
 		try {

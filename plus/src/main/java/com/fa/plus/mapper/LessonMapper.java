@@ -2,7 +2,6 @@ package com.fa.plus.mapper;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -26,4 +25,5 @@ public interface LessonMapper {
 
 	public List<LessonDetail> getLessonDtlDate(long classNum);				// 클래스 상세 페이지(수강 날짜)
 	public List<LessonDetail> getLessonDtlTime(Map<String, Object> map);	// 클래스 상세 페이지(수강 시간)
+
 }
