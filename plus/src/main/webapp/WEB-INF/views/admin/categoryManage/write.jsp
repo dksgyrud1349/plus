@@ -68,20 +68,55 @@
 	cursor: pointer;
 }
 </style>
-
-<script type="text/javascript">
+<script>
 function sendOk() {
-    const f = document.categoryForm;
-
-    if(! f.mainName.value) {
-        alert("메인 카테고리를 입력하세요. ");
-        f.mainName.focus();
-        return;
-    }
-    
-    f.action="${pageContext.request.contextPath}/admin/categoryMange/write";
-    f.submit();
+	const f = document.categoryForm;
+	
+	if(! f.mainName.value.trim()) {
+		alert("메인 카테고리명을 입력 하세요");
+		f.mainName.focus();
+		return;
+	}
+	
+	$("input[name=categorys]").each(function(){
+		if(! $(this).val().trim()) {
+			alert("서브 카테고리를 입력하세요");
+			return false;
+		}
+	});
+		
+		
+	
+	
+	f.action = "${pageContext.request.contextPath}/admin/categoryManage/write";
+	f.submit();
 }
+
+$(function(){
+	$('.btnCategoryAdd').click(function(){
+		let $el = $(this).closest(".category-layout").find(".category-area");
+		
+		let $category = $(".category-layout .category-area .category-item:first-child").clone();
+		
+		$category.find("input[type=hidden]").remove();
+		$category.find("input[name=categorys]").removeAttr("value");
+		$category.find("input[name=categorys]").val("");
+		$el.append($category);
+	});
+	
+	$(".category-layout").on("click", ".category-minus", function(){
+		let $minus = $(this);
+		let $el = $minus.closest(".category-layout").find(".category-area");
+	
+		if($el.find(".category-item").length <= 1) {
+			$el.find("input[name=categorys]").val("");
+			return false;
+		}
+		
+		$minus.closest(".category-item").remove();
+	});
+});
+
 </script>
 
 <main class="wrapper" style="margin:0 auto; width:100%;" >
@@ -89,20 +124,38 @@ function sendOk() {
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:5% auto; ">
 				<div class="body-main">
+					
 					<h2><i class="fa-solid fa-clipboard-question"></i> 카테고리 추가 </h2>
+    					
     					<form name="categoryForm" method="post">
 							<table class="table table-border border-top2 table-form">
 								<tr> 
-									<td> 메인 카테고리 이름 </td>
+									<td> 메인 카테고리</td>
 									<td> 
 										<input type="text" name="mainName" maxlength="100" class="form-control">
 									</td>
 								</tr>
-							
-								<tr> 
-									<td>서브 카테고리 이름</td>
-									<td> 
-										<input type="text" name="subName" maxlength="100" class="form-control">
+								
+								<tr>
+									<td>
+										서브 카테고리
+									</td> 
+									<td colspan="2"> 
+										<div class="category-layout">
+											<div class="row">
+												<span class="col category-area">
+													<span class="col category-item">
+														<input type="text" name="categorys" class="form-control">
+														<button type="button" class="form-control category-minus">&nbsp;-&nbsp;</button>
+														<input type="hidden" name="subNums">
+													</span>
+												</span>
+											<span class="col">
+												<button type="button" class="btn btnCategoryAdd">추가</button>
+											</span>
+										</div>
+										
+										</div>
 									</td>
 								</tr>
 							</table>
