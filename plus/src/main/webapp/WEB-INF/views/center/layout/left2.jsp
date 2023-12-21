@@ -57,7 +57,7 @@
 
 <div class="sidebar dropdown">
 	<a style="border:3px solid #fff; margin-bottom:10px; margin-right: 1px; color: white;">고객센터</a>
-  	<a href="${pageContext.request.contextPath}/faq/all/list">자주 묻는 질문(FAQ)</a>
+  	<a href="${pageContext.request.contextPath}/faq/main">자주 묻는 질문(FAQ)</a>
   	<a href="${pageContext.request.contextPath}/notice/list">공지사항</a>
   	<button class="btn btn-secondary dropdown-toggle box" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
     	신고/제안/문의

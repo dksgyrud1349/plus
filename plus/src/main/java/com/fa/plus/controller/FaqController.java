@@ -32,7 +32,7 @@ public class FaqController {
 		Map<String, Object> map = new HashMap<>();
 		
 		map.put("mode", "showFaq");
-		List<Faq> listCategory = service.listCateNum(map);
+		List<Faq> listCategory = service.listCategory(map);
 		
 		model.addAttribute("listCategory", listCategory);
 		model.addAttribute("cateNum", "0");
@@ -60,9 +60,8 @@ public class FaqController {
 
 		model.addAttribute("list", list);
 		model.addAttribute("dataCount", dataCount);
-		model.addAttribute("cateNum", cateNum);
 
-		return ".faq.list";
+		return "faq/list";
 	}
 
 			
