@@ -79,13 +79,6 @@ function detail(mainNum) {
         "text-align": "center"
     });
 	
-	$('#categoryStateDetail').css({
-        'text-align': 'center',
-        'padding': '15px',
-        'margin': '5px auto',
-        'boder':'none'
-    });
-	
 	dlg.closest('.ui-dialog').find('.ui-dialog-titlebar-close').css({
         'position': 'absolute',
         'right': '10px'
