@@ -28,6 +28,7 @@ function login() {
 	location.href = '${pageContext.request.contextPath}/member/login';
 }
 
+
 function ajaxFun(url, method, formData, dataType, fn, file = false) {
 	const settings = {
 			type: method, 

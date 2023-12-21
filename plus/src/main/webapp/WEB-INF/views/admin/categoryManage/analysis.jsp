@@ -31,6 +31,7 @@ $(function(){
 	});
 });
 
+
 $(function(){
 	let url = "${pageContext.request.contextPath}/admin/memberManage/ageAnalysis";
 	
