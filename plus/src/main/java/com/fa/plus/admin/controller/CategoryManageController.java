@@ -25,6 +25,7 @@ import com.fa.plus.domain.SessionInfo;
 @RequestMapping("/admin/categoryManage/*")
 public class CategoryManageController {
 	
+	@Autowired
 	private CategoryManageService service;
 	
 	@Autowired
@@ -32,55 +33,50 @@ public class CategoryManageController {
 	private MyUtil myUtil;
 	
 	@RequestMapping(value = "list")
-	public String list(
-			@RequestParam(defaultValue = "0") long mainNum,
-			@RequestParam(defaultValue = "0") long subNum, 
-			Model model
-			) throws Exception{
+	public String list(Model model) throws Exception{
 		
 		int dataCount = 0;
 		int dataCount2 = 0;
 		
-		Map<String, Object> map = new HashMap<>();
-		map.put("mode", "showlist");
+		dataCount = service.dataCount();
+		dataCount2 = service.dataCount2();
 		
-		dataCount = service.dataCount(map);
-		dataCount2 = service.dataCount2(map);
-		
-		List<CategoryManage> listCategory1 = service.listMainCategory(map);
-		List<CategoryManage> listCategory2 = service.listSubCategory(map);
+		List<CategoryManage> listCategory1 = service.listMainCategory();
 		
 		model.addAttribute("listMainCategory", listCategory1);
 		for (CategoryManage dto : listCategory1) {
 			dto.setMainName(myUtil.htmlSymbols(dto.getMainName()));
 		}
-		model.addAttribute("listSubCategory", listCategory2);
-		for (CategoryManage dto : listCategory2) {
-			dto.setSubName(myUtil.htmlSymbols(dto.getSubName()));
-		}
 		
-		model.addAttribute("listCategory1", listCategory1);
-		model.addAttribute("listCategory2", listCategory2);
 		model.addAttribute("dataCount", dataCount);
 		model.addAttribute("dataCount2", dataCount2);
-		model.addAttribute("mainNum", mainNum);
-		model.addAttribute("subNum", subNum);
 		
 		return ".admin.categoryManage.list";
+	}
+	
+	@GetMapping("detail")
+	public String detailSubcategory(@RequestParam long mainNum, Model model) throws Exception {
+		CategoryManage dto = service.findByMain(mainNum);
+		List<CategoryManage> subList = service.listSubCategory(mainNum);
+		
+		model.addAttribute("dto", dto);
+		model.addAttribute("subList", subList);
+		
+		return "admin/categoryManage/detailCategory";
 	}
 	
 	@GetMapping("write")
 	public String writeForm(Model model) throws Exception {
 
-		Map<String, Object> map = new HashMap<>();
+		//Map<String, Object> map = new HashMap<>();
 		
-		map.put("mode", "showlist");
-		List<CategoryManage> listCategory1 = service.listMainCategory(map);
-		List<CategoryManage> listCategory2 = service.listSubCategory(map);
+		List<CategoryManage> listCategory1 = service.listMainCategory();
+		
+		//List<CategoryManage> listCategory2 = service.listSubCategory(map);
 
 		model.addAttribute("mode", "write");
 		model.addAttribute("listCategory1", listCategory1);
-		model.addAttribute("listCategory2", listCategory2);
+		//model.addAttribute("listCategory2", listCategory2);
 
 		return ".admin.categoryManage.write";
 	}
@@ -99,7 +95,7 @@ public class CategoryManageController {
 
 		return "redirect:/admin/categoryManage/list";
 	}
-	
+	/*
 	@GetMapping("update")
 	public String updateForm(@RequestParam long num, HttpSession session, Model model)
 			throws Exception {
@@ -107,9 +103,6 @@ public class CategoryManageController {
 		CategoryManage dto1 = service.findByMain(num);
 		CategoryManage dto2 = service.findBySub(num);
 		if (dto1 == null) {
-			return "redirect:/admin/categoryManage/list";
-		}
-		if (dto2 == null) {
 			return "redirect:/admin/categoryManage/list";
 		}
 
@@ -143,10 +136,10 @@ public class CategoryManageController {
 
 		return "redirect:/admin/categoryManage/list";
 	}
-	
+	*/
 	@PostMapping("delete")
 	@ResponseBody
-	public Map<String, Object> delete(@RequestParam long mainNum, @RequestParam long subNum, HttpSession session) throws Exception {
+	public Map<String, Object> delete(@RequestParam long mainNum, HttpSession session) throws Exception {
 		String state = "false";
 
 		try {

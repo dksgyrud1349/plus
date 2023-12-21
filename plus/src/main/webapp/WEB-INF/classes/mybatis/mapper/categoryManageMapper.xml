@@ -17,12 +17,12 @@
 		DELETE FROM mainCategory WHERE mainNum = #{mainNum}
 	</delete>
 	
-	<select id="dataCount" parameterType="map" resultType="Integer">
+	<select id="dataCount" resultType="Integer">
 		SELECT NVL(COUNT(*), 0)
 		FROM mainCategory
 	</select>
 	
-	<select id="listMainCategory" parameterType="map" resultType="com.fa.plus.admin.domain.CategoryManage">
+	<select id="listMainCategory" resultType="com.fa.plus.admin.domain.CategoryManage">
 		SELECT mainNum, mainName
 		FROM mainCategory
 		ORDER BY mainNum ASC
@@ -52,19 +52,21 @@
 		DELETE FROM subCategory WHERE subNum = #{subNum}
 	</delete>
 	
-	<select id="dataCount2" parameterType="map" resultType="Integer">
+	<select id="dataCount2" resultType="Integer">
 		SELECT NVL(COUNT(*), 0)
 		FROM subCategory
 	</select>
 	
-	<select id="listSubCategory" parameterType="map" resultType="com.fa.plus.admin.domain.CategoryManage">
-		SELECT m.mainNum, m.mainName, subNum, subName
+	<!-- 메인카테고리에 따른 서브카테고리 -->
+	<select id="listSubCategory" parameterType="Long" resultType="com.fa.plus.admin.domain.CategoryManage">
+		SELECT m.mainNum, mainName, subNum, subName
 		FROM subCategory s
-		JOIN mainCategory m ON s.mainNum = m.mainNum
+		JOIN mainCategory m ON m.mainNum = s.subNum
 		WHERE s.mainNum = #{mainNum}
 		ORDER BY subNum ASC
 	</select>
 	
+	<!-- 하나의 서브카테고리 -->
 	<select id="findBySub" parameterType="Long" resultType="com.fa.plus.admin.domain.CategoryManage">
 		SELECT subNum, subName
 		FROM subCategory

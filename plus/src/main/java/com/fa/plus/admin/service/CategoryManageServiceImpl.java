@@ -1,7 +1,6 @@
 package com.fa.plus.admin.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +15,11 @@ public class CategoryManageServiceImpl implements CategoryManageService{
 	private CategoryManageMapper mapper;
 	
 	@Override
-	public int dataCount(Map<String, Object> map) {
+	public int dataCount() {
 		int result = 0;
 		
 		try {
-			result = mapper.dataCount(map);
+			result = mapper.dataCount();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -96,11 +95,11 @@ public class CategoryManageServiceImpl implements CategoryManageService{
 	}
 
 	@Override
-	public List<CategoryManage> listMainCategory(Map<String, Object> map) {
+	public List<CategoryManage> listMainCategory() {
 		List<CategoryManage> listMainCategory = null;
 		
 		try {
-			listMainCategory = mapper.listMainCategory(map);
+			listMainCategory = mapper.listMainCategory();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -122,11 +121,11 @@ public class CategoryManageServiceImpl implements CategoryManageService{
 	}
 
 	@Override
-	public int dataCount2(Map<String, Object> map) {
+	public int dataCount2() {
 		int result = 0;
 		
 		try {
-			result = mapper.dataCount2(map);
+			result = mapper.dataCount2();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -135,11 +134,11 @@ public class CategoryManageServiceImpl implements CategoryManageService{
 	}
 
 	@Override
-	public List<CategoryManage> listSubCategory(Map<String, Object> map) {
+	public List<CategoryManage> listSubCategory(long mainNum) {
 		List<CategoryManage> listSubCategory = null;
 		
 		try {
-			listSubCategory = mapper.listSubCategory(map);
+			listSubCategory = mapper.listSubCategory(mainNum);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
