@@ -36,7 +36,7 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    width: 15rem;
+    width: 13rem;
     height: 100vh;
     z-index:0;
   }
@@ -114,14 +114,12 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav menu-4">
           <li class="nav-item"><a class="nav-link" href="#" data-hover="마이페이지" style="border-bottom: 3px solid orange !important;">마이페이지</a></li>
-            <li class="nav-item"><a class="nav-link" href="#" data-hover="내정보 및 수정">내정보 및 수정</a></li>
+            <li class="nav-item"><a class="nav-link" href="#" data-hover="내정보 및 수정">내정보 수정</a></li>
             <li class="nav-item"><a class="nav-link" href="#" data-hover="알림 / 쪽지 내역">알림 / 쪽지 내역</a></li>
             <li class="nav-item"><a class="nav-link" href="#" data-hover="예약내역">예약내역</a></li>
             <li class="nav-item"><a class="nav-link" href="#" data-hover="위시리스트">위시리스트</a></li>
             <li class="nav-item"><a class="nav-link" href="#" data-hover="리뷰">리뷰</a></li>
             <li class="nav-item"><a class="nav-link" href="#" data-hover="문의내역">문의내역</a></li>
-            <li class="nav-item"><a class="nav-link" href="#" data-hover="1:1문의">1:1문의</a></li>
-            <li class="nav-item"><a class="nav-link" href="#" data-hover="프로필수정">프로필수정</a></li>
             <li class="nav-item"><a class="nav-link" href="#" data-hover="탈퇴">탈퇴</a></li>
         </ul>
     </div>
@@ -137,7 +135,7 @@
 </div>
 
 
-<main class="wrapper" style="margin:10% auto; width:100%;">
+<main class="wrapper" style="margin:10% auto; width:90%;">
 	<div id="layoutSidenav_content">
 	    <div class="container-fluid px-7">
 	        <div class="body-container" style="width:100%; margin:0% auto; ">

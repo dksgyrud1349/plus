@@ -17,6 +17,17 @@
 }
 .tab-pane { min-height: 300px; }
 
+
+
+#box {
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.42, 0.0, 0.58, 1.0);
+}
+
+#box:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  transform: translateY(-10px);
+}
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
@@ -57,53 +68,55 @@ function searchList() {
 			
 			
 			<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
-						<table class="table">
-							<tr>
-								<td align="left" width="50%">
-									총 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}개</font> (${page}/${total_page} 페이지)
-								</td>
-								<td align="right">
-									&nbsp;
-								</td>
-							</tr>
-						</table>
-						
-						<div class="card mb-5 w-80 text-center" style="margin:0 auto">
-					    	<div class="card-header">
-					    		<h3>
-					    			<i class="bi bi-calendar-event"></i> 이벤트
-					    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list';" title="새로고침" style="float:right;">
-						            	<i class="fa-solid fa-arrow-rotate-left"></i>
-						            </button>
-					    		</h3>
-					    		<hr>			
-				
-				<table class="table table-hover board-list mt-4">
-					<thead class="table-light">
-						<tr>
-							<th width="60">번호</th>
-							<th>제목</th>
-							<th width="140">시작일</th>
-							<th width="140">종료일</th>
-							<th width="70">조회수</th>
-						</tr>
-					</thead>
-					
-					<tbody>
-						<c:forEach var="dto" items="${list}" varStatus="status">
-							<tr>
-								<td>${dataCount - (page-1) * size - status.index}</td>
-								<td class="left">
-									<a href="${articleUrl}&eventNum=${dto.eventNum}" class="text-reset">${dto.subject}</a>
-								</td>
-								<td>${dto.startDate}</td>
-								<td>${dto.endDate}</td>
-								<td>${dto.hitCount}</td>
-							</tr>
-						</c:forEach>
-					</tbody>
+				<table class="table">
+					<tr>
+						<td align="left" width="50%">
+							총 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}건</font> (${page}/${total_page} 페이지)
+						</td>
+						<td align="right">
+							<form class="row" name="searchForm" action="${pageContext.request.contextPath}/event/${category}/list" method="post" style="width:300px; margin-left:15px;">
+								<div class="input-group mb-1">
+									<select name="schType" class="form-select">
+										<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
+										<option value="startDate" ${schType=="startDate"?"selected":""}>시작일</option>
+										<option value="endDate" ${schType=="endDate"?"selected":""}>종료일</option>
+									</select>
+									<input type="text" name="kwd" value="${kwd}" class="form-control">
+									<button type="button" class="btn btn-light" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+								</div>
+							</form>
+						</td>
+					</tr>
 				</table>
-				
+						
+		    		<h3>
+		    			<i class="bi bi-calendar-event"></i> 이벤트
+		    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list';" title="새로고침" style="float:right;">
+			            	<i class="fa-solid fa-arrow-rotate-left"></i>
+			            </button>
+		    		</h3>
+		    		<hr>
+						
+					<div class="row mt-5">
+					<c:forEach var="dto" items="${list}" varStatus="status">
+						<div class="card col-4 p-1 me-3 mb-5" id="box" style="width: 16rem; height: 25rem; border:0.8px solid #cccccc;">
+							<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="card-img-top"  alt="...">
+							<div class="card-header">
+								<h6 class="card-title pb-1 text-center">
+									${dataCount - (page-1) * size - status.index}. <a href="${articleUrl}&eventNum=${dto.eventNum}" class="text-reset">${dto.subject}</a>
+								</h6>
+							</div>
+							<div class="card-body" >
+								<p class="card-text align-middle"> <i class="bi bi-calendar-check"></i> 시작날짜 ${dto.startDate}</p>
+								<p class="card-text"> <i class="bi bi-calendar-check"></i> 종료날짜 ${dto.endDate}</p>	
+							</div>
+							<div class="card-footer">
+								<p class="card-end" style="float:right;"> ${dto.hitCount}</p>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+						
 				<div class="page-navigation">
 					${dataCount == 0 ? "등록된 이벤트가 없습니다." : paging}
 				</div>
@@ -111,17 +124,7 @@ function searchList() {
 				<table class="table">
 					<tr>
 						<td align="center">
-						<form class="row" name="searchForm" action="${pageContext.request.contextPath}/event/${category}/list" method="post" style="width:300px; margin-left:15px;">
-							<div class="input-group mb-1">
-								<select name="schType" class="form-select">
-									<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
-									<option value="startDate" ${schType=="startDate"?"selected":""}>시작일</option>
-									<option value="endDate" ${schType=="endDate"?"selected":""}>종료일</option>
-								</select>
-								<input type="text" name="kwd" value="${kwd}" class="form-control">
-								<button type="button" class="btn btn-light" onclick="searchList()"> <i class="bi bi-search"></i> </button>
-							</div>
-						</form>
+						
 						</td>
 						</tr>
 						</table>
@@ -131,5 +134,4 @@ function searchList() {
 		</div>
 	</div>
 	</div>
-</div>
 </main>
