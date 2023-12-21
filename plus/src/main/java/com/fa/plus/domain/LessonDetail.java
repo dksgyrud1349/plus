@@ -11,6 +11,14 @@ public class LessonDetail {
 	private String startTime;	// 수업 시작 시간
 	private String endTime;		// 수업 종료 시간
 	
+	private long orderNum;
+	
+	public long getOrderNum() {
+		return orderNum;
+	}
+	public void setOrderNum(long orderNum) {
+		this.orderNum = orderNum;
+	}
 	public long getDetailNum() {
 		return detailNum;
 	}

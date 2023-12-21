@@ -5,27 +5,33 @@ public class Faq {
 	private long num;
 	private String subject;
 	private String content;
-	private String reg_Date;
+	private String regDate;
 	private String userId;
 	
 	private long cateNum;
-	private String category;
-	private int enabled;
+	private String faqName;
+	private int showFaq; // 
+	private int showUser; //
 	private int orderNo;
 	
 	
-	
-	public String getCategory() {
-		return category;
+	public String getFaqName() {
+		return faqName;
 	}
-	public void setCategory(String category) {
-		this.category = category;
+	public void setFaqName(String faqName) {
+		this.faqName = faqName;
 	}
-	public int getEnabled() {
-		return enabled;
+	public int getShowFaq() {
+		return showFaq;
 	}
-	public void setEnabled(int enabled) {
-		this.enabled = enabled;
+	public void setShowFaq(int showFaq) {
+		this.showFaq = showFaq;
+	}
+	public int getShowUser() {
+		return showUser;
+	}
+	public void setShowUser(int showUser) {
+		this.showUser = showUser;
 	}
 	public int getOrderNo() {
 		return orderNo;
@@ -52,10 +58,10 @@ public class Faq {
 		this.content = content;
 	}
 	public String getReg_Date() {
-		return reg_Date;
+		return regDate;
 	}
 	public void setReg_Date(String reg_Date) {
-		this.reg_Date = reg_Date;
+		this.regDate = reg_Date;
 	}
 	public String getUserId() {
 		return userId;

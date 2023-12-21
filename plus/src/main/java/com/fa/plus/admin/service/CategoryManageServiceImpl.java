@@ -53,6 +53,7 @@ public class CategoryManageServiceImpl implements CategoryManageService{
 	@Override
 	public void deleteMainCategory(long mainNum) throws Exception {
 		try {
+			mapper.deleteSubCategoryAll(mainNum);
 			mapper.deleteMainCategory(mainNum);
 		} catch (Exception e) {
 			e.printStackTrace();

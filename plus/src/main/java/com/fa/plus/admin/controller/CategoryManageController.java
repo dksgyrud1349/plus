@@ -39,11 +39,13 @@ public class CategoryManageController {
 			) throws Exception{
 		
 		int dataCount = 0;
+		int dataCount2 = 0;
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("mode", "showlist");
 		
 		dataCount = service.dataCount(map);
+		dataCount2 = service.dataCount2(map);
 		
 		List<CategoryManage> listCategory1 = service.listMainCategory(map);
 		List<CategoryManage> listCategory2 = service.listSubCategory(map);
@@ -60,6 +62,7 @@ public class CategoryManageController {
 		model.addAttribute("listCategory1", listCategory1);
 		model.addAttribute("listCategory2", listCategory2);
 		model.addAttribute("dataCount", dataCount);
+		model.addAttribute("dataCount2", dataCount2);
 		model.addAttribute("mainNum", mainNum);
 		model.addAttribute("subNum", subNum);
 		
@@ -110,17 +113,19 @@ public class CategoryManageController {
 			return "redirect:/admin/categoryManage/list";
 		}
 
-
 		Map<String, Object> map = new HashMap<>();
 		map.put("mode", "showlist");
 		List<CategoryManage> listCategory1 = service.listMainCategory(map);
-		List<CategoryManage> listCategory2 = service.listSubCategory(map);
-
+		
+		if (dto2.getSubName() != null) {
+			List<CategoryManage> listCategory2 = service.listSubCategory(map);
+			model.addAttribute("listCategory2", listCategory2);
+		}
+		
 		model.addAttribute("mode", "update");
 		model.addAttribute("dto1", dto1);
 		model.addAttribute("dto2", dto2);
 		model.addAttribute("listCategory1", listCategory1);
-		model.addAttribute("listCategory2", listCategory2);
 
 		return ".admin.categoryManage.write";
 	}
@@ -129,8 +134,10 @@ public class CategoryManageController {
 	public String updateSubmit(CategoryManage dto, HttpSession session) throws Exception {
 
 		try {
+			if (dto.getSubName() != null) {
+				service.updateSubCategory(dto);
+			}
 			service.updateMainCategory(dto);
-			service.updateSubCategory(dto);
 		} catch (Exception e) {
 		}
 
@@ -143,11 +150,6 @@ public class CategoryManageController {
 		String state = "false";
 
 		try {
-			Map<String, Object> map = new HashMap<>();
-			map.put("subNum", subNum);
-			map.put("mainNum", mainNum);
-
-			service.deleteSubCategory(subNum);
 			service.deleteMainCategory(mainNum);
 			state = "true";
 		} catch (Exception e) {
@@ -156,6 +158,20 @@ public class CategoryManageController {
 		Map<String, Object> model = new HashMap<>();
 		model.put("state", state);
 
+		return model;
+	}
+	
+	@ResponseBody
+	@PostMapping("deleteSubCategory")
+	public Map<String, Object> deleteSubCategory(@RequestParam long subNum) throws Exception {
+		Map<String, Object> model = new HashMap<String, Object>();
+		String state = "true";
+		try {
+			service.deleteSubCategory(subNum);
+		} catch (Exception e) {
+			state = "false";
+		}
+		model.put("state", state);
 		return model;
 	}
 

@@ -2,48 +2,62 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fa.plus.mapper.OrderMapper">
-	<select id="findByMaxOrderNumber" resultType="String">
-		SELECT orderNum
-		FROM orders
-		ORDER BY oDate DESC
-		FETCH FIRST 1 ROWS ONLY
+	<insert id="insertOrders" parameterType="com.fa.plus.domain.Order">
+		INSERT INTO orders(orderNum, memberIdx, detailNum) 
+			VALUES (orders_seq.NEXTVAL, #{memberIdx}, #{detailNum})
+	</insert>
+	
+	<insert id="insertOrderDetail" parameterType="com.fa.plus.domain.Order">
+		INSERT INTO orderDetail(orderNum, count, uMileage, pay, state, oDate, cDate) 
+			VALUES (orders_seq.CURRVAL, #{count}, #{uMileage}, #{pay}, 0, SYSDATE, #{classDate})
+	</insert>
+	
+	<select id="findLessonDetail" parameterType="map" resultType="com.fa.plus.domain.Order">
+		SELECT le.classNum, le.className, detailNum, count AS count1, TO_CHAR(classDate, 'YYYY-MM-DD HH24:MI:SS') classDate, le.price, le.mileage, m1.userName
+		FROM lessonDetail ld
+		JOIN lesson le ON ld.classNum = le.classNum
+        JOIN member m ON m.memberIdx = le.memberIdx
+        JOIN member1 m1 ON m.memberIdx = m1.memberIdx
+		WHERE TO_CHAR(classDate, 'YYYY-MM-DD HH24:MI:SS') = #{classDate} AND le.classNum = #{classNum}
 	</select>
+	
+	<select id="eventLesson" parameterType="map" resultType="com.fa.plus.domain.Order">
+		SELECT le.classNum, le.className, detailNum, count AS count1, TO_CHAR(classDate, 'YYYY-MM-DD HH24:MI:SS') classDate, le.price, le.mileage, discountMoney, discountPercent
+		FROM lessonDetail ld
+		JOIN lesson le ON ld.classNum = le.classNum
+		JOIN eventClass ec ON le.classNum = ec.classNum
+		JOIN event e ON ec.eventNum = e.eventNum
+		WHERE TO_CHAR(classDate, 'YYYY-MM-DD HH24:MI:SS') = #{classDate} AND le.classNum = #{classNum}
+	</select>
+	
+	<select id="findByOrderHuman" parameterType="String" resultType="com.fa.plus.domain.Order">
+		SELECT m1.userId, m1.userName, TO_CHAR(m2.birth, 'YYYY-MM-DD') birth, m1.totalMileage, m.memberIdx
+		FROM member1 m1
+		JOIN member2 m2 ON m1.userId = m2.userId
+        JOIN member m ON m1.memberIdx = m.memberIdx
+		WHERE m1.userId = #{userId}
+	</select>
+	
+	<update id="updateCount" parameterType="String">
+		UPDATE lessonDetail SET count = count - #{count} WHERE detailNum = #{detailNum}
+	</update>
+	
+	<update id="updateUmileage" parameterType="map">
+		UPDATE member1 SET totalMileage = totalMileage - #{uMileage} WHERE userId = #{userId}
+	</update>
+	
+	<update id="updateMileage" parameterType="map">
+		UPDATE member1 SET totalMileage = totalMileage + #{mileage} WHERE userId = #{userId}
+	</update>
 
-	<insert id="insertOrder" parameterType="com.fa.plus.domain.Order">
-		INSERT INTO orders(orderNum, oDate, tMoney, uMileage, state, 
-			count, memberIdx, detailNum) VALUES (#{orderNum}, SYSDATE, #{tMoney}, 
-			#{uMileage}, 0, #{count}, #{memberIdx}, #{detailNum})
-	</insert>
-   
-	<insert id="insertPayDetail" parameterType="com.fa.plus.domain.Order">
-		INSERT INTO classPayDetail(orderNum, payMethod, orderName, authorNum, authorDate) 
-			VALUES (#{orderNum}, #{payMethod}, #{orderName}, #{authorNum}, TO_DATE(#{authorDate}, 'YYYY-MM-DD HH24:MI:SS') )
+	<insert id="insertMileage" parameterType="com.fa.plus.domain.Order">
+		INSERT INTO mileage(mNum, point, mDate, mState, orderNum, userId) 
+			VALUES (mileage_seq.NEXTVAL, #{mileage}, SYSDATE, 0, orders_seq.CURRVAL, #{userId})
 	</insert>
 	
-	<insert id="insertBook" parameterType="com.fa.plus.domain.Order">
-		INSERT INTO book (bookNum, bookState, orderNum)
-			VALUES(book_seq.NEXTVAL, 0, #{orderNum})
+	<insert id="insertUMileage" parameterType="com.fa.plus.domain.Order">
+		INSERT INTO mileage(mNum, point, mDate, mState, orderNum, userId) 
+			VALUES (mileage_seq.NEXTVAL, #{uMileage}, SYSDATE, 1, orders_seq.CURRVAL, #{userId})
 	</insert>
-	
-	<select id="listOrder" parameterType="map" resultType="com.fa.plus.domain.Order">
-		SELECT
-		FROM orders
-		JOIN 
-	</select>
-	
-	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.Order">
-		SELECT classNum, className, firstPhoto, l.memberIdx, nickName
-		FROM lesson l
-		JOIN member1 m1 ON l.memberIdx = m1.memberIdx
-		JOIN plus p ON m1.userId = p.userId
-		WHERE l.classNum = #{classNum}
-	</select>
-	
-	<select id="findByDetailId" parameterType="Long" resultType="com.fa.plus.domain.Order">
-		SELECT detailNum, count, classNum, 
-			TO_CHAR(startTime, 'YYYY-MM-DD HH24:MI') startTime, TO_CHAR(endTime, 'YYYY-MM-DD HH24:MI') endTime
-		FROM lessonDetail
-		WHERE detailNum = #{detailNum}
-	</select>
 	
 </mapper>

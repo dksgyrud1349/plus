@@ -57,8 +57,7 @@
 
 					$('#nav-${category}').addClass('active');
 
-					location.href = '${pageContext.request.contextPath}/faq/'
-							+ category + '/list';
+					location.href = '${pageContext.request.contextPath}/faq/list';
 				});
 
 	});
@@ -67,7 +66,6 @@
 <div>
 	<jsp:include page="/WEB-INF/views/center/layout/left2.jsp" />
 </div>
-
 <div class="container">
 	<div class="body-container">
 		<div class="body-title">
@@ -76,6 +74,8 @@
 				<i class="bi bi-question-octagon"></i> 자주하는 질문
 			</h3>
 		</div>
+		<div class="body-main">
+			
 		<ul class="nav nav-pills navs" style="margin-top: 25px;">
 			<li class="nav-item nav-all" id="nav-all" data-category="all"><a
 				class="nav-link" aria-current="page">전체</a></li>
@@ -86,85 +86,35 @@
 			<li class="nav-item nav-member" id="nav-member"
 				data-category="member"><a class="nav-link" tabindex="-1"
 				aria-disabled="true">회원</a></li>
-			<div style="margin-left: 460px;">
-				<select name="schType" class="form-select"
-					style="margin-top: 5px; margin-right: 4px;">
-					<option value="all">제목</option>
-					<option value="content">내용</option>
-				</select>
-			</div>
-			<div class="kwd">
-				<input type="text" name="kwd" class="form-control" value="${dto.regDate}">
-			</div>
-			<div class="kwd2">
-				<button class="btn btn-outline-secondary">
-					<span class="fw-semibold text-dark">검색</span>
-				</button>
-			</div>
+			
 		</ul>
 	</div>
 </div>
 <div class = "container2">
 	
 	<div class="accordion accordion-flush" id="accordionFlushExample">
+		<c:forEach var="dto" items="${list }" varStatus="status">
 		<div class="accordion-item">
-			<h2 ${dto.regDate} id="flush-headingOne">
+			<h2  id="flush-headingOne">
 				<button class="accordion-button collapsed" type="button"
 					data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
 					aria-expanded="false" aria-controls="flush-collapseOne" style="font-weight: bold;">
-					Accordion Item #1</button>
+					${status.index+1}. ${dto.subject}</button>
+					
 			</h2>
+			
+			
 			<div id="flush-collapseOne" class="accordion-collapse collapse"
 				aria-labelledby="flush-headingOne"
 				data-bs-parent="#accordionFlushExample">
 				<div class="accordion-body">
-					Placeholder content for this accordion, which is intended to
-					demonstrate the
-					<code>.accordion-flush</code>
-					class. This is the first item's accordion body.
+					${dto.content}
 				</div>
 			</div>
 		</div>
-		<div class="accordion-item">
-		
-			<h2 class={Dto.content} id="flush-headingTwo">
-				<button class="accordion-button collapsed" type="button"
-					data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
-					aria-expanded="false" aria-controls="flush-collapseTwo" style="font-weight: bold;">
-					Accordion Item #2</button>
-			</h2>
-			<div id="flush-collapseTwo" class="accordion-collapse collapse"
-				aria-labelledby="flush-headingTwo"
-				data-bs-parent="#accordionFlushExample">
-				<div class="accordion-body">
-					Placeholder content for this accordion, which is intended to
-					demonstrate the
-					<code>.accordion-flush</code>
-					class. This is the second item's accordion body. Let's imagine this
-					being filled with some actual content.
-				</div>
-			</div>
-		</div>
-		<div class="accordion-item">
-			<h2 class="${dto.regDate}" id="flush-headingThree">
-				<button class="accordion-button collapsed" type="button"
-					data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
-					aria-expanded="false" aria-controls="flush-collapseThree" style="font-weight: bold;">
-					Accordion Item #3</button>
-			</h2>
-			<div id="${dto.regDate}" class="accordion-collapse collapse"
-				aria-labelledby="flush-headingThree"
-				data-bs-parent="#accordionFlushExample">
-				<div class="accordion-body">
-					Placeholder content for this accordion, which is intended to
-					demonstrate the
-					<code>.accordion-flush</code>
-					class. This is the third item's accordion body. Nothing more
-					exciting happening here in terms of content, but just filling up
-					the space to make it look, at least at first glance, a bit more
-					representative of how this would look in a real-world application.
-				</div>
-			</div>
-		</div>
+		</c:forEach>
 	</div>
 </div>
+</div>
+</div>
+</main>

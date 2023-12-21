@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.admin.mapper.CategoryManageMapper">
+	
+	<!-- maincategory -->
+	<insert id="insertMainCategory" parameterType="com.fa.plus.admin.domain.CategoryManage">
+		INSERT INTO mainCategory (mainNum, mainName)
+			VALUES (maincategory_seq.NEXTVAL, #{mainName})
+	</insert>
+	
+	<update id="updateMainCategory" parameterType="com.fa.plus.admin.domain.CategoryManage">
+		UPDATE mainCategory SET mainName=#{mainNum} WHERE mainNum = #{mainNum}
+	</update>
+	
+	<delete id="deleteMainCategory" parameterType="Long">
+		DELETE FROM mainCategory WHERE mainNum = #{mainNum}
+	</delete>
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM mainCategory
+	</select>
+	
+	<select id="listMainCategory" parameterType="map" resultType="com.fa.plus.admin.domain.CategoryManage">
+		SELECT mainNum, mainName
+		FROM mainCategory
+		ORDER BY mainNum ASC
+	</select>
+	
+	<select id="findByMain" parameterType="Long" resultType="com.fa.plus.admin.domain.CategoryManage">
+		SELECT mainNum, mainName
+		FROM mainCategory
+		WHERE mainNum = #{mainNum}
+	</select>
+	
+	<delete id="deleteSubCategoryAll" parameterType="Long">
+		DELETE FROM subCategory s WHERE s.mainNum = #{mainNum}
+	</delete>
+	
+	<!-- subcategory -->
+	<insert id="insertSubCategory" parameterType="com.fa.plus.admin.domain.CategoryManage">
+		INSERT INTO subCategory (subNum, subName, mainNum)
+			VALUES (subcategory_seq.NEXTVAL, #{subName}, #{mainNum})
+	</insert>
+	
+	<update id="updateSubCategory" parameterType="com.fa.plus.admin.domain.CategoryManage">
+		UPDATE subCategory SET subName=#{subName} WHERE subNum = #{subNum}
+	</update>
+	
+	<delete id="deleteSubCategory" parameterType="Long">
+		DELETE FROM subCategory WHERE subNum = #{subNum}
+	</delete>
+	
+	<select id="dataCount2" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM subCategory
+	</select>
+	
+	<select id="listSubCategory" parameterType="map" resultType="com.fa.plus.admin.domain.CategoryManage">
+		SELECT m.mainNum, m.mainName, subNum, subName
+		FROM subCategory s
+		JOIN mainCategory m ON s.mainNum = m.mainNum
+		WHERE s.mainNum = #{mainNum}
+		ORDER BY subNum ASC
+	</select>
+	
+	<select id="findBySub" parameterType="Long" resultType="com.fa.plus.admin.domain.CategoryManage">
+		SELECT subNum, subName
+		FROM subCategory
+		WHERE subNum = #{subNum}
+	</select>
+	
+</mapper>
