@@ -33,6 +33,7 @@
 }
 .sContent{
 	margin-left: 40px;
+	padding-left: 10px;
 	width: 1200px;
 	height: 65px;
 	font-family: 'Pretendard-Regular';
@@ -47,51 +48,65 @@
 	font-family: 'GmarketSansMedium';
 	background-color: #D5D5D5;
 }
+
+.bDelaration{
+	width: 100px;
+	height: 40px;
+	border: 1px solid black;
+	font-family: 'GmarketSansMedium';
+	
+}
+
+.bDelaration:hover{
+	border: 2px solid black;
+}
 </style>
 
 <div>
 	<jsp:include page="/WEB-INF/views/center/layout/left2.jsp" />
 </div>
 
-<main class="wrapper" style="margin:0 auto; width:100%;">
-	<div id="layoutSidenav_content">
-		<div class="container-fluid px-5">
-			<div class="body-container" style="width:80%; margin:5% auto; ">
-				<div class="body-main">
-				<h3 class="font1"
-					style="border-top: 1px solid black; padding-top: 20px;">
-					<i class="bi bi-exclamation-diamond-fill"></i> 신고하기
-				</h3>
-				<div class="sContent">
-					이곳은 부적절한 <span style="color: red;">클래스 신고</span>를 하는 곳입니다.<br>
-					허위 신고 시 서비스 이용제한 등의 불이익을 받을 수 있으니 주의해 주세요.
-				</div>
-			</div>
-		</div>
-	</div>
-	<div style="margin-left: 200px; height: 430px;">
-		<div class="input-group mb-3" style="width: 400px; float: left; margin-right: 50px; height: 40px;">
-		  <span class="input-group-text title" id="basic-addon1">회원ID</span>
-		  <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-		</div>
-		
-		<div class="input-group mb-3" style="width: 400px; height: 40px;">
-		  <span class="input-group-text title" id="basic-addon2">이름</span>
-		  <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
-		</div>
-		
-		<div class="input-group mb-3" style="width: 400px; height: 40px;">
-		  <span class="input-group-text title" id="basic-addon3">클래스 명</span>
-		  <!-- <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">  -->
-		  	<select name="classNames">
-		  		<option value="">::선택::</option>
-		  	</select>
-		</div>
-		
-		<div class="input-group" style="width: 850px; height: 300px;">
-		  <span class="input-group-text title">신고 사유</span>
-		  <textarea class="form-control" style="resize: none;" aria-label="With textarea"></textarea>
+<div class="container">
+	<div class="body-container">
+		<div class="body-title">
+			<h3 class="font1"
+				style="border-top: 1px solid black; padding-top: 20px; padding-left: 5px;">
+				<i class="bi bi-exclamation-diamond-fill"></i> 신고하기
+			</h3>
 		</div>
 	</div>
 </div>
-</main>
+<div class="sContent">
+	이곳은 부적절한 <span style="color: red;">클래스 신고</span>를 하는 곳입니다.<br>
+	허위 신고 시 서비스 이용제한 등의 불이익을 받을 수 있으니 주의해 주세요.
+</div>
+
+<div style="margin-left: 200px; height: 500px;">
+	<div class="input-group mb-3" style="width: 400px; float: left; margin-right: 50px; height: 40px;">
+	  <span class="input-group-text title add" id="basic-addon1" style="padding-left: 50px; padding-top: 8px;">회원ID</span>
+	  <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+	</div>
+	
+	<div class="input-group mb-3" style="width: 400px; height: 40px;">
+	  <span class="input-group-text title" id="basic-addon2" style="padding-left: 55px; padding-top: 8px;">이름</span>
+	  <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+	</div>
+	
+	<div class="input-group mb-3" style="width: 400px; height: 40px;">
+	  <span class="input-group-text title" id="basic-addon3" style="padding-left: 40px; padding-top: 8px;">클래스 명</span>
+	  <!-- <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">  -->
+	  	<select name="classNames" style="width: 250px;">
+	  		<option value="" style="text-align: center;">::선택::</option>
+	  	</select>
+	</div>
+	
+	<div class="input-group" style="width: 850px; height: 300px;">
+	  <span class="input-group-text title" style="padding-left: 40px;">신고 사유</span>
+	  <textarea class="form-control" style="resize: none;" aria-label="With textarea"></textarea>
+	</div>
+	
+	<div style="margin-top: 35px; float: right; margin-right: 250px;">
+		<button type="button" class="bDelaration" onclick="location.href='#'" style="padding-top: 3px;">신고하기</button>
+	</div>
+	
+</div>
