@@ -83,7 +83,7 @@
                                             <a class="nav-link" href="#">관리자 채팅</a>
                                         </nav>
                                     </div>
-                                        <a class="nav-link" href="#">클래스 등록신청</a>
+                                        <a class="nav-link" href="<c:url value='/lessonPlus/list'/>">클래스 등록신청</a>
                                     	<a class="nav-link" href="#">정산</a>
                                 </nav>
                             </div>
