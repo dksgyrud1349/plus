@@ -54,7 +54,15 @@ function searchList() {
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
-			
+				
+				<h3>
+		    			<i class="bi bi-calendar-event"></i> 이벤트 
+		    			<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list';" title="새로고침" style="float:right;">
+			            	<i class="fa-solid fa-arrow-rotate-left"></i>
+			            </button>
+		    		</h3>
+		    		<hr>
+				
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
 					<li class="nav-item" role="presentation">
 						<button class="nav-link" id="tab-progress" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="progress" aria-selected="true" data-tab="progress">진행중인 이벤트</button>
@@ -64,7 +72,7 @@ function searchList() {
 					</li>
 				</ul>
 			
-			
+				
 			
 				<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 					<table class="table">
@@ -88,18 +96,20 @@ function searchList() {
 						</tr>
 					</table>
 						
-		    		<h3>
-		    			<i class="bi bi-calendar-event"></i> 이벤트
-		    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list';" title="새로고침" style="float:right;">
-			            	<i class="fa-solid fa-arrow-rotate-left"></i>
-			            </button>
-		    		</h3>
-		    		<hr>
+		    		
 						
 					<div class="row mt-5">
 					<c:forEach var="dto" items="${list}" varStatus="status">
 						<div class="card p-1 me-3 mb-5 mx-4" id="box" style="width: 16rem; height: 30rem; border:0.8px solid #cccccc;">
-							<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="card-img-top"  alt="...">
+							<c:choose>
+								<c:when test="${dto.eventImg != null}">
+									<img src="${pageContext.request.contextPath}/uploads/photo/${dto.eventImg}"  class="card-img-top"  alt="...">
+								</c:when>
+								<c:otherwise>
+									<img src="${pageContext.request.contextPath}/resources/images/Image-folder.jpg"  class="card-img-top"  alt="...">
+								</c:otherwise>
+							</c:choose>
+							
 							<div class="card-header">
 								<h6 class="card-title pb-1 text-start" style="margin-top:10px;">
 									${dataCount - (page-1) * size - status.index}. <a href="${articleUrl}&eventNum=${dto.eventNum}" class="text-reset">${dto.subject}</a>

@@ -44,7 +44,49 @@
 			margin-top: 37.5%;	
 		}
 		
-	</style>
+		
+    	#loginModal .modal-content {
+		    background: linear-gradient(to bottom, #1a1a1a, #333); 
+		    border: 5px solid #555;
+		    box-shadow: 5 5 20px rgba(3, 3, 3, 3); 
+		}
+		
+		#loginModal .modal-header {
+		    background-color: #333;
+		    color: #fff;
+		}
+		
+		#loginModal .btn-primary {
+		    background-color: #47a3da;
+		    border-color: #47a3da;
+		}
+		
+		#loginModal .btn-primary:hover {
+		    background-color: #205e82;
+		    border-color: #205e82;
+		}
+		
+		.modal {
+		    position: absolute;
+		    display: none;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		    background: url('${pageContext.request.contextPath}/resources/images/dialogbg.jpg') no-repeat;
+		    background-size: cover;
+		}
+		
+		.modal-dialog {
+		    max-width: 400px;
+		}
+		
+		.modal-content {
+		    background: none;
+		    border: none;
+		    box-shadow: none;
+		}
+</style>
 </head>
 
 
@@ -115,19 +157,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Login Modal -->
 <script type="text/javascript">
 	function dialogLogin() {
@@ -159,57 +188,41 @@
 	    f.submit();
 	}
 </script>
-<div class="modal fade" id="loginModal" tabindex="-1"
-		data-bs-backdrop="static" data-bs-keyboard="false" 
-		aria-labelledby="loginModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="loginViewerModalLabel">Login</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
+<div class="modal fade" id="loginModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header text-white">
+                <h5 class="modal-title" id="loginViewerModalLabel">원데이 플러스 + </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
                 <div class="p-3">
                     <form name="modelLoginForm" action="" method="post" class="row g-3">
-                    	<div class="mt-0">
-                    		 <p class="form-control-plaintext">계정으로 로그인 하세요</p>
-                    	</div>
-                        <div class="mt-0">
+                        <div class="mb-3">
                             <input type="text" name="userId" class="form-control" placeholder="아이디">
                         </div>
-                        <div>
-                            <input type="password" name="userPwd" class="form-control" autocomplete="off" placeholder="패스워드">
+                        <div class="mb-3">
+                            <input type="password" name="userPwd" class="form-control" autocomplete="off"
+                                placeholder="패스워드">
                         </div>
-                        <div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="rememberMeModel">
-                                <label class="form-check-label" for="rememberMeModel"> 아이디 저장</label>
-                            </div>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-primary w-100" onclick="sendModelLogin();">로그인</button>
                         </div>
-                        <div>
-                            <button type="button" class="btn btn-primary w-100" onclick="sendModelLogin();">Login</button>
-                        </div>
-                        <div>
-                    		 <p class="form-control-plaintext text-center">
-                    		 	<a href="${pageContext.request.contextPath}/member/pwdFind" class="text-decoration-none me-2">패스워드를 잊으셨나요 ?</a>
-                    		 </p>
-                    	</div>
                     </form>
-                    <hr class="mt-3">
-                    <div>
-                        <p class="form-control-plaintext mb-0">
-                        	아직 회원이 아니세요 ?
-                        	<a href="${pageContext.request.contextPath}/member/member" class="text-decoration-none">회원가입</a>
+                    <hr style="color:white;">
+                        <p class="text-center">
+                            <button type="button" class="btn btn-light w-100" onclick="location.href='${pageContext.request.contextPath}/member/member'">회원가입</button>
                         </p>
+                        <div class="mb-3">
+                            <p class="text-center">
+                                <a href="${pageContext.request.contextPath}/member/pwdFind" class="text-decoration-none me-2" style="color:#fff">패스워드를 잊으셨나요 ?</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
-        
-			</div>
-		</div>
-	</div>
-</div>
-
-
+            </div>
+        </div>
+    </div>
 
 
 </body>
