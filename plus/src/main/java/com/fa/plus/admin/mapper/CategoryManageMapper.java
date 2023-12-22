@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 import com.fa.plus.admin.domain.CategoryManage;
 @Mapper
 public interface CategoryManageMapper {
+	
+	public long mainSeq();
 	public void insertMainCategory(CategoryManage dto) throws SQLException;
 	public void updateMainCategory(CategoryManage dto) throws SQLException;
 	public void deleteMainCategory(long mainNum) throws SQLException;

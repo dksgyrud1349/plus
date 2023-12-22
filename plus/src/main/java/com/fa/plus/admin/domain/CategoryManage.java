@@ -1,5 +1,7 @@
 package com.fa.plus.admin.domain;
 
+import java.util.List;
+
 public class CategoryManage {
 	private long mainNum;
 	private String mainName;
@@ -10,10 +12,22 @@ public class CategoryManage {
 	private long classNum;
 	private String className;
 	
-	private long memberIdx;
-	private String userId;
-	private String userName;
+	private List<Long> subNums;
+	private List<String> categorys;
 	
+	
+	public List<Long> getSubNums() {
+		return subNums;
+	}
+	public void setSubNums(List<Long> subNums) {
+		this.subNums = subNums;
+	}
+	public List<String> getCategorys() {
+		return categorys;
+	}
+	public void setCategorys(List<String> categorys) {
+		this.categorys = categorys;
+	}
 	public long getMainNum() {
 		return mainNum;
 	}
@@ -49,24 +63,6 @@ public class CategoryManage {
 	}
 	public void setClassName(String className) {
 		this.className = className;
-	}
-	public long getMemberIdx() {
-		return memberIdx;
-	}
-	public void setMemberIdx(long memberIdx) {
-		this.memberIdx = memberIdx;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 	
 	

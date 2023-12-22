@@ -64,7 +64,7 @@ function sendOk() {
 	$("input[name=categorys]").each(function(){
 		if(! $(this).val().trim()) {
 			alert("서브 카테고리를 입력하세요");
-			return false;
+			return;
 		}
 	});
 		
@@ -128,7 +128,6 @@ $(function(){
 									    			<div class="col category-item d-flex flex-row ">
 														<input type="text" name="categorys" class="form-control" style="width:40%;">
 														<button type="button" class="form-control category-minus btn btn-outline-dark" style="width:15%;">&nbsp;-&nbsp;</button>
-													    <input type="hidden" name="subNums">
 													</div>
 													<div class="col">
 														<button type="button" class="btn btnCategoryAdd btn-outline-dark" style="float: right;">&nbsp;+&nbsp;</button>
@@ -146,7 +145,6 @@ $(function(){
 										<button type="button" class="btn btn-dark" onclick="sendOk();">등록하기</button>
 										<button type="reset" class="btn">다시입력</button>
 										<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/admin/categoryManage/list';">등록취소</button>
-										<input type="hidden" name="mainNum" value="${dto.mainNum}">
 									</td>
 								</tr>
 							</table>

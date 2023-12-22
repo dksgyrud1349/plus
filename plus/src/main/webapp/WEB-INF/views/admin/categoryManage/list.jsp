@@ -52,20 +52,17 @@ function detail(mainNum) {
 	const dlg = $("#category-dialog").dialog({
 		  autoOpen: false,
 		  modal: true,
+		  height: 400,
+		  width: 600,
+		  title: "카테고리 관리",
 		  buttons: {
-			  " 삭제 " : function() {
-		    	   deleteOk(mainNum); 
-		       },
-		       " 수정 " : function() {
-		    	   updateOk(); 
-		       },
+		       " 삭제 " : function() {
+		    	   deleteOk(mainNum);
+			   },
 		       " 닫기 " : function() {
 		    	   $(this).dialog("close");
 		       }
 		  },
-		  height: 400,
-		  width: 600,
-		  title: "카테고리 관리",
 		  close: function(event, ui) {
 			  
 		  }
@@ -98,40 +95,27 @@ function detail(mainNum) {
 	};
 	
 	ajaxFun(url, "get", query, "text", fn);
+	
+
 }
 
 function deleteOk(mainNum) {
-	if(confirm("선택한 메인 카테고리를 삭제 하시겠습니까 ?")) {
-		let url = "${pageContext.request.contextPath}/admin/categoryManage/delete";
-		let query = "mainNum="+mainNum;
+	var url = "${pageContext.request.contextPath}/admin/categoryManage/delete";
+	var query = "mainNum="+mainNum;
+	
+	if(! confirm("카테고리를 삭제하시겠습니까 ?")) {
+		  return;
 	}
 	
-	$('#category-dialog').dialog("close");
-}
-
-function updateOk() {
-	const f = document.detailcategoryForm;
-	
-	if( ! f.subName.value ) {
-		alert("서브 카테고리 이름를 입력하세요.");
-		f.subName.focus();
-		return;
-	}
-	
-	let url = "${pageContext.request.contextPath}/admin/categoryManage/update";
-	let query = $("#detailcategoryForm").serialize();
-
 	const fn = function(data){
-		$("form[name=detailcategoryForm]").each(function(){
-			this.reset();
-		});
-		
-		url = "${pageContext.request.contextPath}/admin/categoryManage/detailCategory?tmp="+(new Date()).getTime();
-		$(".category-dialog").load(url); 
+		$('#category-dialog').dialog("close");
+		location.href = "${pageContext.request.contextPath}/admin/categoryManage/list";
 	};
-	ajaxFun(url, 'post', query, 'json', fn);
+	ajaxFun(url, "post", query, "json", fn);
 	
 }
+
+
 
 
 </script>

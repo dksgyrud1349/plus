@@ -30,7 +30,21 @@ public class CategoryManageServiceImpl implements CategoryManageService{
 	@Override
 	public void insertMainCategory(CategoryManage dto) throws Exception {
 		try {
+			long mainseq = mapper.mainSeq();
+			dto.setMainNum(mainseq);
+			
 			mapper.insertMainCategory(dto);
+
+			if(dto.getCategorys() != null) {
+				CategoryManage vo = new CategoryManage();
+				vo.setMainNum(dto.getMainNum());
+				
+				for(String category : dto.getCategorys()) {
+					vo.setSubName(category);
+					
+					mapper.insertSubCategory(vo);
+				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;

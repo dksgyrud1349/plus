@@ -3,10 +3,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fa.plus.admin.mapper.CategoryManageMapper">
 	
+	<select id="mainSeq" resultType="Long">
+		SELECT maincategory_seq.NEXTVAL FROM dual
+	</select>
+	
 	<!-- maincategory -->
 	<insert id="insertMainCategory" parameterType="com.fa.plus.admin.domain.CategoryManage">
 		INSERT INTO mainCategory (mainNum, mainName)
-			VALUES (maincategory_seq.NEXTVAL, #{mainName})
+			VALUES (#{mainNum}, #{mainName})
 	</insert>
 	
 	<update id="updateMainCategory" parameterType="com.fa.plus.admin.domain.CategoryManage">
@@ -61,7 +65,7 @@
 	<select id="listSubCategory" parameterType="Long" resultType="com.fa.plus.admin.domain.CategoryManage">
 		SELECT m.mainNum, mainName, subNum, subName
 		FROM subCategory s
-		JOIN mainCategory m ON m.mainNum = s.subNum
+		JOIN mainCategory m ON m.mainNum = s.mainNum
 		WHERE s.mainNum = #{mainNum}
 		ORDER BY subNum ASC
 	</select>
