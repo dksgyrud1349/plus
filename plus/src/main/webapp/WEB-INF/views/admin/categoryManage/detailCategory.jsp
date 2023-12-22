@@ -30,6 +30,7 @@
 			<td class="ps-5 input-group">
 				<input type="text" name="subName" class="form-control" style="width: 80%;">
 				<button type="button" class="btn btn-outline-dark btn-sm" onclick="addsubCategory();">+</button>
+				<input type="hidden" name="mainNum" value="${dto.mainNum}">
 			</td>
 		</tr>
 	</table>
@@ -55,7 +56,7 @@ function addsubCategory() {
 	const f = document.subCategoryForm;
 	
 	if(! f.subName.value) {
-		alert('추가하셈...');
+		alert('서브카테고리를 입력해주세요.');
 		f.subName.focus();
 		return;
 	}
