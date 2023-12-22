@@ -55,6 +55,7 @@
     flex-direction: column;
     width: 100%;
   }
+  
   #sideNav .navbar-collapse .navbar-nav .nav-item {
     display: block;
   }

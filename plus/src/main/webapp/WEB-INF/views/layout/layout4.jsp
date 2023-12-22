@@ -43,7 +43,6 @@
 		.btn-outline-light{
 			margin-top: 37.5%;	
 		}
-		
 	</style>
 	
 </head>

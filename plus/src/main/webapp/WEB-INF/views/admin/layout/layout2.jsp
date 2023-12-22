@@ -25,7 +25,6 @@
 </head>
 
 
-
 <body class="sb-nav-fixed">
 
 <tiles:insertAttribute name="left"/>
