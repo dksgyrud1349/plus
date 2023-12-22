@@ -93,25 +93,40 @@
 	<definition name=".myPage.*" extends=".myPageLayout">
     	  <put-attribute name="body" value="/WEB-INF/views/myPage/{1}.jsp" />
 	</definition>
-	<!-- 고객문의 (faq)-->
-	<!-- 
+	
+	<!-- 고객문의 (faq 등)-->
 	<definition name=".centerLayout" template="/WEB-INF/views/layout/layout4.jsp">
 	    <put-attribute name="title" value="mypage" />
 	    <put-attribute name="header" value="/WEB-INF/views/layout/subheader.jsp" />
-	  	<put-attribute name="left" value="/WEB-INF/views/layout/mypageMenu.jsp" />
+	  	<put-attribute name="left" value="/WEB-INF/views/center/layout/left2.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/faq/main.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
 	</definition>
-	<definition name=".myPage.*.*.*" extends=".centerLayout">
+	<definition name=".faq.*.*.*" extends=".centerLayout">
 		<put-attribute name="body" value="/WEB-INF/views/faq/{1}/{2}/{3}.jsp"/>
 	</definition>
-	<definition name=".myPage.*.*" extends=".centerLayout">
+	<definition name=".faq.*.*" extends=".centerLayout">
 		<put-attribute name="body" value="/WEB-INF/views/faq/{1}/{2}.jsp"/>
 	</definition>
-	<definition name=".myPage.*" extends=".centerLayout">
-    	  <put-attribute name="body" value="/WEB-INF/views/faq/{1}.jsp" />
+	<definition name=".faq.*" extends=".centerLayout">
+    	<put-attribute name="body" value="/WEB-INF/views/faq/{1}.jsp" />
 	</definition>
-	-->
+	<definition name=".notice.*" extends=".centerLayout">
+    	<put-attribute name="body" value="/WEB-INF/views/notice/{1}.jsp" />
+	</definition>
+	<definition name=".declaration.*" extends=".centerLayout">
+    	<put-attribute name="body" value="/WEB-INF/views/declaration/{1}.jsp" />
+	</definition>
+	<definition name=".proposal.*" extends=".centerLayout">
+    	<put-attribute name="body" value="/WEB-INF/views/proposal/{1}.jsp" />
+	</definition>
+	<definition name=".inquiry.*" extends=".centerLayout">
+    	<put-attribute name="body" value="/WEB-INF/views/inquiry/{1}.jsp" />
+	</definition>
+	<definition name=".etc.*" extends=".centerLayout">
+    	<put-attribute name="body" value="/WEB-INF/views/etc/{1}.jsp" />
+	</definition>
+	
 	<!-- 순서가 바뀌면 안됨(* 많은것이 위에) -->
 	<definition name=".*.*.*" extends=".mainLayout2">
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>

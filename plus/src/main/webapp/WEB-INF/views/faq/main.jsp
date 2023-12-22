@@ -111,10 +111,6 @@
 	
 </script>
 
-<div>
-	<jsp:include page="/WEB-INF/views/center/layout/left2.jsp" />
-</div>
-
 <div class="container" style="min-height: 600px;">
 	<div class="body-container">
 		<div class="body-title">
