@@ -13,10 +13,6 @@ function searchList() {
 }
 </script>
 
-<div>
-	<jsp:include page="/WEB-INF/views/center/layout/left2.jsp" />
-</div>
-
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
 		   

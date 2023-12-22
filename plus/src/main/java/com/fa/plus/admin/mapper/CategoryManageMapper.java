@@ -2,7 +2,6 @@ package com.fa.plus.admin.mapper;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -17,12 +16,12 @@ public interface CategoryManageMapper {
 	public void updateSubCategory(CategoryManage dto) throws SQLException;
 	public void deleteSubCategory(long subNum) throws SQLException;
 
-	public int dataCount(Map<String, Object> map);
-	public List<CategoryManage> listMainCategory(Map<String, Object> map);
+	public int dataCount();
+	public List<CategoryManage> listMainCategory();
 	public CategoryManage findByMain(long mainNum);
 
-	public int dataCount2(Map<String, Object> map);
-	public List<CategoryManage> listSubCategory(Map<String, Object> map);
+	public int dataCount2();
+	public List<CategoryManage> listSubCategory(long mainNum);
 	public CategoryManage findBySub(long subNum);
 	
 	public void deleteSubCategoryAll(long mainNum) throws SQLException;

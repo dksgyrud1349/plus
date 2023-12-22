@@ -21,10 +21,6 @@
 }
 </style>
 
-<div>
-	<jsp:include page="/WEB-INF/views/center/layout/left2.jsp" />
-</div>
-
 <div class="container">
 	<div class="body-container">
 		<div class="body-title">

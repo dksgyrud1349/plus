@@ -43,8 +43,8 @@
 		.btn-outline-light{
 			margin-top: 37.5%;	
 		}
-		
 	</style>
+	
 </head>
 
 
@@ -54,6 +54,7 @@
     <tiles:insertAttribute name="header"/>
 
 <main>
+	<tiles:insertAttribute name="left"/>
     <tiles:insertAttribute name="body"/>
 </main>
 </div>
