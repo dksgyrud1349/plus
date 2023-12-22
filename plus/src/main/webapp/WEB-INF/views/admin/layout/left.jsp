@@ -105,6 +105,22 @@
                                         <a class="nav-link" href="#">카테고리 관리</a>
                                 </nav>
                             </div>
+                            <div class="collapse" id="onedayPages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        클래스 승인
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="<c:url value='/admin/lessonManage/list0'/>">승인대기 클래스</a>
+                                            <a class="nav-link" href="<c:url value='/admin/lessonManage/list1'/>">승인완료 클래스</a>
+                                            <a class="nav-link" href="<c:url value='/admin/lessonManage/list2'/>">승인보류 클래스</a>
+                                            <a class="nav-link" href="<c:url value='/admin/lessonManage/list3'/>">승인취소 클래스</a>
+                                        </nav>
+                                    </div>
+                                </nav>
+                            </div>
 
                             <div class="sb-sidenav-menu-heading">Addons</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#FAQLayout" aria-expanded="false" aria-controls="FAQLayout">
