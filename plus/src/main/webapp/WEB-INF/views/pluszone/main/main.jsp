@@ -218,44 +218,21 @@ i.fa{
                                         <i class="fas fa-chart-bar me-1"></i>
                                     공지사항 <a href="#" style="float:right; text-decoration:underline">더보기</a>
                                     </div>
-                                    <div class="card-body" style="width: 100%;">
+                                    <div class="card-body" style="width: 100%; height: 250px;">
 										<div class="communitybox buy-with-us-box">
-								            <ul>
-								                <li> 
-								                	<i class="fa fa-user circle"></i>
-								                    <h5 class="title">
-								                    	<a href="#">공지제목</a> <font style="float:right;">클래스 명</font></h5>
-								                    <p>공지내용 <font style="float:right;">2023-12-25</font> </p>
-								                </li>
-								                
-								                <li> 
-								                	<i class="fa fa-user circle"></i>
-								                    <h5 class="title">
-								                    	<a href="#">공지제목</a> <font style="float:right;">클래스 명</font></h5>
-								                    <p>공지내용 <font style="float:right;">2023-12-25</font> </p>
-								                </li>
-								                
-								                <li> 
-								                	<i class="fa fa-user circle"></i>
-								                    <h5 class="title">
-								                    	<a href="#">공지제목</a> <font style="float:right;">클래스 명</font></h5>
-								                    <p>공지내용 <font style="float:right;">2023-12-25</font> </p>
-								                </li>
-								                
-								                <li> 
-								                	<i class="fa fa-user circle"></i>
-								                    <h5 class="title">
-								                    	<a href="#">공지제목</a> <font style="float:right;">클래스 명</font></h5>
-								                    <p>공지내용 <font style="float:right;">2023-12-25</font> </p>
-								                </li>
-								                
-								               <li> 
-								                	<i class="fa fa-user circle"></i>
-								                    <h5 class="title">
-								                    	<a href="#">공지제목</a> <font style="float:right;">클래스 명</font></h5>
-								                    <p>공지내용 <font style="float:right;">2023-12-25</font> </p>
-								                </li>
-								            </ul>
+									
+											<c:forEach var="dto" items="${noticeList}">
+												<tr>
+									                <td> 
+									                	<i class="fa fa-user circle"></i>
+									                    <h5 class="title">
+									                    	<a href="${pageContext.request.contextPath}/pluszone/noticePlus/article?page=1&num=${dto.num}">${dto.subject}</a> 
+														</h5>
+									                    <p>${dto.content} <font style="float:right;">${dto.regDate}</font> </p>
+									                </td>
+									            </tr> 
+											</c:forEach>
+								            
 								        </div>
                                     </div>
                                 </div>
