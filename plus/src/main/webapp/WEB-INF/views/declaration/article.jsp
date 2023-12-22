@@ -3,110 +3,681 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 @font-face {
-	font-family: 'JalnanGothic';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
+    font-family: 'EASTARJET-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/EASTARJET-Medium.woff2') format('woff2');
+    font-weight: 500;
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+html {
+	height: 100%;
+	scroll-padding-top: calc(4.5rem - 1px);
 }
 
-.body-container {
-	width: 1200px;
-	height: 70px;
-	margin-top: 150px;
-	margin-left: 20px;
+body {
+	width: 100%;
+	height: 100%;
 }
-.sContent{
-	margin-left: 40px;
-	padding-left: 10px;
-	width: 1200px;
-	height: 65px;
-	font-family: 'Pretendard-Regular';
-	font-weight: bold;
+
+.page-section {
+	padding: 8rem 0;
 }
-.font1 {
-	font-family: 'JalnanGothic';
+
+.text-white-75 {
+	color: rgba(255, 255, 255, 0.75) !important;
 }
-.title{
-	width: 150px;
+
+.btn-xl {
+	padding: 1.25rem 2.25rem;
+	font-size: 0.85rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 10rem;
+}
+
+hr.divider {
+	height: 0.2rem;
+	max-width: 3.25rem;
+	margin: 1.5rem auto;
+	background-color: #f4623a;
+	opacity: 1;
+}
+
+hr.divider-light {
+	background-color: #fff;
+}
+
+#mainNav {
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+	background-color: #fff;
+	transition: background-color 0.2s ease;
+}
+
+#mainNav .navbar-brand {
+	font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont,
+		"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+		"Noto Color Emoji";
+	font-weight: 700;
+	color: #212529;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link {
+	color: #6c757d;
+	font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont,
+		"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+		"Noto Color Emoji";
+	font-weight: 700;
+	font-size: 0.9rem;
+	padding: 0.75rem 0;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link:hover, #mainNav .navbar-nav .nav-item .nav-link:active
+	{
+	color: #f4623a;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link.active {
+	color: #f4623a !important;
+}
+
+@media ( min-width : 992px) {
+	#mainNav {
+		box-shadow: none;
+		background-color: transparent;
+	}
+	#mainNav .navbar-brand {
+		color: black;
+	}
+	#mainNav .navbar-brand:hover {
+		color: #f4623a;
+	}
+	#mainNav .navbar-nav .nav-item .nav-link {
+		color: black;
+		padding: 0 1rem;
+	}
+	#mainNav .navbar-nav .nav-item .nav-link:hover {
+		color: #f4623a;
+	}
+	#mainNav .navbar-nav .nav-item:last-child .nav-link {
+		padding-right: 0;
+	}
+	#mainNav.navbar-shrink {
+		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+		background-color: #fff;
+	}
+	#mainNav.navbar-shrink .navbar-brand {
+		color: #212529;
+	}
+	#mainNav.navbar-shrink .navbar-brand:hover {
+		color: #f4623a;
+	}
+	#mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
+		color: #212529;
+	}
+	#mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
+		color: #f4623a;
+	}
+}
+
+header.masthead {
+	padding-top: 10rem;
+	padding-bottom: calc(10rem - 4.5rem);
+	background: white;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-size: cover;
+}
+
+header.masthead h1, header.masthead .h1 {
+	font-size: 2.25rem;
+}
+
+@media ( min-width : 992px) {
+	header.masthead {
+		height: 100vh;
+		min-height: 40rem;
+		padding-top: 4.5rem;
+		padding-bottom: 0;
+	}
+	header.masthead p {
+		font-size: 1.15rem;
+	}
+	header.masthead h1, header.masthead .h1 {
+		font-size: 3rem;
+	}
+}
+
+@media ( min-width : 1200px) {
+	header.masthead h1, header.masthead .h1 {
+		font-size: 3.5rem;
+	}
+}
+
+header.masthead {
+	padding-top: 10rem;
+	padding-bottom: calc(10rem - 4.5rem);
+	background: white;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-size: cover;
+}
+
+header.masthead h1, header.masthead .h1 {
+	font-size: 2.25rem;
+}
+
+@media ( min-width : 992px) {
+	header.masthead {
+		height: 100vh;
+		min-height: 40rem;
+		padding-top: 4.5rem;
+		padding-bottom: 0;
+	}
+	header.masthead p {
+		font-size: 1.15rem;
+	}
+	header.masthead h1, header.masthead .h1 {
+		font-size: 3rem;
+	}
+}
+
+@media ( min-width : 1200px) {
+	header.masthead h1, header.masthead .h1 {
+		font-size: 3.5rem;
+	}
+}
+
+#portfolio .container-fluid, #portfolio .container-sm, #portfolio .container-md,
+	#portfolio .container-lg, #portfolio .container-xl, #portfolio .container-xxl
+	{
+	max-width: 1920px;
+}
+
+#portfolio .container-fluid .portfolio-box, #portfolio .container-sm .portfolio-box,
+	#portfolio .container-md .portfolio-box, #portfolio .container-lg .portfolio-box,
+	#portfolio .container-xl .portfolio-box, #portfolio .container-xxl .portfolio-box
+	{
+	position: relative;
+	display: block;
+}
+
+#portfolio .container-fluid .portfolio-box .portfolio-box-caption,
+	#portfolio .container-sm .portfolio-box .portfolio-box-caption,
+	#portfolio .container-md .portfolio-box .portfolio-box-caption,
+	#portfolio .container-lg .portfolio-box .portfolio-box-caption,
+	#portfolio .container-xl .portfolio-box .portfolio-box-caption,
+	#portfolio .container-xxl .portfolio-box .portfolio-box-caption {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	bottom: 0;
 	text-align: center;
-	font-family: 'GmarketSansMedium';
-	background-color: #D5D5D5;
+	opacity: 0;
+	color: #fff;
+	background: rgba(244, 98, 58, 0.9);
+	transition: opacity 0.25s ease;
+	text-align: center;
 }
 
-.bDelaration{
-	width: 100px;
-	height: 40px;
-	border: 1px solid black;
-	font-family: 'GmarketSansMedium';
+#portfolio .container-fluid .portfolio-box .portfolio-box-caption .project-category,
+	#portfolio .container-sm .portfolio-box .portfolio-box-caption .project-category,
+	#portfolio .container-md .portfolio-box .portfolio-box-caption .project-category,
+	#portfolio .container-lg .portfolio-box .portfolio-box-caption .project-category,
+	#portfolio .container-xl .portfolio-box .portfolio-box-caption .project-category,
+	#portfolio .container-xxl .portfolio-box .portfolio-box-caption .project-category
+	{
+	font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont,
+		"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+		"Noto Color Emoji";
+	font-size: 0.85rem;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+#portfolio .container-fluid .portfolio-box .portfolio-box-caption .project-name,
+	#portfolio .container-sm .portfolio-box .portfolio-box-caption .project-name,
+	#portfolio .container-md .portfolio-box .portfolio-box-caption .project-name,
+	#portfolio .container-lg .portfolio-box .portfolio-box-caption .project-name,
+	#portfolio .container-xl .portfolio-box .portfolio-box-caption .project-name,
+	#portfolio .container-xxl .portfolio-box .portfolio-box-caption .project-name
+	{
+	font-size: 1.2rem;
+}
+
+#portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption,
+	#portfolio .container-sm .portfolio-box:hover .portfolio-box-caption,
+	#portfolio .container-md .portfolio-box:hover .portfolio-box-caption,
+	#portfolio .container-lg .portfolio-box:hover .portfolio-box-caption,
+	#portfolio .container-xl .portfolio-box:hover .portfolio-box-caption,
+	#portfolio .container-xxl .portfolio-box:hover .portfolio-box-caption {
+	opacity: 1;
+}
+.singo{
+	float: right;
+	margin-left: 10px;
+	border: 2px solid #dcdcdc;
+}
+
+.singo:hover{
+	border: 2px solid #c8c8c8;
 	
-}
-
-.bDelaration:hover{
-	border: 2px solid black;
 }
 </style>
 
-<div>
-	<jsp:include page="/WEB-INF/views/center/layout/left2.jsp" />
-</div>
 
-<div class="container">
-	<div class="body-container">
-		<div class="body-title">
-			<h3 class="font1"
-				style="border-top: 1px solid black; padding-top: 20px; padding-left: 5px;">
-				<i class="bi bi-exclamation-diamond-fill"></i> 신고하기
-			</h3>
+<script type="text/javascript">
+function ajaxFun(url, method, formData, dataType, fn, file = false) {
+	const settings = {
+			type: method, 
+			data: formData,
+			success:function(data) {
+				fn(data);
+			},
+			beforeSend: function(jqXHR) {
+				jqXHR.setRequestHeader('AJAX', true);
+			},
+			complete: function () {
+			},
+			error: function(jqXHR) {
+				if(jqXHR.status === 403) {
+					login();
+					return false;
+				} else if(jqXHR.status === 400) {
+					alert('요청 처리가 실패 했습니다.');
+					return false;
+		    	}
+		    	
+				console.log(jqXHR.responseText);
+			}
+	};
+	
+	if(file) {
+		settings.processData = false;  // file 전송시 필수. 서버로전송할 데이터를 쿼리문자열로 변환여부
+		settings.contentType = false;  // file 전송시 필수. 서버에전송할 데이터의 Content-Type. 기본:application/x-www-urlencoded
+	}
+	
+	$.ajax(url, settings);
+}
+
+$(function(){
+	$("form select[name=classDay]").change(function(){
+		let classDay = $(this).val();
+		
+		$("form select[name=classTime]").find('option').remove().end().append("<option value=''>시간</option>");
+		
+		if(!classDay){
+			return false;
+		}
+		
+		let url = "${pageContext.request.contextPath}/lesson/lessonDtlTime";
+		let query = "classNum="+${dto.classNum}+"&classDay="+classDay;
+		
+		
+		const fn = function(data){
+			$.each(data.lessonDtlTime, function(index, item){
+				let startTime = item.startTime;
+				let endTime = item.endTime;
+				let s = "<option value='" + startTime + "~" + endTime + "'>" + startTime + "~" + endTime + "</option>";
+				$("form select[name=classTime]").append(s);
+			});
+		};
+		
+		ajaxFun(url, "get", query, "json", fn);
+	});
+});
+
+function sendOk(mode) {
+	const f = document.detailForm;
+	if(mode === "buy") {
+		// GET 방식으로 전송. 로그인후 결제화면으로 이동하기 위해
+		// 또는 자바스크립트 sessionStorage를 활용 할 수 있음
+		let classDay = f.classDay.value;
+		let classTime = f.classTime.value;
+		
+		if( !classDay ) {
+	        alert("수강할 일자를 입력하세요.");
+	        f.classDay.focus();
+	        return;
+	    }
+		
+		if( !classTime ) {
+	        alert("수강할 시간을 입력하세요.");
+	        f.classTime.focus();
+	        return;
+	    }
+		
+		f.action = "${pageContext.request.contextPath}/order/payment";
+	} else {
+		if(! confirm("선택한 상품을 장바구니에 담으시겠습니까 ? ")) {
+			return false;
+		}
+		
+		f.method = "post";
+		f.action = "${pageContext.request.contextPath}/myPage/saveCart";
+	}
+	
+	f.submit();
+}
+
+</script>
+<form name="detailForm" id="detailForm" method="post">
+	<header class="masthead p-3">
+		<div class="container px-4 px-lg-5 h-100">
+			<section class="py-5">
+				<div class="container px-4 px-lg-5 my-3">
+					<div class="row gx-4 gx-lg-5 align-items-center">
+						<div class="col-md-6">
+							<img class="card-img-top mb-5 mb-md-0"
+								src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+						</div>
+						<div class="col-md-6">
+							<div class="small mb-1">${dto.mainName}</div>
+							<h1 class="display-5 fw-bolder">${dto.className}</h1>
+							<div class="fs-5 mb-5">
+								<input type="hidden" name="classNum" value="${dto.classNum}">
+								<span style="color: red">${dto.startDate} ~
+									${dto.endDate}</span><br>
+								<!-- <span class="text-decoration-line-through">15,000원</span> -->
+								<span><fmt:formatNumber value="${dto.price}"
+										pattern="#,###" /></span>
+									<div>
+										<button type="button" class="btn singo" style="width: 60x;" onclick="location.href='${pageContext.request.contextPath}/declaration/article';">
+											<span style="font-size: medium; font-family: 'EASTARJET-Medium';">신고</span><i class="bi bi-exclamation-triangle-fill"></i>
+										</button>
+									</div>
+							</div>
+							<p class="lead">
+
+								1. 강사 : ${dto.nickName}<br> 2. 상세주소 : ${dto.addr1}
+								${dto.addr2}<br> <br> 예약하기를 눌러 예약가능 시간과 안원수를 확인해주세요.
+							</p>
+							<div>
+								<select name="classDay" id="classDay"
+									style="width: 115px; height: 30px;">
+									<option value="">일자</option>
+									<c:forEach var="vo" items="${lessonDtlDate}" varStatus="status">
+										<option value="${vo.classDate}">${vo.classDate}</option>
+									</c:forEach>
+								</select> <select name="classTime" id="classTime"
+									style="width: 120px; height: 30px;">
+									<option value="">시간</option>
+									<c:forEach var="vo" items="${lessonDtlTime}">
+										<option value="${vo.startTime}${vo.endTime}">${vo.startTime}
+											~ ${vo.endTime}</option>
+									</c:forEach>
+								</select>
+								<div class="d-flex" style="float: right; margin-bottom: 15px;">
+									<button class="btn btn-outline-dark flex-shrink-0"
+										type="button" onclick="sendOk('buy');">
+										<i class="bi-cart-fill me-1"></i>예약하기
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="py-3 mb-5">
+				<div class="container px-4 px-lg-5 mt-5">
+					<h2 class="fw-bolder mb-4">추천 클래스</h2>
+					<div
+						class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+						<div class="col mb-5">
+							<div class="card h-100">
+								<!-- Product image-->
+								<img class="card-img-top"
+									src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg"
+									alt="..." />
+								<!-- Product details-->
+								<div class="card-body p-4">
+									<div class="text-center">
+										<!-- Product name-->
+										<h5 class="fw-bolder">클래스 - 1</h5>
+										<!-- Product price-->
+										10,000원 - 20,000원
+									</div>
+								</div>
+								<!-- Product actions-->
+								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+									<div class="text-center">
+										<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col mb-5">
+							<div class="card h-100">
+								<!-- Sale badge-->
+								<div class="badge bg-dark text-white position-absolute"
+									style="top: 0.5rem; right: 0.5rem">Sale</div>
+								<!-- Product image-->
+								<img class="card-img-top"
+									src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg"
+									alt="..." />
+								<!-- Product details-->
+								<div class="card-body p-4">
+									<div class="text-center">
+										<!-- Product name-->
+										<h5 class="fw-bolder">특가 클래스</h5>
+										<!-- Product reviews-->
+										<div
+											class="d-flex justify-content-center small text-warning mb-2">
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+										</div>
+										<!-- Product price-->
+										<span class="text-muted text-decoration-line-through">50,000원</span>
+										30,000원
+									</div>
+								</div>
+								<!-- Product actions-->
+								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+									<div class="text-center">
+										<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col mb-5">
+							<div class="card h-100">
+								<!-- Sale badge-->
+								<div class="badge bg-dark text-white position-absolute"
+									style="top: 0.5rem; right: 0.5rem">Event</div>
+								<!-- Product image-->
+								<img class="card-img-top"
+									src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+								<!-- Product details-->
+								<div class="card-body p-4">
+									<div class="text-center">
+										<!-- Product name-->
+										<h5 class="fw-bolder">이벤트 클래스</h5>
+										<!-- Product price-->
+										<span class="text-muted text-decoration-line-through">40,000원</span>
+										25,000원
+									</div>
+								</div>
+								<!-- Product actions-->
+								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+									<div class="text-center">
+										<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col mb-5">
+							<div class="card h-100">
+								<!-- Product image-->
+								<img class="card-img-top"
+									src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+								<!-- Product details-->
+								<div class="card-body p-4">
+									<div class="text-center">
+										<!-- Product name-->
+										<h5 class="fw-bolder">인기상품</h5>
+										<!-- Product reviews-->
+										<div
+											class="d-flex justify-content-center small text-warning mb-2">
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+										</div>
+										<!-- Product price-->
+										60,000원
+									</div>
+								</div>
+								<!-- Product actions-->
+								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+									<div class="text-center">
+										<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</header>
+</form>
+
+<!-- Services-->
+<section class="page-section mt-5" id="services">
+	<div class="container px-4 px-lg-5">
+		<h2 class="text-center mt-0">카테고리 · 해쉬태그</h2>
+		<hr class="divider" />
+		<div class="row gx-4 gx-lg-5">
+			<div class="col-lg-3 col-md-6 text-center">
+				<div class="mt-5">
+					<div class="mb-2">
+						<i class="bi-gem fs-1 text-primary"></i>
+					</div>
+					<h3 class="h4 mb-2">라멘</h3>
+					<p class="text-muted mb-0">맥주</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 text-center">
+				<div class="mt-5">
+					<div class="mb-2">
+						<i class="bi-laptop fs-1 text-primary"></i>
+					</div>
+					<h3 class="h4 mb-2">짬뽕 + 탕수육</h3>
+					<p class="text-muted mb-0">이과두주, 고량주</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 text-center">
+				<div class="mt-5">
+					<div class="mb-2">
+						<i class="bi-globe fs-1 text-primary"></i>
+					</div>
+					<h3 class="h4 mb-2">삼겹살</h3>
+					<p class="text-muted mb-0">소주</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 text-center">
+				<div class="mt-5">
+					<div class="mb-2">
+						<i class="bi-heart fs-1 text-primary"></i>
+					</div>
+					<h3 class="h4 mb-2">하몽과 화채</h3>
+					<p class="text-muted mb-0">양주, 와인</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Portfolio-->
+
+<div id="portfolio">
+	<div class="container-fluid p-0">
+		<div class="row g-0">
+			<div class="col-lg-4 col-sm-6">
+				<a class="portfolio-box" href="#" title="Project Name"> <img
+					class="img-fluid"
+					src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+					<div class="portfolio-box-caption">
+						<div class="project-category text-white-50">사진</div>
+						<div class="project-name">사진바꿔야합니다.</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-4 col-sm-6">
+				<a class="portfolio-box" href="#" title="Project Name"> <img
+					class="img-fluid"
+					src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+					<div class="portfolio-box-caption">
+						<div class="project-category text-white-50">사진</div>
+						<div class="project-name">사진바꿔야합니다.</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-4 col-sm-6">
+				<a class="portfolio-box" href="#" title="Project Name"> <img
+					class="img-fluid"
+					src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+					<div class="portfolio-box-caption">
+						<div class="project-category text-white-50">사진</div>
+						<div class="project-name">사진바꿔야합니다.</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-4 col-sm-6">
+				<a class="portfolio-box" href="#" title="Project Name"> <img
+					class="img-fluid"
+					src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+					<div class="portfolio-box-caption">
+						<div class="project-category text-white-50">사진</div>
+						<div class="project-name">사진바꿔야합니다.</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-4 col-sm-6">
+				<a class="portfolio-box" href="#" title="Project Name"> <img
+					class="img-fluid"
+					src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+					<div class="portfolio-box-caption">
+						<div class="project-category text-white-50">사진</div>
+						<div class="project-name">사진바꿔야합니다.</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-4 col-sm-6">
+				<a class="portfolio-box" href="#" title="Project Name"> <img
+					class="img-fluid"
+					src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+					<div class="portfolio-box-caption p-3">
+						<div class="project-category text-white-50">사진</div>
+						<div class="project-name">사진바꿔야합니다.</div>
+					</div>
+				</a>
+			</div>
 		</div>
 	</div>
 </div>
-<div class="sContent">
-	이곳은 부적절한 <span style="color: red;">클래스 신고</span>를 하는 곳입니다.<br>
-	허위 신고 시 서비스 이용제한 등의 불이익을 받을 수 있으니 주의해 주세요.
-</div>
 
-<div style="margin-left: 200px; height: 500px;">
-	<div class="input-group mb-3" style="width: 400px; float: left; margin-right: 50px; height: 40px;">
-	  <span class="input-group-text title add" id="basic-addon1" style="padding-left: 50px; padding-top: 8px;">회원ID</span>
-	  <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+<!-- Call to action-->
+<section class="page-section bg-dark text-white">
+	<div class="container px-4 px-lg-5 text-center">
+		<h2 class="mb-4">clob 내용 넣어야댐</h2>
+		<h2 class="mb-4">clob 내용 넣어야댐</h2>
+		<h2 class="mb-4">clob 내용 넣어야댐</h2>
+		<h2 class="mb-4">clob 내용 넣어야댐</h2>
+		<h2 class="mb-4">clob 내용 넣어야댐</h2>
+		<a href="#" class="btn btn-light btn-xl">예약하러 가기</a>
 	</div>
-	
-	<div class="input-group mb-3" style="width: 400px; height: 40px;">
-	  <span class="input-group-text title" id="basic-addon2" style="padding-left: 55px; padding-top: 8px;">이름</span>
-	  <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
-	</div>
-	
-	<div class="input-group mb-3" style="width: 400px; height: 40px;">
-	  <span class="input-group-text title" id="basic-addon3" style="padding-left: 40px; padding-top: 8px;">클래스 명</span>
-	  <!-- <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">  -->
-	  	<select name="classNames" style="width: 250px;">
-	  		<option value="" style="text-align: center;">::선택::</option>
-	  	</select>
-	</div>
-	
-	<div class="input-group" style="width: 850px; height: 300px;">
-	  <span class="input-group-text title" style="padding-left: 40px;">신고 사유</span>
-	  <textarea class="form-control" style="resize: none;" aria-label="With textarea"></textarea>
-	</div>
-	
-	<div style="margin-top: 35px; float: right; margin-right: 250px;">
-		<button type="button" class="bDelaration" onclick="location.href='#'" style="padding-top: 3px;">신고하기</button>
-	</div>
-	
-</div>
+</section>
