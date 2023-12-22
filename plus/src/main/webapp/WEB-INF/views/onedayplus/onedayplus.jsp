@@ -116,7 +116,7 @@
                                 <h3 style="text-align: center;">어떤 목적의 원데이 클레스를 추천 받으시겠습니까?</h3>
                                 <hr style="color: #cccccc;">
                     
-
+								
                                 <label class="checkbox-container">
                                     <input type="checkbox" id="hobby" value="hobby" name="hobby">
                                     <div class="checkbox-button">

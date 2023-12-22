@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
 <c:if test="${list.size() > 0}">
 	<div class="accordion accordion-flush mt-2" id="accordionFlush">
 		<c:forEach var="dto" items="${list}" varStatus="status">
@@ -15,7 +16,7 @@
 					<div class="accordion-body">
 
 						<div class="row border-bottom pb-1">분류 : ${dto.faqName}</div>
-						<div class="row p-2">
+						<div class="row p-2 answer">
 							${dto.content}
 						</div>
 					</div>

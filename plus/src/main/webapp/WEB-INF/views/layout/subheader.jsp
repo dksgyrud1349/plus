@@ -44,31 +44,31 @@
                             </li>
             				
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link" >
+                                <a href="${pageContext.request.contextPath}/onedayplus/onedayplus" class="nav-link" >
                                    	원데이플러스
                                 </a>
                             </li>
                             
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link" >
+                                <a href="${pageContext.request.contextPath}/event/progress/list" class="nav-link" >
                                    	이벤트
                                 </a>
                             </li>
                             
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link" >
+                                <a href="${pageContext.request.contextPath}/faq/main" class="nav-link" >
                                    	고객센터
                                 </a>
                             </li>
                             
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link" >
+                                <a href="${pageContext.request.contextPath}/bbs/list" class="nav-link" >
                                    	커뮤니티
                                 </a>
                             </li>
                             
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link" >
+                                <a href="${pageContext.request.contextPath}/" class="nav-link" >
                                    	사이트맵
                                 </a>
                             </li>
