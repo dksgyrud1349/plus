@@ -382,7 +382,7 @@
 										<ul>
 											<li class="mt-5"><img src="${pageContext.request.contextPath}/resources/images/center.jpg" width="400px;" 
 											style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;"></li>
-											<li><a href="${pageContext.request.contextPath}/faq/list" style="text-decoration: underline; text-underline-position : under;">&gt;&gt;고객센터 바로가기</a></li>
+											<li><a href="${pageContext.request.contextPath}/faq/main" style="text-decoration: underline; text-underline-position : under;">&gt;&gt;고객센터 바로가기</a></li>
 										</ul>
 
 									</div>

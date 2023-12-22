@@ -7,9 +7,9 @@
 		font-weight: bold;
 	}
 </style>
-		<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+		<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" style="background-color:white;">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">원데이 플러스 + </a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/">원데이 플러스 + </a>
                 <!-- 작은 사이즈 시  버튼 부트스트랩 -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
@@ -23,72 +23,54 @@
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/">홈</a>
                             </li>
+                            <!--
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    클래스등록
+                                    원데이 클래스
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">클래스 등록</a></li>
+                                    <li><a class="dropdown-item" href="#">전체 클래스</a></li>
                                     <li><a class="dropdown-item" href="#">공지사항</a></li>
                                     <li><a class="dropdown-item" href="#">이용안내</a></li>
                                     <li><a class="dropdown-item" href="#">서브메뉴</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                 </ul>
                             </li>
-            
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                   	위시리스트
+                            -->
+            				<li class="nav-item dropdown">
+                                <a href="${pageContext.request.contextPath}/lesson/main" class="nav-link" >
+                                   	원데이클래스
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">위시리스트</a></li>
-                                    <li><a class="dropdown-item" href="#">최근 본 클래스</a></li>
-                                    <li><a class="dropdown-item" href="#">답변형 게시판</a></li>
-                                    <li><a class="dropdown-item" href="#">포토갤러리</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                  
-                                </ul>
                             </li>
-            
+            				
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                   알림
+                                <a href="#" class="nav-link" >
+                                   	원데이플러스
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">보낸 쪽지</a></li>
-                                    <li><a class="dropdown-item" href="#">받은 쪽지</a></li>
-                                    
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">질문과 답변</a></li>
-                                </ul>
                             </li>
                             
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    클래스
+                                <a href="#" class="nav-link" >
+                                   	이벤트
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">베스트 클래스이벤트</a></li>
-                                    <li><a class="dropdown-item" href="#">신규 클래스</a></li>
-                                    <li><a class="dropdown-item" href="#">이벤트 클래스</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">모든 클래스</a></li>
-                                </ul>
                             </li>
                             
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    마이페이지
+                                <a href="#" class="nav-link" >
+                                   	고객센터
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">정보수정</a></li>
-                                    <li><a class="dropdown-item" href="#">예약확인</a></li>
-                                    <li><a class="dropdown-item" href="#">쪽지함</a></li>
-                                    <li><a class="dropdown-item" href="#">내가 쓴 리뷰</a></li>
-                                    <li><a class="dropdown-item" href="#">적립금</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">정보수정</a></li>
-                                </ul>
+                            </li>
+                            
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link" >
+                                   	커뮤니티
+                                </a>
+                            </li>
+                            
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link" >
+                                   	사이트맵
+                                </a>
                             </li>
                     </ul>
                 </div>
