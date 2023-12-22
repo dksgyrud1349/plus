@@ -46,19 +46,7 @@
     border: none;
     text-align: center;
 }
-.table-category select {
-	border:1px solid #ccc;
-	padding:3px 5px 3px;
-	background-color:#fff;
-	width:100%;
-	font-family:"맑은 고딕", 나눔고딕, 돋움, sans-serif;
-	vertical-align: baseline;
-}
-.table-category select[disabled] {
-    pointer-events: none;
-    border: none;
-    text-align: center;
-}
+
 .btnCategoryAddOk, .btnSpanIcon {
 	cursor: pointer;
 }
@@ -80,8 +68,6 @@ function sendOk() {
 		}
 	});
 		
-		
-	
 	
 	f.action = "${pageContext.request.contextPath}/admin/categoryManage/write";
 	f.submit();
@@ -117,7 +103,7 @@ $(function(){
 <main class="wrapper" style="margin:0 auto; width:100%;" >
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:80%; margin:5% auto; ">
+			<div class="body-container" style="width:90%; margin:5% auto; ">
 				<div class="body-main">
 					
 					<h2><i class="fa-solid fa-clipboard-question"></i> 카테고리 추가 </h2>
@@ -135,25 +121,22 @@ $(function(){
 									<td>
 										서브 카테고리
 									</td> 
-									<td colspan="2"> 
+									<td> 
 									    <div class="category-layout">
-									    	<div class="category-area">
-									    		<div class=" category-item">
-													<div class="row">
-													    <div class="col">
-															<input type="text" name="categorys" class="form-control">
-														</div>
-														<div class="col">
-															<button type="button" class="form-control category-minus">&nbsp;-&nbsp;</button>
-														    <input type="hidden" name="subNums">
-														</div>
-														<div class="col">
-															<button type="button" class="btn btnCategoryAdd">추가</button>
-														</div>
+									    	<div class="row gx-5">
+									    		<div class="col category-area">
+									    			<div class="col category-item d-flex flex-row ">
+														<input type="text" name="categorys" class="form-control" style="width:40%;">
+														<button type="button" class="form-control category-minus btn btn-outline-dark" style="width:15%;">&nbsp;-&nbsp;</button>
+													    <input type="hidden" name="subNums">
+													</div>
+													<div class="col">
+														<button type="button" class="btn btnCategoryAdd btn-outline-dark" style="float: right;">&nbsp;+&nbsp;</button>
 													</div>
 												</div>
 											</div>
 										</div>
+										</td>
 									</tr>
 								</table>
 							
