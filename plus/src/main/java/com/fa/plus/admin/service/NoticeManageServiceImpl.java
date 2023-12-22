@@ -64,7 +64,6 @@ public class NoticeManageServiceImpl implements NoticeManageService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return result;
 	}
 
