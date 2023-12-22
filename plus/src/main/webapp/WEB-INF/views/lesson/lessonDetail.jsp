@@ -1,9 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-
 <style>
+@font-face {
+    font-family: 'EASTARJET-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/EASTARJET-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
 html {
 	height: 100%;
 	scroll-padding-top: calc(4.5rem - 1px);
@@ -257,6 +262,16 @@ header.masthead h1, header.masthead .h1 {
 	#portfolio .container-xxl .portfolio-box:hover .portfolio-box-caption {
 	opacity: 1;
 }
+.singo{
+	float: right;
+	margin-left: 10px;
+	border: 2px solid #dcdcdc;
+}
+
+.singo:hover{
+	border: 2px solid #c8c8c8;
+	
+}
 </style>
 
 
@@ -375,6 +390,11 @@ function sendOk(mode) {
 								<!-- <span class="text-decoration-line-through">15,000원</span> -->
 								<span><fmt:formatNumber value="${dto.price}"
 										pattern="#,###" /></span>
+									<div>
+										<button type="button" class="btn singo" style="width: 60x;" onclick="#">
+											<span style="font-size: medium; font-family: 'EASTARJET-Medium';">신고</span><i class="bi bi-exclamation-triangle-fill"></i>
+										</button>
+									</div>
 							</div>
 							<p class="lead">
 
