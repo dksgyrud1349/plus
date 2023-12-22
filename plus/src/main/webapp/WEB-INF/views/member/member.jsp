@@ -36,7 +36,7 @@
 	function memberOk() {
 		const f = document.memberForm;
 		let str;
-	
+		
 		str = f.userId.value;
 		if( !/^[a-z][a-z0-9_]{4,9}$/i.test(str) ) { 
 			alert("아이디를 다시 입력 하세요. ");
@@ -113,11 +113,11 @@
 	        f.email2.focus();
 	        return;
 	    }
-	
-	   	f.action = "${pageContext.request.contextPath}/member/${mode}";
-	    f.submit();
+	    if(confirm("정보수정을 하시겠습니까? ")){
+	   		f.action = "${pageContext.request.contextPath}/member/${mode}";
+	    	f.submit();
+		}
 	}
-	
 	function changeEmail() {
 	    const f = document.memberForm;
 		    
@@ -344,9 +344,9 @@
                              <hr>
                             <div class="row">
                                 <div class="text-center">
-                                    <button type="button" name="sendButton" class="btn btn-white btn-outline-success" onclick="memberOk();"> 회원가입 <i class="bi bi-check2"></i></button>
+                                    <button type="button" name="sendButton" class="btn btn-white btn-outline-success" onclick="memberOk();"> ${mode=="update" ? "정보수정":"회원가입"} <i class="bi bi-check2"></i></button>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button type="button" class="btn btn-white btn-outline-danger" onclick="location.href='${pageContext.request.contextPath}/';"> 가입취소 <i class="bi bi-x"></i></button>
+                                    <button type="button" class="btn btn-white btn-outline-danger" onclick="location.href='${pageContext.request.contextPath}/';"> ${mode=="update" ? "수정취소":"가입취소"} <i class="bi bi-x"></i></button>
                                     <input type="hidden" name="userIdValid" id="userIdValid" value="false">
                                 </div>
                             </div>

@@ -222,15 +222,15 @@ i.fa{
 										<div class="communitybox buy-with-us-box">
 									
 											<c:forEach var="dto" items="${noticeList}">
-												<tr>
-									                <td> 
+												<ul>
+									                <li> 
 									                	<i class="fa fa-user circle"></i>
 									                    <h5 class="title">
 									                    	<a href="${pageContext.request.contextPath}/pluszone/noticePlus/article?page=1&num=${dto.num}">${dto.subject}</a> 
 														</h5>
 									                    <p>${dto.content} <font style="float:right;">${dto.regDate}</font> </p>
-									                </td>
-									            </tr> 
+									                </li>
+									            </ul> 
 											</c:forEach>
 								            
 								        </div>

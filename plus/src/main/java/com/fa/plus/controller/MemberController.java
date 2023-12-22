@@ -190,7 +190,7 @@ public class MemberController {
 		reAttr.addFlashAttribute("title", "회원 정보 수정");
 		reAttr.addFlashAttribute("message", sb.toString());
 
-		return "redirect:/member/complete";
+		return "redirect:/myPage/main";
 	}
 	
 	
