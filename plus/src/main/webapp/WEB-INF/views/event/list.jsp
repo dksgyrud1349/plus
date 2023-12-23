@@ -54,14 +54,13 @@ function searchList() {
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
-				
 				<h3>
-		    			<i class="bi bi-calendar-event"></i> 이벤트 
-		    			<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list';" title="새로고침" style="float:right;">
-			            	<i class="fa-solid fa-arrow-rotate-left"></i>
-			            </button>
-		    		</h3>
-		    		<hr>
+	    			<i class="bi bi-calendar-event"></i> 이벤트 
+	    			<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list';" title="새로고침" style="float:right;">
+		            	<i class="fa-solid fa-arrow-rotate-left"></i>
+		            </button>
+	    		</h3>
+	    		<hr>
 				
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
 					<li class="nav-item" role="presentation">

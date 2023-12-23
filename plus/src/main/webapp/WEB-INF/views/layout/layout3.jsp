@@ -193,7 +193,7 @@
         <div class="modal-content">
             <div class="modal-header text-white">
                 <h5 class="modal-title" id="loginViewerModalLabel">원데이 플러스 + </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="p-3">

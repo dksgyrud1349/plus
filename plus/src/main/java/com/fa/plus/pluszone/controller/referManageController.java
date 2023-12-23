@@ -241,7 +241,5 @@ public class referManageController {
 		return "redirect:/pluszone/referManage/list?" + query;
 	}
 		
-	
-
 }
 	
