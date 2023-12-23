@@ -142,7 +142,7 @@ function searchList() {
 					                </span>
 	                    			<br>
 		                    		<span class="mx-2">
-		                    			<button type="button" class="btn btn-outline-secondary btnSendBoardLike" title="좋아요" style="border:none;"><i class="bi ${userBoardLiked ? 'bi bi-heart-fill':'bi bi-heart' }"></i>&nbsp;&nbsp;<span id="boardLikeCount">${dto.boardLikeCount}</span></button>
+		                    			<button type="button" class="btn btn-outline-secondary btnSendBoardLike" title="좋아요" style="border:none;"><i class="bi ${userBoardLiked ? 'bi-heart-fill':'bi-heart' }"></i>&nbsp;&nbsp;<span id="boardLikeCount">${dto.boardLikeCount}</span></button>
 		                    		</span>
                 					<div>
                 				</div>
@@ -162,11 +162,47 @@ function searchList() {
 </main>
 
 <script>
+function login() {
+	location.href = '${pageContext.request.contextPath}/member/login';
+}
+
+function ajaxFun(url, method, formData, dataType, fn, file = false) {
+	const settings = {
+			type: method, 
+			data: formData,
+			success:function(data) {
+				fn(data);
+			},
+			beforeSend: function(jqXHR) {
+				jqXHR.setRequestHeader('AJAX', true);
+			},
+			complete: function () {
+			},
+			error: function(jqXHR) {
+				if(jqXHR.status === 403) {
+					login();
+					return false;
+				} else if(jqXHR.status === 400) {
+					alert('요청 처리가 실패 했습니다.');
+					return false;
+		    	}
+		    	
+				console.log(jqXHR.responseText);
+			}
+	};
+	
+	if(file) {
+		settings.processData = false;  // file 전송시 필수. 서버로전송할 데이터를 쿼리문자열로 변환여부
+		settings.contentType = false;  // file 전송시 필수. 서버에전송할 데이터의 Content-Type. 기본:application/x-www-urlencoded
+	}
+	
+	$.ajax(url, settings);
+}
 //게시글 공감 여부
 $(function(){
 	$('.btnSendBoardLike').click(function(){
 		const $i = $(this).find('i');
-		let userLiked = $i.hasClass('bi bi-heart-fill');
+		let userLiked = $i.hasClass('bi-heart-fill');
 		let msg = userLiked ? '게시글 공감을 취소하시겠습니까 ? ' : '게시글에 공감하십니까 ? ';
 		
 		if(! confirm( msg )) {
@@ -181,9 +217,9 @@ $(function(){
 			let state = data.state;
 			if(state === 'true') {
 				if( userLiked ) {
-					$i.removeClass('bi bi-heart-fill').addClass('bi bi-heart');
+					$i.removeClass('bi-heart-fill').addClass('bi-heart');
 				} else {
-					$i.removeClass('bi bi-heart').addClass('bi bi-heart-fill');
+					$i.removeClass('bi-heart').addClass('bi-heart-fill');
 				}
 				
 				let count = data.boardLikeCount;

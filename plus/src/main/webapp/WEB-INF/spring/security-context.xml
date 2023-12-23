@@ -50,12 +50,10 @@
 			<intercept-url pattern="/notice/list" access="permitAll"/>
 			<intercept-url pattern="/notice/article" access="permitAll"/>
 			<intercept-url pattern="/faq/**" access="permitAll"/>
-			<intercept-url pattern="declaration/article" access="permitAll"/>
-			<intercept-url pattern="proposal/list" access="permitAll"/>
-			<intercept-url pattern="inquiry/list" access="permitAll"/>
-			<intercept-url pattern="etc/list" access="permitAll"/>
-			
-			<intercept-url pattern="/bbs/list" access="permitAll"/>
+			<intercept-url pattern="/declaration/article" access="permitAll"/>
+			<intercept-url pattern="/proposal/list" access="permitAll"/>
+			<intercept-url pattern="/inquiry/list" access="permitAll"/>
+			<intercept-url pattern="/etc/list" access="permitAll"/>
 			
 			<intercept-url pattern="/company/introduction" access="permitAll"/>
 			

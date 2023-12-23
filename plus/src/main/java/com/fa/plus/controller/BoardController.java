@@ -43,6 +43,7 @@ public class BoardController {
 			@RequestParam(defaultValue = "all") String schType,
 			@RequestParam(defaultValue = "") String kwd,
 			HttpServletRequest req,
+			HttpSession session,
 			Model model) throws Exception {
 
 		String cp = req.getContextPath();
@@ -73,6 +74,11 @@ public class BoardController {
 		map.put("offset", offset);
 		map.put("size", size);
 		
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		// 게시글 좋아요 여부
+		map.put("userId", info.getUserId());
+		boolean userBoardLiked = service.userBoardLiked(map);
+		
 		List<Board> list = service.listBoard(map);
 		
 		String query = "";
@@ -99,6 +105,7 @@ public class BoardController {
 
 			model.addAttribute("schType", schType);
 			model.addAttribute("kwd", kwd);
+			model.addAttribute("userBoardLiked", userBoardLiked);
 
 			return ".bbs.list";
 		}
