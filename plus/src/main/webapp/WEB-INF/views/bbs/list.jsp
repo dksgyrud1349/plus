@@ -3,7 +3,35 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
+	img {
+        height: 600px;
+        width: 600px;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+    .clobText {
+        font-size: 15px;
+    }
 
+    .clobTitleBox {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .clobName {
+        font-size: 17px;
+        padding: 0px 10px;
+        font-weight: bold;
+    }
+
+
+    .clobImg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 </style>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/paginate-boot.js"></script>
@@ -43,76 +71,29 @@ function searchList() {
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
+			<div class="body-container" style="width:80%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
 				
-				<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
-					<table class="table">
-						<tr>
-							<td align="left" width="50%">
-								총 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}개</font> (${page}/${total_page} 페이지)
-							</td>
-							<td align="right">
-								&nbsp;
-							</td>
-						</tr>
-					</table>
-					
-					<div class="card mb-5 w-80 text-center" style="margin:0 auto">
-				    	<div class="card-header">
-				    		<h3>
-				    			<i class="bi bi-app"></i> 커뮤니티
-				    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/bbs/list';" title="새로고침" style="float:right;">
-					            	<i class="fa-solid fa-arrow-rotate-left"></i>
-					            </button>
-				    		</h3>
-				    		<hr>
-
-							<table class="table table-hover board-list">
-								<thead class="table-light">
-									<tr>
-										<th width="60">번호</th>
-										<th>제목</th>
-										<th width="100">작성자</th>
-										<th width="100">작성일</th>
-										<th width="70">조회수</th>
-										
-									</tr>
-								</thead>
+				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+	    			<i class="bi bi-app"></i> 커뮤니티
+	    			
+	    			<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/bbs/list';" title="새로고침" style="float:right;">
+		            	<i class="fa-solid fa-arrow-rotate-left"></i>
+		            </button>
+					<button type="button" class="btn btn-success me-3" onclick="location.href='${pageContext.request.contextPath}/bbs/write';"  style="float:right;">글올리기</button>
+	    		</h3>
+	    		
+	    		<div id="tab-content">
+						</div>
+						<table class="table">
+							<tr>
+								<td align="left">
+									총 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}개</font> (${page}/${total_page} 페이지)
+								</td>
 								
-								<tbody>
-									<c:forEach var="dto" items="${list}" varStatus="status">
-										<tr>
-											<td>${dataCount - (page-1) * size - status.index}</td>
-											<td class="left">
-												<c:url var="url" value="/bbs/article">
-													<c:param name="num" value="${dto.num}"/>
-													<c:param name="page" value="${page}"/>
-													<c:if test="${not empty kwd}">
-														<c:param name="schType" value="${schType}"/>
-														<c:param name="kwd" value="${kwd}"/>
-													</c:if>									
-												</c:url>
-												<a href="${url}" class="text-reset">${dto.subject}</a>
-												<c:if test="${dto.replyCount!=0}">(${dto.replyCount})</c:if>
-											</td>
-											<td>${dto.userName}</td>
-											<td>${dto.regDate}</td>
-											<td>${dto.hitCount}</td>
-											
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-			
-							<div class="page-navigation dataCount" ></div>
-			
-							<table class="table">
-									<tr>
-										<td align="center">
-						
+								<td align="right">	
 									<form class="row" name="searchForm" action="${pageContext.request.contextPath}/bbs/list" method="post" style="width:300px; margin-left:15px;">
-											<div class="input-group mb-1">
+										<div class="input-group mb-1">
 											<select name="schType" class="form-select">
 												<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
 												<option value="userName" ${schType=="userName"?"selected":""}>작성자</option>
@@ -121,20 +102,100 @@ function searchList() {
 												<option value="content" ${schType=="content"?"selected":""}>내용</option>
 											</select>
 											<input type="text" name="kwd" value="${kwd}" class="form-control">
-											<button type="button" class="btn btn-success" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+											<button type="button" class="btn btn-secondary" onclick="searchList()"> <i class="bi bi-search"></i> </button>
 										</div>
 									</form>
 								</td>
 							</tr>
 						</table>
-						<div class="col text-end">
-							<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/bbs/write';">글올리기</button>
-						</div>
+						
+						<c:forEach var="dto" items="${list}" varStatus="status">	
+							<div class="border communityBox mb-5">
+								<div class="clobTitleBox">
+								    <span class="clobName" style="width:50%;">
+										<i class="bi bi-person-circle"></i> ${dataCount - (page-1) * size - status.index}. ${dto.userName} 
+									</span>
+									
+									<span class="text-end" style="width:50%">
+										<i class="bi bi-eye-fill"></i>  ${dto.hitCount} 
+										<c:if test="${dto.replyCount!=0}"><i class="bi bi-chat-dots-fill mx-1"></i>(${dto.replyCount})</c:if>
+									</span>
+								
+									<c:url var="url" value="/bbs/article">
+											<c:param name="num" value="${dto.num}"/>
+											<c:param name="page" value="${page}"/>
+										<c:if test="${not empty kwd}">
+											<c:param name="schType" value="${schType}"/>
+											<c:param name="kwd" value="${kwd}"/>
+										</c:if>									
+									</c:url>
+							    </div>
+						
+								<div class="feed_img">
+								   <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="d-block w-100" alt="게시글">
+								</div>
+								
+								<div class="mt-1 pb-3" style="border-bottom:1px solid #cccccc">
+				                	<a href="${url}" class="text-reset mx-3">${dto.subject}</a>
+									<span class="me-1" style="float:right;">
+					                	${dto.regDate}
+					                </span>
+	                    			<br>
+		                    		<span class="mx-2">
+		                    			<button type="button" class="btn btn-outline-secondary btnSendBoardLike" title="좋아요" style="border:none;"><i class="bi ${userBoardLiked ? 'bi bi-heart-fill':'bi bi-heart' }"></i>&nbsp;&nbsp;<span id="boardLikeCount">${dto.boardLikeCount}</span></button>
+		                    		</span>
+                					<div>
+                				</div>
+            				</div>
+            				
+            				  <div class="mx-2">
+					          	
+					          </div>
+            				</div>
+						</c:forEach>		
+				
+						<div class="page-navigation dataCount" ></div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-</div>
 </main>
+
+<script>
+//게시글 공감 여부
+$(function(){
+	$('.btnSendBoardLike').click(function(){
+		const $i = $(this).find('i');
+		let userLiked = $i.hasClass('bi bi-heart-fill');
+		let msg = userLiked ? '게시글 공감을 취소하시겠습니까 ? ' : '게시글에 공감하십니까 ? ';
+		
+		if(! confirm( msg )) {
+			return false;
+		}
+		
+		let url = '${pageContext.request.contextPath}/bbs/insertBoardLike';
+		let num = '${dto.num}';
+		let query = 'num=' + num + '&userLiked=' + userLiked;
+		
+		const fn = function(data){
+			let state = data.state;
+			if(state === 'true') {
+				if( userLiked ) {
+					$i.removeClass('bi bi-heart-fill').addClass('bi bi-heart');
+				} else {
+					$i.removeClass('bi bi-heart').addClass('bi bi-heart-fill');
+				}
+				
+				let count = data.boardLikeCount;
+				$('#boardLikeCount').text(count);
+			} else if(state === 'liked') {
+				alert('게시글 공감은 한번만 가능합니다. !!!');
+			} else if(state === "false") {
+				alert('게시물 공감 여부 처리가 실패했습니다. !!!');
+			}
+		};
+		
+		ajaxFun(url, 'post', query, 'json', fn);
+	});
+});
+</script>

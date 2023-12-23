@@ -47,7 +47,7 @@ public class BoardController {
 
 		String cp = req.getContextPath();
 
-		int size = 8;
+		int size = 5;
 		int total_page;
 		int dataCount;
 
@@ -87,6 +87,7 @@ public class BoardController {
 			articleUrl = cp + "/bbs/article?page=" + current_page + "&" + query;
 		}
 			String paging = myUtil.paging(current_page, total_page, listUrl);
+			
 
 			model.addAttribute("list", list);
 			model.addAttribute("dataCount", dataCount);
