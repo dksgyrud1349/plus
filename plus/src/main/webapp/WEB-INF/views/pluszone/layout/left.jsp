@@ -46,14 +46,10 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="#">클래스 관리</a>
                                     <a class="nav-link" href="#">예약 현황</a>
-                                    <a class="nav-link" href="#">자료실</a>
+                                    <a class="nav-link" href="<c:url value='/pluszone/referManage/list'/>">자료실</a>
                                 </nav>
                             </div>
                             
-                            <a class="nav-link" href="<c:url value='/pluszone/referManage/list'/>">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                자료실
-                            </a>
                             
                             
                             <a class="nav-link" href="#">
