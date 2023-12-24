@@ -50,6 +50,12 @@
                                 </nav>
                             </div>
                             
+                            <a class="nav-link" href="<c:url value='/pluszone/referManage/list'/>">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                자료실
+                            </a>
+                            
+                            
                             <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 일정 관리
