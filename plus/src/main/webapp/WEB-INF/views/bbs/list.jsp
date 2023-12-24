@@ -132,7 +132,8 @@ function searchList() {
 							    </div>
 						
 								<div class="feed_img">
-								   <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="d-block w-100" alt="게시글">
+									
+								   <img src="${dto.imageFilename}" class="d-block w-100" alt="게시글">
 								</div>
 								
 								<div class="mt-1 pb-3" style="border-bottom:1px solid #cccccc">
@@ -142,7 +143,7 @@ function searchList() {
 					                </span>
 	                    			<br>
 		                    		<span class="mx-2">
-		                    			<button type="button" class="btn btn-outline-secondary btnSendBoardLike" title="좋아요" style="border:none;"><i class="bi ${userBoardLiked ? 'bi-heart-fill':'bi-heart' }"></i>&nbsp;&nbsp;<span id="boardLikeCount">${dto.boardLikeCount}</span></button>
+		                    			<button type="button" class="btn btn-outline-secondary btnSendBoardLike" title="좋아요" style="border:none;" data-num="${dto.num}"><i class="bi ${dto.userLiked ? 'bi-heart-fill':'bi-heart' }"></i>&nbsp;&nbsp;<span id="boardLikeCount${dto.num}">${dto.boardLikeCount}</span></button>
 		                    		</span>
                 					<div>
                 				</div>
@@ -203,6 +204,7 @@ $(function(){
 	$('.btnSendBoardLike').click(function(){
 		const $i = $(this).find('i');
 		let userLiked = $i.hasClass('bi-heart-fill');
+		let num = $(this).attr("data-num");
 		let msg = userLiked ? '게시글 공감을 취소하시겠습니까 ? ' : '게시글에 공감하십니까 ? ';
 		
 		if(! confirm( msg )) {
@@ -210,9 +212,7 @@ $(function(){
 		}
 		
 		let url = '${pageContext.request.contextPath}/bbs/insertBoardLike';
-		let num = '${dto.num}';
 		let query = 'num=' + num + '&userLiked=' + userLiked;
-		
 		const fn = function(data){
 			let state = data.state;
 			if(state === 'true') {
@@ -223,7 +223,7 @@ $(function(){
 				}
 				
 				let count = data.boardLikeCount;
-				$('#boardLikeCount').text(count);
+				$('#boardLikeCount' + num).text(count);
 			} else if(state === 'liked') {
 				alert('게시글 공감은 한번만 가능합니다. !!!');
 			} else if(state === "false") {

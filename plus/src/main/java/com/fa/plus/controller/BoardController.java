@@ -77,9 +77,23 @@ public class BoardController {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		// 게시글 좋아요 여부
 		map.put("userId", info.getUserId());
-		boolean userBoardLiked = service.userBoardLiked(map);
+
 		
 		List<Board> list = service.listBoard(map);
+		
+		for(Board dto : list) {
+			List<String> imgs = myUtil.getImgSrc(dto.getContent());
+			if(imgs.size() > 0) {
+				dto.setImageFilename(imgs.get(0));
+			} else {
+				dto.setImageFilename(cp + "/resources/images/keyimage3.jpg");
+			}
+			
+			map.put("num", dto.getNum());
+			boolean userBoardLiked = service.userBoardLiked(map);
+			dto.setUserLiked(userBoardLiked);
+			
+		}
 		
 		String query = "";
 		String listUrl = cp + "/bbs/list";
@@ -105,7 +119,6 @@ public class BoardController {
 
 			model.addAttribute("schType", schType);
 			model.addAttribute("kwd", kwd);
-			model.addAttribute("userBoardLiked", userBoardLiked);
 
 			return ".bbs.list";
 		}
@@ -413,3 +426,4 @@ public class BoardController {
 	
 	
 }
+ 

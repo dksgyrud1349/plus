@@ -49,7 +49,7 @@
 	<!-- 리스트 -->
 	<select id="listBoard" parameterType="map" resultType="com.fa.plus.domain.Board">
 		SELECT c.num, c.userId, m.userName, subject, NVL(boardLikeCount, 0) boardLikeCount,
-			   TO_CHAR(c.regDate, 'YYYY-MM-DD') regDate,
+			   TO_CHAR(c.regDate, 'YYYY-MM-DD') regDate, content,
 			   hitCount,
 			   NVL(replyCount, 0) replyCount
 		FROM commu c

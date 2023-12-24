@@ -11,6 +11,25 @@ public class Board {
 	
 	private int boardLikeCount;
 	private int replyCount;
+	
+	private String imageFilename;
+	private boolean userLiked;
+
+	public boolean isUserLiked() {
+		return userLiked;
+	}
+
+	public void setUserLiked(boolean userLiked) {
+		this.userLiked = userLiked;
+	}
+
+	public String getImageFilename() {
+		return imageFilename;
+	}
+
+	public void setImageFilename(String imageFilename) {
+		this.imageFilename = imageFilename;
+	}
 
 	public long getNum() {
 		return num;
