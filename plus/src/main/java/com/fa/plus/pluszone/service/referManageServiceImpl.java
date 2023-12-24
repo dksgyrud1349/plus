@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.fa.plus.pluszone.domain.referManage;
 import com.fa.plus.pluszone.mapper.referManageMapper;
 
+
 @Service
 public class referManageServiceImpl implements referManageService {
 
@@ -63,15 +64,31 @@ public class referManageServiceImpl implements referManageService {
 
 	@Override
 	public List<referManage> listReferTitle(long memberIdx) {
-		// TODO Auto-generated method stub
-		return null;
+		List<referManage> list = null;
+
+		try {
+			list = mapper.listReferTitle(memberIdx);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 
 	@Override
 	public List<referManage> listRefer(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		List<referManage> list = null;
+
+		try {
+			list = mapper.listRefer(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
 	}
+
+	
 
 	@Override
 	public List<referManage> listReferTop(Map<String, Object> map) {

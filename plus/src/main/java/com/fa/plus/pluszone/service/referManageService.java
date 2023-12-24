@@ -13,6 +13,7 @@ public interface referManageService {
 	public void deleteRefer(long Num) throws Exception;
 	
 	public int dataCount(Map<String, Object> map);
+	
 	public List<referManage> listReferTitle(long memberIdx);
 	public List<referManage> listRefer(Map<String, Object> map);
 	public List<referManage> listReferTop(Map<String, Object> map);
