@@ -67,7 +67,7 @@
 													<select name="classNum">
 														<option value="">:: 선택 ::</option>
 														<c:forEach var="vo" items="${listTitle}" varStatus="status">
-															<option value="${vo.classNum}">${vo.className}</option>
+															<option value="${vo.classNum}"></option>
 														</c:forEach>
 													</select>
 												</div>
@@ -82,21 +82,23 @@
 										</tr>
 									
 										<tr> 
+										<!-- 
 											<td>공지여부</td>
 											<td> 
 												<input type="checkbox" name="referMange" id="referManage" class="form-check-input" value="1" ${dto.notice==1 ? "checked":"" }>
 												<label for="notice" class="form-check-label">공지</label>
 											</td>
 										</tr>
-						
+						 			-->
 										<tr> 
+										<!-- 
 											<td>보기</td>
 											<td> 
 												<input type="checkbox" name="showNotice" id="showNotice" class="form-check-input" value="1" ${mode=="write" || dto.memberIdx==51 ? "checked":"" }>
 												<label for="showNotice" class="form-check-label">표시</label>
 											</td>
 										</tr>
-									  
+									   -->
 										<tr> 
 											<td>작성자</td>
 											<td> 
