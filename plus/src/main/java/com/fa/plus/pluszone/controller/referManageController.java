@@ -154,7 +154,7 @@ public class referManageController {
 		
 		referManage dto = service.findById(num);
 		if (dto == null) {
-			return "redirect:/pluszone/noticePlus/list?" + query;
+			return "redirect:/pluszone/referManage/list?" + query;
 		}
 
 		Map<String, Object> map = new HashMap<String, Object>();
