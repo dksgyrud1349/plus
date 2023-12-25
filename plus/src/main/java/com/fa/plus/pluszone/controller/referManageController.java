@@ -24,7 +24,7 @@ import com.fa.plus.pluszone.domain.referManage;
 import com.fa.plus.pluszone.service.referManageService;
 
 @Controller
-@RequestMapping("/pluszone/referMange/*")
+@RequestMapping("/pluszone/referManage/*")
 public class referManageController {
 
 	@Autowired
