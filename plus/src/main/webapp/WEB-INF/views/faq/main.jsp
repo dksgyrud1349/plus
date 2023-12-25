@@ -113,7 +113,7 @@ faq.main))))
 	
 </script>
 
-<div class="container" style="min-height: 600px;">
+<div class="container" style="min-height: 600px; margin-bottom: 150px;">
 	<div class="body-container">
 		<div class="body-title">
 			<h3 class="font1"
