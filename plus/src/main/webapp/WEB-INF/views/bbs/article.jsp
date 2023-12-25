@@ -4,8 +4,13 @@
 
 <style type="text/css">
 
-.board-article img { max-width: 650px; }
-
+img {
+        height: 600px;
+        width: 600px;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
 </style>
 
 <c:if test="${sessionScope.member.userId==dto.userId||sessionScope.member.membership>90}">
@@ -26,7 +31,7 @@
 			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
 				
-					<div class="card mb-5 w-80" style="margin:0 auto;">
+					<div class="card mb-5 w-80" style="border:none;">
 				    	<div class="card-header text-center">
 				    		<h3>
 				    			<i class="bi bi-app"></i> 커뮤니티
@@ -52,7 +57,7 @@
 										${dto.regDate} | 조회 ${dto.hitCount}
 									</td>
 								</tr>
-								<tr>
+								<tr class="text-center">
 									<td colspan="2" valign="top" height="200" style="border-bottom: none;">
 										${dto.content}
 									</td>
