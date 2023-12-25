@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.admin.mapper.HashtagManageMapper">
+
+<insert id="insertHashtag" parameterType="com.fa.plus.admin.domain.HashtagManage">
+	INSERT INTO hashtag (tagNum, tagName)
+		VALUES (hashtag_seq.NEXTVAL, #{tagName})
+		
+</insert>
+
+<delete id="deleteHashtag" parameterType="Long">
+	DELETE FROM hashtag WHERE tagNum = #{tagNum}
+</delete>
+
+<select id="dataCount" resultType="Integer">
+	SELECT NVL(COUNT(*), 0)
+	FROM hashtag
+</select>
+
+<select id="listHashtag" resultType="com.fa.plus.admin.domain.HashtagManage">
+	SELECT tagNum, tagName
+	FROM hashtag
+</select>
+
+</mapper>

@@ -391,7 +391,7 @@ function sendOk(mode) {
 								<span><fmt:formatNumber value="${dto.price}"
 										pattern="#,###" /></span>
 									<div>
-										<button type="button" class="btn singo" style="width: 60x;" onclick="#">
+										<button type="button" class="btn singo" style="width: 60x;" onclick="location.href='${pageContext.request.contextPath}/declaration/article';">
 											<span style="font-size: medium; font-family: 'EASTARJET-Medium';">신고</span><i class="bi bi-exclamation-triangle-fill"></i>
 										</button>
 									</div>

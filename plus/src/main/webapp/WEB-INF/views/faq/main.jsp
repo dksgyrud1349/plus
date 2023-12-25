@@ -1,3 +1,5 @@
+faq.main))))
+
 	<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -10,7 +12,6 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
 .body-container {
 	width: 1200px;
 	height: 150px;
@@ -44,6 +45,7 @@
 	margin-left: 20px;
 	border-top: 2px solid black;
 }
+
 </style>
 
 <script type="text/javascript">
@@ -111,15 +113,15 @@
 	
 </script>
 
-<div class="container" style="min-height: 600px;">
+<div class="container" style="min-height: 600px; margin-bottom: 150px;">
 	<div class="body-container">
 		<div class="body-title">
 			<h3 class="font1"
 				style="border-top: 1px solid black; padding-top: 20px;">
-				<i class="bi bi-question-octagon"></i> 자주하는 질문
+				<br><img width="60" height="60" src="https://img.icons8.com/officel/80/faq.png" alt="faq"/>&nbsp;자주하는 질문<br><br>
 			</h3>
 		</div>
-		<div class="body-main">
+		<div class="body-main main-color">
 			
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">

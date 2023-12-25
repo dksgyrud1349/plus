@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fa.plus.admin.domain.Answer;
 import com.fa.plus.admin.domain.MemberManage;
-import com.fa.plus.admin.domain.Qna;
 import com.fa.plus.admin.service.PlusManageService;
 import com.fa.plus.common.MyUtil;
 
@@ -97,7 +95,7 @@ public class PlusManageController {
 	
 	@GetMapping("article")
 	public String articleForm(@RequestParam String userId, @RequestParam String page, Model model) {
-		
+		/*
 		List<Qna> list = service.findByQna(userId);
 		
 		if(list.isEmpty()) {
@@ -113,6 +111,7 @@ public class PlusManageController {
 		model.addAttribute("userName", userName);
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);
+		*/
 		return "admin/plusManage/article";
 	}
 	
@@ -186,55 +185,64 @@ public class PlusManageController {
 	@GetMapping("answerChart")
 	@ResponseBody
 	public Map<String, Object> answerChart() throws Exception{
-		
+		/*
 		Map<String, Object> model = new HashMap<String, Object>();
 		List<Answer> list = service.answerChart();
 		
 		model.put("list", list);
 		return model;
+		*/
+		return null;
 	}
 	
 	@GetMapping("answerChart1")
 	@ResponseBody
 	public Map<String, Object> answerChart1() throws Exception{
-		
+		/*
 		Map<String, Object> model = new HashMap<String, Object>();
 		List<Answer> list = service.answerChart1();
 		
 		model.put("list", list);
 		return model;
+		*/
+		return null;
 	}
 	
 	@GetMapping("answerChart2")
 	@ResponseBody
 	public Map<String, Object> answerChart2() throws Exception{
-		
+		/*
 		Map<String, Object> model = new HashMap<String, Object>();
 		List<Answer> list = service.answerChart2();
 		
 		model.put("list", list);
-		return model;
+		*/
+		return null;
 	}
 	
 	@GetMapping("answerChart3")
 	@ResponseBody
 	public Map<String, Object> answerChart3() throws Exception{
-		
+		/*
 		Map<String, Object> model = new HashMap<String, Object>();
 		List<Answer> list = service.answerChart3();
 		
 		model.put("list", list);
 		return model;
+		*/
+		return null;
 	}
 	
 	@GetMapping("answerChart4")
 	@ResponseBody
 	public Map<String, Object> answerChart4() throws Exception{
-		
+		/*
 		Map<String, Object> model = new HashMap<String, Object>();
 		List<Answer> list = service.answerChart4();
 		
 		model.put("list", list);
 		return model;
+		*/
+		return null;
 	}
 }

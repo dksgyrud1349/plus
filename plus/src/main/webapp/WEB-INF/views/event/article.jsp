@@ -64,7 +64,7 @@ $(function(){
 							</tr>
 						</table>
 						
-						<div class="card mb-5 w-80" style="margin:0 auto;">
+						<div class="card mb-5 w-80" style="margin:0 auto; border:none;">
 					    	<div class="card-header text-center">
 					    		<h3>
 					    			<i class="bi bi-calendar-event"></i> 이벤트
@@ -98,11 +98,11 @@ $(function(){
 										class="img-fluid img-thumbnail w-100 h-auto">
 								</td>
 							</tr>
-						<tr>
-							<td colspan="2" valign="top" height="200">
-								${dto.eContent}
-							</td>
-						</tr>
+							<tr>
+								<td colspan="2" valign="top" height="200" class="text-center">
+									${dto.eContent}
+								</td>
+							</tr>
 						<tr>
 							<td colspan="2" class="text-center p-3" style="border-bottom: none;">
 								<button type="button" class="btn btn-outline-secondary btnSendBoardLike" title="좋아요"><i class="bi ${userEventLiked ? 'bi-hand-thumbs-up-fill':'bi-hand-thumbs-up' }"></i>&nbsp;&nbsp;<span id="eventLikeCount">${dto.eventLikeCount}</span></button>
