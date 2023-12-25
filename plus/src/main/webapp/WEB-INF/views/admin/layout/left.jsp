@@ -29,7 +29,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Admin</div>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="${pageContext.request.contextPath}/admin/">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     관리자 페이지
                                 </a>
@@ -102,7 +102,8 @@
                                             <a class="nav-link" href="<c:url value='/admin/lessonManage/list'/>">클래스 승인관리</a>
                                         </nav>
                                     </div>
-                                        <a class="nav-link" href="#">카테고리 관리</a>
+                                        <a class="nav-link" href="${pageContext.request.contextPath}/admin/categoryManage/list">카테고리 관리</a>
+                                        <a class="nav-link" href="${pageContext.request.contextPath}/admin/hashtagManage/list">해시태그 관리</a>
                                 </nav>
                             </div>
                             <div class="collapse" id="onedayPages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
