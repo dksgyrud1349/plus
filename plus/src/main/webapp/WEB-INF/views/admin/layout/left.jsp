@@ -134,6 +134,7 @@
                                     <a class="nav-link" href="https://pf.kakao.com/_cbxcnG">채팅(1:1문의)</a>
                                     <a class="nav-link" href="<c:url value='/admin/noticeManage/list'/>">공지사항</a>
                                     <a class="nav-link" href="${pageContext.request.contextPath}/admin/faqManage/main">FAQ</a>
+                                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/termsManage/main">서비스 이용약관</a>
                                 </nav>
                             </div>
                         </div>
