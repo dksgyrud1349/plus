@@ -10,6 +10,40 @@ function login() {
 	location.href = '${pageContext.request.contextPath}/member/login';
 }
 
+function ajaxFun(url, method, formData, dataType, fn, file = false) {
+   const settings = {
+         type: method, 
+         data: formData,
+         success:function(data) {
+            fn(data);
+         },
+         beforeSend: function(jqXHR) {
+            jqXHR.setRequestHeader('AJAX', true);
+         },
+         complete: function () {
+         },
+         error: function(jqXHR) {
+            if(jqXHR.status === 403) {
+               login();
+               return false;
+            } else if(jqXHR.status === 400) {
+               alert('요청 처리가 실패 했습니다.');
+               return false;
+             }
+             
+            console.log(jqXHR.responseText);
+         }
+   };
+   
+   if(file) {
+      settings.processData = false;  // file 전송시 필수. 서버로전송할 데이터를 쿼리문자열로 변환여부
+      settings.contentType = false;  // file 전송시 필수. 서버에전송할 데이터의 Content-Type. 기본:application/x-www-urlencoded
+   }
+   
+   $.ajax(url, settings);
+}
+
+
 function insertHashtag() {
 	const f = document.hashtagForm;
 	
@@ -23,13 +57,20 @@ function insertHashtag() {
 	f.submit();
 }
 
-function deleteHashtag(long tagNum) {
+
+
+function deleteHashtag(tagNum) {
 	var url = "${pageContext.request.contextPath}/admin/hashtagManage/delete";
 	var query = "tagNum="+tagNum;
 	
 	if(! confirm("해시태그를 삭제하시겠습니까 ?")) {
 		  return;
 	}
+   
+   const fn = function(data){
+      location.href = "${pageContext.request.contextPath}/admin/hashtagManage/list";
+   };
+   ajaxFun(url, "post", query, "json", fn);
 }
 </script>
 

@@ -5,16 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fa.plus.admin.domain.HashtagManage;
 import com.fa.plus.admin.service.HashtagManageService;
 
 @Controller
-@RequestMapping("/admin/hashtagManage")
+@RequestMapping("/admin/hashtagManage/*")
 public class HashtagManageController {
 
 	@Autowired
@@ -45,7 +45,8 @@ public class HashtagManageController {
 		return "redirect:/admin/hashtagManage/list";
 	}
 	
-	@GetMapping("delete")
+	@ResponseBody
+	@PostMapping("delete")
 	public String delete(@RequestParam long tagNum) throws Exception {
 		try {
 			service.deleteHashtag(tagNum);

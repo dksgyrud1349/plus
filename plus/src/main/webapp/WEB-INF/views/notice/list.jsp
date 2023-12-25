@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style>
-td{
+.table td{
 	height:60px;
 	line-height: 60px;
 }
@@ -116,12 +116,6 @@ function searchList() {
 								<div class="page-navigation">
 									${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
 								</div>
-					
-								<table class="table">
-									<tr>
-										
-								</tr>
-							</table>
 						</div>
 					</div>
 				</div>
