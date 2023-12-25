@@ -42,6 +42,10 @@ $(function(){
 		<div class="container-fluid px-5">
 			<div class="body-container pt-5" style="width:100%; margin:5% auto;">
 				<div class="body-main">
+				<h3>
+	    			<i class="bi bi-calendar-event"></i> 이벤트
+	    		</h3>
+	    		<hr>
 
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">
@@ -53,30 +57,24 @@ $(function(){
 			</ul>
 			
 			<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
-						<table class="table">
-							<tr>
-								<td align="left" width="50%">
-									&nbsp;
-								</td>
-								<td align="right">
-									&nbsp;
-								</td>
-							</tr>
-						</table>
+				<table class="table">
+					<tr>
+						<td align="left" width="50%">
+							&nbsp;
+						</td>
+						<td align="right">
+							&nbsp;
+						</td>
+					</tr>
+				</table>
 						
-						<div class="card mb-5 w-80" style="margin:0 auto; border:none;">
-					    	<div class="card-header text-center">
-					    		<h3>
-					    			<i class="bi bi-calendar-event"></i> 이벤트
-					    		</h3>
-					    	</div>
-			
-			
+			<div class="card mb-5 w-80" style="margin:0 auto; border:none;">
+					    	
 			<div class="table table-hover board-list " id="nav-tabContent">
 				<table class="table">
 					<thead>
 						<tr>
-							<td colspan="2" style="text-align:center; vertical-align: middle;">
+							<td colspan="2" style="text-align:center; vertical-align: middle; font-size:25px;">
 								${dto.subject}
 							</td>
 						</tr>

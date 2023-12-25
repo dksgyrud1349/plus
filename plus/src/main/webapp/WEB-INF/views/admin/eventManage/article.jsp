@@ -26,6 +26,12 @@ $(function(){
 });
 </script>
 
+<style>
+img{
+	width:80%;
+}
+</style>
+
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
@@ -60,7 +66,7 @@ $(function(){
 					        </div>
 					        
 							<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
-								<table class="table">
+								<table class="table	">
 									<thead>
 										<tr>
 											<td colspan="2" align="center">
@@ -75,7 +81,7 @@ $(function(){
 												작성자 : ${dto.userName}
 											</td>
 											<td width="50%" align="right">
-												조회 / 출력여부 : ${dto.hitCount} / ${dto.showEvent == 1 ? "표시" : "숨김" }
+												조회 : ${dto.hitCount} / 출력여부 : ${dto.showEvent == 1 ? "표시" : "숨김" }
 											</td>
 										</tr>
 						
@@ -84,13 +90,13 @@ $(function(){
 												이벤트 기간 : ${dto.startDate} ~ ${dto.endDate} 
 											</td>
 										</tr>
-										<tr>
-												<td colspan="2" style="border-bottom: none;">
-													<img src="${pageContext.request.contextPath}/uploads/photo/${dto.eventImg}" 
-														class="img-fluid img-thumbnail w-100 h-auto">
-												</td>
-											</tr>
-										<tr style="border-bottom: none;">
+										<tr class="text-center">
+											<td colspan="2" style="border-bottom: none;">
+												<img src="${pageContext.request.contextPath}/uploads/photo/${dto.eventImg}" 
+													class="img-fluid img-thumbnail w-100 h-auto">
+											</td>
+										</tr>
+										<tr style="border-bottom: none;" class="text-center">
 											<td colspan="2" valign="top" height="200">
 												${dto.eContent}
 											</td>
