@@ -32,13 +32,14 @@
 .body-container {
 	width: 1200px;
 	height: 70px;
-	margin-top: 150px;
+	padding-top: 20px;
 	margin-left: 20px;
 }
 
 .sContent {
 	margin-left: 40px;
 	padding-left: 10px;
+	margin-top: 20px;
 	width: 1200px;
 	height: 65px;
 	font-family: 'Pretendard-Regular';
@@ -150,10 +151,10 @@ function writeSubmit(){
 <main class="wrapper" style="margin: 0 auto; width: 100%;">
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width: 80%; margin: 5% auto;">
+			<div class="body-container" style="margin: 100px auto;">
 				<div class="body-main">
 					<h3 class="font1"
-						style="border-top: 1px solid black; padding-top: 20px;">
+						style="border-top: 1px solid black; padding-top: 20px; padding-left: 10px;">
 						<i class="bi bi-exclamation-diamond-fill"></i> 신고하기
 					</h3>
 					<div class="sContent">
