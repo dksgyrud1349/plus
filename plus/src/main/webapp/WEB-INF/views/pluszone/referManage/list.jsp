@@ -61,7 +61,7 @@ function searchList() {
 												<td><span class="badge bg-primary">자료실</span></td>
 												<td>${dto.className}</td>
 												<td class="right">
-													<a href="${articleUrl}&num=${dto.num}" class="text-reset">${dto.subject}</a>
+													<a href="${articleUrl}&num=${dto.refNum}" class="text-reset">${dto.subject}</a>
 												</td>
 											
 												

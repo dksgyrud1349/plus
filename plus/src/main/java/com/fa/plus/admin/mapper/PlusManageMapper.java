@@ -6,9 +6,8 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.fa.plus.admin.domain.Answer;
 import com.fa.plus.admin.domain.MemberManage;
-import com.fa.plus.admin.domain.Qna;
+import com.fa.plus.admin.domain.PluszoneAnswerManage;
 
 @Mapper
 public interface PlusManageMapper {
@@ -25,13 +24,7 @@ public interface PlusManageMapper {
 	public void insertMemberState(MemberManage dto) throws SQLException;
 	public List<MemberManage> listMemberState(String userId);
 	public MemberManage findByState(String userId);
-	
-	public List<Qna> findByQna(String userId);
-		// 질문지에 답을 한 사람의 아이디에 대한 Qna 리스트
-	
-	public List<Answer> answerChart();
-	public List<Answer> answerChart1();
-	public List<Answer> answerChart2();
-	public List<Answer> answerChart3();
-	public List<Answer> answerChart4();
+
+	public List<PluszoneAnswerManage> findByAnswer(String userId);
+	public List<PluszoneAnswerManage> ageChart();
 }

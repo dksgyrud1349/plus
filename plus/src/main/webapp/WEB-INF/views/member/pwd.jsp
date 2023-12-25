@@ -24,8 +24,11 @@ function sendOk() {
 }
 </script>
 
-<div class="container">
-	<div class="body-container">	
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container pt-5" style="width:80%; margin:0 auto; padding-bottom:5%;">
+				<div class="body-main">
 
         <div class="row justify-content-md-center">
             <div class="col-md-7 pt-5">
@@ -57,6 +60,8 @@ function sendOk() {
                 </div>
             </div>
         </div>
-	        
 	</div>
 </div>
+</div>
+</div>
+</main>

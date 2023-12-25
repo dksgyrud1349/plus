@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.DeclarationMapper">
+
+	<select id="findById" parameterType="String" resultType="com.fa.plus.domain.Declaration">
+		/* declarationMapper.findById_로그인한 회원 정보 가져오기 */
+		SELECT userId, userName
+		FROM member1
+		WHERE userId = #{userId}
+	</select>
+
+	<select id="findByAllClass" resultType="com.fa.plus.domain.Declaration">
+		/* declarationMapper.findByClass_클래스 목록 전부 가져오기 */
+		SELECT classNum, className
+		FROM lesson
+	</select>
+	
+	<select id="findByNum" parameterType="String" resultType="long">
+		/* declarationMapper.findByNum_클래스 번호 찾기 */
+		SELECT classNum
+		FROM lesson
+		WHERE className = #{className}
+	</select>
+	
+	<insert id="insertDeclaration" parameterType="com.fa.plus.domain.Declaration">
+		/* declarationMapper.insertDeclaration_클래스 등록하기 */
+		INSERT INTO report (rNum, rContent, reportDate, result, userId, classNum)
+			VALUES (report_seq.NEXTVAL, #{rContent}, SYSDATE, 0, #{userId}, #{classNum})
+	</insert>
+	
+</mapper>

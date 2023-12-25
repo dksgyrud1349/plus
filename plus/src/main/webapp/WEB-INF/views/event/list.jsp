@@ -102,10 +102,10 @@ function searchList() {
 						<div class="card p-1 me-3 mb-5 mx-4" id="box" style="width: 16rem; height: 30rem; border:0.8px solid #cccccc;">
 							<c:choose>
 								<c:when test="${dto.eventImg != null}">
-									<img src="${pageContext.request.contextPath}/uploads/photo/${dto.eventImg}"  class="card-img-top"  alt="...">
+									<img src="${pageContext.request.contextPath}/uploads/photo/${dto.eventImg}"  class="card-img-top" height="150px" alt="...">
 								</c:when>
 								<c:otherwise>
-									<img src="${pageContext.request.contextPath}/resources/images/Image-folder.jpg"  class="card-img-top"  alt="...">
+									<img src="${pageContext.request.contextPath}/resources/images/Image-folder.jpg"  class="card-img-top" height="150px" alt="...">
 								</c:otherwise>
 							</c:choose>
 							

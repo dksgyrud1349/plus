@@ -98,7 +98,7 @@
 		ORDER BY num DESC
 		FETCH FIRST 1 ROWS ONLY
 	</select>
-	
+<!-- 
 	<select id="findByQna" parameterType="String" resultType="com.fa.plus.admin.domain.Qna">
 		SELECT q.pluszoneNum, content, qCategory, anszoneNum, a.userId, ans1, ans2, ans3, m1.userName
 		FROM pluszoneQ q
@@ -220,4 +220,5 @@
 		SELECT '50대 이상' answer, COUNT(*) count FROM answer WHERE ans1 = '50대 이상' OR ans2 = '50대 이상' OR ans3 = '50대 이상'
 ]]>		
 	</select>
+ -->	
 </mapper>
