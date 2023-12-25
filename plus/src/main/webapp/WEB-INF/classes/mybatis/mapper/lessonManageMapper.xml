@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.admin.mapper.LessonManageMapper">
+	<sql id="where-list">
+		<choose>
+			<when test="schType == 'className'">
+				INSTR(le.className, #{kwd}) &gt; 0
+			</when>
+			<when test="schType == 'regDate'">
+				TO_CHAR(le.regDate, 'YYYYMMDD') = #{kwd} OR TO_CHAR(le.regDate, 'YYYY-MM-DD') = #{kwd}
+			</when>
+			<otherwise>
+				INSTR(${schType}, #{kwd}) &gt; 0
+			</otherwise>
+		</choose>
+	</sql>
+
+	<select id="lessonList" parameterType="map" resultType="com.fa.plus.admin.domain.LessonManage">
+		SELECT approvalNum, memo, le.classNum, className, price, TO_CHAR(le.startDate, 'YYYY-MM-DD') startDate, TO_CHAR(le.endDate, 'YYYY-MM-DD') endDate, TO_CHAR(le.regDate, 'YYYY-MM-DD') regDate
+		FROM approval al
+		JOIN lesson le ON al.classNum = le.classNum
+		<where>
+			approvalCode = #{approvalCode}
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="where-list"/>
+			</if>
+		</where>
+		ORDER BY classNum ASC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM approval al
+		JOIN lesson le ON al.classNum = le.classNum 
+		<where>
+			approvalCode = #{approvalCode}
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="where-list"/>
+			</if>
+		</where>
+	</select>
+	
+	<select id="findById" parameterType="Long" resultType="com.fa.plus.admin.domain.LessonManage">
+		SELECT classNum, className, price, m1.userName, content, TO_CHAR(startDate, 'YYYY-MM-DD') startDate, 
+			TO_CHAR(endDate, 'YYYY-MM-DD') endDate, TO_CHAR(le.regDate, 'YYYY-MM-DD') regDate, classTime, zip, 
+			addr1, addr2, mileage, tagName, subName
+		FROM lesson le
+		JOIN hashtag ht ON le.tagNum = ht.tagNum
+		JOIN subCategory sc ON le.subNum = sc.subNum
+		JOIN member m ON le.memberIdx = m.memberIdx
+		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
+		WHERE classNum = #{classNum}
+	</select>
+	
+	<update id="updateApproval" parameterType="map">
+		UPDATE approval SET approvalCode = #{approvalCode}, memo = #{memo} WHERE classNum = #{classNum}
+	</update>
+</mapper>
