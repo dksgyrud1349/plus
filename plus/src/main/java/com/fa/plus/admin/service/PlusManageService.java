@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.fa.plus.admin.domain.MemberManage;
-import com.fa.plus.admin.domain.PluszoneAnswer;
+import com.fa.plus.admin.domain.PluszoneAnswerManage;
 
 public interface PlusManageService {
 	public List<MemberManage> plusList(Map<String, Object> map);
@@ -20,6 +20,6 @@ public interface PlusManageService {
 	public List<MemberManage> listMemberState(String userId);
 	public MemberManage findByState(String userId);
 	
-	public List<PluszoneAnswer> listAnswer(String userId);
-	public List<PluszoneAnswer> ageChart();
+	public List<PluszoneAnswerManage> findByAnswer(String userId);
+	public List<PluszoneAnswerManage> ageChart();
 }

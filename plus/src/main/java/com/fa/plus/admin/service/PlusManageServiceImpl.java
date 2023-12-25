@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fa.plus.admin.domain.MemberManage;
-import com.fa.plus.admin.domain.PluszoneAnswer;
+import com.fa.plus.admin.domain.PluszoneAnswerManage;
 import com.fa.plus.admin.mapper.PlusManageMapper;
 
 @Service
@@ -146,13 +146,13 @@ public class PlusManageServiceImpl implements PlusManageService{
 	}
 
 	@Override
-	public List<PluszoneAnswer> listAnswer(String userId) {
+	public List<PluszoneAnswerManage> findByAnswer(String userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<PluszoneAnswer> ageChart() {
+	public List<PluszoneAnswerManage> ageChart() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -7,7 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.fa.plus.admin.domain.MemberManage;
-import com.fa.plus.admin.domain.PluszoneAnswer;
+import com.fa.plus.admin.domain.PluszoneAnswerManage;
 
 @Mapper
 public interface PlusManageMapper {
@@ -25,6 +25,6 @@ public interface PlusManageMapper {
 	public List<MemberManage> listMemberState(String userId);
 	public MemberManage findByState(String userId);
 
-	public List<PluszoneAnswer> listAnswer(String userId);
-	public List<PluszoneAnswer> ageChart();
+	public List<PluszoneAnswerManage> findByAnswer(String userId);
+	public List<PluszoneAnswerManage> ageChart();
 }

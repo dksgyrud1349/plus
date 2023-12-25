@@ -2,7 +2,7 @@ package com.fa.plus.admin.domain;
 
 import java.util.List;
 
-public class PluszoneAnswer {
+public class PluszoneAnswerManage {
 	private String userId;
 	private long pluszoneNum;
 	private long anszoneNum;
