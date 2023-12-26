@@ -31,26 +31,20 @@ $(function(){
 });
 
 $(function(){
-	let url = "${pageContext.request.contextPath}/admin/plusManage/answerChart";
+	let url = "${pageContext.request.contextPath}/admin/plusManage/plusAgeChart";
 	
 	$.getJSON(url, function(data){
 		let titles = [];
 		let values = [];
 		
-		/*
-		for(let i=0; i<data.list.length; i++) {
-			titles.push(data.list[i].section);
-			values.push(data.list[i].count);
-		}
-		*/
 		for(let item of data.list) {
-			titles.push(item.answer);
+			titles.push(item.section);
 			values.push(item.count);
 		}
 
 		Highcharts.chart("chart-container1", {
 			title:{
-				text : "어떤 목적의 원데이 클래스를 추천 받으시겠습니까?"
+				text : "플러스 가입자 수"
 			},
 			xAxis : {
 				categories:titles
@@ -72,39 +66,33 @@ $(function(){
 });
 
 $(function(){
-	let url = "${pageContext.request.contextPath}/admin/plusManage/answerChart1";
+	let url = "${pageContext.request.contextPath}/admin/plusManage/classChart";
 	
 	$.getJSON(url, function(data){
 		let titles = [];
 		let values = [];
 		
-		/*
-		for(let i=0; i<data.list.length; i++) {
-			titles.push(data.list[i].section);
-			values.push(data.list[i].count);
-		}
-		*/
 		for(let item of data.list) {
-			titles.push(item.answer);
+			titles.push(item.section);
 			values.push(item.count);
 		}
 
 		Highcharts.chart("chart-container2", {
 			title:{
-				text : "어떤 카테고리의 원데이 클래스를 추천 받으시겠습니까?"
+				text : "어떤 클래스를 제공하실건가요?"
 			},
 			xAxis : {
 				categories:titles
 			},
 			yAxis : {
 				title:{
-					text:"인원(명)"
+					text:"답변 수"
 				}
 			},
 			series:[{
 		        type: 'column',
 		        colorByPoint: true,
-		        name: '인원수',
+		        name: '답변 수',
 		        data: values,
 		        showInLegend: false
 		    }]
@@ -113,39 +101,34 @@ $(function(){
 });
 
 $(function(){
-	let url = "${pageContext.request.contextPath}/admin/plusManage/answerChart2";
+	let url = "${pageContext.request.contextPath}/admin/plusManage/regionChart";
 	
 	$.getJSON(url, function(data){
 		let titles = [];
 		let values = [];
 		
-		/*
-		for(let i=0; i<data.list.length; i++) {
-			titles.push(data.list[i].section);
-			values.push(data.list[i].count);
-		}
-		*/
+		
 		for(let item of data.list) {
-			titles.push(item.answer);
+			titles.push(item.section);
 			values.push(item.count);
 		}
 
 		Highcharts.chart("chart-container3", {
 			title:{
-				text : "어떤 카테고리의 원데이 클래스를 추천 받으시겠습니까?"
+				text : "어느 지역에서 제공하실건가요?"
 			},
 			xAxis : {
 				categories:titles
 			},
 			yAxis : {
 				title:{
-					text:"인원(명)"
+					text:"답변 수"
 				}
 			},
 			series:[{
 		        type: 'column',
 		        colorByPoint: true,
-		        name: '인원수',
+		        name: '답변 수',
 		        data: values,
 		        showInLegend: false
 		    }]
@@ -154,39 +137,34 @@ $(function(){
 });
 
 $(function(){
-	let url = "${pageContext.request.contextPath}/admin/plusManage/answerChart3";
+	let url = "${pageContext.request.contextPath}/admin/plusManage/priceChart";
 	
 	$.getJSON(url, function(data){
 		let titles = [];
 		let values = [];
 		
-		/*
-		for(let i=0; i<data.list.length; i++) {
-			titles.push(data.list[i].section);
-			values.push(data.list[i].count);
-		}
-		*/
+		
 		for(let item of data.list) {
-			titles.push(item.answer);
+			titles.push(item.section);
 			values.push(item.count);
 		}
 
 		Highcharts.chart("chart-container4", {
 			title:{
-				text : "어떤 카테고리의 원데이 클래스를 추천 받으시겠습니까?"
+				text : "어느 가격대에서 제공하실 예정이신가요?"
 			},
 			xAxis : {
 				categories:titles
 			},
 			yAxis : {
 				title:{
-					text:"인원(명)"
+					text:"답변 수"
 				}
 			},
 			series:[{
 		        type: 'column',
 		        colorByPoint: true,
-		        name: '인원수',
+		        name: '답변 수',
 		        data: values,
 		        showInLegend: false
 		    }]
@@ -195,43 +173,38 @@ $(function(){
 });
 
 $(function(){
-	let url = "${pageContext.request.contextPath}/admin/plusManage/answerChart4";
+	let url = "${pageContext.request.contextPath}/admin/plusManage/ageChart";
 	
 	$.getJSON(url, function(data){
+		console.log(data);
 		let titles = [];
 		let values = [];
 		
-		/*
-		for(let i=0; i<data.list.length; i++) {
-			titles.push(data.list[i].section);
-			values.push(data.list[i].count);
-		}
-		*/
-		for(let item of data.list) {
-			titles.push(item.answer);
+		for(let item of data.age) {
+			titles.push(item.section);
 			values.push(item.count);
 		}
-
 		Highcharts.chart("chart-container5", {
 			title:{
-				text : "어떤 카테고리의 원데이 클래스를 추천 받으시겠습니까?"
+				text : "어느 연령대가 제공 대상자이신가요?"
 			},
 			xAxis : {
 				categories:titles
 			},
 			yAxis : {
 				title:{
-					text:"인원(명)"
+					text:"답변 수"
 				}
 			},
 			series:[{
 		        type: 'column',
 		        colorByPoint: true,
-		        name: '인원수',
+		        name: '답변 수',
 		        data: values,
 		        showInLegend: false
 		    }]
 		});
+		
 	});
 });
 </script>

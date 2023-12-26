@@ -38,12 +38,6 @@ $(function(){
 		let titles = [];
 		let values = [];
 		
-		/*
-		for(let i=0; i<data.list.length; i++) {
-			titles.push(data.list[i].section);
-			values.push(data.list[i].count);
-		}
-		*/
 		for(let item of data.list) {
 			titles.push(item.section);
 			values.push(item.count);

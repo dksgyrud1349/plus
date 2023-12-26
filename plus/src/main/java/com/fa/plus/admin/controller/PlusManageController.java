@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fa.plus.admin.domain.AnalysisManage;
 import com.fa.plus.admin.domain.MemberManage;
 import com.fa.plus.admin.domain.PluszoneAnswerManage;
 import com.fa.plus.admin.domain.PluszoneQuestionManage;
@@ -186,67 +187,60 @@ public class PlusManageController {
 		return ".admin.plusManage.graph";
 	}
 	
-	@GetMapping("answerChart")
+	@GetMapping("plusAgeChart")
 	@ResponseBody
-	public Map<String, Object> answerChart() throws Exception{
-		/*
+	public Map<String, Object> plusAgeChart() throws Exception{
+		
 		Map<String, Object> model = new HashMap<String, Object>();
-		List<Answer> list = service.answerChart();
+		List<AnalysisManage> list = service.listAgeSection();
 		
 		model.put("list", list);
 		return model;
-		*/
-		return null;
 	}
 	
-	@GetMapping("answerChart1")
+	@GetMapping("classChart")
 	@ResponseBody
-	public Map<String, Object> answerChart1() throws Exception{
-		/*
+	public Map<String, Object> classChart() throws Exception{
+		
 		Map<String, Object> model = new HashMap<String, Object>();
-		List<Answer> list = service.answerChart1();
+		List<AnalysisManage> list = service.classChart();
 		
 		model.put("list", list);
 		return model;
-		*/
-		return null;
 	}
 	
-	@GetMapping("answerChart2")
+	@GetMapping("regionChart")
 	@ResponseBody
-	public Map<String, Object> answerChart2() throws Exception{
-		/*
+	public Map<String, Object> regionChart() throws Exception{
+		
 		Map<String, Object> model = new HashMap<String, Object>();
-		List<Answer> list = service.answerChart2();
+		List<AnalysisManage> list = service.regionChart();
 		
 		model.put("list", list);
-		*/
-		return null;
+		
+		return model;
 	}
 	
-	@GetMapping("answerChart3")
+	@GetMapping("priceChart")
 	@ResponseBody
-	public Map<String, Object> answerChart3() throws Exception{
-		/*
+	public Map<String, Object> priceChart() throws Exception{
+		
 		Map<String, Object> model = new HashMap<String, Object>();
-		List<Answer> list = service.answerChart3();
+		List<AnalysisManage> list = service.priceChart();
 		
 		model.put("list", list);
 		return model;
-		*/
-		return null;
+		
 	}
 	
-	@GetMapping("answerChart4")
+	@GetMapping("ageChart")
 	@ResponseBody
-	public Map<String, Object> answerChart4() throws Exception{
-		/*
-		Map<String, Object> model = new HashMap<String, Object>();
-		List<Answer> list = service.answerChart4();
+	public Map<String, Object> ageChart() throws Exception{
 		
-		model.put("list", list);
+		Map<String, Object> model = new HashMap<String, Object>();
+		List<AnalysisManage> age = service.ageChart();
+		
+		model.put("age", age);
 		return model;
-		*/
-		return null;
 	}
 }

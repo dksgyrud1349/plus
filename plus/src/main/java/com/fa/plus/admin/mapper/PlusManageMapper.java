@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.fa.plus.admin.domain.AnalysisManage;
 import com.fa.plus.admin.domain.MemberManage;
 import com.fa.plus.admin.domain.PluszoneAnswerManage;
 
@@ -26,5 +27,10 @@ public interface PlusManageMapper {
 	public MemberManage findByState(String userId);
 
 	public List<PluszoneAnswerManage> findByAnswer(String userId);
-	public List<PluszoneAnswerManage> ageChart();
+	
+	public List<AnalysisManage> listAgeSection();
+	public List<AnalysisManage> classChart();
+	public List<AnalysisManage> regionChart();
+	public List<AnalysisManage> priceChart();
+	public List<AnalysisManage> ageChart();
 }

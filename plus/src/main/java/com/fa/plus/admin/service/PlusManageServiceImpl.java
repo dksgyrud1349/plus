@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fa.plus.admin.domain.AnalysisManage;
 import com.fa.plus.admin.domain.MemberManage;
 import com.fa.plus.admin.domain.PluszoneAnswerManage;
 import com.fa.plus.admin.mapper.PlusManageMapper;
@@ -155,9 +156,54 @@ public class PlusManageServiceImpl implements PlusManageService{
 		return list;
 	}
 
+
 	@Override
-	public List<PluszoneAnswerManage> ageChart() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<AnalysisManage> listAgeSection() {
+		List<AnalysisManage> list = null;
+		try {
+			list = mapper.listAgeSection();
+		} catch (Exception e) {
+		}
+		return list;
+	}
+	
+	@Override
+	public List<AnalysisManage> classChart() {
+		List<AnalysisManage> list = null;
+		try {
+			list = mapper.classChart();
+		} catch (Exception e) {
+		}
+		return list;
+	}
+
+	@Override
+	public List<AnalysisManage> regionChart() {
+		List<AnalysisManage> list = null;
+		try {
+			list = mapper.regionChart();
+		} catch (Exception e) {
+		}
+		return list;
+	}
+
+	@Override
+	public List<AnalysisManage> priceChart() {
+		List<AnalysisManage> list = null;
+		try {
+			list = mapper.priceChart();
+		} catch (Exception e) {
+		}
+		return list;
+	}
+	
+	@Override
+	public List<AnalysisManage> ageChart() {
+		List<AnalysisManage> list = null;
+		try {
+			list = mapper.ageChart();
+		} catch (Exception e) {
+		}
+		return list;
 	}
 }
