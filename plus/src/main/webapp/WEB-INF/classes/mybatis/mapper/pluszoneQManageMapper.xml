@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fa.plus.admin.mapper.pluszoneQManageMapper">
+<mapper namespace="com.fa.plus.admin.mapper.PluszoneQManageMapper">
 <!-- 관리자에서 플러스존 질문 관리 -->
 
 	<select id="QSubject" resultType="com.fa.plus.admin.domain.PluszoneQuestionManage">

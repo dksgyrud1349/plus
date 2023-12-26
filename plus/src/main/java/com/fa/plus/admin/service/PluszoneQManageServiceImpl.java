@@ -18,8 +18,9 @@ public class PluszoneQManageServiceImpl implements PluszoneQManageService {
 	public List<PluszoneQuestionManage> QSubject() {
 		List<PluszoneQuestionManage> list = null;
 		try {
-			mapper.QSubject();
+			list = mapper.QSubject();
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return list;
 	}
@@ -28,7 +29,7 @@ public class PluszoneQManageServiceImpl implements PluszoneQManageService {
 	public List<PluszoneQuestionManage> listQuestion() {
 		List<PluszoneQuestionManage> list = null;
 		try {
-			mapper.listQuestion();
+			list = mapper.listQuestion();
 		} catch (Exception e) {
 		}
 		return list;
