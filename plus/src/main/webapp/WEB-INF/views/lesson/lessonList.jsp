@@ -3,20 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-* {
-	padding: 0;
-	margin: 0;
-}
-
-*, *::after, *::before {
-	box-sizing: border-box;
-}
-
-body {
-	font-size: 14px;
-	font-family: "Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
-}
-
 textarea:focus, input:focus {
 	outline: none;
 }
@@ -24,6 +10,7 @@ textarea:focus, input:focus {
 .zoom{
   	margin: 0px auto;
   	overflow: hidden;
+  	border-radius: 20px 20px 0 0;
 }
 
 .zoom img {
@@ -143,11 +130,11 @@ $(function(){
 });
 </script>
 
-<div class="container mt-5 pt-3 ms-5">
+<div class="container mt-5 pt-3">
 	<div class="row justify-content-center">
 		<div class="col-8 mt-5" style="width: 180rem;">
 			<h5 class="pb-2 fw-bold fs-2">모든 원데이 클래스</h5>
-			<div class="row d-flex mt-5">
+			    <div class="row d-flex mt-5">
 				<form action="" name="searchForm" method="post">
 					<div class="col-2 p-3" style="float: left; width: 16.66%;">${dataCount}개(${page}/${total_page} 페이지)</div>
 					<div class="col-2 p-2" style="float: left; width: 16.66%;">
@@ -187,17 +174,22 @@ $(function(){
 					</div>
 				</form>
 			</div>
-			<div class="row mt-5">
+			<div class="row mt-5" style="border-top:1px solid #cccccc; clear:both;">
 				<c:forEach var="dto" items="${list}" varStatus="status">
-					<div class="card col-4 p-1" style="width: 25rem; height: 35rem;">
+					<div class="card col-4 p-1 m-3" style="width: 25rem; height: 35rem; border:none; background:#F5F5F5">
 						<div class="zoom">
-							<img
-								src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg"
-								class="card-img-top"  alt="...">
+							<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="card-img-top">
+							    <div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">
+							    	<i class="bi bi-star"></i> 5.0 (리뷰 개수)
+							    </div>
 						</div>
 						<div class="card-body" style="height: 15px;">
 							<p class="card-text">
 								<i class="bi bi-person"></i> ${dto.nickName}
+								<button type="button" class="btn btnSendLessonLike" title="좋아요" data-classNum="${dto.classNum}" style="float:right;">
+									<i class="pt-1 bi ${dto.userLessonLiked ? 'bi-heart-fill' : 'bi-heart'}"></i>
+									<span id="lessonLikeCount" class="${dto.classNum}">${dto.lessonLikeCount}</span>
+								</button>
 							</p>
 							<h5 class="card-title pb-1">${dto.className}</h5>
 							<p class="card-text">
@@ -206,17 +198,12 @@ $(function(){
 							<p class="card-text">
 								<i class="bi bi-calendar-check"></i> ${dto.startDate} ~ ${dto.endDate}
 							</p>
-							<p class="card-text">
-								<i class="bi bi-star"></i> 5.0 (리뷰 개수)
-							</p>
-							<span class="card-text text-danger text-start mt-5 fs-5"> <fmt:formatNumber value="${dto.price}" pattern="#,###" /></span>
-							<p class="text-end">
+							
+							<span class="card-text text-danger text-start mt-5 fs-5"> <fmt:formatNumber value="${dto.price}" pattern="#,###원" /></span>
+							
+							<div class="d-grid gap-2 mt-3">
 								<button class="btn btn-primary product-item" data-productNum="${dto.classNum}">예약하기</button>
-								<button type="button" class="btn btnSendLessonLike" title="좋아요" data-classNum="${dto.classNum}">
-									<i class="pt-1 bi ${dto.userLessonLiked ? 'bi-heart-fill' : 'bi-heart'}"></i>
-									<span id="lessonLikeCount" class="${dto.classNum}">${dto.lessonLikeCount}</span>
-								</button>
-							</p>
+							</div>
 						</div>
 					</div>
 				</c:forEach>
