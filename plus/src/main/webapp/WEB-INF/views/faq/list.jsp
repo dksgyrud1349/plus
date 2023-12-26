@@ -10,9 +10,7 @@
 }
 .main-board {
 	border: 1px solid #dee2e6;
-	padding: 20px 16px 20px 16px;
-	width: 1200px;
-	margin: 0px;
+	padding: 20px 16px;
 	background: #e9ecef;
 }
 .accord-body{

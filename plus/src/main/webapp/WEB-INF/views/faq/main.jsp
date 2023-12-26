@@ -1,6 +1,4 @@
-faq.main))))
-
-	<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
@@ -11,12 +9,6 @@ faq.main))))
 		format('woff');
 	font-weight: normal;
 	font-style: normal;
-}
-.body-container {
-	width: 1200px;
-	height: 150px;
-	margin-top: 150px;
-	margin-left: 20px;
 }
 
 .font1 {
@@ -38,13 +30,7 @@ faq.main))))
 	height: 37px;
 	border-radius: 6px;
 }
-.container2{
-	width: 1200px;
-	height: 500px;
-	margin-top: 20px;
-	margin-left: 20px;
-	border-top: 2px solid black;
-}
+
 
 </style>
 
@@ -113,30 +99,36 @@ faq.main))))
 	
 </script>
 
-<div class="container" style="min-height: 600px; margin-bottom: 150px;">
-	<div class="body-container">
-		<div class="body-title">
-			<h3 class="font1"
-				style="border-top: 1px solid black; padding-top: 20px;">
-				<br><img width="60" height="60" src="https://img.icons8.com/officel/80/faq.png" alt="faq"/>&nbsp;자주하는 질문<br><br>
-			</h3>
-		</div>
-		<div class="body-main main-color">
-			
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<li class="nav-item" role="presentation">
-					<button class="nav-link active" id="tab-0" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="0" aria-selected="true" data-cateNum="0">모두</button>
-				</li>
-				<c:forEach var="dto" items="${listCategory}" varStatus="status">
-					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="tab-${status.count}" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="${status.count}" aria-selected="true" data-cateNum="${dto.cateNum}">${dto.faqName}</button>
-					</li>
-				</c:forEach>
-			</ul>
-			
-			<div class="tab-content pt-2" id="nav-tabContent">
-				<div class="tab-pane fade show active" id="nav-content" role="tabpanel" aria-labelledby="nav-tab-content"></div>
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
+				<div class="body-main">
+					<div class="body-title">
+						<h3 class="font1"
+							style="border-top: 1px solid black; padding-top: 20px;">
+							<br><img width="60" height="60" src="https://img.icons8.com/officel/80/faq.png" alt="faq"/>&nbsp;자주하는 질문<br><br>
+						</h3>
+					</div>
+					<div class="body-main main-color">
+						
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="tab-0" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="0" aria-selected="true" data-cateNum="0">모두</button>
+							</li>
+							<c:forEach var="dto" items="${listCategory}" varStatus="status">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="tab-${status.count}" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="${status.count}" aria-selected="true" data-cateNum="${dto.cateNum}">${dto.faqName}</button>
+								</li>
+							</c:forEach>
+						</ul>
+						
+						<div class="tab-content pt-2" id="nav-tabContent">
+							<div class="tab-pane fade show active" id="nav-content" role="tabpanel" aria-labelledby="nav-tab-content"></div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</main>

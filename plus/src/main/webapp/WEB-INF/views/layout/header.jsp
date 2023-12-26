@@ -395,7 +395,7 @@
 						</li>
 						
 						<li>
-							<li onclick="urlOk('/')" class="menubtn bar">사이트맵</li><span class="border-end"></span>
+							<li onclick="urlOk('/sitemap/sitemap')" class="menubtn bar">사이트맵</li><span class="border-end"></span>
 						</li>
 						
 						<c:choose>
