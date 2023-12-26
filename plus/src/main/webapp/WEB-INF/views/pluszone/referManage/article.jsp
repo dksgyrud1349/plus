@@ -55,7 +55,7 @@ function deleteOk() {
 									</tr>
 									<tr>
 										<td colspan="2" align="center">
-										제목 : ${dto.subject}${dto.memberIdx == 51 ? "" : " [숨김]" }
+										제목 : ${dto.subject}
 										</td>
 									</tr>
 								</thead>
@@ -63,7 +63,7 @@ function deleteOk() {
 								<tbody>
 									<tr>
 										<td width="50%" align="left">
-											이름 : ${dto.userName}
+											이름 : ${dto.classNum}
 										</td>
 										<td width="50%" align="right">
 											${dto.regDate}
@@ -72,7 +72,7 @@ function deleteOk() {
 									
 									<tr style="border-bottom:none;">
 										<td colspan="2" valign="top" height="200">
-											${dto.content}
+											${dto.rcontent}
 										</td>
 									</tr>
 									
@@ -101,7 +101,7 @@ function deleteOk() {
 									<td width="50%" align="left">
 										<c:choose>
 											<c:when test="${sessionScope.member.userId == dto.userId}">
-								    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/referManage/update?refnum=${dto.refNum}&page=${page}';">수정</button>
+								    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/referManage/update?refNum=${dto.refNum}&page=${page}';">수정</button>
 								    		</c:when>
 								    		<c:otherwise>
 								    			<button type="button" class="btn" disabled>수정</button>

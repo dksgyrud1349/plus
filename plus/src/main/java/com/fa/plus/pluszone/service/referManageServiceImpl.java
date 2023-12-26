@@ -20,7 +20,7 @@ public class referManageServiceImpl implements referManageService {
 	@Override
 	public void insertRefer(referManage dto) throws SQLException {
 		try {
-			mapper.insertrefer(dto);
+			mapper.insertRefer(dto);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -63,19 +63,6 @@ public class referManageServiceImpl implements referManageService {
 	}
 
 	@Override
-	public List<referManage> listReferTitle(long memberIdx) {
-		List<referManage> list = null;
-
-		try {
-			list = mapper.listReferTitle(memberIdx);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return list;
-	}
-
-	@Override
 	public List<referManage> listRefer(Map<String, Object> map) {
 		List<referManage> list = null;
 
@@ -88,20 +75,6 @@ public class referManageServiceImpl implements referManageService {
 		return list;
 	}
 
-	
-
-	@Override
-	public List<referManage> listReferTop(Map<String, Object> map) {
-		List<referManage> list = null;
-
-		try {
-			list = mapper.listrReferTop(map);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return list;
-	}
 
 	@Override
 	public void updateHitCount(long num) throws Exception {
@@ -151,6 +124,19 @@ public class referManageServiceImpl implements referManageService {
 		}
 
 		return dto;
+	}
+
+	@Override
+	public List<referManage> listClass(Long memberIdx) {
+		List<referManage> list = null;
+		
+		try {
+			list = mapper.listClass(memberIdx);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 }

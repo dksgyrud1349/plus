@@ -2,26 +2,26 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fa.plus.pluszone.mapper.referManageMapper">
-
-   <select id="referSeq" resultType="Long">
-      SELECT refer_seq.NEXTVAL FROM dual
-   </select>
-   
    <insert id="insertRefer" parameterType="com.fa.plus.pluszone.domain.referManage">
-      INSERT INTO refer(referNum, subject, rContent, regDate, classNum)
-      VALUES(#{referNum}, #{subject}, #{rContent}, SYSDATE, #{classNum})
+      INSERT INTO refer(refNum, subject, rcontent, regDate, classNum)
+      VALUES(refer_seq.NEXTVAL, #{subject}, #{rcontent}, SYSDATE, #{classNum})
    </insert>
    
+   <select id="listClass" parameterType="Long" resultType="com.fa.plus.pluszone.domain.referManage">
+		SELECT className, classNum from lesson where memberIdx = #{memberIdx}
+		ORDER BY classNum
+   </select>
+
    <sql id="where-list">
       <if test="schType=='all' ">
          ( INSTR(subject, #{kwd}) &gt; 0
-            OR DBMS_LOB.INSTR(rContent, #{kwd}) &gt; 0 )
+            OR INSTR(rcontent, #{kwd}) &gt; 0 )
       </if>
       <if test="schType=='subject' ">
          INSTR(subject, #{kwd}) &gt; 0
       </if>
       <if test="schType=='content' ">
-         DBMS_LOB.INSTR( rContent, #{kwd}) &gt; 0 
+         DBMS_LOB.INSTR( rcontent, #{kwd}) &gt; 0 
       </if>
       <if test="schType=='regDate' ">
          ( TO_CHAR(regDate, 'YYYY-MM-DD') = #{kwd}
@@ -31,7 +31,7 @@
 
    <!-- 리스트 -->
    <select id="listRefer" parameterType="map" resultType="com.fa.plus.pluszone.domain.referManage" >
-         SELECT r.classNum, r.subject, refNum,
+         SELECT r.classNum, r.subject, r.refNum, l.className,
               TO_CHAR(r.regDate, 'YYYY-MM-DD') regDate,
               NVL(fileCount, 0) fileCount
          FROM refer r
@@ -45,7 +45,7 @@
             <if test="kwd != null and kwd!=''">
                <include refid="where-list"/>
             </if>
-            AND (r.refNum = #{refNum})
+            
          </where>
          
          ORDER BY refNum DESC
@@ -66,7 +66,7 @@
 
    <!-- 글보기 -->
    <select id="findById" parameterType="long" resultType="com.fa.plus.pluszone.domain.referManage">
-      SELECT refNum, r.classNum, l.className, r.subject, r.rContent, r.regDate
+      SELECT refNum, r.classNum, l.className, r.subject, r.rcontent, r.regDate
       FROM refer r 
       JOIN lesson l ON r.classNum = l.classNum
       WHERE refNum= #{refNum}
@@ -87,7 +87,7 @@
       FETCH FIRST 1 ROWS ONLY
      </select>
 
-    
+    <!-- 다음글 -->
        <select id="findByNext" parameterType="map" resultType="com.fa.plus.pluszone.domain.referManage">
       SELECT refNum, subject
       FROM refer r
@@ -102,7 +102,7 @@
        </select>
 
        <update id="updateRefer" parameterType="com.fa.plus.pluszone.domain.referManage">
-          UPDATE refer SET  subject = #{subject}, rContent=#{rContent}, classNum = #{classNum}
+          UPDATE refer SET  subject = #{subject}, rcontent=#{rcontent}, classNum = #{classNum}
           WHERE refNum = #{refNum}
        </update>
 

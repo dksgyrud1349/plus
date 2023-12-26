@@ -10,15 +10,14 @@ import com.fa.plus.pluszone.domain.referManage;
 
 
 public interface referManageMapper {
-	public void insertrefer(referManage dto) throws SQLException;
+	public void insertRefer(referManage dto) throws SQLException;
 	public void updaterefer(referManage dto) throws SQLException;
 	public void deleterefer(long num) throws SQLException;
 	
-	public List<referManage> listReferTitle(long memberIdx);
+	public List<referManage> listClass(Long memberIdx);
 	
 	public int dataCount(Map<String, Object> map);
 	public List<referManage> listRefer(Map<String, Object> map);
-	public List<referManage> listrReferTop(Map<String, Object> map);
 	
 	public void updateHitCount(long num) throws Exception;
 	

@@ -61,13 +61,8 @@ public class referManageController {
 		if(dataCount != 0) {
 			total_page = myUtil.pageCount(dataCount, size);
 		}
-		//1페이지 공지리스트
-		List<referManage> listRefer = null;
-		if (current_page == 1) {
-		 listRefer = service.listReferTop(map);
-		}
-	
 		
+	
 		// 리스트에 출력할 데이터를 가져오기
 		int offset = (current_page - 1) * size;
 		if(offset < 0) offset = 0;
@@ -93,7 +88,6 @@ public class referManageController {
 		
 		String paging = myUtil.paging(current_page, total_page, listUrl);
 		
-		model.addAttribute("listrefer", listRefer);
 		model.addAttribute("list", list);
 		model.addAttribute("page", current_page);
 		model.addAttribute("dataCount", dataCount);
@@ -112,12 +106,11 @@ public class referManageController {
 	public String writeForm(HttpSession session, Model model) throws Exception{
 		
 		SessionInfo info = (SessionInfo)session.getAttribute("member");
-	
-		long memberIdx = info.getMemberIdx();
-		List<referManage> listReferTitle = service.listReferTitle(memberIdx);
+		
+		List<referManage> listClass = service.listClass(info.getMemberIdx());
 		
 		model.addAttribute("mode", "write");
-		model.addAttribute("listTitle", listReferTitle);
+		model.addAttribute("listClass", listClass);
 		
 		return ".pluszone.referManage.write";
 	}
@@ -126,10 +119,12 @@ public class referManageController {
 	public String writeSubmit(referManage dto, HttpSession session) throws Exception{
 		
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
-	
+
 		try {
 			dto.setUserId(info.getUserId());
 			service.insertRefer(dto);
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -150,7 +145,6 @@ public class referManageController {
 			query += "&schType=" + schType + "&kwd=" + URLEncoder.encode(kwd, "UTF-8");
 		}
 		
-		service.updateHitCount(num);
 		
 		referManage dto = service.findById(num);
 		if (dto == null) {
@@ -165,8 +159,6 @@ public class referManageController {
 		
 		referManage prevDto = service.findByPrev(map);
 		referManage nextDto = service.findByNext(map);
-		
-		
 		
 		model.addAttribute("dto", dto);
 		model.addAttribute("prevDto", prevDto);
@@ -183,8 +175,6 @@ public class referManageController {
 			Model model) throws Exception {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 
-		long memberIdx = info.getMemberIdx();
-		List<referManage> listTitle = service.listReferTitle(memberIdx);
 
 		referManage dto = service.findById(num);
 		if (dto == null || ! info.getUserId().equals(dto.getUserId())) {
@@ -194,7 +184,7 @@ public class referManageController {
 		model.addAttribute("mode", "update");
 		model.addAttribute("page", page);
 		model.addAttribute("dto", dto);
-		model.addAttribute("listTitle", listTitle);
+		
 
 		return ".pluszone.referManage.write";
 	}
@@ -206,12 +196,10 @@ public class referManageController {
 
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		
-		long memberIdx = info.getMemberIdx();
-		
 		try {
 			dto.setUserId(info.getUserId());
 			 service.updateRefer(dto);
-			 service.listReferTitle(memberIdx);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
