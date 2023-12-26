@@ -64,7 +64,7 @@ public class DeclarationController {
 		
 		try {
 			dto.setClassNum(declarationService.findByNum(dto.getClassName()));
-			System.out.println(">>>>>>>>>>>>>>>>>>>>"+dto.getClassNum());
+			// System.out.println(">>>>>>>>>>>>>>>>>>>>"+dto.getClassNum());
 			
 			declarationService.insertDeclaration(dto);
 			rsltCode = "true";
