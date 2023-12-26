@@ -209,6 +209,7 @@ $(function(){
 				</c:forEach>
 			</div>
 			
+			
 			<div class="text-center mt-4 page-navigation">${dataCount == 0 ? "등록된 클래스가 존재하지 않습니다." : paging}</div>
 		</div>
 	</div>
