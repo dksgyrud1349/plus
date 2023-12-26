@@ -68,7 +68,7 @@
             		id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
             		style="width:150px;">
             		
-                	고객센터
+                	고객서비스
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/company/introduction">회사소개</a></li>

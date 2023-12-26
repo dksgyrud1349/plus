@@ -3,21 +3,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style>
-.sitemap {
-	display: inline-block;
-	min-width: 100%;
-	padding: 40px;
-}
-
 li a,
 li a.multi:after {
     position: relative;
 	display: block;
 	margin: 0;
-	padding: 15px;
+	padding: 10px;
 	font-size: 14px;
 	font-weight: bold;
-	line-height: 16px;
+	line-height: 15px;
 	white-space: normal;
 	color: #333;
 	background-color: white;
@@ -25,8 +19,6 @@ li a.multi:after {
 	border-top: 4px solid #95a5a6;
     z-index: 1;
 }
-
-
 
 li a.multi:after {
 	content: " ";
@@ -39,7 +31,6 @@ li a.multi:after {
 	border-color: #eee;
 	border-top-width: 0 !important;
 	border-left-width: 0 !important;
-	background-color: transparent;
 	z-index: -1;
 }
 
@@ -55,20 +46,10 @@ li a:before {
 
 li a small {
 	display: block;
-	font-weight: normal;
-	font-size: 12px;
-	margin-top: 10px;
+	font-size: 10px;
+	margin-top: 7px;
 }
 
-.sitemap .fa {
-	position: absolute;
-	top: 15px;
-	right: 15px;
-	font-size: 16px;
-	vertical-align: middle;
-}
-
-/* --- Root --- */
 ul, li {
 	position: relative;
 	display: inline-block;
@@ -88,7 +69,6 @@ ul, li {
 .sitemapnav ul li a { border-top-color: #e74c3c; width: auto; }
 .sitemapnav ul li a:before, .sitemapnav ul li .fa { color: #e74c3c; }
 
-/* --- Level 1 --- */
 .sitemapnav ul ul {
 	white-space: nowrap;
 }
@@ -96,8 +76,8 @@ ul, li {
 .sitemapnav ul ul li {
 	position: relative;
 	vertical-align: top;
-	padding-top: 20px;
-	margin-right: 20px;
+	padding-top: 15px;
+	margin-right: 15px;
 	white-space: normal;
 	width: 100%;
 }
@@ -108,19 +88,19 @@ ul, li {
 
 .sitemapnav ul ul li:before {
 	border-top-style: solid;
-	width: 30px;
+	width: 25px;
 	top: 50px;
-	margin: 0 0 0 -30px;
+	margin: 0 0 0 -20px;
 }
 
 .sitemapnav ul ul li:first-child:before {
 	border-top-style: none;
 	border-left-style: solid;
 	width: 0;
-	height: 30px;
+	height: 20px;
 	top: 0;
 	left: 45px;
-	margin: 0 0 0 -30px;
+	margin: 0 0 0 -20px;
 }
 
 .sitemapnav ul ul li a { border-top-color: #3498db; width: auto; }
@@ -150,7 +130,7 @@ ul, li {
 }
 
 .sitemapnav ul ul ul li:last-child:before  {
-	height: 50px;
+	height: 20px;
 }
 
 .sitemapnav ul ul ul li:after  {
@@ -186,7 +166,7 @@ ul, li {
 .secondary ul li {
 	display: inline-block;
 	white-space: normal;
-	padding: 0 20px 0 0;
+	padding: 0 10px 0 0;
 }
 
 .secondary ul li:before,
@@ -204,79 +184,81 @@ ul, li {
 	width: 220px;
 }
 </style>
+<main class="wrapper" style="width:100%; margin:10% auto">
+	<div id="layoutSidenav_content">
+		 	<div class="container-fluid">
+				<div class="body-container">
+    				<div class="body-main">
 
-<div class="sitemap">
-
-    <h1>My Sitemap</h1>
-    <h2>Sitemap &mdash; Version 1.0</h2>
-    <hr>
-
-    <nav class="sitemapnav">
-        <ul>
-           <li id="home">
-              <a href="https://mydomain.co.uk">
-                  <i class="fa fa-home"></i> Home <small>Some kind of description</small>
-              </a>
-              <ul>
-                 <li>
-                    <a href="/search"><i class="fa fa-search"></i> Search <small>Search by name, location and/or category.</small></a>
-                    <ul>
-                       <li><a href="/search/#list">List view</a></li>
-                       <li><a href="/search/#map">Map view</a></li>
-                    </ul>
-                 </li>
-                 <li>
-                    <a href="/suppliers"><i class="fa fa-building"></i> Suppliers</a>
-                    <ul>
-                       <li>
-                           <a href="/suppliers/a-z">A to Z</a>
-                           <ul>
-                               <li><a href="/suppliers/a-z/:letter" class="multi">Level 3</a></li>
-                           </ul>
-                       </li>
-                       <li>
-                           <a href="/suppliers/location">Location</a>
-                           <ul>
-                               <li><a href="/suppliers/location/:location" class="multi">Level 3</a></li>
-                           </ul>
-                       </li>
-                       <li>
-                           <a href="/suppliers/category">Category</a>
-                           <ul>
-                               <li><a href="/suppliers/category/:category" class="multi">Level 3</a></li>
-                               <li><a href="/suppliers/category/:category" class="multi">Level 4</a></li>
-                           </ul>
-                       </li>
-                    </ul>
-                 </li>
-                 <li>
-                    <a href="/supplier/:slug"><i class="fa fa-building"></i> Supplier <small>Supplier details page.</small></a>
-                 </li>
-                 <li>
-                    <a href="/blog"><i class="fa fa-rss"></i> Blog <small>Filter by category or tag.</small></a>
-                    <ul>
-                       <li><a href="/blog/article" class="multi">Article</a></li>
-                    </ul>
-                 </li>
-                 <li>
-                    <a href="/about"><i class="fa fa-info-circle"></i> About</a>
-                 </li>
-                 <li>
-                    <a href="/contact"><i class="fa fa-phone"></i> Contact</a>
-                 </li>
-              </ul>
-           </li>
-        </ul>
-    </nav>
-
-    <nav class="secondary">
-        <ul>
-           <li><a href="/login">Sign In</a></li>
-           <li><a href="/sitemap">Site Map</a></li>
-           <li><a href="/faqs">FAQs</a></li>
-           <li><a href="/terms">Terms &amp; Conditions</a></li>
-           <li><a href="/privacy">Privacy Policy</a></li>
-        </ul>
-    </nav>
-
-</div>
+				    <h1 style="border-bottom:3px solid #cccccc; margin-bottom:3%">모든 서비스</h1>
+				
+				    <nav class="sitemapnav">
+				        <ul>
+				           <li>
+				              <a href="${pageContext.request.contextPath}/">
+				                  <i class="fa-home"></i> Home <small>Some kind of description</small>
+				              </a>
+				              <ul>
+				                 <li>
+				                    <a href="/search"><i class="fa-search"></i> Search <small>Search by name, location and/or category.</small></a>
+				                    <ul>
+				                       <li><a href="${pageContext.request.contextPath}/">List view</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/">Map view</a></li>
+				                    </ul>
+				                 </li>
+				                 <li>
+				                    <a href="${pageContext.request.contextPath}/"><i class="fa-building"></i> Suppliers</a>
+				                    <ul>
+				                       <li>
+				                           <a href="${pageContext.request.contextPath}/">A to Z</a>
+				                           <ul>
+				                               <li><a href="${pageContext.request.contextPath}/" class="multi">Level 3</a></li>
+				                           </ul>
+				                       </li>
+				                       <li>
+				                           <a href="${pageContext.request.contextPath}/">Location</a>
+				                           <ul>
+				                               <li><a href="${pageContext.request.contextPath}/" class="multi">Level 3</a></li>
+				                           </ul>
+				                       </li>
+				                       <li>
+				                           <a href="/suppliers/category">Category</a>
+				                           <ul>
+				                               <li><a href="${pageContext.request.contextPath}/" class="multi">Level 3</a></li>
+				                               <li><a href="${pageContext.request.contextPath}/" class="multi">Level 4</a></li>
+				                           </ul>
+				                       </li>
+				                    </ul>
+				                 </li>
+				                 <li>
+				                    <a href="${pageContext.request.contextPath}/"><i class="fa fa-building"></i> Supplier <small>Supplier details page.</small></a>
+				                 </li>
+				                 <li>
+				                    <a href="${pageContext.request.contextPath}/"><i class="fa fa-rss"></i> Blog <small>Filter by category or tag.</small></a>
+				                    <ul>
+				                       <li><a href="${pageContext.request.contextPath}/" class="multi">Article</a></li>
+				                    </ul>
+				                 </li>
+				                 <li>
+				                    <a href="${pageContext.request.contextPath}/"><i class="fa fa-info-circle"></i> About</a>
+				                 </li>
+				              </ul>
+				           </li>
+				        </ul>
+				    </nav>
+				
+				    <nav class="secondary">
+				        <ul>
+				           <li><a href="${pageContext.request.contextPath}/">회사소개</a></li>
+				           <li><a href="${pageContext.request.contextPath}/">자주묻는 질문</a></li>
+				           <li><a href="${pageContext.request.contextPath}/">1:1문의</a></li>
+				           <li><a href="${pageContext.request.contextPath}/">공지사항</a></li>
+				           <li><a href="${pageContext.request.contextPath}/">서비스이용약관</a></li>
+				        </ul>
+				    </nav>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

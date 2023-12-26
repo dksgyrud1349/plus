@@ -32,20 +32,20 @@ function check() {
 </script>
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
-	<div id="layoutSidenav_content" style="background: #F8F8FF;">
+	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
 			<div class="body-container pt-5" style="width:80%; margin:5% auto;">
 				<div class="body-main">
-					<div class="card mb-5 w-80" style="margin:0 auto">
+					<div class="card mb-5 w-80" style="margin:0 auto; border:none;">
 			        	<div class="card-header text-center">
 			            	<h3>
 			                	<i class="bi bi-app"></i> 커뮤니티
 				            </h3>
 				        </div>
 		
-						<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+						<div id="tab-content">
 							<form name="boardForm" method="post" enctype="multipart/form-data">	
-								<table class="table mt-5 write-form">
+								<table class="table write-form">
 									<tr>
 										<td class="bg-light col-sm-2" scope="row">제 목</td>
 										<td>
