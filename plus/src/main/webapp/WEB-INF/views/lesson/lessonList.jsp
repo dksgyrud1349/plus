@@ -21,6 +21,10 @@ textarea:focus, input:focus {
 	transform: scale(1.2);
 }
 
+.title{
+	border-left:3px solid #47a3da;
+	padding-left : 10px;
+}
 </style>
 
 <script type="text/javascript"
@@ -132,48 +136,49 @@ $(function(){
 
 <div class="container mt-5 pt-3">
 	<div class="row justify-content-center">
-		<div class="col-8 mt-5" style="width: 180rem;">
-			<h5 class="pb-2 fw-bold fs-2">모든 원데이 클래스</h5>
+		<div class="col-8 mt-5 " style="width: 180rem;">
+			<h1 class="fw-bold fs-2 title">모든 원데이 클래스</h1>
+			
 			    <div class="row d-flex mt-5">
-				<form action="" name="searchForm" method="post">
-					<div class="col-2 p-3" style="float: left; width: 16.66%;">${dataCount}개(${page}/${total_page} 페이지)</div>
-					<div class="col-2 p-2" style="float: left; width: 16.66%;">
-						<select name="mainNum" class="form-select">
-							<option value="0">메인카테고리</option>
-							<c:forEach var="vo" items="${listMainCategory}">
-								<option value="${vo.mainNum}" ${mainNum == vo.mainNum ? "selected":""}>${vo.mainName}</option>
-							</c:forEach>
-						</select>
-					</div>
-					<div class="col-2 p-2" style="float: left; width: 16.66%;">
-						<select name="subNum" class="form-select">
-							<option value="0">서브카테고리</option>
-							<c:forEach var="vo" items="${listSubCategory}">
-								<option value="${vo.subNum}" ${subNum==vo.subNum?"selected":""}>${vo.subName}</option>
-							</c:forEach>
-						</select>
-					</div>
-					<div class="col-2 p-2" style="float: left; width: 16.66%;">
-						<select name="schType" class="form-select">
-							<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
-							<option value="nickName" ${schType=="nickName"?"selected":""}>플러스</option>
-							<option value="regDate" ${schType=="regDate"?"selected":""}>등록일자순</option>
-							<option value="className" ${schType=="className"?"selected":""}>클래스명</option>
-							<option value="content" ${schType=="content"?"selected":""}>내용</option>
-							<option value="highPrice" ${schType=="highPrice"?"selected":""}>높은가격순</option>
-							<option value="lowPrice" ${schType=="lowPrice"?"selected":""}>낮은가격순</option>
-						</select>
-					</div>
-					<div class="col-2 p-2" style="float: left; width: 16.66%;">
-						<input type="text" name="kwd" class="form-control" value="${kwd}">
-					</div>
-					<div class="col-2 pt-2 text-center" style="float: left; width: 16.66%;">
-						<button class="btn btn-outline-secondary">
-							<span class="fw-semibold text-dark">검색</span>
-						</button>
-					</div>
-				</form>
-			</div>
+					<form action="" name="searchForm" method="post">
+						<div class="col-2 p-3" style="float: left; width: 16.66%;">${dataCount}개(${page}/${total_page} 페이지)</div>
+						<div class="col-2 p-2 input-group" style="float: right; width: 16.66%;">
+							<input type="text" name="kwd" class="form-control" value="${kwd}">
+							<button class="btn btn-outline-secondary">
+								<span class="fw-semibold text-dark">검색</span>
+							</button>
+						</div>
+						<div class="col-2 p-2" style="float: right; width: 16.66%;">
+							<select name="schType" class="form-select">
+								<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
+								<option value="nickName" ${schType=="nickName"?"selected":""}>플러스</option>
+								<option value="regDate" ${schType=="regDate"?"selected":""}>등록일자순</option>
+								<option value="className" ${schType=="className"?"selected":""}>클래스명</option>
+								<option value="content" ${schType=="content"?"selected":""}>내용</option>
+								<option value="highPrice" ${schType=="highPrice"?"selected":""}>높은가격순</option>
+								<option value="lowPrice" ${schType=="lowPrice"?"selected":""}>낮은가격순</option>
+							</select>
+						</div>
+						<div class="col-2 p-2" style="float: right; width: 16.66%;">
+							<select name="subNum" class="form-select">
+								<option value="0">서브카테고리</option>
+								<c:forEach var="vo" items="${listSubCategory}">
+									<option value="${vo.subNum}" ${subNum==vo.subNum?"selected":""}>${vo.subName}</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="col-2 p-2" style="float: right; width: 16.66%;">
+							<select name="mainNum" class="form-select">
+								<option value="0">메인카테고리</option>
+								<c:forEach var="vo" items="${listMainCategory}">
+									<option value="${vo.mainNum}" ${mainNum == vo.mainNum ? "selected":""}>${vo.mainName}</option>
+								</c:forEach>
+							</select>
+						</div>
+						
+					</form>
+				</div>
+			
 			<div class="row mt-5" style="border-top:1px solid #cccccc; clear:both;">
 				<c:forEach var="dto" items="${list}" varStatus="status">
 					<div class="card col-4 p-1 m-3" style="width: 25rem; height: 35rem; border:none; background:#F5F5F5">
