@@ -55,6 +55,6 @@
 	</select>
 	
 	<update id="updateApproval" parameterType="map">
-		UPDATE approval SET approvalCode = #{approvalCode}, memo = #{memo} WHERE classNum = #{classNum}
+		UPDATE approval SET approvalCode = #{approvalCode}, memo = #{memo}, userId = #{userId} WHERE classNum = #{classNum}
 	</update>
 </mapper>

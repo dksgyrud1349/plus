@@ -19,7 +19,14 @@ public class LessonManage {
 	private String subName;  // 서브카테고리이름
 	private String userName;  // 플러스 이름
 	private String content;
+	private String userId;
 	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public String getContent() {
 		return content;
 	}

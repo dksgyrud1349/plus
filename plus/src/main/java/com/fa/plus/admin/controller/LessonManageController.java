@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fa.plus.admin.domain.LessonManage;
 import com.fa.plus.admin.service.LessonManageService;
 import com.fa.plus.common.MyUtil;
+import com.fa.plus.domain.SessionInfo;
 
 @Controller
 @RequestMapping("/admin/lessonManage/*")
@@ -387,7 +388,9 @@ public class LessonManageController {
 	}
 	
 	@GetMapping("update0")
-	public String update0(@RequestParam long classNum, @RequestParam int approvalCode) throws Exception{
+	public String update0(@RequestParam long classNum, @RequestParam int approvalCode, HttpSession session) throws Exception{
+		
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		
 		String memo;
 		
@@ -405,6 +408,8 @@ public class LessonManageController {
 		map.put("classNum", classNum);
 		map.put("approvalCode", approvalCode);
 		map.put("memo", memo);
+		map.put("userId", info.getUserId());
+		
 		
 		try {
 			service.updateApproval(map);
