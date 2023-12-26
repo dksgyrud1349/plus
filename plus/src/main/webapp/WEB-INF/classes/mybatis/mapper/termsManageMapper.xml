@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.admin.mapper.TermsManageMapper">
+	<insert id="insertTerms" parameterType="com.fa.plus.admin.domain.TermsManage">
+		INSERT INTO terms(num, subject, content)
+			VALUES (terms_seq.NEXTVAL, #{subject}, #{content})
+	</insert>
+	
+	<sql id="where-list">
+		<if test="schType=='all' ">
+			( INSTR(subject, #{kwd}) &gt; 0
+				OR DBMS_LOB.INSTR(content, #{kwd}) &gt; 0 )
+		</if>
+		<if test="schType=='subject' ">
+			INSTR(subject, #{kwd}) &gt; 0
+		</if>
+		<if test="schType=='content' ">
+			DBMS_LOB.INSTR( content, #{kwd}) &gt; 0 
+		</if>
+	</sql>
+	
+	<update id="updateTerms" parameterType="com.fa.plus.admin.domain.TermsManage">
+		UPDATE terms SET subject=#{subject}, content=#{content}
+		WHERE num=#{num}
+	</update>
+	
+	<delete id="deleteTerms" parameterType="com.fa.plus.admin.domain.TermsManage">
+		DELETE FROM terms WHERE num=#{num}
+	</delete>
+	
+	<select id="listTerms" resultType="com.fa.plus.admin.domain.TermsManage">
+		SELECT num, subject, content
+		FROM terms
+		<where>
+			<if test="kwd != null and kwd != ''">
+				<include refid="where-list"/>
+			</if>
+		</where>
+		ORDER BY num DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM terms
+		<where>
+			<if test="kwd!=null and kwd!='' ">
+				AND <include refid="where-list"/>
+			</if>
+		</where>
+	</select>
+	
+	<select id="findById" parameterType="Long" resultType="com.fa.plus.admin.domain.TermsManage">
+		SELECT num, subject, content 
+		FROM terms 
+		WHERE num = #{num}
+	</select>
+	
+	<select id="findByPrev" parameterType="map" resultType="com.fa.plus.admin.domain.TermsManage">
+		SELECT num, subject, content
+		FROM terms
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+			AND (num &gt; #{num})
+		</where>
+		ORDER BY num ASC
+		FETCH FIRST 1 ROWS ONLY
+    </select>
+    
+    <select id="findByNext" parameterType="map" resultType="com.fa.plus.admin.domain.TermsManage">
+	SELECT num, subject, content
+		FROM terms
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+			AND (num &lt; #{num})
+		</where>
+		ORDER BY num DESC
+		FETCH FIRST 1 ROWS ONLY
+    </select>
+</mapper>
