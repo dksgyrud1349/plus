@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fa.plus.admin.domain.MemberManage;
+import com.fa.plus.admin.domain.PluszoneAnswerManage;
+import com.fa.plus.admin.domain.PluszoneQuestionManage;
 import com.fa.plus.admin.service.PlusManageService;
+import com.fa.plus.admin.service.PluszoneQManageService;
 import com.fa.plus.common.MyUtil;
 
 @Controller
@@ -30,6 +33,9 @@ public class PlusManageController {
 	
 	@Autowired
 	private PlusManageService service;
+	
+	@Autowired
+	private PluszoneQManageService questionService;
 	
 	@RequestMapping(value = "plusList")
 	public String list(@RequestParam(value = "page", defaultValue = "1") int current_page,
@@ -95,23 +101,21 @@ public class PlusManageController {
 	
 	@GetMapping("article")
 	public String articleForm(@RequestParam String userId, @RequestParam String page, Model model) {
-		/*
-		List<Qna> list = service.findByQna(userId);
+		
+		// 질문 제목
+		List<PluszoneQuestionManage> qlist = questionService.QSubject();
+		// 결과지 내용
+		List<PluszoneAnswerManage> list = service.findByAnswer(userId);
 		
 		if(list.isEmpty()) {
 			return "redirect:/admin/plusManage/plusList?page=" + page;
 		}
 		
-		String userName = "";
-		for(Qna vo : list) {
-			userName = vo.getUserName();
-		}
-		
-		model.addAttribute("userId", userId);
-		model.addAttribute("userName", userName);
+		model.addAttribute("qlist", qlist);
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);
-		*/
+		model.addAttribute("userId", userId);
+		
 		return "admin/plusManage/article";
 	}
 	

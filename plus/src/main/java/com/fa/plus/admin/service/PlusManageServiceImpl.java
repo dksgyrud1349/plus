@@ -147,8 +147,12 @@ public class PlusManageServiceImpl implements PlusManageService{
 
 	@Override
 	public List<PluszoneAnswerManage> findByAnswer(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		List<PluszoneAnswerManage> list = null;
+		try {
+			list = mapper.findByAnswer(userId);
+		} catch (Exception e) {
+		}
+		return list;
 	}
 
 	@Override
