@@ -44,7 +44,7 @@
 .cbp-hrmenu .cbp-hrsub {
 	display: none;
 	position: absolute;
-	background: #fff;												/*  */
+	background: #fff;												
 	width: 100%;
 	left: 0;
 	border: 10px double lightgrey;

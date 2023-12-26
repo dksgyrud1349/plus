@@ -31,6 +31,10 @@ for (let i = 0; i < reviewBars.length; i++) {
 .c-t{
 	color: #00BFFF;
 }
+.title{
+	border-left:3px solid #47a3da;
+	padding-left : 10px;
+}
 </style>
 
 	<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -420,7 +424,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 	</script>
     
 	
-<h1 class="mt-5">실시간 리뷰</h1>
+<h1 class="mt-5 title">실시간 리뷰</h1>
 <hr style="border: 3px dotted #47a3da;">
 <div class="review">
 	<div class="review_bar">
