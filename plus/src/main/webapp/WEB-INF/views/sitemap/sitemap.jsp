@@ -183,17 +183,34 @@ ul, li {
 .secondary li a {
 	width: 220px;
 }
+
+.colortext div {
+	border:1px solid #black;
+	width:60px;
+	height:60px;
+	line-height:60px;
+	text-align:center;
+	border-radius:25px;
+	float:left;
+	font-weight:bold;
+	font-size:23px;
+}
 </style>
 <main class="wrapper" style="width:100%; margin:10% auto">
 	<div id="layoutSidenav_content">
 		 	<div class="container-fluid">
 				<div class="body-container">
     				<div class="body-main">
+					    <div class="colortext">
+							 <div style="background-color: #ff99cc;">모</div>
+							 <div style="background-color: #66ccff;">든</div>
+							 <div style="background-color: #99cc00;">서</div>
+							 <div style="background-color: #ffcc00;">비</div>
+							 <div style="background-color: #FF9966;">스</div>
+						</div>
 
-				    <h1 style="border-bottom:3px solid #cccccc; margin-bottom:3%">모든 서비스</h1>
-				
 				    <nav class="sitemapnav">
-				        <ul>
+				        <ul class="mt-5">
 				           <li>
 				              <a href="${pageContext.request.contextPath}/">
 				                  <i class="fa-home"></i> Home 

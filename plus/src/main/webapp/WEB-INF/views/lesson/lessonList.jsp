@@ -21,10 +21,68 @@ textarea:focus, input:focus {
 	transform: scale(1.2);
 }
 
-.title{
-	border-left:3px solid #47a3da;
-	padding-left : 10px;
+.colortext div {
+	border:1px solid #black;
+	width:60px;
+	height:60px;
+	line-height:60px;
+	text-align:center;
+	border-radius:25px;
+	float:left;
+	font-weight:bold;
+	font-size:23px;
 }
+
+/* 5 */
+.btn-5 {
+  border: none;
+  background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
+}
+.btn-5:hover {
+  color: #000;
+  background: transparent;
+  box-shadow:none;
+}
+.btn-5:before,
+.btn-5:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:4px;
+  width:0;
+  background: #47a3da;
+  box-shadow:
+   -1px -1px 5px 0px #fff,
+   7px 7px 20px 0px #0003,
+   4px 4px 5px 0px #0002;
+  transition:500ms ease all;
+}
+.btn-5:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.btn-5:hover:before,
+.btn-5:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+.custom-btn {
+  border-radius: 10px;
+  padding: 10px 25px;
+  font-weight: bold;
+  background: #47a3da;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
 </style>
 
 <script type="text/javascript"
@@ -115,10 +173,6 @@ $(function(){
 		  
 		  const fn = function(data){
 			  let state = data.state;
-			  if(state === "loginFail"){
-				  location.href = "${pageContext.request.contextPath}/member/login";
-				  return false;
-			  }
 			  if(state === 'true'){
 				  if(userLiked){
 					  $i.removeClass('bi-heart-fill').addClass('bi-heart');
@@ -138,12 +192,18 @@ $(function(){
 });
 </script>
 
-<div class="container mt-5 pt-3">
+<div class="container mt-4 pt-3">
 	<div class="row justify-content-center">
-		<div class="col-8 mt-5 " style="width: 180rem;">
-			<h1 class="fw-bold fs-2 title">모든 원데이 클래스</h1>
-			
-			    <div class="row d-flex mt-5">
+		<div class="col-8 mt-5" style="width: 180rem;">
+			<div class="colortext">
+				 <div style="background-color: #ff99cc;">원</div>
+				 <div style="background-color: #66ccff;">데</div>
+				 <div style="background-color: #99cc00;">이</div>
+				 <div style="background-color: #ffcc00;">클</div>
+				 <div style="background-color: #FF9966;">래</div>
+				 <div style="background-color: #CC33FF;">스</div>
+			</div>
+			    <div class="row d-flex" style="clear:both;">
 					<form action="" name="searchForm" method="post">
 						<div class="col-2 p-3" style="float: left; width: 16.66%;">${dataCount}개(${page}/${total_page} 페이지)</div>
 						<div class="col-2 p-2 input-group" style="float: right; width: 16.66%;">
@@ -184,40 +244,39 @@ $(function(){
 				</div>
 			
 			<div class="row mt-5" style="border-top:1px solid #cccccc; clear:both;">
-				<c:forEach var="dto" items="${list}" varStatus="status">
-					<div class="card col-4 p-1 m-3" style="width: 25rem; height: 35rem; border:none; background:#F5F5F5">
-						<div class="zoom">
-							<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="card-img-top">
-							    <div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">
-							    	<i class="bi bi-star"></i> 5.0 (리뷰 개수)
-							    </div>
-						</div>
-						<div class="card-body" style="height: 15px;">
-							<p class="card-text">
-								<i class="bi bi-person"></i> ${dto.nickName}
-								<button type="button" class="btn btnSendLessonLike" title="좋아요" data-classNum="${dto.classNum}" style="float:right;">
-									<i class="pt-1 bi ${dto.userLessonLiked ? 'bi-heart-fill' : 'bi-heart'}"></i>
-									<span id="lessonLikeCount" class="${dto.classNum}">${dto.lessonLikeCount}</span>
-								</button>
-							</p>
-							<h5 class="card-title pb-1">${dto.className}</h5>
-							<p class="card-text">
-								<i class="bi bi-geo-alt-fill"></i> ${dto.addr1}
-							</p>
-							<p class="card-text">
-								<i class="bi bi-calendar-check"></i> ${dto.startDate} ~ ${dto.endDate}
-							</p>
-							
-							<span class="card-text text-danger text-start mt-5 fs-5"> <fmt:formatNumber value="${dto.price}" pattern="#,###원" /></span>
-							
-							<div class="d-grid gap-2 mt-3">
-								<button class="btn btn-primary product-item" data-productNum="${dto.classNum}">예약하기</button>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
+			    <c:forEach var="dto" items="${list}" varStatus="status">
+			        <div class="card col-4 p-1 m-3" style="width: 25rem; height: 35rem; border:none; background:#F5F5F5">
+			            <div class="zoom">
+			                <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="card-img-top">
+			                <div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">
+			                    <i class="bi bi-star"></i> 5.0 (리뷰 개수)
+			                </div>
+			            </div>
+			            <div class="card-body" style="height: 15px;">
+			                <p class="card-text">
+			                    <i class="bi bi-person"></i> ${dto.nickName}
+			                    <button type="button" class="btn btnSendLessonLike" title="좋아요" data-classNum="${dto.classNum}" style="float:right;">
+			                        <i class="pt-1 bi ${dto.userLessonLiked ? 'bi-heart-fill' : 'bi-heart'}"></i>
+			                        <span id="lessonLikeCount" class="${dto.classNum}">${dto.lessonLikeCount}</span>
+			                    </button>
+			                </p>
+			                <h5 class="card-title pb-1">${dto.className}</h5>
+			                <p class="card-text">
+			                    <i class="bi bi-geo-alt-fill"></i> ${dto.addr1}
+			                </p>
+			                <p class="card-text">
+			                    <i class="bi bi-calendar-check"></i> ${dto.startDate} ~ ${dto.endDate}
+			                </p>
 			
+			                <span class="card-text text-danger text-start mt-5 fs-5"> <fmt:formatNumber value="${dto.price}" pattern="#,###원" /></span>
+			            </div>
+			
+			            <div class="d-grid gap-2 mt-3">
+			                <button class="btn btn-primary custom-btn btn-5 product-item" data-productNum="${dto.classNum}">예약하기</button>
+			            </div>
+			        </div>
+			    </c:forEach>
+			</div>
 			
 			<div class="text-center mt-4 page-navigation">${dataCount == 0 ? "등록된 클래스가 존재하지 않습니다." : paging}</div>
 		</div>
