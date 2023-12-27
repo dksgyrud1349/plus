@@ -135,9 +135,9 @@ ul, li {
 
 .sitemapnav ul ul ul li:after  {
 	border-top-style: solid;
-	top: 50px;
-	left: 15px;
-	width: 15px;
+	top: 45px;
+	left: 25px;
+	width: 20px;
 }
 
 .sitemapnav ul ul ul li a { border-top-color: #2ecc71; width: auto; }
@@ -196,51 +196,47 @@ ul, li {
 				        <ul>
 				           <li>
 				              <a href="${pageContext.request.contextPath}/">
-				                  <i class="fa-home"></i> Home <small>Some kind of description</small>
+				                  <i class="fa-home"></i> Home 
 				              </a>
 				              <ul>
 				                 <li>
-				                    <a href="/search"><i class="fa-search"></i> Search <small>Search by name, location and/or category.</small></a>
+				                    <a href="${pageContext.request.contextPath}/lesson/main"><i class="bi bi-dice-1"></i> 전체 원데이클래스 </a>
+				                    <!-- 
 				                    <ul>
-				                       <li><a href="${pageContext.request.contextPath}/">List view</a></li>
-				                       <li><a href="${pageContext.request.contextPath}/">Map view</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/">들여쓰기</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/">들여쓰기</a></li>
 				                    </ul>
+				                     -->
 				                 </li>
 				                 <li>
-				                    <a href="${pageContext.request.contextPath}/"><i class="fa-building"></i> Suppliers</a>
+				                    <a href="${pageContext.request.contextPath}/onedayplus/onedayplus"><i class="fa-building"></i> 원데이플러스+</a>
+				                    <!--  
 				                    <ul>
 				                       <li>
-				                           <a href="${pageContext.request.contextPath}/">A to Z</a>
+				                           <a href="${pageContext.request.contextPath}/">2</a>
 				                           <ul>
-				                               <li><a href="${pageContext.request.contextPath}/" class="multi">Level 3</a></li>
-				                           </ul>
-				                       </li>
-				                       <li>
-				                           <a href="${pageContext.request.contextPath}/">Location</a>
-				                           <ul>
-				                               <li><a href="${pageContext.request.contextPath}/" class="multi">Level 3</a></li>
-				                           </ul>
-				                       </li>
-				                       <li>
-				                           <a href="/suppliers/category">Category</a>
-				                           <ul>
-				                               <li><a href="${pageContext.request.contextPath}/" class="multi">Level 3</a></li>
-				                               <li><a href="${pageContext.request.contextPath}/" class="multi">Level 4</a></li>
+				                               <li><a href="${pageContext.request.contextPath}/" class="multi">3</a></li>
 				                           </ul>
 				                       </li>
 				                    </ul>
+				                    -->
 				                 </li>
 				                 <li>
-				                    <a href="${pageContext.request.contextPath}/"><i class="fa fa-building"></i> Supplier <small>Supplier details page.</small></a>
+				                    <a href="${pageContext.request.contextPath}/event/progress/list"><i class="fa fa-building"></i> 이벤트 </a>
 				                 </li>
 				                 <li>
-				                    <a href="${pageContext.request.contextPath}/"><i class="fa fa-rss"></i> Blog <small>Filter by category or tag.</small></a>
+				                    <a href="${pageContext.request.contextPath}/"><i class="fa fa-rss"></i> 고객센터 </a>
 				                    <ul>
-				                       <li><a href="${pageContext.request.contextPath}/" class="multi">Article</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/">자주묻는질문</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/">공지사항</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/">신고하기</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/">제안하기</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/">문의하기</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/">연락처 / 위치안내</a></li>
 				                    </ul>
 				                 </li>
 				                 <li>
-				                    <a href="${pageContext.request.contextPath}/"><i class="fa fa-info-circle"></i> About</a>
+				                    <a href="${pageContext.request.contextPath}/bbs/list"><i class="fa fa-info-circle"></i> 커뮤니티 </a>
 				                 </li>
 				              </ul>
 				           </li>
@@ -249,11 +245,11 @@ ul, li {
 				
 				    <nav class="secondary">
 				        <ul>
-				           <li><a href="${pageContext.request.contextPath}/">회사소개</a></li>
-				           <li><a href="${pageContext.request.contextPath}/">자주묻는 질문</a></li>
+				           <li><a href="${pageContext.request.contextPath}/company/introduction">회사소개</a></li>
+				           <li><a href="${pageContext.request.contextPath}/faq/main">자주묻는 질문</a></li>
 				           <li><a href="${pageContext.request.contextPath}/">1:1문의</a></li>
-				           <li><a href="${pageContext.request.contextPath}/">공지사항</a></li>
-				           <li><a href="${pageContext.request.contextPath}/">서비스이용약관</a></li>
+				           <li><a href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
+				           <li><a href="${pageContext.request.contextPath}/terms/list">서비스이용약관</a></li>
 				        </ul>
 				    </nav>
 				
