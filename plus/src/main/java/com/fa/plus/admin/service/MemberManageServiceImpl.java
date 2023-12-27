@@ -140,4 +140,69 @@ public class MemberManageServiceImpl implements MemberManageService {
 		return dto;
 	}
 
+	@Override
+	public List<AnalysisManage> purposeClassChart() {
+		List<AnalysisManage> list = null;
+		
+		try {
+			list = mapper.purposeClassChart();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public List<AnalysisManage> categoryClassChart() {
+		List<AnalysisManage> list = null;
+		
+		try {
+			list = mapper.categoryClassChart();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public List<AnalysisManage> regionClassChart() {
+		List<AnalysisManage> list = null;
+		
+		try {
+			list = mapper.regionClassChart();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public List<AnalysisManage> priceClassChart() {
+		List<AnalysisManage> list = null;
+		
+		try {
+			list = mapper.priceClassChart();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public List<AnalysisManage> ageClassChart() {
+		List<AnalysisManage> list = null;
+		
+		try {
+			list = mapper.ageClassChart();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
 }

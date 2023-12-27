@@ -179,4 +179,58 @@ public class MemberManageController {
 	}
 	
 	
+	@GetMapping("purposeClassChart")
+	@ResponseBody
+	public Map<String, Object> purposeClassChart() throws Exception {
+		Map<String, Object> model = new HashMap<String, Object>();
+		List<AnalysisManage> list = service.purposeClassChart();
+
+		model.put("list", list);
+
+		return model;
+	}
+	
+	@GetMapping("categoryClassChart")
+	@ResponseBody
+	public Map<String, Object> categoryClassChart() throws Exception {
+		Map<String, Object> model = new HashMap<String, Object>();
+		List<AnalysisManage> list = service.categoryClassChart();
+
+		model.put("list", list);
+
+		return model;
+	}
+	
+	@GetMapping("regionClassChart")
+	@ResponseBody
+	public Map<String, Object> regionClassChart() throws Exception {
+		Map<String, Object> model = new HashMap<String, Object>();
+		List<AnalysisManage> list = service.regionClassChart();
+
+		model.put("list", list);
+
+		return model;
+	}
+	
+	@GetMapping("priceClassChart")
+	@ResponseBody
+	public Map<String, Object> priceClassChart() throws Exception {
+		Map<String, Object> model = new HashMap<String, Object>();
+		List<AnalysisManage> list = service.priceClassChart();
+
+		model.put("list", list);
+
+		return model;
+	}
+	
+	@GetMapping("ageClassChart")
+	@ResponseBody
+	public Map<String, Object> ageClassChart() throws Exception {
+		Map<String, Object> model = new HashMap<String, Object>();
+		List<AnalysisManage> list = service.ageClassChart();
+
+		model.put("list", list);
+
+		return model;
+	}
 }
