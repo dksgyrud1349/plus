@@ -12,8 +12,10 @@
 
 	<select id="findByAllClass" resultType="com.fa.plus.domain.Declaration">
 		/* declarationMapper.findByClass_클래스 목록 전부 가져오기 */
-		SELECT classNum, className
-		FROM lesson
+		SELECT le.classNum, className
+		FROM lesson le
+		JOIN approval ap ON le.classNum = ap.classNum
+		WHERE le.showClass = 0 AND ap.approvalCode = 1
 	</select>
 	
 	<select id="findByNum" parameterType="String" resultType="long">
