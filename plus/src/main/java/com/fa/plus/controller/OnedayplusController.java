@@ -1,14 +1,57 @@
 package com.fa.plus.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fa.plus.domain.PlusAns;
+import com.fa.plus.domain.PlusQ;
+import com.fa.plus.domain.SessionInfo;
+import com.fa.plus.service.OnedayplusService;
 
 @Controller
 @RequestMapping("/onedayplus/*")
 public class OnedayplusController {
-	@RequestMapping(value = "onedayplus")
-	public String list() {
 	
-	return ".onedayplus.onedayplus";
+	@Autowired
+	private OnedayplusService service;
+	
+	@RequestMapping(value = "onedayplus")
+	public String list(Model model) {
+		List<PlusQ> qSubject = service.QSubject();
+		
+		List<PlusQ> list = service.listQuestion();
+		
+		model.addAttribute("qSubject", qSubject);
+		model.addAttribute("list", list);
+		
+		return ".onedayplus.onedayplus";
 	}
+	
+	@ResponseBody
+	@PostMapping("question")
+	public Map<String, Object> writeSubmit(PlusAns dto, HttpSession session) throws Exception {
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		String state="true";
+		try {
+			dto.setUserId(info.getUserId());
+			service.insertAnswer(dto);
+		} catch (Exception e) {
+			state = "false";
+		}
+		Map<String, Object> model = new HashMap<>();
+		model.put("state", state);
+		return model;
+	}
+	
+	
 }
