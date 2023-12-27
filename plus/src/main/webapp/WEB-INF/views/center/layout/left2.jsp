@@ -62,8 +62,8 @@
   	<button class="btn btn-secondary dropdown-toggle box" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
     	신고/제안/문의
   	</button>
-  		<ul class="dropdown-menu dropdown-menu-dark inBox" aria-labelledby="dropdownMenuButton2">
-    		<li><a class="dropdown-item" href="${pageContext.request.contextPath}/declaration/article">신고하기</a></li>
+  		<ul class="dropdown-menu dropdown-menu-dark inBox" aria-labelledby="dropdownMenuButton2" style="background-color: #333">
+    		<li><a class="dropdown-item" href="${pageContext.request.contextPath}/declaration/article" style="background-color: #333">신고하기</a></li>
     		<li><a class="dropdown-item" href="${pageContext.request.contextPath}/proposal/list">제안하기</a></li>
     		<li><a class="dropdown-item" href="${pageContext.request.contextPath}/inquiry/list">문의하기</a></li>
   		</ul>
