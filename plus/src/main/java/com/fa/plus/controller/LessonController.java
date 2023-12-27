@@ -166,6 +166,7 @@ public class LessonController {
 		String state = "true";
 		int lessonLikeCount = 0;
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		Map<String, Object> model = new HashMap<String, Object>();
 		
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("classNum", classNum);
@@ -185,7 +186,6 @@ public class LessonController {
 		
 		lessonLikeCount = lessonService.lessonLikeCount(classNum);
 		
-		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("state", state);
 		model.put("lessonLikeCount", lessonLikeCount);
 		
