@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.pluszone.mapper.LessonPlusMapper">
+	<sql id="where-list">
+		<choose>
+			<when test="schType == 'className'">
+				( INSTR(className, #{kwd}) &gt; 0 )
+			</when>
+			<when test="schType == 'regDate'">
+				( TO_CHAR(le.regDate, 'YYYYMMDD') = #{kwd} OR TO_CHAR(le.regDate, 'YYYY-MM-DD') = #{kwd} )
+			</when>
+			<otherwise>
+				INSTR(${schType}, #{kwd}) &gt; 0
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<select id="lessonSeq" resultType="Long">
+		SELECT lesson_seq.NEXTVAL FROM dual
+	</select>
+
+	<insert id="insertLesson" parameterType="com.fa.plus.pluszone.domain.LessonPlus">
+		INSERT INTO lesson(classNum, className, price, content, firstPhoto, special, startDate, endDate, regDate, classTime, 
+							zip, addr1, addr2, showClass, mileage, tagNum, subNum, memberIdx) 
+					VALUES(#{classNum}, #{className}, #{price}, #{content}, #{firstPhoto}, #{special}, #{startDate}, 
+							#{endDate}, SYSDATE, #{classTime}, #{zip}, #{addr1}, #{addr2}, #{showClass}, #{mileage}, #{tagNum}, 
+							#{subNum}, #{memberIdx})
+	</insert>
+	
+	<insert id="insertLessonPhoto" parameterType="com.fa.plus.pluszone.domain.LessonPlus">
+		INSERT INTO lessonPhoto(photoNum, photoName, classNum) 
+			VALUES (lessonPhoto_seq.NEXTVAL, #{photoName}, #{classNum})
+	</insert>
+	
+	<insert id="insertLessonDetail" parameterType="com.fa.plus.pluszone.domain.LessonPlus">
+		INSERT INTO lessonDetail(detailNum, classDate, count, dContent, classNum) 
+			VALUES(lessonDetail_seq.NEXTVAL, TO_DATE(#{classDate}, 'YYYY-MM-DD HH24:MI:SS'), #{count}, #{dContent}, #{classNum})
+	</insert>
+	
+	<insert id="insertApproval" parameterType="com.fa.plus.pluszone.domain.LessonPlus">
+		INSERT INTO approval(approvalNum, memo, approvalCode, userId, classNum) VALUES (approval_seq.NEXTVAL, '대기', 0, 'a12345', #{classNum})
+	</insert>
+	
+	<update id="updateLesson" parameterType="com.fa.plus.pluszone.domain.LessonPlus">
+		UPDATE lesson SET className = #{className}, price = #{price}, content = #{content}, firstPhoto = #{firstPhoto}, 
+			special = #{special}, startDate = #{startDate}, endDate = #{endDate}, classTime = #{classTime}, zip = #{zip}, 
+			addr1 = #{addr1}, addr2 = #{addr2}, showClass = #{showClass}, mileage = #{mileage}, tagNum = #{tagNum}, subNum = #{subNum}
+		WHERE classNum = #{classNum}
+	</update>
+	
+	<delete id="deleteLesson" parameterType="Long">
+		DELETE FROM lesson WHERE classNum = #{classNum}
+	</delete>
+	
+	<delete id="deleteLessonDetail" parameterType="Long">
+		DELETE FROM lessonDetail WHERE classNum = #{classNum}
+	</delete>
+	
+	<select id="findById" parameterType="Long" resultType="com.fa.plus.pluszone.domain.LessonPlus">
+		SELECT classNum, className, price, content, firstPhoto, special, TO_CHAR(startDate, 'YYYY-MM-DD') startDate, TO_CHAR(endDate, 'YYYY-MM-DD') endDate, regDate, classTime, zip, addr1, addr2, 
+			showClass, mileage, ht.tagNum, sc.subNum, memberIdx, mc.mainNum
+		FROM lesson le
+		JOIN hashTag ht ON le.tagNum = ht.tagNum
+		JOIN subCategory sc ON le.subNum = sc.subNum
+		JOIN mainCategory mc ON sc.mainNum = mc.mainNum
+		WHERE classNum = #{classNum}
+	</select>
+	
+	<select id="findByDetail" parameterType="Long" resultType="com.fa.plus.pluszone.domain.LessonPlus">
+		SELECT classNum, TO_CHAR(classDate, 'HH24:MI:SS'), detailNum, count, dContent 
+		FROM lessonDetail 
+		WHERE classNum = #{classNum}
+	</select>
+	
+	<select id="findBySubCategory" parameterType="Long" resultType="com.fa.plus.pluszone.domain.LessonPlus">
+		SELECT subNum, subName, mainNum, mainName
+		FROM subCategory
+		WHERE subNum = #{subNum}
+	</select>
+	
+	<select id="myLessonList" parameterType="map" resultType="com.fa.plus.pluszone.domain.LessonPlus">
+		SELECT le.classNum, className, price, sc.subNum, sc.subName, mc.mainNum, mc.mainName, 
+			TO_CHAR(startDate, 'YYYY-MM-DD') startDate, TO_CHAR(endDate, 'YYYY-MM-DD') endDate, 
+			TO_CHAR(le.regDate, 'YYYY-MM-DD') regDate, ht.tagName, ht.tagNum
+		FROM lesson le
+		JOIN member m ON m.memberIdx = le.memberIdx
+		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
+		JOIN subCategory sc ON le.subNum = sc.subNum
+		JOIN mainCategory mc ON sc.mainNum = mc.mainNum
+		JOIN hashTag ht ON le.tagNum = ht.tagNum
+		<where>
+			le.memberIdx = #{memberIdx}
+			<if test="mainNum != 0">
+				AND mc.mainNum = #{mainNum} 
+			</if>
+			<if test="subNum != 0">
+				AND sc.subNum = #{subNum}
+			</if>
+			<if test="tagNum != 0">
+				AND ht.tagNum = #{tagNum}
+			</if>
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="where-list"/>
+			</if>
+		</where>
+		<choose>
+			<when test="schType == 'highPrice'">
+				ORDER BY price DESC
+			</when>
+			<when test="schType == 'lowPrice'">
+				ORDER BY price ASC
+			</when>
+		</choose>
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM lesson le
+		JOIN subCategory sc ON le.subNum = sc.subNum
+		JOIN mainCategory mc ON sc.mainNum = mc.mainNum
+		JOIN hashTag ht ON le.tagNum = ht.tagNum
+		<where>
+			memberIdx = #{memberIdx}
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="where-list"/>
+			</if>
+			<if test="mainNum != 0">
+				AND mc.mainNum = #{mainNum} 
+			</if>
+			<if test="subNum != 0">
+				AND sc.subNum = #{subNum}
+			</if>
+			<if test="tagNum != 0">
+				AND ht.tagNum = #{tagNum}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 메인 카테고리 목록 -->
+	<select id="listMainCategory" resultType="com.fa.plus.pluszone.domain.LessonPlus">
+		SELECT mainNum, mainName
+		FROM mainCategory
+	</select>
+	
+	<!-- 서브 카테고리 목록 -->
+	<select id="listSubCategory" parameterType="Long" resultType="com.fa.plus.pluszone.domain.LessonPlus">
+		SELECT subNum, subName
+		FROM subCategory
+		WHERE mainNum = #{mainNum}
+	</select>
+	
+	<select id="listLessonPhoto" parameterType="Long" resultType="com.fa.plus.pluszone.domain.LessonPlus">
+		SELECT photoNum, photoName, classNum
+		FROM lessonPhoto
+		WHERE classNum = #{classNum}
+	</select>
+	
+	<select id="listHashTag" resultType="com.fa.plus.pluszone.domain.LessonPlus">
+		SELECT tagNum, tagName
+		FROM hashTag
+	</select>
+	
+	<delete id="deleteLessonPhoto" parameterType="Long">
+		DELETE FROM lessonPhoto WHERE photoNum = #{photoNum}
+	</delete>
+</mapper>
