@@ -119,7 +119,7 @@ public class FaqManageController {
 		model.addAttribute("mode", "write");
 		model.addAttribute("listCategory", listCategory);
 
-		return ".admin.faqManage.write";
+		return ".admin.tManage.write";
 	}
 
 	@PostMapping("write")

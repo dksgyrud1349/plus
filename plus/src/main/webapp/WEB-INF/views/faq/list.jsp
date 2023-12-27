@@ -27,13 +27,13 @@
 				<h2 class="accordion-header border" id="flush-heading-${status.index}">
 					<button class="accordion-button fw-bold bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-${status.index}" aria-expanded="false" aria-controls="flush-collapse-${status.index}">
 						<div class="col-2 numb">[${dto.faqName}]</div>
-						<div class="col-7 subj"><img width="30" height="30" src="https://img.icons8.com/badges/48/marker-q.png" alt="marker-q"/>${dto.subject}?</div>
+						<div class="col-7 subj">Q.&nbsp;${dto.subject}?</div>
 					</button>
 				</h2>
 				<div id="flush-collapse-${status.index}" class="accordion-collapse collapse" aria-labelledby="flush-heading-${status.index}" data-bs-parent="#accordionFlush">
 					<div class="accordion-body border accord-body fw-bolder text-white pt-4 pb-5">
 						<div class="p-2 answer text-black-50">
-							<img width="30" height="30" src="https://img.icons8.com/windows/32/stack-exchange-answer.png" alt="stack-exchange-answer"/>&nbsp;${dto.content}
+							A.&nbsp;${dto.content}
 						</div>
 					</div>
 				</div>

@@ -2,27 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>이용약관</title>
 
-	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
-	
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/bootstrap5/css/bootstrap.min.css" type="text/css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/bootstrap5/icon/bootstrap-icons.css" type="text/css">
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/bootstrap5/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/jquery/js/jquery.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles.css" />
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/service.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/service.css" />
 				
-	<!-- 폰트 다운 -->
-    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
-        
+    
 <script>
 $( function() {
  	$( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
@@ -30,11 +13,7 @@ $( function() {
 });
 </script>
 
-</head>
-<body id="page-top">
 
-	<tiles:insertAttribute name="header"/>
-	
 
 	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="서비스이용약관" style="width: 100%; height: 40%; margin-top: 5%;" class="mb-3">
         <hr style="width: 100%;">
@@ -93,10 +72,4 @@ $( function() {
             </div>
         </div>
     </div>
-    
-<footer style="background: beige; width: 100%; height: 300px; text-align: center;">
-    <tiles:insertAttribute name="footer"/>
-</footer>
-
-</body>
-</html>	
+	

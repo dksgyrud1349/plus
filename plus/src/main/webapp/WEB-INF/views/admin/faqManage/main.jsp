@@ -225,6 +225,7 @@ function deleteFaq(num, page) {
 					<li id="tab-${dto.cateNum}" data-cateNum="${dto.cateNum}">${dto.faqName}(${dto.showUser==0 ? "공통" : "${dto.showUser==1? '이용자' : '플러스'}"})</li>
 				</c:forEach>
 			</ul>
+			
 		</div>
 		<div id="tab-content" style="padding: 15px 10px 5px;"></div>
 		
