@@ -32,6 +32,6 @@ public class TermsController {
 		
 		model.addAttribute("list", list);
 		
-		return "terms/list";
+		return ".terms.list";
 	}
 }
