@@ -148,17 +148,6 @@ $(function() {
 				<button type="button" class="btn btnHideList eventHide">공개/비공개</button>
 				<span style="margin-left: 5px; position: inherit;">${dataCount}개(${page}/${total_page} 페이지)</span>
 			</td>
-			<td align="right" width="10%;">
-				<form name="searchForm" action="${pageContext.request.contextPath}/admin/declarationManage/list" method="post">
-					<select name="schType" class="form-select">
-						<option value="className">클래스명</option>
-						<option value="result">공개여부</option>
-					</select>
-					<div class="col-auto p-1">
-						<input type="text" name="kwd" value="${kwd}" class="form-control">
-					</div>
-				</form>
-			</td>
 		</tr>
 	</table>
 		
