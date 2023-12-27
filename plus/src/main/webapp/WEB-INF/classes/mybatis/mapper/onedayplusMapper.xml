@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.OnedayplusMapper">
+	
+	<insert id="insertAnswer" parameterType="com.fa.plus.domain.PlusAns">
+		INSERT INTO plusAns(ansNum, plusNum, userId)
+			VALUES(plusAns_seq.NEXTVAL, #{plusNum}, #{userId})
+	</insert>
+	
+	<select id="QSubject" resultType="com.fa.plus.domain.PlusQ">
+		SELECT num, subject
+		FROM plusQue
+	</select>
+	
+	<select id="listQuestion" resultType="com.fa.plus.domain.PlusQ">
+		SELECT qu.num, subject, q.plusNum, content, imgNum, imgName
+		FROM plusQue qu
+		JOIN plusq q ON qu.num = q.num 
+		LEFT OUTER JOIN plusImage pi ON pi.plusNum = q.plusNum
+		ORDER BY q.plusNum ASC
+	</select>
+	
+	<select id="listAnswer" parameterType="String" resultType="com.fa.plus.domain.PlusAns">
+		SELECT qu.num, subject, content, q.plusNum, ansNum, imgNum, imgName
+		FROM plusAns a
+		JOIN plusQ q ON a.plusNum = q.plusNum
+		JOIN plusQue qu ON q.num = qu.num
+		JOIN plusImage pi ON pi.plusNum = q.plusNum 
+		WHERE userId = #{userId}
+	</select>
+</mapper>
