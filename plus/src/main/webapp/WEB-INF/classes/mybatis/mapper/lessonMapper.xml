@@ -6,7 +6,7 @@
 		<choose>
 			<when test="schType == 'all' ">
 			   ( INSTR(className, #{kwd}) &gt; 0
-		          OR DBMS_LOB.INSTR(content, #{kwd}) &gt; 0 )
+		          OR DBMS_LOB.INSTR(le.content, #{kwd}) &gt; 0 )
 			</when>
 			<when test="schType == 'nickName' ">
 			   ( INSTR(nickName, #{kwd}) &gt; 0 )
@@ -19,7 +19,7 @@
 			   ( INSTR(className, #{kwd}) &gt; 0 )
 			</when>
 			<when test="schType == 'content'">
-			    DBMS_LOB.INSTR(content, #{kwd}) &gt; 0
+			    DBMS_LOB.INSTR(le.content, #{kwd}) &gt; 0
 			</when>
 			<otherwise>
 			    INSTR(${schType}, #{kwd}) &gt; 0
@@ -30,10 +30,15 @@
 	<select id="dataCount" parameterType="map" resultType="Integer">
 		SELECT NVL(COUNT(*), 0)
 		FROM lesson le
+		JOIN member m ON m.memberIdx = le.memberIdx
+		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
+		JOIN plus pl ON m1.userId = pl.userId
 		JOIN subCategory sc ON le.subNum = sc.subNum
 		JOIN mainCategory mc ON sc.mainNum = mc.mainNum
+		JOIN approval ap ON le.classNum = ap.classNum
 		<where>
-			showClass = 0
+			le.showClass = 0
+			AND ap.approvalCode = 1
 			<if test="kwd != null and kwd != ''">
 				AND <include refid="where-list"/>
 			</if>
@@ -55,8 +60,10 @@
 		JOIN plus pl ON m1.userId = pl.userId
 		JOIN subCategory sc ON le.subNum = sc.subNum
 		JOIN mainCategory mc ON sc.mainNum = mc.mainNum
+		JOIN approval ap ON le.classNum = ap.classNum
 		<where>
-			le.showClass = 0
+			le.showClass = 0 
+			AND ap.approvalCode = 1
 			<if test="mainNum != 0">
 				AND mc.mainNum = #{mainNum} 
 			</if>
