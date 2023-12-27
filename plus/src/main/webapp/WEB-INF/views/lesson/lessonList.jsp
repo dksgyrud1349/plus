@@ -115,6 +115,10 @@ $(function(){
 		  
 		  const fn = function(data){
 			  let state = data.state;
+			  if(state === "loginFail"){
+				  location.href = "${pageContext.request.contextPath}/member/login";
+				  return false;
+			  }
 			  if(state === 'true'){
 				  if(userLiked){
 					  $i.removeClass('bi-heart-fill').addClass('bi-heart');
