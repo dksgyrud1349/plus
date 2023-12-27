@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.admin.mapper.DeclarationManageMapper">
+
+	<sql id="where-list">
+		<choose>
+			<when test="schType == 'all' ">
+			   ( INSTR(className, #{kwd}) &gt; 0 )
+			</when>
+			<otherwise>
+			   ( INSTR(result, #{kwd}) &gt; 0 )
+			</otherwise>
+		</choose>
+	</sql>
+
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM report
+		<where>
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="where-list"/>
+			</if>
+		</where>
+	</select>
+	
+	<select id="listDeclarations" parameterType="map" resultType="com.fa.plus.domain.Declaration">
+		/* declarationManageMapper.listDeclarations_신고 목록 전부 가져오기 */
+		SELECT rNum
+		       , re.userId
+		       , userName
+		       , re.classNum
+		       , className
+		       , rContent
+		       , result
+		       , TO_CHAR(reportDate, 'YYYY-MM-DD') reportDate
+		FROM lesson le
+		JOIN report re ON re.classNum = le.classNum
+		JOIN member1 m1 ON m1.userId = re.userId
+		<where>
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="where-list"/>
+			</if>
+		</where>
+		ORDER BY reportDate DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<update id="updateResult" parameterType="com.fa.plus.domain.Declaration">
+		UPDATE report
+		SET result = CASE
+		  WHEN result = 0 THEN 1
+		  WHEN result = 1 THEN 0
+		  END
+		WHERE rNum = #{rNum}
+	</update>
+	
+	<update id="updateShowClass" parameterType="long">
+		UPDATE lesson
+		SET showClass = CASE
+		  WHEN showClass = 0 THEN 1
+		  WHEN showClass = 1 THEN 0
+		  END
+		WHERE classNum = #{classNum}
+	</update>
+
+</mapper>
