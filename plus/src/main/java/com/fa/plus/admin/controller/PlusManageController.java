@@ -117,7 +117,7 @@ public class PlusManageController {
 		model.addAttribute("page", page);
 		model.addAttribute("userId", userId);
 		
-		return "admin/plusManage/article";
+		return ".admin.plusManage.article";
 	}
 	
 	// 회원상세 정보 : AJAX-Text 응답
