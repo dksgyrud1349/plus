@@ -159,6 +159,7 @@
 		SELECT DISTINCT(TO_CHAR(classDate, 'YYYY-MM-DD')) AS classDate
 		FROM lessonDetail
 		WHERE classNum = #{classNum} AND classDate >= TRUNC(SYSDATE) + 1
+		ORDER BY classDate ASC
 	</select>
 	
 	<select id="getLessonDtlTime" parameterType="map" resultType="com.fa.plus.domain.LessonDetail">
