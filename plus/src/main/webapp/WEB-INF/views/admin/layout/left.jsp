@@ -63,7 +63,7 @@
                             
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">원데이플러스 통계</a>
+                                    <a class="nav-link" href="#">원데이 플러스 통계</a>
                                     <a class="nav-link" href="#">가입자 수 통계</a>
                                     <a class="nav-link" href="#">원데이 클래스 통계</a>
                                 </nav>
@@ -95,10 +95,8 @@
                                     </a>
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="#">인기 클래스</a>
-                                            <a class="nav-link" href="#">이벤트 클래스</a>
-                                            <a class="nav-link" href="#">할인/특가 클래스</a>
                                             <a class="nav-link" href="#">전체 클래스</a>
+                                            <a class="nav-link" href="#">이벤트 클래스</a>
                                         </nav>
                                     </div>
                                         <a class="nav-link" href="${pageContext.request.contextPath}/admin/categoryManage/list">카테고리 관리</a>
@@ -133,8 +131,8 @@
                                     <a class="nav-link" href="https://pf.kakao.com/_cbxcnG">채팅(1:1문의)</a>
                                     <a class="nav-link" href="<c:url value='/admin/noticeManage/list'/>">공지사항</a>
                                     <a class="nav-link" href="${pageContext.request.contextPath}/admin/faqManage/main">FAQ</a>
-                                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/declarationManage/list">신고</a>
                                     <a class="nav-link" href="${pageContext.request.contextPath}/admin/termsManage/list">서비스 이용약관</a>
+                                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/declarationManage/list">신고</a>
                                 </nav>
                             </div>
                         </div>
