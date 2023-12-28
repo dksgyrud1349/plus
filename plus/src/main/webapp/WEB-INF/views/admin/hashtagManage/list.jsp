@@ -86,14 +86,15 @@ function deleteHashtag(tagNum) {
     					</h3>
     				</div>
     				<form name="hashtagForm" method="post">
-	    				<div class="input-group mx-2 text-center">
+	    				<div class="input-group text-center mt-5">
 	    					<span class="input-group-text"> 해시태그 추가 </span>
-	    					<input type="text" name="tagName" style="width: 50%;">
-	    					<button type="button" class="btn btn-outline-dark btn-sm" onclick="insertHashtag();">&nbsp;+&nbsp;</button>
+	    					<input type="text" name="tagName" style="width: 30%; border:none; border-bottom:1px solid #cccccc; border-top:1px solid #cccccc" placeholder="추가하실 해쉬태그를 입력해주세요">
+	    					<button type="button" class="btn btn-outline-dark" onclick="insertHashtag();"> + </button>
 	    				</div>
     				</form>
     				
-    				<div class="p-2 border">
+    				
+    				<div class="mt-5">
     					<c:forEach var="dto" items="${list}" varStatus="status">
 		    				<span class="btn btn-success position-relative m-3">
 		 						${dto.tagName} <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" onclick="deleteHashtag('${dto.tagNum}');"> x </span>
