@@ -64,7 +64,7 @@ function sendOk() {
             <form name="emailForm" method="post">
                 <div class="row">
                     <p class="fs-5 fw-bold mt-3 mb-1">가입한 이메일 주소를 입력해주세요.</p>
-                    <input type="text" name="email" class="p-3 mail"  placeholder="example12@naver.com">
+                    <input type="text" name="email" class="p-3 mail"  placeholder="email2@naver.com">
                 </div>
 
                 <div class="row">

@@ -116,7 +116,7 @@ function sendOk() {
 	                        <button type="button" class="btn btn-outline-success send mb-3 text-light fs-5" style="height:60px" onclick="sendOk()">
 	                            전송하기&nbsp;<i class="bi bi-send"></i>
 	                        </button>
-	                        <button type="button" class="btn btn-outline-danger cancel mb-3 text-light fs-5" style="height:60px" onclick="sendOk()">
+	                        <button type="reset" class="btn btn-outline-danger cancel mb-3 text-light fs-5" style="height:60px">
 	                            입력취소&nbsp;<i class="bi bi-x-circle"></i>
 	                        </button>
                 		</div>
