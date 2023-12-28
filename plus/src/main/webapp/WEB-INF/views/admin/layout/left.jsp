@@ -56,11 +56,6 @@
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             
-                             <a class="nav-link" href="#">
-                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                원데이 플러스 관리
-                             </a>
-                            
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="#">원데이 플러스 통계</a>
@@ -68,6 +63,12 @@
                                     <a class="nav-link" href="#">원데이 클래스 통계</a>
                                 </nav>
                             </div>
+                            
+                             <a class="nav-link" href="#">
+                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                원데이 플러스 관리
+                             </a>
+                            
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#communityLayouts" aria-expanded="false" aria-controls="communityLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
