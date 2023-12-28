@@ -1,6 +1,7 @@
 package com.fa.plus.mapper;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -25,6 +26,8 @@ public interface MemberMapper {
 	
 	public Member findById(String userId);
 	public Member findByMemberIdx(long memberIdx);
+	
+	public List<Member> findByEmailId(String email);
 	
 	// 패스워드 실패 횟수 / 멤버 상태
 	public int checkFailureCount(String userId);	

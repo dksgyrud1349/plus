@@ -1,5 +1,6 @@
 package com.fa.plus.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.fa.plus.domain.Member;
+import com.fa.plus.mail.Mail;
+import com.fa.plus.mail.MailSender;
 import com.fa.plus.mapper.MemberMapper;
 
 @Service
@@ -16,7 +19,10 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Autowired
 	private BCryptPasswordEncoder bcryptEncoder;
-
+	
+	@Autowired
+	private MailSender mailsender;
+	
 	@Override
 	public void insertMember(Member dto) throws Exception {
 		try {
@@ -110,6 +116,36 @@ public class MemberServiceImpl implements MemberService{
 
 		return dto;
 
+	}
+	
+	@Override
+	public boolean findByEmailId(String email) {
+		boolean b = false;
+		
+		try {
+			List<Member> list = mapper.findByEmailId(email);
+			if(list.size() > 0) {
+				String result;
+				result = email + "님의 아이디는 <b>"
+								+ list.get(0).getUserId()
+								+ "</b>입니다.";
+				
+				Mail mail = new Mail();
+				mail.setReceiverEmail(email);
+				
+				// MainSender.java 에서 설정한 메일
+				mail.setSenderEmail("khg1070a@gmail.com");
+				mail.setSenderName("관리자");
+				mail.setSubject("아이디 찾기");
+				mail.setContent(result);
+				
+				b = mailsender.mailSend(mail);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return b;
 	}
 
 	@Override
@@ -249,6 +285,7 @@ public class MemberServiceImpl implements MemberService{
 		}
 		
 	}
+
 	
 	
 	

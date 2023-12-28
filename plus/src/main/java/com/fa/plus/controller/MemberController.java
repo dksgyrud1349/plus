@@ -207,8 +207,35 @@ public class MemberController {
 	}
 	
 	@GetMapping("idFind")
-	public String idFind() throws Exception {
+	public String idFind(HttpSession session) throws Exception {
+		SessionInfo info = (SessionInfo)session.getAttribute("member");
+		
+		if(info != null) {
+			return "redirect:/";
+		}
+		
 		return ".member.idFind";
+	}
+	
+	@PostMapping("idFind")
+	public String idFindSubmit(@RequestParam String email,
+			RedirectAttributes rAttr, Model model) throws Exception {
+		
+		boolean b = service.findByEmailId(email);
+
+		if( !b ) {
+			model.addAttribute("message", "등록된 이메일이 아닙니다.");
+			return ".member.idFind";
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("회원님의 이메일로 아이디를 전송했습니다<br>");
+		
+		rAttr.addFlashAttribute("title", "아이디 찾기");
+		rAttr.addFlashAttribute("message", sb.toString());
+		
+		return "redirect:/member/complete";
+		
 	}
 	
 	// password

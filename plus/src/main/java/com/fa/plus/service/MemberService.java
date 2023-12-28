@@ -15,6 +15,8 @@ public interface MemberService {
 	public Member findById(String userId);
 	public Member findByMemberIdx(long memberIdx);
 	
+	public boolean findByEmailId(String email);
+	
 	// 비밀번호 찾기 시 이메일 전송 구현 아직 안 함 
 	//public void generatePwd(Member dto) throws Exception;
 	

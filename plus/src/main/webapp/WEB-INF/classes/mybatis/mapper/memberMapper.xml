@@ -70,6 +70,12 @@
 		LEFT OUTER JOIN member2 m2 ON m1.userId = m2.userId
 		WHERE m.memberIdx = #{memberIdx}
 	</select>
+	
+	<select id="findByEmailId" parameterType="String" resultType="com.fa.plus.domain.Member">
+		SELECT userId, email
+		FROM member2
+		WHERE email = #{email}
+	</select>
     
     <!-- 회원정보 수정  --> 
     <update id="updateMembership" parameterType="map">
