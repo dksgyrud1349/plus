@@ -2,6 +2,7 @@ package com.fa.plus.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -118,35 +119,6 @@ public class MemberServiceImpl implements MemberService{
 
 	}
 	
-	@Override
-	public boolean findByEmailId(String email) {
-		boolean b = false;
-		
-		try {
-			List<Member> list = mapper.findByEmailId(email);
-			if(list.size() > 0) {
-				String result;
-				result = email + "님의 아이디는 <b>"
-								+ list.get(0).getUserId()
-								+ "</b>입니다.";
-				
-				Mail mail = new Mail();
-				mail.setReceiverEmail(email);
-				
-				// MainSender.java 에서 설정한 메일
-				mail.setSenderEmail("khg1070a@gmail.com");
-				mail.setSenderName("관리자");
-				mail.setSubject("아이디 찾기");
-				mail.setContent(result);
-				
-				b = mailsender.mailSend(mail);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return b;
-	}
 
 	@Override
 	public void updateMembership(Map<String, Object> map) throws Exception {
@@ -197,13 +169,74 @@ public class MemberServiceImpl implements MemberService{
 		}		
 	}
 	
-	/*
+	
 	@Override
 	public void generatePwd(Member dto) throws Exception {
-		// TODO Auto-generated method stub
+		// 10 자리 임시 패스워드 생성
+		StringBuilder sb = new StringBuilder();
+		Random rd = new Random();
+		String s = "!@#$%^&*~-+ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+		for (int i = 0; i < 10; i++) {
+			int n = rd.nextInt(s.length());
+			sb.append(s.substring(n, n + 1));
+		}
+
+		String result;
+		result = dto.getUserId() + "님의 새로 발급된 임시 패스워드는 <b>"
+				+ sb.toString()
+				+ "</b> 입니다.<br>"
+				+ "로그인 후 반드시 패스워드를 변경 하시기 바랍니다.";
+
+		Mail mail = new Mail();
+		mail.setReceiverEmail(dto.getEmail());
+
+		mail.setSenderEmail("이메일@gmail.com");
+		mail.setSenderName("관리자");
+		mail.setSubject("임시 비밀번호");
+		mail.setContent(result);
+		
+		// DB 테이블 수정
+		dto.setUserPwd(sb.toString());
+		updatePwd(dto);
+		
+		boolean b = mailsender.mailSend(mail);
+
+		if (! b) {
+			throw new Exception("이메일 전송중 오류가 발생했습니다.");			
+		}
 		
 	}
-	*/
+	
+	@Override
+	public boolean findByEmailId(String email) {
+	    boolean b = false;
+
+	    try {
+	        List<Member> list = mapper.findByEmail(email);
+	        if (list.size() > 0) {
+	        	String result;
+	        	result = email + "님의 아이디는 <b>"
+	        			+ list.get(0).getUserId()
+	        			+ "</b> 입니다.";
+	        	
+	                Mail mail = new Mail();
+	                mail.setReceiverEmail(email);
+
+	                // MainSender.java 에서 설정한 메일
+	                mail.setSenderEmail("이메일@gmail.com");
+	                mail.setSenderName("관리자");
+	                mail.setSubject("임시 패스워드");
+	                mail.setContent(result);
+	                
+	               b = mailsender.mailSend(mail);
+
+	        }
+	    } catch (Exception e) {
+	    }
+
+	    return b; 
+	}
+	
 	
 	@Override
 	public boolean isPasswordCheck(String userId, String userPwd) {
@@ -285,8 +318,5 @@ public class MemberServiceImpl implements MemberService{
 		}
 		
 	}
-
-	
-	
 	
 }

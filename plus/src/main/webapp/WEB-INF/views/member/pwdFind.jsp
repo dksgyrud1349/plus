@@ -103,10 +103,6 @@ function sendOk() {
                             <input type="text" name="userId" class="p-3 find" placeholder="아이디를 입력해주세요.">
                         </div>
                      
-                    	<div class="d-grid">
-                    		<div class="mb-2 fw-bold">이메일</div>
-                            <input type="text" name="userpwd" class="p-3 find" placeholder="example12@naver.com">
-                        </div>
                         
                         <div class="d-grid">
 							<p class="form-control-plaintext anno1 pt-0 mt-4">입력하신 정보는 인증 이외의 용도로 <br>이용 및 저장되지 않습니다.</p>
