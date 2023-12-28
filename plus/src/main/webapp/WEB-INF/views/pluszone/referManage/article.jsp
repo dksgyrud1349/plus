@@ -19,6 +19,8 @@ function deleteOk() {
         location.href = url;
     }
 }
+
+
 </script>
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
@@ -63,7 +65,7 @@ function deleteOk() {
 								<tbody>
 									<tr>
 										<td width="50%" align="left">
-											이름 : ${dto.classNum}
+											이름 : ${dto.userName}
 										</td>
 										<td width="50%" align="right">
 											${dto.regDate}
@@ -99,14 +101,20 @@ function deleteOk() {
 							<table class="table">
 								<tr>
 									<td width="50%" align="left">
-										<c:choose>
-											<c:when test="${sessionScope.member.userId == dto.userId}">
-								    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/referManage/update?refNum=${dto.refNum}&page=${page}';">수정</button>
-								    		</c:when>
-								    		<c:otherwise>
-								    			<button type="button" class="btn" disabled>수정</button>
-								    		</c:otherwise>
-								    	</c:choose>
+															
+						
+							<c:choose>
+							<c:when test="${sessionScope.member.userName==dto.userName}">
+								<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/pluszone/referManage/update?num=${dto.refNum}&page=${page}';">수정</button>
+							</c:when>			
+							<c:otherwise>
+								<button type="button" class="btn btn-light" disabled>수정</button>
+							</c:otherwise>
+						</c:choose>
+							
+							
+						
+									
 								    	
 						    			<button type="button" class="btn btn-success" onclick="deleteOk();">삭제</button>
 									</td>

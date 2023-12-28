@@ -31,7 +31,7 @@ public class referManageServiceImpl implements referManageService {
 	@Override
 	public void updateRefer(referManage dto) throws SQLException {
 		try {
-			mapper.updaterefer(dto);
+			mapper.updateRefer(dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -42,7 +42,7 @@ public class referManageServiceImpl implements referManageService {
 	@Override
 	public void deleteRefer(long num) throws SQLException {
 		try {
-			mapper.deleterefer(num);
+			mapper.deleteRefer(num);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;

@@ -45,7 +45,7 @@ public class referManageController {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 
 		int size = 10;
-		int total_page =10;
+		int total_page =0;
 		int dataCount = 0;
 		
 		if (req.getMethod().equalsIgnoreCase("GET")) { // GET 방식인 경우
@@ -155,7 +155,7 @@ public class referManageController {
 		map.put("userId", info.getUserId());
 		map.put("schType", schType);
 		map.put("kwd", kwd);
-		map.put("num", num);
+		map.put("refNum", num);
 		
 		referManage prevDto = service.findByPrev(map);
 		referManage nextDto = service.findByNext(map);
@@ -174,14 +174,16 @@ public class referManageController {
 			HttpSession session,
 			Model model) throws Exception {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
-
+		List<referManage> listClass = service.listClass(info.getMemberIdx());
 
 		referManage dto = service.findById(num);
-		if (dto == null || ! info.getUserId().equals(dto.getUserId())) {
+		
+		if (dto == null) {
 			return "redirect:/pluszone/referManage/list?page=" + page;
 		}
-
+		
 		model.addAttribute("mode", "update");
+		model.addAttribute("listClass", listClass);
 		model.addAttribute("page", page);
 		model.addAttribute("dto", dto);
 		
@@ -191,20 +193,23 @@ public class referManageController {
 
 	@PostMapping("update")
 	public String updateSubmit(referManage dto,
-			@RequestParam String page,
-			HttpSession session) throws Exception {
+			@RequestParam String page, HttpSession session
+			) throws Exception {
 
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		
+		long memberIdx = info.getMemberIdx();
+		
 		try {
 			dto.setUserId(info.getUserId());
-			 service.updateRefer(dto);
-
+			service.updateRefer(dto);
+			service.listClass(memberIdx);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return "redirect:/pluszone/referManage/list?page=" + page;
+		return "redirect:/pluszone/referManage/article?num=" + dto.getRefNum() + "&page=" + page;
 	}
 
 	@GetMapping("delete")

@@ -66,9 +66,12 @@
 
    <!-- 글보기 -->
    <select id="findById" parameterType="long" resultType="com.fa.plus.pluszone.domain.referManage">
-      SELECT refNum, r.classNum, l.className, r.subject, r.rcontent, r.regDate
+      SELECT refNum, r.classNum, l.className, r.subject, r.rcontent, r.regDate, m.userName
       FROM refer r 
       JOIN lesson l ON r.classNum = l.classNum
+      LEFT OUTER JOIN member1 m
+      	 ON m.memberIdx = l.memberIdx
+      
       WHERE refNum= #{refNum}
    </select>
    

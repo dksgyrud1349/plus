@@ -8,7 +8,7 @@ import com.fa.plus.pluszone.domain.referManage;
 public interface referManageService {
 	public void insertRefer(referManage dto) throws Exception;
 	public void updateRefer(referManage dto) throws Exception;
-	public void deleteRefer(long Num) throws Exception;
+	public void deleteRefer(long num) throws Exception;
 	
 	public List<referManage> listClass(Long memberIdx);
 	

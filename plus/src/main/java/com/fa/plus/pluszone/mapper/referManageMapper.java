@@ -5,14 +5,15 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Mapper;
 
 import com.fa.plus.pluszone.domain.referManage;
 
-
+@Mapper 
 public interface referManageMapper {
 	public void insertRefer(referManage dto) throws SQLException;
-	public void updaterefer(referManage dto) throws SQLException;
-	public void deleterefer(long num) throws SQLException;
+	public void updateRefer(referManage dto) throws SQLException;
+	public void deleteRefer(long refNum) throws SQLException;
 	
 	public List<referManage> listClass(Long memberIdx);
 	
