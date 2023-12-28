@@ -158,7 +158,7 @@
 		/* lessonMapper.getLessonDtlDate - 강좌상세 페이지_수강 일자 */
 		SELECT DISTINCT(TO_CHAR(classDate, 'YYYY-MM-DD')) AS classDate
 		FROM lessonDetail
-		WHERE classNum = #{classNum} AND classDate >= SYSDATE + 1
+		WHERE classNum = #{classNum} AND classDate >= TRUNC(SYSDATE) + 1
 	</select>
 	
 	<select id="getLessonDtlTime" parameterType="map" resultType="com.fa.plus.domain.LessonDetail">
