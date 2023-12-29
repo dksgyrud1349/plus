@@ -113,10 +113,10 @@
 	        f.email2.focus();
 	        return;
 	    }
-	    if(confirm("정보수정을 하시겠습니까? ")){
-	   		f.action = "${pageContext.request.contextPath}/member/${mode}";
-	    	f.submit();
-		}
+	    
+	   	f.action = "${pageContext.request.contextPath}/member/${mode}";
+	    f.submit();
+		
 	}
 	function changeEmail() {
 	    const f = document.memberForm;
