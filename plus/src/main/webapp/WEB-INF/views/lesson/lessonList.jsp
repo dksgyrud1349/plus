@@ -247,7 +247,7 @@ $(function(){
 			    <c:forEach var="dto" items="${list}" varStatus="status">
 			        <div class="card col-4 p-1 m-3" style="width: 25rem; height: 35rem; border:none; background:#F5F5F5">
 			            <div class="zoom">
-			                <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="card-img-top">
+			                <img src="${pageContext.request.contextPath}/uploads/lesson/${dto.firstPhoto}" class="card-img-top">
 			                <div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">
 			                    <i class="bi bi-star"></i> 5.0 (리뷰 개수)
 			                </div>
