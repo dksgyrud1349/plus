@@ -146,6 +146,7 @@
 										<th width="250">메인카테고리</th>
 										<th width="200">서브카테고리</th>
 										<th width="200">해시태그</th>
+										<th width="100">승인상태</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -165,6 +166,7 @@
 											<td>${dto.mainName}</td>
 											<td>${dto.subName}</td>
 											<td>${dto.tagName}</td>
+											<td>${dto.memo}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -198,6 +200,7 @@
 												<select name="schType" class="form-select">
 													<option value="className" ${schType=="className"?"selected":""}>클래스이름</option>
 													<option value="regDate" ${schType=="regDate"?"selected":""}>등록일</option>
+													<option value="memo" ${schType=="memo"?"selected":""}>승인상태</option>
 													<option value="highPrice" ${schType=="highPrice"?"selected":""}>높은가격순</option>
 													<option value="lowPrice" ${schType=="lowPrice"?"selected":""}>낮은가격순</option>
 												</select> 
