@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.MyWishListMapper">
+	<select id="myWishList" parameterType="map" resultType="com.fa.plus.domain.MyWishList">
+		SELECT le.classNum, className, price, firstPhoto, le.addr1, nickName,
+			TO_CHAR(startDate, 'YYYY-MM-DD') startDate, TO_CHAR(endDate, 'YYYY-MM-DD') endDate
+		FROM wishList Wl
+		JOIN lesson le ON wl.classNum = le.classNum
+		JOIN member m ON m.memberIdx = le.memberIdx
+		JOIN member1 ml ON m.memberIdx = ml.memberIdx
+		JOIN plus pl ON ml.userId = pl.userId
+		WHERE wl.userId = #{userId}
+		ORDER BY wl.wishDate DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<select id="dataCount" parameterType="String" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM wishList Wl
+		JOIN lesson le ON wl.classNum = le.classNum
+		JOIN member m ON m.memberIdx = le.memberIdx
+		JOIN member1 ml ON m.memberIdx = ml.memberIdx
+		JOIN plus pl ON ml.userId = pl.userId
+		WHERE wl.userId = #{userId}
+	</select>
+	
+	<insert id="insertLessonLike" parameterType="map">
+		INSERT INTO wishList(wishDate, userId, classNum) VALUES (SYSDATE, #{userId}, #{classNum})
+	</insert>
+	
+	<delete id="deleteLessonLike" parameterType="map">
+		DELETE FROM wishList WHERE classNum = #{classNum} AND userId = #{userId}
+	</delete>
+	
+	<select id="lessonLikeCount" parameterType="Long" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM wishList 
+		WHERE classNum = #{classNum}
+	</select>
+	
+	<select id="userLessonLiked" parameterType="map" resultType="com.fa.plus.domain.MyWishList">
+		SELECT userId, classNum 
+		FROM wishList
+		WHERE classNum = #{classNum} AND userId = #{userId}
+	</select>
+</mapper>
