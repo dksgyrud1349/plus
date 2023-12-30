@@ -215,7 +215,7 @@ function checkPay(){
 					<main id="main" style="width: 1000px; height: 1000px;">
 						<section id="left">
 							<div id="head">
-								<h1>${lesson.className}</h1>
+								<p class="fs-3">${lesson.className}</p>
 								<p>${lesson.userName}</p>
 							</div>
 							<h3><fmt:formatNumber value="${dto.price}" pattern="#,###" />${lesson.price}원</h3>
