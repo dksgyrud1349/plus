@@ -50,7 +50,7 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 		    	}
 		    	
 				console.log(jqXHR.responseText);
-			}
+			}	
 	};
 	
 	if(file) {
