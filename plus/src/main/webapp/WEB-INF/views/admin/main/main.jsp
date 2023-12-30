@@ -63,22 +63,17 @@ $(function(){
 });
 </script>
 
+<style>
+
+</style>
+
 		<div id="layoutSidenav_content">
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">
-                            <i class="fas fa-tachometer-alt"></i>
-                            관리자 페이지
-                        </h1>
-                        <ul class="breadcrumb mb-4" style="list-style-type: none;">
-                            <li class="breadcrumb-item active">
-                                <i class="fas fa-table me-1"></i>
-                                통계
-                            </li>
-                        </ul>
+                    <div class="container-fluid px-4 mt-5">
+                        
 
                         <div class="row">
 
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-3 col-md-6 totalbox">
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">
                                         <h3 class="text-center">총 회원 수</h3>
