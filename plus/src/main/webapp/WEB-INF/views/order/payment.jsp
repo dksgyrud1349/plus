@@ -249,12 +249,12 @@ function checkPay(){
 								</div>
 
 								<div id="form-card" class="form-field">
-									<label for="count">인원수</label>
+									<label for="count">인원수 (${lesson.count1}명 남았습니다.)</label>
 									<input type="number" name="count" id="count" placeholder="인원수를 입력해주세요." min='1' max='${lesson.count1}' step='1' value="1" required>
 								</div>
 
 								<div id="form-sec-code" class="form-field">
-									<label for="uMileage">적립금(사용)</label>
+									<label for="uMileage">적립금(사용) (${user.totalMileage}점 사용 가능합니다.)</label>
 									<input type="number" name="uMileage" id="uMileage" placeholder="사용하실 적립금을 입력해주세요" min='0' max='${user.totalMileage}' step='1' value="0"> 
 								</div>
 								
