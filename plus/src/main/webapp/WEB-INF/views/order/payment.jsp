@@ -60,11 +60,36 @@ function payOk(){
 		return;
 	}
 	
+	let count1 = f.count1.value;
+	if(count > count1){
+		alert("입력하신 인원수가 클래스의 최대 인원수를 초과하였습니다.");
+		f.count.focus();
+		return;
+	}
+	
 	if(!regex.test(uMileage)){
 		alert("숫자만 입력하세요.");
 		f.uMileage.focus();
 		return;
 	}
+	
+	let totalMileage = f.totalMileage.value;
+	if(uMileage > totalMileage){
+		alert("입력하신 마일리지가 고객님께서 보유하고 계신 마일리지를 초과하였습니다.");
+		f.uMileage.focus();
+		return;
+	}
+	
+	var pay = document.getElementById("pay").value;
+	if(pay === ""){
+		alert("'입력완료' 버튼을 클릭해주세요.");
+		return;
+	}
+	
+	if(!confirm("입력하신 정보들과 결제 금액이 올바른지 확인해주시기 바랍니다.")){
+		return;
+	}
+	
 	f.submit();
 }
 
@@ -75,7 +100,7 @@ function checkPay(){
 	let percent;
 	percent = f.pay1.value * f.discountPercent.value / 100;
 	total = f.pay1.value * f.count.value - f.discountMoney.value - f.uMileage.value - percent;
-	document.querySelector('.pay').innerHTML = total;
+	document.getElementById("pay").value = total;
 }
 
 </script>
@@ -225,17 +250,17 @@ function checkPay(){
 
 								<div id="form-card" class="form-field">
 									<label for="count">인원수</label>
-									<input type="text" name="count" id="count" placeholder="인원수를 입력해주세요." min='1' max='${lesson.count1}' step='1' value="1" required>
+									<input type="number" name="count" id="count" placeholder="인원수를 입력해주세요." min='1' max='${lesson.count1}' step='1' value="1" required>
 								</div>
 
 								<div id="form-sec-code" class="form-field">
 									<label for="uMileage">적립금(사용)</label>
-									<input type="text" name="uMileage" id="uMileage" placeholder="사용하실 적립금을 입력해주세요" min='0' max='${user.totalMileage}' step='1' value="0" required>
+									<input type="number" name="uMileage" id="uMileage" placeholder="사용하실 적립금을 입력해주세요" min='0' max='${user.totalMileage}' step='1' value="0"> 
 								</div>
 								
 								<div id="form-sec-code" class="form-field">
 									<label for="mileage">적립금(적립)</label>
-									<input type="text" name="mileage" id="mileage" value="${lesson.mileage}" readonly>
+									<input type="number" name="mileage" id="mileage" value="${lesson.mileage}" readonly>
 								</div>
 								
 								<div id="form-card" class="form-field">
@@ -251,10 +276,14 @@ function checkPay(){
 								<input type="hidden" name="classNum" value="${lesson.classNum}">
 								<input type="hidden" name="detailNum" value="${lesson.detailNum}">
 								<input type="hidden" name="pay1" id="pay1" value="${lesson.price}">
+								<input type="hidden" name="count1" value="${lesson.count1}">
+								<input type="hidden" name="totalMileage" value="${user.totalMileage}">
 								
 								<div id="form-card" class="form-field">
 									<label for="pay">결제 금액</label>
-									<div class="pay"></div>
+									<div>
+										<input id="pay" class="pay" name="pay">
+									</div>
 								</div>
 								<button type="button" onclick="payOk();">결제하기</button>
 							</form>

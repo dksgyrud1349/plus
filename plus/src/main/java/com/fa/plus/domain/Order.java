@@ -14,7 +14,7 @@ public class Order {
 	private String endTime;
 	
 	// 주문 상세
-	private int count;  // 인원수
+	private int count;  // 인원수(사용자가 입력한)
 	private int uMileage;  // 적립금(사용)
 	private int pay;  // 결제금액
 	private int state;  // 주문 상태(0 : 예약 대기, 1 : 예약 확정, 2 : 환불)

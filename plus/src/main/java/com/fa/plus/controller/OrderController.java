@@ -32,6 +32,7 @@ public class OrderController {
 		
 		// 주문자의 userId, userName, birth, totalMileage 가져오기
 		Order user = service.findByOrderHuman(info.getUserId());
+		
 		String startTime = "";
 		String endTime = "";
 		
@@ -72,7 +73,7 @@ public class OrderController {
 	public String paymentSubmit(Order dto, HttpSession session) throws Exception {
 		long detailNum = dto.getDetailNum();  // 클래스상세번호
 		int uMileage = dto.getuMileage();  // 사용한 적립금
-		int mileage = dto.getMileage();  // 적립되는 적립금
+		int mileage = dto.getMileage();  // 적립되는 적립금	
 		
 		SessionInfo info = (SessionInfo)session.getAttribute("member");
 		
@@ -81,6 +82,7 @@ public class OrderController {
 		map.put("classNum", dto.getClassNum());
 		map.put("memberIdx", info.getMemberIdx());
 		map.put("detailNum", detailNum);
+		map.put("count", dto.getCount());
 		
 		dto.setMemberIdx(info.getMemberIdx());
 		dto.setUserId(info.getUserId());
@@ -88,13 +90,13 @@ public class OrderController {
 		try {
 			service.insertOrders(dto);
 			
-			if(uMileage != 0) { // 적립금 사용
+			if(uMileage != 0) { // 사용한 적립금이 있으면
 				map.put("uMileage", uMileage);
-				service.updateMileage(map);
+				service.updateUmileage(map);
 				service.insertUMileage(dto);
 			}
 			
-			if(mileage != 0) {  // 적립금이 있으면
+			if(mileage != 0) {  // 클래스 적립금이 있으면
 				map.put("mileage", mileage);
 				service.updateMileage(map);
 				service.insertMileage(dto);

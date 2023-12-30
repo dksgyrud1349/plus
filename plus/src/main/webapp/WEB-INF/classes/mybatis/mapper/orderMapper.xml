@@ -38,7 +38,7 @@
 		WHERE m1.userId = #{userId}
 	</select>
 	
-	<update id="updateCount" parameterType="String">
+	<update id="updateCount" parameterType="map">
 		UPDATE lessonDetail SET count = count - #{count} WHERE detailNum = #{detailNum}
 	</update>
 	
