@@ -52,12 +52,16 @@
 		WHERE classNum = #{classNum}
 	</update>
 	
+	<update id="updateLessonDetail" parameterType="map">
+		UPDATE lessonDetail SET count = #{count}, dContent = #{dContent} WHERE TO_CHAR(classDate, 'YYYY-MM-DD HH24:MI:SS') classDate = #{classDate}
+	</update>
+	
 	<delete id="deleteLesson" parameterType="Long">
 		DELETE FROM lesson WHERE classNum = #{classNum}
 	</delete>
 	
 	<delete id="deleteLessonDetail" parameterType="Long">
-		DELETE FROM lessonDetail WHERE classNum = #{classNum}
+		DELETE FROM lessonDetail WHERE detailNum = #{detailNum}
 	</delete>
 	
 	<select id="findById" parameterType="Long" resultType="com.fa.plus.pluszone.domain.LessonPlus">
@@ -71,8 +75,8 @@
 	</select>
 	
 	<select id="findByDetail" parameterType="Long" resultType="com.fa.plus.pluszone.domain.LessonPlus">
-		SELECT classNum, TO_CHAR(classDate, 'HH24:MI:SS'), detailNum, count, dContent 
-		FROM lessonDetail 
+		SELECT detailNum, count, dContent, TO_CHAR(classDate, 'YYYY-MM-DD HH24:MI:SS') classDate
+		FROM lessonDetail
 		WHERE classNum = #{classNum}
 	</select>
 	

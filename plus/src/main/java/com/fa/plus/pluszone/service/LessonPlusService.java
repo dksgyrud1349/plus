@@ -21,9 +21,10 @@ public interface LessonPlusService {
 	public List<LessonPlus> listHashTag();
 	
 	public void updateLesson(LessonPlus dto, String pathname) throws Exception;
+	public void updateLessonDetail(Map<String, Object> map) throws Exception;
 	
 	public void deleteLesson(long classNum) throws Exception;
-	public void deleteLessonDetail(long classNum) throws Exception;
+	public void deleteLessonDetail(long detailNum) throws Exception;
 	public void deleteLessonPhoto(long photoNum, String pathname) throws Exception;
 	
 }

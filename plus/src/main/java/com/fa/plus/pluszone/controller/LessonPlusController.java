@@ -169,13 +169,10 @@ public class LessonPlusController {
 		
 		long mainNum = dto.getMainNum();
 		
-		int c = 0;
 		String dC = "";
 		
 		for(LessonPlus vo : listDetail) {
-			c = vo.getCount();
 			dC = vo.getdContent();
-			dto.setCount(c);
 			dto.setdContent(dC);
 		}
 		
@@ -191,18 +188,33 @@ public class LessonPlusController {
 		model.addAttribute("page", page);
 		model.addAttribute("listHashTag", listHashTag);
 		model.addAttribute("mainNum", mainNum);
+		model.addAttribute("listDetail", listDetail);
 		
 		return ".pluszone.lesson.write";
 	}
 	
 	@PostMapping("update")
-	public String updateSubmit(LessonPlus dto, @RequestParam String page, HttpSession session, Model model) {
+	public String updateSubmit(LessonPlus dto, @RequestParam String page, HttpSession session, Model model,
+				@RequestParam("classDateList") List<LessonPlus> classDateList,
+				@RequestParam("countList") List<LessonPlus> countList) throws Exception{
 		String root = session.getServletContext().getRealPath("/");
 		String path = root + "uploads" + File.separator + "lesson";
 		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
 		try {
 			service.updateLesson(dto, path);
+			
+			for(LessonPlus vo : classDateList) {
+				map.put("classDate", vo.getClassDate());
+				map.put("count", vo.getCount());
+				map.put("dContent", dto.getdContent());
+				service.updateLessonDetail(map);
+			}
+			
 		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
 		}
 		
 		String query = "page=" + page;

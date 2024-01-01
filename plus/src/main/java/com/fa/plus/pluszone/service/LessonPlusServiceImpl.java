@@ -59,15 +59,12 @@ public class LessonPlusServiceImpl implements LessonPlusService{
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 			
-			System.out.println(">>>>>>>>>>>" + dto.getdContent());
-			
 			while(true) {
 				dto.setClassDay(sdf1.format(cal.getTime()));
 				
 				if(dto.getStartTime1() != null) {
 					dto.setClassDate(dto.getClassDay() + " " + dto.getStartTime1() + ":00");
 					mapper.insertLessonDetail(dto);
-					
 				} 
 				
 				if(dto.getStartTime2() != null) {
@@ -188,9 +185,9 @@ public class LessonPlusServiceImpl implements LessonPlusService{
 	}
 
 	@Override
-	public void deleteLessonDetail(long classNum) throws Exception {
+	public void deleteLessonDetail(long detailNum) throws Exception {
 		try {
-			mapper.deleteLessonDetail(classNum);
+			mapper.deleteLessonDetail(detailNum);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -224,50 +221,16 @@ public class LessonPlusServiceImpl implements LessonPlusService{
 				}
 			}
 			
-			deleteLessonDetail(dto.getClassNum());
-			
-			int startYear = Integer.parseInt(dto.getStartDate().substring(0, 4));
-			int startMonth = Integer.parseInt(dto.getStartDate().substring(5, 7));
-			int startDay = Integer.parseInt(dto.getStartDate().substring(8));
-			
-			int endDay = Integer.parseInt(dto.getEndDate().replaceAll("-", ""));
-			
-			Calendar cal = Calendar.getInstance();
-			cal.set(startYear, startMonth - 1, startDay);
-			
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-			
-			while(true) {
-				dto.setClassDay(sdf1.format(cal.getTime()));
-				
-				if(dto.getStartTime1() != null) {
-					dto.setClassDate(dto.getClassDay() + " " + dto.getStartTime1() + ":00");
-					mapper.insertLessonDetail(dto);
-					
-				} 
-				
-				if(dto.getStartTime2() != null) {
-					dto.setClassDate(dto.getClassDay() + " " + dto.getStartTime2() + ":00");
-					mapper.insertLessonDetail(dto);
-				}
-				
-				if(dto.getStartTime3() != null) {
-					dto.setClassDate(dto.getClassDay() + " " + dto.getStartTime3() + ":00");
-					mapper.insertLessonDetail(dto);
-				}
-				
-				if(dto.getStartTime4() != null) {
-					dto.setClassDate(dto.getClassDay() + " " + dto.getStartTime4() + ":00");
-					mapper.insertLessonDetail(dto);
-				}
-				cal.add(Calendar.DATE, 1);
-				
-				if(Integer.parseInt(sdf.format(cal.getTime())) > endDay) {
-					break;
-				}
-			}
-			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	@Override
+	public void updateLessonDetail(Map<String, Object> map) throws Exception {
+		try {
+			mapper.updateLessonDetail(map);  // count, classDate
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;

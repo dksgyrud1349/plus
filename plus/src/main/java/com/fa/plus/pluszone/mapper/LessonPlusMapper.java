@@ -13,9 +13,9 @@ public interface LessonPlusMapper {
 	
 	// 클래스 등록
 	public long lessonSeq();//
-	public void insertLesson(LessonPlus lesson) throws SQLException;//
-	public void insertLessonPhoto(LessonPlus lesson) throws SQLException;//
-	public void insertLessonDetail(LessonPlus lesson) throws SQLException;//
+	public void insertLesson(LessonPlus lesson) throws SQLException;
+	public void insertLessonPhoto(LessonPlus lesson) throws SQLException;
+	public void insertLessonDetail(LessonPlus lesson) throws SQLException;
 	
 	public List<LessonPlus> listMainCategory();
 	public List<LessonPlus> listSubCategory(long mainNum);
@@ -31,9 +31,10 @@ public interface LessonPlusMapper {
 	public List<LessonPlus> findByDetail(long classNum) throws SQLException;
 	public List<LessonPlus> listLessonPhoto(long classNum);
 	
-	public void deleteLessonDetail(long classNum) throws SQLException;
+	public void deleteLessonDetail(long detailNum) throws SQLException;
 	
 	public void updateLesson(LessonPlus lesson) throws SQLException;
+	public void updateLessonDetail(Map<String, Object> map) throws SQLException;
 	
 	// 클래스 삭제
 	public void deleteLesson(long classNum) throws SQLException;

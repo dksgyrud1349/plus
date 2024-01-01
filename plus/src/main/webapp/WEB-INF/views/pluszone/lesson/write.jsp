@@ -157,6 +157,13 @@
 			f.firstPhotoFile.focus();
 			return false;
 		}
+		
+		var classDateList = [];
+		var countList = [];
+		for(var i = 0; i < listDetail.length; i++){
+			var data = classDateList[i];
+			classDateList.push(data);
+		}
 
 		f.action = "${pageContext.request.contextPath}/lessonPlus/${mode}";
 		return true;
@@ -302,33 +309,45 @@ $(function(){
 									<input type="text" name="price" class="form-control" value="${dto.price}">
 								</td>
 							</tr>
-							<tr>
-								<td class="table-light col-sm-2">시작일</td>
-								<td>
-									<input type="date" name="startDate" class="form-control" value="${dto.startDate}">
-								</td>
-							</tr>
-							<tr>
-								<td class="table-light col-sm-2">종료일</td>
-								<td>
-									<input type="date" name="endDate" class="form-control" value="${dto.endDate}">
-								</td>
-							</tr>
-							<tr>
-								<td class="table-light col-sm-2">시간 선택</td>
-								<td>
-									<div class="pt-2 pb-2">
-										<input type="checkbox" name="startTime1" class="form-check-input" id="startTime1" value="12:00">
-										<label class="form-check-label" for="startTime1">12:00</label> &nbsp;&nbsp;
-										<input type="checkbox" name="startTime2" class="form-check-input" id="startTime2" value="14:00">
-										<label class="form-check-label" for="startTime2">14:00</label> &nbsp;&nbsp;
-										<input type="checkbox" name="startTime3" class="form-check-input" id="startTime3" value="16:00">
-										<label class="form-check-label" for="startTime3">16:00</label> &nbsp;&nbsp;
-										<input type="checkbox" name="startTime4" class="form-check-input" id="startTime4" value="18:00">
-										<label class="form-check-label" for="startTime4">18:00</label>
-									</div>
-								</td>
-							</tr>
+							<c:if test="${mode == 'write'}">
+								<tr>
+									<td class="table-light col-sm-2">시작일</td>
+									<td>
+										<input type="date" name="startDate" class="form-control" value="${dto.startDate}">
+									</td>
+								</tr>
+								<tr>
+									<td class="table-light col-sm-2">종료일</td>
+									<td>
+										<input type="date" name="endDate" class="form-control" value="${dto.endDate}">
+									</td>
+								</tr>
+								<tr>
+									<td class="table-light col-sm-2">시간 선택</td>
+									<td>
+										<div class="pt-2 pb-2">
+											<input type="checkbox" name="startTime1" class="form-check-input" id="startTime1" value="12:00">
+											<label class="form-check-label" for="startTime1">12:00</label> &nbsp;&nbsp;
+											<input type="checkbox" name="startTime2" class="form-check-input" id="startTime2" value="14:00">
+											<label class="form-check-label" for="startTime2">14:00</label> &nbsp;&nbsp;
+											<input type="checkbox" name="startTime3" class="form-check-input" id="startTime3" value="16:00">
+											<label class="form-check-label" for="startTime3">16:00</label> &nbsp;&nbsp;
+											<input type="checkbox" name="startTime4" class="form-check-input" id="startTime4" value="18:00">
+											<label class="form-check-label" for="startTime4">18:00</label>
+										</div>
+									</td>
+								</tr>
+							</c:if>
+							<c:if test="${mode == 'update'}"> <!-- 시작일, 종료일, 시간 선택 -->
+								<c:forEach var="vo" items="${listDetail}" varStatus="status">
+									<tr>
+										<td class="table-light col-sm-2">상세</td>
+										<td>
+											<input type="text" name="classDate" class="form-control" style="width: 300px; float: left;" value="${vo.classDate}" readonly> &nbsp;&nbsp; <input type="number" name="count" class="form-control" style="width: 300px; float: left;" value="${vo.count}">
+										</td>
+									</tr>
+								</c:forEach>
+							</c:if>
 							<tr>
 								<td class="table-light col-sm-2">수업시간</td>
 								<td>
@@ -336,13 +355,15 @@ $(function(){
 									<small class="form-control-plaintext help-block">수업시간이 1인 경우 1시간 수업임을 의미합니다..</small>
 								</td>
 							</tr>
-							<tr>
-								<td class="table-light col-sm-2">인원수</td>
-								<td>
-									<input type="text" name="count" class="form-control" value="${dto.count}">
-									<small class="form-control-plaintext help-block">인원수가 1인 경우 시간당 참여할 수 있는 인원수가 1명임을 의미합니다..</small>
-								</td>
-							</tr>
+							<c:if test="${mode == 'write'}">
+								<tr>
+									<td class="table-light col-sm-2">인원수</td>
+									<td>
+										<input type="text" name="count" class="form-control" value="${dto.count}">
+										<small class="form-control-plaintext help-block">인원수가 1인 경우 시간당 참여할 수 있는 인원수가 1명임을 의미합니다..</small>
+									</td>
+								</tr>
+							</c:if>
 							<tr>
 								<td class="table-light col-sm-2">상세 설명</td>
 								<td>
