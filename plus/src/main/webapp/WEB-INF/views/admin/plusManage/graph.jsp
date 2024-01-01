@@ -209,18 +209,19 @@ $(function(){
 });
 </script>
 
-<main class="wrapper" style="margin: 5% auto; width: 80%;">
-	<div id="layoutSidenav_content">
-		<div class="container-fluid px-5">
-			<div class="body-container">
-				<div class="body-title">
-					<h2>
-						<i class="fa-solid fa-user-group"></i> 질문 분석
-					</h2>
-				</div>
-
-				<div class="body-main">
-
+<main class="wrapper" style="margin:0 auto; width:100%;" >
+	<div id="layoutSidenav_content" style="background: #F8F8FF;">
+		 	<div class="container-fluid px-5">
+				<div class="body-container" style="width:80%; margin:5% auto; ">
+    				<div class="body-main">
+					
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+	                     	<i class="fa-solid fa-user-group"></i> 질문 분석 
+	                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/plusManage/graph';" style="float:right;">
+	                    	<i class="fa-solid fa-arrow-rotate-left"></i>
+	                    </button>
+	                </h3>
+					
 					<div>
 						<ul class="tabs">
 							<li id="tab-0" data-tab="0"><i class="fa-solid fa-person"></i>&nbsp;플러스

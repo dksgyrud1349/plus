@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tabs.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
+
 <script type="text/javascript">
 $(function(){
 	$("#tab-0").addClass("active");
@@ -62,7 +63,7 @@ function login() {
 function searchList() {
 	const f = document.searchForm;
 	f.enabled.value=$("#selectEnabled").val();
-	f.action = "${pageContext.request.contextPath}/admin/plusManage/pluslist";
+	f.action = "${pageContext.request.contextPath}/admin/plusManage/plusList";
 	f.submit();
 }
 
@@ -199,6 +200,13 @@ function sendOk(userId) {
 		 	<div class="container-fluid px-5">
 				<div class="body-container" style="width:80%; margin:5% auto; ">
     				<div class="body-main">
+    				
+    				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+                      	<i class="fa-solid fa-user-group"></i> 플러스 관리 
+	                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/plusManage/plusList';" style="float:right;">
+	                    	<i class="fa-solid fa-arrow-rotate-left"></i>
+	                    </button>
+	                </h3>
     	
 						<div>
 							<ul class="tabs">
@@ -228,15 +236,6 @@ function sendOk(userId) {
 							</table>
 			
 							<div class="card mb-5 w-80 text-center" style="margin:0 auto">
-				            	<div class="card-header">
-				                	<h3>
-				                      <i class="fa-solid fa-user-group"></i> 플러스 관리 
-					                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/plusManage/plusList';" style="float:right;">
-					                    	<i class="fa-solid fa-arrow-rotate-left"></i>
-					                    </button>
-					                </h3>
-					             </div>
-					             
 				                 <div class="card-body">
 				                 	<div class="table-responsive">
 				                    	<table class="table table-bordered">
@@ -282,10 +281,6 @@ function sendOk(userId) {
 											</tbody>
 				                       </table>
 				                                
-				                       <div class="page-navigation" >
-											${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
-										</div>
-												
 										<table class="table">
 											<tr>
 												<td align="center">
@@ -299,6 +294,7 @@ function sendOk(userId) {
 																<option value="tel"        ${schType=="tel" ? "selected":""}>전화번호</option>
 															</select>
 															<input type="text" name="kwd" class="form-control" value="${kwd}">
+															<input type="hidden" name="enabled" value="${enabled}">
 															<input type="hidden" name="page" value="1">
 															<button type="button" class="btn btn-outline-secondary" onclick="searchList()">검색</button>
 														</div>
@@ -306,6 +302,11 @@ function sendOk(userId) {
 												</td>
 											</tr>
 										</table>
+										
+										<div class="page-navigation" >
+											${dataCount == 0 ? "등록된 회원이 없습니다." : paging}
+										</div>
+										
 				                     </div>
 				                  </div>
 				               </div>

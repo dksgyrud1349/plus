@@ -42,6 +42,7 @@ public class PlusManageController {
 	public String list(@RequestParam(value = "page", defaultValue = "1") int current_page,
 			@RequestParam(defaultValue = "userId") String schType,
 			@RequestParam(defaultValue = "") String kwd,
+			@RequestParam(defaultValue = "") String enabled,
 			HttpServletRequest req, Model model) throws Exception{
 		
 		String cp = req.getContextPath();
@@ -55,6 +56,7 @@ public class PlusManageController {
 		}
 		
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("enabled", enabled);
 		map.put("schType", schType);
 		map.put("kwd", kwd);
 		
@@ -82,6 +84,13 @@ public class PlusManageController {
 			query = "schType=" + schType + "&kwd=" + URLEncoder.encode(kwd, "utf-8");
 		}
 		
+		if (enabled.length() != 0) {
+			if (query.length() != 0)
+				query = query + "&enabled=" + enabled;
+			else
+				query = "enabled=" + enabled;
+		}
+		
 		if(query.length() != 0) {
 			listUrl += "?" + query;
 		}
@@ -94,6 +103,7 @@ public class PlusManageController {
 		model.addAttribute("size", size);
 		model.addAttribute("total_page", total_page);
 		model.addAttribute("paging", paging);
+		model.addAttribute("enabled", enabled);
 		model.addAttribute("schType", schType);
 		model.addAttribute("kwd", kwd);
 		

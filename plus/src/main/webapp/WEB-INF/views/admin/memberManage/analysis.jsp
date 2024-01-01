@@ -252,7 +252,7 @@ $(function(){
 				<div class="body-container" style="width:80%; margin:5% auto; ">
     				<div class="body-main">
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-			           	<i class="fa-solid fa-user-group"></i> 회원 관리
+			           	<i class="fa-solid fa-user-group"></i> 회원 분석
 			           	<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/memberManage/analysis';" style="float:right;">
 	                    	<i class="fa-solid fa-arrow-rotate-left"></i>
 	                    </button>
@@ -265,7 +265,6 @@ $(function(){
 					</div>
 					<div id="tab-content" style="margin:10px auto">
 						<div id="chart-container"></div>
-						
 						<div id="purposeChart-container"></div>
 						<div id="categoryChart-container"></div>
 						<div id="regionChart-container"></div>

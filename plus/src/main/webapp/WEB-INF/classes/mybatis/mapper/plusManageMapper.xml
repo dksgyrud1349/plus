@@ -29,9 +29,12 @@
 		JOIN member m ON m1.memberIdx = m.memberIdx
 		JOIN member2 m2 ON m1.userId = m2.userId
 		<where>
-			m.membership = 51 OR m.membership = 50
+			(m.membership = 51 OR m.membership = 50)
 			<if test="kwd != null and kwd != ''">
 				AND <include refid="where-list"/>
+			</if>
+			<if test="enabled!=''">
+				AND enabled = #{enabled}
 			</if>
 		</where>
 		ORDER BY memberIdx ASC
@@ -44,9 +47,12 @@
 		JOIN member m ON m1.memberIdx = m.memberIdx
 		JOIN member2 m2 ON m1.userId = m2.userId
 		<where>
-			m.membership = 51 OR m.membership = 50
-			<if test="kwd != null and kwd != ''">
-				<include refid="where-list"/>
+			(m.membership = 51 OR m.membership = 50) 
+			<if test="kwd!=null and kwd!='' ">
+				AND <include refid="where-list"/>
+			</if>
+			<if test="enabled!=''">
+				AND enabled = #{enabled}
 			</if>
 		</where>
 	</select>
