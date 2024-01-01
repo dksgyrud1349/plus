@@ -8,29 +8,32 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/fullcalendar5/lib/main.min.css">
 
-<div class="container">
-	<div class="body-container">	
-		<div class="body-title">
-			<h3><i class="bi bi-calendar-event"></i> 일정관리 </h3>
-		</div>
-		
-		<div class="body-main">
-			<div class="row">
-				<div class="col-sm-1 px-0 text-center">
-					<a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-						<i class="bi bi-layout-text-sidebar-reverse" style="font-size : 25px;"></i>
-					</a>
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content" style="background: #F8F8FF;">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width:80%; margin:5% auto; ">
+				<div class="body-title">
+					<h3><i class="bi bi-calendar-event"></i> 일정관리 </h3>
 				</div>
-				<div class="col px-2">
-					<div id="calendar"></div>
+		
+				<div class="body-main">
+					<div class="row">
+						<div class="col-sm-1 px-0">
+							<a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+								<i class="bi bi-layout-text-sidebar-reverse" style="font-size : 25px;"></i>
+							</a>
+						</div>
+						<div class="col px-2">
+							<div id="calendar"></div>
+						</div>
+					</div>
+					
+					<div id='scheduleLoading' style="display: none;">loading...</div>
 				</div>
 			</div>
-			
-			<div id='scheduleLoading' style="display: none;">loading...</div>
 		</div>
 	</div>
-</div>
-
+</main>
 <!-- 좌측 카테고리 관리 오프캔버스 -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 	<div class="offcanvas-header">
@@ -69,7 +72,7 @@
 						${vo.cName}
 					</div>
 					<div class='col-auto text-end invisible category-item-minus'>
-						<a href='#'><i class='bi bi-dash-square category-item-delete' data-categoryNum='${vo.cNum}'></i></a>
+						<a href='#'><i class='bi bi-dash-square category-item-delete' data-cNum='${vo.cNum}'></i></a>
 					</div>
 				</div>
 			</c:forEach>
@@ -118,7 +121,7 @@
  					<tr>
 						<td class="table-light col-2 align-middle">등록일</td>
 						<td>
-							<p class="form-control-plaintext view-reg_date"></p>
+							<p class="form-control-plaintext view-sRegDate"></p>
 						</td>
 					</tr>
 
@@ -315,14 +318,14 @@ function viewSchedule(calEvent) {
 	let cName = calEvent.extendedProps.cName;
 	if(! cName) cName = "설정하지 않음";
 	
-	let sday = calEvent.extendedProps.sday;
-	let eday = calEvent.extendedProps.eday;
-	let stime = calEvent.extendedProps.stime;
-	let etime = calEvent.extendedProps.etime;
+	let sDay = calEvent.extendedProps.sDay;
+	let eDay = calEvent.extendedProps.eDay;
+	let sTime = calEvent.extendedProps.sTime;
+	let eTime = calEvent.extendedProps.eTime;
 	
 	let sContent = calEvent.extendedProps.sContent;
 	if(! sContent) sContent = "";
-	let regDate = calEvent.extendedProps.regDate;
+	let sRegDate = calEvent.extendedProps.sRegDate;
 	
 	$(".btnScheduleUpdate").attr("data-num", sNum);
 	$(".btnScheduleDelete").attr("data-num", sNum);
@@ -330,25 +333,25 @@ function viewSchedule(calEvent) {
 	let s;
 	$(".view-subject").html(title);
 	
-	s = allDay ? "종일일정" : "시간일정";
+	s = all_day ? "종일일정" : "시간일정";
 	$(".view-category").html(cName + ", " + s);
 	
-	s = sday;
-	if( stime ) {
-		s += " "+stime;
+	s = sDay;
+	if( sTime ) {
+		s += " "+sTime;
 	}
-	if( eday && all_day ) {
-		eday = daysLater(eday, -1);
-		if(sday < eday) {
-			s += " ~ " + eday;
+	if( eDay && all_day ) {
+		eDay = daysLater(eDay, -1);
+		if(sDay < eDay) {
+			s += " ~ " + eDay;
 		}
-	} else if( eday ) {
-		s += " ~ " + eday;
+	} else if( eDay ) {
+		s += " ~ " + eDay;
 	}
-	if( etime ) s += " " + etime;
+	if( eTime ) s += " " + eTime;
 	$(".view-period").html(s);
 	
-	$(".view-regDate").html(regDate);
+	$(".view-sRegDate").html(sRegDate);
 	
 	$(".view-sContent").html(sContent);
 }
@@ -451,7 +454,7 @@ $(function(){
 					out += "  </div>";
 					out += "  <div class='col ps-0'>"+item.cName+"</div>";
 					out += "  <div class='col-auto text-end invisible category-item-minus'>";
-					out += "    <a href='#'><i class='bi bi-dash-square category-item-delete' data-categoryNum='"+item.cNum+"'></i></a>";
+					out += "    <a href='#'><i class='bi bi-dash-square category-item-delete' data-cNum='"+item.cNum+"'></i></a>";
 					out += "  </div>";
 					out += "</div>";
 				}

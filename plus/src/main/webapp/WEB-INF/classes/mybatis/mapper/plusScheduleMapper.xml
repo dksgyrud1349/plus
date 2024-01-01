@@ -11,10 +11,9 @@
 	</insert>
 	
 	<update id="updateSchedule" parameterType="com.fa.plus.pluszone.domain.PlusSchedule">
-		UPDATE SET subject = #{subject}, sContent = #{sContent}, sDay = #{sDay}, eDay = #{eDay, jdbcType=VARCHAR},
+		UPDATE schedule SET subject = #{subject}, sContent = #{sContent}, sDay = #{sDay}, eDay = #{eDay, jdbcType=VARCHAR},
 			sTime = #{sTime, jdbcType=VARCHAR}, eTime = #{eTime, jdbcType=VARCHAR}, color = #{color}, cNum = #{cNum, jdbcType=INTEGER}
-		FROM schedule
-		WHERE sNum = #{sNum}
+		WHERE sNum = #{sNum} AND userId = #{userId}
 	</update>
 	
 	<delete id="deleteSchedule" parameterType="map">

@@ -207,7 +207,7 @@ public class PlusScheduleController {
 	@PostMapping("delete")
 	@ResponseBody
 	public Map<String, Object> delete(
-			@RequestParam int num,
+			@RequestParam int sNum,
 			HttpSession session
 			) {
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
@@ -216,7 +216,7 @@ public class PlusScheduleController {
 		try {
 			Map<String, Object> map=new HashMap<>();
 			map.put("userId", info.getUserId());
-			map.put("num", num);
+			map.put("sNum", sNum);
 			service.deleteSchedule(map);
 		}catch (Exception e) {
 			state = "false";
