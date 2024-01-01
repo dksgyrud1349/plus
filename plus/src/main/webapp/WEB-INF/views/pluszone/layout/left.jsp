@@ -52,7 +52,7 @@
                             
                             
                             
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/schedule/main">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 일정 관리
                             </a>
