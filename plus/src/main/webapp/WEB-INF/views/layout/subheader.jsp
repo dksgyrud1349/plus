@@ -68,7 +68,7 @@
                             </li>
                             
                             <li class="nav-item dropdown">
-                                <a href="${pageContext.request.contextPath}/" class="nav-link" >
+                                <a href="${pageContext.request.contextPath}/sitemap/sitemap" class="nav-link" >
                                    	사이트맵
                                 </a>
                             </li>
