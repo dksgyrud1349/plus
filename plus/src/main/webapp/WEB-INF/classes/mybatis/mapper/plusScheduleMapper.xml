@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.pluszone.mapper.PlusScheduleMapper">
+
+	<insert id="insertSchedule" parameterType="com.fa.plus.pluszone.domain.PlusSchedule">
+		INSERT INTO schedule (sNum, subject, sContent, sDay, eDay, 
+				sTime, eTime, sRegDate, color, cNum, userId)
+			VALUES (schedule_seq.NEXTVAL, #{subject}, #{sContent}, #{sDay}, #{eDay, jdbcType=VARCHAR}, 
+				#{sTime, jdbcType=VARCHAR}, #{eTime, jdbcType=VARCHAR}, SYSDATE, #{color}, #{cNum, jdbcType=INTEGER}, #{userId})
+	</insert>
+	
+	<update id="updateSchedule" parameterType="com.fa.plus.pluszone.domain.PlusSchedule">
+		UPDATE SET subject = #{subject}, sContent = #{sContent}, sDay = #{sDay}, eDay = #{eDay, jdbcType=VARCHAR},
+			sTime = #{sTime, jdbcType=VARCHAR}, eTime = #{eTime, jdbcType=VARCHAR}, color = #{color}, cNum = #{cNum, jdbcType=INTEGER}
+		FROM schedule
+		WHERE sNum = #{sNum}
+	</update>
+	
+	<delete id="deleteSchedule" parameterType="map">
+		DELETE FROM schedule WHERE sNum = #{sNum} AND userId = #{userId}
+	</delete>
+	
+	<select id="findById" parameterType="Long" resultType="com.fa.plus.pluszone.domain.PlusSchedule">
+		SELECT sNum, subject, sContent, sDay, eDay, sTime, eTime, sRegDate, color, s.cNum, s.userId
+		FROM schedule s
+		LEFT OUTER JOIN schCategory sc ON s.cNum = sc.cNum 
+		WHERE sNum = #{sNum}
+	</select>
+	
+	<select id="listMonth" parameterType="map" resultType="com.fa.plus.pluszone.domain.PlusSchedule">
+		SELECT sNum as id, subject as title, sContent, sDay, eDay, sTime, eTime, sRegDate, color,
+			s.cNum, cName, s.userId
+		FROM schedule s
+		LEFT OUTER JOIN schCategory sc ON s.cNum = sc.cNum
+		<where>
+			s.userId = #{userId}
+			<if test="categoryList != null">
+				AND
+				s.cNum IN
+				<foreach collection="categoryList" item="cNum" open="(" separator="," close=")">
+					#{cNum}
+				</foreach>
+			</if>
+			AND
+			(
+			
+				( TO_DATE(sDay, 'YYYY-MM-DD') &gt;= TO_DATE(#{start}, 'YYYY-MM-DD') 
+				AND TO_DATE(sDay, 'YYYY-MM-DD') &lt;= TO_DATE(#{start}, 'YYYY-MM-DD') 
+				) OR ( TO_DATE(eDay, 'YYYY-MM-DD') &lt;= TO_DATE(#{end}, 'YYYY-MM-DD')
+				AND TO_DATE(eDay, 'YYYY-MM-DD') &lt;= TO_DATE(#{end}, 'YYYY-MM-DD') 
+				) 
+			)
+		</where>
+		ORDER BY sDay ASC, id DESC
+	</select>
+	
+	<insert id="insertSchCategory" parameterType="map">
+		INSERT INTO schCategory (cNum, cName, userId)
+			VALUES (schCategory_seq.NEXTVAL, #{cName}, #{userId})
+	</insert>
+	
+	<update id="updateSchCategory" parameterType="map" >
+		UPDATE SET cName = #{cName}
+		FROM schCategory
+		WHERE cNum = #{cNum}
+	</update>
+	
+	<delete id="deleteSchCategory" parameterType="map">
+		DELETE FROM schCategory WHERE cNum = #{cNum} AND userId = #{userId}
+	</delete>
+	
+	<select id="listCategory" parameterType="map" resultType="com.fa.plus.pluszone.domain.PlusSchedule">
+		SELECT cNum, cName, userId
+		FROM schCategory
+		WHERE userId = #{userId}
+	</select>
+
+</mapper>
