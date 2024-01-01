@@ -246,35 +246,34 @@ $(function(){
 
 </script>
 
-<main class="wrapper" style="margin:5% auto; width:80%;">
-	<div id="layoutSidenav_content">
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		 	<div class="container-fluid px-5">
-				<div class="body-container">
-		    			<div class="body-title">
-		<h2><i class="fa-solid fa-user-group"></i> 회원 관리 </h2>
-    </div>
-    
-    <div class="body-main">
-    	
-		<div>
-			<ul class="tabs">
-				<li id="tab-0" data-tab="0"><i class="fa-solid fa-person"></i>&nbsp;회원 리스트</li>
-				<li id="tab-1" data-tab="1"><i class="fa-solid fa-chart-column"></i>&nbsp;회원 분석</li>
-			</ul>
+				<div class="body-container" style="width:80%; margin:5% auto; ">
+    				<div class="body-main">
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+			           	<i class="fa-solid fa-user-group"></i> 회원 관리
+			           	<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/memberManage/analysis';" style="float:right;">
+	                    	<i class="fa-solid fa-arrow-rotate-left"></i>
+	                    </button>
+					</h3>
+					<div>
+						<ul class="tabs">
+							<li id="tab-0" data-tab="0"><i class="fa-solid fa-person"></i>&nbsp;회원 리스트</li>
+							<li id="tab-1" data-tab="1"><i class="fa-solid fa-chart-column"></i>&nbsp;회원 분석</li>
+						</ul>
+					</div>
+					<div id="tab-content" style="margin:10px auto">
+						<div id="chart-container"></div>
+						
+						<div id="purposeChart-container"></div>
+						<div id="categoryChart-container"></div>
+						<div id="regionChart-container"></div>
+						<div id="priceChart-container"></div>
+						<div id="ageChart-container"></div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div id="tab-content" style="margin:10px auto">
-			<div id="chart-container"></div>
-			
-			<div id="purposeChart-container"></div>
-			<div id="categoryChart-container"></div>
-			<div id="regionChart-container"></div>
-			<div id="priceChart-container"></div>
-			<div id="ageChart-container"></div>
-		</div>
-
-    	
 	</div>
-</div>
-</div>
-</div>
 </main>

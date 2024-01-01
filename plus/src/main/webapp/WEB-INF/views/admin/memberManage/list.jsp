@@ -184,11 +184,18 @@ function selectStateChange() {
 }
 </script>
 
-<main class="wrapper" style="margin:0 auto; width:100%;" >
+<main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		 	<div class="container-fluid px-5">
 				<div class="body-container" style="width:80%; margin:5% auto; ">
     				<div class="body-main">
+    				
+	    				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+	                      	<i class="fa-solid fa-user-group"></i> 회원 관리 
+		                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/memberManage/list';" style="float:right;">
+		                    	<i class="fa-solid fa-arrow-rotate-left"></i>
+		                    </button>
+		                </h3>
     	
 						<div>
 							<ul class="tabs">
@@ -218,18 +225,9 @@ function selectStateChange() {
 							</table>
 			
 							<div class="card mb-5 w-80 text-center" style="margin:0 auto">
-				            	<div class="card-header">
-				                	<h3>
-				                      <i class="fa-solid fa-user-group"></i> 회원 관리 
-					                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/memberManage/list';" style="float:right;">
-					                    	<i class="fa-solid fa-arrow-rotate-left"></i>
-					                    </button>
-					                </h3>
-					             </div>
-					             
 				                 <div class="card-body">
 				                 	<div class="table-responsive">
-				                    	<table class="table table-bordered">
+				                    	<table class="table table-bordered table-hover">
 				                        	<thead>
 				                            	<tr>
 				                                	<th>번호</th>
@@ -259,16 +257,13 @@ function selectStateChange() {
 											</tbody>
 				                       </table>
 				                                
-				                       <div class="page-navigation" >
-											${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
-										</div>
+				                       
 												
 										<table class="table">
 											<tr>
-												<td  align="center">
+												<td align="center">
 													<form name="searchForm" action="${pageContext.request.contextPath}/admin/memberManage/list" method="post" style="width:300px;">
 														<div class="input-group mb-3">
-																
 															<select name="schType" class="form-select">
 																<option value="userId"     ${schType=="userId" ? "selected":""}>아이디</option>
 																<option value="userName"   ${schType=="userName" ? "selected":""}>이름</option>
@@ -286,6 +281,10 @@ function selectStateChange() {
 												</td>
 											</tr>
 										</table>
+										
+										<div class="page-navigation" >
+											${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
+										</div>
 				                     </div>
 				                  </div>
 				               </div>
