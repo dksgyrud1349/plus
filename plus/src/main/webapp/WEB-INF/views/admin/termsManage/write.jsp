@@ -32,7 +32,10 @@ function sendOk() {
 		 <div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:5% auto; ">
 				<div class="body-main">
-		<h2><i class="fa-solid fa-clipboard-question"></i> 서비스 이용약관 </h2>
+				
+				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+					<i class="fa-solid fa-clipboard-question"></i> 서비스 이용약관 
+				</h3>
 
 		<form name="termsForm" method="post">
 			<table class="table table-border border-top2 table-form">
@@ -70,5 +73,5 @@ function sendOk() {
 </div>
 </div>
 </div>
-</main><!-- @@(admin.faq.write)카테고리 수정 등을 여기서 선언하는 이유? -->
+</main>
 		
