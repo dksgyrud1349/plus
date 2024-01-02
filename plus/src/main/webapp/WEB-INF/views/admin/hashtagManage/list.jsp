@@ -78,13 +78,12 @@ function deleteHashtag(tagNum) {
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:5% auto; ">
+    			<div class="body-main">
     			
-    			<div class="hashtag-container">
-    				<div>
-    					<h3>
-    						<i class="bi bi-tag"></i> 해시태그 관리
-    					</h3>
-    				</div>
+	    			<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+    					<i class="bi bi-tag"></i> 해시태그 관리
+   					</h3>
+    			
     				<form name="hashtagForm" method="post">
 	    				<div class="input-group text-center mt-5">
 	    					<span class="input-group-text"> 해시태그 추가 </span>

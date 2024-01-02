@@ -3,6 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
+.table td{
+	height:60px;
+	line-height: 60px;
+}
 </style>
 
 <script type="text/javascript"
@@ -40,6 +44,14 @@
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width: 80%; margin: 5% auto;">
 				<div class="body-main">
+				
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+						<i class="bi bi-app"></i> 승인대기 클래스 관리
+						<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/lessonManage/list0';" title="새로고침" style="float: right;">
+							<i class="fa-solid fa-arrow-rotate-left"></i>
+						</button>
+					</h3>
+				
 					<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 						<table class="table">
 							<tr>
@@ -52,15 +64,6 @@
 						</table>
 
 						<div class="card mb-5 w-80 " style="margin: 0 auto">
-							<div class="card-header text-center">
-								<h3>
-									<i class="bi bi-app"></i> 승인대기 클래스 관리
-									<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/lessonManage/list0';" title="새로고침" style="float: right;">
-										<i class="fa-solid fa-arrow-rotate-left"></i>
-									</button>
-								</h3>
-							</div>
-
 							<table class="table table-hover table-list">
 								<thead>
 									<tr style="text-align: center">
@@ -98,14 +101,11 @@
 								</tbody>
 							</table>
 
-							<div class="page-navigation dataCount">${dataCount == 0 ? "등록된 클래스가 없습니다." : paging}
-							</div>
-
 
 							<table class="table">
 								<tr>
 									<td align="center">
-										<form class="row" name="searchForm" action="${pageContext.request.contextPath}/admin/lessonManage/list0" method="post" style="width: 300px; margin-left: 100px">
+										<form name="searchForm" action="${pageContext.request.contextPath}/admin/lessonManage/list0" method="post" style="width: 300px; margin-left: 100px">
 											<div class="input-group mb-3">
 												<select name="schType" class="form-select">
 													<option value="className" ${schType=="className"?"selected":""}>클래스이름</option>
@@ -122,6 +122,11 @@
 									<td align="right" width="120"></td>
 								</tr>
 							</table>
+							
+							<div class="page-navigation dataCount text-center mb-3">
+								${dataCount == 0 ? "등록된 클래스가 없습니다." : paging}
+							</div>
+							
 						</div>
 					</div>
 				</div>
