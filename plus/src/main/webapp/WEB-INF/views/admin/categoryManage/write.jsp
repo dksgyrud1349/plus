@@ -103,11 +103,13 @@ $(function(){
 <main class="wrapper" style="margin:0 auto; width:100%;" >
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:90%; margin:5% auto; ">
+			<div class="body-container" style="width:80%; margin:5% auto; ">
 				<div class="body-main">
 					
-					<h2><i class="fa-solid fa-clipboard-question"></i> 카테고리 추가 </h2>
-    					
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+						<i class="fa-solid fa-clipboard-question"></i> 카테고리 추가 
+					</h3>
+
     					<form name="categoryForm" method="post">
 							<table class="table table-border border-top2 table-form">
 								<tr> 

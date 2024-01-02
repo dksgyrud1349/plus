@@ -124,46 +124,56 @@ function deleteOk(mainNum) {
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:5% auto; ">
-    			
     			<div class="body-main">
+    			
+	    			<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+	                   	<i class="bi bi-archive-fill"></i> 카테고리 관리 
+	                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/categoryManage/list';" style="float:right;">
+		                    <i class="fa-solid fa-arrow-rotate-left"></i>
+		                </button>
+		            </h3>
+		            
+		            <div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+						<table class="table">
+							<tr>
+								<td align="left" width="50%">
+									<span class="me-3">메인 카테고리: <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}개</font></span> 
+									<span>서브 카테고리: <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount2}개</font></span>
+								</td>
+								<td align="right">
+									<span class="btn btn-dark " onclick="location.href='${pageContext.request.contextPath}/admin/categoryManage/write';">추가</span>
+								</td>
+							</tr>
+						</table>
   				
   					<div id="cate-content" style="padding: 20px 0px 0;">
 						<div class="card mb-5" style="margin:0 auto">
-							
-							<div class="card-header text-center">
-			                	<h3>
-			                    	<i class="bi bi-archive-fill"></i> 카테고리 관리 
-				                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/categoryManage/list';" style="float:right;">
-					                    <i class="fa-solid fa-arrow-rotate-left"></i>
-					                </button>
-					            </h3>
-							</div>
-					             
 							<div class="card-body">
-				            	<div class="row mb-4">
-				            			<div class="col">
-				            				<span>메인 카테고리: ${dataCount}개 &nbsp; 서브 카테고리: ${dataCount2}개 </span>
-				            			</div>
-				            			<div class="col text-end">
-				            				<span class="btn btn-dark " onclick="location.href='${pageContext.request.contextPath}/admin/categoryManage/write';">추가</span>
-				            			</div>
-				            	</div>
+				            	
 								<c:if test="${listMainCategory.size() > 0}">
-									<div class="">
-										<c:forEach var="dto" items="${listMainCategory}" varStatus="status">
-											<div class="border rounded m-1">
-												<div class="accordion-header row p-2">
-													<div class="col">
-														<h3>${dto.mainName}</h3>
-													</div>
-													<div class="col update text-end">
-														<span class="btn btn-outline-dark" onclick="detail('${dto.mainNum}');">상세보기</span>
-													</div>
-												</div>
-											</div>
-										</c:forEach>
-									</div>
+								   <div class="container">
+								       <table class="table">
+								           <c:forEach var="dto" items="${listMainCategory}" varStatus="status">
+								               <c:if test="${status.index % 2 == 0}">
+								                   <tr>
+								               </c:if>
+								               <td>
+								                   <div class="border rounded m-1">
+								                       <div class="accordion-header row p-2">
+								                           <div class="col">
+								                               <h3>${dto.mainName}</h3>
+								                           </div>
+								                           <div class="col update text-end">
+								                               <span class="btn btn-outline-dark" onclick="detail('${dto.mainNum}');">상세보기</span>
+								                           </div>
+								                       </div>
+								                   </div>
+								               </td>
+								           </c:forEach>
+								       </table>
+								   </div>
 								</c:if>
+								</div>
 				        	</div>
 						</div>
 					</div>

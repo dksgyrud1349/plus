@@ -3,7 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-
+a{
+	text-decoration:none;
+	color: #000;
+}
 </style>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/fullcalendar5/lib/main.min.css">
@@ -11,18 +14,16 @@
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:80%; margin:5% auto; ">
-				<div class="body-title">
-					<h3><i class="bi bi-calendar-event"></i> 일정관리 </h3>
-				</div>
-		
+			<div class="body-container" style="width:80%; margin:5% auto;">
 				<div class="body-main">
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+						<a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+							<i class="bi bi-layout-text-sidebar-reverse" style="font-size:30px;"></i>
+						</a> 
+						일정관리 
+					</h3>
+			
 					<div class="row">
-						<div class="col-sm-1 px-0">
-							<a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-								<i class="bi bi-layout-text-sidebar-reverse" style="font-size : 25px;"></i>
-							</a>
-						</div>
 						<div class="col px-2">
 							<div id="calendar"></div>
 						</div>

@@ -70,8 +70,3 @@
   		</ul>
   	<a href="${pageContext.request.contextPath}/etc/list">연락처/위치 안내</a>
 </div>
-
-
-
-
-
