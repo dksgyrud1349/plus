@@ -157,13 +157,6 @@
 			f.firstPhotoFile.focus();
 			return false;
 		}
-		
-		var classDateList = [];
-		var countList = [];
-		for(var i = 0; i < listDetail.length; i++){
-			var data = classDateList[i];
-			classDateList.push(data);
-		}
 
 		f.action = "${pageContext.request.contextPath}/lessonPlus/${mode}";
 		return true;
