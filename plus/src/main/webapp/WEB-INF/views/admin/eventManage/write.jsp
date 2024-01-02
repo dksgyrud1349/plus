@@ -111,6 +111,11 @@
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:5% auto; ">
 				<div class="body-main">
+				
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+	                	<i class="fa-regular fa-calendar"></i> 이벤트 관리 
+		            </h3>
+				
 					<div>
 						<ul class="tabs">
 							<li id="tab-all" data-category="all">전체 이벤트</li>
@@ -134,9 +139,7 @@
 						
 						<div class="card mb-5 w-80" style="margin:0 auto">
 				        	<div class="card-header text-center">
-				            	<h3>
-				                	<i class="fa-regular fa-calendar"></i> 이벤트 관리 
-					            </h3>
+				            	
 					        </div>					
 					
 							<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">

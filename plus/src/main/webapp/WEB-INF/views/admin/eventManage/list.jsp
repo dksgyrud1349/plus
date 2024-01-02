@@ -27,6 +27,15 @@ $(function(){
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:5% auto; ">
 				<div class="body-main">
+				
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+	                     <i class="fa-regular fa-calendar"></i> 이벤트 관리 
+	                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/list';" title="새로고침" style="float:right;">
+	                    	<i class="fa-solid fa-arrow-rotate-left"></i>
+	                    </button>
+	                    <button type="button" class="btn btn-success me-3" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/write';" style="float:right;">이벤트 등록</button>
+	                </h3>
+				
 					<div>
 						<ul class="tabs">
 							<li id="tab-all" data-category="all">전체 이벤트</li>
@@ -49,15 +58,6 @@ $(function(){
 						</table>
 							
 							<div class="card mb-5 w-80 text-center" style="margin:0 auto">
-				            	<div class="card-header">
-				                	<h3>
-				                      <i class="fa-regular fa-calendar"></i> 이벤트 관리 
-					                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/list';" title="새로고침" style="float:right;">
-					                    	<i class="fa-solid fa-arrow-rotate-left"></i>
-					                    </button>
-					                </h3>
-					             </div>
-
 								<table class="table table-border table-list">
 									<thead>
 										<tr>
@@ -84,32 +84,30 @@ $(function(){
 									</tbody>
 								</table>
 								 
-								<div class="page-navigation">
-									${dataCount == 0 ? "등록된 이벤트가 없습니다." : paging}
-								</div>
-								
 								<table class="table">
 									<tr>
 										<td align="center">
-											<form name="searchForm" action="${pageContext.request.contextPath}/admin/eventManage/${category}/list" method="post" style="width:300px; margin-left:100px">
+											<form name="searchForm" action="${pageContext.request.contextPath}/admin/eventManage/${category}/list" method="post" style="width:300px;">
 												<div class="input-group mb-3">
 													<select name="schType" class="form-select">
 														<option value="all" ${schType=="all"?"selected":""}>모두</option>
 														<option value="startDate" ${schType=="startDate"?"selected":""}>시작일</option>
 														<option value="endDate" ${schType=="endDate"?"selected":""}>종료일</option>
 													</select>
-												<input type="text" name="kwd" value="${kwd}" class="form-control">
-												<button type="button" class="btn btn-outline-secondary" onclick="searchList()">
-													검색
-												</button>
+													<input type="text" name="kwd" value="${kwd}" class="form-control">
+													<button type="button" class="btn btn-outline-secondary" onclick="searchList()">
+														검색
+													</button>
 												</div>
 											</form>
 										</td>
-										<td align="right" width="120">
-											<button type="button" class="btn btn-success mb-3" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/write';">이벤트<br>등록</button>
-										</td>
 									</tr>
 								</table>
+								
+								<div class="page-navigation mb-3">
+									${dataCount == 0 ? "등록된 이벤트가 없습니다." : paging}
+								</div>
+								
 							</div>    
 						</div>
 					</div>
