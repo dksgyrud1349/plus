@@ -17,6 +17,7 @@ public class Lesson {
 	private int mileage;  // 적립금
 	
 	private long tagNum;  // 해쉬태그번호
+	private String tagName; // 해쉬태그 이름
 	private long subNum;  // 서브카테고리 번호
 	private String subName;  // 서브 카테고리 이름
 	private long mainNum;  // 메인카테고리 번호
@@ -31,7 +32,7 @@ public class Lesson {
 	
 	private int lessonLikeCount;  // 좋아요 개수
 	private boolean userLessonLiked;
-
+	
 	public boolean isUserLessonLiked() {
 		return userLessonLiked;
 	}
@@ -158,6 +159,14 @@ public class Lesson {
 
 	public void setMileage(int mileage) {
 		this.mileage = mileage;
+	}
+	
+	public String getTagName() {
+		return tagName;
+	}
+
+	public void setTagName(String tagName) {
+		this.tagName = tagName;
 	}
 
 	public long getTagNum() {

@@ -5,18 +5,6 @@
 @font-face {
     font-family: 'EASTARJET-Medium';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/EASTARJET-Medium.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-}
-
-html {
-	height: 100%;
-	scroll-padding-top: calc(4.5rem - 1px);
-}
-
-body {
-	width: 100%;
-	height: 100%;
 }
 
 .page-section {
@@ -272,6 +260,10 @@ header.masthead h1, header.masthead .h1 {
 	border: 2px solid #c8c8c8;
 	
 }
+
+.contentImg{
+	overflow:hidden;
+}
 </style>
 
 
@@ -370,15 +362,14 @@ function sendOk(mode) {
 }
 
 </script>
-<form name="detailForm" id="detailForm" method="post">
+<form name="detailForm" id="detailForm" method="post" style="margin-bottom:250px;">
 	<header class="masthead p-3">
 		<div class="container px-4 px-lg-5 h-100">
 			<section class="py-5">
 				<div class="container px-4 px-lg-5 my-3">
 					<div class="row gx-4 gx-lg-5 align-items-center">
 						<div class="col-md-6">
-							<img class="card-img-top mb-5 mb-md-0"
-								src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+							<img  src="${pageContext.request.contextPath}/uploads/lesson/${dto.firstPhoto}" class="card-img-top mb-5 mb-md-0">
 						</div>
 						<div class="col-md-6">
 							<div class="small mb-1">${dto.mainName}</div>
@@ -389,7 +380,7 @@ function sendOk(mode) {
 									${dto.endDate}</span><br>
 								<!-- <span class="text-decoration-line-through">15,000원</span> -->
 								<span><fmt:formatNumber value="${dto.price}"
-										pattern="#,###" /></span>
+										pattern="#,###원" /></span>
 									<div>
 										<button type="button" class="btn singo" style="width: 60x;" onclick="location.href='${pageContext.request.contextPath}/declaration/article';">
 											<span style="font-size: medium; font-family: 'EASTARJET-Medium';">신고</span><i class="bi bi-exclamation-triangle-fill"></i>
@@ -428,48 +419,24 @@ function sendOk(mode) {
 				</div>
 			</section>
 
-			<section class="py-3 mb-5">
+				
 				<div class="container px-4 px-lg-5 mt-5">
-					<h2 class="fw-bolder mb-4">추천 클래스</h2>
+					<h2 class="fw-bolder mb-4">NEW 클래스</h2>
 					<div
 						class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+						
 						<div class="col mb-5">
 							<div class="card h-100">
+							<div class="badge bg-dark text-white position-absolute"
+									style="top: 0.5rem; right: 0.5rem">NEW</div>
 								<!-- Product image-->
 								<img class="card-img-top"
-									src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg"
-									alt="..." />
+									src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
 								<!-- Product details-->
 								<div class="card-body p-4">
 									<div class="text-center">
 										<!-- Product name-->
-										<h5 class="fw-bolder">클래스 - 1</h5>
-										<!-- Product price-->
-										10,000원 - 20,000원
-									</div>
-								</div>
-								<!-- Product actions-->
-								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<div class="text-center">
-										<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col mb-5">
-							<div class="card h-100">
-								<!-- Sale badge-->
-								<div class="badge bg-dark text-white position-absolute"
-									style="top: 0.5rem; right: 0.5rem">Sale</div>
-								<!-- Product image-->
-								<img class="card-img-top"
-									src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg"
-									alt="..." />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<h5 class="fw-bolder">특가 클래스</h5>
+										<h5 class="fw-bolder">인기상품</h5>
 										<!-- Product reviews-->
 										<div
 											class="d-flex justify-content-center small text-warning mb-2">
@@ -480,8 +447,7 @@ function sendOk(mode) {
 											<div class="bi-star-fill"></div>
 										</div>
 										<!-- Product price-->
-										<span class="text-muted text-decoration-line-through">50,000원</span>
-										30,000원
+										60,000원
 									</div>
 								</div>
 								<!-- Product actions-->
@@ -492,11 +458,11 @@ function sendOk(mode) {
 								</div>
 							</div>
 						</div>
+						
 						<div class="col mb-5">
 							<div class="card h-100">
-								<!-- Sale badge-->
-								<div class="badge bg-dark text-white position-absolute"
-									style="top: 0.5rem; right: 0.5rem">Event</div>
+							<div class="badge bg-dark text-white position-absolute"
+									style="top: 0.5rem; right: 0.5rem">NEW</div>
 								<!-- Product image-->
 								<img class="card-img-top"
 									src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
@@ -504,10 +470,18 @@ function sendOk(mode) {
 								<div class="card-body p-4">
 									<div class="text-center">
 										<!-- Product name-->
-										<h5 class="fw-bolder">이벤트 클래스</h5>
+										<h5 class="fw-bolder">인기상품</h5>
+										<!-- Product reviews-->
+										<div
+											class="d-flex justify-content-center small text-warning mb-2">
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+										</div>
 										<!-- Product price-->
-										<span class="text-muted text-decoration-line-through">40,000원</span>
-										25,000원
+										60,000원
 									</div>
 								</div>
 								<!-- Product actions-->
@@ -518,8 +492,45 @@ function sendOk(mode) {
 								</div>
 							</div>
 						</div>
+						
 						<div class="col mb-5">
 							<div class="card h-100">
+							<div class="badge bg-dark text-white position-absolute"
+									style="top: 0.5rem; right: 0.5rem">NEW</div>
+								<!-- Product image-->
+								<img class="card-img-top"
+									src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+								<!-- Product details-->
+								<div class="card-body p-4">
+									<div class="text-center">
+										<!-- Product name-->
+										<h5 class="fw-bolder">인기상품</h5>
+										<!-- Product reviews-->
+										<div
+											class="d-flex justify-content-center small text-warning mb-2">
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+											<div class="bi-star-fill"></div>
+										</div>
+										<!-- Product price-->
+										60,000원
+									</div>
+								</div>
+								<!-- Product actions-->
+								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+									<div class="text-center">
+										<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col mb-5">
+							<div class="card h-100">
+							<div class="badge bg-dark text-white position-absolute"
+									style="top: 0.5rem; right: 0.5rem">NEW</div>
 								<!-- Product image-->
 								<img class="card-img-top"
 									src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
@@ -555,47 +566,38 @@ function sendOk(mode) {
 		</div>
 	</header>
 </form>
-
 <!-- Services-->
 <section class="page-section mt-5" id="services">
-	<div class="container px-4 px-lg-5">
-		<h2 class="text-center mt-0">카테고리 · 해쉬태그</h2>
-		<hr class="divider" />
-		<div class="row gx-4 gx-lg-5">
-			<div class="col-lg-3 col-md-6 text-center">
+	<div class="container px-5 px-lg-5">
+		<h2 class="text-center mt-5">카테고리 · 해쉬태그</h2>
+		<hr class="divider">
+		
+		<div class="row">
+			
+			<div class="col text-center">
 				<div class="mt-5">
 					<div class="mb-2">
 						<i class="bi-gem fs-1 text-primary"></i>
 					</div>
-					<h3 class="h4 mb-2">라멘</h3>
-					<p class="text-muted mb-0">맥주</p>
+					<h3 class="h4 mb-2">${dto.mainName}</h3>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-6 text-center">
+			
+			<div class="col text-center">
 				<div class="mt-5">
 					<div class="mb-2">
 						<i class="bi-laptop fs-1 text-primary"></i>
 					</div>
-					<h3 class="h4 mb-2">짬뽕 + 탕수육</h3>
-					<p class="text-muted mb-0">이과두주, 고량주</p>
+					<h3 class="h4 mb-2">${dto.subName}</h3>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-6 text-center">
-				<div class="mt-5">
-					<div class="mb-2">
-						<i class="bi-globe fs-1 text-primary"></i>
-					</div>
-					<h3 class="h4 mb-2">삼겹살</h3>
-					<p class="text-muted mb-0">소주</p>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 text-center">
+			
+			<div class="col text-center">
 				<div class="mt-5">
 					<div class="mb-2">
 						<i class="bi-heart fs-1 text-primary"></i>
 					</div>
-					<h3 class="h4 mb-2">하몽과 화채</h3>
-					<p class="text-muted mb-0">양주, 와인</p>
+					<h3 class="h4 mb-2">${dto.tagName}</h3>
 				</div>
 			</div>
 		</div>
@@ -603,81 +605,30 @@ function sendOk(mode) {
 </section>
 <!-- Portfolio-->
 
-<div id="portfolio">
+<div id="portfolio" class="mt-5">
 	<div class="container-fluid p-0">
 		<div class="row g-0">
+		<c:forEach var="photo" items="${listPhoto}" varStatus="status">
 			<div class="col-lg-4 col-sm-6">
-				<a class="portfolio-box" href="#" title="Project Name"> <img
-					class="img-fluid"
-					src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+				<a class="portfolio-box" href="#" title="Project Name">
+				<img class="img-fluid w-100" src="${pageContext.request.contextPath}/uploads/lesson/${photo.photoName}" style="height:250px;">
 					<div class="portfolio-box-caption">
-						<div class="project-category text-white-50">사진</div>
-						<div class="project-name">사진바꿔야합니다.</div>
+						<div class="project-category text-white-50">${dto.className}</div>
+						<div class="project-name">추가사진입니다.</div>
 					</div>
 				</a>
 			</div>
-			<div class="col-lg-4 col-sm-6">
-				<a class="portfolio-box" href="#" title="Project Name"> <img
-					class="img-fluid"
-					src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
-					<div class="portfolio-box-caption">
-						<div class="project-category text-white-50">사진</div>
-						<div class="project-name">사진바꿔야합니다.</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-lg-4 col-sm-6">
-				<a class="portfolio-box" href="#" title="Project Name"> <img
-					class="img-fluid"
-					src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
-					<div class="portfolio-box-caption">
-						<div class="project-category text-white-50">사진</div>
-						<div class="project-name">사진바꿔야합니다.</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-lg-4 col-sm-6">
-				<a class="portfolio-box" href="#" title="Project Name"> <img
-					class="img-fluid"
-					src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
-					<div class="portfolio-box-caption">
-						<div class="project-category text-white-50">사진</div>
-						<div class="project-name">사진바꿔야합니다.</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-lg-4 col-sm-6">
-				<a class="portfolio-box" href="#" title="Project Name"> <img
-					class="img-fluid"
-					src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
-					<div class="portfolio-box-caption">
-						<div class="project-category text-white-50">사진</div>
-						<div class="project-name">사진바꿔야합니다.</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-lg-4 col-sm-6">
-				<a class="portfolio-box" href="#" title="Project Name"> <img
-					class="img-fluid"
-					src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
-					<div class="portfolio-box-caption p-3">
-						<div class="project-category text-white-50">사진</div>
-						<div class="project-name">사진바꿔야합니다.</div>
-					</div>
-				</a>
-			</div>
+		</c:forEach>	
 		</div>
 	</div>
 </div>
 
 <!-- Call to action-->
 <section class="page-section bg-dark text-white">
-	<div class="container px-4 px-lg-5 text-center">
-		<h2 class="mb-4">clob 내용 넣어야댐</h2>
-		<h2 class="mb-4">clob 내용 넣어야댐</h2>
-		<h2 class="mb-4">clob 내용 넣어야댐</h2>
-		<h2 class="mb-4">clob 내용 넣어야댐</h2>
-		<h2 class="mb-4">clob 내용 넣어야댐</h2>
+	<div class="px-4 px-lg-5 text-center">
+	
+		<h2 class="mb-4 contentImg" style="max-width:100%">${dto.content}</h2>
+		
 		<a href="#" class="btn btn-light btn-xl">예약하러 가기</a>
 	</div>
 </section>
