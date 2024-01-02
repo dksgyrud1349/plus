@@ -134,7 +134,7 @@ img{
 									    		</c:otherwise>
 									    	</c:choose>
 									    	
-							    					<button type="button" class="btn btn-success" onclick="deleteOk();">삭제</button>
+							    			<button type="button" class="btn btn-success" onclick="deleteOk();">삭제</button>
 										</td>
 						
 										<td align="right">
