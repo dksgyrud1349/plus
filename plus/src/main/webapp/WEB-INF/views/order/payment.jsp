@@ -79,20 +79,22 @@ function payOk(){
 		f.uMileage.focus();
 		return;
 	}
-	
+	/*
 	var pay = document.getElementById("pay").value;
 	if(pay === ""){
 		alert("'입력완료' 버튼을 클릭해주세요.");
 		return;
 	}
+	*/
 	
-	if(!confirm("입력하신 정보들과 결제 금액이 올바른지 확인해주시기 바랍니다.")){
+	if(!confirm("결제를 진행하시겠습니까?")){
 		return;
 	}
 	
 	f.submit();
 }
 
+/*
 function checkPay(){
 	const f = document.paymentForm;
 	
@@ -102,7 +104,7 @@ function checkPay(){
 	total = f.pay1.value * f.count.value - f.discountMoney.value - f.uMileage.value - percent;
 	document.getElementById("pay").value = total;
 }
-
+*/
 </script>
 
 
@@ -205,7 +207,79 @@ function checkPay(){
 	color: #4183d7;
 }
 </style>
+<script type="text/javascript">
+function ajaxFun(url, method, formData, dataType, fn, file = false) {
+	const settings = {
+			type: method, 
+			data: formData,
+			success:function(data) {
+				fn(data);
+			},
+			beforeSend: function(jqXHR) {
+				jqXHR.setRequestHeader('AJAX', true);
+			},
+			complete: function () {
+			},
+			error: function(jqXHR) {
+				if(jqXHR.status === 403) {
+					login();
+					return false;
+				} else if(jqXHR.status === 400) {
+					alert('요청 처리가 실패 했습니다.');
+					return false;
+		    	}
+		    	
+				console.log(jqXHR.responseText);
+			}
+	};
+	
+	if(file) {
+		settings.processData = false;  // file 전송시 필수. 서버로전송할 데이터를 쿼리문자열로 변환여부
+		settings.contentType = false;  // file 전송시 필수. 서버에전송할 데이터의 Content-Type. 기본:application/x-www-urlencoded
+	}
+	
+	$.ajax(url, settings);
+}
 
+$(function(){
+	$("form input[name=count]").change(function(){
+		let count = $(this).val();
+		if(! count){
+			return false;
+		}
+		
+		let url = "${pageContext.request.contextPath}/order/cal1";
+		let query = "count=" + count + "&price=" + ${lesson.price};
+		
+		const fn = function(data){
+			let pay = data.pay;
+			$("form input[name=pay]").attr('value', pay);
+		};
+		ajaxFun(url, "get", query, "json", fn);
+	});
+});
+
+$(function(){
+	$("form input[name=uMileage]").change(function(){
+		let uMileage = $(this).val();
+		if(! uMileage){
+			return false;
+		}
+		
+		var count = $("form input[name=count]").val();
+		console.log(count);
+		
+		let url = "${pageContext.request.contextPath}/order/cal2";
+		let query = "count=" + count + "&price=" + ${lesson.price} + "&uMileage=" + uMileage;
+		
+		const fn = function(data){
+			let pay = data.pay;
+			$("form input[name=pay]").attr('value', pay);
+		};
+		ajaxFun(url, "get", query, "json", fn);
+	});
+});
+</script>
 
 <main class="wrapper main" style="margin: 0 auto; width: 100%;">
 	<div id="layoutSidenav_content">
@@ -250,7 +324,7 @@ function checkPay(){
 
 								<div id="form-card" class="form-field">
 									<label for="count">인원수 (${lesson.count1}명 남았습니다.)</label>
-									<input type="number" name="count" id="count" placeholder="인원수를 입력해주세요." min='1' max='${lesson.count1}' step='1' value="1" required>
+									<input type="number" name="count" id="count" placeholder="인원수를 입력해주세요." min='1' max='${lesson.count1}' step='1' required>
 								</div>
 
 								<div id="form-sec-code" class="form-field">
@@ -271,7 +345,6 @@ function checkPay(){
 								<div id="form-card" class="form-field">
 									<label for="discountPercent">할인 퍼센트</label>
 									<input type="number" name="discountPercent" id="discountPercent" value="${lesson.discountPercent != null ? lesson.discountPercent : 0}" readonly>
-									<button type="button" style="width: 80px;" onclick="checkPay();">입력완료</button>
 								</div>
 								<input type="hidden" name="classNum" value="${lesson.classNum}">
 								<input type="hidden" name="detailNum" value="${lesson.detailNum}">
@@ -282,7 +355,7 @@ function checkPay(){
 								<div id="form-card" class="form-field">
 									<label for="pay">결제 금액</label>
 									<div>
-										<input id="pay" class="pay" name="pay">
+										<input id="pay" class="pay" name="pay" readonly>
 									</div>
 								</div>
 								<button type="button" onclick="payOk();">결제하기</button>

@@ -8,9 +8,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fa.plus.domain.Order;
 import com.fa.plus.domain.SessionInfo;
@@ -111,5 +113,26 @@ public class OrderController {
 		}
 		
 		return "redirect:/lesson/main";
+	}
+	
+	@GetMapping("cal1")
+	@ResponseBody
+	public Map<String, Object> cal1(@RequestParam(name = "count") int count, @RequestParam(name = "price") int price){
+		Map<String, Object> model = new HashMap<String, Object>();
+		int pay = count * price;
+		model.put("pay", pay);
+		return model;
+	}
+	
+	@GetMapping("cal2")
+	@ResponseBody
+	public Map<String, Object> cal2(@RequestParam(name = "count") int count, 
+									@RequestParam(name = "price") int price,
+									@RequestParam(name = "uMileage") int uMileage){
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		int pay = count * price - uMileage;
+		model.put("pay", pay);
+		return model;
 	}
 }
