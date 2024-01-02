@@ -22,6 +22,14 @@ $(function(){
 	});
 });
 </script>
+
+<style>
+.table td{
+	height:60px;
+	line-height: 60px;
+}
+</style>
+
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
@@ -58,7 +66,7 @@ $(function(){
 						</table>
 							
 							<div class="card mb-5 w-80 text-center" style="margin:0 auto">
-								<table class="table table-border table-list">
+								<table class="table table-border table-list table-hover">
 									<thead>
 										<tr>
 											<th width="60">번호</th>

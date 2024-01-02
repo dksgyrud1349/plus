@@ -23,16 +23,15 @@
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
+			<div class="body-container" style="width:80%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
 				
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+		    			<i class="bi bi-app"></i> 커뮤니티
+		    		</h3>
+				
 					<div class="card mb-5 w-80" style="margin:0 auto;">
-				    	<div class="card-header text-center">
-				    		<h3>
-				    			<i class="bi bi-app"></i> 커뮤니티
-				    		</h3>
-				    	</div>
-		
+				    		
 					<div class="table table-hover board-list " id="nav-tabContent">
 						<table class="table">
 							<thead>

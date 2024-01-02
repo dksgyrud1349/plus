@@ -238,7 +238,7 @@ function sendOk(userId) {
 							<div class="card mb-5 w-80 text-center" style="margin:0 auto">
 				                 <div class="card-body">
 				                 	<div class="table-responsive">
-				                    	<table class="table table-bordered">
+				                    	<table class="table table-bordered table-hover">
 				                        	<thead>
 				                            	<tr>
 				                                	<th>번호</th>

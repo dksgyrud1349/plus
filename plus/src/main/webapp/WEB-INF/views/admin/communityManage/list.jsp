@@ -3,7 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-
+.table td{
+	height:60px;
+	line-height: 60px;
+}
 </style>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/paginate-boot.js"></script>
