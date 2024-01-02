@@ -45,7 +45,7 @@
                             <div class="collapse" id="MemberLayout" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="#">클래스 관리</a>
-                                    <a class="nav-link" href="#">예약 현황</a>
+                                    <a class="nav-link" href="${pageContext.request.contextPath}/booking/lessonList">예약 현황</a>
                                     <a class="nav-link" href="<c:url value='/pluszone/referManage/list'/>">자료실</a>
                                 </nav>
                             </div>
