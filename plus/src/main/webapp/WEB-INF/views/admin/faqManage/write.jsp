@@ -3,9 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
-<style type="text/css">
-
-</style>
 
 <style type="text/css">
 .table-category {
@@ -103,102 +100,103 @@ function sendOk() {
 		 	<div class="container-fluid px-5">
 				<div class="body-container" style="width:80%; margin:5% auto; ">
 				
-    <div class="body-main">
-		<h2><i class="fa-solid fa-clipboard-question"></i> 자주하는 질문 </h2>
+			    <div class="body-main">
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+						<i class="fa-solid fa-clipboard-question"></i> 자주하는 질문 
+					</h3>	
     
-    
-		<form name="faqForm" method="post">
-			<table class="table table-border border-top2 table-form">
-				<tr> 
-					<td>카테고리</td>
-					<td> 
-						<select name="cateNum" class="form-select">
-							<c:forEach var="vo" items="${listCategory}">
-								<option value="${vo.cateNum}" ${dto.faqName==vo.faqName?"selected":""}>${vo.faqName}</option>
-							</c:forEach>
-						</select>
-						<button type="button" class="btn btnCategoryDialog"> 변경 </button>
-					</td>
-				</tr>
-			
-				<tr> 
-					<td>제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
-					<td> 
-						<input type="text" name="subject" maxlength="100" class="form-control" value="${dto.subject}">
-					</td>
-				</tr>
-			
-				<tr>
-					<td>작성자</td>
-					<td> 
-						${sessionScope.member.userName}
-					</td>
-				</tr>
-			
-				<tr> 
-					<td valign="top">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
-					<td valign="top"> 
-						<textarea name="content" class="form-control">${dto.content}</textarea>
-					</td>
-				</tr>
-			</table>
-			
-			<table class="table">
-				<tr>
-					<td align="center">
-						<button type="button" class="btn btn-dark" onclick="sendOk();">${mode=='update'?'수정완료':'등록하기'}</button>
-						<button type="reset" class="btn">다시입력</button>
-						<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/admin/faqManage/main?pageNo=${pageNo}';">${mode=='update'?'수정취소':'등록취소'}</button>
-						<c:if test="${mode=='update'}">
-							<input type="hidden" name="num" value="${dto.num}">
-							<input type="hidden" name="pageNo" value="${pageNo}">
-						</c:if>
-					</td>
-				</tr>
-			</table>
-		</form>
-		
-		<div id="category-dialog" style="display: none;">
-			<form name="categoryForm" method="post">
-				<table class="table-category">
-					<thead>
-						<tr> 
-							<th width="170">카테고리</th>
-							<th width="90">활성</th>
-							<th width="80">출력순서</th>
-							<th>변경</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr align="center" height="30" bgcolor="#fff">
-							<td> <input type="text" name="faqName"> </td>
-							<td>
-								<select name="showFaq">
-									<option value="1">활성</option>
-									<option value="0">비활성</option>
-								</select>
-							</td>
-							<td> <input type="text" name="orderNo"> </td>
-							<td>
-								<select name="showUser">
-									<option value="0">공통</option>
-									<option value="1">이용자</option>
-									<option value="2">플러스</option>
-								</select>
-							</td>
-							<td> <button type="button" class="btnCategoryAddOk">등록하기</button> </td>
-						</tr>
-					</tbody>
-					<tfoot class="category-list"></tfoot>
-				</table>
-			</form>
+					<form name="faqForm" method="post">
+						<table class="table table-border border-top2 table-form">
+							<tr> 
+								<td>카테고리</td>
+								<td> 
+									<select name="cateNum" class="form-select">
+										<c:forEach var="vo" items="${listCategory}">
+											<option value="${vo.cateNum}" ${dto.faqName==vo.faqName?"selected":""}>${vo.faqName}</option>
+										</c:forEach>
+									</select>
+									<button type="button" class="btn btnCategoryDialog"> 변경 </button>
+								</td>
+							</tr>
+						
+							<tr> 
+								<td>제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
+								<td> 
+									<input type="text" name="subject" maxlength="100" class="form-control" value="${dto.subject}">
+								</td>
+							</tr>
+						
+							<tr>
+								<td>작성자</td>
+								<td> 
+									${sessionScope.member.userName}
+								</td>
+							</tr>
+						
+							<tr> 
+								<td valign="top">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
+								<td valign="top"> 
+									<textarea name="content" class="form-control">${dto.content}</textarea>
+								</td>
+							</tr>
+						</table>
+						
+						<table class="table">
+							<tr>
+								<td align="center">
+									<button type="button" class="btn btn-dark" onclick="sendOk();">${mode=='update'?'수정완료':'등록하기'}</button>
+									<button type="reset" class="btn">다시입력</button>
+									<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/admin/faqManage/main?pageNo=${pageNo}';">${mode=='update'?'수정취소':'등록취소'}</button>
+									<c:if test="${mode=='update'}">
+										<input type="hidden" name="num" value="${dto.num}">
+										<input type="hidden" name="pageNo" value="${pageNo}">
+									</c:if>
+								</td>
+							</tr>
+						</table>
+					</form>
+					
+					<div id="category-dialog" style="display: none;">
+						<form name="categoryForm" method="post">
+							<table class="table-category">
+								<thead>
+									<tr> 
+										<th width="170">카테고리</th>
+										<th width="90">활성</th>
+										<th width="80">출력순서</th>
+										<th>변경</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr align="center" height="30" bgcolor="#fff">
+										<td> <input type="text" name="faqName"> </td>
+										<td>
+											<select name="showFaq">
+												<option value="1">활성</option>
+												<option value="0">비활성</option>
+											</select>
+										</td>
+										<td> <input type="text" name="orderNo"> </td>
+										<td>
+											<select name="showUser">
+												<option value="0">공통</option>
+												<option value="1">이용자</option>
+												<option value="2">플러스</option>
+											</select>
+										</td>
+										<td> <button type="button" class="btnCategoryAddOk">등록하기</button> </td>
+									</tr>
+								</tbody>
+								<tfoot class="category-list"></tfoot>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
-		
 	</div>
-</div>
-</div>
-</div>
 </main>
+
 <script type="text/javascript">
 function login() {
 	location.href = '${pageContext.request.contextPath}/member/login';

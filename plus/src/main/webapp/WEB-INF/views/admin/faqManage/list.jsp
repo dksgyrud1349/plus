@@ -24,6 +24,6 @@
 	</div>
 </c:if>
  
-<div class="page-navigation">
+<div class="page-navigation text-center mb-3">
 	${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
 </div>

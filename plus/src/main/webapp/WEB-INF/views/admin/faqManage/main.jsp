@@ -3,9 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tabs.css" type="text/css">
-<style type="text/css">
-
-</style>
 
 <style type="text/css">
 .accordion {
@@ -210,49 +207,50 @@ function deleteFaq(num, page) {
 
 <main class="wrapper" style="margin:0 auto; width:100%;" >
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
-		 	<div class="container-fluid px-5">
-				<div class="body-container" style="width:80%; margin:5% auto; ">
-		 <div class="body-main">
-		<h2><i class="fa-solid fa-clipboard-question"></i> 자주하는 질문 </h2>
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width:80%; margin:5% auto; ">
+				<div class="body-main">
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+						<i class="fa-solid fa-clipboard-question"></i> 자주하는 질문
+						<button type="button" class="btn btn-success" onclick="reloadFaq();" title="새로고침" style="float: right;">
+							<i class="fa-solid fa-arrow-rotate-left"></i>
+						</button>
+						<button type="button" class="btn btn-success me-3" onclick="location.href='${pageContext.request.contextPath}/admin/faqManage/write';" style="float: right;">글올리기</button>
+					</h3>
 
-    
-   
-
-		<div>
-			<ul class="tabs">
-				<li id="tab-0" data-cateNum="0">모두</li>
-				<c:forEach var="dto" items="${listCategory}">
-					<li id="tab-${dto.cateNum}" data-cateNum="${dto.cateNum}">${dto.faqName}(${dto.showUser==0 ? "공통" : "${dto.showUser==1? '이용자' : '플러스'}"})</li>
-				</c:forEach>
-			</ul>
-			
+					<div>
+						<ul class="tabs">
+							<li id="tab-0" data-cateNum="0">모두</li>
+							<c:forEach var="dto" items="${listCategory}">
+								<li id="tab-${dto.cateNum}" data-cateNum="${dto.cateNum}">${dto.faqName}(${dto.showUser == 0 ? "공통" : (dto.showUser == 1 ? "이용자" : "플러스")})</li>
+							</c:forEach>
+						</ul>
+					</div>
+					
+					<div id="tab-content" style="padding: 15px 10px 5px;"></div>
+					
+					<table class="table">
+						<tr>
+							<td align="center">
+								<form name="searchForm" action="${pageContext.request.contextPath}/admin/faqManage/main" method="post" style="width: 300px; margin-left: 100px">
+									<div class="input-group mb-3">
+										<select id="schType" name="schType" class="form-select">
+											<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
+											<option value="subject" ${schType=="subject"?"selected":""}>제목</option>
+											<option value="content" ${schType=="content"?"selected":""}>내용</option>
+										</select>
+										<input type="text" id="kwd" name="kwd" class="form-control" value="${kwd}">
+										<button type="button" class="btn btn-success" onclick="searchList();">검색</button>
+									</div>
+								</form>
+							</td>
+								<td align="right" width="120"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
-		<div id="tab-content" style="padding: 15px 10px 5px;"></div>
-		
-		<table class="table">
-			<tr>
-				<td align="left" width="100">
-					<button type="button" class="btn" onclick="reloadFaq();" title="새로고침"><i class="fa-solid fa-arrow-rotate-left"></i></button>
-				</td>
-				<td align="center">
-					<select id="schType" name="schType" class="form-select">
-						<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
-						<option value="subject" ${schType=="subject"?"selected":""}>제목</option>
-						<option value="content" ${schType=="content"?"selected":""}>내용</option>
-					</select>
-					<input type="text" id="kwd" name="kwd" class="form-control" value="${kwd}">
-					<button type="button" class="btn" onclick="searchList();">검색</button>
-				</td>
-				<td align="right" width="100">
-					<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/admin/faqManage/write';">글올리기</button>
-				</td>
-			</tr>
-		</table>
-		
 	</div>
-</div>
-</div>
-</div>
 </main>
 
 <form name="faqSearchForm" method="post">

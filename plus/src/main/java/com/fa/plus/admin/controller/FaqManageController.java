@@ -119,7 +119,7 @@ public class FaqManageController {
 		model.addAttribute("mode", "write");
 		model.addAttribute("listCategory", listCategory);
 
-		return ".admin.tManage.write";
+		return ".admin.faqManage.write";
 	}
 
 	@PostMapping("write")
@@ -139,14 +139,9 @@ public class FaqManageController {
 	@GetMapping("update")
 	public String updateForm(@RequestParam long num, @RequestParam String pageNo, HttpSession session, Model model)
 			throws Exception {
-		SessionInfo info = (SessionInfo) session.getAttribute("member");
 
 		FaqManage dto = service.findById(num);
 		if (dto == null) {
-			return "redirect:/admin/faqManage/main?pageNo=" + pageNo;
-		}
-
-		if (!info.getUserId().equals(dto.getUserId())) {
 			return "redirect:/admin/faqManage/main?pageNo=" + pageNo;
 		}
 
