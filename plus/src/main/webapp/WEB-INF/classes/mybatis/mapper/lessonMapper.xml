@@ -107,18 +107,21 @@
 	
 	<!-- 클래스 상세 페이지 -->
 	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.Lesson">
-	SELECT *
+	    SELECT *
         FROM (
             SELECT 
                 l.classNum, className, price, l.content, firstPhoto,
                 special, TO_CHAR(l.startDate, 'YYYY-MM-DD') startDate, TO_CHAR(l.endDate, 'YYYY-MM-DD') endDate,
-                l.zip, l.addr1, l.addr2, l.showClass, l.mileage, tagNum, subNum, l.memberIdx,
+                l.zip, l.addr1, l.addr2, l.showClass, l.mileage, l.memberIdx,
                 photoNum, photoName,
                 NVL(reviewCount, 0) reviewCount, NVL(reviewScore, 0) reviewScore,
-                p.nickName
+                p.nickName, mc.mainNum, sc.subNum, mainName, subName, h.tagNum, tagName
             FROM lesson l
             JOIN member1 m ON l.memberIdx = m.memberIdx
             JOIN plus p ON p.userId = m.userId
+            JOIN subcategory sc ON sc.subNum = l.subNum
+            JOIN maincategory mc ON mc.mainNum = sc.mainNum
+            LEFT OUTER JOIN hashtag h ON h.tagNum = l.tagNum
             LEFT OUTER JOIN lessonPhoto lp ON l.classNum = lp.classNum
             LEFT OUTER JOIN lessonDetail ld ON ld.classNum = l.classNum
             LEFT OUTER JOIN orders o ON o.detailNum = ld.detailNum
@@ -134,22 +137,22 @@
         WHERE ROWNUM = 1
 	</select>
 	
-	<!-- 게시글 좋아요 추가 -->
+	<!-- 클래스 좋아요 추가 -> 위시리스트 -->
 	<insert id="insertLessonLike" parameterType="map">
 		INSERT INTO wishList(wishDate, userId, classNum) VALUES(SYSDATE, #{userId}, #{classNum})
 	</insert>
 	
-	<!-- 게시글 좋아요 삭제 -->
+	<!-- 클래스 좋아요 삭제 -->
 	<delete id="deleteLessonLike" parameterType="map">
 		DELETE FROM wishList WHERE classNum = #{classNum} AND userId = #{userId}
 	</delete>
 	
-	<!-- 게시글 좋아요 개수 -->
+	<!-- 클래스 좋아요 개수 -->
 	<select id="lessonLikeCount" parameterType="Long" resultType="Integer">
 		SELECT COUNT(*) FROM wishList WHERE classNum = #{classNum}
 	</select>
 	
-	<!-- 게시글 좋아요 여부 -->
+	<!-- 클래스 좋아요 여부 -->
 	<select id="userLessonLiked" parameterType="map" resultType="com.fa.plus.domain.Lesson">
 		SELECT userId, classNum FROM wishList WHERE classNum = #{classNum} AND userId = #{userId}
 	</select>
