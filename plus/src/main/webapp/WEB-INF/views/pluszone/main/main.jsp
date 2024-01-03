@@ -97,10 +97,12 @@ i.fa{
                                     <div class="card-body">
                                         <h3 class="text-center">개설된 클래스</h3>
                                         <hr>
-                                        <h4 class="text-center">1000개</h4>
+                                        <h4 class="text-center">${bookingDataCount}개</h4>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between text-end">
-                                        <div class="small text-white">전체보기 <i class="fas fa-angle-right"></i></div>
+                                        <div class="small text-white">
+                                        <a href="${pageContext.request.contextPath}/booking/lessonList">전체보기</a>
+                                        <i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -110,10 +112,12 @@ i.fa{
                                     <div class="card-body">
                                         <h3 class="text-center">공지사항</h3>
                                         <hr>
-                                        <h4 class="text-center">10개</h4>
+                                        <h4 class="text-center">${noticeDataCount}개</h4>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between text-end">
-                                        <div class="small text-white">전체보기 <i class="fas fa-angle-right"></i></div>
+                                        <div class="small text-white">
+                                        <a href="${pageContext.request.contextPath}/pluszone/noticePlus/list">전체보기</a> 
+                                        <i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
