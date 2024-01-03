@@ -74,7 +74,7 @@
 	    border-color: #205e82;
 	}
 	
-	.fade {
+	.loginfade {
 	    position: absolute;
 	    display: none;
 	    top: 0;
@@ -196,7 +196,7 @@
 	    f.submit();
 	}
 </script>
-<div class="modal fade" id="loginModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="loginModalLabel" aria-hidden="true">
+<div class="modal fade loginfade" id="loginModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered memberdialog">
         <div class="modal-content membercontent">
             <div class="modal-header text-white">
