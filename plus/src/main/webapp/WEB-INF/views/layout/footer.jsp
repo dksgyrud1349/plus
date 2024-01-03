@@ -73,7 +73,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/company/introduction">회사소개</a></li>
                 	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/faq/main">자주하는 질문</a></li>
-                	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/">1:1문의</a></li>
+                	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/inquiryAd/list">1:1문의</a></li>
                 	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
                 	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/terms/list">서비스 이용약관</a></li>
 				</ul>            	
