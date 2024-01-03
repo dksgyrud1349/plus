@@ -148,4 +148,70 @@
 	</delete>
 	
 	
+	<!-- 이벤트 클래스 추가 -->
+	<insert id="insertEventClass" parameterType="com.fa.plus.admin.domain.EventManage">
+		INSERT INTO eventClass (eventNum, classNum)
+			VALUES (#{eventNum}, #{classNum})
+	</insert>
+	
+	<delete id="deleteEventClass" parameterType="Long">
+		DELETE FROM eventClass WHERE classNum = #{classNum}
+	</delete>
+	
+	<!-- 등록위한 클래스 리스트 -->
+	<sql id="where-classList">
+		<choose>
+			<when test="schType == 'classNum' ">
+			  	INSTR(l.classNum, #{kwd}) &gt; 0
+			</when>
+			<when test="schType == 'className' ">
+			  	INSTR(className, #{kwd}) &gt; 0
+			</when>
+			<when test="schType == 'userId' ">
+			  	INSTR(m1.userId, #{kwd}) &gt; 0
+			</when>
+			<otherwise>
+				INSTR(p.nickName, #{kwd}) &gt; 0
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<select id="searchClass" parameterType="map" resultType="com.fa.plus.admin.domain.EventManage">
+		SELECT l.classNum, className, nickName, m1.userId
+		FROM lesson l
+		JOIN member1 m1 ON m1.memberIdx = l.memberIdx
+		JOIN plus p ON p.userId = m1.userId
+		<where>
+			showClass = 0
+			<if test="kwd != null and kwd != ''">
+				AND	<include refid="where-classList"/>
+			</if>
+		</where>
+		ORDER BY l.classNum ASC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<!-- 이벤트에 등록된 클래스 리스트 -->
+	<select id="eventClassList" parameterType="Long" resultType="com.fa.plus.admin.domain.EventManage">
+		SELECT ec.eventNum, subject, ec.classNum, className, nickName
+		FROM eventClass ec
+		JOIN lesson l ON ec.classNum = l.classNum
+		JOIN event e ON ec.eventNum = e.eventNum
+		JOIN member1 m1 ON l.memberIdx = m1.memberIdx
+		JOIN plus p ON m1.userId = p.userId
+		WHERE eventNum = #{eventNum}
+	</select>
+	
+	<select id="classDataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM lesson l 
+		JOIN member1 m1 ON m1.memberIdx = l.memberIdx
+		JOIN plus p ON p.userId = m1.userId
+		<where>
+			<if test="kwd != null and kwd != ''">
+				<include refid="where-classList"/>
+			</if>
+		</where>
+	</select>
+	
 </mapper>

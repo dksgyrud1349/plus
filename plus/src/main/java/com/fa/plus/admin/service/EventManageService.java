@@ -23,4 +23,7 @@ public interface EventManageService {
 	public List<EventManage> classList(Map<String, Object> map);
 	public List<EventManage> eventClassList(long eventNum);
 	public int classDataCount(Map<String, Object> map);
+	public void deleteEventClass(long classNum) throws Exception;
+	public void insertEventClass(EventManage dto) throws Exception;
+	
 }

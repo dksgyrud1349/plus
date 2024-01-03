@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.admin.mapper.OnedayplusManageMapper">
+	
+	<select id="plusSeq" resultType="Long">
+		SELECT plusQue_seq.NEXTVAL FROM dual
+	</select>
+	
+	<insert id="insertOnedayplusQSubject" parameterType="com.fa.plus.admin.domain.OnedayplusManage">
+		INSERT INTO plusQue (num, subject)
+			VALUES (plusQue_seq.NEXTVAL, #{subject})
+	</insert>
+	
+	<update id="updateOnedayplusQSubject" parameterType="com.fa.plus.admin.domain.OnedayplusManage">
+		UPDATE plusQue SET subject = #{subject} WHERE num = #{num}
+	</update>
+	
+	<delete id="deleteOnedayplusQSubject" parameterType="Long">
+		DELETE FROM plusQue WHERE num = #{num}
+	</delete>
+	
+	<insert id="insertOnedayplusQuestion" parameterType="com.fa.plus.admin.domain.OnedayplusManage">
+		INSERT INTO plusQ(plusNum, content, num)
+			VALUES (plusQ_seq.NEXTVAL, #{content}, #{num})
+	</insert>
+	
+	<update id="updateOnedayplusQuestion" parameterType="com.fa.plus.admin.domain.OnedayplusManage">
+		UPDATE plusQ SET content = #{content} WHERE plusNum = #{plusNum}
+	</update>
+	
+	<delete id="deleteOnedayplusQuestion" parameterType="Long">
+		DELETE FROM plusQ WHERE plusNum = #{plusNum}
+	</delete>
+	
+	<select id="dataCount" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM plusQue
+	</select>
+	
+	<select id="QSubject" resultType="com.fa.plus.admin.domain.OnedayplusManage">
+		SELECT num, subject
+		FROM plusQue
+	</select>
+	
+	<select id="listQuestion" resultType="com.fa.plus.admin.domain.OnedayplusManage">
+		SELECT q.num, subject, content, plusNum
+		FROM plusQ q
+		JOIN plusQue pq ON pq.num = q.num
+	</select>
+	
+</mapper>
