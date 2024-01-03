@@ -8,6 +8,11 @@
 	display: inline-block; padding:2px 3px; background: #0d6efd; color: #fff; font-weight: 500;
 	font-size: 11px;
 }
+
+.table td{
+	height:60px;
+	line-height: 60px;
+}
 </style>
 
 <script type="text/javascript">
@@ -21,6 +26,15 @@ function searchList() {
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:5% auto; ">
 				<div class="body-main">
+				
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+		    			<i class="fas fa-clipboard-list"></i> 자료실
+		    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/referManage/list';" title="새로고침" style="float:right;">
+			            	<i class="fa-solid fa-arrow-rotate-left"></i>
+			            </button>
+			            
+			            <button type="button" class="btn btn-success me-3" onclick="location.href='${pageContext.request.contextPath}/pluszone/referManage/write';" style="float:right;">글올리기</button>
+		    		</h3>
 		    			
 		    	<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 					<table class="table">
@@ -35,15 +49,6 @@ function searchList() {
 					</table>
 					
 					<div class="card mb-5 w-80 text-center" style="margin:0 auto">
-				    	<div class="card-header">
-				    		<h3>
-				    			<i class="fas fa-clipboard-list"></i> 자료실
-				    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/referManage/list';" title="새로고침" style="float:right;">
-					            	<i class="fa-solid fa-arrow-rotate-left"></i>
-					            </button>
-				    		</h3>
-			
-		
 							<table class="table table-border table-list">
 								<thead>
 									<tr>
@@ -65,19 +70,13 @@ function searchList() {
 													<a href="${articleUrl}&num=${dto.refNum}" class="text-reset">${dto.subject}</a>
 												</td>
 											
-													
 												<td class="text-center">${dto.regDate}</td>
-												
 												
 											</tr>
 										</c:forEach>
 								</tbody>
 							</table>
 							 
-							<div class="page-navigation">
-								${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
-							</div>
-							
 							<table class="table">
 								<tr>
 									<td align="center">
@@ -96,17 +95,18 @@ function searchList() {
 										</form>
 										
 									</td>
-									<td align="right" width="120">
-										<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/referManage/write';">글올리기</button>
-									</td>
+									<td align="right" width="120"></td>
 								</tr>
 							</table>
+							
+							<div class="page-navigation text-center mb-3">
+								${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
+							</div>
+							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
-	
 </main>

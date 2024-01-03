@@ -14,12 +14,7 @@
 	line-height: 60px;
 }
 
-a{
-	font-size:17px;
-	text-decoration: none;
-	font-weight:500;
-	color:black;
-}
+
 
 </style>
 
@@ -36,7 +31,7 @@ function searchList() {
 				<div class="body-main">
 				
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-		    			<i class="fas fa-clipboard-list"></i> 서비스 이용약관 리스트
+		    			<i class="fas fa-clipboard-list"></i> 서비스 이용약관
 		    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/termsManage/list';" title="새로고침"  style="float:right;">
 			            	<i class="fa-solid fa-arrow-rotate-left"></i>
 			            </button>
