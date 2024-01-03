@@ -13,17 +13,16 @@ public class SubscriberChartServiceImpl implements SubscriberChartService {
 	private SubscriberChartMapper mapper;
 
 	@Override
-	public Map<String, Object> dayOfWMonthSubscriberCount(String month) {
+	public Map<String, Object> dayOfMonthSubscriberCount(String month) {
 		Map<String, Object> resultMap = null;
 		try {
-			resultMap = mapper.dayOfWMonthSubscriberCount(month);
+			resultMap = mapper.dayOfMonthSubscriberCount(month);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return resultMap;
 	
 	}
-	
-	
+
 	
 }

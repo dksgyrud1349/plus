@@ -6,5 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface SubscriberChartMapper {
-	public Map<String, Object> dayOfWMonthSubscriberCount(String month);
+	public Map<String, Object> dayOfMonthSubscriberCount(String month);
+	
 }
