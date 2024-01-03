@@ -112,6 +112,18 @@
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width: 80%; margin: 5% auto;">
 				<div class="body-main">
+				
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+						<i class="bi bi-app"></i> 클래스 등록
+						<button type="button" class="btn btn-success"
+							onclick="location.href='${pageContext.request.contextPath}/lessonPlus/main';"
+							title="새로고침" style="float: right;">
+							<i class="fa-solid fa-arrow-rotate-left"></i>
+						</button>
+						
+							<button type="button" class="btn btn-success me-3" onclick="location.href='${pageContext.request.contextPath}/lessonPlus/write';" style="float: right;">등록하기</button>
+					</h3>
+				
 					<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 						<table class="table">
 							<tr>
@@ -123,17 +135,6 @@
 						</table>
 
 						<div class="card mb-5 w-80 " style="margin: 0 auto">
-							<div class="card-header text-center">
-								<h3>
-									<i class="bi bi-app"></i> 클래스 등록 리스트
-									<button type="button" class="btn btn-success"
-										onclick="location.href='${pageContext.request.contextPath}/lessonPlus/main';"
-										title="새로고침" style="float: right;">
-										<i class="fa-solid fa-arrow-rotate-left"></i>
-									</button>
-								</h3>
-							</div>
-
 							<table class="table table-hover table-list">
 								<thead>
 									<tr style="text-align: center">
@@ -143,10 +144,10 @@
 										<th width="150">종료일</th>
 										<th width="150">등록일</th>
 										<th width="100">가격</th>
-										<th width="250">메인카테고리</th>
-										<th width="200">서브카테고리</th>
-										<th width="200">해시태그</th>
-										<th width="100">승인상태</th>
+										<th width="100">메인카테고리</th>
+										<th width="100">서브카테고리</th>
+										<th width="100">해시태그</th>
+										<th width="90">승인상태</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -172,14 +173,10 @@
 								</tbody>
 							</table>
 
-							<div class="page-navigation dataCount">${dataCount == 0 ? "등록된 클래스가 없습니다." : paging}
-							</div>
-
-
 							<table class="table">
 								<tr>
 									<td align="center">
-										<form class="row" name="searchForm" action="${pageContext.request.contextPath}/lessonPlus/main" method="post" style="width: 300px; margin-left: 100px">
+										<form class="row" name="searchForm" action="${pageContext.request.contextPath}/lessonPlus/main" method="post" style="width:600px;">
 											<div class="input-group mb-3">
 												<select name="mainNum" class="form-select">
 													<option value="0">메인카테고리</option>
@@ -187,16 +184,13 @@
 														<option value="${vo.mainNum}" ${mainNum == vo.mainNum ? "selected" : ""}>${vo.mainName}</option>
 													</c:forEach>
 												</select>
-											</div>
-											<div class="input-group mb-3">
 												<select name="subNum" class="form-select">
 													<option value="0">서브카테고리</option>
 													<c:forEach var="vo" items="${listSubCategory}">
 														<option value="${vo.subNum}" ${subNum == vo.subNum ? "selected" : ""}>${vo.subName}</option>
 													</c:forEach>
 												</select>
-											</div>
-											<div class="input-group mb-3">
+											
 												<select name="schType" class="form-select">
 													<option value="className" ${schType=="className"?"selected":""}>클래스이름</option>
 													<option value="regDate" ${schType=="regDate"?"selected":""}>등록일</option>
@@ -213,9 +207,11 @@
 									</td>
 								</tr>
 							</table>
-							<div class="col text-end pb-3 pe-3">
-								<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/lessonPlus/write';">등록하기</button>
+							
+							<div class="page-navigation dataCount text-center mb-3">
+								${dataCount == 0 ? "등록된 클래스가 없습니다." : paging}
 							</div>
+							
 						</div>
 					</div>
 				</div>

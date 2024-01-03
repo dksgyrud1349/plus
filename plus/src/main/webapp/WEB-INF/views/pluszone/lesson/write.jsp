@@ -3,10 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-.body-container {
-	max-width: 950px;
-}
-
 .table-form tr>td {
 	vertical-align: middle;
 }
@@ -245,12 +241,12 @@ $(function(){
 });
 </script>
 
-<main class="wrapper" style="margin: 0 auto; width: 100%; padding-top: 10px;">
+<main class="wrapper" style="margin: 0 auto; width: 100%;">
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
-		<div class="container">
-			<div class="body-container">
-				<div class="body-title">
-					<h3>
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width: 80%; margin: 5% auto;">
+				<div class="body-main">
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 						<i class="bi bi-app"></i> 클래스 등록
 					</h3>
 				</div>
