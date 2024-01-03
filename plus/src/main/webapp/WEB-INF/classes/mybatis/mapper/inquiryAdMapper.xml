@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.InquiryAdMapper">
+	<insert id="insertInquiryAd" parameterType="com.fa.plus.domain.InquiryAd">
+		INSERT INTO inquiryAd(inquiryNum, subject, content, inquiryId, inquiryDate)
+		VALUES(inquiryAd_seq.NEXTVAL, #{subject}, #{content}, #{inquiryId}, SYSDATE)
+	</insert>
+	
+	<sql id="where-list">
+		<if test="schType=='all' ">
+			( INSTR(subject, #{kwd}) &gt; 0
+				OR DBMS_LOB.INSTR(content, #{kwd}) &gt; 0 )
+		</if>
+		<if test="schType=='subject' ">
+			INSTR(subject, #{kwd}) &gt; 0
+		</if>
+		<if test="schType=='content' ">
+			DBMS_LOB.INSTR( content, #{kwd}) &gt; 0 
+		</if>
+		<if test="schType=='userName'">
+			userName=#{kwd}
+		</if>
+	</sql>
+	
+	 <select id="listInquiryAd" parameterType="map" resultType="com.fa.plus.domain.InquiryAd">
+		SELECT inquiryNum, i.inquiryId, subject, m.userName,
+			   TO_CHAR(inquiryDate, 'YYYY-MM-DD') inquiryDate, reInquiryDate, reInquiryNum
+		FROM inquiryAd i
+		JOIN member1 m ON i.inquiryId=m.userId
+		<where>
+			i.inquiryId = #{inquiryId}
+			<if test="kwd!=null and kwd!='' ">
+				AND <include refid="where-list"/>
+			</if>
+		</where>   
+		ORDER BY inquiryNum DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM inquiryAd i
+		JOIN member1 m ON i.inquiryId=m.userId
+		<where>
+			i.inquiryId = #{inquiryId}
+			<if test="kwd!=null and kwd!='' ">
+				AND <include refid="where-list"/>
+			</if>
+		</where>
+	</select>
+	
+	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.InquiryAd">
+		SELECT inquiryNum, i.inquiryId, m1.userName, subject, content, inquiryDate, 
+		i.reInquiryId, reSubject, reContent, reInquiryDate, reInquiryNum
+		FROM inquiryAd i
+		JOIN member1 m1 ON i.inquiryId=m1.userId
+		LEFT OUTER JOIN member1 m2 ON i.reInquiryId=m2.userId
+		WHERE inquiryNum = #{inquiryNum}
+	</select>
+	
+	<update id="updateInquiryAd" parameterType="com.fa.plus.domain.InquiryAd">
+		UPDATE inquiryAd SET subject=#{subject}, content=#{content}
+		WHERE inquiryNum = #{inquiryNum}
+	</update>
+	
+	<delete id="deleteInquiryAd" parameterType="Long">
+		DELETE FROM inquiryAd WHERE inquiryNum = #{inquiryNum}
+	</delete>
+</mapper>
