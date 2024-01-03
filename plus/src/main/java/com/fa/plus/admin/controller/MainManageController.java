@@ -31,7 +31,7 @@ public class MainManageController {
 	@Autowired
 	private NoticeManageService Noticeservice;
 	@Autowired
-	private DeclarationManageService Declarationservice;
+	private DeclarationManageService Declarationservice;	
 	
 	@Autowired
 	private EventManageService Eventservice;
