@@ -1,5 +1,7 @@
 package com.fa.plus.admin.domain;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class EventManage {
@@ -22,6 +24,13 @@ public class EventManage {
 	private String eventImg;
 	
 	private MultipartFile selectFile;
+	
+	
+	private long classNum;
+	private List<Long> classNums;
+	private String className;
+	private String memberIdx;
+	private String nickName;
 	
 	public long getEventNum() {
 		return eventNum;
@@ -131,4 +140,35 @@ public class EventManage {
 	public void setSelectFile(MultipartFile selectFile) {
 		this.selectFile = selectFile;
 	}
+	public long getClassNum() {
+		return classNum;
+	}
+	public void setClassNum(long classNum) {
+		this.classNum = classNum;
+	}
+	public List<Long> getClassNums() {
+		return classNums;
+	}
+	public void setClassNums(List<Long> classNums) {
+		this.classNums = classNums;
+	}
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String className) {
+		this.className = className;
+	}
+	public String getMemberIdx() {
+		return memberIdx;
+	}
+	public void setMemberIdx(String memberIdx) {
+		this.memberIdx = memberIdx;
+	}
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+	
 }
