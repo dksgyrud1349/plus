@@ -4,8 +4,6 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
 <style type="text/css">
-
-
 .table-article img { max-width: 650px; }
 .file-item { padding: 7px; margin-bottom: 3px; border: 1px solid #ced4da; color: #777777; }
 </style>
@@ -20,12 +18,15 @@ function deleteOk() {
     }
 }
 </script>
-</script>
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:5% auto; ">
 				<div class="body-main">
+				
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+			    		<i class="fas fa-clipboard-list"></i> 공지사항 관리
+			    	</h3>
 		    			
 				<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 				    <table class="table">
@@ -40,11 +41,6 @@ function deleteOk() {
 					</table>
 				
 					<div class="card mb-5 w-80 " style="margin:0 auto">
-					    <div class="card-header text-center">
-					    	<h3>
-					    		<i class="fas fa-clipboard-list"></i> 공지사항 관리
-					    	</h3>
-						</div>
 						<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 							<table class="table">
 								<thead>

@@ -38,6 +38,10 @@
 			<div class="body-container" style="width:80%; margin:5% auto; ">
 				<div class="body-main">
 				
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+	                	<i class="fas fa-clipboard-list"></i> 공지사항 관리
+		            </h3>
+				
 				<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 				    	<table class="table">
 							<tr>
@@ -51,12 +55,6 @@
 						</table>
 						
 						<div class="card mb-5 w-80" style="margin:0 auto">
-				        	<div class="card-header text-center">
-				            	<h3>
-				                	<i class="fas fa-clipboard-list"></i> 공지사항 관리
-					            </h3>
-					        </div>
-					        
 						    <div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 								<form name="noticeForm" method="post" enctype="multipart/form-data">
 									<table class="table table-border border-top2 table-form">
