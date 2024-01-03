@@ -3,9 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-.body-container {
-	max-width: 800px;
-}
+
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
@@ -33,17 +31,18 @@ function sendOk() {
 }
 </script>
 
-<div class="container">
-	<div class="body-container">	
-		<div class="body-title">
-			<h3><i class="bi bi-question-diamond"></i> 1:1 문의 </h3>
-		</div>
+<main class="wrapper" style="margin: 0 auto; width: 100%;">
+	<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width: 80%; margin: 10% auto;">
+				<div class="body-main">
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+						<i class="bi bi-question-diamond"></i> 1:1 문의 
+					</h3>
 		
-		<div class="body-main">
 		
 			<form name="myForm" method="post">
-				<table class="table mt-5 write-form">
-				
+				<table class="table mt-5 table-form" style="border-top:1px solid #cccccc;">
 					<tr>
 						<td class="bg-light col-sm-2" scope="row">제 목</td>
 						<td>
@@ -61,7 +60,7 @@ function sendOk() {
 					<tr>
 						<td class="bg-light col-sm-2" scope="row">내 용</td>
 						<td>
-							<textarea name="content" class="form-control">${dto.content}</textarea>
+							<textarea rows="15" cols="50" name="content" class="form-control">${dto.content}</textarea>
 						</td>
 					</tr>
 				</table>
@@ -84,3 +83,5 @@ function sendOk() {
 		</div>
 	</div>
 </div>
+</div>
+</main>

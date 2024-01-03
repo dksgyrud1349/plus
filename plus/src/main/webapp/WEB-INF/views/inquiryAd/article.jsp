@@ -3,9 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-.body-container {
-	max-width: 800px;
-}
+
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
@@ -19,97 +17,100 @@ function deleteInquiryAd() {
 }
 </script>
 
-<div class="container">
-	<div class="body-container">	
-		<div class="body-title">
-			<h3><i class="bi bi-question-diamond"></i> 1:1 문의 </h3>
-		</div>
-		
-		<div class="body-main">
-
-			<table class="table mt-5 mb-0">
-				<tbody>
-					<tr>
-						<td colspan="2" class="px-0 pb-0">
-							<div class="row gx-0">
-								<div class="col-sm-1 bg-primary me-1">
-									<p class="form-control-plaintext text-white text-center">Q.</p>
-								</div>
-								<div class="col bg-primary">
-									<p class="form-control-plaintext text-white ps-2">${dto.subject}</p>
-								</div>
-							</div>
-						</td>
-					</tr>				
-				
-					<tr>
-						<td align="right">
-							작성자 : ${dto.userName}
-						</td>
-					</tr>
-
-					<tr>
-						<td width="50%">
-							문의일자 : ${dto.inquiryDate}
-						</td>
-					</tr>
+<main class="wrapper" style="margin: 0 auto; width: 100%;">
+	<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width: 80%; margin: 10% auto;">
+				<div class="body-main">
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+						<i class="bi bi-question-diamond"></i> 1:1 문의 
+					</h3>
 					
-					<tr>
-						<td colspan="2" valign="top" height="200">
-							${dto.content}
-						</td>
-					</tr>
-				</tbody>
-			</table>
+					<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+						<table class="table">
+							<tbody>
+								<tr>
+									<td colspan="2" class="px-0 pb-0">
+										<div class="row gx-0">
+											<div class="col-sm-1 bg-dark me-1">
+												<p class="form-control-plaintext text-white text-center">Q.</p>
+											</div>
+											<div class="col bg-dark">
+												<p class="form-control-plaintext text-white ps-2">${dto.subject}</p>
+											</div>
+										</div>
+									</td>
+								</tr>				
+							
+								<tr>
+									<td align="right">
+										작성자 : ${dto.userName}
+									</td>
+								</tr>
 			
-			<c:if test="${not empty dto.reContent}">
-				<table class="table mb-0">
-					<tbody>
-						<tr>
-							<td colspan="2" class="p-0">
-								<div class="row gx-0">
-									<div class="col-sm-1 bg-success me-1">
-										<p class="form-control-plaintext text-white text-center">A.</p>
-									</div>
-									<div class="col bg-success">
-										<p class="form-control-plaintext text-white ps-2">[답변] ${dto.reSubject}</p>
-									</div>
-								</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td width="50%">
-								담당자 : 관리자
-							</td>
-							<td align="right">
-								답변일자 : ${dto.reInquiryDate}
-							</td>
-						</tr>
+								<tr>
+									<td width="50%">
+										문의일자 : ${dto.inquiryDate}
+									</td>
+								</tr>
+								
+								<tr>
+									<td colspan="2" valign="top" height="200">
+										${dto.content}
+									</td>
+								</tr>
+							</tbody>
+						</table>
 						
-						<tr>
-							<td colspan="2" valign="top" height="150">
-								${dto.reContent}
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</c:if>
+						<c:if test="${not empty dto.reContent}">
+							<table class="table mb-0">
+								<tbody>
+									<tr>
+										<td colspan="2" class="p-0">
+											<div class="row gx-0">
+												<div class="col-sm-1 bg-success me-1">
+													<p class="form-control-plaintext text-white text-center">A.</p>
+												</div>
+												<div class="col bg-success">
+													<p class="form-control-plaintext text-white ps-2">[답변] ${dto.reSubject}</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+								
+									<tr>
+										<td width="50%">
+											담당자 : 관리자
+										</td>
+										<td align="right">
+											답변일자 : ${dto.reInquiryDate}
+										</td>
+									</tr>
+									
+									<tr>
+										<td colspan="2" valign="top" height="150">
+											${dto.reContent}
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</c:if>
+						
+						<table class="table table-borderless mb-2">
+							<tr>
+								<td class="text-start">
+									<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/inquiryAd/update?inquiryNum=${dto.inquiryNum}&page=${page}';">수정</button>
+									<button type="button" class="btn btn-light" onclick="deleteInquiryAd();">삭제</button>
+								</td>
+								<td class="text-end">
+									<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/inquiryAd/list?${query}';">리스트</button>
+								</td>
+							</tr>
+						</table>
 			
-			<table class="table table-borderless mb-2">
-				<tr>
-					<td width="text-start">
-						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/inquiryAd/update?inquiryNum=${dto.inquiryNum}&page=${page}';">수정</button>
-					</td>
-					<td width="30%">
-						<button type="button" class="btn btn-light" onclick="deleteInquiryAd();">질문삭제</button>
-					</td>
-					<td class="text-end">
-						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/inquiryAd/list?${query}';">리스트</button>
-					</td>
-				</tr>
-			</table>
-
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
+</main>
