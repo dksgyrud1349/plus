@@ -22,4 +22,9 @@ public interface EventManageMapper {
 	public void updateHitCount(long eventNum) throws SQLException;
 	public EventManage findByPrev(Map<String, Object> map);
 	public EventManage findByNext(Map<String, Object> map);
+	
+	public void insertEventClass(EventManage dto) throws SQLException;
+	public List<EventManage> classList(Map<String, Object> map);
+	public List<EventManage> eventClassList(long eventNum);
+	public int classDataCount(Map<String, Object> map);
 }

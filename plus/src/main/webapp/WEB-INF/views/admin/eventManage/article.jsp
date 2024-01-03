@@ -125,15 +125,7 @@ img{
 								<table class="table">
 									<tr>
 										<td width="50%" align="left">
-											<c:choose>
-												<c:when test="${sessionScope.member.userId == dto.userId}">
-									    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/update?eventNum=${dto.eventNum}&page=${page}';">수정</button>
-									    		</c:when>
-									    		<c:otherwise>
-									    			<button type="button" class="btn" disabled>수정</button>
-									    		</c:otherwise>
-									    	</c:choose>
-									    	
+								    		<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/update?eventNum=${dto.eventNum}&page=${page}';">수정</button>
 							    			<button type="button" class="btn btn-success" onclick="deleteOk();">삭제</button>
 										</td>
 						

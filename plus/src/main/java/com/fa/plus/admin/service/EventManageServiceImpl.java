@@ -52,6 +52,12 @@ public class EventManageServiceImpl implements EventManageService {
 			dto.setStartDate(dto.getSday() + " " + dto.getStime() + ":00");
 			dto.setEndDate(dto.getEday() + " " + dto.getEtime() + ":00");
 			
+			if(dto.getClassNums() != null) {
+				for(Long classNum : dto.getClassNums()) {
+					dto.setClassNum(classNum);
+					mapper.insertEventClass(dto);
+				}
+			}
 			mapper.updateEvent(dto);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -155,6 +161,36 @@ public class EventManageServiceImpl implements EventManageService {
 		}
 		
 		return dto;
+	}
+
+	@Override
+	public List<EventManage> classList(Map<String, Object> map) {
+		List<EventManage> list = null;
+		try {
+			list = mapper.classList(map);
+		} catch (Exception e) {
+		}
+		return list;
+	}
+
+	@Override
+	public List<EventManage> eventClassList(long eventNum) {
+		List<EventManage> list = null;
+		try {
+			list = mapper.eventClassList(eventNum);
+		} catch (Exception e) {
+		}
+		return list;
+	}
+
+	@Override
+	public int classDataCount(Map<String, Object> map) {
+		int result = 0;
+		try {
+			result = mapper.classDataCount(map);
+		} catch (Exception e) {
+		}
+		return result;
 	}
 
 }

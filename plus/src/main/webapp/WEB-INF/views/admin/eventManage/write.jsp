@@ -213,7 +213,14 @@
 												<input type="file" name="selectFile" accept="image/*" class="form-control" multiple>
 											</td>
 										</tr>
-									  
+									  	<c:if test="${mode=='update'}">
+									  		<tr>
+									  			<td>클래스 등록</td>
+									  			<td>
+									  				<span class="btn btn-light btn-sm" onclick="">검색</span>
+									  			</td>
+									  		</tr>
+									  	</c:if>
 									</table>
 										
 									<table class="table">

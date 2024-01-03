@@ -19,5 +19,8 @@ public interface EventManageService {
 	public void updateHitCount(long eventNum) throws Exception;
 	public EventManage findByPrev(Map<String, Object> map);
 	public EventManage findByNext(Map<String, Object> map);
-		
+	
+	public List<EventManage> classList(Map<String, Object> map);
+	public List<EventManage> eventClassList(long eventNum);
+	public int classDataCount(Map<String, Object> map);
 }

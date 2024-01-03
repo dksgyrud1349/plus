@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fa.plus.admin.domain.EventManage;
 import com.fa.plus.admin.service.EventManageService;
@@ -160,11 +161,13 @@ public class EventManageController {
 
 		EventManage prevDto = service.findByPrev(map);
 		EventManage nextDto = service.findByNext(map);
-
+		List<EventManage> eventClassList = service.eventClassList(eventNum);
+		
 		model.addAttribute("category", category);
 		model.addAttribute("dto", dto);
 		model.addAttribute("prevDto", prevDto);
 		model.addAttribute("nextDto", nextDto);
+		model.addAttribute("eventClassList", eventClassList);
 		
 		model.addAttribute("page", page);
 		model.addAttribute("query", query);
@@ -236,4 +239,60 @@ public class EventManageController {
 		return "redirect:/admin/eventManage/" + category + "/list?" + query;
 	}
 	
+	/*
+	// 클래스 리스트 서치
+	@GetMapping("{eventNum}/search")
+	@ResponseBody
+	public String searchClass(
+			@PathVariable long eventNum,
+			@RequestParam(value="pageNo", defaultValue = "1")int current_page,
+			@RequestParam(defaultValue = "") String schType,
+			@RequestParam(defaultValue = "") String kwd,
+			HttpServletRequest req,
+			Model model
+			) throws Exception {
+		int size = 5;
+		int total_page = 0;
+		int dataCount = 0;
+		
+		if (req.getMethod().equalsIgnoreCase("GET")) {
+			kwd = URLDecoder.decode(kwd, "utf-8");
+		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("schType", schType);
+		map.put("kwd", kwd);
+		
+		dataCount = service.classDataCount(map);
+		service.classList(map);
+		if (dataCount != 0) {
+			total_page = myUtil.pageCount(dataCount, size);
+		}
+
+		if (total_page < current_page) {
+			current_page = total_page;
+		}
+
+		int offset = (current_page - 1) * size;
+		if (offset < 0)
+			offset = 0;
+
+		map.put("offset", offset);
+		map.put("size", size);
+		List<EventManage> classList = service.classList(map);
+		
+		String paging = myUtil.pagingMethod(current_page, total_page, "listPage");
+		
+		model.addAttribute("classList", classList);
+		model.addAttribute("pageNo", current_page);
+		model.addAttribute("dataCount", dataCount);
+		model.addAttribute("size", size);
+		model.addAttribute("total_page", total_page);
+		model.addAttribute("paging", paging);
+		
+		model.addAttribute("schType", schType);
+		model.addAttribute("kwd", kwd);
+		
+		return "admin.eventManage.search";
+	}
+	*/
 }
