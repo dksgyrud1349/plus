@@ -20,6 +20,7 @@ public class SubscriberChartServiceImpl implements SubscriberChartService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	
 		return resultMap;
 	
 	}

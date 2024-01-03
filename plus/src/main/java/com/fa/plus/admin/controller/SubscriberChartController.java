@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fa.plus.admin.service.SubscriberChartService;
 
-
 	@Controller	
 	@RequestMapping("/admin/sub/*")
 	public class SubscriberChartController {

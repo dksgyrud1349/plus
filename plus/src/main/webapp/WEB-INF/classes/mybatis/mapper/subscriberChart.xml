@@ -18,9 +18,11 @@
         COUNT(DECODE(TO_CHAR(regdate, 'MM'), '10', 1, NULL)) "OCT",
         COUNT(DECODE(TO_CHAR(regdate, 'MM'), '11', 1, NULL)) "NOV",
         COUNT(DECODE(TO_CHAR(regdate, 'MM'), '12', 1, NULL)) "DEC"
+        
     FROM
         member1
     GROUP BY
+     
         TO_CHAR(sysdate, 'YYYY-MM')
 
 	</select>
