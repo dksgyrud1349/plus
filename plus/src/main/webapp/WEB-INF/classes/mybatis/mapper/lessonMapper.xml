@@ -39,6 +39,7 @@
 		<where>
 			le.showClass = 0
 			AND ap.approvalCode = 1
+			AND endDate > SYSDATE
 			<if test="kwd != null and kwd != ''">
 				AND <include refid="where-list"/>
 			</if>
@@ -64,6 +65,7 @@
 		<where>
 			le.showClass = 0 
 			AND ap.approvalCode = 1
+			AND endDate > SYSDATE
 			<if test="mainNum != 0">
 				AND mc.mainNum = #{mainNum} 
 			</if>

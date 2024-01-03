@@ -242,14 +242,14 @@ ul, li {
 				                    <a href="${pageContext.request.contextPath}/event/progress/list"><i class="fa fa-building"></i> 이벤트 </a>
 				                 </li>
 				                 <li>
-				                    <a href="${pageContext.request.contextPath}/"><i class="fa fa-rss"></i> 고객센터 </a>
+				                    <a href="${pageContext.request.contextPath}/faq/main"><i class="fa fa-rss"></i> 고객센터 </a>
 				                    <ul>
-				                       <li><a href="${pageContext.request.contextPath}/">자주묻는질문</a></li>
-				                       <li><a href="${pageContext.request.contextPath}/">공지사항</a></li>
-				                       <li><a href="${pageContext.request.contextPath}/">신고하기</a></li>
-				                       <li><a href="${pageContext.request.contextPath}/">제안하기</a></li>
-				                       <li><a href="${pageContext.request.contextPath}/">문의하기</a></li>
-				                       <li><a href="${pageContext.request.contextPath}/">연락처 / 위치안내</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/faq/main">자주묻는질문</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/declaration/article">신고하기</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/proposal/list">제안하기</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/inquiryAd/write">문의하기</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/etc/list">연락처 / 위치안내</a></li>
 				                    </ul>
 				                 </li>
 				                 <li>
@@ -264,7 +264,7 @@ ul, li {
 				        <ul>
 				           <li><a href="${pageContext.request.contextPath}/company/introduction">회사소개</a></li>
 				           <li><a href="${pageContext.request.contextPath}/faq/main">자주묻는 질문</a></li>
-				           <li><a href="${pageContext.request.contextPath}/">1:1문의</a></li>
+				           <li><a href="${pageContext.request.contextPath}/inquiryAd/list">1:1문의</a></li>
 				           <li><a href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
 				           <li><a href="${pageContext.request.contextPath}/terms/list">서비스이용약관</a></li>
 				        </ul>

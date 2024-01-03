@@ -85,7 +85,7 @@
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/wishList/myWishList" data-hover="위시리스트">위시리스트</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/bbs/myList" data-hover="내가 작성한 게시물">내가작성한 게시물</a></li>
             <li class="nav-item"><a class="nav-link" href="#" data-hover="리뷰">리뷰</a></li>
-            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/inquiryAd/list" data-hover="문의내역">문의내역</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/inquiryAd/list" data-hover="문의내역" target="_blank">문의내역</a></li>
             <li class="nav-item"><a class="nav-link" href="#" data-hover="탈퇴">탈퇴</a></li>
         </ul>
     </div>

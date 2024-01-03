@@ -251,8 +251,6 @@ $(function(){
 					</h3>
 				</div>
 
-				<div class="body-main">
-
 					<form name="productForm" method="post" enctype="multipart/form-data">
 						<table class="table mt-5 table-form">
 							<tr>

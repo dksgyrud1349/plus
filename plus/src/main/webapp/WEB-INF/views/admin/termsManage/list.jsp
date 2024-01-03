@@ -14,8 +14,6 @@
 	line-height: 60px;
 }
 
-
-
 </style>
 
 <script type="text/javascript">
