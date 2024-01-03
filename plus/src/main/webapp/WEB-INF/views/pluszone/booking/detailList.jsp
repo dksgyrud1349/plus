@@ -50,7 +50,7 @@
 												<c:url var="bookUrl" value="/booking/bookList">
 													<c:param name="detailNum" value="${dto.detailNum}"/>
 												</c:url> 
-												<a href="${bookUrl}" class="text-reset">${dto.classDate}</a>
+												<a href="${bookUrl}" class="text-reset" style="text-decoration: none;">${dto.classDate}</a>
 											</td>
 											<td>${dto.count}</td>
 										</tr>
