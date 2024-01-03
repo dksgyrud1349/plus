@@ -217,7 +217,7 @@
 									  		<tr>
 									  			<td>클래스 등록</td>
 									  			<td>
-									  				<span class="btn btn-light btn-sm" onclick="">검색</span>
+									  				<a href="javascript:dialogSearch();" class="btn btn-light btn-sm searchclass" onclick="">검색</a>
 									  			</td>
 									  		</tr>
 									  	</c:if>
@@ -247,6 +247,94 @@
 	</div>
 </main>
 
+
+
+
+<div class="modal fade modal-lg" id="searchModal" aria-labelledby="prodectSaveModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="prodectSaveModalLabel">클래스</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body pt-1 saveProduct-form">
+				<table class="table">
+					<tr>
+						<td class="text-center align-middle">상품명</td>
+						<td>
+							<div class="input-group mb-3">
+								<input type="text" name="productName" class="form-control" readonly>
+								<button type="button" class="btn btn-light btn-search ms-1" title="검색"><i class="bi bi-search"></i></button>
+							</div>						
+						</td>
+					</tr>
+					<tr>
+						<td class="text-center align-middle">상품코드</td>
+						<td>
+							<input type="text" name="productNum" class="form-control border-0 w-50" readonly>
+						</td>
+					</tr>
+				</table>
+				
+				<table class="table table-borderless">
+					<tr>
+						<td class="text-end">
+							<input type="hidden" name="mode">
+							<input type="hidden" name="detailNum" value="0">
+							<button type="button" class="btn btn-outline-primary btn-productSave">등록</button>
+			    			<button type="button" class="btn btn-outline-danger btn-productCancel">취소</button>
+						</td>
+					</tr>
+				</table>				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- 상품 검색 대화상자 -->
+<div class="modal fade" id="classSearchModal" tabindex="-1" aria-labelledby="searchModalLabel"
+				aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="searchViewerModalLabel">상품검색</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+                <div class="row search-form">
+					<div class="input-group">
+						<select name="schType" class="form-select">
+							<option value="prodectName">상품명</option>
+							<option value="prodectNum">상품코드</option>
+						</select>
+						<input type="text" name="kwd" class="form-control">
+						<button type="button" class="btn btn-light btn-productSearch" title="검색"><i class="bi bi-search"></i></button>
+					</div>
+                </div>
+               	<div class='row mt-2 border-top border-bottom bg-light p-2'>
+               	 	<div class='col-3 text-center'>상품코드</div>
+               	 	<div class='col-3 text-center'>상품코드</div>
+               	 	<div class='col-3 text-center'>상품코드</div>
+               	 	<div class='col-3 text-center'>상품코드</div>
+               	 	
+               	 	
+               	</div>
+                <div class="product-search-list"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 var oEditors = [];
@@ -275,4 +363,16 @@ function setDefaultFont() {
 	var nFontSize = 12;
 	oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
 }
+
+
+$(function(){
+	$(".searchclass").click(function(){
+		$("#searchModal").modal("show");
+	});
+
+	$(".btn-search").click(function(){
+		$("#classSearchModal").modal("show");
+	});
+})
+
 </script>
