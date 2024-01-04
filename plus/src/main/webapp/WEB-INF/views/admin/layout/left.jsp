@@ -61,7 +61,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="#">원데이 플러스 통계</a>
-                                    <a class="nav-link" href='/admin/sub/list'>가입자 수 통계</a>
+                                    <a class="nav-link" href='<c:url value='/admin/sub/list'/>'>가입자 수 통계</a>
                                     <a class="nav-link" href="#">원데이 클래스 통계</a>
                                 </nav>
                             </div>
