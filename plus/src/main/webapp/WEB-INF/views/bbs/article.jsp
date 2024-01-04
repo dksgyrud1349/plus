@@ -28,120 +28,118 @@ img {
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
+			<div class="body-container" style="width:80%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
 				
+				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+		    			<i class="bi bi-app"></i> 커뮤니티
+		    		</h3>
+				
 					<div class="card mb-5 w-80" style="border:none;">
-				    	<div class="card-header text-center">
-				    		<h3>
-				    			<i class="bi bi-app"></i> 커뮤니티
-				    		</h3>
-				    	</div>
-		
-					<div class="table table-hover board-list " id="nav-tabContent">
-						<table class="table">
-							<thead>
-								<tr>
-									<td colspan="2" align="center">
-										${dto.subject}
-									</td>
-								</tr>
-							</thead>
-							
-							<tbody>
-								<tr>
-									<td width="50%">
-										이름 : ${dto.userName}
-									</td>
-									<td align="right">
-										${dto.regDate} | 조회 ${dto.hitCount}
-									</td>
-								</tr>
-								<tr class="text-center">
-									<td colspan="2" valign="top" height="200" style="border-bottom: none;">
-										${dto.content}
-									</td>
-								</tr>
-								
-								<tr>
-									<td colspan="2" class="text-center p-3" style="border-bottom: none;">
-										<button type="button" class="btn btn-outline-secondary btnSendBoardLike" title="좋아요"><i class="bi ${userBoardLiked ? 'bi-hand-thumbs-up-fill':'bi-hand-thumbs-up' }"></i>&nbsp;&nbsp;<span id="boardLikeCount">${dto.boardLikeCount}</span></button>
-									</td>
-								</tr>
-								
-								<tr>
-									<td colspan="2">
-										이전글 :
-										<c:if test="${not empty prevDto}">
-											<a href="${pageContext.request.contextPath}/bbs/article?${query}&num=${prevDto.num}">${prevDto.subject}</a>
-										</c:if>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2">
-										다음글 :
-										<c:if test="${not empty nextDto}">
-											<a href="${pageContext.request.contextPath}/bbs/article?${query}&num=${nextDto.num}">${nextDto.subject}</a>
-										</c:if>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						
-						<table class="table table-borderless mb-2">
-							<tr>
-								<td width="50%">
-									<c:choose>
-										<c:when test="${sessionScope.member.userId==dto.userId}">
-											<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/bbs/update?num=${dto.num}&page=${page}';">수정</button>
-										</c:when>
-										<c:otherwise>
-											<button type="button" class="btn btn-light" disabled>수정</button>
-										</c:otherwise>
-									</c:choose>
-							    	
-									<c:choose>
-							    		<c:when test="${sessionScope.member.userId==dto.userId || sessionScope.member.membership>90}">
-							    			<button type="button" class="btn btn-success" onclick="deleteBoard();">삭제</button>
-							    		</c:when>
-							    		<c:otherwise>
-							    			<button type="button" class="btn btn-light" disabled>삭제</button>
-							    		</c:otherwise>
-							    	</c:choose>
-								</td>
-								<td class="text-end">
-									<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/bbs/list?${query}';">리스트</button>
-								</td>
-							</tr>
-						</table>
-						
-						<div class="reply">
-							<form name="replyForm" method="post">
-								<div class='form-header'>
-									<span class="bold">댓글</span><span> - 타인을 비방하거나 개인정보를 유출하는 글의 게시를 삼가해 주세요.</span>
-								</div>
-								
-								<table class="table table-borderless reply-form">
+						<div class="table table-hover board-list " id="nav-tabContent">
+							<table class="table">
+								<thead>
 									<tr>
-										<td>
-											<textarea class='form-control' name="reContent"></textarea>
+										<td colspan="2" align="center">
+											${dto.subject}
+										</td>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<tr>
+										<td width="50%">
+											이름 : ${dto.userName}
+										</td>
+										<td align="right">
+											${dto.regDate} | 조회 ${dto.hitCount}
+										</td>
+									</tr>
+									<tr class="text-center">
+										<td colspan="2" valign="top" height="200" style="border-bottom: none;">
+											${dto.content}
+										</td>
+									</tr>
+									
+									<tr>
+										<td colspan="2" class="text-center p-3" style="border-bottom: none;">
+											<button type="button" class="btn btn-outline-secondary btnSendBoardLike" title="좋아요"><i class="bi ${userBoardLiked ? 'bi-hand-thumbs-up-fill':'bi-hand-thumbs-up' }"></i>&nbsp;&nbsp;<span id="boardLikeCount">${dto.boardLikeCount}</span></button>
+										</td>
+									</tr>
+									
+									<tr>
+										<td colspan="2">
+											이전글 :
+											<c:if test="${not empty prevDto}">
+												<a href="${pageContext.request.contextPath}/bbs/article?${query}&num=${prevDto.num}">${prevDto.subject}</a>
+											</c:if>
 										</td>
 									</tr>
 									<tr>
-									   <td align='right'>
-									        <button type='button' class='btn btn-success btnSendReply'>댓글 등록</button>
-									    </td>
-									 </tr>
-								</table>
-							</form>
-							<div id="listReply"></div>
+										<td colspan="2">
+											다음글 :
+											<c:if test="${not empty nextDto}">
+												<a href="${pageContext.request.contextPath}/bbs/article?${query}&num=${nextDto.num}">${nextDto.subject}</a>
+											</c:if>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							
+							<table class="table table-borderless mb-2">
+								<tr>
+									<td width="50%">
+										<c:choose>
+											<c:when test="${sessionScope.member.userId==dto.userId}">
+												<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/bbs/update?num=${dto.num}&page=${page}';">수정</button>
+											</c:when>
+											<c:otherwise>
+												<button type="button" class="btn btn-light" disabled>수정</button>
+											</c:otherwise>
+										</c:choose>
+								    	
+										<c:choose>
+								    		<c:when test="${sessionScope.member.userId==dto.userId || sessionScope.member.membership>90}">
+								    			<button type="button" class="btn btn-success" onclick="deleteBoard();">삭제</button>
+								    		</c:when>
+								    		<c:otherwise>
+								    			<button type="button" class="btn btn-light" disabled>삭제</button>
+								    		</c:otherwise>
+								    	</c:choose>
+									</td>
+									<td class="text-end">
+										<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/bbs/list?${query}';">리스트</button>
+									</td>
+								</tr>
+							</table>
+							
+							<div class="reply">
+								<form name="replyForm" method="post">
+									<div class='form-header'>
+										<span class="bold">댓글</span><span> - 타인을 비방하거나 개인정보를 유출하는 글의 게시를 삼가해 주세요.</span>
+									</div>
+									
+									<table class="table table-borderless reply-form">
+										<tr>
+											<td>
+												<textarea class='form-control' name="reContent"></textarea>
+											</td>
+										</tr>
+										<tr>
+										   <td align='right'>
+										        <button type='button' class='btn btn-success btnSendReply'>댓글 등록</button>
+										    </td>
+										 </tr>
+									</table>
+								</form>
+								<div id="listReply"></div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </main>
 
 <script type="text/javascript">

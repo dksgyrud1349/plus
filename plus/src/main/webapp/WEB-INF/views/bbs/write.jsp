@@ -34,14 +34,12 @@ function check() {
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container pt-5" style="width:80%; margin:5% auto;">
+			<div class="body-container" style="width:80%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
-					<div class="card mb-5 w-80" style="margin:0 auto; border:none;">
-			        	<div class="card-header text-center">
-			            	<h3>
-			                	<i class="bi bi-app"></i> 커뮤니티
-				            </h3>
-				        </div>
+				
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+	                	<i class="bi bi-app"></i> 커뮤니티
+		            </h3>
 		
 						<div id="tab-content">
 							<form name="boardForm" method="post" enctype="multipart/form-data">	
@@ -72,8 +70,8 @@ function check() {
 				 					<tr>
 										<td class="text-center">
 											<button type="button" class="btn btn-dark" onclick="submitContents(this.form);">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
-											<button type="reset" class="btn btn-success">다시입력</button>
-											<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/bbs/list';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
+											<button type="reset" class="btn btn-light">다시입력</button>
+											<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/bbs/list';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
 											<c:if test="${mode=='update'}">
 												<input type="hidden" name="num" value="${dto.num}">
 												<input type="hidden" name="page" value="${page}">
