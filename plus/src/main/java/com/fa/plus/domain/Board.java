@@ -1,5 +1,5 @@
 package com.fa.plus.domain;
-  
+ 
 public class Board {
     private long num;
     private String userId;
