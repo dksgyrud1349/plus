@@ -56,7 +56,7 @@ function searchList() {
 				<div class="body-main">
 				<h3>
 	    			<i class="bi bi-calendar-event"></i> 이벤트 
-	    			<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list';" title="새로고침" style="float:right;">
+	    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list';" title="새로고침" style="float:right;">
 		            	<i class="fa-solid fa-arrow-rotate-left"></i>
 		            </button>
 	    		</h3>
@@ -88,7 +88,7 @@ function searchList() {
 											<option value="endDate" ${schType=="endDate"?"selected":""}>종료일</option>
 										</select>
 										<input type="text" name="kwd" value="${kwd}" class="form-control">
-										<button type="button" class="btn btn-light" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+										<button type="button" class="btn btn-secondary" onclick="searchList()"> <i class="bi bi-search"></i> </button>
 									</div>
 								</form>
 							</td>
@@ -125,17 +125,10 @@ function searchList() {
 					</c:forEach>
 				</div>
 						
-				<div class="page-navigation">
+				<div class="page-navigation text-center mb-3">
 					${dataCount == 0 ? "등록된 이벤트가 없습니다." : paging}
 				</div>
 	
-				<table class="table">
-					<tr>
-						<td align="center">
-						
-						</td>
-						</tr>
-						</table>
 					</div>
 				</div>
 			</div>
