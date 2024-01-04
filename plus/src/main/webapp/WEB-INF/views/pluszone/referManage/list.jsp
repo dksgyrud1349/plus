@@ -13,6 +13,9 @@
 	height:60px;
 	line-height: 60px;
 }
+a{
+	text-decoration: none;
+}
 </style>
 
 <script type="text/javascript">
@@ -36,51 +39,47 @@ function searchList() {
 			            <button type="button" class="btn btn-success me-3" onclick="location.href='${pageContext.request.contextPath}/pluszone/referManage/write';" style="float:right;">글올리기</button>
 		    		</h3>
 		    			
-		    	<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
-					<table class="table">
-						<tr>
-							<td align="left" width="50%">
-								총 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}개</font> (${page}/${total_page} 페이지)
-							</td>
-							<td align="right">
-								&nbsp;
-							</td>
-						</tr>
-					</table>
+			    	<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+						<table class="table">
+							<tr>
+								<td align="left" width="50%">
+									총 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}개</font> (${page}/${total_page} 페이지)
+								</td>
+								<td align="right">
+									&nbsp;
+								</td>
+							</tr>
+						</table>
 					
-					<div class="card mb-5 w-80 text-center" style="margin:0 auto">
+						<div class="card mb-5 w-80 text-center" style="margin:0 auto">
 							<table class="table table-border table-list">
-								<thead>
-									<tr>
-										<th width="60">번호</th>
-										<th width="100">클래스</th>
-										<th width="100">제목</th>
-										<th width="70">등록일</th>
-										
-									
-									</tr>
-								</thead>
-							 
+									<thead>
+										<tr>
+											<th width="60">번호</th>
+											<th width="100">클래스</th>
+											<th width="100">제목</th>
+											<th width="70">등록일</th>
+										</tr>
+									</thead>
 							 	<tbody>
 									<c:forEach var="dto" items="${list}">
-											<tr>
-												<td>${dto.refNum}</td>
-												<td>${dto.className}
-												<td class="right">
-													<a href="${articleUrl}&num=${dto.refNum}" class="text-reset">${dto.subject}</a>
-												</td>
+										<tr>
+											<td>${dto.refNum}</td>
+											<td>${dto.className}
+											<td class="right">
+												<a href="${articleUrl}&num=${dto.refNum}" class="text-reset">${dto.subject}</a>
+											</td>
+										
+											<td class="text-center">${dto.regDate}</td>
 											
-												<td class="text-center">${dto.regDate}</td>
-												
-											</tr>
-										</c:forEach>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 							 
 							<table class="table">
 								<tr>
 									<td align="center">
-								
 										<form name="searchForm" action="${pageContext.request.contextPath}/pluszone/referManage/list?num=${dto.refNum}&page=${page}" method="post" style="width:300px; margin-left:100px">
 											<div class="input-group mb-1">
 												<select name="schType" class="form-select">
@@ -93,7 +92,6 @@ function searchList() {
 												<button type="button" class="btn btn-success" onclick="searchList()">검색</button>
 											</div>
 										</form>
-										
 									</td>
 									<td align="right" width="120"></td>
 								</tr>
@@ -102,7 +100,6 @@ function searchList() {
 							<div class="page-navigation text-center mb-3">
 								${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
 							</div>
-							
 						</div>
 					</div>
 				</div>
