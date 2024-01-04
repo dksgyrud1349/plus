@@ -101,7 +101,7 @@ i.fa{
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between text-end">
                                         <div class="small text-white">
-                                        <a href="${pageContext.request.contextPath}/booking/lessonList">전체보기</a>
+                                        <a href="${pageContext.request.contextPath}/pluszone/booking/lessonList">전체보기</a>
                                         <i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -151,9 +151,9 @@ i.fa{
 								          </div> 
 								          <div class="text-center my-6" >
 								            <!-- Title -->
-								            <a href="#" class="d-block h5 mb-0">${loginPlusMember.userName}</a>
+								            <a href="#" class="d-block h5 mb-0">${sessionScope.member.userName}</a>
 								            <!-- Subtitle -->
-								            <span class="d-block text-sm text-muted">${loginPlusMember.email}</span>
+								            <span class="d-block text-sm text-muted">${sessionScope.member.email}</span>
 								          </div>
 								          <!-- Stats -->
 								          <div class="d-flex">

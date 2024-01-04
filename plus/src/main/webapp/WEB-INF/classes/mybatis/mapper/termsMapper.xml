@@ -5,5 +5,6 @@
 	<select id="listTerms" resultType="com.fa.plus.domain.Terms">
 		SELECT num, subject, content
 		FROM terms
+		ORDER BY num DESC
 	</select>
 </mapper>
