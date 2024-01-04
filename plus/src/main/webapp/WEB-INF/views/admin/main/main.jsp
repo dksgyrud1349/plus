@@ -7,7 +7,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
 
 <script type="text/javascript">
-</script>	
+</script>	 
 
 		<div id="layoutSidenav_content">
                     <div class="container-fluid px-4">

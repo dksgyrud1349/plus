@@ -148,7 +148,7 @@ i.fa{
 								            <a href="#" class="avatar avatar-xl rounded-circle">
 								              <i class="bi bi-person-bounding-box fa-4x"></i>
 								            </a>
-								          </div>
+								          </div> 
 								          <div class="text-center my-6" >
 								            <!-- Title -->
 								            <a href="#" class="d-block h5 mb-0">${loginPlusMember.userName}</a>
