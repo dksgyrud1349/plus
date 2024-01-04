@@ -146,10 +146,7 @@ public class NoteController {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		
 		Map<String, Object> model = new HashMap<String, Object>();
-		if(info.getMembership() < 91) {
-			model.put("state", "false");
-			return model;
-		}
+		
 		
 		kwd = URLDecoder.decode(kwd, "UTF-8");
 
