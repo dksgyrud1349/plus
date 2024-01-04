@@ -10,6 +10,9 @@ import com.fa.plus.domain.Reply;
 public interface BoardService {
 	public void insertBoard(Board dto, String pathname) throws Exception;
 	public List<Board> listBoard(Map<String, Object> map);
+	
+	public List<Board> myList(long memberIdx);
+	
 	public int dataCount(Map<String, Object> map);
 	public Board findById(long num);
 	public void updateHitCount(long num) throws Exception;

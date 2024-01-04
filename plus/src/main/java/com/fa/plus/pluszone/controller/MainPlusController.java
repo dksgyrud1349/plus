@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fa.plus.domain.SessionInfo;
+import com.fa.plus.pluszone.domain.MemberPlus;
 import com.fa.plus.pluszone.domain.NoticePlus;
 import com.fa.plus.pluszone.service.BookingPlusService;
+import com.fa.plus.pluszone.service.MemberPlusService;
 import com.fa.plus.pluszone.service.NoticePlusService;
 
 @Controller
 public class MainPlusController {
+	@Autowired
+	private MemberPlusService memberService;
 	@Autowired
 	private NoticePlusService noticeService;
 	@Autowired
@@ -26,8 +30,8 @@ public class MainPlusController {
 	
 	@RequestMapping(value="/pluszone", method=RequestMethod.GET)
 	public String method(HttpSession session,
-			Model model) throws Exception {
-		
+			Model model, String userId) throws Exception {
+		MemberPlus loginPlusMember = null;
 		int noticeDataCount = 0;
 		int bookingDataCount = 0;
 		
@@ -39,10 +43,12 @@ public class MainPlusController {
 		map.put("size", 5);
 		List<NoticePlus> noticeList = noticeService.listNotice(map);
 		
+		loginPlusMember = memberService.loginPlusMember(userId);
 		noticeDataCount = noticeService.dataCount(map);
 		bookingDataCount = bookingService.dataCount(map);
 		
 		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("loginPlusMember", loginPlusMember);
 		model.addAttribute("noticeDataCount", noticeDataCount);
 		model.addAttribute("bookingDataCount", bookingDataCount);
 		

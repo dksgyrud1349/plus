@@ -4,9 +4,10 @@
 <mapper namespace="com.fa.plus.pluszone.mapper.MemberPlusMapper">
 
 	<select id="loginPlusMember"  parameterType="String" resultType="com.fa.plus.pluszone.domain.MemberPlus">
-		SELECT m.memberIdx, membership, userId, userName, userPwd, regDate, lastLogin, pwdDate
+		SELECT m.memberIdx, membership, m1.userId, userName, userPwd, regDate, lastLogin, pwdDate
 		FROM member m
 		JOIN member1 m1 ON m1.memberIdx = m.memberIdx
+		JOIN member2 m2 ON m2.userId = m1.userId
 		WHERE userId = #{userId} AND enabled != 0 AND membership = 51
 	</select>
 	

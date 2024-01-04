@@ -12,7 +12,7 @@
     }
     .clobText {
         font-size: 15px;
-    }
+    }	
 
     .clobTitleBox {
         padding: 10px;
@@ -42,7 +42,7 @@
 		<c:param name="kwd" value="${kwd}"/>
 	</c:if>
 </c:url>
-
+	
 <script type="text/javascript">
 window.addEventListener('load', function(){
 	let page = ${page};
@@ -108,7 +108,8 @@ function searchList() {
 								</td>
 							</tr>
 						</table>
-						
+				<c:choose>
+					<c:when test="${!empty list}">
 						<c:forEach var="dto" items="${list}" varStatus="status">	
 							<div class="border communityBox mb-5">
 								<div class="clobTitleBox">
@@ -153,8 +154,56 @@ function searchList() {
 					          	
 					          </div>
             				</div>
-						</c:forEach>		
-				
+						</c:forEach>	
+					</c:when>
+						<c:otherwise>	
+						<c:forEach var="dto" items="${myList}" varStatus="status">	
+							<div class="border communityBox mb-5">
+								<div class="clobTitleBox">
+								    <span class="clobName" style="width:50%;">
+										<i class="bi bi-person-circle"></i> ${dataCount - (page-1) * size - status.index}. ${dto.userName} 
+									</span>
+									
+									<span class="text-end" style="width:50%">
+										<i class="bi bi-eye-fill"></i>  ${dto.hitCount} 
+										<c:if test="${dto.replyCount!=0}"><i class="bi bi-chat-dots-fill mx-1"></i>(${dto.replyCount})</c:if>
+									</span>
+								
+									<c:url var="url" value="/bbs/article">
+											<c:param name="num" value="${dto.num}"/>
+											<c:param name="page" value="${page}"/>
+										<c:if test="${not empty kwd}">
+											<c:param name="schType" value="${schType}"/>
+											<c:param name="kwd" value="${kwd}"/>
+										</c:if>									
+									</c:url>
+							    </div>
+						
+								<div class="feed_img">
+									
+								   <img src="${dto.imageFilename}" class="d-block w-100" alt="게시글">
+								</div>
+								
+								<div class="mt-1 pb-3" style="border-bottom:1px solid #cccccc">
+				                	<a href="${url}" class="text-reset mx-3">${dto.subject}</a>
+									<span class="me-1" style="float:right;">
+					                	${dto.regDate}
+					                </span>
+	                    			<br>
+		                    		<span class="mx-2">
+		                    			<button type="button" class="btn btn-outline-secondary btnSendBoardLike" title="좋아요" style="border:none;" data-num="${dto.num}"><i class="bi ${dto.userLiked ? 'bi-heart-fill':'bi-heart' }"></i>&nbsp;&nbsp;<span id="boardLikeCount${dto.num}">${dto.boardLikeCount}</span></button>
+		                    		</span>
+                					<div>
+                				</div>
+            				</div>
+            				
+            				  <div class="mx-2">
+					          	
+					          </div>
+            				</div>
+						</c:forEach>	
+						</c:otherwise>
+						</c:choose>
 						<div class="page-navigation dataCount" ></div>
 					</div>
 				</div>

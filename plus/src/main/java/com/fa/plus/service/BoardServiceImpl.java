@@ -40,6 +40,20 @@ public class BoardServiceImpl implements BoardService{
 		
 		return list;
 	}
+	
+	@Override
+	public List<Board> myList(long memberIdx) {
+		List<Board> list = null;
+		
+		try {
+			list = mapper.myList(memberIdx);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
 
 	@Override
 	public int dataCount(Map<String, Object> map) {

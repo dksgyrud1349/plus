@@ -82,7 +82,7 @@ i.fa{
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">
-                                        <h3 class="text-center">총 사업자 수</h3>
+                                        <h3 class="text-center">총 플러스 수</h3>
                                         <hr>
                                         <h4 class="text-center">50명</h4>
                                     </div>
@@ -146,19 +146,19 @@ i.fa{
                                     <div class="card-body" style="width: 100%;">
 										<div class="d-flex justify-content-center">
 								            <a href="#" class="avatar avatar-xl rounded-circle">
-								              <img alt="대표사진" src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" width="300px">
+								              <i class="bi bi-person-bounding-box fa-4x"></i>
 								            </a>
 								          </div>
-								          <div class="text-center my-6">
+								          <div class="text-center my-6" >
 								            <!-- Title -->
-								            <a href="#" class="d-block h5 mb-0">홍길동</a>
+								            <a href="#" class="d-block h5 mb-0">${loginPlusMember.userName}</a>
 								            <!-- Subtitle -->
-								            <span class="d-block text-sm text-muted">1234@naver.com</span>
+								            <span class="d-block text-sm text-muted">${loginPlusMember.email}</span>
 								          </div>
 								          <!-- Stats -->
 								          <div class="d-flex">
 								            <div class="col-4 text-center">
-								              <a href="#" class="h4 font-bolder mb-0">25</a>
+								              <a href="#" class="h4 font-bolder mb-0">${bookingDataCount}</a>
 								              <span class="d-block text-sm">개설된 클래스</span>
 								            </div>
 								            <div class="col-4 text-center">

@@ -27,7 +27,7 @@
 				<h2 class="accordion-header border" id="flush-heading-${status.index}">
 					<button class="accordion-button fw-bold bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-${status.index}" aria-expanded="false" aria-controls="flush-collapse-${status.index}">
 						<div class="col-2 numb">[${dto.faqName}]</div>
-						<div class="col-7 subj">Q.&nbsp;${dto.subject}?</div>
+						<div class="col-7 subj">Q.&nbsp;${dto.subject}</div>
 					</button>
 				</h2>
 				<div id="flush-collapse-${status.index}" class="accordion-collapse collapse" aria-labelledby="flush-heading-${status.index}" data-bs-parent="#accordionFlush">

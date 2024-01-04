@@ -19,6 +19,8 @@ public interface BoardMapper {
 	public int dataCount(Map<String, Object> map);
 	public List<Board> listBoard(Map<String, Object> map);
 	
+	public List<Board> myList(long memberIdx);
+	
 	public Board findById(long num);
 	public void updateHitCount(long num) throws Exception;
 	public Board findByPrev(Map<String, Object> map);
@@ -39,4 +41,3 @@ public interface BoardMapper {
 	
 	public void updateReplyShowHide(Map<String, Object> map) throws SQLException;
 }
-

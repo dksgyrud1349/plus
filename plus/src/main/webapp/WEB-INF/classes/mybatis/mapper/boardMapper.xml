@@ -72,6 +72,17 @@
 		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
 	</select>
 	
+	<select id="myList" parameterType="long" resultType="com.fa.plus.domain.Board">
+		SELECT c.num, c.userId, m.userName, subject,
+			   TO_CHAR(c.regDate, 'YYYY-MM-DD') regDate,
+			   hitCount
+		FROM commu c
+		JOIN member1 m ON c.userId=m.userId
+		WHERE memberIdx = #{memberIdx}
+		ORDER BY userId
+	</select>
+	
+	
 	<!-- 글보기 -->
 	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.Board">
 		SELECT c.num, c.userId, userName, subject, content,
