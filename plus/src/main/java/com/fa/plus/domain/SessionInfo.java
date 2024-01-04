@@ -6,7 +6,15 @@ public class SessionInfo {
 	private String userId;
 	private String userName;
 	private int membership;
+	private String email;
 	
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public long getMemberIdx() {
 		return memberIdx;
 	}
