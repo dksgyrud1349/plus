@@ -230,7 +230,7 @@ public class LessonPlusServiceImpl implements LessonPlusService{
 	@Override
 	public void updateLessonDetail(Map<String, Object> map) throws Exception {
 		try {
-			mapper.updateLessonDetail(map);  // count, classDate
+			mapper.updateLessonDetail(map);  // count, classDate, dContent
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;

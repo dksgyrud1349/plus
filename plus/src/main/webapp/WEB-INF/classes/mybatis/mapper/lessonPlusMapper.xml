@@ -47,13 +47,13 @@
 	
 	<update id="updateLesson" parameterType="com.fa.plus.pluszone.domain.LessonPlus">
 		UPDATE lesson SET className = #{className}, price = #{price}, content = #{content}, firstPhoto = #{firstPhoto}, 
-			special = #{special}, startDate = #{startDate}, endDate = #{endDate}, classTime = #{classTime}, zip = #{zip}, 
+			special = #{special}, classTime = #{classTime}, zip = #{zip}, 
 			addr1 = #{addr1}, addr2 = #{addr2}, showClass = #{showClass}, mileage = #{mileage}, tagNum = #{tagNum}, subNum = #{subNum}
 		WHERE classNum = #{classNum}
 	</update>
 	
 	<update id="updateLessonDetail" parameterType="map">
-		UPDATE lessonDetail SET count = #{count}, dContent = #{dContent} WHERE TO_CHAR(classDate, 'YYYY-MM-DD HH24:MI:SS') classDate = #{classDate}
+		UPDATE lessonDetail SET count = #{count}, dContent = #{dContent} WHERE detailNum = #{detailNum}
 	</update>
 	
 	<delete id="deleteLesson" parameterType="Long">
@@ -66,7 +66,7 @@
 	
 	<select id="findById" parameterType="Long" resultType="com.fa.plus.pluszone.domain.LessonPlus">
 		SELECT classNum, className, price, content, firstPhoto, special, TO_CHAR(startDate, 'YYYY-MM-DD') startDate, TO_CHAR(endDate, 'YYYY-MM-DD') endDate, regDate, classTime, zip, addr1, addr2, 
-			showClass, mileage, ht.tagNum, sc.subNum, memberIdx, mc.mainNum
+			showClass, mileage, ht.tagNum, sc.subNum, mc.mainNum
 		FROM lesson le
 		JOIN hashTag ht ON le.tagNum = ht.tagNum
 		JOIN subCategory sc ON le.subNum = sc.subNum

@@ -25,7 +25,7 @@ import com.fa.plus.pluszone.domain.LessonPlus;
 import com.fa.plus.pluszone.service.LessonPlusService;
 
 @Controller
-@RequestMapping("/lessonPlus/*")
+@RequestMapping("/pluszone/lessonPlus/*")
 public class LessonPlusController {
 
 	@Autowired
@@ -152,7 +152,7 @@ public class LessonPlusController {
 		}
 		
 		
-		return "redirect:/lessonPlus/main";
+		return "redirect:/pluszone/lessonPlus/main";
 	}
 
 	@GetMapping("update")
@@ -179,6 +179,10 @@ public class LessonPlusController {
 		List<LessonPlus> listMainCategory = service.listMainCategory();
 		List<LessonPlus> listSubCategory = service.listSubCategory(dto.getMainNum());
 		List<LessonPlus> listHashTag = service.listHashTag();
+		
+		for(LessonPlus lp : listDetail) {
+			model.addAttribute("detailNum", lp.getDetailNum());
+		}
 
 		model.addAttribute("mode", "update");
 		model.addAttribute("dto", dto);
@@ -195,8 +199,8 @@ public class LessonPlusController {
 	
 	@PostMapping("update")
 	public String updateSubmit(LessonPlus dto, @RequestParam String page, HttpSession session, Model model,
-				@RequestParam("classDateList") List<LessonPlus> classDateList,
-				@RequestParam("countList") List<LessonPlus> countList) throws Exception{
+			@RequestParam(name = "detailValues") String detailValues, @RequestParam(name = "countValues") String countValues) throws Exception{
+		
 		String root = session.getServletContext().getRealPath("/");
 		String path = root + "uploads" + File.separator + "lesson";
 		
@@ -205,9 +209,12 @@ public class LessonPlusController {
 		try {
 			service.updateLesson(dto, path);
 			
-			for(LessonPlus vo : classDateList) {
-				map.put("classDate", vo.getClassDate());
-				map.put("count", vo.getCount());
+			String detailNum[] = detailValues.split(" ");
+			String count[] = countValues.split(" ");
+			
+			for(int i = 0; i < detailNum.length; i++) {
+				map.put("detailNum", detailNum[i]);
+				map.put("count", count[i]);
 				map.put("dContent", dto.getdContent());
 				service.updateLessonDetail(map);
 			}
@@ -218,7 +225,7 @@ public class LessonPlusController {
 		}
 		
 		String query = "page=" + page;
-		return "redirect:/lessonPlus/main?" + query;
+		return "redirect:/pluszone/lessonPlus/main?" + query;
 	}
 	
 	@PostMapping("deleteFile")
@@ -245,6 +252,6 @@ public class LessonPlusController {
 			service.deleteLesson(classNum);
 		} catch (Exception e) {
 		}
-		return "redirect:/lessonPlus/main";
+		return "redirect:/pluszone/lessonPlus/main";
 	}
 }

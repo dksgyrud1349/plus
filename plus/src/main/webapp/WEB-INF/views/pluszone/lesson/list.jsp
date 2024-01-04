@@ -8,7 +8,7 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/paginate-boot.js"></script>
 
-<c:url var="listUrl" value="/lessonPlus/main">
+<c:url var="listUrl" value="/pluszone/lessonPlus/main">
 	<c:if test="${not empty kwd}">
 		<c:param name="schType" value="${schType}" />
 		<c:param name="kwd" value="${kwd}" />
@@ -116,12 +116,12 @@
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 						<i class="bi bi-app"></i> 클래스 등록
 						<button type="button" class="btn btn-success"
-							onclick="location.href='${pageContext.request.contextPath}/lessonPlus/main';"
+							onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/main';"
 							title="새로고침" style="float: right;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
 						</button>
 						
-							<button type="button" class="btn btn-success me-3" onclick="location.href='${pageContext.request.contextPath}/lessonPlus/write';" style="float: right;">등록하기</button>
+							<button type="button" class="btn btn-success me-3" onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/write';" style="float: right;">등록하기</button>
 					</h3>
 				
 					<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
@@ -144,7 +144,7 @@
 										<th width="150">종료일</th>
 										<th width="150">등록일</th>
 										<th width="100">가격</th>
-										<th width="100">메인카테고리</th>
+										<th width="150">메인카테고리</th>
 										<th width="100">서브카테고리</th>
 										<th width="100">해시태그</th>
 										<th width="90">승인상태</th>
@@ -155,11 +155,11 @@
 										<tr style="text-align: center">
 											<td>${dataCount - (page-1) * size - status.index}</td>
 											<td class="left">
-												<c:url var="updateUrl" value="/lessonPlus/update">
+												<c:url var="updateUrl" value="/pluszone/lessonPlus/update">
 													<c:param name="classNum" value="${dto.classNum}" />
 													<c:param name="page" value="${page}" />
 												</c:url> 
-												<a href="${updateUrl}" class="text-reset">${dto.className}</a></td>
+												<a href="${updateUrl}" class="text-reset" style="text-decoration: none;">${dto.className}</a></td>
 											<td>${dto.startDate}</td>
 											<td>${dto.endDate}</td>
 											<td>${dto.regDate}</td>
@@ -176,7 +176,7 @@
 							<table class="table">
 								<tr>
 									<td align="center">
-										<form class="row" name="searchForm" action="${pageContext.request.contextPath}/lessonPlus/main" method="post" style="width:600px;">
+										<form class="row" name="searchForm" action="${pageContext.request.contextPath}/pluszone/lessonPlus/main" method="post" style="width:600px;">
 											<div class="input-group mb-3">
 												<select name="mainNum" class="form-select">
 													<option value="0">메인카테고리</option>
