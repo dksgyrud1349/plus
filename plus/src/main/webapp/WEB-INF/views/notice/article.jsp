@@ -5,12 +5,11 @@
 <style type="text/css">
 	
 </style>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:100%; margin:5% auto; ">
+			<div class="body-container" style="width:100%; margin:10% auto; ">
 				<div class="body-main">
 				
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
@@ -30,8 +29,8 @@
 					</table>
 				
 				
-					<div class="card mb-5 w-80" style="margin:0 auto; border: 1px solid #cccccc;">
-						<table class="table table-hover board-list">
+					<div class="card mb-5 w-80" style="margin:0 auto; border:none;">
+						<table class="table board-list">
 							<thead>
 								<tr>
 									<td colspan="2" align="center">

@@ -24,7 +24,7 @@ function searchList() {
 				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 	    			<i class="fas fa-clipboard-list"  ></i> 공지사항
 	    			
-	    			<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/notice/list';" title="새로고침" style="float:right;">
+	    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/notice/list';" title="새로고침" style="float:right;">
 		            	<i class="fa-solid fa-arrow-rotate-left"></i>
 		            </button>
 	    		</h3>
@@ -113,7 +113,7 @@ function searchList() {
 									</tbody>
 								</table>
 								
-								<div class="page-navigation">
+								<div class="page-navigation text-center mb-3">
 									${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
 								</div>
 						</div>
