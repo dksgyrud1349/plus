@@ -81,14 +81,19 @@ $(function() {
 });
 </script>
 
-<div class="container">
-	<div class="body-container">	
-		<div class="body-title">
-			<h3><i class="bi bi-messenger"></i> 쪽지함 </h3>
-		</div>
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width:80%; margin:10% auto; ">
+				<div class="body-main">
+				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+					<i class="bi bi-messenger"></i> 쪽지함 
+					
+					<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/note/${menuItem}/list';" title="새로고침" style="float:right;">
+						<i class="bi bi-arrow-counterclockwise"></i>
+					</button>
+				</h3>
 		
-		<div class="body-main">
-
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">
 					<button class="nav-link" id="tab-receive" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="receive" aria-selected="true" data-tab="receive">받은 쪽지함</button>
@@ -107,7 +112,7 @@ $(function() {
 								<button type="button" class="btn btnDelete p-1" title="삭제"><i class="bi bi-trash"></i></button>
 							</td>
 							<td align="right">
-								<button type="button" class="btn btn-light" onclick="javascript:location.href='${pageContext.request.contextPath}/note/write';">쪽지 쓰기</button>
+								<button type="button" class="btn btn-success" onclick="javascript:location.href='${pageContext.request.contextPath}/note/write';">쪽지 쓰기</button>
 							</td>
 						</tr>
 					</table>
@@ -146,50 +151,41 @@ $(function() {
 						<input type="hidden" name="kwd" value="${kwd}">						
 					</form>
 					
-					<div class="page-navigation">
+						<table class="table">
+							<tr>
+								<td align="center">
+									<form class="row" name="searchForm" action="${pageContext.request.contextPath}/note/${menuItem}/list" method="post" style="width:300px;">
+										<div class="input-group mb-3">
+											<select name="schType" class="form-select">
+												<option value="content" ${schType=="content"?"selected":""}>내용</option>
+												<c:choose>
+													<c:when test="${menuItem=='receive'}">
+														<option value="senderName" ${schType=="senderName"?"selected":""}>보낸사람</option>
+														<option value="senderId" ${schType=="senderId"?"selected":""}>아이디</option>
+														<option value="sendDate" ${schType=="sendDate"?"selected":""}>받은날짜</option>
+													</c:when>
+													<c:otherwise>
+														<option value="receiverName" ${schType=="receiverName"?"selected":""}>받는사람</option>
+														<option value="receiverId" ${schType=="receiverId"?"selected":""}>아이디</option>
+														<option value="sendDate" ${schType=="sendDate"?"selected":""}>보낸날짜</option>
+													</c:otherwise>
+												</c:choose>
+											</select>
+											<input type="text" name="kwd" value="${kwd}" class="form-control">
+											<button type="button" class="btn btn-light" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+										</div>
+									</form>
+								</td>
+							</tr>
+						</table>
+					<div class="page-navigation text-center mb-3">
 						${dataCount == 0 ? "등록된 쪽지가 없습니다." : paging}
-					</div>				
-				
-					<div class="row board-list-footer">
-						<div class="col">
-							<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/note/${menuItem}/list';" title="새로고침"><i class="bi bi-arrow-counterclockwise"></i></button>
-							
-						</div>
-						<div class="col-6 text-center">
-							<form class="row" name="searchForm" action="${pageContext.request.contextPath}/note/${menuItem}/list" method="post">
-								<div class="col-auto p-1">
-									<select name="schType" class="form-select">
-										<option value="content" ${schType=="content"?"selected":""}>내용</option>
-										<c:choose>
-											<c:when test="${menuItem=='receive'}">
-												<option value="senderName" ${schType=="senderName"?"selected":""}>보낸사람</option>
-												<option value="senderId" ${schType=="senderId"?"selected":""}>아이디</option>
-												<option value="sendDate" ${schType=="sendDate"?"selected":""}>받은날짜</option>
-											</c:when>
-											<c:otherwise>
-												<option value="receiverName" ${schType=="receiverName"?"selected":""}>받는사람</option>
-												<option value="receiverId" ${schType=="receiverId"?"selected":""}>아이디</option>
-												<option value="sendDate" ${schType=="sendDate"?"selected":""}>보낸날짜</option>
-											</c:otherwise>
-										</c:choose>
-									</select>
-								</div>
-								<div class="col-auto p-1">
-									<input type="text" name="kwd" value="${kwd}" class="form-control">
-								</div>
-								<div class="col-auto p-1">
-									<button type="button" class="btn btn-light" onclick="searchList()"> <i class="bi bi-search"></i> </button>
-								</div>
-							</form>
-						</div>
-						<div class="col text-end">
-							&nbsp;
-						</div>
 					</div>
-				
 				</div>
 			</div>
 
 		</div>
 	</div>
 </div>
+</div>
+</main>

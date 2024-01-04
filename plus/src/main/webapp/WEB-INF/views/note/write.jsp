@@ -31,6 +31,10 @@
 	margin-right: 3px;
 	cursor: pointer;
 }
+
+.modal-backdrop {
+	position: static;
+}
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
@@ -68,13 +72,15 @@ function sendOk() {
 }
 </script>
 
-<div class="container">
-	<div class="body-container">	
-		<div class="body-title">
-			<h3><i class="bi bi-messenger"></i> 쪽지함 </h3>
-		</div>
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width:80%; margin:10% auto; ">
+				<div class="body-main">
+				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+					<i class="bi bi-messenger"></i> 쪽지함 
+				</h3>
 		
-		<div class="body-main">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">
 					<button class="nav-link" id="tab-receive" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="receive" aria-selected="true" data-tab="receive">받은 쪽지함</button>
@@ -94,7 +100,7 @@ function sendOk() {
 								<td>
 									<div class="row">
 										<div class="col-auto pe-0">
-											<button type="button" class="btn btn-light btnReceiverDialog">추가</button>
+											<button type="button" class="btn btn-success btnReceiverDialog">추가</button>
 										</div>
 										<div class="col">
 											<div class="forms-receiver-name"></div>
@@ -120,7 +126,7 @@ function sendOk() {
 									<button type="reset" class="btn btn-light">다시입력</button>
 									<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/note/send/list';">취소&nbsp;<i class="bi bi-x"></i></button>
 									<div id="forms-receiver-list">
-									<input type="hidden" name="receivers" value="1">
+		
 									</div>
 								</td>
 							</tr>
@@ -133,6 +139,9 @@ function sendOk() {
 		</div>
 	</div>
 </div>
+</div>
+</main>
+
 
 	<div class="modal fade" id="myDialogModal" tabindex="-1" 
 			data-bs-backdrop="static" data-bs-keyboard="false"
@@ -155,7 +164,7 @@ function sendOk() {
 							<input type="text" name="kwd" id="kwd" class="form-control">
 						</div>
 						<div class="col-auto p-1">
-							<button type="button" class="btn btn-light btnReceiverFind"> <i class="bi bi-search"></i> </button>
+							<button type="button" class="btn btn-success btnReceiverFind"> <i class="bi bi-search"></i> </button>
 						</div>				
 					</div>
 					<div class="row p-1">
@@ -171,6 +180,7 @@ function sendOk() {
 			</div>
 		</div>
 	</div>
+
 
 	<script type="text/javascript">
 		function login() {

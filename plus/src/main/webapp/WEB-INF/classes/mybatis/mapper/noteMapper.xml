@@ -212,7 +212,7 @@
 	<delete id="updateDeleteState" parameterType="map">
 		UPDATE note SET ${field1} = 'Y'
 		WHERE noteNum IN 
-			<foreach item="noteNum" index="index" collection="noteNumList"
+			<foreach item="noteNum" index="index" collection="numList"
 					open="(" separator="," close=")">
 				#{noteNum}
 			</foreach>
@@ -223,7 +223,7 @@
 		DELETE FROM note
 		WHERE ${field2} = 'Y' AND
 			noteNum IN 
-			<foreach item="noteNum" index="index" collection="noteNumList"
+			<foreach item="noteNum" index="index" collection="numList"
 					open="(" separator="," close=")">
 				#{noteNum}
 			</foreach>

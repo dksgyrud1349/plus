@@ -77,7 +77,7 @@
 				 	<div style="margin-top:50px;">
 						<span style="font-weight: bold;">최근 예약 내역</span>
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<span style="font-size: small; color:#828282">최근 3개월간 주문하신 내역입니다.</span>
+						<span style="font-size: small; color:#828282">최근 주문하신 3개 내역입니다.</span>
 						<a href="${pageContext.request.contextPath}/bookingList/bLists" style="float:right; color:#828282">전체예약조회&nbsp;&nbsp;<i class="fas fa-angle-right align-middle;" style="color: #828282"></i></a>
 						  	</div>
 						<div class="container text-center" style="margin-top:10px;" >
@@ -123,7 +123,7 @@
 				<table class="table table-hover">
 				  <thead>
 				    <tr class="table-warning">
-				      <th scope="col">번호</th>
+				      <th scope="col" style="padding-left: 20px;">번호</th>
 				      <th scope="col">클래스</th>
 				      <th scope="col">강사</th>
 				      <th scope="col">주소</th>
@@ -131,27 +131,16 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr class="table-light">
-				      <th scope="row">1</th>
-				      <td>나만의 공예</td>
-				      <td>홍길동</td>
-				      <td>서울특별시</td>
-				      <td>후기작성</td>
-				    </tr>
-				    <tr class="table-light">
-				      <th scope="row">2</th>
-				      <td>나만의 공예</td>
-				      <td>홍길동</td>
-				      <td>서울특별시</td>
-				      <td>후기작성</td>
-				    </tr>
-				    <tr class="table-light">
-				      <th scope="row">3</th>
-				      <td>나만의 공예</td>
-				      <td>홍길동</td>
-				      <td>서울특별시</td>
-				      <td>예약접수</td>
-				    </tr>
+				    <c:forEach var="dto" items="${rtnList}" varStatus="status" begin="${status.index}" end="${status.index+2}">
+						<tr>
+							<th style="padding-left: 30px;">${dto.rnum}</th>
+							<td>${dto.className}</td>
+							<td>${dto.puserName}</td>
+							<td>${dto.addr1}, ${dto.addr2}</td>
+							<td style="padding-left: 10px;">${dto.mode}</td>
+							<input type="hidden" name="orderNum" id="orderNum" value="${dto.orderNum}">
+						</tr>
+					</c:forEach>
 				  </tbody>
 				</table>
 				</div>
