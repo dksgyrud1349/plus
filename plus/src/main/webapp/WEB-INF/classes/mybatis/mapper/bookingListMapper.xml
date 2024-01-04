@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.BookingListMapper">
+	<select id="findByOrderNum" parameterType="String" resultType="com.fa.plus.domain.BookingList">
+		SELECT * FROM (SELECT od.orderNum, ROW_NUMBER() OVER(ORDER BY od.orderNum) as rnum
+		FROM orderDetail od
+		JOIN orders o ON o.orderNum = od.orderNum
+		JOIN member m ON m.memberIdx = o.memberIdx
+		JOIN member1 m1 ON m1.memberIdx = m.memberIdx
+		WHERE userId = #{userId}) ORDER BY rnum DESC
+	</select>
+	
+	<select id="findByClassNum" parameterType="long" resultType="com.fa.plus.domain.BookingList">
+		SELECT od.orderNum
+		       , l.classNum
+		       , od.state
+		FROM orderDetail od
+		JOIN orders o ON o.orderNum = od.orderNum
+		JOIN lessonDetail ld ON ld.detailNum = o.detailNum
+		JOIN lesson l ON l.classNum = ld.classNum
+		WHERE od.orderNum = #{orderNum}
+	</select>
+	
+	<select id="classInfo" parameterType="long" resultType="com.fa.plus.domain.BookingList">
+		SELECT classNum
+		       , className
+		       , l.addr1
+		       , l.addr2
+		       , l.regDate
+		       , userId AS puserId
+		       , userName AS puserName
+		FROM lesson l
+		JOIN member m ON m.memberIdx = l.memberIdx
+		JOIN member1 m1 ON m1.memberIdx = m.memberIdx
+		WHERE classNum = #{classNum}
+		ORDER BY l.regDate ASC
+	</select>
+
+	<select id="bookingDetail" parameterType="map" resultType="com.fa.plus.domain.BookingList">
+		SELECT od.orderNum
+		       , TO_CHAR(classDate, 'YYYY-MM-DD HH24:MI') AS cDate
+		       , od.count
+		       , pay
+		       , state
+		       , l.className
+		       , l.classNum
+		       , m1.userId
+		       , m1.userName
+		       , m2.tel
+		       , m2.email
+		FROM orders o
+		JOIN member m ON m.memberIdx = o.memberIdx
+		JOIN member1 m1 ON m1.memberIdx = m.memberIdx
+		JOIN member2 m2 ON m2.userId = m1.userId
+		JOIN lessonDetail ld ON ld.detailNum = o.detailNum
+		JOIN lesson l ON l.classNum = lD.classNum
+		JOIN orderDetail od ON od.orderNum = o.orderNum
+		WHERE m1.userId = #{userId} AND od.orderNum = #{orderNum}
+	</select>
+</mapper>

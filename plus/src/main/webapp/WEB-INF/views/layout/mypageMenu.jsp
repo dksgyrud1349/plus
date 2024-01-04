@@ -81,7 +81,7 @@
           <li class="nav-item"><a class="nav-link" href="#" data-hover="마이페이지" style="border-bottom: 3px solid orange !important;">마이페이지</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/pwd" data-hover="내정보 및 수정">내정보 수정</a></li>
             <li class="nav-item"><a class="nav-link" href="#" data-hover="알림 / 쪽지 내역">알림 / 쪽지 내역</a></li>
-            <li class="nav-item"><a class="nav-link" href="#" data-hover="예약내역">예약내역</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/bookingList/bLists" data-hover="예약내역">예약내역</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/wishList/myWishList" data-hover="위시리스트">위시리스트</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/bbs/myList" data-hover="내가 작성한 게시물">내가작성한 게시물</a></li>
             <li class="nav-item"><a class="nav-link" href="#" data-hover="리뷰">리뷰</a></li>

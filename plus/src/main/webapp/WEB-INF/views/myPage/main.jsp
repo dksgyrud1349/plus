@@ -78,7 +78,7 @@
 						<span style="font-weight: bold;">최근 예약 내역</span>
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<span style="font-size: small; color:#828282">최근 3개월간 주문하신 내역입니다.</span>
-						<a href="#" style="float:right; color:#828282">전체예약조회&nbsp;&nbsp;<i class="fas fa-angle-right align-middle;" style="color: #828282"></i></a>
+						<a href="${pageContext.request.contextPath}/bookingList/bLists" style="float:right; color:#828282">전체예약조회&nbsp;&nbsp;<i class="fas fa-angle-right align-middle;" style="color: #828282"></i></a>
 						  	</div>
 						<div class="container text-center" style="margin-top:10px;" >
 						  
