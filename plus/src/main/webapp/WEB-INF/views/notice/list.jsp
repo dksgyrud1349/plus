@@ -52,8 +52,6 @@ function searchList() {
 								</td>
 							</tr>
 						</table>
-					
-					
 									
 						<div class="card w-80" style="border: none;">
 					    	 <div style="background-color: white;">

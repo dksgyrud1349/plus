@@ -3,9 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-.body-container {
-	max-width: 800px;
-}
+
 </style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/dateUtil.js"></script>
 
@@ -84,15 +82,14 @@ $(function(){
 </script>
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
-	<div id="layoutSidenav_content" style="background: #F8F8FF;">
+	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:80%; margin:5% auto; ">
-				<div class="body-title">
-					<h3><i class="bi bi-calendar-event"></i> 일정관리 </h3>
-				</div>
-		
+			<div class="body-container" style="width:80%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
-				
+				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+						<i class="bi bi-calendar-event"></i> 일정관리 
+					</h3>
+		
 					<form name="scheduleForm" method="post">
 						<table class="table mt-5 write-form">
 							<tr>

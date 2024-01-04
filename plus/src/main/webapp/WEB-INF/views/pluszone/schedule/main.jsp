@@ -42,16 +42,13 @@ a{
 		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 	</div>
 	<div class="offcanvas-body">
-		<div class="row">
+		<div class="row mb-3">
 			<div class="col">
-				<button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+				<button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
 					카테고리 추가 <i class="bi bi-plus-lg"></i>
 				</button>
-			</div>
-			<div class="col-auto text-end">
-				<button class="btn btnDeleteIcon" type="button" title="편집">
-					<i class="bi bi-three-dots-vertical"></i>
-				</button>
+				
+				<button type="button" class="btn btn-success btnCategorySearch" title="검색" style="float:right;"><i class="bi bi-search"></i></button>
 			</div>
 		</div>
 		<div class="collapse" id="collapseExample">
@@ -67,25 +64,12 @@ a{
 			<c:forEach var="vo" items="${listCategory}">
 				<div class='row p-2 border category-row'>
 					<div class='col-auto'>
-						<input class='form-check-input me-1 category-item' type='checkbox' value='${vo.cNum}' checked>
-					</div>
-					<div class='col ps-0'>
-						${vo.cName}
-					</div>
-					<div class='col-auto text-end invisible category-item-minus'>
-						<a href='#'><i class='bi bi-dash-square category-item-delete' data-cNum='${vo.cNum}'></i></a>
+						<input class='form-check-input me-1 category-item' type='checkbox' value='${vo.cNum}' checked> ${vo.cName}
+						<a href='#'><i class='bi bi-dash-square category-item-delete' data-cNum='${vo.cNum}' style="float:right;"></i></a>
 					</div>
 				</div>
 			</c:forEach>
 		</div>
-		
-		<c:if test="${listCategory.size() > 0}">
-			<div class="row">
-				<div class="col pt-1 text-end">
-					<button type="button" class="btn btnCategorySearch" title="검색"><i class="bi bi-search"></i></button>
-				</div>
-			</div>
-		</c:if>
 		
 	</div>
 </div>
@@ -451,11 +435,8 @@ $(function(){
 					let item = data.listCategory[idx];
 					out += "<div class='row p-2 border category-row'>";
 					out += "  <div class='col-auto'>";
-					out += "    <input class='form-check-input me-1 category-item' type='checkbox' value='"+item.cNum+"' checked>";
-					out += "  </div>";
-					out += "  <div class='col ps-0'>"+item.cName+"</div>";
-					out += "  <div class='col-auto text-end invisible category-item-minus'>";
-					out += "    <a href='#'><i class='bi bi-dash-square category-item-delete' data-cNum='"+item.cNum+"'></i></a>";
+					out += "    <input class='form-check-input me-1 category-item' type='checkbox' value='"+item.cNum+"' checked>" + item.cName;
+					out += "    <a href='#'><i class='bi bi-dash-square category-item-delete' data-cNum='" + item.cNum + "' style='float:right;'></i></a>";
 					out += "  </div>";
 					out += "</div>";
 				}
