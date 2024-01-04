@@ -161,13 +161,11 @@ public class EventManageController {
 
 		EventManage prevDto = service.findByPrev(map);
 		EventManage nextDto = service.findByNext(map);
-		List<EventManage> eventClassList = service.eventClassList(eventNum);
 		
 		model.addAttribute("category", category);
 		model.addAttribute("dto", dto);
 		model.addAttribute("prevDto", prevDto);
 		model.addAttribute("nextDto", nextDto);
-		model.addAttribute("eventClassList", eventClassList);
 		
 		model.addAttribute("page", page);
 		model.addAttribute("query", query);
@@ -206,6 +204,7 @@ public class EventManageController {
 
 		try {
 			service.updateEvent(dto, pathname);
+			service.updateClassPrice(dto);
 		} catch (Exception e) {
 		}
 		
@@ -239,60 +238,103 @@ public class EventManageController {
 		return "redirect:/admin/eventManage/" + category + "/list?" + query;
 	}
 	
-	/*
-	// 클래스 리스트 서치
-	@GetMapping("{eventNum}/search")
+	// 이벤트 수정에서 이벤트에 클래스 등록
+	@PostMapping("{eventNum}/classInsert")
 	@ResponseBody
-	public String searchClass(
+	public Map<String, Object> classInsert(@PathVariable long eventNum,
+			EventManage dto) throws Exception {
+		String state = "true";
+		try {
+			service.insertEventClass(dto);
+		} catch (Exception e) {
+			state = "false";
+		}
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("state", state);
+		return model;
+	}
+	
+	@PostMapping("{eventNum}/classDelete")
+	@ResponseBody
+	public Map<String, Object> classDelete(@PathVariable long eventNum,
+			@RequestParam long classNum,
+			EventManage dto) throws Exception {
+		String state = "true";
+		try {
+			service.deleteEventClass(classNum);
+		} catch (Exception e) {
+			state = "false";
+		}
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("state", state);
+		return model;
+	}
+	
+	@GetMapping("{eventNum}/classList")
+	@ResponseBody
+	public Map<String, Object> classList (
 			@PathVariable long eventNum,
-			@RequestParam(value="pageNo", defaultValue = "1")int current_page,
-			@RequestParam(defaultValue = "") String schType,
-			@RequestParam(defaultValue = "") String kwd,
-			HttpServletRequest req,
-			Model model
+			@RequestParam(value="pageNo", defaultValue = "1") int current_page
 			) throws Exception {
 		int size = 5;
-		int total_page = 0;
-		int dataCount = 0;
+		int total_page;
+		int dataCount;
 		
-		if (req.getMethod().equalsIgnoreCase("GET")) {
-			kwd = URLDecoder.decode(kwd, "utf-8");
-		}
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("schType", schType);
-		map.put("kwd", kwd);
+		Map<String , Object> map = new HashMap<String, Object>();
+		map.put("eventNum", eventNum);
 		
 		dataCount = service.classDataCount(map);
-		service.classList(map);
-		if (dataCount != 0) {
-			total_page = myUtil.pageCount(dataCount, size);
-		}
-
-		if (total_page < current_page) {
+		total_page = myUtil.pageCount(dataCount, size);
+		if(current_page > total_page) {
 			current_page = total_page;
 		}
-
+		
 		int offset = (current_page - 1) * size;
-		if (offset < 0)
-			offset = 0;
-
+		if(offset < 0) offset = 0;
+		
 		map.put("offset", offset);
 		map.put("size", size);
-		List<EventManage> classList = service.classList(map);
+		
+		List<EventManage> list = service.eventClassList(map);
 		
 		String paging = myUtil.pagingMethod(current_page, total_page, "listPage");
 		
-		model.addAttribute("classList", classList);
-		model.addAttribute("pageNo", current_page);
-		model.addAttribute("dataCount", dataCount);
-		model.addAttribute("size", size);
-		model.addAttribute("total_page", total_page);
-		model.addAttribute("paging", paging);
-		
-		model.addAttribute("schType", schType);
-		model.addAttribute("kwd", kwd);
-		
-		return "admin.eventManage.search";
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("list", list);
+		model.put("dataCount", dataCount);
+		model.put("pageNo", current_page);
+		model.put("total_page", total_page);
+		model.put("size", size);
+		model.put("paging", paging);
+		return model;
 	}
-	*/
+	
+	
+	// 클래스 리스트 서치
+	@GetMapping("{eventNum}/search")
+	@ResponseBody
+	public Map<String, Object> searchClass(
+			@PathVariable long eventNum,
+			@RequestParam long classNum,
+			@RequestParam(defaultValue = "") String schType,
+			@RequestParam(defaultValue = "") String kwd
+			) throws Exception {
+	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("schType", schType);
+		map.put("kwd", kwd);
+		map.put("eventNum", eventNum);
+		map.put("classNum", classNum);
+		
+		service.classList(map);
+		List<EventManage> classList = service.classList(map);
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("classList", classList);
+		
+		return model;
+	}
+	
 }

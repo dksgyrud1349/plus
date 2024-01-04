@@ -188,11 +188,10 @@
 			</if>
 		</where>
 		ORDER BY l.classNum ASC
-		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
 	</select>
 	
 	<!-- 이벤트에 등록된 클래스 리스트 -->
-	<select id="eventClassList" parameterType="Long" resultType="com.fa.plus.admin.domain.EventManage">
+	<select id="eventClassList" parameterType="map" resultType="com.fa.plus.admin.domain.EventManage">
 		SELECT ec.eventNum, subject, ec.classNum, className, nickName
 		FROM eventClass ec
 		JOIN lesson l ON ec.classNum = l.classNum
@@ -200,6 +199,7 @@
 		JOIN member1 m1 ON l.memberIdx = m1.memberIdx
 		JOIN plus p ON m1.userId = p.userId
 		WHERE eventNum = #{eventNum}
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
 	</select>
 	
 	<select id="classDataCount" parameterType="map" resultType="Integer">
@@ -207,11 +207,10 @@
 		FROM lesson l 
 		JOIN member1 m1 ON m1.memberIdx = l.memberIdx
 		JOIN plus p ON p.userId = m1.userId
-		<where>
-			<if test="kwd != null and kwd != ''">
-				<include refid="where-classList"/>
-			</if>
-		</where>
+		WHERE eventNum = #{eventNum}
 	</select>
 	
+	<update id="updateClassPrice" parameterType="com.fa.plus.admin.domain.EventManage">
+		UPDATE lesson SET price = #{price} WHERE classNum = #{classNum}
+	</update>
 </mapper>

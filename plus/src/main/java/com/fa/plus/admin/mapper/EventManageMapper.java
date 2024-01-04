@@ -26,6 +26,8 @@ public interface EventManageMapper {
 	public void insertEventClass(EventManage dto) throws SQLException;
 	public void deleteEventClass(long classNum) throws SQLException;
 	public List<EventManage> searchClass(Map<String, Object> map);
-	public List<EventManage> eventClassList(long eventNum);
+	public List<EventManage> eventClassList(Map<String, Object> map);
 	public int classDataCount(Map<String, Object> map);
+	
+	public void updateClassPrice(EventManage dto) throws SQLException;
 }

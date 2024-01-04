@@ -168,10 +168,10 @@ public class EventManageServiceImpl implements EventManageService {
 	}
 
 	@Override
-	public List<EventManage> eventClassList(long eventNum) {
+	public List<EventManage> eventClassList(Map<String, Object> map) {
 		List<EventManage> list = null;
 		try {
-			list = mapper.eventClassList(eventNum);
+			list = mapper.eventClassList(map);
 		} catch (Exception e) {
 		}
 		return list;
@@ -204,6 +204,23 @@ public class EventManageServiceImpl implements EventManageService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
+		}
+	}
+
+	@Override
+	public void updateClassPrice(EventManage dto) throws Exception {
+		try {
+			int price = dto.getPrice();
+			if(dto.getDiscountMoney() > 0) {
+				dto.setPrice(price - dto.getDiscountMoney());
+			} else {
+				// 할인율 계산
+				double per = dto.getDiscountPercent();
+				price = (int)(dto.getPrice() * (100-(per * 0.01)));
+				dto.setPrice(price);
+			}
+			mapper.updateClassPrice(dto);
+		} catch (Exception e) {
 		}
 	}
 

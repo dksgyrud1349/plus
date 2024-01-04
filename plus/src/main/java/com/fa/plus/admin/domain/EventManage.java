@@ -23,6 +23,8 @@ public class EventManage {
 	private int hitCount;
 	private String eventImg;
 	
+	private int price; // 클래스 가격
+	
 	private MultipartFile selectFile;
 	
 	
@@ -32,6 +34,13 @@ public class EventManage {
 	private String memberIdx;
 	private String nickName;
 	
+	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	public long getEventNum() {
 		return eventNum;
 	}
