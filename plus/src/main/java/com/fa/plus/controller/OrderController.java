@@ -112,7 +112,7 @@ public class OrderController {
 			throw e;
 		}
 		
-		return "redirect:/lesson/main";
+		return "redirect:/orderDetail/list";
 	}
 	
 	@GetMapping("cal1")
