@@ -47,6 +47,7 @@
                                     <a class="nav-link" href="#">클래스 관리</a>
                                     <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/booking/lessonList">예약 현황</a>
                                     <a class="nav-link" href="<c:url value='/pluszone/referManage/list'/>">자료실</a>
+                                    <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/plusInq/inqList">클래스 문의내역</a>
                                 </nav>
                             </div>
                             
