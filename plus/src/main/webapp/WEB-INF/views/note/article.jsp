@@ -41,6 +41,9 @@
 .reply-form textarea {
 	height: 130px;
 }
+.modal-backdrop {
+	position: static;
+}
 </style>
 
 <script type="text/javascript">
@@ -85,13 +88,15 @@ function deleteNote() {
 }
 </script>
 
-<div class="container">
-	<div class="body-container">	
-		<div class="body-title">
-			<h3><i class="bi bi-messenger"></i> 쪽지함 </h3>
-		</div>
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width:80%; margin:10% auto; ">
+				<div class="body-main">
+				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+				<i class="bi bi-messenger"></i> 쪽지함
+			</h3>
 		
-		<div class="body-main">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">
 					<button class="nav-link" id="tab-receive" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="receive" aria-selected="true" data-tab="receive">받은 쪽지함</button>
@@ -108,11 +113,11 @@ function deleteNote() {
 						<tr>
 							<td align="left" width="50%">
 								<c:if test="${menuItem=='receive'}">
-									<button type="button" class="btn btn-light btnReplyNote" >답변</button>
+									<button type="button" class="btn btn-success btnReplyNote" >답변</button>
 								</c:if>
 							</td>
 							<td align="right">
-								<button type="button" class="btn btn-light" onclick="javascript:location.href='${pageContext.request.contextPath}/note/write';">쪽지 쓰기</button>
+								<button type="button" class="btn btn-success" onclick="javascript:location.href='${pageContext.request.contextPath}/note/write';">쪽지 쓰기</button>
 							</td>
 						</tr>
 					</table>
@@ -176,10 +181,10 @@ function deleteNote() {
 					<table class="table table-borderless">
 						<tr>
 							<td width="50%">
-						    	<button type="button" class="btn btn-light" onclick="deleteNote();">삭제</button>
+						    	<button type="button" class="btn btn-success" onclick="deleteNote();">삭제</button>
 							</td>
 							<td class="text-end">
-								<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/note/${menuItem}/list?${query}';">리스트</button>
+								<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/note/${menuItem}/list?${query}';">리스트</button>
 							</td>
 						</tr>
 					</table>
@@ -190,6 +195,8 @@ function deleteNote() {
 		</div>
 	</div>
 </div>
+</div>
+</main>
 
 <div class="modal fade" id="myDialogModal" tabindex="-1" 
 		data-bs-backdrop="static" data-bs-keyboard="false"
