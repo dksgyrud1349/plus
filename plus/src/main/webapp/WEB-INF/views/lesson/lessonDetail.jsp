@@ -385,6 +385,9 @@ function sendOk(mode) {
 										<button type="button" class="btn singo" style="width: 60x;" onclick="location.href='${pageContext.request.contextPath}/declaration/article';">
 											<span style="font-size: medium; font-family: 'EASTARJET-Medium';">신고</span><i class="bi bi-exclamation-triangle-fill"></i>
 										</button>
+										<button type="button" class="btn singo" style="width: 60x;" onclick="location.href='${pageContext.request.contextPath}/classInq/insertInq?classNum=${dto.classNum}';">
+											<span style="font-size: medium; font-family: 'EASTARJET-Medium';">문의하기</span> <i class="bi bi-question-circle"></i>
+										</button>
 									</div>
 							</div>
 							<p class="lead">

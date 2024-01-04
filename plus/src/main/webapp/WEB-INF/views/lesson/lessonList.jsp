@@ -205,7 +205,7 @@ $(function(){
 				 <div style="background-color: #CC33FF;">스</div>
 			</div>
 			    <div class="row d-flex" style="clear:both;">
-					<form action="" name="searchForm" method="post">
+					<form action="" name="searchForm">
 						<div class="col-2 p-3" style="float: left; width: 16.66%;">${dataCount}개(${page}/${total_page} 페이지)</div>
 						<div class="col-2 p-2 input-group" style="float: right; width: 16.66%;">
 							<input type="text" name="kwd" class="form-control" value="${kwd}">
