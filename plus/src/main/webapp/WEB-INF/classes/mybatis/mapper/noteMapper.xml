@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.NoteMapper">
+
+	<!-- 회원리스트 -->
+	<select id="listMember" parameterType="map" resultType="com.fa.plus.domain.Note">
+		SELECT memberIdx, userId, userName
+		FROM member1
+		<where>
+			userId != #{userId}
+			AND
+			<if test="kwd != null and kwd != '' ">
+				INSTR(${schType}, #{kwd}) &gt; 0
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insertNote" parameterType="com.fa.plus.domain.Note">
+		INSERT INTO note(noteNum, content, senderIdx, receiverIdx,
+			sendDate, identifyDate, sendDelete, receiveDelete)
+		VALUES (note_seq.NEXTVAL, #{content}, #{senderIdx}, #{receiverIdx},
+			SYSDATE, #{identifyDate, jdbcType=VARCHAR}, 'N', 'N')
+	</insert>
+	
+	<sql id="where-list">
+		<if test="schType=='senderName' or schType=='receiverName'">
+			INSTR(userName, #{kwd}) &gt; 0
+		</if>
+		<if test="schType=='senderId' or schType=='receiverId'">
+			userId = #{kwd}
+		</if>
+		<if test="schType=='content'">
+			INSTR(content, #{kwd}) &gt; 0
+		</if>
+		<if test="schType=='sendDate'">
+			( TO_CHAR(sendDate, 'YYYYMMDD') = #{kwd}
+		          OR TO_CHAR(sendDate, 'YYYY-MM-DD') = #{kwd} )
+		</if>
+	</sql>
+   
+   <!-- 받은 쪽지 리스트 -->
+	<select id="dataCountReceive" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0) 
+		FROM note
+		JOIN member1 ON senderIdx=memberIdx
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+			AND receiverIdx = #{memberIdx}
+			AND receiveDelete = 'N'
+		</where> 
+	</select>
+	
+	<select id="listReceive" parameterType="map" resultType="com.fa.plus.domain.Note">
+		SELECT noteNum, content, senderIdx, userId senderId, userName senderName, 
+			   TO_CHAR(sendDate, 'YYYY-MM-DD HH24:MI:SS') sendDate,
+			   NVL2(identifyDate, TO_CHAR(identifyDate, 'YYYY-MM-DD HH24:MI:SS'), null) identifyDate,
+			   sendDelete, receiveDelete
+		FROM note
+		JOIN member1 ON senderIdx=memberIdx
+		<where>
+			<if test="kwd != null and kwd != ''">
+				<include refid="where-list"/>
+			</if>
+			AND receiverIdx = #{memberIdx}
+			AND receiveDelete = 'N'
+		</where>
+		ORDER BY noteNum DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<!-- 보낸 쪽지 리스트 -->
+	<select id="dataCountSend" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0) 
+		FROM note
+		JOIN member1 ON receiverIdx=memberIdx
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+			AND senderIdx = #{memberIdx}
+			AND sendDelete = 'N'
+		</where> 
+	</select>
+	
+	<select id="listSend" parameterType="map" resultType="com.fa.plus.domain.Note">
+		SELECT noteNum, content, receiverIdx, userId receiverId, userName receiverName, 
+			   TO_CHAR(sendDate, 'YYYY-MM-DD HH24:MI:SS') sendDate,
+			   NVL2(identifyDate, TO_CHAR(identifyDate, 'YYYY-MM-DD HH24:MI:SS'), null) identifyDate,
+			   sendDelete, receiveDelete
+		FROM note
+		JOIN member1 ON receiverIdx=memberIdx
+		<where>
+			<if test="kwd != null and kwd != ''">
+				<include refid="where-list"/>
+			</if>
+			AND senderIdx = #{memberIdx}
+			AND sendDelete = 'N'
+		</where>
+		ORDER BY noteNum DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+    </select>
+    
+    <!-- 받은 쪽지 내용 보기 -->
+	<select id="findByReceiveId" parameterType="Long" resultType="com.fa.plus.domain.Note">
+		SELECT noteNum, content, senderIdx, userId senderId, userName senderName,
+			sendDate, identifyDate, sendDelete, receiveDelete
+		FROM note
+		JOIN member1 ON senderIdx=memberIdx
+		WHERE noteNum = #{noteNum}
+	</select> 
+	
+	<!-- 받은 쪽지 이전글 -->
+	<select id="findByReceivePrev" parameterType="map" resultType="com.fa.plus.domain.Note">
+		SELECT noteNum, content, senderIdx, userId senderId, userName senderName,
+			sendDate, identifyDate, sendDelete, receiveDelete
+		FROM note
+		JOIN member1 ON senderIdx=memberIdx
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+			AND receiverIdx = #{memberIdx}
+			AND receiveDelete = 'N'
+			AND (noteNum &gt; #{noteNum})
+		</where>
+		ORDER BY noteNum ASC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+	
+	<!-- 받은 쪽지 다음글 -->
+	<select id="findByReceiveNext" parameterType="map" resultType="com.fa.plus.domain.Note">
+		SELECT noteNum, content, senderIdx, userId senderId, userName senderName,
+			sendDate, identifyDate, sendDelete, receiveDelete
+		FROM note
+		JOIN member1 ON senderIdx=memberIdx
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+			AND receiverIdx = #{memberIdx}
+			AND receiveDelete = 'N'
+			AND (noteNum &lt; #{noteNum})
+		</where>
+		ORDER BY noteNum DESC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+	
+	<!-- 보낸 쪽지 내용 보기 -->
+	<select id="findBySendId" parameterType="Long" resultType="com.fa.plus.domain.Note">
+		SELECT noteNum, content, receiverIdx, userId receiverId, userName receiverName,
+			sendDate, identifyDate, sendDelete, receiveDelete
+		FROM note
+		JOIN member1 ON receiverIdx=memberIdx
+		WHERE noteNum=#{noteNum}
+	</select>
+	
+	<!-- 보낸 쪽지 이전글 -->
+	<select id="findBySendPrev" parameterType="map" resultType="com.fa.plus.domain.Note">
+		SELECT noteNum, content, receiverIdx, userId receiverId, userName receiverName,
+			sendDate, identifyDate, sendDelete, receiveDelete
+		FROM note
+		JOIN member1 ON receiverIdx=memberIdx
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+			AND senderIdx = #{memberIdx}
+			AND sendDelete = 'N'
+			AND (noteNum &gt; #{noteNum})
+		</where>
+		ORDER BY noteNum ASC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+	
+	<!-- 보낸 쪽지 다음글 -->
+	<select id="findBySendNext" parameterType="map" resultType="com.fa.plus.domain.Note">
+		SELECT noteNum, content, receiverIdx, userId receiverId, userName receiverName,
+			sendDate, identifyDate, sendDelete, receiveDelete
+		FROM note
+		JOIN member1 ON receiverIdx=memberIdx
+		<where>
+			<if test="kwd != null and kwd != '' ">
+				<include refid="where-list"/>
+			</if>
+			AND senderIdx = #{memberIdx}
+			AND sendDelete = 'N'
+			AND (noteNum &lt; #{noteNum})
+		</where>
+		ORDER BY noteNum DESC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+	
+	<!-- 보낸 쪽지함에서 쪽지 답변 보기 -->
+	<select id="findByReplyReceiveId" parameterType="Long" resultType="com.fa.plus.domain.Note">
+		SELECT noteNum, content, senderIdx, userId senderId, userName senderName,
+			sendDate, identifyDate, sendDelete, receiveDelete
+		FROM note
+		JOIN member1 ON senderIdx=memberIdx
+		WHERE parent=#{noteNum} AND receiveDelete = 'N'
+	</select>   
+	
+	<!-- 쪽지를 확인 상태로 변경 -->
+	<delete id="updateIdentifyDay" parameterType="Long">
+		UPDATE note SET identifyDate = SYSDATE 
+		WHERE noteNum=#{noteNum} AND identifyDate IS NULL
+	</delete>
+	
+	<!-- 쪽지를 삭제 상태로 변경 -->
+	<delete id="updateDeleteState" parameterType="map">
+		UPDATE note SET ${field1} = 'Y'
+		WHERE noteNum IN 
+			<foreach item="noteNum" index="index" collection="noteNumList"
+					open="(" separator="," close=")">
+				#{noteNum}
+			</foreach>
+	</delete>
+	
+	<!-- 쪽지삭제 -->
+	<delete id="deleteNote" parameterType="map">
+		DELETE FROM note
+		WHERE ${field2} = 'Y' AND
+			noteNum IN 
+			<foreach item="noteNum" index="index" collection="noteNumList"
+					open="(" separator="," close=")">
+				#{noteNum}
+			</foreach>
+    </delete>
+    
+	<!-- 새로운 쪽지 개수 -->
+	<select id="newNoteCount" parameterType="Long" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM note
+		WHERE identifyDate IS NULL AND receiverIdx=#{memberIdx}
+	</select>
+	
+</mapper>
