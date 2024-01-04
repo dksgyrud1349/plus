@@ -26,10 +26,10 @@
 								<h3>
 									<i class="bi bi-app"></i> 클래스 리스트
 								</h3>
-								<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/booking/lessonList';" title="새로고침" style="float: right;">
+								<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/booking/lessonList';" title="새로고침" style="float: right;">
 									<i class="fa-solid fa-arrow-rotate-left"></i>
 								</button>
-								<form action="${pageContext.request.contextPath}/booking/lessonList" name="searchForm" method="post">
+								<form action="${pageContext.request.contextPath}/pluszone/booking/lessonList" name="searchForm" method="post">
 									<div class="col-2 input-group" style="float: right; width: 16.66%;">
 										<input type="text" name="kwd" value="${kwd}" class="form-control">
 										<button type="button" class="btn btn-success me-1" onclick="searchList()">
@@ -64,7 +64,7 @@
 										<tr style="text-align: center">
 											<td>${dataCount - (page-1) * size - status.index}</td>
 											<td class="left">
-												<c:url var="detailUrl" value="/booking/detailList">
+												<c:url var="detailUrl" value="/pluszone/booking/detailList">
 													<c:param name="classNum" value="${dto.classNum}"/>
 												</c:url> 
 												<a href="${detailUrl}" class="text-reset" style="text-decoration: none;">${dto.className}</a>

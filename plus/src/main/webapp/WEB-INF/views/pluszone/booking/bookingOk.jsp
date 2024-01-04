@@ -50,7 +50,7 @@ $(function(){
 		
 		$("#tab-"+tab).addClass("active");
 		
-		let url = "${pageContext.request.contextPath}/booking/bookList?detailNum=${detailNum}";	
+		let url = "${pageContext.request.contextPath}/pluszone/booking/bookList?detailNum=${detailNum}";	
 		location.href = url;
 	});
 });
@@ -72,7 +72,7 @@ $(function(){
 				arrayValue.push($(this).val());
 			}
 		});
-		let url = "${pageContext.request.contextPath}/booking/update1";
+		let url = "${pageContext.request.contextPath}/pluszone/booking/update1";
 		let query = "arrayValue=" + arrayValue;
 		
 		const fn = function(data){
@@ -96,7 +96,7 @@ $(function(){
     				
     				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
                       	<i class="fa-solid fa-user-group"></i> 예약관리 
-	                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/booking/bookingOk?detailNum=${detailNum}';" style="float:right;">
+	                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/booking/bookingOk?detailNum=${detailNum}';" style="float:right;">
 	                    	<i class="fa-solid fa-arrow-rotate-left"></i>
 	                    </button>
 	                </h3>

@@ -24,11 +24,11 @@
 						<div class="card mb-5 w-80 " style="margin: 0 auto">
 							<div class="card-header text-center">
 								<h3>
-									<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/booking/lessonList';" title="뒤로가기" style="float: left;">
+									<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/booking/lessonList';" title="뒤로가기" style="float: left;">
 										<i class="bi bi-arrow-left"></i>
 									</button>
 									<i class="bi bi-app"></i> 클래스의 상세시간
-									<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/booking/detailList?classNum=${classNum}';" title="새로고침" style="float: right;">
+									<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/booking/detailList?classNum=${classNum}';" title="새로고침" style="float: right;">
 										<i class="fa-solid fa-arrow-rotate-left"></i>
 									</button>
 								</h3>
@@ -47,7 +47,7 @@
 										<tr style="text-align: center">
 											<td>${dataCount - (detailPage-1) * size - status.index}</td>
 											<td class="left">
-												<c:url var="bookUrl" value="/booking/bookList">
+												<c:url var="bookUrl" value="/pluszone/booking/bookList">
 													<c:param name="detailNum" value="${dto.detailNum}"/>
 												</c:url> 
 												<a href="${bookUrl}" class="text-reset" style="text-decoration: none;">${dto.classDate}</a>

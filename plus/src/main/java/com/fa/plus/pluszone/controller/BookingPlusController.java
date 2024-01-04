@@ -21,7 +21,7 @@ import com.fa.plus.pluszone.domain.BookingPlus;
 import com.fa.plus.pluszone.service.BookingPlusService;
 
 @Controller
-@RequestMapping("/booking/*")
+@RequestMapping("/pluszone/booking/*")
 public class BookingPlusController {
 	
 	@Autowired

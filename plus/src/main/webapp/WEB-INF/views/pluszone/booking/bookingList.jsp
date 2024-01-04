@@ -54,7 +54,7 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 
 			$("#tab-" + tab).addClass("active");
 
-			let url = "${pageContext.request.contextPath}/booking/bookingOk?detailNum=${detailNum}";
+			let url = "${pageContext.request.contextPath}/pluszone/booking/bookingOk?detailNum=${detailNum}";
 			location.href = url;
 		});
 	});
@@ -77,7 +77,7 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 					arrayValue.push($(this).val());
 				}
 			});
-			let url = "${pageContext.request.contextPath}/booking/update";
+			let url = "${pageContext.request.contextPath}/pluszone/booking/update";
 			let query = "arrayValue=" + arrayValue;
 			
 			const fn = function(data){
@@ -102,7 +102,7 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 					<h3 class="mb-3 p-2" style="border-bottom: 3px solid black;">
 						<i class="fa-solid fa-user-group"></i> 예약관리
 						<button type="button" class="btn btn-success"
-							onclick="location.href='${pageContext.request.contextPath}/booking/bookList?detailNum=${detailNum}';"
+							onclick="location.href='${pageContext.request.contextPath}/pluszone/booking/bookList?detailNum=${detailNum}';"
 							style="float: right;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
 						</button>
