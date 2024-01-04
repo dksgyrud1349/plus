@@ -74,8 +74,7 @@
 
 		let str, b;
 		let mode = "${mode}";
-
-
+		
 		if(! f.mainNum.value) {
 			alert("메인카테고리를 선택하세요.");
 			f.mainNum.focus();
@@ -100,27 +99,45 @@
 			return false;
 		}
 		
-		if(! f.startDate.value){
-			alert("수업 시작일을 입력하세요.");
-			f.startDate.focus();
-			return;
+		if(mode === "write"){
+			if(! f.startDate.value){
+				alert("수업 시작일을 입력하세요.");
+				f.startDate.focus();
+				return;
+			}
+			
+			if(! f.endDate.value){
+				alert("수업 종료일을 입력하세요.");
+				f.endDate.focus();
+				return;
+			}
+			if(f.startDate.value > f.endDate.value){
+				alert("날짜를 올바르게 입력하세요.");
+				f.endDate.focus();
+				return;
+			}
+			
+			var ch = document.querySelectorAll('input[type="checkbox"]:checked').length;
+			if(ch === 0){
+				alert("하나 이상 선택해주세요.");
+				return;
+			}
 		}
 		
-		if(! f.endDate.value){
-			alert("수업 종료일을 입력하세요.");
-			f.endDate.focus();
-			return;
-		}
-		if(f.startDate.value > f.endDate.value){
-			alert("날짜를 올바르게 입력하세요.");
-			f.endDate.focus();
-			return;
-		}
-		
-		var ch = document.querySelectorAll('input[type="checkbox"]:checked').length;
-		if(ch == 0){
-			alert("하나 이상 선택해주세요.");
-			return;
+		if(mode === "update"){
+			var detail = "";
+			var count = "";
+			
+			$("input[name=detailNum]").each(function(i){
+				detail += $("input[name=detailNum]").eq(i).attr("value") + " ";
+			});
+			
+			$("input[name=count]").each(function(i){
+				count += $("input[name=count]").eq(i).val() + " ";
+			});
+			
+			document.getElementById("detailValues").value = detail;
+			document.getElementById("countValues").value = count;
 		}
 		
 		if(! /^[0-9]+$/.test(f.classTime.value)){
@@ -128,11 +145,12 @@
 			f.classTime.focus();
 			return;
 		}
-		
-		if(! /^[0-9]+$/.test(f.count.value)){
-			alert("숫자만 입력하세요.");
-			f.count.focus();
-			return;
+		if(mode == "write"){
+			if(! /^[0-9]+$/.test(f.count.value)){
+				alert("숫자만 입력하세요.");
+				f.count.focus();
+				return;
+			}
 		}
 		
 		if(!/^(\d){1,7}$/.test(f.mileage.value)) {
@@ -154,11 +172,10 @@
 			return false;
 		}
 
-		f.action = "${pageContext.request.contextPath}/lessonPlus/${mode}";
+		f.action = "${pageContext.request.contextPath}/pluszone/lessonPlus/${mode}";
 		return true;
 
 	}
-
 </script>
 <script type="text/javascript">
 function login() {
@@ -246,211 +263,236 @@ $(function(){
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width: 80%; margin: 5% auto;">
 				<div class="body-main">
-					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+					<h3 class="mb-3 p-2" style="border-bottom: 3px solid black;">
 						<i class="bi bi-app"></i> 클래스 등록
 					</h3>
 				</div>
 
-					<form name="productForm" method="post" enctype="multipart/form-data">
-						<table class="table mt-5 table-form">
-							<tr>
-								<td class="table-light col-sm-2">카테고리</td>
-								<td style="display: flex;">
-									<div class="row">
-										<div class="col-6 ps-3" style="flex: 1;">
-											<select name="mainNum" class="form-select">
-												<option value="">:: 메인 카테고리 선택 ::</option>
-												<c:forEach var="vo" items="${listMainCategory}">
-													<option value="${vo.mainNum}" ${mainNum == vo.mainNum ? "selected" : ""}>${vo.mainName}</option>
-												</c:forEach>
-											</select>
-										</div>
-										<div class="col-6 ps-3" style="flex: 1;">
-											<select name="subNum" class="form-select">
-												<option value="">:: 서브 카테고리 선택 ::</option>
-												<c:forEach var="vo" items="${listSubCategory}">
-													<option value="${vo.subNum}" ${dto.subNum == vo.subNum ? "selected" : ""}>${vo.subName}</option>
-												</c:forEach>
-											</select>
-										</div>
-										<div class="col-6 ps-3" style="flex: 1;">
-											<select name="tagNum" class="form-select">
-												<option value="">:: 해시태그 선택 ::</option>
-												<c:forEach var="vo" items="${listHashTag}">
-													<option value="${vo.tagNum}" ${dto.tagNum == vo.tagNum ? "selected" : ""}>${vo.tagName}</option>
-												</c:forEach>
-											</select>
-										</div>
+				<form name="productForm" method="post" enctype="multipart/form-data">
+					<table class="table mt-5 table-form">
+						<tr>
+							<td class="table-light col-sm-2">카테고리</td>
+							<td style="display: flex;">
+								<div class="row">
+									<div class="col-6 ps-3" style="flex: 1;">
+										<select name="mainNum" class="form-select">
+											<option value="">:: 메인 카테고리 선택 ::</option>
+											<c:forEach var="vo" items="${listMainCategory}">
+												<option value="${vo.mainNum}"
+													${mainNum == vo.mainNum ? "selected" : ""}>${vo.mainName}</option>
+											</c:forEach>
+										</select>
 									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="table-light col-sm-2">클래스명</td>
-								<td>
-									<input type="text" name="className" class="form-control" value="${dto.className}">
-								</td>
-							</tr>
-							<tr>
-								<td class="table-light col-sm-2">클래스가격</td>
-								<td>
-									<input type="text" name="price" class="form-control" value="${dto.price}">
-								</td>
-							</tr>
-							<c:if test="${mode == 'write'}">
-								<tr>
-									<td class="table-light col-sm-2">시작일</td>
-									<td>
-										<input type="date" name="startDate" class="form-control" value="${dto.startDate}">
-									</td>
-								</tr>
-								<tr>
-									<td class="table-light col-sm-2">종료일</td>
-									<td>
-										<input type="date" name="endDate" class="form-control" value="${dto.endDate}">
-									</td>
-								</tr>
-								<tr>
-									<td class="table-light col-sm-2">시간 선택</td>
-									<td>
-										<div class="pt-2 pb-2">
-											<input type="checkbox" name="startTime1" class="form-check-input" id="startTime1" value="12:00">
-											<label class="form-check-label" for="startTime1">12:00</label> &nbsp;&nbsp;
-											<input type="checkbox" name="startTime2" class="form-check-input" id="startTime2" value="14:00">
-											<label class="form-check-label" for="startTime2">14:00</label> &nbsp;&nbsp;
-											<input type="checkbox" name="startTime3" class="form-check-input" id="startTime3" value="16:00">
-											<label class="form-check-label" for="startTime3">16:00</label> &nbsp;&nbsp;
-											<input type="checkbox" name="startTime4" class="form-check-input" id="startTime4" value="18:00">
-											<label class="form-check-label" for="startTime4">18:00</label>
-										</div>
-									</td>
-								</tr>
-							</c:if>
-							<c:if test="${mode == 'update'}"> <!-- 시작일, 종료일, 시간 선택 -->
-								<c:forEach var="vo" items="${listDetail}" varStatus="status">
-									<tr>
-										<td class="table-light col-sm-2">상세</td>
-										<td>
-											<input type="text" name="classDate" class="form-control" style="width: 300px; float: left;" value="${vo.classDate}" readonly> &nbsp;&nbsp; <input type="number" name="count" class="form-control" style="width: 300px; float: left;" value="${vo.count}">
-										</td>
-									</tr>
-								</c:forEach>
-							</c:if>
-							<tr>
-								<td class="table-light col-sm-2">수업시간</td>
-								<td>
-									<input type="text" name="classTime" class="form-control" value="${dto.classTime}">
-									<small class="form-control-plaintext help-block">수업시간이 1인 경우 1시간 수업임을 의미합니다..</small>
-								</td>
-							</tr>
-							<c:if test="${mode == 'write'}">
-								<tr>
-									<td class="table-light col-sm-2">인원수</td>
-									<td>
-										<input type="text" name="count" class="form-control" value="${dto.count}">
-										<small class="form-control-plaintext help-block">인원수가 1인 경우 시간당 참여할 수 있는 인원수가 1명임을 의미합니다..</small>
-									</td>
-								</tr>
-							</c:if>
-							<tr>
-								<td class="table-light col-sm-2">상세 설명</td>
-								<td>
-									<textarea name="dContent" id="ir1" class="form-control" style="max-width: 95%; height: 290px;">${dto.dContent}</textarea>
-								</td>
-							</tr>
-							<tr>
-								<td class="table-light col-sm-2">우편번호(수업장소)</td>
-								<td>
-									<input type="text" name="zip" id="zip" class="form-control radi" style="margin-right: 20px; width: 300px; display: inline;" placeholder="우편번호" value="${dto.zip}" readonly>
-									<button class="btn btn-light" type="button" style="margin-left: 3px; display: inline;" onclick="daumPostcode();">우편번호 검색</button>
-								</td>
-							</tr>
-							<tr>
-								<td class="table-light col-sm-2">주소(수업장소)</td>
-								<td style="display: flex;">
-									<div style="flex: 1; margin-top: 5px; margin-right: 3px;">
-										<input type="text" name="addr1" id="addr1" class="form-control radi" placeholder="기본 주소" value="${dto.addr1}" readonly>
+									<div class="col-6 ps-3" style="flex: 1;">
+										<select name="subNum" class="form-select">
+											<option value="">:: 서브 카테고리 선택 ::</option>
+											<c:forEach var="vo" items="${listSubCategory}">
+												<option value="${vo.subNum}"
+													${dto.subNum == vo.subNum ? "selected" : ""}>${vo.subName}</option>
+											</c:forEach>
+										</select>
 									</div>
-									<div style="margin-top: 5px; flex: 1;">
-										<input type="text" name="addr2" id="addr2" class="form-control radi" placeholder="상세 주소" value="${dto.addr2}">
+									<div class="col-6 ps-3" style="flex: 1;">
+										<select name="tagNum" class="form-select">
+											<option value="">:: 해시태그 선택 ::</option>
+											<c:forEach var="vo" items="${listHashTag}">
+												<option value="${vo.tagNum}"
+													${dto.tagNum == vo.tagNum ? "selected" : ""}>${vo.tagName}</option>
+											</c:forEach>
+										</select>
 									</div>
-								</td>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-light col-sm-2">클래스명</td>
+							<td><input type="text" name="className" class="form-control"
+								value="${dto.className}"></td>
+						</tr>
+						<tr>
+							<td class="table-light col-sm-2">클래스가격</td>
+							<td><input type="text" name="price" class="form-control"
+								value="${dto.price}"></td>
+						</tr>
+						<c:if test="${mode == 'write'}">
+							<tr>
+								<td class="table-light col-sm-2">시작일</td>
+								<td><input type="date" name="startDate"
+									class="form-control" value="${dto.startDate}"></td>
 							</tr>
 							<tr>
-								<td class="table-light col-sm-2">적립금</td>
-								<td><input type="text" name="mileage" class="form-control"
-									value="${dto.mileage}"></td>
+								<td class="table-light col-sm-2">종료일</td>
+								<td><input type="date" name="endDate" class="form-control"
+									value="${dto.endDate}"></td>
 							</tr>
 							<tr>
-								<td class="table-light col-sm-2">공개 여부</td>
+								<td class="table-light col-sm-2">시간 선택</td>
 								<td>
 									<div class="pt-2 pb-2">
-										<input type="radio" name="showClass" class="form-check-input" id="showClass0" value="0" ${dto.showClass == 0 ? "checked='checked'" : "" }>
-										<label class="form-check-label" for="showClass0">클래스 공개</label> &nbsp;&nbsp;
-										<input type="radio" name="showClass" class="form-check-input" id="showClass1" value="1" ${dto.showClass == 1 ? "checked='checked'" : "" }>
-										<label class="form-check-label" for="showClass1">클래스 비공개</label>
+										<input type="checkbox" name="startTime1"
+											class="form-check-input" id="startTime1" value="12:00">
+										<label class="form-check-label" for="startTime1">12:00</label>
+										&nbsp;&nbsp; <input type="checkbox" name="startTime2"
+											class="form-check-input" id="startTime2" value="14:00">
+										<label class="form-check-label" for="startTime2">14:00</label>
+										&nbsp;&nbsp; <input type="checkbox" name="startTime3"
+											class="form-check-input" id="startTime3" value="16:00">
+										<label class="form-check-label" for="startTime3">16:00</label>
+										&nbsp;&nbsp; <input type="checkbox" name="startTime4"
+											class="form-check-input" id="startTime4" value="18:00">
+										<label class="form-check-label" for="startTime4">18:00</label>
 									</div>
 								</td>
 							</tr>
-
+						</c:if>
+						<c:if test="${mode == 'update'}">
+							<!-- 시작일, 종료일, 시간 선택 -->
+							<c:forEach var="vo" items="${listDetail}" varStatus="status">
+								<tr>
+									<td class="table-light col-sm-2">상세</td>
+									<td>
+										<input type="text" name="classDate" class="form-control" style="width: 300px; float: left;" value="${vo.classDate}" readonly> &nbsp;&nbsp; <input type="number" name="count" class="form-control" style="width: 300px; float: left;" value="${vo.count}">
+										<input type="hidden" name="detailNum" value="${vo.detailNum}">
+									</td>
+								</tr>
+							</c:forEach>
+						</c:if>
+						<tr>
+							<td class="table-light col-sm-2">수업시간</td>
+							<td><input type="text" name="classTime" class="form-control"
+								value="${dto.classTime}"> <small
+								class="form-control-plaintext help-block">수업시간이 1인 경우
+									1시간 수업임을 의미합니다..</small></td>
+						</tr>
+						<c:if test="${mode == 'write'}">
 							<tr>
-								<td class="table-light col-sm-2">클래스 설명</td>
-								<td>
-									<textarea name="content" id="ir2" class="form-control" style="max-width: 95%; height: 290px;">${dto.content}</textarea>
-								</td>
+								<td class="table-light col-sm-2">인원수</td>
+								<td><input type="text" name="count" class="form-control"
+									value="${dto.count}"> <small
+									class="form-control-plaintext help-block">인원수가 1인 경우
+										시간당 참여할 수 있는 인원수가 1명임을 의미합니다..</small></td>
 							</tr>
+						</c:if>
+						<tr>
+							<td class="table-light col-sm-2">상세 설명</td>
+							<td><textarea name="dContent" id="ir1" class="form-control"
+									style="max-width: 95%; height: 290px;">${dto.dContent}</textarea>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-light col-sm-2">우편번호(수업장소)</td>
+							<td><input type="text" name="zip" id="zip"
+								class="form-control radi"
+								style="margin-right: 20px; width: 300px; display: inline;"
+								placeholder="우편번호" value="${dto.zip}" readonly>
+								<button class="btn btn-light" type="button"
+									style="margin-left: 3px; display: inline;"
+									onclick="daumPostcode();">우편번호 검색</button></td>
+						</tr>
+						<tr>
+							<td class="table-light col-sm-2">주소(수업장소)</td>
+							<td style="display: flex;">
+								<div style="flex: 1; margin-top: 5px; margin-right: 3px;">
+									<input type="text" name="addr1" id="addr1"
+										class="form-control radi" placeholder="기본 주소"
+										value="${dto.addr1}" readonly>
+								</div>
+								<div style="margin-top: 5px; flex: 1;">
+									<input type="text" name="addr2" id="addr2"
+										class="form-control radi" placeholder="상세 주소"
+										value="${dto.addr2}">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-light col-sm-2">적립금</td>
+							<td><input type="text" name="mileage" class="form-control"
+								value="${dto.mileage}"></td>
+						</tr>
+						<tr>
+							<td class="table-light col-sm-2">공개 여부</td>
+							<td>
+								<div class="pt-2 pb-2">
+									<input type="radio" name="showClass" class="form-check-input"
+										id="showClass0" value="0"
+										${dto.showClass == 0 ? "checked='checked'" : "" }> <label
+										class="form-check-label" for="showClass0">클래스 공개</label>
+									&nbsp;&nbsp; <input type="radio" name="showClass"
+										class="form-check-input" id="showClass1" value="1"
+										${dto.showClass == 1 ? "checked='checked'" : "" }> <label
+										class="form-check-label" for="showClass1">클래스 비공개</label>
+								</div>
+							</td>
+						</tr>
 
-							<tr>
-								<td class="table-light col-sm-2">대표이미지</td>
-								<td>
-									<div class="thumbnail-viewer"></div>
-									<input type="file" name="firstPhotoFile" accept="image/*" class="form-control" style="display: none;">
-								</td>
-							</tr>
+						<tr>
+							<td class="table-light col-sm-2">클래스 설명</td>
+							<td><textarea name="content" id="ir2" class="form-control"
+									style="max-width: 95%; height: 290px;">${dto.content}</textarea>
+							</td>
+						</tr>
 
-							<tr>
-								<td class="table-light col-sm-2">추가이미지</td>
-								<td>
-									<div class="img-grid">
-										<img class="item img-add" src="${pageContext.request.contextPath}/resources/images/add_photo.png">
-										<c:forEach var="vo" items="${listPhoto}">
-											<img src="${pageContext.request.contextPath}/uploads/lesson/${vo.photoName}" class="item delete-img" data-fileNum="${vo.photoNum}" data-filename="${vo.photoName}">
-										</c:forEach>
-									</div>
-									<input type="file" name="photos" accept="image/*" multiple class="form-control" style="display: none;">
-								</td>
-							</tr>
+						<tr>
+							<td class="table-light col-sm-2">대표이미지</td>
+							<td>
+								<div class="thumbnail-viewer"></div> <input type="file"
+								name="firstPhotoFile" accept="image/*" class="form-control"
+								style="display: none;">
+							</td>
+						</tr>
 
-						</table>
+						<tr>
+							<td class="table-light col-sm-2">추가이미지</td>
+							<td>
+								<div class="img-grid">
+									<img class="item img-add"
+										src="${pageContext.request.contextPath}/resources/images/add_photo.png">
+									<c:forEach var="vo" items="${listPhoto}">
+										<img
+											src="${pageContext.request.contextPath}/uploads/lesson/${vo.photoName}"
+											class="item delete-img" data-fileNum="${vo.photoNum}"
+											data-filename="${vo.photoName}">
+									</c:forEach>
+								</div> <input type="file" name="photos" accept="image/*" multiple
+								class="form-control" style="display: none;">
+							</td>
+						</tr>
 
-						<table class="table table-borderless">
-							<tr>
-								<td class="text-center">
-									<c:url var="url" value="/lessonPlus/main">
-										<c:if test="${not empty page}">
-											<c:param name="page" value="${page}"/>
-										</c:if>
-									</c:url>
-									<button type="button" class="btn btn-dark" onclick="submitContents(this.form);">${mode=="update"?"수정완료":"등록완료"}</button>
-									<button type="reset" class="btn btn-light">다시입력</button>
-									<button type="button" class="btn btn-light" onclick="location.href='${url}';">${mode=="update"?"수정취소":"등록취소"}</button>
-									<c:if test="${mode == 'update'}">
-										<button type="button" class="btn btn-outline-danger" onclick="location.href='${pageContext.request.contextPath}/lessonPlus/delete?classNum=${dto.classNum}';">삭제하기</button>
+					</table>
+
+					<table class="table table-borderless">
+						<tr>
+							<td class="text-center"><c:url var="url"
+									value="/pluszone/lessonPlus/main">
+									<c:if test="${not empty page}">
+										<c:param name="page" value="${page}" />
 									</c:if>
-									<c:if test="${mode=='update'}">
-										<input type="hidden" name="classNum" value="${dto.classNum}">
-										<input type="hidden" name="firstPhoto" value="${dto.firstPhoto}">
-										<input type="hidden" name="page" value="${page}">
-									</c:if>
-								</td>
-							</tr>
-						</table>
-					</form>
-				</div>
+								</c:url>
+								<button type="button" id="btnSend" class="btn btn-dark"
+									onclick="submitContents(this.form);">${mode=="update"?"수정완료":"등록완료"}</button>
+								<button type="reset" class="btn btn-light">다시입력</button>
+								<button type="button" class="btn btn-light"
+									onclick="location.href='${url}';">${mode=="update"?"수정취소":"등록취소"}</button>
+								<c:if test="${mode == 'update'}">
+									<button type="button" class="btn btn-outline-danger"
+										onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/delete?classNum=${dto.classNum}';">삭제하기</button>
+								</c:if> <c:if test="${mode=='update'}">
+									<input type="hidden" name="classNum" value="${dto.classNum}">
+									<input type="hidden" name="firstPhoto"
+										value="${dto.firstPhoto}">
+									<input type="hidden" name="page" value="${page}">
+									<input type="hidden" id="detailValues" name="detailValues">
+									<input type="hidden" id="countValues" name="countValues">
+								</c:if></td>
+						</tr>
+					</table>
+				</form>
 			</div>
 		</div>
 	</div>
 </main>
 <script type="text/javascript">
+
 $(function(){
 	var img = "${dto.firstPhoto}";
 	if(img){
@@ -496,7 +538,7 @@ $(function(){
 		let $img = $(this);
 		let photoNum = $img.attr("data-fileNum");
 		let photoName = $img.attr("data-filename");
-		let url = "${pageContext.request.contextPath}/lesson/deleteImg";
+		let url = "${pageContext.request.contextPath}/pluszone/lessonPlus/deleteFile";
 		$.post(url, {photoNum:photoNum, photoName:photoName}, function(data){
 			$img.remove();
 		}, "json");
@@ -564,7 +606,9 @@ $(function(){
 });
 </script>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/vendor/se2/js/service/HuskyEZCreator.js"
+	charset="utf-8"></script>
 <script type="text/javascript">
 var oEditors = [];
 nhn.husky.EZCreator.createInIFrame({
