@@ -25,7 +25,7 @@ public interface NoteService {
 	public Note findBySendPrev(Map<String, Object> map);
 	public Note findBySendNext(Map<String, Object> map);
 	
-	public void updateIdentifyDay(long noteNum) throws Exception;
+	public void updateIdentifyDate(long noteNum) throws Exception;
 	
 	public void deleteNote(Map<String, Object> map) throws Exception;
 	

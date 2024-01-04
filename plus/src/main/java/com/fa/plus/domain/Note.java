@@ -20,6 +20,7 @@ public class Note {
 	private String userId;
 	private long memberIdx;
 	private String userName;
+	
 	public long getNoteNum() {
 		return noteNum;
 	}
