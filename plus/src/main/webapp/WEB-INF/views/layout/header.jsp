@@ -157,7 +157,7 @@
 						<a href="javascript:dialogLogin();" class="icon-arrow-left bi bi-person-fill-gear" data-info="로그인">로그인</a>
 					</c:when>
 					<c:otherwise>
-						<a href="${pageContext.request.contextPath}/note/list" class="icon-arrow-left bi bi-cart4" data-info="알림">쪽지</a>
+						<a href="${pageContext.request.contextPath}/note/receive/list" class="icon-arrow-left bi bi-cart4" data-info="쪽지">쪽지</a>
 						<a href="${pageContext.request.contextPath}/member/logout" class="icon-drop bi bi-person" data-info="로그아웃"></a>
 						<c:if test="${sessionScope.member.membership > 90}">
 							<a href="${pageContext.request.contextPath}/admin" class="icon-drop bi bi-gear-wide-connected" data-info="관리자 페이지"></a>

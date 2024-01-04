@@ -112,7 +112,7 @@ $(function(){
 									</tr>
 								</table>
 								
-								<div class="page-navigation mb-3">
+								<div class="page-navigation text-center mb-3">
 									${dataCount == 0 ? "등록된 이벤트가 없습니다." : paging}
 								</div>
 								
