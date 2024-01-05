@@ -94,7 +94,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <i class="fas fa-user fa-fw"></i>&nbsp;&nbsp;
-                         <a href="#" style="text-decoration: none; color: white;">${dto.userName} 플러스님</a>
+                         <a href="#" style="text-decoration: none; color: white;">${sessionScope.member.userName} 플러스님</a>
                     </div>
                 </nav>
             </div>
