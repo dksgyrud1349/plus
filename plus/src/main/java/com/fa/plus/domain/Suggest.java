@@ -9,7 +9,24 @@ public class Suggest {
 	private String userId;
 	private String userName;
 	private long memberIdx;
+	private String className;
+	
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String classname) {
+		this.className = classname;
+	}
 	private long sugNum;
+	
+	public long getClassNum() {
+		return classNum;
+	}
+	public void setClassNum(long classNum) {
+		this.classNum = classNum;
+	}
+	private long classNum;
+	
 	
 	public long getNum() {
 		return num;

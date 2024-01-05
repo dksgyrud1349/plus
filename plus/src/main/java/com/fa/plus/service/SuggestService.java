@@ -2,23 +2,20 @@ package com.fa.plus.service;
 
 
 import java.util.List;
-import java.util.Map;
 
 import com.fa.plus.domain.Suggest;
 
 public interface SuggestService {
-	
+	// 제안한 아이디 가져오기
+	public Suggest findById(String userId);
+
+	// 클래스 모든 목록 가져오기
+	public List<Suggest> findByAllClass();
+		
+	// 선택한 클래스 번호 가져오기
+	public long findByNum(String className);
 	
 	public void insertSuggest(Suggest dto) throws Exception;
-	public void updateSuggest(Suggest dto) throws Exception;
-	public void deleteSuggest(long sugNum) throws Exception;
-
 	
-	public int dataCount(Map <String,Object>map);
-	
-	public List<Suggest> listSuggest(Map<String, Object>map);
-	
-	
-	public Suggest findById(long num);
 
 }

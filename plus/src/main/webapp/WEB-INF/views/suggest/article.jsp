@@ -1,113 +1,205 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
-<style type="text/css">
-
-
-.table-article img { max-width: 650px; }
-.file-item { padding: 7px; margin-bottom: 3px; border: 1px solid #ced4da; color: #777777; }
-</style>
-
-<script type="text/javascript">
-function deleteOk() {
-    let query = 'num=${dto.sugNum}&${query}';
-    let url = '${pageContext.request.contextPath}/suggest/delete?' + query;
-
-    if(confirm('위 자료를 삭제 하시 겠습니까 ? ')) {
-        location.href = url;
-    }
+<style>
+@font-face {
+	font-family: 'JalnanGothic';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
+@font-face {
+	font-family: 'Pretendard-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
 
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.body-container {
+	width: 1200px;
+	height: 70px;
+	padding-top: 20px;
+	margin-left: 20px;
+}
+
+.sContent {
+	margin-left: 40px;
+	padding-left: 10px;
+	margin-top: 20px;
+	width: 1200px;
+	height: 65px;
+	font-family: 'Pretendard-Regular';
+	font-weight: bold;
+}
+
+.font1 {
+	font-family: 'JalnanGothic';
+}
+
+.title {
+	width: 150px;
+	text-align: center;
+	font-family: 'GmarketSansMedium';
+	background-color: #D5D5D5;
+}
+
+.bDelaration {
+	width: 100px;
+	height: 40px;
+	border: 1px solid black;
+	font-family: 'GmarketSansMedium';
+}
+
+.bDelaration:hover {
+	border: 2px solid black;
+}
+</style>
+<script type="text/javascript">
+function ajaxFun(url, method, formData, dataType, fn, file = false) {
+	const settings = {
+			type: method, 
+			data: formData,
+			success:function(data) {
+				fn(data);
+			},
+			beforeSend: function(jqXHR) {
+				jqXHR.setRequestHeader('AJAX', true);
+			},
+			complete: function () {
+			},
+			error: function(jqXHR) {
+				if(jqXHR.status === 403) {
+					login();
+					return false;
+				} else if(jqXHR.status === 400) {
+					alert('요청 처리가 실패 했습니다.');
+					return false;
+		    	}
+		    	
+				console.log(jqXHR.responseText);
+			}
+	};
+	
+	if(file) {
+		settings.processData = false;  // file 전송시 필수. 서버로전송할 데이터를 쿼리문자열로 변환여부
+		settings.contentType = false;  // file 전송시 필수. 서버에전송할 데이터의 Content-Type. 기본:application/x-www-urlencoded
+	}
+	
+	$.ajax(url, settings);
+}
+
+function writeSubmit(){
+	const f = document.suggestForm;
+	let url = "${pageContext.request.contextPath}/suggest/write";
+	let query;
+		
+	if(!f.className.value.trim()){
+		alert("클래스명을 선택하세요.");
+		f.classNames.focus();
+		return;
+	}
+		
+	if(!f.Content.value.trim()){
+		alert("제안 내용을 작성하세요.");
+		f.Content.focus();
+		return;
+	}
+	
+	$("select #className").on("click", function(){
+		const $select = $(this).closest("select");
+		let className = $select.find("select[name=className]").val().trim();
+		url = "${pageContext.request.contextPath}/suggest/write";
+		query = "className="+className;
+		
+		ajaxFun(url, "post", query, "json", fn);
+	});
+	
+	// ajax ===> form
+	const fn = function(data){
+		// rsltCode / rsltMsg
+		if(data.rsltCode === "true"){
+			alert(data.rsltMsg);
+			let url = "${pageContext.request.contextPath}/Suggest/article";
+		}else if(data.rsltCode === "false"){
+			alert(data.rsltMsg);
+			return;
+		}
+	};
+
+	query = $("form[name=suggestForm]").serialize();
+	
+	
+	ajaxFun(url, "post", query, "json", fn);
+		
+}
 </script>
 
-<main class="wrapper" style="margin:0 auto; width:100%;">
-	<div id="layoutSidenav_content" style="background: #F8F8FF;">
+<main class="wrapper" style="margin: 0 auto; width: 100%;">
+	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:80%; margin:5% auto; ">
+			<div class="body-container" style="margin: 100px auto;">
 				<div class="body-main">
-		    			
-				<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
-				    <table class="table">
-						<tr>
-							<td align="left" width="50%">
-								&nbsp;
-							</td>
-							<td align="right">
-								&nbsp;
-							</td>
-						</tr>
-					</table>
-				
-					<div class="card mb-5 w-80 " style="margin:0 auto">
-					    <div class="card-header text-center">
-					    	<h3>
-					    		<i class="fas fa-clipboard-list"></i> 문의사항
-					    	</h3>
-						</div>
-						<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
-							<table class="table">
-								<thead>
-									<tr>
-										<td colspan="2" align="center">
-										제목 : ${dto.subject}
-										</td>
-									</tr>
-								</thead>
-								
-								<tbody>
-									<tr>
-										<td width="50%" align="left">
-											이름 : ${dto.userName}
-										</td>
-										<td width="50%" align="right">
-											${dto.regDate}
-										</td>
-									</tr>
-									
-									<tr style="border-bottom:none;">
-										<td colspan="2" valign="top" height="200">
-											${dto.content}
-										</td>
-									</tr>
-									
-						
-								</tbody>
-							</table>
-								
-							<table class="table">
-								<tr>
-									<td width="50%" align="left">
-															
-						
-							<c:choose>
-							<c:when test="${sessionScope.member.userName==dto.userName}">
-								<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/suggest/update?num=${dto.sugNum}&page=${page}';">수정</button>
-							</c:when>			
-							<c:otherwise>
-								<button type="button" class="btn btn-light" disabled>수정</button>
-							</c:otherwise>
-						</c:choose>
-							
-							
-						
-									
-								    	
-						    			<button type="button" class="btn btn-success" onclick="deleteOk();">삭제</button>
-									</td>
-								
-									<td align="right">
-										<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/suggest/list?${query}';">리스트</button>
-									</td>
-								</tr>
-							</table>
-						</div>
+					<h3 class="font1"
+						style="border-top: 1px solid black; padding-top: 20px; padding-left: 10px;">
+						<i class="bi bi-exclamation-diamond-fill"></i> 제안하기
+					</h3>
+					<div class="sContent">
+						이곳은 <span style="color: red;">클래스 제안</span> 하는 곳입니다.<br>
+						클래스의 제안사항을 적어주시면 됩니다.
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
+		<div style="margin-left: 200px; height: 70px;">
+  <div class="input-group" style="width: 850px; height: 10px;">
+			
+				<span class="input-group-text title" style="padding-left: 40px;"> 제 목 </span>
+				<textarea class="form-control" name="Content" id="Content" style="resize: none;" aria-label="With textarea">${dto.content}</textarea>
+			</div>
+</div>
+	<form name="suggestForm" method="post">
+		<div style="margin-left: 200px; height: 500px;">
+			<div class="input-group mb-3" style="width: 400px; float: left; margin-right: 50px; height: 40px;">
+				<span class="input-group-text title add" id="basic-addon1" style="padding-left: 50px; padding-top: 8px;">회원ID</span>
+				<input type="text" name="userId" id="userId" class="form-control" aria-label="Username" aria-describedby="basic-addon1" readonly="readonly" value="${dto.userId}">
+			</div>
+			<div class="input-group mb-3" style="width: 400px; height: 40px;">
+				<span class="input-group-text title" id="basic-addon2" style="padding-left: 55px; padding-top: 8px;">이름</span> 
+				<input type="text" name="userName" id="userName" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2" readonly="readonly" value="${dto.userName}">
+			</div>
+			<div class="input-group mb-3" style="width: 400px; height: 40px;">
+				<span class="input-group-text title" id="basic-addon3" style="padding-left: 40px; padding-top: 8px;">클래스 명</span>
+				<!-- <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">  -->
+				<select name="className" id="className" style="width: 250px;">
+					<option value="" style="text-align: center;">::선택::</option>
+					<c:forEach var="dto" items="${listClass}">
+						<option value="${dto.className}">${dto.className}</option>
+					</c:forEach>
+				
+				</select>
+			</div>
+			<div class="input-group" style="width: 850px; height: 300px;">
+				<span class="input-group-text title" style="padding-left: 40px;">제한 내용</span>
+				<textarea class="form-control" name="Content" id="Content" style="resize: none;" aria-label="With textarea">${dto.content}</textarea>
+			</div>
+			<div style="margin-top: 35px; float: right; margin-right: 250px;">
+				<button type="button" id="btnOk" name="btnOk" class="bSuggest" onclick="writeSubmit();" style="padding-top: 3px;">제안하기</button>
+			</div>
+		</div>
+	</form>
 </main>

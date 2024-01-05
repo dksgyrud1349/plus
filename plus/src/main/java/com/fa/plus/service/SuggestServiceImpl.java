@@ -1,10 +1,10 @@
 package com.fa.plus.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.fa.plus.domain.Suggest;
 import com.fa.plus.mapper.SuggestMapper;
@@ -15,14 +15,26 @@ import com.fa.plus.mapper.SuggestMapper;
 public class SuggestServiceImpl implements SuggestService{
 
 	@Autowired
-	private SuggestMapper mapper;
+	private SuggestMapper suggestMapper;
+	
+	@Override
+	public void insertSuggest(Suggest dto) throws Exception {
+		
+		try {
+			suggestMapper.insertSuggest(dto);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	@Override
-	public Suggest findById(long num) {
+	public Suggest findById(String userId) {
 		Suggest dto = null;
 		
 		try {
-			dto = mapper.findById(num);
+			dto = suggestMapper.findById(userId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -30,63 +42,24 @@ public class SuggestServiceImpl implements SuggestService{
 	}
 
 	@Override
-	public void insertSuggest(Suggest dto) throws Exception {
+	public long findByNum(String className) {
+		long classNum = 0;
 		try {
-			mapper.insertSuggest(dto);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
-		
-	}
-
-	@Override
-	public void updateSuggest(Suggest dto) throws Exception {
-		try {
-			mapper.updateSuggest(dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
-
-	}
-		
-	
-
-	@Override
-	public void deleteSuggest(long sugNum) throws Exception {
-		try {
-			mapper.deleteSuggest(sugNum);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
-		
-	}
-
-	@Override
-	public int dataCount(Map<String, Object> map) {
-		int result = 0;
-
-		try {
-			result = mapper.dataCount(map);
+			classNum = suggestMapper.findByNum(className);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+		return classNum;
 	}
 
 	@Override
-	public List<Suggest> listSuggest(Map<String, Object> map) {
+	public List<Suggest> findByAllClass() {
 		List<Suggest> list = null;
-
 		try {
-			list = mapper.listSuggest(map);
+			list = suggestMapper.findByAllClass();
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
+		}
 		return list;
 	}
 
