@@ -28,6 +28,9 @@ $(function(){
 	height:60px;
 	line-height: 60px;
 }
+a{
+	text-decoration:none;
+}
 </style>
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
@@ -71,9 +74,8 @@ $(function(){
 										<tr>
 											<th width="60">번호</th>
 											<th>제목</th>
-											<th width="150">이벤트 시작일</th>
-											<th width="170">이벤트 종료일</th>
-											<th width="80">&nbsp;</th>
+											<th width="200">이벤트 시작일</th>
+											<th width="200">이벤트 종료일</th>
 										</tr>
 									</thead>
 								 
