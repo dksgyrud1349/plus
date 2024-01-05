@@ -1,6 +1,7 @@
 package com.fa.plus.admin.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fa.plus.admin.domain.MemberManage;
 import com.fa.plus.admin.service.CommunityManageService;
 import com.fa.plus.admin.service.DeclarationManageService;
 import com.fa.plus.admin.service.EventManageService;
@@ -39,7 +41,8 @@ public class MainManageController {
 	private EventManageService Eventservice;
 		
 	@RequestMapping(value="/admin", method=RequestMethod.GET)
-	public String pluslist(HttpSession session,
+	public String pluslist(@RequestParam(value = "page", defaultValue = "1") int current_page,
+			HttpSession session,
 			@RequestParam(defaultValue = "") String enabled,
 			Model model) throws Exception {
 		int memberDataCount = 0;
@@ -49,7 +52,12 @@ public class MainManageController {
 		int noticeDataCount = 0;
 		int declarationDataCount = 0;
 		int eventDataCount = 0;
-				
+		
+		int total_page = 0;
+		int size = 10;
+		
+		
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("enabled", enabled);
 		
@@ -74,6 +82,19 @@ public class MainManageController {
 		model.addAttribute("noticeDataCount", noticeDataCount);
 		model.addAttribute("declarationDataCount", declarationDataCount);
 		model.addAttribute("eventDataCount", eventDataCount);
+		
+		if (total_page < current_page) {
+			current_page = total_page;
+		}
+		
+		int offset = (current_page - 1) * size;
+		if(offset < 0) offset = 0;
+		
+		map.put("offset", offset);
+		map.put("size", size);
+		List<MemberManage> list = Memberservice.listMember(map);
+		
+		model.addAttribute("list", list);
 		
 		return ".adminLayout";
 	}

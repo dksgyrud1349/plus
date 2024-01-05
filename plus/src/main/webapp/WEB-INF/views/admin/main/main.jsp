@@ -11,6 +11,11 @@
 	text-decoration:none;
 	color:#fff;
 }
+.memberall{
+	float:right;
+	text-decoration:none;
+	color:black;
+}
 </style>
 
 <div id="layoutSidenav_content">
@@ -215,111 +220,33 @@
 	            <div class="card-header">
 	                <i class="fas fa-table me-1"></i>
 	                회원 관리
+                	<a href="${pageContext.request.contextPath}/admin/memberManage/list" class="memberall">전체보기<i class="fas fa-angle-right"></i></a>
 	            </div>
 	            <div class="card-body">
 	                <div class="table-responsive">
 	                    <table class="table table-bordered">
 	                        <thead>
 	                            <tr>
+	                            	<th>아이디</th>
 	                                <th>이름</th>
+	                                <th>생년월일</th>
+	                                <th>전화번호</th>
+	                                <th>회원구분</th>
 	                                <th>이메일</th>
-	                                <th>주소</th>
-	                                <th>나이</th>
-	                                <th>가입날짜</th>
-	                                <th>총 구매</th>
 	                            </tr>
 	                        </thead>
 	
 	                        <tbody>
-	                        
-	                        <tr>
-	                            <td>홍길동</td>
-	                            <td>1234@</td>
-	                            <td>서울</td>
-	                            <td>27</td>
-	                            <td>2011/01/25</td>
-	                            <td>112,000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>홍길동</td>
-	                            <td>1234@</td>
-	                            <td>서울</td>
-	                            <td>27</td>
-	                            <td>2011/01/25</td>
-	                            <td>112,000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>홍길동</td>
-	                            <td>1234@</td>
-	                            <td>서울</td>
-	                            <td>27</td>
-	                            <td>2011/01/25</td>
-	                            <td>112,000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>홍길동</td>
-	                            <td>1234@</td>
-	                            <td>서울</td>
-	                            <td>27</td>
-	                            <td>2011/01/25</td>
-	                            <td>112,000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>홍길동</td>
-	                            <td>1234@</td>
-	                            <td>서울</td>
-	                            <td>27</td>
-	                            <td>2011/01/25</td>
-	                            <td>112,000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>홍길동</td>
-	                            <td>1234@</td>
-	                            <td>서울</td>
-	                            <td>27</td>
-	                            <td>2011/01/25</td>
-	                            <td>112,000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>홍길동</td>
-	                            <td>1234@</td>
-	                            <td>서울</td>
-	                            <td>27</td>
-	                            <td>2011/01/25</td>
-	                            <td>112,000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>홍길동</td>
-	                            <td>1234@</td>
-	                            <td>서울</td>
-	                            <td>27</td>
-	                            <td>2011/01/25</td>
-	                            <td>112,000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>홍길동</td>
-	                            <td>1234@</td>
-	                            <td>서울</td>
-	                            <td>27</td>
-	                            <td>2011/01/25</td>
-	                            <td>112,000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>홍길동</td>
-	                            <td>1234@</td>
-	                            <td>서울</td>
-	                            <td>27</td>
-	                            <td>2011/01/25</td>
-	                            <td>112,000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>홍길동</td>
-	                            <td>1234@</td>
-	                            <td>서울</td>
-	                            <td>27</td>
-	                            <td>2011/01/25</td>
-	                            <td>112,000</td>
-	                        </tr>
+	                        <c:forEach var="dto" items="${list}">
+								<tr> 
+									<td>${dto.userId}</td>
+									<td>${dto.userName}</td>
+									<td>${dto.birth}</td>
+									<td>${dto.tel}</td>
+									<td>${dto.membership==1?"일반회원":(dto.membership==51?"플러스":"미승인플러스")}</td>
+									<td>${dto.email}</td>
+								</tr>
+							</c:forEach>
 	                    </tbody>
 	                </table>
 	            </div>
