@@ -165,13 +165,14 @@ function writeSubmit(){
 			</div>
 		</div>
 	</div>
-		<div style="margin-left: 200px; height: 70px;">
-  <div class="input-group" style="width: 850px; height: 10px;">
-			
+	
+		<div style="margin-left: 200px; height: 50px;">
+  			<div class="input-group" style="width: 850px;">
 				<span class="input-group-text title" style="padding-left: 40px;"> 제 목 </span>
-				<textarea class="form-control" name="Content" id="Content" style="resize: none;" aria-label="With textarea">${dto.content}</textarea>
+				<input type="text" class="form-control" name="Content" id="Content" value="${dto.content}">
 			</div>
-</div>
+		</div>
+		
 	<form name="suggestForm" method="post">
 		<div style="margin-left: 200px; height: 500px;">
 			<div class="input-group mb-3" style="width: 400px; float: left; margin-right: 50px; height: 40px;">
