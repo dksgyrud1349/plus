@@ -164,7 +164,29 @@
                                     관리자 정보
                                     </div>
                                     <div class="card-body" style="width: 100%; height: 250px;">
-										
+										<div class="d-flex justify-content-center">
+								            <a href="#" class="avatar avatar-xl rounded-circle">
+								              <i class="bi bi-person-bounding-box fa-4x"></i>
+								            </a>
+								            </div>
+								            <div class="text-center my-6">
+								            	<a href="#" class="d-block h5 mb-0">${sessionScope.member.userName}</a>
+								            	<span class="d-block text-sm text-muted">${sessionScope.member.email}</span>
+								            </div>
+								            <div class="d-flex">
+								            	<div class="col-4 text-center">
+								            		<a href="${pageContext.request.contextPath}/admin/lessonManage/list1" class="h4 font-bolder mb-0">${lessonDataCount}</a>
+								            		<span class="d-block text-sm">나의 클래스</span>
+								            	</div>
+								            	<div class="col-4 text-center">
+										             <a href="#" class="h4 font-bolder mb-0">350</a>
+										             <span class="d-block text-sm">총 예약자</span>
+									            </div>
+									            <div class="col-4 text-center">
+									              	 <a href="#" class="h4 font-bolder mb-0">15,000,000</a>
+									              	 <span class="d-block text-sm">매출총액</span>
+									            </div>
+								            </div>
                                     </div>
                                 </div>
                             </div>

@@ -65,7 +65,7 @@ function searchList() {
 												</td>
 											
 												
-												<td>${dto.userId}</td>
+												<td>${dto.userName}</td>
 												<td class="text-center">${dto.regDate}</td>
 												<td class="text-center">${dto.hitCount}</td>
 												

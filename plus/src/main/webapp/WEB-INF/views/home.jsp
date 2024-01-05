@@ -107,7 +107,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 			 <div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
 			<div class="card-body">
 			  <h5 class="card-title">[서울]목공 클래스</h5>
-			  <p class="card-text">-&nbsp;원하는 목재와 사이즈를 선택가능.<br>-&nbsp;버닝펜으로 자신만의 문구완성.<br>-&nbsp;퀄리티높은 나만의 도마 완성.</p>
+			  <p class="card-text">-&nbsp;원하는 목재,사이즈를 선택가능.<br>-&nbsp;버닝펜으로 자신만의 문구완성.<br>-&nbsp;퀄리티높은 나만의 도마 완성.</p>
 			</div>
 			<ul class="list-group list-group-flush">
 			  <li class="list-group-item">강사이름 : 이승준</li>

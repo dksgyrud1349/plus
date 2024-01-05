@@ -3,6 +3,8 @@ package com.fa.plus.admin.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import com.fa.plus.admin.service.LessonManageService;
 import com.fa.plus.admin.service.MemberManageService;
 import com.fa.plus.admin.service.NoticeManageService;
 import com.fa.plus.admin.service.PlusManageService;
+import com.fa.plus.domain.SessionInfo;
 
 @Controller
 public class MainManageController {
@@ -37,7 +40,7 @@ public class MainManageController {
 	private EventManageService Eventservice;
 		
 	@RequestMapping(value="/admin", method=RequestMethod.GET)
-	public String pluslist(
+	public String pluslist(HttpSession session,
 			@RequestParam(defaultValue = "") String enabled,
 			Model model) throws Exception {
 		int memberDataCount = 0;
@@ -47,7 +50,7 @@ public class MainManageController {
 		int noticeDataCount = 0;
 		int declarationDataCount = 0;
 		int eventDataCount = 0;
-		
+				
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("enabled", enabled);
 		
