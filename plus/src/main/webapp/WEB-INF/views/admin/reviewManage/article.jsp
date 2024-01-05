@@ -8,7 +8,7 @@
 <script type="text/javascript">
 function hideOk(){
 	let query = "reviewNum=${dto.reviewNum}&${query}&imageFilename=${dto.fileName}";
-	let url = "${pageContext.request.contextPath}/admin/review/hide?"+query;
+	let url = "${pageContext.request.contextPath}/admin/reviewManage/hide?"+query;
 	
 	if(confirm("위 자료를 숨기겠습니까?")){
 		location.href = url;
@@ -63,7 +63,7 @@ function hideOk(){
 				    		<button type="button" class="btn btn-light" onclick="hideOk();">숨김</button>
 					</td>
 					<td class="text-end">
-						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/admin/review/list?${query}';">돌아가기</button>
+						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/admin/reviewManage/list?${query}';">돌아가기</button>
 					</td>
 				</tr>
 			</table>
