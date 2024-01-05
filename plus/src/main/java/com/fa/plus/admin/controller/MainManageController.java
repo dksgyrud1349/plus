@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fa.plus.admin.domain.LessonManage;
 import com.fa.plus.admin.domain.MemberManage;
 import com.fa.plus.admin.service.CommunityManageService;
 import com.fa.plus.admin.service.DeclarationManageService;
@@ -54,7 +55,7 @@ public class MainManageController {
 		int eventDataCount = 0;
 		
 		int total_page = 0;
-		int size = 10;
+		int size = 5;
 		
 		
 		
@@ -74,6 +75,9 @@ public class MainManageController {
 		map.put("kwd", "");
 		map.put("category", "progress");
 		eventDataCount = Eventservice.dataCount(map);
+
+		
+		
 		
 		model.addAttribute("memberDataCount", memberDataCount);
 		model.addAttribute("plusDataCount", plusDataCount);
@@ -86,12 +90,24 @@ public class MainManageController {
 		if (total_page < current_page) {
 			current_page = total_page;
 		}
-		
 		int offset = (current_page - 1) * size;
+		if(offset < 0) offset = 0;
+		
+		int approvalCode = 0;
+		map.put("offset", offset);
+		map.put("size", size);
+		map.put("approvalCode", approvalCode);
+		
+		List<LessonManage> list0 = Lessonservice.lessonList(map);
+		model.addAttribute("list0", list0);
+		
+		size = 10;
+		offset = (current_page - 1) * size;
 		if(offset < 0) offset = 0;
 		
 		map.put("offset", offset);
 		map.put("size", size);
+		
 		List<MemberManage> list = Memberservice.listMember(map);
 		
 		model.addAttribute("list", list);

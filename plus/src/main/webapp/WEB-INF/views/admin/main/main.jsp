@@ -148,7 +148,7 @@
 	                    <i class="fas fa-chart-bar me-1"></i>
 	                	오늘의 할일  
 	                </div>
-	                <div class="card-body" style="width: 100%; height: 250px;">
+	                <div class="card-body" style="width: 100%; height: 300px;">
 	
 	                </div>
 	            </div>
@@ -160,7 +160,7 @@
 	                    <i class="fas fa-chart-bar me-1"></i>
 	                	관리자 정보
 	                </div>
-	                <div class="card-body" style="width: 100%; height: 250px;">
+	                <div class="card-body" style="width: 100%; height: 300px;">
 						<div class="d-flex justify-content-center">
 	          				<div class="avatar avatar-xl rounded-circle">
 	            				<i class="bi bi-person-bounding-box fa-4x"></i>
@@ -193,11 +193,27 @@
 	         <div class="col-xl-6">
 	             <div class="card mb-4">
 	                 <div class="card-header">
-	                     <i class="fas fa-chart-bar me-1"></i>
-	                 원데이 클래스 관리 
+	                    <i class="fas fa-chart-bar me-1"></i>
+	                 	승인대기 클래스 관리
+	                 	<a href="${pageContext.request.contextPath}/admin/lessonManage/list0" class="memberall">전체보기<i class="fas fa-angle-right"></i></a>
 	                 </div>
-	                 <div class="card-body" style="width: 100%; height: 250px;">
-	
+	                 <div class="card-body" style="width: 100%; height: 300px;">
+						<table class="table table-bordered table-hover text-center">
+		                    <thead>
+		                        <tr class="table-warning">
+		                            <th>클래스 이름</th>
+		                            <th>등록 일자</th>
+		                        </tr>
+		                    </thead>
+		                    <tbody>
+		                     	<c:forEach var="vo" items="${list0}">
+			                        <tr>
+			                            <td>${vo.className}</td>
+			                            <td>${vo.startDate}</td>
+			                        </tr>
+		                        </c:forEach>
+		                    </tbody>
+                		</table>
 	                </div>
 	            </div>
 	        </div>
@@ -208,12 +224,12 @@
 	                    <i class="fas fa-chart-bar me-1"></i>
 	                <label class="charts-dayOfWeek-title">접속자 수 현황</label>
 	                </div>
-	                <div class="card-body charts-dayOfWeek border rounded" style="width: 100%; height: 250px;">
-	
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
+	                <div class="card-body charts-dayOfWeek border rounded" style="width: 100%; height: 300px;">
+						
+                    </div>
+                </div>
+            </div>
+        </div>
 	        
 	
 	        <div class="card mb-4">
@@ -224,9 +240,9 @@
 	            </div>
 	            <div class="card-body">
 	                <div class="table-responsive">
-	                    <table class="table table-bordered">
+	                    <table class="table table-bordered table-hover text-center">
 	                        <thead>
-	                            <tr>
+	                            <tr class="table-warning">
 	                            	<th>아이디</th>
 	                                <th>이름</th>
 	                                <th>생년월일</th>
