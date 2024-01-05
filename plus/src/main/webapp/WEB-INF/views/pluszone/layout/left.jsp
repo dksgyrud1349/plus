@@ -63,7 +63,7 @@
                                 공지사항
                             </a>
                             
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/salesStatus/main">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 매출 현황
                             </a>
