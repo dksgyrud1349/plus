@@ -3,7 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 .totalSize{
-	margin-top: 50px;
+	margin-top: 70px;
+	margin-left: 380px;
 }
 </style>
 
@@ -192,7 +193,7 @@ $(function(){
 			</div>
 			
 			<div class="col p-2">
-				<div class="fs-6 fw-semibold mb-2"><i class="bi bi-chevron-right"></i> 이번달 판매 현황</div>
+				<div class="fs-6 fw-semibold mb-2 textStyle"><i class="bi bi-chevron-right"></i> 이번달 판매 현황</div>
 				<div class="border rounded p-5 text-center">
 					<div class="fs-5 mb-2">총 판매 건수 : 
 						<span class="product-totalAmount fw-semibold text-primary">${thisMonth.COUNT}</span>
