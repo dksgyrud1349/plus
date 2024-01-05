@@ -43,29 +43,19 @@ i.fa{
 	box-shadow: 0px 0px 2px #888;
 	padding: 0.5em 0.6em
 }
-	
+a{
+	text-decoration:none;
+	color:#fff;
+}
 </style>
 
 
 
 <main class="wrapper" style="margin:0% auto;">
 		<div id="layoutSidenav_content">
-               
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">
-                            <i class="fas fa-tachometer-alt"></i>
-                            사업자 페이지
-                        </h1>
-                        <ul class="breadcrumb mb-4" style="list-style-type: none;">
-                            <li class="breadcrumb-item active">
-                                <i class="fas fa-table me-1"></i>
-                                통계
-                            </li>
-                        </ul>
-
-                        <div class="row">
-
-                            <div class="col-xl-3 col-md-6">
+                        <div class="row mt-5">
+                            <div class="col-xl-3 col-md-6 ">
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">
                                         <h3 class="text-center">총 회원 수</h3>
@@ -143,19 +133,16 @@ i.fa{
                                         <i class="fas fa-chart-bar me-1"></i>
                                     플러스 정보
                                     </div>
-                                    <div class="card-body" style="width: 100%;">
+                                    <div class="card-body" style="width: 100%; height: 250px;">
 										<div class="d-flex justify-content-center">
-								            <a href="#" class="avatar avatar-xl rounded-circle">
+								            <div class="avatar avatar-xl rounded-circle">
 								              <i class="bi bi-person-bounding-box fa-4x"></i>
-								            </a>
+								            </div>
 								          </div> 
 								          <div class="text-center my-6" >
-								            <!-- Title -->
-								            <a href="#" class="d-block h5 mb-0">${sessionScope.member.userName}</a>
-								            <!-- Subtitle -->
+								            <span class="d-block h5 mb-0">${sessionScope.member.userName}</span>
 								            <span class="d-block text-sm text-muted">${sessionScope.member.email}</span>
 								          </div>
-								          <!-- Stats -->
 								          <div class="d-flex">
 								            <div class="col-4 text-center">
 								              <a href="#" class="h4 font-bolder mb-0">${bookingDataCount}</a>
