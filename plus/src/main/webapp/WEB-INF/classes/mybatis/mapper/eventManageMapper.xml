@@ -198,8 +198,7 @@
 		JOIN event e ON ec.eventNum = e.eventNum
 		JOIN member1 m1 ON l.memberIdx = m1.memberIdx
 		JOIN plus p ON m1.userId = p.userId
-		WHERE eventNum = #{eventNum}
-		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+		WHERE ec.eventNum = #{eventNum}
 	</select>
 	
 	<select id="classDataCount" parameterType="map" resultType="Integer">

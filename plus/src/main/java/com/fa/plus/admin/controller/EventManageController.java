@@ -154,14 +154,16 @@ public class EventManageController {
 		
 		// 이전 글, 다음 글
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("eventNum", eventNum);
+		List<EventManage> list = service.eventClassList(map);
 		map.put("category", category);
 		map.put("schType", schType);
 		map.put("kwd", kwd);
-		map.put("eventNum", eventNum);
-
+		
 		EventManage prevDto = service.findByPrev(map);
 		EventManage nextDto = service.findByNext(map);
 		
+		model.addAttribute("list", list);
 		model.addAttribute("category", category);
 		model.addAttribute("dto", dto);
 		model.addAttribute("prevDto", prevDto);
@@ -257,7 +259,8 @@ public class EventManageController {
 	
 	@PostMapping("{eventNum}/classDelete")
 	@ResponseBody
-	public Map<String, Object> classDelete(@PathVariable long eventNum,
+	public Map<String, Object> classDelete(
+			@PathVariable long eventNum,
 			@RequestParam long classNum,
 			EventManage dto) throws Exception {
 		String state = "true";
@@ -275,39 +278,18 @@ public class EventManageController {
 	@GetMapping("{eventNum}/classList")
 	@ResponseBody
 	public Map<String, Object> classList (
-			@PathVariable long eventNum,
-			@RequestParam(value="pageNo", defaultValue = "1") int current_page
+			@PathVariable long eventNum
 			) throws Exception {
-		int size = 5;
-		int total_page;
-		int dataCount;
 		
 		Map<String , Object> map = new HashMap<String, Object>();
 		map.put("eventNum", eventNum);
 		
-		dataCount = service.classDataCount(map);
-		total_page = myUtil.pageCount(dataCount, size);
-		if(current_page > total_page) {
-			current_page = total_page;
-		}
-		
-		int offset = (current_page - 1) * size;
-		if(offset < 0) offset = 0;
-		
-		map.put("offset", offset);
-		map.put("size", size);
-		
 		List<EventManage> list = service.eventClassList(map);
 		
-		String paging = myUtil.pagingMethod(current_page, total_page, "listPage");
 		
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("list", list);
-		model.put("dataCount", dataCount);
-		model.put("pageNo", current_page);
-		model.put("total_page", total_page);
-		model.put("size", size);
-		model.put("paging", paging);
+		
 		return model;
 	}
 	
@@ -317,7 +299,6 @@ public class EventManageController {
 	@ResponseBody
 	public Map<String, Object> searchClass(
 			@PathVariable long eventNum,
-			@RequestParam long classNum,
 			@RequestParam(defaultValue = "") String schType,
 			@RequestParam(defaultValue = "") String kwd
 			) throws Exception {
@@ -326,7 +307,6 @@ public class EventManageController {
 		map.put("schType", schType);
 		map.put("kwd", kwd);
 		map.put("eventNum", eventNum);
-		map.put("classNum", classNum);
 		
 		service.classList(map);
 		List<EventManage> classList = service.classList(map);

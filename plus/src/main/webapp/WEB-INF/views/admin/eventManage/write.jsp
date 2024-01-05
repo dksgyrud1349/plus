@@ -218,6 +218,7 @@
 									  			<td>클래스 등록</td>
 									  			<td>
 									  				<a href="javascript:dialogSearch();" class="btn btn-light btn-sm searchclass" onclick="">검색</a>
+									  				<div class="class-name-list"></div>
 									  			</td>
 									  		</tr>
 									  	</c:if>
@@ -249,79 +250,43 @@
 
 
 
-
-<div class="modal fade modal-lg" id="searchModal" aria-labelledby="prodectSaveModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="prodectSaveModalLabel">클래스</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body pt-1 saveProduct-form">
-				<table class="table">
-					<tr>
-						<td class="text-center align-middle">상품명</td>
-						<td>
-							<div class="input-group mb-3">
-								<input type="text" name="productName" class="form-control" readonly>
-								<button type="button" class="btn btn-light btn-search ms-1" title="검색"><i class="bi bi-search"></i></button>
-							</div>						
-						</td>
-					</tr>
-					<tr>
-						<td class="text-center align-middle">상품코드</td>
-						<td>
-							<input type="text" name="productNum" class="form-control border-0 w-50" readonly>
-						</td>
-					</tr>
-				</table>
-				
-				<table class="table table-borderless">
-					<tr>
-						<td class="text-end">
-							<input type="hidden" name="mode">
-							<input type="hidden" name="detailNum" value="0">
-							<button type="button" class="btn btn-outline-primary btn-productSave">등록</button>
-			    			<button type="button" class="btn btn-outline-danger btn-productCancel">취소</button>
-						</td>
-					</tr>
-				</table>				
-			</div>
-		</div>
-	</div>
-</div>
-
-
 <!-- 상품 검색 대화상자 -->
 <div class="modal fade" id="classSearchModal" tabindex="-1" aria-labelledby="searchModalLabel"
 				aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="searchViewerModalLabel">상품검색</h5>
+				<h5 class="modal-title" id="searchViewerModalLabel">클래스검색</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
                 <div class="row search-form">
 					<div class="input-group">
 						<select name="schType" class="form-select">
-							<option value="prodectName">상품명</option>
-							<option value="prodectNum">상품코드</option>
+							<option value="classNum">클래스번호</option>
+							<option value="className">클래스명</option>
+							<option value="userId">아이디</option>
+							<option value="nickName">닉네임</option>
 						</select>
 						<input type="text" name="kwd" class="form-control">
-						<button type="button" class="btn btn-light btn-productSearch" title="검색"><i class="bi bi-search"></i></button>
+						<button type="button" class="btn btn-light btn-classSearch" title="검색"><i class="bi bi-search"></i></button>
 					</div>
                 </div>
                	<div class='row mt-2 border-top border-bottom bg-light p-2'>
-               	 	<div class='col-3 text-center'>상품코드</div>
-               	 	<div class='col-3 text-center'>상품코드</div>
-               	 	<div class='col-3 text-center'>상품코드</div>
-               	 	<div class='col-3 text-center'>상품코드</div>
+               	 	<div class='col text-center'>클래스번호</div>
+               	 	<div class='col text-center'>클래스명</div>
+               	 	<div class='col text-center'>아이디</div>
+               	 	<div class='col text-center'>닉네임</div>
                	 	
                	 	
                	</div>
-                <div class="product-search-list"></div>
+                <div class="class-search-list">
+                	<ul></ul>
+                </div>
 			</div>
+			<div class="modal-footer">
+					<button type="button" class="btn btn-secondary btnClose">닫기</button>
+			</div>	
 		</div>
 	</div>
 </div>
@@ -364,15 +329,158 @@ function setDefaultFont() {
 	oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
 }
 
+</script>
+
+<script>
+function login() {
+	location.href = '${pageContext.request.contextPath}/member/login';
+}
+
+function ajaxFun(url, method, formData, dataType, fn, file = false) {
+	const settings = {
+			type: method, 
+			data: formData,
+			success:function(data) {
+				fn(data);
+			},
+			beforeSend: function(jqXHR) {
+				jqXHR.setRequestHeader('AJAX', true);
+			},
+			complete: function () {
+			},
+			error: function(jqXHR) {
+				if(jqXHR.status === 403) {
+					login();
+					return false;
+				} else if(jqXHR.status === 400) {
+					alert('요청 처리가 실패 했습니다.');
+					return false;
+		    	}
+		    	
+				console.log(jqXHR.responseText);
+			}
+	};
+	
+	if(file) {
+		settings.processData = false;  // file 전송시 필수. 서버로전송할 데이터를 쿼리문자열로 변환여부
+		settings.contentType = false;  // file 전송시 필수. 서버에전송할 데이터의 Content-Type. 기본:application/x-www-urlencoded
+	}
+	
+	$.ajax(url, settings);
+}
 
 $(function(){
 	$(".searchclass").click(function(){
-		$("#searchModal").modal("show");
-	});
-
-	$(".btn-search").click(function(){
 		$("#classSearchModal").modal("show");
 	});
+
+	// 클래스 검색 대화상자 - 취소
+	$(".btnClose").click(function(){
+		$("#classSearchModal").modal("hide");
+	});
+	
+	
+	// 상품검색 대화상자-검색 버튼
+	$(".btn-classSearch").click(function(){
+    	$(".class-search-list").html("");
+    	
+		let schType = $(".search-form select[name=schType]").val();
+	    let kwd = $(".search-form input[name=kwd]").val();
+	    let eventNum = "${dto.eventNum}";
+		
+	    let query = "&schType="+schType+"&kwd="+encodeURIComponent(kwd);
+	    let url = "${pageContext.request.contextPath}/admin/eventManage/${dto.eventNum}/search";
+
+	    const fn = function(data) {
+	    	let out = "";
+	    	for(let item of data.classList) {
+	    		let classNum = item.classNum;
+	    		let className = item.className;
+	    		let nickName = item.nickName;
+	    		let userId = item.userId;
+	    		
+	    		out += "<div class='row mb-2 p-2 border-bottom'>";
+	    		out += "  <div class='col text-center'>"+classNum+"</div>"
+	    		out += "  <div class='col search-className' data-classNum='"+classNum+"'>"+className+"</div>";
+	    		out += "  <div class='col text-center'>"+userId+"</div>"
+	    		out += "  <div class='col text-center'>"+nickName+"</div>"
+	    		out += "</div>"; 
+	    	}
+	    	
+	    	$(".class-search-list").html(out);
+		};
+		
+		ajaxFun(url, "get", query, "json", fn);
+	    
+	});
+	
+	// 상품검색 대화상자-검색된 상품을 클릭한 경우
+	$("body").on("click", '.search-className', function(){
+		let classNum = $(this).attr("data-classNum");
+		let className = $(this).text().trim();
+		let eventNum = ${dto.eventNum};
+		
+		let query = "";
+		let url = "";
+	    query = "eventNum="+eventNum+"&classNum="+classNum;
+        url = "${pageContext.request.contextPath}/admin/eventManage/${dto.eventNum}/classInsert";
+		
+		
+		const fn = function(data){
+			$("#classSearchModal").modal("hide");
+			printClass();
+		};
+		
+		ajaxFun(url, "post", query, "json", fn);
+		
+	});
+	
+	// 등록 상품 삭제 버튼
+	$(".class-name-list").on("click", ".btn-classDelete", function(){
+		if( ! confirm('등록된 클래스를 삭제 하시겠습니까 ? ') ) {
+			return false;	
+		}
+		
+		let classNum = $(this).attr("data-classNum")
+		let url = "${pageContext.request.contextPath}/admin/eventManage/${dto.eventNum}/classDelete";
+		let query = "classNum="+classNum;
+		
+		const fn = function(data){
+			printClass();
+		};
+		
+		ajaxFun(url, "post", query, "json", fn);
+	});
+$(function(){
+	printClass();
+});
+	// 상품리스트
+function printClass(){
+    	$(".class-name-list").html("");
+    	
+		let eventNum = "${dto.eventNum}";
+		
+	    let url = "${pageContext.request.contextPath}/admin/eventManage/${dto.eventNum}/classList";
+		let query = "eventNum=" + eventNum;
+	    const fn = function(data) {
+	    	let out = "";
+	    	for(let item of data.list) {
+	    		let classNum = item.classNum;
+	    		let className = item.className;
+	    		
+	    		out += "<div class='row mb-2 p-2 border-bottom'>";
+	    		out += "  <div class='col text-center'>"+classNum+"</div>"
+	    		out += "  <div class='col search-className' data-classNum='"+classNum+"'>"+className+"</div>";
+	    		out += "  <div class='col'><span class='btn btn-sm btn-danger btn-classDelete'>삭제</span></div>"
+	    		out += "</div>"; 
+	    	}
+	    	
+	    	$(".class-name-list").html(out);
+		};
+		
+		ajaxFun(url, "get", query, "json", fn);
+	    
+	}
 })
 
 </script>

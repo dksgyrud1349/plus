@@ -85,7 +85,7 @@ img{
 										</tr>
 						
 										<tr>
-											<td width="50%" align="left">
+											<td colspan="2" width="50%" align="left">
 												이벤트 기간 : ${dto.startDate} ~ ${dto.endDate} 
 											</td>
 										</tr>
@@ -100,6 +100,25 @@ img{
 												${dto.eContent}
 											</td>
 										</tr>
+										<c:forEach var="vo" items="${list}" varStatus="status">
+											<tr style="border-bottom: none;" class="text-center">
+												<td colspan="2">
+													
+													<div class="row">
+														<div class="col">
+															${vo.classNum}
+														</div>
+														<div class="col">
+															${vo.className}
+														</div>
+														<div class="col">
+															${vo.nickName}님
+														</div>
+													</div>
+												</td>
+												
+											</tr>
+										</c:forEach>
 										
 										
 										<tr>
