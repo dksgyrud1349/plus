@@ -57,7 +57,7 @@
 						<div class="card mb-5 w-80" style="margin:0 auto">
 						    <div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 								<form name="noticeForm" method="post" enctype="multipart/form-data">
-									<table class="table table-border border-top2 table-form">
+									<table class="table table-border border-top2 table-form"> 
 										<tr> 
 											<td>카테고리</td>
 											<td>
