@@ -25,9 +25,4 @@ public interface MemberManageMapper {
 	public List<MemberManage> listMemberState(String userId);
 	public MemberManage findByState(String userId);
 
-	public List<AnalysisManage> purposeClassChart();
-	public List<AnalysisManage> categoryClassChart();
-	public List<AnalysisManage> regionClassChart();
-	public List<AnalysisManage> priceClassChart();
-	public List<AnalysisManage> ageClassChart();
 }
