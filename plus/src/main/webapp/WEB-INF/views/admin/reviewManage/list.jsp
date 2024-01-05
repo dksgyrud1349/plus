@@ -116,7 +116,7 @@ $(function(){
 		$('#nav-${category}').addClass('active');
 		$('#tab-${category}').addClass('active');
 		
-		location.href = '${pageContext.request.contextPath}/admin/review/'+category+'/list';
+		location.href = '${pageContext.request.contextPath}/admin/reviewManage/'+category+'/list';
 	});
 	
 });

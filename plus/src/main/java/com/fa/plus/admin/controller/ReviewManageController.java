@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/admin/review/*")
+@RequestMapping("/admin/reviewManage/*")
 public class ReviewManageController {
 
 	@RequestMapping("{category}/list")
@@ -23,7 +23,7 @@ public class ReviewManageController {
 		
 		model.addAttribute("category", category);
 		
-		return ".admin.review.list";
+		return ".admin.reviewManage.list";
 	}
 	
 	@GetMapping("article")
@@ -31,7 +31,7 @@ public class ReviewManageController {
 			@RequestParam long reviewNum,
 			Model model) throws Exception{
 		
-		return ".admin.review.article";
+		return ".admin.reviewManage.article";
 	}
 	
 	
