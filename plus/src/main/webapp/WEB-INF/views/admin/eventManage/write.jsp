@@ -454,28 +454,29 @@ $(function(){
 $(function(){
 	printClass();
 });
-	// 상품리스트
-function printClass(){
-    	$(".class-name-list").html("");
-    	
-		let eventNum = "${dto.eventNum}";
-		
-	    let url = "${pageContext.request.contextPath}/admin/eventManage/${dto.eventNum}/classList";
-		let query = "eventNum=" + eventNum;
-	    const fn = function(data) {
-	    	let out = "";
-	    	for(let item of data.list) {
-	    		let classNum = item.classNum;
-	    		let className = item.className;
-	    		
-	    		out += "<div class='row mb-2 p-2 border-bottom'>";
-	    		out += "  <div class='col text-center'>"+classNum+"</div>"
-	    		out += "  <div class='col search-className' data-classNum='"+classNum+"'>"+className+"</div>";
-	    		out += "  <div class='col'><span class='btn btn-sm btn-danger btn-classDelete'>삭제</span></div>"
-	    		out += "</div>"; 
-	    	}
-	    	
-	    	$(".class-name-list").html(out);
+
+//상품리스트
+function printClass() {
+    $(".class-name-list").html("");
+
+    let eventNum = "${dto.eventNum}";
+
+    let url = "${pageContext.request.contextPath}/admin/eventManage/${dto.eventNum}/classList";
+    let query = "eventNum=" + eventNum;
+    const fn = function (data) {
+        let out = "";
+        for (let item of data.list) {
+            let classNum = item.classNum;
+            let className = item.className;
+
+            out += "<div class='row mb-2 p-2 border-bottom'>";
+            out += "  <div class='col text-center'>" + classNum + "</div>";
+            out += "  <div class='col search-className' data-classNum='" + classNum + "'>" + className + "</div>";
+            out += "  <div class='col'><span class='btn btn-sm btn-danger btn-classDelete' data-classNum='" + classNum + "'>삭제</span></div>";
+            out += "</div>";
+        }
+
+        $(".class-name-list").html(out);
 		};
 		
 		ajaxFun(url, "get", query, "json", fn);
