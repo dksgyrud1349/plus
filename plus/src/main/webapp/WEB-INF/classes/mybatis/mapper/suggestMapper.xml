@@ -3,76 +3,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fa.plus.mapper.SuggestMapper">
 
+   <select id="findById" parameterType="String" resultType="com.fa.plus.domain.Suggest">
+
+	SELECT userId, userName
+		FROM member1
+		WHERE userId = #{userId}
+	
+   </select>
+   
+	<select id="findByAllClass" resultType="com.fa.plus.domain.Suggest">
+		
+		SELECT le.classNum, className
+		FROM lesson le
+		JOIN approval ap ON le.classNum = ap.classNum
+		WHERE le.showClass = 0 AND ap.approvalCode = 1
+	</select>
+	
+
+	 <select id="findByNum" parameterType="String" resultType="long">
+		
+		SELECT classNum
+		From lesson
+		WHERE className = #{className}
+		</select>
+		
    <insert id="insertSuggest" parameterType="com.fa.plus.domain.Suggest">
       INSERT INTO suggest(sugNum, subject, content, regDate, userId)
       VALUES(suggest_seq.NEXTVAL, #{subject}, #{content}, SYSDATE, #{userId})
    </insert>
-
-
-
-<sql id="where-list">
-      <if test="schType=='all' ">
-         ( INSTR(subject, #{kwd}) &gt; 0
-            OR INSTR(content, #{kwd}) &gt; 0 )
-      </if>
-      <if test="schType=='subject' ">
-         INSTR(subject, #{kwd}) &gt; 0
-      </if>
-      <if test="schType=='content' ">
-         DBMS_LOB.INSTR( content, #{kwd}) &gt; 0 
-      </if>
-      <if test="schType=='regDate' ">
-         ( TO_CHAR(regDate, 'YYYY-MM-DD') = #{kwd}
-            OR TO_CHAR(regDate, 'YYYYMMDD') = #{kwd} )
-      </if>
-   </sql>
- <select id="listSuggest" parameterType="map" resultType="com.fa.plus.domain.Suggest">
- 	
-    SELECT sugNum, subject, m.userName, TO_CHAR(m.regDate, 'YYYY-MM-DD')regDate
-	FROM suggest s
-	JOIN member1 m ON s.userId = m.userId 
-
-      
-      
-         <where>
-            <if test="kwd != null and kwd!=''">
-               <include refid="where-list"/>
-            </if>
-            
-         </where>
-         
-         ORDER BY sugNum DESC
-         OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
-      </select>
-   
-   
-   <!-- 데이터개수  -->
-   <select id="dataCount" parameterType="map" resultType="Integer">
-      SELECT NVL(COUNT(*), 0)
-      FROM suggest s
-      <where>
-         <if test="kwd != null and kwd!=''">
-            <include refid="where-list"/>
-         </if>
-      </where>
-   </select>
-
- <!-- 글보기 -->
-   <select id="findById" parameterType="long" resultType="com.fa.plus.domain.Suggest">
-   SELECT sugNum, subject,  m.userName, regDate
-	FROM suggest s
-	JOIN member1 m ON s.userId = m.userId
-      
-   </select>
-   
-    <update id="updateSuggest" parameterType="com.fa.plus.domain.Suggest">
-          UPDATE suggest SET  subject = #{subject}, content=#{content}, userId = #{userId}
-          WHERE sugNum = #{sugNum}
-       </update>
-
-     <delete id="deleteSuggest" parameterType="long">
-          DELETE FROM suggest WHERE sugNum = #{sugNum}
-   </delete>
-   
 </mapper>
 
