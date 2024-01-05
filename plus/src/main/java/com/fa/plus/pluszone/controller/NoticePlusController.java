@@ -188,9 +188,7 @@ public class NoticePlusController {
 			HttpSession session,
 			Model model) throws Exception {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
-
-		long memberIdx = info.getMemberIdx();
-		List<NoticePlus> listTitle = service.listTitle(memberIdx);
+		List<NoticePlus> listTitle = service.listTitle(info.getMemberIdx());
 
 		NoticePlus dto = service.findById(num);
 		if (dto == null || ! info.getUserId().equals(dto.getUserId())) {

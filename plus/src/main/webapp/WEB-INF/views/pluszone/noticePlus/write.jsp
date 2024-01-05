@@ -59,13 +59,13 @@
 								<form name="noticeForm" method="post" enctype="multipart/form-data">
 									<table class="table table-border border-top2 table-form">
 										<tr> 
-											<td>클래스번호</td>
+											<td>카테고리</td>
 											<td>
 												<div>
 													<select name="classNum">
 														<option value="">:: 과목 선택 ::</option>
 														<c:forEach var="vo" items="${listTitle}" varStatus="status">
-															<option value="${vo.classNum}">${vo.className}</option>
+															<option value="${vo.classNum}" ${dto.classNum == vo.classNum ? "selected":""}>${vo.className}</option>
 														</c:forEach>
 													</select>
 												</div>
