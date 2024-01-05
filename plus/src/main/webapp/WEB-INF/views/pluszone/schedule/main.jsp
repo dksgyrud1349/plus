@@ -266,17 +266,17 @@ function insertSchedule(startStr, endStr, allDay) {
 	let query;
 	
 	if(allDay) {
-		query = "sday="+startStr;
+		query = "sDay="+startStr;
 		if(endStr) {
 			endStr = daysLater(endStr, -1); // 종일 일정인 경우 끝나는 날짜가 +1 로 선택 되므로 -1 함 
-			query += "&eday=" + endStr;
+			query += "&eDay=" + endStr;
 		}
 		query += "&all_day=1";
 	} else {
-		query = "sday="+startStr.substr(0, 10);
-		query += "&eday="+endStr.substr(0, 10);
-		query += "&stime="+startStr.substr(11, 5);
-		query += "&etime="+endStr.substr(11, 5);
+		query = "sDay="+startStr.substr(0, 10);
+		query += "&eDay="+endStr.substr(0, 10);
+		query += "&sTime="+startStr.substr(11, 5);
+		query += "&eTime="+endStr.substr(11, 5);
 		query += "&allDay=0";
 	}
 
@@ -371,7 +371,7 @@ $(function(){
 
 // 일정을 드래그한 경우 일정 수정
 function updateDrag(calEvent) {
-	let num = calEvent.id;
+	let sNum = calEvent.id;
 	let title = calEvent.title;
 	let color = calEvent.backgroundColor;
 	let start = calEvent.startStr;
@@ -385,7 +385,7 @@ function updateDrag(calEvent) {
 	if(! sContent) sContent = "";
 	
 	let startDate="", endDate="", startTime="", endTime="", allDay="";
-	if(allDay) {
+	if(all_day) {
 		startDate = start;
 		endDate = end;
 		allDay = "1";
@@ -399,8 +399,8 @@ function updateDrag(calEvent) {
 	let query = "sNum="+sNum+"&subject="+title
 			+ "&cNum="+cNum+"&color="+color
 			+ "&allDay="+allDay
-			+ "&sday="+startDate+"&eday="+endDate
-			+ "&stime="+startTime+"&etime="+endTime
+			+ "&sDay="+startDate+"&eDay="+endDate
+			+ "&sTime="+startTime+"&eTime="+endTime
 			+ "&sContent="+sContent;
 	
 	let url = "${pageContext.request.contextPath}/pluszone/schedule/updateDrag";

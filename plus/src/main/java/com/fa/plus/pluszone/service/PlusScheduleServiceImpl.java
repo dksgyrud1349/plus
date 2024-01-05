@@ -44,6 +44,7 @@ public class PlusScheduleServiceImpl implements PlusScheduleService {
 					&& dto.getsDay().equals(dto.geteDay())) {
 				dto.seteDay("");
 			}
+			
 			mapper.updateSchedule(dto);
 		} catch (Exception e) {
 			e.printStackTrace();
