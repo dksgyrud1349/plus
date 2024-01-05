@@ -2,6 +2,7 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fa.plus.admin.mapper.OnedaypluschartManageMapper">
+	
 	<!-- 원데이플러스에 관한 결과 차트 쿼리 -->
 	<select id="purposeClassChart" resultType="com.fa.plus.admin.domain.AnalysisManage">
 		WITH  answer AS (

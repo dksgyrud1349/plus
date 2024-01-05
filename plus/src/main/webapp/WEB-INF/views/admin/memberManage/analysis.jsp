@@ -5,9 +5,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tabs.css" type="text/css">
 
 <style type="text/css">
-
-
-
 </style>
 
 <script src="https://code.highcharts.com/highcharts.js"></script>

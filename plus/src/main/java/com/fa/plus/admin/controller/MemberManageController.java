@@ -27,6 +27,7 @@ import com.fa.plus.common.MyUtil;
 @Controller
 @RequestMapping("/admin/memberManage/*")
 public class MemberManageController {
+	
 	@Autowired
 	private MemberManageService service;
 

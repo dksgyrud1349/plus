@@ -13,6 +13,7 @@ import com.fa.plus.admin.mapper.MemberManageMapper;
 
 @Service
 public class MemberManageServiceImpl implements MemberManageService {
+	
 	@Autowired
 	private MemberManageMapper mapper;
 

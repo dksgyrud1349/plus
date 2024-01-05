@@ -1,8 +1,8 @@
 package com.fa.plus.admin.service;
 
 import java.util.List;
-import java.util.Map;
 
+import java.util.Map;
 import com.fa.plus.admin.domain.AnalysisManage;
 import com.fa.plus.admin.domain.MemberManage;
 

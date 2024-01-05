@@ -24,8 +24,6 @@ public class OnedaypluschartManageController {
 		return ".admin.onedaypluschartManage.list";
 	}
 	
-	
-	
 	@GetMapping("purposeClassChart")
 	@ResponseBody
 	public Map<String, Object> purposeClassChart() throws Exception {

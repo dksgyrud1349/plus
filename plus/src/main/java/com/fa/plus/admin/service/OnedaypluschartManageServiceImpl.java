@@ -10,6 +10,7 @@ import com.fa.plus.admin.mapper.OnedaypluschartManageMapper;
 
 @Service
 public class OnedaypluschartManageServiceImpl implements OnedaypluschartManageService{
+	
 	@Autowired
 	private OnedaypluschartManageMapper mapper;
 	

@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Mapper;
 import com.fa.plus.admin.domain.AnalysisManage;
 import com.fa.plus.admin.domain.MemberManage;
 
-
 @Mapper
 public interface MemberManageMapper {
 	public int dataCount(Map<String, Object> map);
