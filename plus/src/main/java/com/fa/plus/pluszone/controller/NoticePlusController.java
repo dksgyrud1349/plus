@@ -190,7 +190,7 @@ public class NoticePlusController {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		List<NoticePlus> listTitle = service.listTitle(info.getMemberIdx());
 
-		NoticePlus dto = service.findById(num); 
+		NoticePlus dto = service.findById(num);
 		if (dto == null || ! info.getUserId().equals(dto.getUserId())) {
 			return "redirect:/pluszone/noticePlus/list?page=" + page;
 		}

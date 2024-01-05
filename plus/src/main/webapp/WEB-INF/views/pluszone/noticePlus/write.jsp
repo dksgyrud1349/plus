@@ -62,7 +62,7 @@
 											<td>카테고리</td>
 											<td>
 												<div>
-													<select name="classNum">
+													<select name="classNum"> 
 														<option value="">:: 과목 선택 ::</option>
 														<c:forEach var="vo" items="${listTitle}" varStatus="status">
 															<option value="${vo.classNum}" ${dto.classNum == vo.classNum ? "selected":""}>${vo.className}</option>
