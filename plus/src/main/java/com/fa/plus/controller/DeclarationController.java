@@ -67,7 +67,7 @@ public class DeclarationController {
 			
 			declarationService.insertDeclaration(dto);
 			rsltCode = "true";
-			rsltMsg = "신고 등록이 완료되었습니다.(심사 대기)";
+			rsltMsg = "신고 등록이 완료되었습니다.";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
