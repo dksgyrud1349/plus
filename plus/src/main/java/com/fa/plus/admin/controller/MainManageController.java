@@ -19,7 +19,6 @@ import com.fa.plus.admin.service.LessonManageService;
 import com.fa.plus.admin.service.MemberManageService;
 import com.fa.plus.admin.service.NoticeManageService;
 import com.fa.plus.admin.service.PlusManageService;
-import com.fa.plus.domain.SessionInfo;
 
 @Controller
 public class MainManageController {
