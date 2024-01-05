@@ -55,33 +55,6 @@ i.fa{
 		<div id="layoutSidenav_content">
                     <div class="container-fluid px-4">
                         <div class="row mt-5">
-                            <div class="col-xl-3 col-md-6 ">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">
-                                        <h3 class="text-center">총 회원 수</h3>
-                                        <hr>
-                                        <h4 class="text-center">100명</h4>
-                                    </div>
-                                    
-                                    <div class="card-footer d-flex align-items-center justify-content-between text-end">
-                                        <div class="small text-white">전체보기 <i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-		
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">
-                                        <h3 class="text-center">총 플러스 수</h3>
-                                        <hr>
-                                        <h4 class="text-center">50명</h4>
-                                    </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between text-end">
-                                        <div class="small text-white">전체보기 <i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">
@@ -98,6 +71,35 @@ i.fa{
                                     </div>
                                 </div>
                             </div>
+                            
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">
+                                        <h3 class="text-center">남은 개설 수업</h3>
+                                        <hr>
+                                        <h4 class="text-center">15건 </h4>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between text-end">
+                                        <div class="small text-white">전체보기 <i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-3 col-md-6 ">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">
+                                        <h3 class="text-center">문의사항</h3>
+                                        <hr>
+                                        <h4 class="text-center">5개</h4>
+                                    </div>
+                                    
+                                    <div class="card-footer d-flex align-items-center justify-content-between text-end">
+                                        <div class="small text-white">전체보기 <i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+		
+
                             
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
