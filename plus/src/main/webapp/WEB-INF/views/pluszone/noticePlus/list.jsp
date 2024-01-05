@@ -8,6 +8,9 @@
 	display: inline-block; padding:2px 3px; background: #0d6efd; color: #fff; font-weight: 500;
 	font-size: 11px;
 }
+a{
+	text-decoration:none;
+}
 </style>
 
 <script type="text/javascript">

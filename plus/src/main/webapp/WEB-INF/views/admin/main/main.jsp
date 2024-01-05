@@ -7,7 +7,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
 
 <style>
-a{
+.totaltitle{
 	text-decoration:none;
 	color:#fff;
 }
@@ -26,7 +26,7 @@ a{
 	                
 	                <div class="card-footer d-flex align-items-center justify-content-between text-end">
 	                    <div class="small text-white">
-	                    	<a href="${pageContext.request.contextPath}/admin/memberManage/list">전체보기</a>
+	                    	<a href="${pageContext.request.contextPath}/admin/memberManage/list" class="totaltitle">전체보기</a>
 	                    <i class="fas fa-angle-right"></i></div>
 	                </div>
 	            </div>
@@ -41,7 +41,7 @@ a{
 	                </div>
 	                <div class="card-footer d-flex align-items-center justify-content-between text-end">
 	                    <div class="small text-white">
-	                    <a href="${pageContext.request.contextPath}/admin/plusManage/plusList">전체보기</a>
+	                    <a href="${pageContext.request.contextPath}/admin/plusManage/plusList" class="totaltitle">전체보기</a>
 	                    <i class="fas fa-angle-right"></i></div>
 	                </div>
 	            </div>
@@ -56,7 +56,7 @@ a{
 	                </div>
 	                <div class="card-footer d-flex align-items-center justify-content-between text-end">
 	                    <div class="small text-white">
-	                    <a href="${pageContext.request.contextPath}/admin/lessonManage/list1">전체보기</a> 
+	                    <a href="${pageContext.request.contextPath}/admin/lessonManage/list1" class="totaltitle">전체보기</a> 
 	                    <i class="fas fa-angle-right"></i></div>
 	                </div>
 	            </div>
@@ -70,7 +70,7 @@ a{
 	                </div>
 	                <div class="card-footer d-flex align-items-center justify-content-between text-end">
 	                    <div class="small text-white">
-	                    <a href="${pageContext.request.contextPath}/admin/noticeManage/list">전체보기</a> 
+	                    <a href="${pageContext.request.contextPath}/admin/noticeManage/list" class="totaltitle">전체보기</a> 
 	                    <i class="fas fa-angle-right"></i></div>
 	                </div>
 	            </div>
@@ -85,7 +85,7 @@ a{
 	                </div>
 	                <div class="card-footer d-flex align-items-center justify-content-between text-end">
 	                    <div class="small text-white">
-	                    <a href="${pageContext.request.contextPath}/admin/eventManage/progress/list">전체보기</a> 
+	                    <a href="${pageContext.request.contextPath}/admin/eventManage/progress/list" class="totaltitle">전체보기</a> 
 	                    <i class="fas fa-angle-right"></i></div>
 	                </div>
 	            </div>
@@ -115,7 +115,7 @@ a{
 	                </div>
 	                <div class="card-footer d-flex align-items-center justify-content-between text-end">
 	                    <div class="small text-white">
-	                    <a href="${pageContext.request.contextPath}/admin/communityManage/list">전체보기</a>
+	                    <a href="${pageContext.request.contextPath}/admin/communityManage/list" class="totaltitle">전체보기</a>
 	                    <i class="fas fa-angle-right"></i></div>
 	                </div>
 	            </div>
@@ -129,7 +129,7 @@ a{
 	                </div>
 	                <div class="card-footer d-flex align-items-center justify-content-between text-end">
 	                    <div class="small text-white">
-	                    <a href="${pageContext.request.contextPath}/admin/declarationManage/list">전체보기</a>
+	                    <a href="${pageContext.request.contextPath}/admin/declarationManage/list" class="totaltitle">전체보기</a>
 	                    <i class="fas fa-angle-right"></i></div>
 	                </div>
 	            </div>

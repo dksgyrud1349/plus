@@ -43,7 +43,7 @@ i.fa{
 	box-shadow: 0px 0px 2px #888;
 	padding: 0.5em 0.6em
 }
-a{
+.totaltitle{
 	text-decoration:none;
 	color:#fff;
 }
@@ -91,7 +91,9 @@ a{
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between text-end">
                                         <div class="small text-white">
-                                        <a href="${pageContext.request.contextPath}/pluszone/booking/lessonList">전체보기</a>
+                                        	<a href="${pageContext.request.contextPath}/pluszone/booking/lessonList" class="totaltitle">
+                                        		전체보기
+                                        	</a>
                                         <i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -106,7 +108,9 @@ a{
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between text-end">
                                         <div class="small text-white">
-                                        <a href="${pageContext.request.contextPath}/pluszone/noticePlus/list">전체보기</a> 
+                                        	<a href="${pageContext.request.contextPath}/pluszone/noticePlus/list" class="totaltitle">
+                                        		전체보기
+                                        	</a> 
                                         <i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
