@@ -48,7 +48,6 @@ a{
 					카테고리 추가 <i class="bi bi-plus-lg"></i>
 				</button>
 				
-				<button type="button" class="btn btn-success btnCategorySearch" title="검색" style="float:right;"><i class="bi bi-search"></i></button>
 			</div>
 		</div>
 		<div class="collapse" id="collapseExample">
@@ -247,19 +246,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	calendar.render();
 });
 
-$(function() {
-	$('body').on('click', ".btnCategorySearch", function () {
-		if($(".category-list input:checkbox.category-item:checked").length === 0) {
-			return false;
-		}
-		
-		// 카테고리 검색
-		calendar.refetchEvents();
-		
-		$('#offcanvasExample').offcanvas('hide')
-	});
-
-});
 
 // 일정 등록 폼
 function insertSchedule(startStr, endStr, allDay) {
