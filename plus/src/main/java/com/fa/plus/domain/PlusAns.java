@@ -12,9 +12,6 @@ public class PlusAns {
 	private String subject;
 	private String content;
 	
-	private long imgNum;
-	private String imgName;
-	
 	private List<Long> plusNums;
 	
 	public long getAnsNum() {
@@ -58,18 +55,6 @@ public class PlusAns {
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public long getImgNum() {
-		return imgNum;
-	}
-	public void setImgNum(long imgNum) {
-		this.imgNum = imgNum;
-	}
-	public String getImgName() {
-		return imgName;
-	}
-	public void setImgName(String imgName) {
-		this.imgName = imgName;
 	}
 	public List<Long> getPlusNums() {
 		return plusNums;

@@ -18,6 +18,9 @@ public class OnedayplusServiceImpl implements OnedayplusService {
 	@Override
 	public void insertAnswer(PlusAns dto) throws Exception {
 		try {
+			
+			mapper.deleteAnswer(dto.getUserId());
+			
 			for(Long plusNum : dto.getPlusNums()) {
 				dto.setPlusNum(plusNum);
 				
@@ -53,15 +56,15 @@ public class OnedayplusServiceImpl implements OnedayplusService {
 	}
 
 	@Override
-	public PlusAns listAnswer(String userId) {
-		PlusAns dto = null;
+	public List<PlusAns> listAnswer(String userId) {
+		List<PlusAns> list = null;
 		try {
-			dto = mapper.listAnswer(userId);
+			list = mapper.listAnswer(userId);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		}
-		return dto;
+		return list;
 	}
 
 }

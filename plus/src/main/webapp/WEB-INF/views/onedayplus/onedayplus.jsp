@@ -53,7 +53,7 @@
 	   let query = $('form').serialize(); 
 		
 	   const fn = function(data){
-		location.href = "${pageContext.request.contextPath}/";
+		location.href = "${pageContext.request.contextPath}/onedayplus/result";
 	   };
 		
 	   ajaxFun(url, 'post', query, 'json', fn);

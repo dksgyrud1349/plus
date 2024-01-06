@@ -14,5 +14,6 @@ public interface OnedayplusMapper {
 	
 	public List<PlusQ> QSubject();
 	public List<PlusQ> listQuestion();
-	public PlusAns listAnswer(String userId);
+	public List<PlusAns> listAnswer(String userId);
+	public void deleteAnswer(String userId);
 }

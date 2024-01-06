@@ -10,5 +10,5 @@ public interface OnedayplusService {
 
 	public List<PlusQ> QSubject();
 	public List<PlusQ> listQuestion();
-	public PlusAns listAnswer(String userId);
+	public List<PlusAns> listAnswer(String userId);
 }

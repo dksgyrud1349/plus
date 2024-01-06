@@ -22,11 +22,25 @@
 	</select>
 	
 	<select id="listAnswer" parameterType="String" resultType="com.fa.plus.domain.PlusAns">
-		SELECT qu.num, subject, content, q.plusNum, ansNum, imgNum, imgName
+		SELECT qu.num, subject, content, q.plusNum, ansNum
 		FROM plusAns a
 		JOIN plusQ q ON a.plusNum = q.plusNum
 		JOIN plusQue qu ON q.num = qu.num
-		JOIN plusImage pi ON pi.plusNum = q.plusNum 
 		WHERE userId = #{userId}
 	</select>
+	
+	<delete id="deleteAnswer" parameterType="String">
+		DELETE FROM plusAns WHERE userId = #{userId}
+	</delete>
+	
+	<!-- 추천 리스트 
+	<select id="resultCategory" parameterType="" resultType="com.fa.plus.domain.Lesson">
+		SELECT l.classNum
+		FROM lesson l
+		JOIN plusAns a ON
+	</select>
+	
+	<select id="resultHashtag">
+	</select>
+	-->
 </mapper>
