@@ -119,6 +119,8 @@
                              <a class="nav-link" href="<c:url value='/admin/noticeManage/list'/>">공지사항</a>
                              <a class="nav-link" href="${pageContext.request.contextPath}/admin/faqManage/main">FAQ</a>
                              <a class="nav-link" href="${pageContext.request.contextPath}/admin/declarationManage/list">신고</a>
+                             <a class="nav-link" href="${pageContext.request.contextPath}/admin/suggestManage/list">제안</a>
+                             
                              <a class="nav-link" href="${pageContext.request.contextPath}/admin/inquiryAdManage/list">문의사항</a>
                              <a class="nav-link" href="${pageContext.request.contextPath}/admin/termsManage/list">서비스 이용약관</a>
                              <a class="nav-link" href="https://pf.kakao.com/_cbxcnG">카카오톡</a>
