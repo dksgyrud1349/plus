@@ -100,8 +100,26 @@ img{
 												${dto.eContent}
 											</td>
 										</tr>
+										<tr class="text-center">
+											<td colspan="2">
+												<div class="row">
+													<div class="col">
+														클래스번호
+													</div>
+													<div class="col">
+														클래스명
+													</div>
+													<div class="col">
+														플러스
+													</div>
+													<div class="col">
+														가격
+													</div>
+												</div>
+											</td>
+										</tr>
 										<c:forEach var="vo" items="${list}" varStatus="status">
-											<tr style="border-bottom: none;" class="text-center">
+											<tr class="text-center">
 												<td colspan="2">
 													
 													<div class="row">
@@ -113,6 +131,9 @@ img{
 														</div>
 														<div class="col">
 															${vo.nickName}님
+														</div>
+														<div class="col">
+															${vo.price}원
 														</div>
 													</div>
 												</td>

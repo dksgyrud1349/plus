@@ -277,7 +277,7 @@
                	 	<div class='col text-center'>클래스명</div>
                	 	<div class='col text-center'>아이디</div>
                	 	<div class='col text-center'>닉네임</div>
-               	 	
+               	 	<div class='col text-center'>가격</div>
                	 	
                	</div>
                 <div class="class-search-list">
@@ -398,12 +398,14 @@ $(function(){
 	    		let className = item.className;
 	    		let nickName = item.nickName;
 	    		let userId = item.userId;
+	    		let price = item.price;
 	    		
 	    		out += "<div class='row mb-2 p-2 border-bottom'>";
 	    		out += "  <div class='col text-center'>"+classNum+"</div>"
 	    		out += "  <div class='col search-className' data-classNum='"+classNum+"'>"+className+"</div>";
 	    		out += "  <div class='col text-center'>"+userId+"</div>"
 	    		out += "  <div class='col text-center'>"+nickName+"</div>"
+	    		out += "  <div class='col text-center' data-classprice='"+price+"'>"+price+"</div>"
 	    		out += "</div>"; 
 	    	}
 	    	
@@ -419,10 +421,11 @@ $(function(){
 		let classNum = $(this).attr("data-classNum");
 		let className = $(this).text().trim();
 		let eventNum = ${dto.eventNum};
+		let price = $(this).attr("data-classprice");
 		
 		let query = "";
 		let url = "";
-	    query = "eventNum="+eventNum+"&classNum="+classNum;
+	    query = "eventNum="+eventNum+"&classNum="+classNum+"&price="+price;
         url = "${pageContext.request.contextPath}/admin/eventManage/${dto.eventNum}/classInsert";
 		
 		
@@ -468,10 +471,12 @@ function printClass() {
         for (let item of data.list) {
             let classNum = item.classNum;
             let className = item.className;
+            let price = item.price;
 
             out += "<div class='row mb-2 p-2 border-bottom'>";
             out += "  <div class='col text-center'>" + classNum + "</div>";
             out += "  <div class='col search-className' data-classNum='" + classNum + "'>" + className + "</div>";
+            out += "  <div class='col text-center'>" + price + "</div>";
             out += "  <div class='col'><span class='btn btn-sm btn-danger btn-classDelete' data-classNum='" + classNum + "'>삭제</span></div>";
             out += "</div>";
         }

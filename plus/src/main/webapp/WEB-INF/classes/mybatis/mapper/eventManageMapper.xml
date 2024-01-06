@@ -177,7 +177,7 @@
 	</sql>
 	
 	<select id="searchClass" parameterType="map" resultType="com.fa.plus.admin.domain.EventManage">
-		SELECT l.classNum, className, nickName, m1.userId
+		SELECT l.classNum, className, nickName, m1.userId, price
 		FROM lesson l
 		JOIN member1 m1 ON m1.memberIdx = l.memberIdx
 		JOIN plus p ON p.userId = m1.userId
@@ -192,7 +192,7 @@
 	
 	<!-- 이벤트에 등록된 클래스 리스트 -->
 	<select id="eventClassList" parameterType="map" resultType="com.fa.plus.admin.domain.EventManage">
-		SELECT ec.eventNum, subject, ec.classNum, className, nickName
+		SELECT ec.eventNum, subject, ec.classNum, className, nickName, price
 		FROM eventClass ec
 		JOIN lesson l ON ec.classNum = l.classNum
 		JOIN event e ON ec.eventNum = e.eventNum
