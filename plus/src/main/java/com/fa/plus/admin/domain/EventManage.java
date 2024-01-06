@@ -24,7 +24,7 @@ public class EventManage {
 	private String eventImg;
 	
 	private int price; // 클래스 가격
-	
+	private int exprice; // 이전가격
 	private MultipartFile selectFile;
 	
 	
@@ -40,6 +40,12 @@ public class EventManage {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public int getExprice() {
+		return exprice;
+	}
+	public void setExprice(int exprice) {
+		this.exprice = exprice;
 	}
 	public long getEventNum() {
 		return eventNum;

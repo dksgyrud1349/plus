@@ -190,7 +190,13 @@ public class EventManageServiceImpl implements EventManageService {
 	@Override
 	public void deleteEventClass(long classNum) throws Exception {
 		try {
+			EventManage dto = mapper.findByClass(classNum);
+			dto.setPrice(dto.getExprice());
+			mapper.updateClassPrice(dto);
+
 			mapper.deleteEventClass(classNum);
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -200,6 +206,7 @@ public class EventManageServiceImpl implements EventManageService {
 	@Override
 	public void insertEventClass(EventManage dto) throws Exception {
 		try {
+			dto.setExprice(dto.getPrice());
 			mapper.insertEventClass(dto);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -223,5 +230,6 @@ public class EventManageServiceImpl implements EventManageService {
 		} catch (Exception e) {
 		}
 	}
+
 
 }

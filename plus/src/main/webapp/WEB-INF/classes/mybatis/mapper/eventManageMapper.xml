@@ -150,8 +150,8 @@
 	
 	<!-- 이벤트 클래스 추가 -->
 	<insert id="insertEventClass" parameterType="com.fa.plus.admin.domain.EventManage">
-		INSERT INTO eventClass (eventNum, classNum)
-			VALUES (#{eventNum}, #{classNum})
+		INSERT INTO eventClass (eventNum, classNum, exprice)
+			VALUES (#{eventNum}, #{classNum}, #{exprice})
 	</insert>
 	
 	<delete id="deleteEventClass" parameterType="Long">
@@ -212,4 +212,10 @@
 	<update id="updateClassPrice" parameterType="com.fa.plus.admin.domain.EventManage">
 		UPDATE lesson SET price = #{price} WHERE classNum = #{classNum}
 	</update>
+	
+	<select id="findByClass" parameterType="Long" resultType="com.fa.plus.admin.domain.EventManage">
+		SELECT classNum, exprice
+		FROM eventClass ec
+		WHERE classNum = #{classNum}
+	</select>
 </mapper>

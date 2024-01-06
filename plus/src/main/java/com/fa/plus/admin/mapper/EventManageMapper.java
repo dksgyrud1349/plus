@@ -30,4 +30,5 @@ public interface EventManageMapper {
 	public int classDataCount(Map<String, Object> map);
 	
 	public void updateClassPrice(EventManage dto) throws SQLException;
+	public EventManage findByClass(long classNum);
 }
