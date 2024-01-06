@@ -104,6 +104,12 @@
 
         return true;
     }
+    
+    
+    function btnDisabled()  {
+    	  const target = document.getElementById('target_btn');
+    	  target.disabled = true;
+    	}
 </script>
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
@@ -172,14 +178,16 @@
 											<td>할인금액</td>
 											<td> 
 												<p> <input type="text" name="discountMoney" class="form-control" value="${dto.discountMoney}"> </p>
-												<p class="help-block">할인금액을 입력해주세요.</p>
+												<p class="help-block">할인금액을 입력해주세요.
+													<input type='button' value='할인금액으로 입력하기' onclick='btnDisabled()' style="float:right;">
+												</p>
 											</td>
 										</tr>
 										
 										<tr>
 											<td>할인율</td>
 											<td> 
-												<p> <input type="text" name="discountPercent" class="form-control" value="${dto.discountPercent}"> </p>
+												<p> <input type="text" name="discountPercent" class="form-control" value="${dto.discountPercent}" id='target_btn'> </p>
 												<p class="help-block">할인율을 입력해주세요.</p>
 											</td>
 										</tr>
