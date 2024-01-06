@@ -33,6 +33,27 @@ public class Lesson {
 	private int lessonLikeCount;  // 좋아요 개수
 	private boolean userLessonLiked;
 	
+	// 리뷰
+	private double reviewScore;
+	private int count;
+	
+	
+	public double getReviewScore() {
+		return reviewScore;
+	}
+
+	public void setReviewScore(double reviewScore) {
+		this.reviewScore = reviewScore;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	public boolean isUserLessonLiked() {
 		return userLessonLiked;
 	}
