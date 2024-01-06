@@ -192,7 +192,7 @@
 	
 	<!-- 이벤트에 등록된 클래스 리스트 -->
 	<select id="eventClassList" parameterType="map" resultType="com.fa.plus.admin.domain.EventManage">
-		SELECT ec.eventNum, subject, ec.classNum, className, nickName, price
+		SELECT ec.eventNum, subject, ec.classNum, className, nickName, price, discountPercent, discountMoney
 		FROM eventClass ec
 		JOIN lesson l ON ec.classNum = l.classNum
 		JOIN event e ON ec.eventNum = e.eventNum

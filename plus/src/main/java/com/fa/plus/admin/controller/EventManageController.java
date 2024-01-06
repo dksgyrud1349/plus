@@ -206,6 +206,7 @@ public class EventManageController {
 
 		try {
 			service.updateEvent(dto, pathname);
+			
 		} catch (Exception e) {
 		}
 		
@@ -248,7 +249,6 @@ public class EventManageController {
 		try {
 			service.insertEventClass(dto);
 			service.updateClassPrice(dto);
-			
 		} catch (Exception e) {
 			state = "false";
 		}

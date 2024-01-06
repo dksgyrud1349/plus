@@ -217,7 +217,7 @@
 									  		<tr>
 									  			<td>클래스 등록</td>
 									  			<td>
-									  				<a href="javascript:dialogSearch();" class="btn btn-light btn-sm searchclass" onclick="">검색</a>
+									  				<a class="btn btn-light btn-sm searchclass" onclick="">검색</a>
 									  				<div class="class-name-list"></div>
 									  			</td>
 									  		</tr>
@@ -422,8 +422,17 @@ $(function(){
 	    let className = $(this).text().trim();
 	    let eventNum = "${dto.eventNum}";
 	    let price = $(this).attr("data-classprice");
+	    let discountMoney = "${dto.discountMoney}";
+	    let discountPercent = "${dto.discountPercent}";
 	    
-	    let query = "eventNum=" + eventNum + "&classNum=" + classNum + "&price=" + price;
+	    let query = "";
+	    
+	    if(discountMoney > 0){
+	    	query = "eventNum=" + eventNum + "&classNum=" + classNum + "&price=" + price + "&discountMoney="+discountMoney;
+	    } else {
+	    	query = "eventNum=" + eventNum + "&classNum=" + classNum + "&price=" + price + "&discountPercent="+discountPercent;
+	    }
+	    
 	    let url = "${pageContext.request.contextPath}/admin/eventManage/${dto.eventNum}/classInsert";
 	    
 	    const fn = function(data){
