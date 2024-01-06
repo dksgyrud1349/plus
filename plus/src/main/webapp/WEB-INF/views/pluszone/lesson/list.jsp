@@ -140,13 +140,13 @@
 									<tr style="text-align: center">
 										<th width="60">번호</th>
 										<th>클래스</th>
-										<th width="150">시작일</th>
-										<th width="150">종료일</th>
-										<th width="150">등록일</th>
-										<th width="100">가격</th>
-										<th width="150">메인카테고리</th>
+										<th width="120">시작일</th>
+										<th width="120">종료일</th>
+										<th width="120">등록일</th>
+										<th width="80">가격</th>
+										<th width="100">메인카테고리</th>
 										<th width="100">서브카테고리</th>
-										<th width="100">해시태그</th>
+										<th width="80">해시태그</th>
 										<th width="90">승인상태</th>
 									</tr>
 								</thead>
