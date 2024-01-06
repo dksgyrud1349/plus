@@ -247,7 +247,7 @@ public class EventManageController {
 		String state = "true";
 		try {
 			service.insertEventClass(dto);
-			//service.updateClassPrice(dto);
+			service.updateClassPrice(dto);
 			
 		} catch (Exception e) {
 			state = "false";

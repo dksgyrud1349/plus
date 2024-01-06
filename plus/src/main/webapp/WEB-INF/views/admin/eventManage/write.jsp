@@ -382,60 +382,57 @@ $(function(){
 	
 	// 상품검색 대화상자-검색 버튼
 	$(".btn-classSearch").click(function(){
-    	$(".class-search-list").html("");
-    	
-		let schType = $(".search-form select[name=schType]").val();
+	    $(".class-search-list").html("");
+	    
+	    let schType = $(".search-form select[name=schType]").val();
 	    let kwd = $(".search-form input[name=kwd]").val();
 	    let eventNum = "${dto.eventNum}";
-		
-	    let query = "&schType="+schType+"&kwd="+encodeURIComponent(kwd);
+	    
+	    let query = "&schType=" + schType + "&kwd=" + encodeURIComponent(kwd);
 	    let url = "${pageContext.request.contextPath}/admin/eventManage/${dto.eventNum}/search";
 
 	    const fn = function(data) {
-	    	let out = "";
-	    	for(let item of data.classList) {
-	    		let classNum = item.classNum;
-	    		let className = item.className;
-	    		let nickName = item.nickName;
-	    		let userId = item.userId;
-	    		let price = item.price;
-	    		
-	    		out += "<div class='row mb-2 p-2 border-bottom'>";
-	    		out += "  <div class='col text-center'>"+classNum+"</div>"
-	    		out += "  <div class='col search-className' data-classNum='"+classNum+"'>"+className+"</div>";
-	    		out += "  <div class='col text-center'>"+userId+"</div>"
-	    		out += "  <div class='col text-center'>"+nickName+"</div>"
-	    		out += "  <div class='col text-center' data-classprice='"+price+"'>"+price+"</div>"
-	    		out += "</div>"; 
-	    	}
-	    	
-	    	$(".class-search-list").html(out);
-		};
-		
-		ajaxFun(url, "get", query, "json", fn);
+	        let out = "";
+	        for(let item of data.classList) {
+	            let classNum = item.classNum;
+	            let className = item.className;
+	            let nickName = item.nickName;
+	            let userId = item.userId;
+	            let price = item.price;
+	            
+	            out += "<div class='row mb-2 p-2 border-bottom'>";
+	            out += "  <div class='col text-center'>"+classNum+"</div>"
+	            out += "  <div class='col search-className' data-classNum='"+classNum+"' data-classprice='"+price+"'>"+className+"</div>";
+	            out += "  <div class='col text-center'>"+userId+"</div>"
+	            out += "  <div class='col text-center'>"+nickName+"</div>"
+	            out += "  <div class='col text-center'>"+price+"</div>"
+	            out += "</div>"; 
+	        }
+	        
+	        $(".class-search-list").html(out);
+	    };
+	    
+	    ajaxFun(url, "get", query, "json", fn);
 	    
 	});
-	
+
 	// 상품검색 대화상자-검색된 상품을 클릭한 경우
 	$("body").on("click", '.search-className', function(){
-		let classNum = $(this).attr("data-classNum");
-		let className = $(this).text().trim();
-		let eventNum = ${dto.eventNum};
-		let price = $(this).attr("data-classprice");
-		
-		let query = "";
-		let url = "";
-	    query = "eventNum="+eventNum+"&classNum="+classNum+"&price="+price;
-        url = "${pageContext.request.contextPath}/admin/eventManage/${dto.eventNum}/classInsert";
-		
-		
-		const fn = function(data){
-			$("#classSearchModal").modal("hide");
-			printClass();
-		};
-		
-		ajaxFun(url, "post", query, "json", fn);
-		
+	    let classNum = $(this).attr("data-classNum");
+	    let className = $(this).text().trim();
+	    let eventNum = "${dto.eventNum}";
+	    let price = $(this).attr("data-classprice");
+	    
+	    let query = "eventNum=" + eventNum + "&classNum=" + classNum + "&price=" + price;
+	    let url = "${pageContext.request.contextPath}/admin/eventManage/${dto.eventNum}/classInsert";
+	    
+	    const fn = function(data){
+	        $("#classSearchModal").modal("hide");
+	        printClass();
+	    };
+	    
+	    ajaxFun(url, "post", query, "json", fn);
+	    
 	});
 	
 	// 등록 상품 삭제 버튼

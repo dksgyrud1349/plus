@@ -216,7 +216,7 @@ public class EventManageServiceImpl implements EventManageService {
 			} else {
 				// 할인율 계산
 				double per = dto.getDiscountPercent();
-				price = (int)(dto.getPrice() * (100-(per * 0.01)));
+				price = (int)(price * 0.01 * (100-per));
 				dto.setPrice(price);
 			}
 			mapper.updateClassPrice(dto);
