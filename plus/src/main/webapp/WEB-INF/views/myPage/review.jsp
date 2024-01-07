@@ -3,28 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-.body-container {
-	max-width: 1000px;
-}
-
-.nav-tabs .nav-link {
-	min-width: 170px;
-	background: #f3f5f7;
-	border-radius: 0;
-	border-right: 1px solid #dbdddf;
-	color: #333;
-	font-weight: 600;
-}
-
-.nav-tabs .nav-link.active {
-	background: #3d3d4f;
-	color: #fff;
-}
-
-.tab-pane {
-	min-height: 300px;
-}
-
 .score-star {
 	font-size: 0;
 	letter-spacing: -4px;
@@ -66,26 +44,6 @@
 </style>
 
 <script type="text/javascript">
-$(function(){
-	$("button[role='tab']").on('click', function(){
-		const tab = $(this).attr("aria-controls");
-		
-		if(tab === "1") {
-			listReview(1);
-		} else if(tab === "2"){
-			listQuestion(1);
-		}
-	});
-	
-	let mode = "${mode}";
-	if(mode === "qna") {
-		listQuestion(1);
-	} else {
-		listReview(1);
-	}
-	
-});
-
 function login() {
 	location.href = '${pageContext.request.contextPath}/member/login';
 }
@@ -129,39 +87,12 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 			<div class="body-container">
 				<div class="body-main">
 
-					<ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
-						<li class="nav-item" role="presentation">
-							<button class="nav-link ${mode=='review'?'active':'' }" id="tab-1" data-bs-toggle="tab" data-bs-target="#tab-pane-1"
-								type="button" role="tab" aria-controls="1" aria-selected="false"> 클래스 리뷰
-							</button>
-						</li>
-						<li class="nav-item" role="presentation">
-							<button class="nav-link ${mode=='qna'?'active':'' }" id="tab-2" data-bs-toggle="tab" data-bs-target="#tab-pane-2"
-								type="button" role="tab" aria-controls="2" aria-selected="false"> 클래스 문의
-							</button>
-						</li>
-					</ul>
-
-					<div class="tab-content pt-2" id="myTabContent">
-						<div class="tab-pane fade ${mode=='review'?'active show':'' }"
-							id="tab-pane-1" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
-							<div class="mt-3 pt-3 border-bottom">
-								<p class="fs-4 fw-semibold">클래스 리뷰</p>
-							</div>
-
-							<div class="mt-2 list-review"></div>
+					<div class="pt-2" id="myTabContent">
+						<div class="mt-3 pt-3 border-bottom">
+							<p class="fs-4 fw-semibold">클래스 리뷰</p>
 						</div>
-
-						<div class="tab-pane fade ${mode=='qna'?'active show':'' }"
-							id="tab-pane-2" role="tabpanel" aria-labelledby="tab-2" tabindex="0">
-							<div class="mt-3 pt-3 border-bottom">
-								<p class="fs-4 fw-semibold">클래스 문의</p>
-							</div>
-
-							<div class="mt-1 p-2 list-question"></div>
-						</div>
+						<div class="mt-2 list-review"></div>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -169,9 +100,13 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 </main>
 
 <script type="text/javascript">
+
+$(function(){
+	listReview(1);
+});
 // review -------------
 function listReview(page) {
-	let url = '${pageContext.request.contextPath}/review/list2';
+	let url = '${pageContext.request.contextPath}/review/mylist';
 	let query = 'pageNo='+page;
 	
 	const fn = function(data) {
@@ -201,12 +136,11 @@ function printReview(data) {
 		let className = item.className;
 		let plusName = item.plusName;
 		let orderNum = item.orderNum;
-		let startDate = item.startDate;
-		let endDate = item.endDate;
+		let classDate = item.classDate;
 		
 		out += '<div class="mt-3 border-bottom">';
 		out += '  <div class="p-2 fw-semibold">';
-		out +=        className + '('+ startDate+'/'+endDate+')';
+		out +=        className + '('+ classDate +')';
 		out += '  </div>';
 		out += '  <div class="row p-2">';
 		out += '    <div class="col-auto pt-0 ps-2 pe-1 score-star">';
@@ -250,100 +184,6 @@ function printReview(data) {
 
 $(function(){
 	$('.list-review').on('click', '.deleteReview', function(){
-		let num = $(this).attr('data-num');
-		alert(num);
-	});
-});
-
-// question ------------- inquiry로 변경해야 함...
-function listQuestion(page) {
-	let url = '${pageContext.request.contextPath}/qna/list2';
-	let query = 'pageNo='+page;
-	
-	const fn = function(data) {
-		printQuestion(data);
-	};
-	ajaxFun(url, 'get', query, 'json', fn);	
-}
-
-function printQuestion(data) {
-	let dataCount = data.dataCount;
-	let pageNo = data.pageNo;
-	let total_page = data.total_page;
-	let size = data.size;
-	let paging = data.paging;
-	
-	let out = '';
-	for(let item of data.list) {
-		let num = item.num;
-		let userName = item.userName;
-		let question = item.question;
-		let question_date = item.question_date;
-		let answer = item.answer;
-		let answer_date = item.answer_date;
-		let answerState = answer_date ? '<span class="text-primary">답변완료</span>' : '<span class="text-secondary">답변대기</span>';
-		let listFilename = item.listFilename;
-		let productName = item.productName;
-
-		out += '<div class="mt-1 border-bottom">';
-		out += '  <div class="mt-2 p-2 fw-semibold">' + productName + '</div>';
-		out += '  <div class="p-2">' + question + '</div>';
-
-		if(listFilename && listFilename.length > 0) {
-			out += '<div class="row gx-1 mt-2 mb-1 p-1">';
-				for(let f of listFilename) {
-					out += '<div class="col-md-auto md-img">';
-					out += '  <img class="border rounded" src="${pageContext.request.contextPath}/uploads/qna/'+f+'">';
-					out += '</div>';
-				}
-			out += '</div>';
-		}
-		out += '  <div class="row p-2">';
-		out += '     <div class="col-auto pt-2 pe-0">' + answerState + '</div>';
-		// out += '     <div class="col-auto pt-2 px-0">&nbsp;|&nbsp;'+userName+'</div>';
-		out += '     <div class="col-auto pt-2 px-0">&nbsp;|&nbsp;<span>'+question_date+'</span>';
-		out += '        |<span class="deleteQuestion" data-num="' + num + '">삭제</span>';
-		out += '      </div>';
-		if(answer) {
-			out += '  <div class="col pt-2 text-end"><button class="btn btnAnswerView"> <i class="bi bi-chevron-down"></i> </button></div>';
-		}
-		out += '  </div>';
-		if(answer) {
-			out += '  <div class="p-3 pt-0 answer-content" style="display: none;">';
-			out += '    <div class="bg-light">';
-			out += '      <div class="p-2 pb-0">';
-			out += '        <label class="text-bg-primary px-2"> 관리자 </label> <label>' + answer_date + '</label>';
-			out += '      </div>';
-			out += '      <div class="p-2 pt-1">' + answer + '</div>';
-			out += '    </div>';
-			out += '  </div>';
-		}
-		out += '</div>';
-	}
-	
-	if(dataCount > 0) {
-		out += '<div class="page-navigation">' + paging + '</div>';
-	}
-
-	$('.list-question').html(out);
-}
-
-$(function(){
-	$('.list-question').on('click', '.btnAnswerView', function(){
-		const $btn = $(this);
-		const $EL = $(this).closest('.row').next('.answer-content');
-		if($EL.is(':visible')) {
-			$btn.html(' <i class="bi bi-chevron-down"></i> ');
-			$EL.hide(100);
-		} else {
-			$btn.html(' <i class="bi bi-chevron-up"></i> ');
-			$EL.show(100);
-		}
-	});
-});
-
-$(function(){
-	$('.list-question').on('click', '.deleteQuestion', function(){
 		let num = $(this).attr('data-num');
 		alert(num);
 	});

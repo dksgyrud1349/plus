@@ -8,7 +8,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fa.plus.domain.BookingList;
 import com.fa.plus.domain.SessionInfo;
@@ -75,6 +77,17 @@ public class MyPageController {
 		
 		return ".myPage.main";
 	}
+	
+	
+	// 마이페이지-리뷰
+		@GetMapping("review")
+		public String review(
+				@RequestParam(defaultValue = "review") String mode,
+				Model model) throws Exception {
+			
+			model.addAttribute("mode", mode);
+			return ".myPage.review";
+		}
 	
 	
 	
