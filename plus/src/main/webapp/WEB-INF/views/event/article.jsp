@@ -20,6 +20,12 @@
 .table img {
 	max-width: 650px;
 }
+
+.overflowText {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 </style>
 
 <script type="text/javascript">
@@ -107,18 +113,16 @@ $(function(){
 						</tr>
 						
 						<tr>
-							<td>
-								<c:forEach var="clist" items="${classList}">
-									<div class="card border-light" style="width:18rem;">
-										<img alt="" src="${pageContext.request.contextPath}/resources/images/Image-folder.jpg">
-									  <!-- <img src="${pageContext.request.contextPath}/uploads/lesson/${clist.firstPhoto}"/> -->
-									  <div class="card-body">
-									    <h5 class="card-title">${clist.className}</h5>
-									    <p class="card-text text-end">${clist.price}</p>
-									    <a href="${pageContext.request.contextPath}/lesson/detail/${clist.classNum}" class="btn btn-primary text-end">상세보기</a>
-									  </div>
-									</div>
-								</c:forEach>
+							<td class="row">
+							  <c:forEach var="clist" items="${classList}">
+							    <div class="card border-light col me-3">
+							      <img alt="" src="${pageContext.request.contextPath}/resources/images/Image-folder.jpg">
+							      <!-- <img src="${pageContext.request.contextPath}/uploads/lesson/${clist.firstPhoto}"/> -->
+							      <h5 class="card-header overflowText">${clist.className}</h5>
+							      <p class="card-body text-end overflowText">${clist.price}</p>
+							      <a href="${pageContext.request.contextPath}/lesson/detail/${clist.classNum}" class="btn btn-primary text-center">상세보기</a>
+							    </div>
+							  </c:forEach>
 							</td>
 						</tr>
 						<tr>
