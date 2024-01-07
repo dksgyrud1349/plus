@@ -43,7 +43,7 @@
 			SELECT reviewNum, LISTAGG(filename, ',') WITHIN GROUP(ORDER BY photoNum) filename
             FROM reviewPhoto
             GROUP BY reviewNum	
-		) f ON r.reviewNum = f.reviewNum;
+		) f ON r.reviewNum = f.reviewNum
 		WHERE l.classNum = #{classNum} AND showReview = 1
 		<choose>
 			<when test="sortNo==2">

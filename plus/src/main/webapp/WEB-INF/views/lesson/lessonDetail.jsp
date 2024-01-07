@@ -683,22 +683,22 @@ function sendOk(mode) {
 		
 		<div class="mt-2 list-review"></div>
 	</div>
+	</div>
 	
 	
 	
 	<script>
 	// 리뷰 -----
 	$(function(){
-		$('.reviewSortNo').change(function(){
 			listReview(1);
-		});
+		
 	});
 
 	function listReview(page) {
-		let productNum = '${dto.classNum}';
+		let classNum = '${dto.classNum}';
 		let sortNo = $('.reviewSortNo').val();
 		let url = '${pageContext.request.contextPath}/review/list';
-		let query = 'productNum='+productNum+'&pageNo='+page+'&sortNo='+sortNo;
+		let query = 'classNum='+classNum+'&pageNo='+page;
 		
 		const fn = function(data) {
 			printReview(data);
@@ -719,8 +719,6 @@ function sendOk(mode) {
 			$('.reviewSort-area').hide();
 		}
 		
-		let summary = data.summary;
-		printSummary(summary);
 		
 		let out = '';
 		for(let item of data.list) {
@@ -739,7 +737,7 @@ function sendOk(mode) {
 			out += '     <div class="col-auto fs-2"><i class="bi bi-person-circle text-muted icon"></i></div>';
 			out += '     <div class="col pt-3 ps-0 fw-semibold">'+userName+'</div>';
 			out += '     <div class="col pt-3 text-end"><span>'+reviewDate+'</span>';
-			out += '       |<span class="notifyReview" data-num="' + reviewNum + '">신고</span></div>';
+			out += '  </div>';
 			out += '  </div>';
 			out += '  <div class="row p-2">';
 			out += '    <div class="col-auto pt-0 ps-2 pe-1 score-star">';
@@ -761,7 +759,7 @@ function sendOk(mode) {
 				out += '</div>';
 			}
 			
-			if(answer) {
+			if(replyContent) {
 				out += '  <div class="p-3 pt-0">';
 				out += '    <div class="bg-light">';
 				out += '      <div class="p-3 pb-0">';
@@ -779,11 +777,4 @@ function sendOk(mode) {
 		
 		$('.list-review').html(out);
 	}
-	
-	$(function(){
-		$('body').on('click', '.notifyReview', function(){
-			let num = $(this).attr('data-num');
-			alert(num);
-		});
-	});
 	</script>
