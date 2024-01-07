@@ -54,7 +54,8 @@
 	
 	<select id="allLessonList" parameterType="map" resultType="com.fa.plus.domain.Lesson">
 		SELECT le.classNum, className, price, firstPhoto, le.addr1, nickName, le.subNum, 
-			TO_CHAR(startDate, 'YYYY-MM-DD') startDate, TO_CHAR(endDate, 'YYYY-MM-DD') endDate
+			TO_CHAR(startDate, 'YYYY-MM-DD') startDate, TO_CHAR(endDate, 'YYYY-MM-DD') endDate,
+			NVL(reviewCount, 0) reviewCount, NVL(reviewScore, 0) reviewScore
 		FROM lesson le
 		JOIN member m ON m.memberIdx = le.memberIdx
 		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
@@ -62,6 +63,14 @@
 		JOIN subCategory sc ON le.subNum = sc.subNum
 		JOIN mainCategory mc ON sc.mainNum = mc.mainNum
 		JOIN approval ap ON le.classNum = ap.classNum
+		LEFT OUTER JOIN ( 
+                SELECT ROUND(AVG(reviewScore), 1) reviewScore, COUNT(*) reviewCount, classnum
+                FROM review r
+                join orders o on r.ordernum = o.ordernum
+                join lessondetail cd on cd.detailNum = o.detailNum
+                WHERE showReview = 1
+                group by classnum
+            ) rc ON rc.classNum = le.classNum
 		<where>
 			le.showClass = 0 
 			AND ap.approvalCode = 1

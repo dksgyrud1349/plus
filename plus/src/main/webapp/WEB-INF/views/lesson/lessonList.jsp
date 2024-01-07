@@ -250,7 +250,7 @@ $(function(){
 			            <div class="zoom">
 			                <img src="${pageContext.request.contextPath}/uploads/lesson/${dto.firstPhoto}" class="card-img-top" width="390px" height="260px;";>
 			                <div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">
-			                    <i class="bi bi-star"></i> 5.0 (리뷰 개수)
+			                    <i class="bi bi-star"></i> ${dto.reviewScore} (${dto.reviewCount})
 			                </div>
 			            </div>
 			            <div class="card-body" style="height: 15px;">
