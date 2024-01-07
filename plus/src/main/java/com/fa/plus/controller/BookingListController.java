@@ -102,7 +102,7 @@ public class BookingListController {
 		model.put("pay", dto.getPay());
 		model.put("tel", dto.getTel());
 		model.put("email", dto.getEmail());
-		
+		model.put("state", dto.getState());
 		return model;
 	}
 }

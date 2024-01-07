@@ -128,7 +128,9 @@
       <div class="modal-body">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      
+      	<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
       </div>
       <div class="modal-backdrop"></div>
     </div>
@@ -180,6 +182,7 @@ $(function(){
 			var pay = data.pay;
 			var tel = data.tel;
 			var email = data.email;
+			var state = data.state;
 			let htmlText;
 			
 			htmlText = '<div class="modal-body">';
@@ -190,8 +193,14 @@ $(function(){
 			htmlText += '	<div>결제 금액: '+pay+'</div>';
 			htmlText += '	<div>전화번호: '+tel+'</div>';
 			htmlText += '	<div>이메일: '+email+'</div>';
+			
+			// 조건부로 버튼 추가
+			if (state === 1) {
+			    htmlText += '    <button type="button" class="btn btn-outline-dark" style="float:right;">리뷰쓰기</button>';
+			}
 			htmlText += '</div>';
 			
+	      
 			$("#orderDetailModal .modal-body").html(htmlText);
 			$("#orderDetailModal").modal("show");
 			
