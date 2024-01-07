@@ -128,10 +128,12 @@
             LEFT OUTER JOIN lessonDetail ld ON ld.classNum = l.classNum
             LEFT OUTER JOIN orders o ON o.detailNum = ld.detailNum
             LEFT OUTER JOIN ( 
-                SELECT orderNum, ROUND(AVG(reviewScore), 1) reviewScore, COUNT(*) reviewCount
+                SELECT ROUND(AVG(reviewScore), 1) reviewScore, COUNT(*) reviewCount, classnum
                 FROM review r
-                WHERE showReview = 1
-                GROUP BY orderNum
+                join orders o on r.ordernum = o.ordernum
+                join lessondetail cd on cd.detailNum = o.detailNum
+                WHERE showReview = 1 and classNum = #{classNum}
+                group by classnum
             ) rc ON rc.orderNum = o.orderNum
             WHERE l.showClass = 0 AND l.classNum = #{classNum}
             ORDER BY l.classNum
