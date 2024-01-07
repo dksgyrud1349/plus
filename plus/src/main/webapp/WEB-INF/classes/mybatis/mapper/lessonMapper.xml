@@ -130,7 +130,7 @@
             LEFT OUTER JOIN ( 
                 SELECT orderNum, ROUND(AVG(reviewScore), 1) reviewScore, COUNT(*) reviewCount
                 FROM review r
-                WHERE showReview = 0
+                WHERE showReview = 1
                 GROUP BY orderNum
             ) rc ON rc.orderNum = o.orderNum
             WHERE l.showClass = 0 AND l.classNum = #{classNum}
