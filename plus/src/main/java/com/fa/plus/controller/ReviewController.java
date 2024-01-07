@@ -56,7 +56,7 @@ public class ReviewController {
 	// AJAX - JSON
 	@GetMapping("list")
 	public Map<String, Object> list(
-			@RequestParam long orderNum,
+			@RequestParam long classNum,
 			@RequestParam(defaultValue = "0") int sortNo,
 			@RequestParam(value = "pageNo", defaultValue = "1") int current_page,
 			HttpSession session) throws Exception {
@@ -69,7 +69,7 @@ public class ReviewController {
 			int size = 5;
 			int dataCount = 0;
 			
-			map.put("orderNum", orderNum);
+			map.put("classNum", classNum);
 			Summary summary = service.findByReviewSummary(map);
 			
 			if(summary == null) {
