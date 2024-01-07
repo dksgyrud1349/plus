@@ -72,6 +72,35 @@
 	position: absolute;
 	top: 200px;
 }
+
+
+
+
+
+
+.review-form textarea { width: 100%; height: 75px; resize: none; }
+.review-form .star { font-size: 0; letter-spacing: -4px; }
+.review-form .star a {
+	font-size: 22px; letter-spacing: 1px; display: inline-block;
+	 color: #ccc; text-decoration: none;
+}
+.review-form .star a:first-child { margin-left: 0; }
+.star a.on { color: #FFBB00; }
+
+.review-form .img-grid {
+	display: grid;
+	grid-template-columns:repeat(auto-fill, 54px);
+	grid-gap: 2px;
+}
+
+.review-form .img-grid .item {
+	object-fit:cover;
+	width: 50px; height: 50px; border-radius: 10px;
+	border: 1px solid #c2c2c2;
+	cursor: pointer;
+}
+
+
 </style>
 <form>
 <div class="bookingTotal">
@@ -193,14 +222,13 @@ $(function(){
 			htmlText += '	<div>결제 금액: '+pay+'</div>';
 			htmlText += '	<div>전화번호: '+tel+'</div>';
 			htmlText += '	<div>이메일: '+email+'</div>';
+			htmlText += '</div>';
 			
 			// 조건부로 버튼 추가
 			if (state === 1) {
-			    htmlText += '    <button type="button" class="btn btn-outline-dark" style="float:right;">리뷰쓰기</button>';
+			    htmlText += '    <button type="button" class="btn btn-dark reviewbtn" style="float:right;" data-bs-toggle="modal" data-bs-target="#exampleModal">리뷰쓰기</button>';
 			}
-			htmlText += '</div>';
 			
-	      
 			$("#orderDetailModal .modal-body").html(htmlText);
 			$("#orderDetailModal").modal("show");
 			
@@ -216,4 +244,155 @@ $(function(){
 		});
 });
 
+</script>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">리뷰</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="review-form p-3 mt-2 ">
+			<form name="reviewForm">
+				<div class="p-1">
+					<p class="star">
+						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
+						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
+						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
+						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
+						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
+						<input type="hidden" name="score" value="5">
+						<input type="hidden" name="classNum" value="${dto.classNum}">
+					</p>
+				</div>
+				
+				<div class="p-1">
+					<input type="text" name="reviewSubject" class="form-control" placeholder="제목을 입력해주세요.">
+				</div>
+				
+				<div class="p-1">
+					<textarea name="review" class="form-control"></textarea>
+				</div>
+				<div class="p-1">
+					<div class="img-grid">
+						<img class="item img-add" src="${pageContext.request.contextPath}/resources/images/add_photo.png">
+						<img class="item img-preview" style="display:none; width:40px; height:40px; border-radius:40px;">
+					</div>
+					<input type="file" name="selectFile" accept="image/*" multiple class="form-control" style="display: none;">
+				</div>
+				<div class="p-1 text-end">
+					<input type="hidden" name="num" value="${dto.orderNum}">
+				</div>
+			</form>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary btnReviewSend">등록하기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+const exampleModal = document.getElementById('exampleModal')
+if (exampleModal) {
+  exampleModal.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget
+    const recipient = button.getAttribute('data-bs-whatever')
+
+    const modalTitle = exampleModal.querySelector('.modal-title')
+    const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+    modalTitle.textContent = `리뷰를 작성해주세요! ${recipient}`
+    modalBodyInput.value = recipient
+  })
+}
+
+
+$(document).ready(function() {
+    $(".img-add").click(function() {
+      $("input[name='selectFile']").click();
+    });
+    $("input[name='selectFile']").change(function() {
+      var filenames = "";
+      for (var i = 0; i < this.files.length; i++) {
+        filenames += this.files[i].name + " ";
+      }
+      if (this.files && this.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          $(".img-preview").attr("src", e.target.result);
+          $(".img-preview").show();
+        };
+        reader.readAsDataURL(this.files[0]);
+      }
+    });
+  });
+
+// 별
+$(function(){
+	$(".review-form .star a").click(function(e){
+		let b = $(this).hasClass("on");
+		$(this).parent().children("a").removeClass("on");
+		$(this).addClass("on").prevAll("a").addClass("on");
+		
+		if( b ) {
+			$(this).removeClass("on");
+		}
+		
+		let s = $(this).closest(".review-form").find(".star .on").length;
+		$(this).closest(".review-form").find("input[name=score").val(s);
+		
+		// e.preventDefault(); // 화면 위로 이동 안되게
+		return false;
+	});
+});
+
+$(function(){
+	// 리뷰 등록 완료
+	$(".btnReviewSend").click(function(){
+		let $plist = $(this).closest(".payment-list");
+		
+		const f = this.closest("form");
+		let s;
+		
+		if(f.score.value === "0") {
+			alert("평점은 1점부터 가능합니다.")	;
+			return false;
+		}
+		
+		s = f.review.value.trim();
+		if( ! s ) {
+			alert("리뷰를 입력하세요.")	;
+			f.review.focus();
+			return false;
+		}
+		
+		if(f.selectFile.files.length > 1) {
+			alert("이미지는 최대 1개까지 가능합니다..")	;
+			return false;
+		}
+		
+		let url = "${pageContext.request.contextPath}/review/write";
+		// FormData : form 필드와 그 값을 나타내는 일련의 key/value 쌍을 쉽게 생성하는 방법을 제공 
+		// FormData는 Content-Type을 명시하지 않으면 multipart/form-data로 전송
+		let query = new FormData(f); 
+		
+		const fn = function(data) {
+			if(data.state === "true") {
+				$plist.find(".btnReviewWriteForm").remove();
+				$plist.find(".review-form").remove();
+			}
+		};
+		
+		ajaxFun(url, "post", query, "json", fn, true);
+	});
+});
 </script>
