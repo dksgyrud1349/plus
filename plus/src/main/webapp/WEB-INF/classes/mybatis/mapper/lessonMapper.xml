@@ -134,7 +134,7 @@
                 join lessondetail cd on cd.detailNum = o.detailNum
                 WHERE showReview = 1 and classNum = #{classNum}
                 group by classnum
-            ) rc ON rc.orderNum = o.orderNum
+            ) rc ON rc.classNum = l.classNum
             WHERE l.showClass = 0 AND l.classNum = #{classNum}
             ORDER BY l.classNum
         )

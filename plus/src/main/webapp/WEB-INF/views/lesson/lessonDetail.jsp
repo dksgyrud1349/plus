@@ -379,8 +379,27 @@ function sendOk(mode) {
 								<span style="color: red">${dto.startDate} ~
 									${dto.endDate}</span><br>
 								<!-- <span class="text-decoration-line-through">15,000원</span> -->
-								<span><fmt:formatNumber value="${dto.price}"
-										pattern="#,###원" /></span>
+								<span><fmt:formatNumber value="${dto.price}" pattern="#,###원" /></span>
+								
+								
+								<div class="row pt-1 pb-1 border-bottom">
+								<div class="col">
+									<label class="align-middle">리뷰수 <span class="fs-5 fw-semibold product-reviewCount">${dto.reviewCount}</span></label>
+									<label class="align-middle pt-0 ps-2 score-star product-star">
+										<c:forEach var="n" begin="1" end="5">
+											<c:set var="reviewScore" value="${dto.reviewScore + ((dto.reviewScore%1>=0.5) ? (1-dto.reviewScore%1)%1 : -(dto.reviewScore%1))}"/>
+											<span class="fs-6 item ${reviewScore>=n?'on':''}"><i class="bi bi-star-fill"></i></span>
+										</c:forEach>
+									</label>
+									<label class="align-middle "><span class="product-score ps-1">(${dto.reviewScore} / 5)</span></label>
+								</div>
+							</div>
+								
+								
+								
+								
+								
+								
 									<div>
 										<button type="button" class="btn singo" style="width: 60x;" onclick="location.href='${pageContext.request.contextPath}/declaration/article';">
 											<span style="font-size: medium; font-family: 'EASTARJET-Medium';">신고</span><i class="bi bi-exclamation-triangle-fill"></i>
@@ -635,3 +654,136 @@ function sendOk(mode) {
 		<a href="#" class="btn btn-light btn-xl">예약하러 가기</a>
 	</div>
 </section>
+
+
+	<div class="tab-content pt-2" id="myTabContent">
+		<div class="mt-3 pt-3 border-bottom">
+			<p class="fs-4 fw-semibold">상품 리뷰</p> 
+		</div>
+
+		<div class="row border-bottom">
+			<div class="col p-3 text-center">
+				<div class="fs-6 fw-semibold">상품만족도</div>
+				<div class="score-star review-score-star">
+					<c:forEach var="n" begin="1" end="5">
+						<c:set var="reviewScore" value="${dto.reviewScore + ((dto.reviewScore%1>=0.5) ? (1-dto.reviewScore%1)%1 : -(dto.reviewScore%1))}"/>
+						<span class="item fs-2 ${dto.reviewScore>=n?'on':''}"><i class="bi bi-star-fill"></i></span>
+					</c:forEach>
+				</div>
+				<div class="fs-2">
+					<label class="review-score">${dto.reviewScore} / 5</label> 
+				</div>
+			</div>
+			
+			<div class="col p-3 text-center">
+				<div class="fs-6 fw-semibold">리뷰수</div>
+				<div class="fs-2"><i class="bi bi-chat-right-text"></i></div>
+				<div class="fs-2 review-reviewCount">${dto.reviewCount}</div>
+			</div> 
+		
+		<div class="mt-2 list-review"></div>
+	</div>
+	
+	
+	
+	<script>
+	// 리뷰 -----
+	$(function(){
+		$('.reviewSortNo').change(function(){
+			listReview(1);
+		});
+	});
+
+	function listReview(page) {
+		let productNum = '${dto.classNum}';
+		let sortNo = $('.reviewSortNo').val();
+		let url = '${pageContext.request.contextPath}/review/list';
+		let query = 'productNum='+productNum+'&pageNo='+page+'&sortNo='+sortNo;
+		
+		const fn = function(data) {
+			printReview(data);
+		};
+		ajaxFun(url, 'get', query, 'json', fn);
+	}
+	 
+	function printReview(data) {
+		let dataCount = data.dataCount;
+		let pageNo = data.pageNo;
+		let total_page = data.total_page;
+		let size = data.size;
+		let paging = data.paging;
+		
+		if(dataCount > 0) {
+			$('.reviewSort-area').show();
+		} else {
+			$('.reviewSort-area').hide();
+		}
+		
+		let summary = data.summary;
+		printSummary(summary);
+		
+		let out = '';
+		for(let item of data.list) {
+			let reviewNum = item.reviewNum;
+			let userName = item.userName;
+			let reviewScore = item.reviewScore;
+			let reviewContent = item.reviewContent;
+			let reviewDate = item.reviewDate;
+			let replyContent = item.replyContent;
+			let replyDate = item.replyDate;
+			let fileName = item.fileName;
+			// let deletePermit = item.deletePermit;
+
+			out += '<div class="mt-3 border-bottom">';
+			out += '  <div class="row p-2">';
+			out += '     <div class="col-auto fs-2"><i class="bi bi-person-circle text-muted icon"></i></div>';
+			out += '     <div class="col pt-3 ps-0 fw-semibold">'+userName+'</div>';
+			out += '     <div class="col pt-3 text-end"><span>'+reviewDate+'</span>';
+			out += '       |<span class="notifyReview" data-num="' + reviewNum + '">신고</span></div>';
+			out += '  </div>';
+			out += '  <div class="row p-2">';
+			out += '    <div class="col-auto pt-0 ps-2 pe-1 score-star">';
+			for(let i=1; i<=5; i++) {
+				out += '  <span class="item fs-6 ' + (reviewScore>=i ? 'on' : '') + '"><i class="bi bi-star-fill"></i></span>';
+			}
+			out += '    </div>';
+			out += '    <div class="col-auto ps-0 fs-6"><span>' + reviewScore + '점<span></div>';
+			out += '  </div>';
+			out += '  <div class="mt-2 p-2">' + reviewContent + '</div>';
+
+			if(fileName && fileName.length > 0) {
+				out += '<div class="row gx-1 mt-2 mb-1 p-1">';
+					for(let f of fileName) {
+						out += '<div class="col-md-auto md-img">';
+						out += '  <img class="border rounded" src="${pageContext.request.contextPath}/uploads/review/'+f+'">';
+						out += '</div>';
+					}
+				out += '</div>';
+			}
+			
+			if(answer) {
+				out += '  <div class="p-3 pt-0">';
+				out += '    <div class="bg-light">';
+				out += '      <div class="p-3 pb-0">';
+				out += '        <label class="text-bg-primary px-2"> 관리자 </label> <label>' + replyDate + '</label>';
+				out += '      </div>';
+				out += '      <div class="p-3 pt-1">' + replyContent + '</div>';
+				out += '    </div>';
+				out += '  </div>';
+			}
+			out += '</div>';
+		}
+		if(dataCount > 0) {
+			out += '<div class="page-navigation">' + paging + '</div>';
+		}
+		
+		$('.list-review').html(out);
+	}
+	
+	$(function(){
+		$('body').on('click', '.notifyReview', function(){
+			let num = $(this).attr('data-num');
+			alert(num);
+		});
+	});
+	</script>

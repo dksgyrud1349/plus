@@ -35,7 +35,7 @@ public class Lesson {
 	
 	// 리뷰
 	private double reviewScore;
-	private int count;
+	private int reviewCount;
 	
 	
 	public double getReviewScore() {
@@ -46,12 +46,12 @@ public class Lesson {
 		this.reviewScore = reviewScore;
 	}
 
-	public int getCount() {
-		return count;
+	public int getReviewCount() {
+		return reviewCount;
 	}
 
-	public void setCount(int count) {
-		this.count = count;
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
 	}
 
 	public boolean isUserLessonLiked() {
