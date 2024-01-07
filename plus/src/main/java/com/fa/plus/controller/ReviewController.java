@@ -115,8 +115,8 @@ public class ReviewController {
 	}
 	
 	// AJAX - JSON : 마이페이지 - 내가 쓴 리뷰
-	@GetMapping("list2")
-	public Map<String, Object> list2(
+	@GetMapping("mylist")
+	public Map<String, Object> mylist(
 			@RequestParam(value = "pageNo", defaultValue = "1") int current_page,
 			HttpSession session) throws Exception {
 		SessionInfo info = (SessionInfo)session.getAttribute("member");		
