@@ -43,6 +43,24 @@
 }
 </style>
 
+<main class="wrapper" style="margin: 5% auto; width: 80%;">
+	<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container">
+				<div class="body-main">
+
+					<div class="pt-2" id="myTabContent">
+						<div class="mt-3 pt-3 border-bottom">
+							<p class="fs-4 fw-semibold">클래스 리뷰</p>
+						</div>
+						<div class="mt-2 list-review"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
 <script type="text/javascript">
 function login() {
 	location.href = '${pageContext.request.contextPath}/member/login';
@@ -80,27 +98,6 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 	
 	$.ajax(url, settings);
 }
-</script>
-<main class="wrapper" style="margin: 5% auto; width: 80%;">
-	<div id="layoutSidenav_content">
-		<div class="container-fluid px-5">
-			<div class="body-container">
-				<div class="body-main">
-
-					<div class="pt-2" id="myTabContent">
-						<div class="mt-3 pt-3 border-bottom">
-							<p class="fs-4 fw-semibold">클래스 리뷰</p>
-						</div>
-						<div class="mt-2 list-review"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</main>
-
-<script type="text/javascript">
-
 $(function(){
 	listReview(1);
 });
@@ -176,7 +173,7 @@ function printReview(data) {
 		out += '</div>';
 	}
 	if(dataCount > 0) {
-		out += '<div class="page-navigation">' + paging + '</div>';
+		out += '<div class="page-navigation mt-3">' + paging + '</div>';
 	}
 	
 	$('.list-review').html(out);	

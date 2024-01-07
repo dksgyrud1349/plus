@@ -20,7 +20,7 @@ public class Review {
 	private long classNum;
 	private String className;
 	private String userName;
-	
+	private String classDate;
 	private long photoNum;
 	private String fileName;
 	
@@ -138,6 +138,13 @@ public class Review {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	public String getClassDate() {
+		return classDate;
+	}
+
+	public void setClassDate(String classDate) {
+		this.classDate = classDate;
 	}
 
 	public long getPhotoNum() {
