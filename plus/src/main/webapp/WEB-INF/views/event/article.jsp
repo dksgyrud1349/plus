@@ -101,6 +101,26 @@ $(function(){
 									${dto.eContent}
 								</td>
 							</tr>
+										
+						<tr>
+							<td colspan="2">이벤트 클래스 개수 : ${classCount}</td>
+						</tr>
+						
+						<tr>
+							<td>
+								<c:forEach var="clist" items="${classList}">
+									<div class="card border-light" style="width:18rem;">
+										<img alt="" src="${pageContext.request.contextPath}/resources/images/Image-folder.jpg">
+									  <!-- <img src="${pageContext.request.contextPath}/uploads/lesson/${clist.firstPhoto}"/> -->
+									  <div class="card-body">
+									    <h5 class="card-title">${clist.className}</h5>
+									    <p class="card-text text-end">${clist.price}</p>
+									    <a href="${pageContext.request.contextPath}/lesson/detail/${clist.classNum}" class="btn btn-primary text-end">상세보기</a>
+									  </div>
+									</div>
+								</c:forEach>
+							</td>
+						</tr>
 						<tr>
 							<td colspan="2" class="text-center p-3" style="border-bottom: none;">
 								<button type="button" class="btn btn-outline-secondary btnSendBoardLike" title="좋아요"><i class="bi ${userEventLiked ? 'bi-hand-thumbs-up-fill':'bi-hand-thumbs-up' }"></i>&nbsp;&nbsp;<span id="eventLikeCount">${dto.eventLikeCount}</span></button>
@@ -113,8 +133,8 @@ $(function(){
 									<button type="button" class="btn btn-outline-secondary"> 종료된 이벤트입니다. </button>
 								</td>
 							</tr>
-						</c:if>						
-
+						</c:if>		
+						
 						<tr>
 							<td colspan="2">
 								이전글 :

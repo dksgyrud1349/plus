@@ -192,5 +192,25 @@ public class EventServiceImpl implements EventService {
 			throw e;
 		}
 	}
+
+	@Override
+	public List<Event> listEventClass(Map<String, Object> map) {
+		List<Event> list = null;
+		try {
+			list = mapper.listEventClass(map);
+		} catch (Exception e) {
+		}
+		return list;
+	}
+
+	@Override
+	public int eventClassCount(long eventNum) {
+		int result = 0;
+		try {
+			result = mapper.eventClassCount(eventNum);
+		} catch (Exception e) {
+		}
+		return result;
+	}
 	
 }

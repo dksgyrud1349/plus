@@ -21,6 +21,12 @@ public class Event {
 	private int eventLikeCount;
 	private int replyCount;
 	
+	private long classNum;
+	private int price;
+	private String className;
+	private String nickName;
+	private String firstPhoto;
+	
 	public long getEventNum() {
 		return eventNum;
 	}
@@ -129,5 +135,36 @@ public class Event {
 	public void setReplyCount(int replyCount) {
 		this.replyCount = replyCount;
 	}
+	public long getClassNum() {
+		return classNum;
+	}
+	public void setClassNum(long classNum) {
+		this.classNum = classNum;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String className) {
+		this.className = className;
+	}
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+	public String getFirstPhoto() {
+		return firstPhoto;
+	}
+	public void setFirstPhoto(String firstPhoto) {
+		this.firstPhoto = firstPhoto;
+	}
+	
 	
 }

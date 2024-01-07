@@ -30,4 +30,6 @@ public interface EventMapper {
 	public List<EventReply> listReply(Map<String, Object> map);
 	public void deleteReply(Map<String, Object> map) throws SQLException;
 	
+	public List<Event>listEventClass(Map<String, Object> map);
+	public int eventClassCount(long eventNum);
 }

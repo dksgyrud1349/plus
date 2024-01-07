@@ -141,7 +141,8 @@ public class EventController {
 		Event prevDto = service.findByPrev(map);
 		Event nextDto = service.findByNext(map);
 		
-		
+		int classCount = service.eventClassCount(eventNum);
+		List<Event> classList = service.listEventClass(map);
 
 		model.addAttribute("category", category);
 		model.addAttribute("dto", dto);
@@ -149,7 +150,9 @@ public class EventController {
 		model.addAttribute("nextDto", nextDto);		
 		model.addAttribute("page", page);
 		model.addAttribute("query", query);
-
+		model.addAttribute("classCount", classCount);
+		model.addAttribute("classList", classList);
+		
 		return ".event.article";
 	}
 	

@@ -169,4 +169,21 @@
 		DELETE FROM eventReply
 		WHERE replyNum=#{replyNum}
 	</delete>
+	
+	<!-- 이벤트에 따른 클래스 출력 -->
+	<select id="listEventClass" parameterType="Long" resultType="com.fa.plus.domain.Event">
+		SELECT eventNum, ec.classNum, className, price, nickName, exprice, firstPhoto
+		FROM eventClass ec
+		JOIN lesson l ON ec.classNum = l.classNum
+		JOIN member1 m1 ON l.memberIdx = m1.memberIdx
+		JOIN plus p ON p.userId = m1.userId
+		WHERE eventNum = #{eventNum}
+	</select>
+	
+	<!-- 이벤트 클래스 개수 -->
+	<select id="eventClassCount" parameterType="Long" resultType="Integer">
+	SELECT NVL(COUNT(*), 0)
+	FROM eventClass
+	WHERE eventNum = #{eventNum}
+	</select>
 </mapper>
