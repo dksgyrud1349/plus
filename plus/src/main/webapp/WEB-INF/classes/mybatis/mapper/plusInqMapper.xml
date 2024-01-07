@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.pluszone.mapper.PlusInqMapper">
+	
+	<sql id="search-list">
+		<choose>
+			<when test="schType == 'all'">
+				(INSTR(subject, #{kwd}) &gt; 0
+					OR DBMS_LOB.INSTR(iq.content, #{kwd}) &gt; 0)
+			</when>
+			<when test="schType == 'inquiryDate'">
+				(TO_CHAR(inquiryDate, 'YYYYMMDD') = #{kwd}
+					OR TO_CHAR(inquiryDate, 'YYYY-MM-DD') = #{kwd})
+			</when>
+			<when test="schType == 'content'">
+				DBMS_LOB.INSTR(iq.content, #{kwd}) &gt; 0
+			</when>
+			<otherwise>
+				INSTR(${schType}, #{kwd}) &gt; 0
+			</otherwise>
+		</choose>
+	</sql>
+	<select id="inqList" parameterType="map" resultType="com.fa.plus.pluszone.domain.PlusInq">
+		SELECT inquiryNum, subject, TO_CHAR(inquiryDate, 'YYYY-MM-DD') inquiryDate, TO_CHAR(reInquiryDate, 'YYYY-MM-DD') reInquiryDate, reInquiryNum, iq.classNum
+		FROM inquiry iq
+		JOIN lesson le ON iq.classNum = le.classNum
+		<where>
+			le.memberIdx = #{memberIdx} AND reInquiryNum = #{reInquiryNum}
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="search-list"/>
+			</if>
+		</where>
+		ORDER BY inquiryNum DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM inquiry iq
+		JOIN lesson le ON iq.classNum = le.classNum
+		<where>
+			le.memberIdx = #{memberIdx} AND reInquiryNum = #{reInquiryNum}
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="search-list"/>
+			</if>
+		</where>
+	</select>
+	
+	<select id="findByNo" parameterType="Long" resultType="com.fa.plus.pluszone.domain.PlusInq">
+		SELECT inquiryNum, subject, iq.classNum, le.className, iq.content, inquiryDate, iq.inquiryId, m1.userName, reInquiryNum
+		FROM inquiry iq
+		JOIN lesson le ON iq.classNum = le.classNum
+		JOIN member1 m1 ON iq.inquiryId = m1.userId
+		WHERE inquiryNum = #{inquiryNum}
+	</select>
+	
+	<select id="findByYes" parameterType="Long" resultType="com.fa.plus.pluszone.domain.PlusInq">
+		SELECT inquiryNum, reSubject, reContent, reInquiryDate, reInquiryNum, pl.nickName
+		FROM inquiry iq
+		JOIN member1 m1 ON iq.reInquiryId = m1.userId
+		JOIN plus pl ON m1.userId = pl.userId
+		WHERE inquiryNum = #{inquiryNum}
+	</select>
+	
+	<update id="insertAnswer" parameterType="map">
+		UPDATE inquiry SET reSubject = #{reSubject}, reContent = #{reContent}, reInquiryDate = SYSDATE, reInquiryId = #{reInquiryId} WHERE inquiryNum = #{inquiryNum}
+	</update>
+	
+	<update id="updateReInquiryNum" parameterType="map">
+		UPDATE inquiry SET reInquiryNum = #{reInquiryNum} WHERE inquiryNum = #{inquiryNum}
+	</update>
+	
+	<update id="updateAnswer" parameterType="map">
+		UPDATE inquiry SET reSubject = #{reSubject}, reContent = #{reContent}, reInquiryDate = SYSDATE WHERE inquiryNum = #{inquiryNum}
+	</update>
+	
+	<update id="deleteAnswer" parameterType="map">
+		UPDATE inquiry SET reSubject = NULL, reContent = NULL, reInquiryDate = NULL, reInquiryNum = 0, reInquiryId = NULL WHERE inquiryNum = #{inquiryNum}
+	</update>
+</mapper>
