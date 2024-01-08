@@ -78,16 +78,16 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav menu-4">
-          <li class="nav-item"><a class="nav-link" href="#" data-hover="마이페이지" style="border-bottom: 3px solid orange !important;">마이페이지</a></li>
-            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/pwd" data-hover="내정보 및 수정">내정보 수정</a></li>
-            <li class="nav-item"><a class="nav-link" href="#" data-hover="알림 / 쪽지 내역">알림 / 쪽지 내역</a></li>
+          	<li class="nav-item"><a class="nav-link" href="#" data-hover="마이페이지" style="border-bottom: 3px solid orange !important;">마이페이지</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/wishList/myWishList" data-hover="위시리스트">위시리스트</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/bookingList/bLists" data-hover="예약내역">예약내역</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/mileage/myMileageList" data-hover="적립금내역">적립금내역</a></li>
-            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/wishList/myWishList" data-hover="위시리스트">위시리스트</a></li>
-            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/bbs/myList" data-hover="내가 작성한 게시물">내가작성한 게시물</a></li>
-            <li class="nav-item"><a class="nav-link" href="#" data-hover="리뷰">리뷰</a></li>
-            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/inquiryAd/list" data-hover="1:1 문의내역" target="_blank">1:1 문의내역</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/note/receive/list" data-hover="쪽지 내역">쪽지 내역</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/bbs/myList" data-hover="내가 작성한 커뮤니티">내가작성한 커뮤니티</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/review" data-hover="내가 작성한 리뷰">내가 작성한 리뷰</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/inquiryAd/list" data-hover="1:1 문의내역">1:1 문의내역</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/classInq/myInqList" data-hover="클래스 문의내역">클래스 문의내역</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/pwd" data-hover="내정보 및 수정">내정보 수정</a></li>
             <li class="nav-item"><a class="nav-link" href="#" data-hover="탈퇴">탈퇴</a></li>
         </ul>
     </div>
