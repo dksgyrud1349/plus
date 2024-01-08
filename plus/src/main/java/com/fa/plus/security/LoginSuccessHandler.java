@@ -56,7 +56,6 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		info.setUserId(member.getUserId()); 
 		info.setUserName(member.getUserName());
 		info.setEmail(member.getEmail());
-		info.setRegDate(member.getRegDate());
 		session.setAttribute("member", info);
 		
 		//	패스워드 변경이 90일 이상인 경우 패스워드 변경 창으로 이동
