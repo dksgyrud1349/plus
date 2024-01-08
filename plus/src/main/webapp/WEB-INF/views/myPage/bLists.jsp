@@ -73,6 +73,11 @@
 	top: 200px;
 }
 
+
+
+
+
+
 .review-form textarea { width: 100%; height: 75px; resize: none; }
 .review-form .star { font-size: 0; letter-spacing: -4px; }
 .review-form .star a {
@@ -136,8 +141,8 @@
 				<td>${dto.puserName}</td>
 				<td>${dto.addr1}, ${dto.addr2}</td>
 				<td style="padding-left: 10px;">${dto.mode}</td>
-			</tr>
 				<input type="hidden" name="orderNum" id="orderNum" value="${dto.orderNum}">
+			</tr>
 		</c:forEach>
 	  </tbody>
 	</table>
