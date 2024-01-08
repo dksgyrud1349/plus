@@ -16,6 +16,7 @@ import com.fa.plus.domain.SessionInfo;
 import com.fa.plus.pluszone.domain.NoticePlus;
 import com.fa.plus.pluszone.service.BookingPlusService;
 import com.fa.plus.pluszone.service.NoticePlusService;
+import com.fa.plus.pluszone.service.SalesStatusService;
 
 @Controller
 public class MainPlusController {
@@ -23,6 +24,8 @@ public class MainPlusController {
 	private NoticePlusService noticeService;
 	@Autowired
 	private BookingPlusService bookingService;
+	@Autowired
+	private SalesStatusService salesService;
 	
 	@RequestMapping(value="/pluszone", method=RequestMethod.GET)
 	public String method(HttpSession session,
@@ -31,6 +34,8 @@ public class MainPlusController {
 		int bookingDataCount = 0;
 		
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		
+		Map<String, Object> thisMonth = salesService.thisMonthProduct();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userId", info.getUserId());
@@ -48,6 +53,7 @@ public class MainPlusController {
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("noticeDataCount", noticeDataCount);
 		model.addAttribute("bookingDataCount", bookingDataCount);
+		model.addAttribute("thisMonth", thisMonth);
 		
 		return ".plusLayout";
 	}

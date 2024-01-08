@@ -140,29 +140,32 @@ i.fa{
                                     플러스 정보
                                     </div>
                                     <div class="card-body" style="width: 100%; height: 250px;">
-										<div class="d-flex justify-content-center">
+										<div class="d-flex ms-5 ps-4" >
 								            <div class="avatar avatar-xl rounded-circle">
-								              <i class="bi bi-person-bounding-box fa-4x"></i>
+								              <i class="bi bi-github fa-4x"></i>
 								            </div>
-								          </div> 
-								          <div class="text-center my-6" >
-								            <span class="d-block h5 mb-0">${sessionScope.member.userName}</span>
-								            <span class="d-block text-sm text-muted">${sessionScope.member.email}</span>
-								          </div>
-								          <div class="d-flex">
-								            <div class="col-4 text-center">
-								              <a href="#" class="h4 font-bolder mb-0">${bookingDataCount}</a>
-								              <span class="d-block text-sm">개설된 클래스</span>
-								            </div>
-								            <div class="col-4 text-center">
-								              <a href="#" class="h4 font-bolder mb-0">350</a>
-								              <span class="d-block text-sm">총 예약자</span>
-								            </div>
-								            <div class="col-4 text-center">
-								              <a href="#" class="h4 font-bolder mb-0">15,000,000</a>
-								              <span class="d-block text-sm">매출총액</span>
-								            </div>
-								          </div>
+								            <div class="d-block h4 mt-4 mb-4 ms-4">
+								            안녕하세요<span class="ms-5 ps-4" style="float: right"><i class="bi bi-cash-coin"></i>나만의 수익을 창출해보세요!</span>
+								            <div>${sessionScope.member.userName}님<span>🤗</span><span class="ms-5 ps-4" style="text-decoration-line: underline; float: right"><a href="${pageContext.request.contextPath}/pluszone/lessonPlus/main" >자세히 알아보기</a></span></div>
+								        </div>
+								     </div> 
+								     <div class="col-12" >
+								     <span class="d-block h5 ms-5 ps-4 mb-3"><button type="button" class="btn border" onclick="location.href='${pageContext.request.contextPath}/pluszone/member/pwd';" style="width: 200px">내정보수정</button>
+								        <span class="me-5 fs-5 pe-3 mt-2" style="float: right">⊙ 개설된 클래스
+								            <a href="${pageContext.request.contextPath}/pluszone/booking/lessonList" class="h4 font-bolder mb-0">${bookingDataCount}개</a>
+								        </span>
+								     </span>
+								        <span class="d-block h5 ms-5 my-3 fw-bold">이메일:&nbsp;${sessionScope.member.email}
+								            <span class="d-block me-5 fs-5 pe-3" style="float: right">⊙ 이번달 판매건수
+								            	<a href="${pageContext.request.contextPath}/pluszone/salesStatus/main" class="h4 font-bolder mb-0">${thisMonth.COUNT}건</a>
+								            </span>
+								        </span>
+							          	<span class="d-block h5 ms-5 my-3"><span class="fw-bold">가입일:&nbsp;${sessionScope.member.regDate}</span>
+							          		<span class="d-block me-5 fs-5 pe-3"  style="float: right">⊙ 이번달 매출총액
+							          			<a href="${pageContext.request.contextPath}/pluszone/salesStatus/main" class="h4 font-bolder mb-0">${thisMonth.TOTAL}원</a>
+							          		</span>
+							          	</span>
+							          	
                                     </div>
                                 </div>
                             </div>

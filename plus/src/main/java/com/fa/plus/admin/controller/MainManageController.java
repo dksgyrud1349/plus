@@ -22,6 +22,7 @@ import com.fa.plus.admin.service.LessonManageService;
 import com.fa.plus.admin.service.MemberManageService;
 import com.fa.plus.admin.service.NoticeManageService;
 import com.fa.plus.admin.service.PlusManageService;
+import com.fa.plus.pluszone.service.SalesStatusService;
 
 @Controller
 public class MainManageController {
@@ -37,7 +38,8 @@ public class MainManageController {
 	private NoticeManageService Noticeservice;
 	@Autowired
 	private DeclarationManageService Declarationservice;
-	
+	@Autowired
+	private SalesStatusService salesService;
 	@Autowired
 	private EventManageService Eventservice;
 		
@@ -57,7 +59,8 @@ public class MainManageController {
 		int total_page = 0;
 		int size = 5;
 		
-		
+		Map<String, Object> thisMonth = salesService.thisMonthProduct();
+
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("enabled", enabled);
@@ -111,7 +114,8 @@ public class MainManageController {
 		List<MemberManage> list = Memberservice.listMember(map);
 		
 		model.addAttribute("list", list);
-		
+		model.addAttribute("thisMonth", thisMonth);
+
 		return ".adminLayout";
 	}
 
