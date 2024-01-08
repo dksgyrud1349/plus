@@ -74,5 +74,25 @@
 		FROM schCategory
 		WHERE userId = #{userId}
 	</select>
-
+	
+	<!-- 클래스 등록 시 스케쥴등록 -->
+	<insert id="insertClassCategory" parameterType="com.fa.plus.pluszone.domain.LessonPlus">
+		INSERT INTO schCategory (cNum, cName, userId)
+			VALUES (schCategory_seq.NEXTVAL, #{className}, #{userId})
+	</insert>
+	
+	<!-- 예약 확정 후 스케쥴 등록 -->
+	<!-- 
+	<select id="findByClassCategory" parameterType="String" resultType="">
+		SELECT cNum
+		FROM schCategory
+		WHERE cName = #{className}
+	</select>
+	<insert id="insertClassSchedule" parameterType="com.fa.plus.pluszone.domain.PlusSchedule">
+		INSERT INTO schedule (sNum, subject, sContent, sDay, eDay, 
+				sTime, eTime, sRegDate, color, cNum, userId)
+			VALUES (schedule_seq.NEXTVAL, #{subject}, #{sContent}, #{sDay}, #{eDay, jdbcType=VARCHAR}, 
+				#{sTime, jdbcType=VARCHAR}, #{eTime, jdbcType=VARCHAR}, SYSDATE, #{color}, #{ㅊ, jdbcType=INTEGER}, #{userId})
+	</insert>
+	 -->
 </mapper>

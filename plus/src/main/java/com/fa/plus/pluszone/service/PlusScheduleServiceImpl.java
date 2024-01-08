@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fa.plus.pluszone.domain.LessonPlus;
 import com.fa.plus.pluszone.domain.PlusSchedule;
 import com.fa.plus.pluszone.mapper.PlusScheduleMapper;
 
@@ -125,6 +126,16 @@ public class PlusScheduleServiceImpl implements PlusScheduleService {
 			throw e;
 		}
 		return list;
+	}
+
+	@Override
+	public void insertClassCategory(LessonPlus dto) throws Exception {
+		try {
+			mapper.insertClassCategory(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
 }

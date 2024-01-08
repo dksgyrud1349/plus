@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.fa.plus.pluszone.domain.LessonPlus;
 import com.fa.plus.pluszone.domain.PlusSchedule;
 
 @Mapper
@@ -23,5 +24,6 @@ public interface PlusScheduleMapper {
 	public List<PlusSchedule> listMonth(Map<String, Object> map);
 	
 	public List<PlusSchedule> listCategory(Map<String, Object> map);
+	public void insertClassCategory(LessonPlus dto) throws SQLException;
 	
 }
