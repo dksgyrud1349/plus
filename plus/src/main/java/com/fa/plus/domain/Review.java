@@ -14,6 +14,7 @@ public class Review {
 	private String replyDate;
 	private int showReview;
 	private boolean deletePermit;
+	private String plusName;
 	
 	private long memberIdx;
 	private long orderNum;
@@ -177,6 +178,14 @@ public class Review {
 
 	public void setListFilename(String[] listFilename) {
 		this.listFilename = listFilename;
+	}
+
+	public String getPlusName() {
+		return plusName;
+	}
+
+	public void setPlusName(String plusName) {
+		this.plusName = plusName;
 	}
 	
 	
