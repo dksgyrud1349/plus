@@ -32,6 +32,11 @@
 	$("#best_search").mouseleave(function() {
 		rtcarousel = setInterval(function(){ view(viewcount) },5000);
 	});
+	
+	function searchList() {
+		const f = document.searchForm;
+		f.submit();
+	}
 </script>
 
 <style>
@@ -144,12 +149,21 @@
 				        <b>스</b>
 				        <b>+</b>
 				</div>
-								
+				
+			<form action="${pageContext.request.contextPath}/lesson/main" name="searchForm" method="post">
 				<div class="search">
 					<i class="bi bi-search-heart" style="padding: 10px;"></i>
-					<input type="text" placeholder="검색어를 입력하세요." class="searchbox">
-					<input type="button" class="search-button" value="검색">
+					<input type="text" name="kwd" placeholder="검색어를 입력하세요." class="searchbox">
+					<button type="button" class="btn search-button " onclick="searchList()">검색</button>
+					<select name="schType" class="form-select rounded-5">
+						<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
+						<option value="nickName" ${schType=="nickName"?"selected":""}>플러스</option>
+						<option value="regDate" ${schType=="regDate"?"selected":""}>등록일자순</option>
+						<option value="className" ${schType=="className"?"selected":""}>클래스명</option>
+						<option value="content" ${schType=="content"?"selected":""}>내용</option>
+					</select>
 				</div>
+				
 				<nav>
 				<c:choose>
 					<c:when test="${empty sessionScope.member}">
@@ -168,7 +182,8 @@
 					</c:otherwise>
 				</c:choose>
 				</nav>
-			</header>
+			</form>
+		</header>
 			
 			
 			
