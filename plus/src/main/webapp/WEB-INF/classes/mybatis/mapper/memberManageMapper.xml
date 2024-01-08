@@ -35,10 +35,16 @@
 		SELECT m1.memberIdx, membership, m1.userId, userName, 
 			m1.regDate, m1.pwdDate, lastLogin,
 			enabled, email, tel, 
-			TO_CHAR(birth, 'YYYY-MM-DD') birth
+			TO_CHAR(birth, 'YYYY-MM-DD') birth, NVL(stateCode, 0) stateCode
 		FROM member m
 		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
 		LEFT OUTER JOIN member2 m2 ON m1.userId = m2.userId
+		LEFT OUTER JOIN (
+			SELECT * FROM (
+				SELECT userId, stateCode, RANK() OVER (PARTITION BY userId  ORDER BY num DESC) rank
+				FROM memberState
+			) WHERE rank = 1
+		) s ON m1.userId = s.userId
 		<where>
 			<if test="kwd!=null and kwd!='' ">
 				<include refid="where-list"/>

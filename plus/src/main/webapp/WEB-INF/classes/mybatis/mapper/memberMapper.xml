@@ -6,7 +6,7 @@
 		SELECT m.memberIdx, membership, userId, userName, userPwd, regDate, lastLogin, pwdDate
 		FROM member m
 		JOIN member1 m1 ON m1.memberIdx = m.memberIdx
-		WHERE userId = #{userId} AND enabled != 0	
+		WHERE userId = #{userId} AND enabled != 0
 	</select>
 	
 	<update id="updateLastLogin" parameterType="String">

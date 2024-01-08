@@ -219,6 +219,7 @@ function selectStateChange() {
 											<option value="" ${enabled=="" ? "selected":""}>::계정상태::</option>
 											<option value="0" ${enabled=="0" ? "selected":""}>잠금 계정</option>
 											<option value="1" ${enabled=="1" ? "selected":""}>활성 계정</option>
+											<option value="9" ${enabled=="0" ? "selected":""}>탈퇴 계정</option>
 										</select>
 									</td>
 								</tr>
@@ -250,15 +251,13 @@ function selectStateChange() {
 														<td>${dto.birth}</td>
 														<td>${dto.tel}</td>
 														<td>${dto.membership==1?"일반회원":(dto.membership==51?"플러스":"미승인플러스")}</td>
-														<td>${dto.enabled==1?"활성":"잠금"}</td>
+														<td>${dto.enabled==1?"활성": (dto.stateCode==9?"탈퇴":"잠금")}</td>
 														<td>${dto.email}</td>
 													</tr>
 												</c:forEach>
 											</tbody>
 				                       </table>
-				                                
-				                       
-												
+				                         		
 										<table class="table">
 											<tr>
 												<td align="center">

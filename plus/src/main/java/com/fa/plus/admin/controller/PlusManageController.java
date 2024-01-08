@@ -155,6 +155,8 @@ public class PlusManageController {
 			map.put("userId", dto.getUserId());
 			if (dto.getStateCode() == 0) {
 				map.put("enabled", 1);
+			} else if(dto.getStateCode() == 9) {
+				map.put("enabled", 9);
 			} else {
 				map.put("enabled", 0);
 			}
@@ -163,7 +165,7 @@ public class PlusManageController {
 			// 회원 상태 변경 사항 저장
 			service.insertMemberState(dto);
 
-			if (dto.getStateCode() == 0) {
+			if (dto.getStateCode() == 0 || dto.getStateCode() == 9) {
 				// 회원 패스워드 실패횟수 초기화
 				service.updateFailureCountReset(dto.getUserId());
 			}

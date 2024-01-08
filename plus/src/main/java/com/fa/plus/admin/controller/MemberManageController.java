@@ -135,6 +135,7 @@ public class MemberManageController {
 			// 회원 활성/비활성 변경
 			Map<String, Object> map = new HashMap<>();
 			map.put("userId", dto.getUserId());
+			
 			if (dto.getStateCode() == 0) {
 				map.put("enabled", 1);
 			} else {
@@ -145,7 +146,7 @@ public class MemberManageController {
 			// 회원 상태 변경 사항 저장
 			service.insertMemberState(dto);
 
-			if (dto.getStateCode() == 0) {
+			if (dto.getStateCode() == 0 || dto.getStateCode() == 9) {
 				// 회원 패스워드 실패횟수 초기화
 				service.updateFailureCountReset(dto.getUserId());
 			}

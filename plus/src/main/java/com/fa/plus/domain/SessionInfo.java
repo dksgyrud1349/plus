@@ -7,7 +7,7 @@ public class SessionInfo {
 	private String userName;
 	private int membership;
 	private String email;
-	
+	private String regDate;
 	
 	public String getEmail() {
 		return email;
@@ -38,5 +38,11 @@ public class SessionInfo {
 	}
 	public void setMembership(int membership) {
 		this.membership = membership;
+	}
+	public String getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
 	}
 }
