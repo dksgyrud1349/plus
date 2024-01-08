@@ -158,48 +158,52 @@ function writeSubmit(){
 						<i class="bi bi-exclamation-diamond-fill"></i> 제안하기
 					</h3>
 					<div class="sContent">
-						이곳은 <span style="color: red;">클래스 제안</span> 하는 곳입니다.<br>
-						클래스의 제안사항을 적어주시면 됩니다.
+						이곳은 <span style="color: red;">클래스 제안</span> 하는 곳입니다.<br> 클래스의
+						제안사항을 적어주시면 됩니다.
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-		<div style="margin-left: 200px; height: 50px;">
-  			<div class="input-group" style="width: 850px;">
-				<span class="input-group-text title" style="padding-left: 40px;"> 제 목 </span>
-				<input type="text" class="form-control" name="Content" id="Content" value="${dto.content}">
-			</div>
-		</div>
-		
+
 	<form name="suggestForm" method="post">
 		<div style="margin-left: 200px; height: 500px;">
-			<div class="input-group mb-3" style="width: 400px; float: left; margin-right: 50px; height: 40px;">
-				<span class="input-group-text title add" id="basic-addon1" style="padding-left: 50px; padding-top: 8px;">회원ID</span>
-				<input type="text" name="userId" id="userId" class="form-control" aria-label="Username" aria-describedby="basic-addon1" readonly="readonly" value="${dto.userId}">
+
+			<div class="input-group mb-3"
+				style="width: 400px; float: left; margin-right: 50px; height: 40px;">
+				<span class="input-group-text title add" id="basic-addon1"
+					style="padding-left: 50px; padding-top: 8px;">회원ID</span> <input
+					type="text" name="userId" id="userId" class="form-control"
+					aria-label="Username" aria-describedby="basic-addon1"
+					readonly="readonly" value="${dto.userId}">
 			</div>
 			<div class="input-group mb-3" style="width: 400px; height: 40px;">
-				<span class="input-group-text title" id="basic-addon2" style="padding-left: 55px; padding-top: 8px;">이름</span> 
-				<input type="text" name="userName" id="userName" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2" readonly="readonly" value="${dto.userName}">
+				<span class="input-group-text title" id="basic-addon2"
+					style="padding-left: 55px; padding-top: 8px;">이름</span> <input
+					type="text" name="userName" id="userName" class="form-control"
+					aria-label="Recipient's username" aria-describedby="basic-addon2"
+					readonly="readonly" value="${dto.userName}">
 			</div>
 			<div class="input-group mb-3" style="width: 400px; height: 40px;">
-				<span class="input-group-text title" id="basic-addon3" style="padding-left: 40px; padding-top: 8px;">클래스 명</span>
+				<span class="input-group-text title" id="basic-addon3"
+					style="padding-left: 40px; padding-top: 8px;">클래스 명</span>
 				<!-- <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">  -->
 				<select name="className" id="className" style="width: 250px;">
 					<option value="" style="text-align: center;">::선택::</option>
 					<c:forEach var="dto" items="${listClass}">
 						<option value="${dto.className}">${dto.className}</option>
 					</c:forEach>
-				
+
 				</select>
 			</div>
 			<div class="input-group" style="width: 850px; height: 300px;">
-				<span class="input-group-text title" style="padding-left: 40px;">제한 내용</span>
-				<textarea class="form-control" name="Content" id="Content" style="resize: none;" aria-label="With textarea">${dto.content}</textarea>
+				<span class="input-group-text title" style="padding-left: 40px;">제안내용</span>
+				<textarea class="form-control" name="Content" id="Content"
+					style="resize: none;" aria-label="With textarea">${dto.content}</textarea>
 			</div>
 			<div style="margin-top: 35px; float: right; margin-right: 250px;">
-				<button type="button" id="btnOk" name="btnOk" class="bSuggest" onclick="writeSubmit();" style="padding-top: 3px;">제안하기</button>
+				<button type="button" id="btnOk" name="btnOk" class="bSuggest"
+					onclick="writeSubmit();" style="padding-top: 3px;">제안하기</button>
 			</div>
 		</div>
 	</form>

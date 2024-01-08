@@ -48,7 +48,6 @@ public class SuggestController {
 		try {
 			dto.setUserId(info.getUserId());
 			dto = suggestService.findById(dto.getUserId());
-			
 			listClass = suggestService.findByAllClass();
 	
 		} catch (Exception e) {
@@ -56,7 +55,6 @@ public class SuggestController {
 		
 		model.addAttribute("dto", dto);
 		model.addAttribute("listClass", listClass);
-		
 		return ".suggest.article";
 		}
 		
@@ -65,23 +63,21 @@ public class SuggestController {
 	public Map<String, Object>writeSubmit(Suggest dto)throws Exception{
 		String rsltCode = "false";
 		String rsltMsg= "제안 등록되지 않았습니다";
-		dto.setSubject(rsltMsg);
 		
 		try {
 			dto.setClassNum(suggestService.findByNum(dto.getClassName()));
-		
 			suggestService.insertSuggest(dto);
 			rsltCode="true";
 			rsltMsg="제안 등록 완료";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		// ajax callback으로 rsltCode / rsltMsg
 		Map<String, Object> model = new HashMap<String,Object>();
 		
 		
 		model.put("rsltCode", rsltCode);
-		model.put("rsltMsg", rsltMsg);
+		model.put("rsltMsg", rsltMsg);	
 		
 		return model;
 		

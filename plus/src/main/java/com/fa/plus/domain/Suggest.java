@@ -10,6 +10,8 @@ public class Suggest {
 	private String userName;
 	private long memberIdx;
 	private String className;
+	private long sugNum;
+	private long classNum;
 	
 	public String getClassName() {
 		return className;
@@ -17,7 +19,6 @@ public class Suggest {
 	public void setClassName(String classname) {
 		this.className = classname;
 	}
-	private long sugNum;
 	
 	public long getClassNum() {
 		return classNum;
@@ -25,7 +26,6 @@ public class Suggest {
 	public void setClassNum(long classNum) {
 		this.classNum = classNum;
 	}
-	private long classNum;
 	
 	
 	public long getNum() {

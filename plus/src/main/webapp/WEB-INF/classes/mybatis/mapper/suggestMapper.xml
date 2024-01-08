@@ -28,8 +28,8 @@
 		</select>
 		
    <insert id="insertSuggest" parameterType="com.fa.plus.domain.Suggest">
-      INSERT INTO suggest(sugNum, subject, content, regDate, userId)
-      VALUES(suggest_seq.NEXTVAL, #{subject}, #{content}, SYSDATE, #{userId})
+      INSERT INTO suggest(sugNum,content, regDate, userId, classNum)
+      VALUES(suggest_seq.NEXTVAL, #{content}, SYSDATE, #{userId}, #{classNum})
    </insert>
 </mapper>
 

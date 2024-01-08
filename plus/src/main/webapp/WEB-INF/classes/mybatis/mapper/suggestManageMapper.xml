@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.admin.mapper.SuggestManageMapper">
+
+
+	<sql id="where-list">
+		<choose>
+			<when test="schType == 'all' ">
+			   ( INSTR(className, #{kwd}) &gt; 0 )
+			</when>
+			<otherwise>
+			   ( INSTR(result, #{kwd}) &gt; 0 )
+			</otherwise>
+		</choose>
+	</sql>
+
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM suggest
+		<where>
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="where-list"/>
+			</if>
+		</where>
+	</select>
+	
+		<select id="listSuggest" parameterType="map" resultType="com.fa.plus.domain.Suggest">
+		/* suggestnManageMapper.listSUggest_제안 목록 전부 가져오기 */
+		
+		    SELECT s.sugNum, m1.username, l.classNum, l.className, s.content, TO_CHAR(s.regDate, 'YYYY-MM-DD') regDate
+	    	FROM suggest s
+    		JOIN lesson l ON s.classNum = l.classNum
+    		JOIN member1 m1 ON m1.userId = s.userId
+		<where>
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="where-list"/>
+			</if>
+		</where>
+		ORDER BY regDate DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	
+		
+</mapper>

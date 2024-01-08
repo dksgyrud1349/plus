@@ -3,6 +3,7 @@ package com.fa.plus.mapper;
 import java.sql.SQLException;
 import java.util.List;
 
+
 import org.apache.ibatis.annotations.Mapper;
 
 
@@ -22,6 +23,6 @@ public interface SuggestMapper {
 	// 제안 등록
 	public void insertSuggest(Suggest dto) throws SQLException;
 	
-		
+	
 	
 }

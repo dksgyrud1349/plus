@@ -3,6 +3,7 @@ package com.fa.plus.service;
 
 import java.util.List;
 
+
 import com.fa.plus.domain.Suggest;
 
 public interface SuggestService {
@@ -17,5 +18,5 @@ public interface SuggestService {
 	
 	public void insertSuggest(Suggest dto) throws Exception;
 	
-
+	
 }
