@@ -32,24 +32,25 @@
                                     플러스 페이지
                                 </a>
                                 <div class="sb-sidenav-menu-heading">main</div>
-	                                <a class="nav-link" href="${pageContext.request.contextPath}/">
-	                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-	                                    사용자 페이지
-	                                </a>
-                            <div class="sb-sidenav-menu-heading">Interface</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#MemberLayout" aria-expanded="false" aria-controls="MemberLayout">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                원데이 클래스
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="MemberLayout" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">클래스 관리</a>
-                                    <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/booking/lessonList">예약 현황</a>
-                                    <a class="nav-link" href="<c:url value='/pluszone/referManage/list'/>">자료실</a>
-                                    <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/plusInq/inqList">클래스 문의내역</a>
-                                </nav>
-                            </div>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    사용자 페이지
+                                </a>
+	                            <div class="sb-sidenav-menu-heading">Interface</div>
+	                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#MemberLayout" aria-expanded="false" aria-controls="MemberLayout">
+	                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+	                                원데이 클래스
+	                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+	                            </a>
+	                            <div class="collapse" id="MemberLayout" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+	                                <nav class="sb-sidenav-menu-nested nav">
+	                                    <a class="nav-link" href="#">클래스 관리</a>
+	                                    <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/booking/lessonList">예약 현황</a>
+	                                    <a class="nav-link" href="<c:url value='/pluszone/review/list'/>">리뷰</a>
+	                                    <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/plusInq/inqList">클래스 문의내역</a>
+	                                    <a class="nav-link" href="<c:url value='/pluszone/referManage/list'/>">자료실</a>
+	                                </nav>
+	                            </div>
                             
                             
                             
@@ -76,6 +77,7 @@
                             </a>
                             <div class="collapse" id="onedayPages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/lessonPlus/main">클래스 등록신청</a>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
                                         채팅(1:1문의)
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -86,8 +88,6 @@
                                             <a class="nav-link" href="#">관리자 채팅</a>
                                         </nav>
                                     </div>
-                                        <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/lessonPlus/main">클래스 등록신청</a>
-                                    	<a class="nav-link" href="#">정산</a>
                                 </nav>
                             </div>
                         </div>
