@@ -4,20 +4,19 @@
 <style>
 .totalBox{
 	position: absolute;
-	top: 50%;
+	top: 480px;
 	left: 55%;
 	width: 1200px;
-	height: 500px;
-	
+	height: 800px;
 }
 
-.name{
+.nameTitle{
 	color: black;
 	font-size: 30px;
 	font-weight: bold;
 	position: absolute;
-	top: 10%;
-	left: 15%;
+	top: 20px;
+	left: 460px;
 }
 .box{
 	width: 150px;
@@ -103,8 +102,11 @@ img{
     30%{transform: rotateX(-90deg)}
     100%{transform: rotateX(0)}
 }
+.tab-content{
+	height: 650px;
+}
 </style>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$('li.nav-${category} button').addClass('active');
@@ -126,7 +128,7 @@ $(function(){
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:5% auto; ">
-				<div class = "name">
+				<div class = "nameTitle">
 					<i class="bi bi-chat-left-text-fill"></i>
 						리뷰 관리
 				</div>
@@ -141,168 +143,56 @@ $(function(){
 					      <li class="nav-hide nav-item" data-category="hide" role="presentation">
 					      	<button class="nav-link" id="hide-tab" data-bs-toggle="tab" data-bs-target="#hide" type="button" role="tab" aria-controls="hide" aria-selected="true" style="color: black;">숨긴 리뷰</button>
 					      </li>
-					      <li class="nav-reviewChart nav-item" data-category="reviewChart" role="presentation">
-					      	<button class="nav-link" id="reviewChart-tab" data-bs-toggle="tab" data-bs-target="#reviewChart" type="button" role="tab" aria-controls="reviewChart" aria-selected="false" style="color: black;">리뷰 통계</button>
-					      </li>
-					      <div style="position: absolute; left: 60%;">
-					    	<select name="schType" class="form-select box">
-								<option value="all">제목+내용</option>
-								<option value="regDate">등록일자순</option>
-								<option value="className">클래스명</option>
-								<option value="content">내용</option>
-								<option value="highReivew">리뷰높은순</option>
-								<option value="lowReview">리뷰낮은순</option>
-							</select>
-					    	<select name="subNum" class="form-select box">
-								<option value="0">서브카테고리</option>
-							</select>
-					    	<select name = "mainNum" class = "form-select box">
-					    		<option value = "0">메인카테고리</option>
-					    	</select>
-						</div>
 					    </ul>
-							<div style="float: right;" class = "kwd2">
-								<button class="btn btn-outline-secondary">
-									<span class="fw-semibold text-dark">검색</span>
-								</button>
-							</div>
-							<div class = "kwd">
-								<input type="text" name="kwd" class="form-control" value="${kwd}">
-							</div>
 					  </div>
 					  <div class="cart-text tab-content" id="myTabContent">
-						  <div class="row tab-pane fade tab-all show" id="all" role="tabpanel" aria-labelledby="all-tab">
-						      <div class="col imgHoverEvent event5">
-						          <div class="imgBox">
-						          	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt=""> </div>
-						            <div class="hoverBox">
-						              <span>
-						                <p class="p1">title</p>
-						                <p class="p2">내용내용내용내용</p>
-						              </span>
-						        	</div>
-						    	</div>
-						    	<div class="col imgHoverEvent event5">
-						          <div class="imgBox">
-						          	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt=""> </div>
-						            <div class="hoverBox">
-						              <span>
-						                <p class="p1">title</p>
-						                <p class="p2">내용내용내용내용</p>
-						              </span>
-						        	</div>
-						    	</div>
-						    	<div class="col imgHoverEvent event5">
-						          <div class="imgBox">
-						          	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt=""> </div>
-						            <div class="hoverBox">
-						              <span>
-						                <p class="p1">title</p>
-						                <p class="p2">내용내용내용내용</p>
-						              </span>
-						        	</div>
-						    	</div>
-						    	<div class="col imgHoverEvent event5">
-						          <div class="imgBox">
-						          	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt=""> </div>
-						            <div class="hoverBox">
-						              <span>
-						                <p class="p1">title</p>
-						                <p class="p2">내용내용내용내용</p>
-						              </span>
-						        	</div>
-						    	</div>
-						    	<div class="col imgHoverEvent event5">
-						          <div class="imgBox">
-						          	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt=""> </div>
-						            <div class="hoverBox">
-						              <span>
-						                <p class="p1">title</p>
-						                <p class="p2">내용내용내용내용</p>
-						              </span>
-						        	</div>
-						    	</div>
-						    	<div class="col imgHoverEvent event5">
-						          <div class="imgBox">
-						          	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt=""> </div>
-						            <div class="hoverBox">
-						              <span>
-						                <p class="p1">title</p>
-						                <p class="p2">내용내용내용내용</p>
-						              </span>
-						        	</div>
-						    	</div>
-						  </div>
-						  
-						  
-						  <div class="row tab-pane fade tab-hide show" id="hide" role="tabpanel" aria-labelledby="hide-tab">
-						      <div class="col imgHoverEvent event5">
-						          <div class="imgBox">
-						          	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt=""> </div>
-						            <div class="hoverBox">
-						              <span>
-						                <p class="p1">title</p>
-						                <p class="p2">내용내용내용내용</p>
-						              </span>
-						        	</div>
-						    	</div>
-						    	<div class="col imgHoverEvent event5">
-						          <div class="imgBox">
-						          	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt=""> </div>
-						            <div class="hoverBox">
-						              <span>
-						                <p class="p1">title</p>
-						                <p class="p2">내용내용내용내용</p>
-						              </span>
-						        	</div>
-						    	</div>
-						    	<div class="col imgHoverEvent event5">
-						          <div class="imgBox">
-						          	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt=""> </div>
-						            <div class="hoverBox">
-						              <span>
-						                <p class="p1">title</p>
-						                <p class="p2">내용내용내용내용</p>
-						              </span>
-						        	</div>
-						    	</div>
-						    	<div class="col imgHoverEvent event5">
-						          <div class="imgBox">
-						          	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt=""> </div>
-						            <div class="hoverBox">
-						              <span>
-						                <p class="p1">title</p>
-						                <p class="p2">내용내용내용내용</p>
-						              </span>
-						        	</div>
-						    	</div>
-						    	<div class="col imgHoverEvent event5">
-						          <div class="imgBox">
-						          	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt=""> </div>
-						            <div class="hoverBox">
-						              <span>
-						                <p class="p1">title</p>
-						                <p class="p2">내용내용내용내용</p>
-						              </span>
-						        	</div>
-						    	</div>
-						    	<div class="col imgHoverEvent event5">
-						          <div class="imgBox">
-						          	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt=""> </div>
-						            <div class="hoverBox">
-						              <span>
-						                <p class="p1">title</p>
-						                <p class="p2">내용내용내용내용</p>
-						              </span>
-						        	</div>
-						    	</div>
+						  <div class="row tab-pane fade tab-all show" id="all" role="tabpanel" aria-labelledby="all-tab" style="margin-left: 125px;">
+						      <c:forEach var="dto" items="${list}" varStatus="status">
+							      <div class="col imgHoverEvent event5" style="float: left;">
+							          <div class="imgBox" style="margin-top: 20px;">
+								          <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="">
+							          </div>
+							          
+							          <a href="${articleUrl}&reviewNum=${dto.reviewNum}">
+							          <div class="hoverBox">
+							            <span>
+							              <p class="p1">${dto.reviewSubject}</p>
+							              <p class="p2">${dto.reviewContent}</p>
+							              <p class="p1">${dto.reviewScore}/5점</p>
+							            </span>
+							          </div>
+							          </a>
+							      </div>
+						    	</c:forEach>
+						    </div>
+						    	
+						  <div class="row tab-pane fade tab-hide show" id="hide" role="tabpanel" aria-labelledby="hide-tab" style="margin-left: 125px;">
+						      <c:forEach var="dto" items="${listHide}" varStatus="status">
+							      <div class="col imgHoverEvent event5" style="float: left;">
+							          <div class="imgBox" style="margin-top: 20px;">
+								          <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="">
+							          </div>
+							          
+							          <a href="${articleUrl}&reviewNum=${dto.reviewNum}">
+							          <div class="hoverBox">
+							            <span>
+							              <p class="p1">${dto.reviewSubject}</p>
+							              <p class="p2">${dto.reviewContent}</p>
+							              <p class="p1">${dto.reviewScore}/5점</p>
+							            </span>
+							          </div>
+							          </a>
+							      </div>
+						    	</c:forEach>
 						  </div>
 					  </div>
-					  <div class="tab-pane fade tab-reviewChart show" id="reviewChart" role="tabpanel" aria-labelledby="reviewChart-tab"></div>
 					</div>
 				  </div>
 				</div>
+			  </div>
 			</div>
+		<div class="page-navigation mb-3" style="margin-left: 200px;">
+			${dataCount == 0 ? "등록된 이벤트가 없습니다." : paging}
 		</div>
   </main>
  

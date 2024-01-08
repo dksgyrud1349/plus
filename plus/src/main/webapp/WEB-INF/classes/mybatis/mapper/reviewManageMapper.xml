@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.admin.mapper.ReviewManageMapper">
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		/* reviewManageMapper_dataCount 글 개수 세기 */
+		SELECT NVL(COUNT(*), 0)
+		FROM review
+	</select>
+	
+	<select id="listReview" parameterType="map" resultType="com.fa.plus.admin.domain.ReviewManage">
+		/* reviewManageMapper_listReview 리뷰 리스트 출력 */
+		SELECT r.reviewNum
+			   , r.reviewSubject
+			   , r.reviewContent
+			   , r.reviewScore
+			   , r.reviewDate
+			   , r.showReview
+			   , m.memberIdx
+			   , rp.photoNum
+			   , rp.filename
+		FROM review r
+		LEFT OUTER JOIN reviewPhoto rp ON rp.reviewNum = r.reviewNum
+		JOIN member m ON m.memberIdx = r.memberIdx
+		JOIN orders o ON o.orderNum = r.orderNum
+		JOIN lessonDetail ld ON ld.detailNum = o.detailNum
+		JOIN lesson l ON l.classNum = ld.classNum
+		WHERE r.showReview = 1
+		ORDER BY r.reviewDate DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<select id="listHideReview" parameterType="map" resultType="com.fa.plus.admin.domain.ReviewManage">
+		/* reviewManageMapper_listReview 리뷰 숨긴 리스트 출력 */
+		SELECT r.reviewNum
+			   , r.reviewSubject
+			   , r.reviewContent
+			   , r.reviewScore
+			   , r.reviewDate
+			   , r.showReview
+			   , m.memberIdx
+			   , rp.photoNum
+			   , rp.filename
+		FROM review r
+		LEFT OUTER JOIN reviewPhoto rp ON rp.reviewNum = r.reviewNum
+		JOIN member m ON m.memberIdx = r.memberIdx
+		JOIN orders o ON o.orderNum = r.orderNum
+		JOIN lessonDetail ld ON ld.detailNum = o.detailNum
+		JOIN lesson l ON l.classNum = ld.classNum
+		WHERE r.showReview = 0
+		ORDER BY r.reviewDate DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<select id="findByReview" parameterType="long" resultType="com.fa.plus.admin.domain.ReviewManage">
+		/* reviewManageMapper_findByReview 리뷰 상세 데이터 출력 */
+		SELECT r.reviewNum
+		       , m1.userId
+		       , m1.userName
+		       , r.reviewSubject
+		       , r.reviewContent
+		       , TO_CHAR(r.reviewDate, 'YYYY-MM-DD') reviewDate
+		       , r.reviewScore
+		       , r.showReview
+		       , l.className
+		       , TO_CHAR(od.cDate, 'YYYY-MM-DD') cDate
+		       , rp.photoNum
+		       , rp.filename
+		FROM review r
+		LEFT OUTER JOIN reviewPhoto rp ON rp.reviewNum = r.reviewNum
+		JOIN member m ON m.memberIdx = r.memberIdx
+		JOIN member1 m1 ON m1.memberIdx = m.memberIdx
+		JOIN orders o ON o.orderNum = r.orderNum
+		JOIN orderDetail od ON od.orderNum = o.orderNum
+		JOIN lessonDetail ld ON ld.detailNum = o.detailNum
+		JOIN lesson l ON l.classNum = ld.classNum
+		WHERE r.reviewNum = #{reviewNum}
+	</select>
+	
+	<update id="changeHideReview" parameterType="long">
+		/* reviewManageMapper_changeHideReview 리뷰 숨기기 */
+		UPDATE review SET showReview = 0
+		WHERE reviewNum = #{reviewNum}
+	</update>
+	
+	<update id="changeShowReview" parameterType="long">
+		/* reviewManageMapper_changeShowReview 리뷰 공개하기 */
+		UPDATE review SET showReview = 1
+		WHERE reviewNum = #{reviewNum}
+	</update>
+	
+	<select id="dayOfWeekTotalCount" parameterType="String" resultType="map">
+		/* reviewManageMapper_dayOfWeekTotalCount 요일별 리뷰 개수 구하기 */
+		SELECT COUNT(*) total,
+		       NVL(COUNT(DECODE(TO_CHAR(reviewDate, 'D'), 1, 1)), 0) "SUN",
+		       NVL(COUNT(DECODE(TO_CHAR(reviewDate, 'D'), 2, 1)), 0) "MON",
+		       NVL(COUNT(DECODE(TO_CHAR(reviewDate, 'D'), 3, 1)), 0) "TUE",
+		       NVL(COUNT(DECODE(TO_CHAR(reviewDate, 'D'), 4, 1)), 0) "WED",
+		       NVL(COUNT(DECODE(TO_CHAR(reviewDate, 'D'), 5, 1)), 0) "THU",
+		       NVL(COUNT(DECODE(TO_CHAR(reviewDate, 'D'), 6, 1)), 0) "FRI",
+		       NVL(COUNT(DECODE(TO_CHAR(reviewDate, 'D'), 7, 1)), 0) "SAT"
+		FROM review
+		WHERE TO_CHAR(reviewDate, 'YYYYMM') = #{month}
+	</select>
+	
+</mapper>
