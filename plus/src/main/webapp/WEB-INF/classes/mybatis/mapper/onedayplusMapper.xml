@@ -33,14 +33,75 @@
 		DELETE FROM plusAns WHERE userId = #{userId}
 	</delete>
 	
-	<!-- 추천 리스트 
-	<select id="resultCategory" parameterType="" resultType="com.fa.plus.domain.Lesson">
-		SELECT l.classNum
+	<sql id="price-list">
+		<choose>
+			<when test="classprice == 26">
+				AND (price &gt;= 10000 AND price &lt;= 50000)
+			</when>
+			<when test="classprice == 27">
+				AND (price &gt;= 50000 AND price &lt;= 100000)
+			</when>
+			<otherwise>
+				AND price &gt;= 100000
+			</otherwise>
+		</choose>
+	</sql>
+ 
+	<select id="resultClass" parameterType="map" resultType="com.fa.plus.domain.Lesson">
+		SELECT classNum, className, price, mainName, tagName, firstPhoto, addr1, addr2
 		FROM lesson l
-		JOIN plusAns a ON
+		JOIN subcategory sc ON sc.subNum = l.subNum
+		JOIN maincategory mc ON sc.mainNum = mc.mainNum
+		JOIN hashtag h ON h.tagNum = l.tagNum
+		WHERE  
+			INSTR(addr1, #{location}) > 0
+			<if test="classprice != null and classprice != 25">
+		     	<include refid="price-list"/>
+		    </if>
+			<if test="purpose != null and purpose != ''">
+				OR tagName = #{purpose}
+			</if>
+			<if test="category != null and category != ''">
+		     	OR mainName = #{category}
+		    </if>
+		ORDER BY price
 	</select>
 	
-	<select id="resultHashtag">
+	<!-- 1번에 관한 답변 -->
+	<select id="resultPurpose" parameterType = "String" resultType="String">
+		SELECT content
+		FROM plusans a
+		JOIN plusq q ON q.plusNum = a.plusNum
+		JOIN plusque qu ON qu.num = q.num
+		WHERE qu.num = 1 AND userId = #{userId} AND ROWNUM = 1
+		ORDER BY qu.num
 	</select>
-	-->
+	
+	<select id="resultCategory" parameterType = "String" resultType="String">
+		SELECT content
+		FROM plusans a
+		JOIN plusq q ON q.plusNum = a.plusNum
+		JOIN plusque qu ON qu.num = q.num
+		WHERE qu.num = 2 AND userId = #{userId} AND ROWNUM = 1
+		ORDER BY qu.num
+	</select>
+	
+	<select id="resultLocation" parameterType = "String" resultType="String">
+		SELECT content
+		FROM plusans a
+		JOIN plusq q ON q.plusNum = a.plusNum
+		JOIN plusque qu ON qu.num = q.num
+		WHERE qu.num = 3 AND userId = #{userId} AND ROWNUM = 1
+		ORDER BY qu.num
+	</select>
+	
+	<select id="resultPrice" parameterType = "String" resultType="Long">
+		SELECT q.plusNum
+		FROM plusans a
+		JOIN plusq q ON q.plusNum = a.plusNum
+		JOIN plusque qu ON qu.num = q.num
+		WHERE qu.num = 4 AND userId = #{userId} AND ROWNUM = 1
+		ORDER BY qu.num
+	</select>
+
 </mapper>

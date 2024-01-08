@@ -3,7 +3,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
+#box {
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.42, 0.0, 0.58, 1.0);
+}
 
+#box:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  transform: translateY(-10px);
+}
 </style>
 
 
@@ -14,7 +22,7 @@
 				<div class="row justify-content-center">
 					<div class="col-8">
 						<h5 class="pb-2 fw-bold fs-2">
-							<i class="bi bi-book"></i> ${userId}님의 원데이플러스 결과
+							<i class="bi bi-book"></i> ${sessionScope.member.userName}님의 원데이플러스 결과
 						</h5>
 						<c:forEach var="dto" items="${qlist}">
 						    <div>
@@ -36,6 +44,26 @@
 						</c:forEach>
 						
 						
+						<div class="row mt-5">
+							<c:forEach var="clist" items="${classList}" varStatus="status">
+								<div class="card p-1 me-3 mb-5 mx-4" id="box" style="width: 16rem; height: 30rem; border:0.8px solid #cccccc;">
+									<img src="${pageContext.request.contextPath}/uploads/lesson/${clist.firstPhoto}" class="card-img-top" height="200px" alt="...">
+										
+									
+									<div class="card-header" >
+										<h6 class="card-title pb-1 text-start" style="margin-top:10px;">
+											${status.count}. <a href="${pageContext.request.contextPath}/lesson/detail/${clist.classNum}" class="text-reset">${clist.className}</a>
+										</h6>
+									</div>
+									<div class="card-body">
+										<p class="card-text" style="margin-top:10px;">${clist.addr1} ${clist.addr2 }</p>
+									</div>
+									<div class="card-footer">
+										<p class="card-end" style="float:right; margin-top:10px;">₩ ${clist.price}</p>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
 					</div>
 				</div>
 			</div>

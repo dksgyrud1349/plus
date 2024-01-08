@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fa.plus.domain.Lesson;
 import com.fa.plus.domain.PlusAns;
 import com.fa.plus.domain.PlusQ;
 import com.fa.plus.domain.SessionInfo;
@@ -68,11 +69,24 @@ public class OnedayplusController {
 		if(list.isEmpty()) {
 			return "redirect:/";
 		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		String purpose = service.resultPurpose(userId);
+		String category = service.resultCategory(userId);
+		String location = service.resultLocation(userId);
+		long classprice = service.resultPrice(userId);
+		
+		map.put("purpose", purpose);
+		map.put("category", category);
+		map.put("location", location);
+		map.put("classprice", classprice);
+		map.put("userId", userId);
+
+		List<Lesson> classList = service.resultClass(map);
 		
 		model.addAttribute("qlist", qlist);
 		model.addAttribute("list", list);
 		model.addAttribute("userId", userId);
-		
+		model.addAttribute("classList", classList);
 		return ".onedayplus.result";
 	}
 	
