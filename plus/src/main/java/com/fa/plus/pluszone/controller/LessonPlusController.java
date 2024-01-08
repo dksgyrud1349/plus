@@ -23,6 +23,7 @@ import com.fa.plus.common.MyUtil;
 import com.fa.plus.domain.SessionInfo;
 import com.fa.plus.pluszone.domain.LessonPlus;
 import com.fa.plus.pluszone.service.LessonPlusService;
+import com.fa.plus.pluszone.service.PlusScheduleService;
 
 @Controller
 @RequestMapping("/pluszone/lessonPlus/*")
@@ -33,6 +34,9 @@ public class LessonPlusController {
 
 	@Autowired
 	private MyUtil myUtil;
+	
+	@Autowired
+	private PlusScheduleService schService;
 
 	@RequestMapping("main")
 	public String list(@RequestParam(value = "page", defaultValue = "1") int current_page,
@@ -141,6 +145,7 @@ public class LessonPlusController {
 		
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		dto.setMemberIdx(info.getMemberIdx());
+		dto.setUserId(info.getUserId());
 		
 		String root = session.getServletContext().getRealPath("/");
 		String path = root + "uploads" + File.separator + "lesson";
@@ -148,6 +153,7 @@ public class LessonPlusController {
 		try {
 			dto.setSpecial(0);
 			service.insertLesson(dto, path);
+			schService.insertClassCategory(dto);
 		} catch (Exception e) {
 		}
 		
@@ -254,4 +260,20 @@ public class LessonPlusController {
 		}
 		return "redirect:/pluszone/lessonPlus/main";
 	}
+	
+	@GetMapping("reportDetail")
+	@ResponseBody
+	public Map<String, Object> reportDetail(@RequestParam long classNum){
+		Map<String, Object> model = new HashMap<String, Object>();
+		System.out.println(">>>>>>>>>>>>>>>>>>>>"+classNum);
+		int reportCount = 0;
+		try {
+			reportCount = service.reportCount(classNum);
+		} catch (Exception e) {
+		}
+		model.put("reportCount", reportCount);
+		
+		return model;
+	}
+	
 }

@@ -39,4 +39,6 @@ public interface LessonPlusMapper {
 	// 클래스 삭제
 	public void deleteLesson(long classNum) throws SQLException;
 	public void deleteLessonPhoto(long photoNum) throws SQLException;
+	
+	public int reportCount(long classNum);
 }

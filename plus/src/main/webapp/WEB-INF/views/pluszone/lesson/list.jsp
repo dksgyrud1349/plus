@@ -8,19 +8,20 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/paginate-boot.js"></script>
 
+
 <c:url var="listUrl" value="/pluszone/lessonPlus/main">
 	<c:if test="${not empty kwd}">
 		<c:param name="schType" value="${schType}" />
 		<c:param name="kwd" value="${kwd}" />
 	</c:if>
 	<c:if test="${not empty mainNum}">
-		<c:param name="mainNum" value="${mainNum}"/>
+		<c:param name="mainNum" value="${mainNum}" />
 	</c:if>
 	<c:if test="${not empty subNum}">
-		<c:param name="subNum" value="${subNum}"/>
+		<c:param name="subNum" value="${subNum}" />
 	</c:if>
 	<c:if test="${not empty tagNum}">
-		<c:param name="tagNum" value="${tagNum}"/>
+		<c:param name="tagNum" value="${tagNum}" />
 	</c:if>
 </c:url>
 
@@ -72,6 +73,8 @@
 		$.ajax(url, settings);
 	}
 	
+	
+	
 	$(function(){
 		$("form select[name=mainNum]").change(function(){
 			let mainNum = $(this).val();
@@ -97,7 +100,7 @@
 			ajaxFun(url, "get", query, "json", fn);
 			
 		});
-	});	
+	});
 </script>
 
 <script type="text/javascript">
@@ -112,22 +115,25 @@
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width: 80%; margin: 5% auto;">
 				<div class="body-main">
-				
-					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+
+					<h3 class="mb-3 p-2" style="border-bottom: 3px solid black;">
 						<i class="bi bi-app"></i> 클래스 등록
 						<button type="button" class="btn btn-success"
 							onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/main';"
 							title="새로고침" style="float: right;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
 						</button>
-						
-							<button type="button" class="btn btn-success me-3" onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/write';" style="float: right;">등록하기</button>
+
+						<button type="button" class="btn btn-success me-3"
+							onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/write';"
+							style="float: right;">등록하기</button>
 					</h3>
-				
+
 					<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 						<table class="table">
 							<tr>
-								<td align="left" width="50%">총 <font style="color: green; font-weight: bold; text-decoration: underline">${dataCount}개</font>
+								<td align="left" width="50%">총 <font
+									style="color: green; font-weight: bold; text-decoration: underline">${dataCount}개</font>
 									(${page}/${total_page} 페이지)
 								</td>
 								<td align="right">&nbsp;</td>
@@ -144,10 +150,11 @@
 										<th width="120">종료일</th>
 										<th width="120">등록일</th>
 										<th width="80">가격</th>
-										<th width="100">메인카테고리</th>
-										<th width="100">서브카테고리</th>
-										<th width="80">해시태그</th>
+										<th width="120">메인카테고리</th>
+										<th width="130">서브카테고리</th>
+										<th width="100">해시태그</th>
 										<th width="90">승인상태</th>
+										<th width="110">신고여부</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -158,8 +165,9 @@
 												<c:url var="updateUrl" value="/pluszone/lessonPlus/update">
 													<c:param name="classNum" value="${dto.classNum}" />
 													<c:param name="page" value="${page}" />
-												</c:url> 
-												<a href="${updateUrl}" class="text-reset" style="text-decoration: none;">${dto.className}</a></td>
+												</c:url>
+												<a href="${updateUrl}" class="text-reset" style="text-decoration: none;">${dto.className}</a>
+											</td>
 											<td>${dto.startDate}</td>
 											<td>${dto.endDate}</td>
 											<td>${dto.regDate}</td>
@@ -168,38 +176,64 @@
 											<td>${dto.subName}</td>
 											<td>${dto.tagName}</td>
 											<td>${dto.memo}</td>
+											<td>
+												<button type="button" class="btn btn-primary reportDetail">
+												자세히<input type="hidden" name="classNum" id="classNum" value="${dto.classNum}">
+												</button>
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
+							<!-- 모달 창 -->
+							<div class="modal fade" id="reportDetailModal" tabindex="-1">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="bi bi-exclamation-triangle"></i> 신고</h1>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body"> 
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
 
 							<table class="table">
 								<tr>
 									<td align="center">
-										<form class="row" name="searchForm" action="${pageContext.request.contextPath}/pluszone/lessonPlus/main" method="post" style="width:600px;">
+										<form class="row" name="searchForm"
+											action="${pageContext.request.contextPath}/pluszone/lessonPlus/main"
+											method="post" style="width: 600px;">
 											<div class="input-group mb-3">
 												<select name="mainNum" class="form-select">
 													<option value="0">메인카테고리</option>
 													<c:forEach var="vo" items="${listMainCategory}">
-														<option value="${vo.mainNum}" ${mainNum == vo.mainNum ? "selected" : ""}>${vo.mainName}</option>
+														<option value="${vo.mainNum}"
+															${mainNum == vo.mainNum ? "selected" : ""}>${vo.mainName}</option>
 													</c:forEach>
-												</select>
-												<select name="subNum" class="form-select">
+												</select> <select name="subNum" class="form-select">
 													<option value="0">서브카테고리</option>
 													<c:forEach var="vo" items="${listSubCategory}">
-														<option value="${vo.subNum}" ${subNum == vo.subNum ? "selected" : ""}>${vo.subName}</option>
+														<option value="${vo.subNum}"
+															${subNum == vo.subNum ? "selected" : ""}>${vo.subName}</option>
 													</c:forEach>
-												</select>
-											
-												<select name="schType" class="form-select">
-													<option value="className" ${schType=="className"?"selected":""}>클래스이름</option>
+												</select> <select name="schType" class="form-select">
+													<option value="className"
+														${schType=="className"?"selected":""}>클래스이름</option>
 													<option value="regDate" ${schType=="regDate"?"selected":""}>등록일</option>
 													<option value="memo" ${schType=="memo"?"selected":""}>승인상태</option>
-													<option value="highPrice" ${schType=="highPrice"?"selected":""}>높은가격순</option>
-													<option value="lowPrice" ${schType=="lowPrice"?"selected":""}>낮은가격순</option>
-												</select> 
-												<input type="text" name="kwd" value="${kwd}" class="form-control">
-												<button type="button" class="btn btn-success" onclick="searchList()">
+													<option value="highPrice"
+														${schType=="highPrice"?"selected":""}>높은가격순</option>
+													<option value="lowPrice"
+														${schType=="lowPrice"?"selected":""}>낮은가격순</option>
+												</select> <input type="text" name="kwd" value="${kwd}"
+													class="form-control">
+												<button type="button" class="btn btn-success"
+													onclick="searchList()">
 													<i class="bi bi-search"></i>
 												</button>
 											</div>
@@ -207,11 +241,10 @@
 									</td>
 								</tr>
 							</table>
-							
+
 							<div class="page-navigation dataCount text-center mb-3">
-								${dataCount == 0 ? "등록된 클래스가 없습니다." : paging}
-							</div>
-							
+								${dataCount == 0 ? "등록된 클래스가 없습니다." : paging}</div>
+
 						</div>
 					</div>
 				</div>
@@ -219,3 +252,28 @@
 		</div>
 	</div>
 </main>
+<script type="text/javascript">
+$(function(){
+	$(".reportDetail").click(function(){
+		alert("dddddd");
+		let classNum = $(this).find("input[name='classNum']").val();
+		alert(classNum);
+		
+		let url = '${pageContext.request.contextPath}/pluszone/lessonPlus/reportDetail';
+		let query = 'classNum=' + classNum;
+		
+		const fn = function(data){
+			var reportCount = data.reportCount;
+			let html;
+			html = '<div class="modal-body">';
+			html += '	<div> 신고 개수 : ' + reportCount + '개</div>';
+			html += '</div>';
+			
+			$("#reportDetailModal .modal-body").html(html);
+			$("#reportDetailModal").modal("show");
+		};
+		
+		ajaxFun(url, 'get', query, 'json', fn);
+	});
+});
+</script>

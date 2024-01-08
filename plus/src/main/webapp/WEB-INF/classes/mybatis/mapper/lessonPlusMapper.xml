@@ -174,4 +174,10 @@
 	<delete id="deleteLessonPhoto" parameterType="Long">
 		DELETE FROM lessonPhoto WHERE photoNum = #{photoNum}
 	</delete>
+	
+	<select id="reportCount" parameterType="Long" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM report
+		WHERE classNum = #{classNum}
+	</select>
 </mapper>

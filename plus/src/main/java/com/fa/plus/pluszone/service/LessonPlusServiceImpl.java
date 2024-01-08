@@ -270,4 +270,15 @@ public class LessonPlusServiceImpl implements LessonPlusService{
 		}
 		return dto;
 	}
+
+	@Override
+	public int reportCount(long classNum) {
+		int result = 0;
+		try {
+			result = mapper.reportCount(classNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

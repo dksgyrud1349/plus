@@ -27,4 +27,5 @@ public interface LessonPlusService {
 	public void deleteLessonDetail(long detailNum) throws Exception;
 	public void deleteLessonPhoto(long photoNum, String pathname) throws Exception;
 	
+	public int reportCount(long classNum);
 }
