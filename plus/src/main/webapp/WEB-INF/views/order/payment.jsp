@@ -2,51 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script type="text/javascript">
-
-function sendOk() {
-	const f = document.paymentForm;
-	
-	if(! f.recipientName.value) {
-		alert("먼저 배송지를 등록하세요..");
-		return;
-	}
-
-	// 결제 API에서 응답 받을 파라미터
-	let payMethod = "카드결제"; // 결제유형
-	let cardName = "BC 카드";  // 카드 이름
-	let authNumber = "1234567890"; // 승인번호
-	let authDate = ""; // 승인 날짜
-	// toISOString() : "YYYY-MM-DDTHH:mm:ss.sssZ" 형식
-	authDate = new Date().toISOString().replace('T', ' ').slice(0, -5); // YYYY-MM-DD HH:mm:ss
-
-	// 결제 API에 요청할 파라미터
-	let payment = f.payment.value; // 결제할 금액
-	let merchant_uid = "${productOrderNumber}";  // 고유 주문번호
-	let productName = "${productOrderName}";  // 주문상품명
-	let buyer_email = "${orderUser.email}";  // 구매자 이메일
-	let buyer_name = "${orderUser.userName}";  // 구매자 이름
-	let buyer_tel = "${orderUser.tel}";   // 구매자 전화번호(필수)
-	let buyer_addr = "${orderUser.addr1}" + " " + "${orderUser.addr2}";  // 구매자 주소
-	buyer_addr = buyer_addr.trim();
-	let buyer_postcode = "${orderUser.zip}"; // 구매자 우편번호
-	
-	// 결제 API로 결제 진행
-	
-	
-	
-	// 결제가 성공한 경우 ------------------------
-	
-	// 결제 방식, 카드번호, 승인번호, 결제 날짜
-	f.payMethod.value = payMethod;
-	f.cardName.value = cardName;
-	f.authNumber.value = authNumber;
-	f.authDate.value = authDate;
-	
-	f.action = "${pageContext.request.contextPath}/order/paymentOk"
-	f.submit();
-}
 
 function payOk(){
 	const f = document.paymentForm;
@@ -79,34 +36,21 @@ function payOk(){
 		f.uMileage.focus();
 		return;
 	}
-	/*
-	var pay = document.getElementById("pay").value;
-	if(pay === ""){
-		alert("'입력완료' 버튼을 클릭해주세요.");
-		return;
-	}
-	*/
+
 	
 	if(!confirm("결제를 진행하시겠습니까?")){
 		return;
 	}
 	
-	f.submit();
-}
-
-/*
-function checkPay(){
-	const f = document.paymentForm;
+		 	
+	// 결제API
 	
-	let total;
-	let percent;
-	percent = f.pay1.value * f.discountPercent.value / 100;
-	total = f.pay1.value * f.count.value - f.discountMoney.value - f.uMileage.value - percent;
-	document.getElementById("pay").value = total;
+	f.action = "${pageContext.request.contextPath}/order/insert"
+	f.submit();
+         	
+        
 }
-*/
 </script>
-
 
 <style>
 @import
@@ -207,6 +151,7 @@ function checkPay(){
 	color: #4183d7;
 }
 </style>
+
 <script type="text/javascript">
 function ajaxFun(url, method, formData, dataType, fn, file = false) {
 	const settings = {
@@ -338,7 +283,7 @@ $(function(){
 								</div>
 								
 								<div id="form-card" class="form-field">
-									<label for="discountMoney">할인 금액</label>
+									<label for="discountMoney">할인된 금액</label>
 									<input type="number" name="discountMoney" id="discountMoney" value="${empty lesson.discountMoney ? 0 : lesson.discountMoney}" readonly>
 								</div>
 								
