@@ -73,11 +73,6 @@
 	top: 200px;
 }
 
-
-
-
-
-
 .review-form textarea { width: 100%; height: 75px; resize: none; }
 .review-form .star { font-size: 0; letter-spacing: -4px; }
 .review-form .star a {
@@ -141,8 +136,8 @@
 				<td>${dto.puserName}</td>
 				<td>${dto.addr1}, ${dto.addr2}</td>
 				<td style="padding-left: 10px;">${dto.mode}</td>
-				<input type="hidden" name="orderNum" id="orderNum" value="${dto.orderNum}">
 			</tr>
+				<input type="hidden" name="orderNum" id="orderNum" value="${dto.orderNum}">
 		</c:forEach>
 	  </tbody>
 	</table>
@@ -265,7 +260,7 @@ $(function(){
 						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
 						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
 						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
-						<input type="hidden" name="score" value="5">
+						<input type="hidden" name="reviewScore" value="5">
 						<input type="hidden" name="classNum" value="${dto.classNum}">
 					</p>
 				</div>
@@ -275,12 +270,11 @@ $(function(){
 				</div>
 				
 				<div class="p-1">
-					<textarea name="review" class="form-control"></textarea>
+					<textarea name="reviewContent" class="form-control"></textarea>
 				</div>
 				<div class="p-1">
 					<div class="img-grid">
 						<img class="item img-add" src="${pageContext.request.contextPath}/resources/images/add_photo.png">
-						<img class="item img-preview" style="display:none; width:40px; height:40px; border-radius:40px;">
 					</div>
 					<input type="file" name="selectFile" accept="image/*" multiple class="form-control" style="display: none;">
 				</div>
@@ -300,99 +294,119 @@ $(function(){
 
 
 <script>
-const exampleModal = document.getElementById('exampleModal')
+const exampleModal = document.getElementById('exampleModal');
 if (exampleModal) {
   exampleModal.addEventListener('show.bs.modal', event => {
-    const button = event.relatedTarget
-    const recipient = button.getAttribute('data-bs-whatever')
+    const button = event.relatedTarget;
+    const recipient = button.getAttribute('data-bs-whatever');
 
-    const modalTitle = exampleModal.querySelector('.modal-title')
-    const modalBodyInput = exampleModal.querySelector('.modal-body input')
+    const modalTitle = exampleModal.querySelector('.modal-title');
+    const modalBodyInput = exampleModal.querySelector('.modal-body input');
 
-    modalTitle.textContent = `리뷰를 작성해주세요! ${recipient}`
-    modalBodyInput.value = recipient
-  })
+    modalTitle.textContent = `리뷰를 작성해주세요! ${recipient}`;
+    modalBodyInput.value = recipient;
+  });
 }
 
 
-$(document).ready(function() {
-    $(".img-add").click(function() {
-      $("input[name='selectFile']").click();
-    });
-    $("input[name='selectFile']").change(function() {
-      var filenames = "";
-      for (var i = 0; i < this.files.length; i++) {
-        filenames += this.files[i].name + " ";
-      }
-      if (this.files && this.files[0]) {
-        var reader = new FileReader();
 
-        reader.onload = function(e) {
-          $(".img-preview").attr("src", e.target.result);
-          $(".img-preview").show();
-        };
-        reader.readAsDataURL(this.files[0]);
-      }
-    });
-  });
+$(function() {
+	  var sel_files = [];
 
-// 별
-$(function(){
-	$(".review-form .star a").click(function(e){
-		let b = $(this).hasClass("on");
-		$(this).parent().children("a").removeClass("on");
-		$(this).addClass("on").prevAll("a").addClass("on");
-		
-		if( b ) {
-			$(this).removeClass("on");
-		}
-		
-		let s = $(this).closest(".review-form").find(".star .on").length;
-		$(this).closest(".review-form").find("input[name=score").val(s);
-		
-		// e.preventDefault(); // 화면 위로 이동 안되게
-		return false;
+	  $("body").on("click", ".review-form .img-add", function() {
+	    $(this).closest(".review-form").find("input[name=selectFile]").trigger("click");
+	  });
+
+	  $("form[name=reviewForm] input[name=selectFile]").change(function(e) {
+	    if (!this.files) {
+	      let dt = new DataTransfer();
+	      for (let f of sel_files) {
+	        dt.items.add(f);
+	      }
+
+	      this.files = dt.files;
+
+	      return false;
+	    }
+
+	    let $form = $(this).closest("form");
+
+	    // 유사 배열을 배열로 변환
+	    const fileArr = Array.from(this.files);
+
+	    fileArr.forEach((file, index) => {
+	      sel_files.push(file);
+
+	      const reader = new FileReader();
+	      const $img = $("<img>", { "class": "item img-item" });
+	      $img.attr("data-filename", file.name);
+	      reader.onload = e => {
+	        $img.attr("src", e.target.result);
+	      };
+	      reader.readAsDataURL(file);
+	      $form.find(".img-grid").append($img);
+	    });
+
+	    let dt = new DataTransfer();
+	    for (let f of sel_files) {
+	      dt.items.add(f);
+	    }
+
+	    this.files = dt.files;
+	  });
+
+	  // 별
+	  $(".review-form .star a").click(function(e) {
+	    let b = $(this).hasClass("on");
+	    $(this).parent().children("a").removeClass("on");
+	    $(this).addClass("on").prevAll("a").addClass("on");
+
+	    if (b) {
+	      $(this).removeClass("on");
+	    }
+
+	    let s = $(this).closest(".review-form").find(".star .on").length;
+	    $(this).closest(".review-form").find("input[name=reviewScore]").val(s);
+
+	    // e.preventDefault(); // 화면 위로 이동 안되게
+	    return false;
+	  });
+
+	  // 리뷰 등록 완료
+	  $(".btnReviewSend").click(function() {
+		  const $form = $(this).closest("form");
+		  let s;
+
+		  if ($form.find("input[name=reviewScore]").val() === "0") {
+		    alert("평점은 1점부터 가능합니다.");
+		    return false;
+		  }
+
+		  s = $form.find("textarea[name=reviewContent]").val();
+		  if (typeof s === 'undefined' || s.trim() === "") {
+		    alert("리뷰를 입력하세요.");
+		    $form.find("textarea[name=reviewContent]").focus();
+		    return false;
+		  }
+
+		  if ($form.find("input[name=selectFile]").files.length > 1) {
+		    alert("이미지는 최대 1개까지 가능합니다.");
+		    return false;
+		  }
+
+		  let url = "${pageContext.request.contextPath}/review/write";
+		  // FormData : form 필드와 그 값을 나타내는 일련의 key/value 쌍을 쉽게 생성하는 방법을 제공
+		  // FormData는 Content-Type을 명시하지 않으면 multipart/form-data로 전송
+		  let query = new FormData($form[0]); // jQuery 객체에서 원본 DOM 객체로 접근
+
+		  const fn = function(data) {
+		    if (data.state === "true") {
+		      $plist.find("#exampleModal").remove();
+		      $plist.find(".review-form").remove();
+		    }
+		  };
+
+		  ajaxFun(url, "post", query, "json", fn, true);
+		});
 	});
-});
-
-$(function(){
-	// 리뷰 등록 완료
-	$(".btnReviewSend").click(function(){
-		let $plist = $(this).closest(".payment-list");
-		
-		const f = this.closest("form");
-		let s;
-		
-		if(f.score.value === "0") {
-			alert("평점은 1점부터 가능합니다.")	;
-			return false;
-		}
-		
-		s = f.review.value.trim();
-		if( ! s ) {
-			alert("리뷰를 입력하세요.")	;
-			f.review.focus();
-			return false;
-		}
-		
-		if(f.selectFile.files.length > 1) {
-			alert("이미지는 최대 1개까지 가능합니다..")	;
-			return false;
-		}
-		
-		let url = "${pageContext.request.contextPath}/review/write";
-		// FormData : form 필드와 그 값을 나타내는 일련의 key/value 쌍을 쉽게 생성하는 방법을 제공 
-		// FormData는 Content-Type을 명시하지 않으면 multipart/form-data로 전송
-		let query = new FormData(f); 
-		
-		const fn = function(data) {
-			if(data.state === "true") {
-				$plist.find(".btnReviewWriteForm").remove();
-				$plist.find(".review-form").remove();
-			}
-		};
-		
-		ajaxFun(url, "post", query, "json", fn, true);
-	});
-});
 </script>
