@@ -423,7 +423,10 @@ public class LessonManageController {
 	}
 	
 	@GetMapping("update1")
-	public String update1(@RequestParam long classNum, @RequestParam int approvalCode) throws Exception{
+	public String update1(@RequestParam long classNum, @RequestParam int approvalCode, HttpSession session) throws Exception{
+		
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		
 		
 		String memo;
 		
@@ -441,6 +444,7 @@ public class LessonManageController {
 		map.put("classNum", classNum);
 		map.put("approvalCode", approvalCode);
 		map.put("memo", memo);
+		map.put("userId", info.getUserId());
 		
 		try {
 			service.updateApproval(map);
@@ -454,7 +458,9 @@ public class LessonManageController {
 	}
 	
 	@GetMapping("update2")
-	public String update2(@RequestParam long classNum, @RequestParam int approvalCode) throws Exception{
+	public String update2(@RequestParam long classNum, @RequestParam int approvalCode, HttpSession session) throws Exception{
+		
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		
 		String memo;
 		
@@ -472,6 +478,7 @@ public class LessonManageController {
 		map.put("classNum", classNum);
 		map.put("approvalCode", approvalCode);
 		map.put("memo", memo);
+		map.put("userId", info.getUserId());
 		
 		try {
 			service.updateApproval(map);
@@ -485,7 +492,9 @@ public class LessonManageController {
 	}
 	
 	@GetMapping("update3")
-	public String update3(@RequestParam long classNum, @RequestParam int approvalCode) throws Exception{
+	public String update3(@RequestParam long classNum, @RequestParam int approvalCode, HttpSession session) throws Exception{
+		
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		
 		String memo;
 		
@@ -503,6 +512,7 @@ public class LessonManageController {
 		map.put("classNum", classNum);
 		map.put("approvalCode", approvalCode);
 		map.put("memo", memo);
+		map.put("userId", info.getUserId());
 		
 		try {
 			service.updateApproval(map);
