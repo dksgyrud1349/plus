@@ -39,7 +39,7 @@
 		<where>
 			le.showClass = 0
 			AND ap.approvalCode = 1
-			AND endDate > SYSDATE
+			AND TO_CHAR(endDate, 'YYYYMMDD') > TO_CHAR(SYSDATE, 'YYYYMMDD')
 			<if test="kwd != null and kwd != ''">
 				AND <include refid="where-list"/>
 			</if>
@@ -74,7 +74,7 @@
 		<where>
 			le.showClass = 0 
 			AND ap.approvalCode = 1
-			AND endDate > SYSDATE
+			AND TO_CHAR(endDate, 'YYYYMMDD') > TO_CHAR(SYSDATE, 'YYYYMMDD')
 			<if test="mainNum != 0">
 				AND mc.mainNum = #{mainNum} 
 			</if>
