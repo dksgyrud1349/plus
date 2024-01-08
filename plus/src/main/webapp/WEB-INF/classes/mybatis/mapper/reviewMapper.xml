@@ -10,8 +10,8 @@
 	</insert>
 	
 	<insert id="insertReviewFile" parameterType="com.fa.plus.domain.Review">
-		INSERT INTO reviewPhoto(photoNum, reviewNum, filename)
-			VALUES(reviewPhoto_seq.NEXTVAL, #{reviewNum}, #{filename})
+		INSERT INTO reviewPhoto(photoNum, reviewNum, fileName)
+			VALUES(reviewPhoto_seq.NEXTVAL, #{reviewNum}, #{fileName})
 	</insert>
 	
 	<select id="findByReviewSummary" parameterType="map" resultType="com.fa.plus.domain.Summary">
@@ -115,12 +115,12 @@
 	</select>
 	
 	<update id="updateReview" parameterType="com.fa.plus.domain.Review">
-		UPDATE review SET replyContent = #{replyContent}, replyDate = SYSDATE, showReview = #{showReview}
+		UPDATE review SET replyContent = #{replyContent}, replyDate = SYSDATE
 		WHERE reviewNum = #{reviewNum}
 	</update>
 	
 	<select id="listReviewFile" parameterType="long" resultType="com.fa.plus.domain.Review">
-		SELECT photoNum, reviewNum, filename
+		SELECT photoNum, reviewNum, fileName
 		FROM reviewPhoto
 		WHERE reviewNum = #{reviewNum}
 	</select>
