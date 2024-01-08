@@ -50,8 +50,10 @@
 				<div class="body-main">
 
 					<div class="pt-2" id="myTabContent">
-						<div class="mt-3 pt-3 border-bottom">
-							<p class="fs-4 fw-semibold">클래스 리뷰</p>
+						<div class="mt-3 pt-3">
+							<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+								클래스 리뷰
+							</h3>
 						</div>
 						<div class="mt-2 list-review"></div>
 					</div>
@@ -123,6 +125,7 @@ function printReview(data) {
 	for(let item of data.list) {
 		let reviewNum = item.reviewNum;
 		let userName = item.userName;
+		let plusName = item.plusName;
 		let reviewScore = item.reviewScore;
 		let reviewContent = item.reviewContent;
 		let reviewDate = item.reviewDate;
@@ -131,7 +134,6 @@ function printReview(data) {
 		let listFilename = item.listFilename;
 		
 		let className = item.className;
-		let plusName = item.plusName;
 		let orderNum = item.orderNum;
 		let classDate = item.classDate;
 		
@@ -146,7 +148,7 @@ function printReview(data) {
 		}
 		out += '    </div>';
 		out += '    <div class="col text-end"><span>'+reviewDate+'</span>';
-		out += '       |<span class="deleteReview" data-num="'+reviewNum+'">삭제</span></div>';	
+		out += '    <span class="deleteReview" data-num="'+reviewNum+'">삭제</span></div>';	
 		out += '  </div>';
 		out += '  <div class="mt-2 p-2">' + reviewContent + '</div>';
 
@@ -164,7 +166,7 @@ function printReview(data) {
 			out += '  <div class="p-3 pt-0">';
 			out += '    <div class="bg-light">';
 			out += '      <div class="p-2 pb-0">';
-			out += '        <label class="text-bg-primary px-2">'+ plusName +'</label> <label>' + replyDate + '</label>';
+			out += '        <label class="text-bg-primary px-2">'+ plusName +' 플러스님</label> <label>' + replyDate + '</label>';
 			out += '      </div>';
 			out += '      <div class="p-2 pt-1">' + replyContent + '</div>';
 			out += '    </div>';

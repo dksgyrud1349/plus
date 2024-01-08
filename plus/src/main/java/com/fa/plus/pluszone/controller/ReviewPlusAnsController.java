@@ -44,6 +44,8 @@ public class ReviewPlusAnsController {
 			
 			map.put("memberIdx", memberIdx);
 			
+			dataCount = service.dataCountClass(map);
+			
 			int total_page = myUtil.pageCount(dataCount, size);
 			if (current_page > total_page) {
 				current_page = total_page;

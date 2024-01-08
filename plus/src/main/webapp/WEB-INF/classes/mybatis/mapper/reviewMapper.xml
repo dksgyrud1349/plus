@@ -30,7 +30,7 @@
 	</select>
 
 	<select id="listReview" parameterType="map" resultType="com.fa.plus.domain.Review">
-		SELECT r.reviewNum, m1.userName, reviewScore, reviewContent, nickName as plusName,
+		SELECT r.reviewNum, m1.userName, reviewScore, reviewContent, nickName as plusName, reviewSubject,
 			replyContent, r.orderNum, filename, showReview, l.className, 
 			TO_CHAR(reviewDate, 'YYYY-MM-DD') reviewDate, TO_CHAR(replyDate, 'YYYY-MM-DD') replyDate,  
 			TO_CHAR(classDate, 'YYYY-MM-DD HH24:MI')classDate
@@ -81,7 +81,7 @@
 	
 	<!-- 내가 쓴 리뷰 확인 -->
 	<select id="listReview2" parameterType="map" resultType="com.fa.plus.domain.Review">
-		SELECT r.reviewNum, reviewScore, reviewContent, nickName as plusName,
+		SELECT r.reviewNum, reviewScore, reviewContent, nickName as plusName, reviewSubject,
 			replyContent, r.orderNum, filename, showReview, c.className,
 			TO_CHAR(reviewDate, 'YYYY-MM-DD') reviewDate, TO_CHAR(replyDate, 'YYYY-MM-DD') replyDate,  
 			TO_CHAR(classDate, 'YYYY-MM-DD HH24:MI')classDate
@@ -115,7 +115,7 @@
 	</select>
 	
 	<update id="updateReview" parameterType="com.fa.plus.domain.Review">
-		UPDATE review SET replyContent = #{replyContent}, replyDate = SYSDATE,
+		UPDATE review SET replyContent = #{replyContent}, replyDate = SYSDATE
 		WHERE reviewNum = #{reviewNum}
 	</update>
 	

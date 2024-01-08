@@ -384,7 +384,7 @@ function sendOk(mode) {
 								
 								<div class="row pt-1 pb-1 border-bottom">
 								<div class="col">
-									<label class="align-middle">리뷰수 <span class="fs-5 fw-semibold product-reviewCount">${dto.reviewCount}</span></label>
+									<label class="align-middle"><a href="#myTabContent">리뷰 <span class="fs-5 fw-semibold product-reviewCount">(${dto.reviewCount})</span></a></label>
 									<label class="align-middle pt-0 ps-2 score-star product-star">
 										<c:forEach var="n" begin="1" end="5">
 											<c:set var="reviewScore" value="${dto.reviewScore + ((dto.reviewScore%1>=0.5) ? (1-dto.reviewScore%1)%1 : -(dto.reviewScore%1))}"/>
@@ -395,186 +395,181 @@ function sendOk(mode) {
 								</div>
 							</div>
 								
-								
-								
-								
-								
-								
-									<div>
-										<button type="button" class="btn singo" style="width: 60x;" onclick="location.href='${pageContext.request.contextPath}/declaration/article';">
-											<span style="font-size: medium; font-family: 'EASTARJET-Medium';">신고</span><i class="bi bi-exclamation-triangle-fill"></i>
-										</button>
-										<button type="button" class="btn singo" style="width: 60x;" onclick="location.href='${pageContext.request.contextPath}/classInq/insertInq?classNum=${dto.classNum}';">
-											<span style="font-size: medium; font-family: 'EASTARJET-Medium';">문의하기</span> <i class="bi bi-question-circle"></i>
-										</button>
-									</div>
-							</div>
-							<p class="lead">
-
-								1. 강사 : ${dto.nickName}<br> 2. 상세주소 : ${dto.addr1}
-								${dto.addr2}<br> <br> 예약하기를 눌러 예약가능 시간과 안원수를 확인해주세요.
-							</p>
 							<div>
-								<select name="classDay" id="classDay"
-									style="width: 115px; height: 30px;">
-									<option value="">일자</option>
-									<c:forEach var="vo" items="${lessonDtlDate}" varStatus="status">
-										<option value="${vo.classDate}">${vo.classDate}</option>
-									</c:forEach>
-								</select> <select name="classTime" id="classTime"
-									style="width: 120px; height: 30px;">
-									<option value="">시간</option>
-									<c:forEach var="vo" items="${lessonDtlTime}">
-										<option value="${vo.startTime}${vo.endTime}">${vo.startTime}
-											~ ${vo.endTime}</option>
-									</c:forEach>
-								</select>
-								<div class="d-flex" style="float: right; margin-bottom: 15px;">
-									<button class="btn btn-outline-dark flex-shrink-0"
-										type="button" onclick="sendOk('buy');">
-										<i class="bi-cart-fill me-1"></i>예약하기
-									</button>
-								</div>
+								<button type="button" class="btn singo" style="width: 60x;" onclick="location.href='${pageContext.request.contextPath}/declaration/article';">
+									<span style="font-size: medium; font-family: 'EASTARJET-Medium';">신고</span><i class="bi bi-exclamation-triangle-fill"></i>
+								</button>
+								<button type="button" class="btn singo" style="width: 60x;" onclick="location.href='${pageContext.request.contextPath}/classInq/insertInq?classNum=${dto.classNum}';">
+									<span style="font-size: medium; font-family: 'EASTARJET-Medium';">문의하기</span> <i class="bi bi-question-circle"></i>
+								</button>
+							</div>
+						</div>
+						<p class="lead">
+
+							1. 강사 : ${dto.nickName}<br> 2. 상세주소 : ${dto.addr1}
+							${dto.addr2}<br> <br> 예약하기를 눌러 예약가능 시간과 안원수를 확인해주세요.
+						</p>
+						<div>
+							<select name="classDay" id="classDay"
+								style="width: 115px; height: 30px;">
+								<option value="">일자</option>
+								<c:forEach var="vo" items="${lessonDtlDate}" varStatus="status">
+									<option value="${vo.classDate}">${vo.classDate}</option>
+								</c:forEach>
+							</select> <select name="classTime" id="classTime"
+								style="width: 120px; height: 30px;">
+								<option value="">시간</option>
+								<c:forEach var="vo" items="${lessonDtlTime}">
+									<option value="${vo.startTime}${vo.endTime}">${vo.startTime}
+										~ ${vo.endTime}</option>
+								</c:forEach>
+							</select>
+							<div class="d-flex" style="float: right; margin-bottom: 15px;">
+								<button class="btn btn-outline-dark flex-shrink-0"
+									type="button" onclick="sendOk('buy');">
+									<i class="bi-cart-fill me-1"></i>예약하기
+								</button>
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+		</section>
 
 				
-				<div class="container px-4 px-lg-5 mt-5">
-					<h2 class="fw-bolder mb-4">NEW 클래스</h2>
-					<div
-						class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-						
-						<div class="col mb-5">
-							<div class="card h-100">
-							<div class="badge bg-dark text-white position-absolute"
-									style="top: 0.5rem; right: 0.5rem">NEW</div>
-								<!-- Product image-->
-								<img class="card-img-top"
-									src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<h5 class="fw-bolder">인기상품</h5>
-										<!-- Product reviews-->
-										<div
-											class="d-flex justify-content-center small text-warning mb-2">
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-										</div>
-										<!-- Product price-->
-										60,000원
-									</div>
+		<div class="container px-4 px-lg-5 mt-5">
+			<h2 class="fw-bolder mb-4">NEW 클래스</h2>
+			<div
+				class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+				
+				<div class="col mb-5">
+					<div class="card h-100">
+					<div class="badge bg-dark text-white position-absolute"
+							style="top: 0.5rem; right: 0.5rem">NEW</div>
+						<!-- Product image-->
+						<img class="card-img-top"
+							src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+						<!-- Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h5 class="fw-bolder">인기상품</h5>
+								<!-- Product reviews-->
+								<div
+									class="d-flex justify-content-center small text-warning mb-2">
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
 								</div>
-								<!-- Product actions-->
-								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<div class="text-center">
-										<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
-									</div>
-								</div>
+								<!-- Product price-->
+								60,000원
 							</div>
 						</div>
-						
-						<div class="col mb-5">
-							<div class="card h-100">
-							<div class="badge bg-dark text-white position-absolute"
-									style="top: 0.5rem; right: 0.5rem">NEW</div>
-								<!-- Product image-->
-								<img class="card-img-top"
-									src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<h5 class="fw-bolder">인기상품</h5>
-										<!-- Product reviews-->
-										<div
-											class="d-flex justify-content-center small text-warning mb-2">
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-										</div>
-										<!-- Product price-->
-										60,000원
-									</div>
-								</div>
-								<!-- Product actions-->
-								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<div class="text-center">
-										<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
-									</div>
-								</div>
+						<!-- Product actions-->
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center">
+								<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
 							</div>
 						</div>
-						
-						<div class="col mb-5">
-							<div class="card h-100">
-							<div class="badge bg-dark text-white position-absolute"
-									style="top: 0.5rem; right: 0.5rem">NEW</div>
-								<!-- Product image-->
-								<img class="card-img-top"
-									src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<h5 class="fw-bolder">인기상품</h5>
-										<!-- Product reviews-->
-										<div
-											class="d-flex justify-content-center small text-warning mb-2">
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-										</div>
-										<!-- Product price-->
-										60,000원
-									</div>
+					</div>
+				</div>
+				
+				<div class="col mb-5">
+					<div class="card h-100">
+					<div class="badge bg-dark text-white position-absolute"
+							style="top: 0.5rem; right: 0.5rem">NEW</div>
+						<!-- Product image-->
+						<img class="card-img-top"
+							src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+						<!-- Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h5 class="fw-bolder">인기상품</h5>
+								<!-- Product reviews-->
+								<div
+									class="d-flex justify-content-center small text-warning mb-2">
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
 								</div>
-								<!-- Product actions-->
-								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<div class="text-center">
-										<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
-									</div>
-								</div>
+								<!-- Product price-->
+								60,000원
 							</div>
 						</div>
-						
-						<div class="col mb-5">
-							<div class="card h-100">
-							<div class="badge bg-dark text-white position-absolute"
-									style="top: 0.5rem; right: 0.5rem">NEW</div>
-								<!-- Product image-->
-								<img class="card-img-top"
-									src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<h5 class="fw-bolder">인기상품</h5>
-										<!-- Product reviews-->
-										<div
-											class="d-flex justify-content-center small text-warning mb-2">
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-											<div class="bi-star-fill"></div>
-										</div>
-										<!-- Product price-->
-										60,000원
-									</div>
+						<!-- Product actions-->
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center">
+								<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col mb-5">
+					<div class="card h-100">
+					<div class="badge bg-dark text-white position-absolute"
+							style="top: 0.5rem; right: 0.5rem">NEW</div>
+						<!-- Product image-->
+						<img class="card-img-top"
+							src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+						<!-- Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h5 class="fw-bolder">인기상품</h5>
+								<!-- Product reviews-->
+								<div
+									class="d-flex justify-content-center small text-warning mb-2">
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
 								</div>
-								<!-- Product actions-->
+								<!-- Product price-->
+								60,000원
+							</div>
+						</div>
+						<!-- Product actions-->
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center">
+								<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col mb-5">
+					<div class="card h-100">
+					<div class="badge bg-dark text-white position-absolute"
+							style="top: 0.5rem; right: 0.5rem">NEW</div>
+						<!-- Product image-->
+						<img class="card-img-top"
+							src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
+						<!-- Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h5 class="fw-bolder">인기상품</h5>
+								<!-- Product reviews-->
+								<div
+									class="d-flex justify-content-center small text-warning mb-2">
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+								</div>
+								<!-- Product price-->
+								60,000원
+							</div>
+						</div>
+						<!-- Product actions-->
 								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 									<div class="text-center">
 										<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
@@ -584,10 +579,9 @@ function sendOk(mode) {
 						</div>
 					</div>
 				</div>
-			</section>
-		</div>
-	</header>
-</form>
+			</div>
+		</header>
+	</form>
 <!-- Services-->
 <section class="page-section mt-5" id="services">
 	<div class="container px-5 px-lg-5">
@@ -724,6 +718,7 @@ function sendOk(mode) {
 		for(let item of data.list) {
 			let reviewNum = item.reviewNum;
 			let userName = item.userName;
+			let reviewSubject = item.reviewSubject;
 			let reviewScore = item.reviewScore;
 			let reviewContent = item.reviewContent;
 			let reviewDate = item.reviewDate;
@@ -739,6 +734,7 @@ function sendOk(mode) {
 			out += '     <div class="col pt-3 text-end"><span>'+reviewDate+'</span>';
 			out += '  </div>';
 			out += '  </div>';
+			out += '     <div class="col pt-3 ps-0 fw-semibold"><span>(제목) : '+reviewSubject+'</span>';
 			out += '  <div class="row p-2">';
 			out += '    <div class="col-auto pt-0 ps-2 pe-1 score-star">';
 			for(let i=1; i<=5; i++) {
@@ -763,7 +759,7 @@ function sendOk(mode) {
 				out += '  <div class="p-3 pt-0">';
 				out += '    <div class="bg-light">';
 				out += '      <div class="p-3 pb-0">';
-				out += '        <label class="text-bg-primary px-2"> 관리자 </label> <label>' + replyDate + '</label>';
+				out += '        <label class="text-bg-primary px-2"> ${dto.nickName} 강사님 </label> <label>' + replyDate + '</label>';
 				out += '      </div>';
 				out += '      <div class="p-3 pt-1">' + replyContent + '</div>';
 				out += '    </div>';
