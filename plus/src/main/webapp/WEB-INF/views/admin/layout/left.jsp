@@ -62,7 +62,7 @@
                          <nav class="sb-sidenav-menu-nested nav">
                              <a class="nav-link" href="${pageContext.request.contextPath}/admin/onedaypluschartManage/list">원데이 플러스 통계</a>
                              <a class="nav-link" href='<c:url value='/admin/sub/list'/>'>가입자 수 통계</a>
-                             <a class="nav-link" href="#">원데이 클래스 통계</a>
+                             <a class="nav-link" href='<c:url value='/admin/class/list'/>'>원데이 클래스 통계</a>
                          </nav>
                      </div>
                      

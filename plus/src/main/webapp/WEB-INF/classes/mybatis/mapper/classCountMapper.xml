@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper 
+	namespace="com.fa.plus.admin.mapper.ClassCountMapper">
+	<select id="dayOfMonthCount" parameterType="String" resultType="map">
+
+		  SELECT
+        COUNT(DECODE(TO_CHAR(regdate, 'MM'), '01', 1, NULL)) "JAN",
+        COUNT(DECODE(TO_CHAR(regdate, 'MM'), '02', 1, NULL)) "FEB",
+        COUNT(DECODE(TO_CHAR(regdate, 'MM'), '03', 1, NULL)) "MAR",
+        COUNT(DECODE(TO_CHAR(regdate, 'MM'), '04', 1, NULL)) "APR",
+        COUNT(DECODE(TO_CHAR(regdate, 'MM'), '05', 1, NULL)) "MAY",
+        COUNT(DECODE(TO_CHAR(regdate, 'MM'), '06', 1, NULL)) "JUN",
+        COUNT(DECODE(TO_CHAR(regdate, 'MM'), '07', 1, NULL)) "JUL",
+        COUNT(DECODE(TO_CHAR(regdate, 'MM'), '08', 1, NULL)) "AUG",
+        COUNT(DECODE(TO_CHAR(regdate, 'MM'), '09', 1, NULL)) "SEP",
+        COUNT(DECODE(TO_CHAR(regdate, 'MM'), '10', 1, NULL)) "OCT",
+        COUNT(DECODE(TO_CHAR(regdate, 'MM'), '11', 1, NULL)) "NOV",
+        COUNT(DECODE(TO_CHAR(regdate, 'MM'), '12', 1, NULL)) "DEC"
+        
+    FROM
+        lesson
+    GROUP BY
+     TO_CHAR(sysdate, 'YYYY-MM')
+     
+	</select>
+</mapper>
