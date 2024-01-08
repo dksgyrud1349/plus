@@ -135,13 +135,12 @@
 	  </thead>
 	  <tbody>
 	  	<c:forEach var="dto" items="${rtnList}" varStatus="status">
-			<tr class="bookingDetailList">
+			<tr class="bookingDetailList" data-orderNum="${dto.orderNum}" data-classNum="${dto.classNum}">
 				<th style="padding-left: 30px;">${dto.rnum}</th>
 				<td>${dto.className}</td>
 				<td>${dto.puserName}</td>
 				<td>${dto.addr1}, ${dto.addr2}</td>
 				<td style="padding-left: 10px;">${dto.mode}</td>
-				<input type="hidden" name="orderNum" id="orderNum" value="${dto.orderNum}">
 			</tr>
 		</c:forEach>
 	  </tbody>
@@ -166,11 +165,63 @@
   </div>
 </div>
 
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">리뷰</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="review-form p-3 mt-2 ">
+			<form name="reviewForm">
+				<div class="p-1">
+					<p class="star">
+						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
+						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
+						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
+						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
+						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
+						<input type="hidden" name="reviewScore" value="5">
+						<input type="hidden" name="classNum">
+					</p>
+				</div>
+				
+				<div class="p-1">
+					<input type="text" name="reviewSubject" class="form-control" placeholder="제목을 입력해주세요.">
+				</div>
+				
+				<div class="p-1">
+					<textarea name="reviewContent" class="form-control"></textarea>
+				</div>
+				<div class="p-1">
+					<div class="img-grid">
+						<img class="item img-add" src="${pageContext.request.contextPath}/resources/images/add_photo.png">
+					</div>
+					<input type="file" name="selectFile" accept="image/*" multiple class="form-control" style="display: none;">
+				</div>
+				<div class="p-1 text-end">
+					<input type="hidden" name="orderNum">
+				</div>
+			</form>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary btnReviewSend">등록하기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script type="text/javascript">
 function ajaxFun(url, method, formData, dataType, fn, file = false) {
 	const settings = {
 			type: method, 
 			data: formData,
+			dataType: dataType,
 			success:function(data) {
 				fn(data);
 			},
@@ -191,12 +242,21 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 				console.log(jqXHR.responseText);
 			}
 	};
+	
+	if(file) {
+		settings.processData = false;  // file 전송시 필수. 서버로전송할 데이터를 쿼리문자열로 변환여부
+		settings.contentType = false;  // file 전송시 필수. 서버에전송할 데이터의 Content-Type. 기본:application/x-www-urlencoded
+	}
+	
 	$.ajax(url, settings);
 }
 
 $(function(){
 	$(".bookingDetailList").click(function(){
-		let orderNum = $(this).children("input").val();
+		let orderNum = $(this).attr("data-orderNum");
+		$('form[name=reviewForm]').find("input[name=orderNum]").val(orderNum);
+		let classNum = $(this).attr("data-classNum");
+		$('form[name=reviewForm]').find("input[name=classNum]").val(classNum);
 		
 		let url = '${pageContext.request.contextPath}/bookingList/detail';
 		let query = 'orderNum='+orderNum;
@@ -244,61 +304,7 @@ $(function(){
 		});
 });
 
-</script>
-
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">리뷰</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="review-form p-3 mt-2 ">
-			<form name="reviewForm">
-				<div class="p-1">
-					<p class="star">
-						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
-						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
-						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
-						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
-						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
-						<input type="hidden" name="reviewScore" value="5">
-						<input type="hidden" name="classNum" value="${dto.classNum}">
-					</p>
-				</div>
-				
-				<div class="p-1">
-					<input type="text" name="reviewSubject" class="form-control" placeholder="제목을 입력해주세요.">
-				</div>
-				
-				<div class="p-1">
-					<textarea name="reviewContent" class="form-control"></textarea>
-				</div>
-				<div class="p-1">
-					<div class="img-grid">
-						<img class="item img-add" src="${pageContext.request.contextPath}/resources/images/add_photo.png">
-					</div>
-					<input type="file" name="selectFile" accept="image/*" multiple class="form-control" style="display: none;">
-				</div>
-				<div class="p-1 text-end">
-					<input type="hidden" name="num" value="${dto.orderNum}">
-				</div>
-			</form>
-		</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary btnReviewSend">등록하기</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<script>
+<%-- 리뷰 --%>
 const exampleModal = document.getElementById('exampleModal');
 if (exampleModal) {
   exampleModal.addEventListener('show.bs.modal', event => {
@@ -379,22 +385,29 @@ $(function() {
 
 	  // 리뷰 등록 완료
 	  $(".btnReviewSend").click(function() {
-		  const $form = $(this).closest("form");
+		  const f = document.reviewForm;
 		  let s;
 
-		  if ($form.find("input[name=reviewScore]").val() === "0") {
+		  if (f.reviewScore.value === "0") {
 		    alert("평점은 1점부터 가능합니다.");
 		    return false;
 		  }
-
-		  s = $form.find("textarea[name=reviewContent]").val();
+		  
+		  s = f.reviewSubject.value;
 		  if (typeof s === 'undefined' || s.trim() === "") {
-		    alert("리뷰를 입력하세요.");
-		    $form.find("textarea[name=reviewContent]").focus();
+		    alert("제목을 입력하세요.");
+		    f.reviewSubject.focus();
 		    return false;
 		  }
 
-		  if ($form.find("input[name=selectFile]").files.length > 1) {
+		  s = f.reviewContent.value;
+		  if (typeof s === 'undefined' || s.trim() === "") {
+		    alert("리뷰를 입력하세요.");
+		    f.reviewContent.focus();
+		    return false;
+		  }
+
+		  if (f.selectFile.files.length > 1) {
 		    alert("이미지는 최대 1개까지 가능합니다.");
 		    return false;
 		  }
@@ -402,16 +415,13 @@ $(function() {
 		  let url = "${pageContext.request.contextPath}/review/write";
 		  // FormData : form 필드와 그 값을 나타내는 일련의 key/value 쌍을 쉽게 생성하는 방법을 제공
 		  // FormData는 Content-Type을 명시하지 않으면 multipart/form-data로 전송
-		  let query = new FormData($form[0]); // jQuery 객체에서 원본 DOM 객체로 접근
-
+		  let query = new FormData(f); // jQuery 객체에서 원본 DOM 객체로 접근
 		  const fn = function(data) {
-		    if (data.state === "true") {
-		      $plist.find("#exampleModal").remove();
-		      $plist.find(".review-form").remove();
-		    }
+		  	if (data.state === "true") {
+			    $plist.find("#exampleModal").modal('hide');
+			}
 		  };
-
-		  ajaxFun(url, "post", query, "json", fn, true);
+		 ajaxFun(url, "post", query, "json", fn, true);
 		});
 	});
 </script>
