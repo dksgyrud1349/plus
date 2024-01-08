@@ -18,4 +18,7 @@ public interface ReviewService {
 	public void updateReview(Review dto) throws Exception;
 	
 	public void deleteReview(long reviewNum, String pathname) throws Exception;
+	
+	public List<Review>classReviewList(Map<String, Object> map);
+	public int dataCountClass(Map<String, Object> map);
 }

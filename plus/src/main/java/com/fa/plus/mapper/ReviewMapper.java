@@ -26,4 +26,7 @@ public interface ReviewMapper {
 	public void deleteReview(long reviewNum) throws SQLException;
 	
 	public long reviewSeq();
+	
+	public List<Review>classReviewList(Map<String, Object> map);
+	public int dataCountClass(Map<String, Object> map);
 }

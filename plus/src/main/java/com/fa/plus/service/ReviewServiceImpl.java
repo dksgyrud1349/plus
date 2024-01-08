@@ -163,5 +163,38 @@ public class ReviewServiceImpl implements ReviewService {
 		}
 		return list;
 	}
+
+	@Override
+	public List<Review> classReviewList(Map<String, Object> map) {
+		List<Review> list = null;
+		try {
+			list = mapper.classReviewList(map);
+			
+			for (Review dto : list) {
+				if(dto.getFileName() != null) {
+					dto.setListFilename(dto.getFileName().split(",")); 
+				}
+				
+				dto.setReviewContent(dto.getReviewContent().replaceAll("\n", "<br>"));
+				
+				if(dto.getReplyContent() != null) {
+					dto.setReplyContent(dto.getReplyContent().replaceAll("\n", "<br>"));
+				}
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int dataCountClass(Map<String, Object> map) {
+		int result = 0;
+		try {
+			result = mapper.dataCountClass(map);
+		} catch (Exception e) {
+		}
+		return result;
+	}
 	
 }

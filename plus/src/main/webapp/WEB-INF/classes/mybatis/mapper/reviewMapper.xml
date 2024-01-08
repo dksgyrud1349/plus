@@ -115,7 +115,7 @@
 	</select>
 	
 	<update id="updateReview" parameterType="com.fa.plus.domain.Review">
-		UPDATE review SET replyContent = #{replyContent}, replyDate = SYSDATE
+		UPDATE review SET replyContent = #{replyContent}, replyDate = SYSDATE,
 		WHERE reviewNum = #{reviewNum}
 	</update>
 	
@@ -132,5 +132,45 @@
 	
 	<select id="reviewSeq" resultType="Long">
 		SELECT review_seq.NEXTVAL FROM dual 
+	</select>
+	
+	<!-- 플러스가 리뷰 확인-->
+	<select id="classReviewList" parameterType="map" resultType="com.fa.plus.domain.Review">
+		SELECT r.reviewNum, reviewScore, reviewSubject, reviewContent, m.userName,
+			replyContent, r.orderNum, filename, c.className,
+			TO_CHAR(reviewDate, 'YYYY-MM-DD') reviewDate, TO_CHAR(replyDate, 'YYYY-MM-DD') replyDate,  
+			TO_CHAR(classDate, 'YYYY-MM-DD HH24:MI')classDate
+		FROM review r
+		JOIN member1 m ON r.memberIdx = m.memberIdx 
+		JOIN orders o ON r.orderNum = o.orderNum
+        JOIN LessonDetail cd ON o.detailNum = cd.detailNum
+		JOIN Lesson c ON cd.classNum = c.classNum
+		JOIN member1 m2 on m2.memberIdx = c.memberIdx
+            JOIN plus p on p.userId = m2.userId 
+		LEFT OUTER JOIN (
+			SELECT reviewNum, LISTAGG(filename, ',') WITHIN GROUP(ORDER BY photoNum) filename
+            FROM reviewPhoto
+            GROUP BY reviewNum	
+		) f ON r.reviewNum=f.reviewNum
+		<where>
+			<if test="memberIdx != null">
+				m2.memberIdx = #{memberIdx}
+			</if>
+		</where>
+		ORDER BY reviewDate DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<select id="dataCountClass" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM review r
+		JOIN orders o ON o.orderNum = r.orderNum
+		JOIN lessonDetail ld on ld.detailNum = o.detailNum
+		JOIN lesson l ON l.classNum = ld.classNum
+		<where>
+			<if test="memberIdx != null">
+				l.memberIdx = #{memberIdx}
+			</if>
+		</where>
 	</select>
 </mapper>
