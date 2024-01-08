@@ -751,11 +751,11 @@ function sendOk(mode) {
 
 			if(fileName && fileName.length > 0) {
 				out += '<div class="row gx-1 mt-2 mb-1 p-1">';
-					for(let f of fileName) {
-						out += '<div class="col-md-auto md-img">';
-						out += '  <img class="border rounded" src="${pageContext.request.contextPath}/uploads/review/'+f+'">';
-						out += '</div>';
-					}
+					
+				out += '<div class="col-md-auto md-img">';
+				out += '  <img class="border rounded" style="height:150px; width:150px;" src="${pageContext.request.contextPath}/uploads/review/'+fileName+'">';
+				out += '</div>';
+			
 				out += '</div>';
 			}
 			

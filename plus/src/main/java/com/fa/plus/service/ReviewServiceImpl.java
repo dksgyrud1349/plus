@@ -24,6 +24,9 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public void insertReview(Review dto, String pathname) throws Exception {
 		try {
+			long reviewNum = mapper.reviewSeq();
+			dto.setReviewNum(reviewNum);
+			
 			mapper.insertReview(dto);
 			
 			if( ! dto.getSelectFile().isEmpty() ) {

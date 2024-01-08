@@ -181,8 +181,17 @@ function printReview(data) {
 
 $(function(){
 	$('.list-review').on('click', '.deleteReview', function(){
+		if(! confirm('리뷰를 삭제하시겠습니까? ')){
+			return false;
+		}
 		let num = $(this).attr('data-num');
-		alert(num);
+		let url = '${pageContext.request.contextPath}/review/delete';
+		let query = 'reviewNum='+num;
+		
+		const fn = function(data) {
+			location.href="${pageContext.request.contextPath}/myPage/review";
+		};
+		ajaxFun(url, 'post', query, 'json', fn);	
 	});
 });
 </script>

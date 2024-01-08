@@ -160,4 +160,23 @@ public class ReviewController {
 		return model;
 	}
 	
+	// AJAX - JSON
+	@PostMapping("delete")
+	public Map<String, Object> deleteSubmit(@RequestParam long reviewNum,
+			HttpSession session) throws Exception {
+		
+		String root = session.getServletContext().getRealPath("/");
+		String pathname = root + "uploads" + File.separator + "review";
+		
+		String state = "true";
+		try {
+			service.deleteReview(reviewNum, pathname);
+		} catch (Exception e) {
+			state = "false";
+		}
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("state", state);
+		return model;
+	}
 }

@@ -418,7 +418,7 @@ $(function() {
 		  let query = new FormData(f); // jQuery 객체에서 원본 DOM 객체로 접근
 		  const fn = function(data) {
 		  	if (data.state === "true") {
-			    $plist.find("#exampleModal").modal('hide');
+			    $("#exampleModal").modal('hide');
 			}
 		  };
 		 ajaxFun(url, "post", query, "json", fn, true);

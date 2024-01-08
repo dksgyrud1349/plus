@@ -83,7 +83,7 @@
 	
 	<!-- 예약 확정 후 스케쥴 등록 -->
 	<!-- 
-	<select id="findByClassCategory" parameterType="String" resultType="">
+	<select id="findByClassCategory" parameterType="String" resultType="Long">
 		SELECT cNum
 		FROM schCategory
 		WHERE cName = #{className}

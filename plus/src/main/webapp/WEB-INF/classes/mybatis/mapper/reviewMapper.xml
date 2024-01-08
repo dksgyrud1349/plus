@@ -5,7 +5,7 @@
 	<insert id="insertReview" parameterType="com.fa.plus.domain.Review">
 		INSERT INTO review(reviewNum, reviewScore, reviewSubject, reviewContent,
 				reviewDate, showReview, memberIdx, orderNum)
-			VALUES(review_seq.NEXTVAL, #{reviewScore}, #{reviewSubject}, #{reviewContent}, 
+			VALUES(#{reviewNum}, #{reviewScore}, #{reviewSubject}, #{reviewContent}, 
 				SYSDATE, 1, #{memberIdx}, #{orderNum})
 	</insert>
 	
@@ -129,4 +129,8 @@
 		DELETE FROM review
 		WHERE reviewNum = #{reviewNum}
 	</delete>
+	
+	<select id="reviewSeq" resultType="Long">
+		SELECT review_seq.NEXTVAL FROM dual 
+	</select>
 </mapper>
