@@ -26,4 +26,7 @@ public interface OnedayplusMapper {
 	public String resultLocation(String userId);
 	public long resultPrice(String userId);
 	
+	public int answerCount(String userId);
+	public int resultCount(String userId);
+	
 }

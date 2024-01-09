@@ -120,5 +120,25 @@ public class OnedayplusServiceImpl implements OnedayplusService {
 		return classprice;
 	}
 
+	@Override
+	public int answerCount(String userId) {
+		int result = 0;
+		try {
+			result = mapper.answerCount(userId);
+		} catch (Exception e) {
+		}
+		return result;
+	}
+
+	@Override
+	public int resultCount(String userId) {
+		int result = 0;
+		try {
+			result = mapper.resultCount(userId);
+		} catch (Exception e) {
+		}
+		return result;
+	}
+
 
 }

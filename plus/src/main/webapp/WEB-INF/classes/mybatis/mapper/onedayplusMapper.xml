@@ -29,6 +29,12 @@
 		WHERE userId = #{userId}
 	</select>
 	
+	<select id="answerCount" parameterType="String" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM plusAns
+		WHERE userId = #{userId}
+	</select>
+	
 	<delete id="deleteAnswer" parameterType="String">
 		DELETE FROM plusAns WHERE userId = #{userId}
 	</delete>
@@ -49,6 +55,26 @@
  
 	<select id="resultClass" parameterType="map" resultType="com.fa.plus.domain.Lesson">
 		SELECT classNum, className, price, mainName, tagName, firstPhoto, addr1, addr2
+		FROM lesson l
+		JOIN subcategory sc ON sc.subNum = l.subNum
+		JOIN maincategory mc ON sc.mainNum = mc.mainNum
+		JOIN hashtag h ON h.tagNum = l.tagNum
+		WHERE  
+			INSTR(addr1, #{location}) > 0
+			<if test="classprice != null and classprice != 25">
+		     	<include refid="price-list"/>
+		    </if>
+			<if test="purpose != null and purpose != ''">
+				AND ( tagName = #{purpose}
+			</if>
+			<if test="category != null and category != ''">
+		     	OR mainName = #{category} )
+		    </if>
+		ORDER BY price
+	</select>
+	
+	<select id="resultCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
 		FROM lesson l
 		JOIN subcategory sc ON sc.subNum = l.subNum
 		JOIN maincategory mc ON sc.mainNum = mc.mainNum

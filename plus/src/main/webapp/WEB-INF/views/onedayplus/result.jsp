@@ -25,7 +25,7 @@
 							<i class="bi bi-book"></i> ${sessionScope.member.userName}님의 원데이플러스 결과
 						</h5>
 						<c:choose>
-							<c:when test="${list !=null}">
+							<c:when test="${answerCount != 0}">
 								<c:forEach var="dto" items="${qlist}">
 								    <div>
 								        <div class="row border-bottom border-info">
@@ -48,7 +48,7 @@
 									
 									<div class="row mt-5">
 										<c:choose>
-											<c:when test="${classList != null }">
+											<c:when test="${resultCount != 0}">
 												<c:forEach var="clist" items="${classList}" varStatus="status">
 													<div class="card p-1 me-3 mb-5 mx-4" id="box" style="width: 16rem; height: 30rem; border:0.8px solid #cccccc;">
 														<img src="${pageContext.request.contextPath}/uploads/lesson/${clist.firstPhoto}" class="card-img-top" height="200px" alt="...">
@@ -67,18 +67,21 @@
 												</c:forEach>
 											</c:when>
 											<c:otherwise>
-												<h5>결과에 해당하는 클래스가 없습니다.</h5>
+												<div class="mx-5 px-5">
+													<h5 class="text-center mb-5">결과에 해당하는 클래스가 없습니다.</h5>
+												</div>
 											</c:otherwise>
 										</c:choose>
 									</div>
-									<div class="text-end">
-										<button onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus'" class="btn btn-primary">다시 추천받기</button>								
-									</div>
-								</c:when>
+								<div class="text-end">
+									<button onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus'" class="btn btn-primary">다시 추천받기</button>								
+								</div>
+							</c:when>
+								
 							<c:otherwise>
-								<div>
-									<h6>원데이 플러스 결과가 없습니다.</h6>
-									<button onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus'" class="btn btn-primary">체험하러가기</button>								
+								<div class="m-5">
+									<h4 class="text-center mb-5">원데이 플러스 결과가 없습니다.</h4>
+									<button onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus'" class="btn btn-primary" style="float:right;">체험하러가기</button>								
 								</div>
 							</c:otherwise>
 						</c:choose>

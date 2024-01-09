@@ -66,27 +66,33 @@ public class OnedayplusController {
 		// 결과지 내용
 		List<PlusAns> list = service.listAnswer(userId);
 		
-		if(list.isEmpty()) {
-			return "redirect:/";
-		}
-		Map<String, Object> map = new HashMap<String, Object>();
-		String purpose = service.resultPurpose(userId);
-		String category = service.resultCategory(userId);
-		String location = service.resultLocation(userId);
-		long classprice = service.resultPrice(userId);
+		int answerCount = service.answerCount(userId);
 		
-		map.put("purpose", purpose);
-		map.put("category", category);
-		map.put("location", location);
-		map.put("classprice", classprice);
-		map.put("userId", userId);
+		if(answerCount != 0) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			String purpose = service.resultPurpose(userId);
+			String category = service.resultCategory(userId);
+			String location = service.resultLocation(userId);
+			long classprice = service.resultPrice(userId);
+			
+			map.put("purpose", purpose);
+			map.put("category", category);
+			map.put("location", location);
+			map.put("classprice", classprice);
+			map.put("userId", userId);
 
-		List<Lesson> classList = service.resultClass(map);
+			List<Lesson> classList = service.resultClass(map);
+			int resultCount = service.resultCount(userId);
+			
+			model.addAttribute("classList", classList);
+			model.addAttribute("resultCount", resultCount);
+		}
 		
 		model.addAttribute("qlist", qlist);
 		model.addAttribute("list", list);
 		model.addAttribute("userId", userId);
-		model.addAttribute("classList", classList);
+		model.addAttribute("answerCount", answerCount);
+		
 		return ".onedayplus.result";
 	}
 	
