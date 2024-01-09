@@ -12,6 +12,10 @@
 			VALUES (orders_seq.CURRVAL, #{count}, #{uMileage}, #{pay}, 0, SYSDATE, #{classDate})
 	</insert>
 	
+	<insert id="insertClassPayDetail">
+		INSERT INTO classPayDetail(orderNum, authorNum, authorDate) VALUES (orders_seq.CURRVAL, classPayDetail_seq.NEXTVAL, SYSDATE)
+	</insert>
+	
 	<select id="findLessonDetail" parameterType="map" resultType="com.fa.plus.domain.Order">
 		SELECT le.classNum, le.className, detailNum, count AS count1, TO_CHAR(classDate, 'YYYY-MM-DD HH24:MI:SS') classDate, le.price, le.mileage, m1.userName
 		FROM lessonDetail ld

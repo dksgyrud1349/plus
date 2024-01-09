@@ -8,8 +8,10 @@
 function payOk(){
 	const f = document.paymentForm;
 	const regex = /^\d+$/;
-	let count = f.count.value;
-	let uMileage = f.uMileage.value;
+	let count = parseInt(f.count.value);
+	let uMileage = parseInt(f.uMileage.value);
+	let count1 = parseInt(f.count1.value);
+	let totalMileage = parseInt(f.totalMileage.value);
 	
 	if(!regex.test(count)){
 		alert("숫자만 입력하세요.");
@@ -17,7 +19,6 @@ function payOk(){
 		return;
 	}
 	
-	let count1 = f.count1.value;
 	if(count > count1){
 		alert("입력하신 인원수가 클래스의 최대 인원수를 초과하였습니다.");
 		f.count.focus();
@@ -30,7 +31,6 @@ function payOk(){
 		return;
 	}
 	
-	let totalMileage = f.totalMileage.value;
 	if(uMileage > totalMileage){
 		alert("입력하신 마일리지가 고객님께서 보유하고 계신 마일리지를 초과하였습니다.");
 		f.uMileage.focus();
@@ -42,13 +42,8 @@ function payOk(){
 		return;
 	}
 	
-		 	
-	// 결제API
-	
 	f.action = "${pageContext.request.contextPath}/order/insert"
 	f.submit();
-         	
-        
 }
 </script>
 

@@ -8,6 +8,7 @@ import com.fa.plus.domain.Order;
 public interface OrderService {
 	public void insertOrders(Order dto) throws Exception;
 	// public void insertOrderDetail(Order dto) throws Exception;
+	// public void insertClassPayDetail() throws Exception;
 	
 	public Order findLessonDetail(Map<String, Object> map);
 	public Order eventLesson(Map<String, Object> map);

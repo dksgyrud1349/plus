@@ -20,6 +20,7 @@ public class OrderServiceImpl implements OrderService{
 		try {
 			mapper.insertOrders(dto);
 			mapper.insertOrderDetail(dto);
+			mapper.insertClassPayDetail();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

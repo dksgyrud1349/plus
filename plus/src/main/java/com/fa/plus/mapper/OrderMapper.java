@@ -14,6 +14,9 @@ public String findByMaxOrderNumber();
 	public void insertOrders(Order dto) throws SQLException;
 	public void insertOrderDetail(Order dto) throws SQLException;
 	
+	// 결제 테이블에 데이터 insert
+	public void insertClassPayDetail() throws SQLException;
+	
 	// 주문자가 고른 날짜에 해당하는 클래스의 최대 인원수, 상세번호, 날짜 (parameter : classDate, classNum)
 	public Order findLessonDetail(Map<String, Object> map);
 	
