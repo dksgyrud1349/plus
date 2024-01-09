@@ -255,9 +255,7 @@
 <script type="text/javascript">
 $(function(){
 	$(".reportDetail").click(function(){
-		alert("dddddd");
 		let classNum = $(this).find("input[name='classNum']").val();
-		alert(classNum);
 		
 		let url = '${pageContext.request.contextPath}/pluszone/lessonPlus/reportDetail';
 		let query = 'classNum=' + classNum;

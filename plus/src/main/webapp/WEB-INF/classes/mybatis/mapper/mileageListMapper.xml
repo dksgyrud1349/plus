@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.MileageListMapper">
+	
+	<sql id="where-list">
+		<choose>
+			<when test="schType == 'className'">
+				(INSTR(className, #{kwd}) &gt; 0)
+			</when>
+			<when test="schType == 'mDate'">
+				(TO_CHAR(mDate, 'YYYYMMDD') = #{kwd} OR TO_CHAR(mDate, 'YYYY-MM-DD') = #{kwd})
+			</when>
+			<otherwise>
+				INSTR(${schType}, #{kwd}) &gt; 0
+			</otherwise>
+		</choose>
+	</sql>
+
+	<select id="myMileageList" parameterType="map" resultType="com.fa.plus.domain.Mileage">
+		SELECT mNum, point, TO_CHAR(mDate, 'YYYY-MM-DD') mDate, mState, mi.orderNum, mi.userId, className, m1.totalMileage
+		FROM mileage mi
+		JOIN member1 m1 ON mi.userId = m1.userId
+		JOIN orders ord ON mi.orderNum = ord.orderNum
+		JOIN lessonDetail ld ON ord.detailNum = ld.detailNum
+		JOIN lesson le ON ld.classNum = le.classNum
+		<where>
+			mi.userId = #{userId}
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="where-list"/>
+			</if>
+		</where>
+		ORDER BY mNum DESC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM mileage mi
+		JOIN member1 m1 ON mi.userId = m1.userId
+		JOIN orders ord ON mi.orderNum = ord.orderNum
+		JOIN lessonDetail ld ON ord.detailNum = ld.detailNum
+		JOIN lesson le ON ld.classNum = le.classNum
+		<where>
+			mi.userId = #{userId}
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="where-list"/>
+			</if>
+		</where>
+	</select>
+	
+	<select id="findByMState" parameterType="map" resultType="com.fa.plus.domain.Mileage">
+		SELECT mState, mNum
+		FROM mileage
+		WHERE userId = #{userId} AND mNum = #{mNum}
+	</select>
+	
+	<select id="findByMileage" parameterType="map" resultType="com.fa.plus.domain.Mileage">
+		SELECT le.classNum, le.className, ld.detailNum, TO_CHAR(ld.classDate, 'YYYY-MM-DD HH24:MI:SS') classDate, os.orderNum, mi.mNum, mi.point, TO_CHAR(mi.mDate, 'YYYY-MM-DD') mDate, mi.mState, le.classTime
+		FROM lesson le
+		JOIN lessonDetail ld ON le.classNum = ld.classNum
+		JOIN orders os ON ld.detailNum = os.detailNum
+		JOIN mileage mi ON os.orderNum = mi.orderNum
+		WHERE mi.mState = #{mState} AND os.memberIdx = #{memberIdx} AND mNum = #{mNum}
+	</select>
+</mapper>
