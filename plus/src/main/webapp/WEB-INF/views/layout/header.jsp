@@ -155,13 +155,6 @@
 					<i class="bi bi-search-heart" style="padding: 10px;"></i>
 					<input type="text" name="kwd" placeholder="검색어를 입력하세요." class="searchbox">
 					<button type="button" class="btn search-button " onclick="searchList()">검색</button>
-					<select name="schType" class="form-select rounded-5">
-						<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
-						<option value="nickName" ${schType=="nickName"?"selected":""}>플러스</option>
-						<option value="regDate" ${schType=="regDate"?"selected":""}>등록일자순</option>
-						<option value="className" ${schType=="className"?"selected":""}>클래스명</option>
-						<option value="content" ${schType=="content"?"selected":""}>내용</option>
-					</select>
 				</div>
 				
 				<nav>
