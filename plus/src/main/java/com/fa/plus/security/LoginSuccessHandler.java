@@ -44,7 +44,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		
 		try {
 			//	로그인 날짜 변경
-			// memberService.updateLastLogin(authentication.getName());
+			memberService.updateLastLogin(authentication.getName());
 		} catch (Exception e) {
 		}
 		

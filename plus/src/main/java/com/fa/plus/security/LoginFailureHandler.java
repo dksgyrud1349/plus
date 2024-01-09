@@ -38,7 +38,7 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 			
 			if(exception instanceof BadCredentialsException) {
 				// 패스워드가 일치하지 않는 경우
-				/*
+				
 				// 패스워드 실패 횟수 누적
 				service.updateFailureCount(userId);
 				
@@ -51,15 +51,15 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 					map.put("userId", userId);
 					service.updateMemberEnabled(map);
 					
-					// 비활ㄹ성화 상태 저장
+					// 비활성화 상태 저장
 					Member dto = new Member();
 					dto.setUserId(userId);
-					dto.setRegisterId(userId);
+					dto.setAdminId(userId);
 					dto.setStateCode(1);
 					dto.setMemo("패스워드 5회이상 실패");
 					service.insertMemberState(dto);
 				}
-				*/
+				
 			} else if(exception instanceof InternalAuthenticationServiceException) {
 				// 존재하지 않는 아이디 인경우
 				

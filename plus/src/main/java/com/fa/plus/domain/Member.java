@@ -29,6 +29,8 @@ public class Member {
 	private String addr2;
 	private String pwdDate;
 	
+	private String adminId;
+	
 	public long getMemberIdx() {
 		return memberIdx;
 	}
@@ -191,4 +193,11 @@ public class Member {
 	public void setPwdDate(String pwdDate) {
 		this.pwdDate = pwdDate;
 	}
+	public String getAdminId() {
+		return adminId;
+	}
+	public void setAdminId(String adminId) {
+		this.adminId = adminId;
+	}
+	
 }
