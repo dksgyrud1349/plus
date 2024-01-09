@@ -156,7 +156,7 @@ i.fa{
 								        </span>
 								     </span>
 								        <span class="d-block h5 ms-5 my-3 fw-bold">
-											<button type="button" class="btn border" onclick="location.href='${pageContext.request.contextPath}/pluszone/member/pwd';" style="width: 200px">세부정보수정</button>
+											<button type="button" class="btn border" onclick="location.href='${pageContext.request.contextPath}/pluszone/infoDetail/write';" style="width: 200px;">세부정보수정</button>
 								            <span class="d-block me-5 fs-5 pe-3" style="float: right">⊙ 이번달 판매건수
 								            	<a href="${pageContext.request.contextPath}/pluszone/salesStatus/main" class="h4 font-bolder mb-0">${thisMonth.COUNT}건</a>
 								            </span>
