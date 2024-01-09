@@ -429,8 +429,8 @@
 									<div>
 										<h4 class="tltle">공지사항<hr class="my-hr1"></h4>
 										<ul>
-										<c:forEach var="dto1" items="${NoticeService}">
-											<li><a href="#" class="menu">${dto1.subject}</a></li>
+										<c:forEach var="nlist" items="${noticeList}">
+											<li><a href="#" class="menu">${nlist.subject}</a></li>
 										</c:forEach>
 										</ul>
 										
