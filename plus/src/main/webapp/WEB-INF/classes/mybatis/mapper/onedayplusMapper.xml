@@ -59,10 +59,10 @@
 		     	<include refid="price-list"/>
 		    </if>
 			<if test="purpose != null and purpose != ''">
-				OR tagName = #{purpose}
+				AND ( tagName = #{purpose}
 			</if>
 			<if test="category != null and category != ''">
-		     	OR mainName = #{category}
+		     	OR mainName = #{category} )
 		    </if>
 		ORDER BY price
 	</select>

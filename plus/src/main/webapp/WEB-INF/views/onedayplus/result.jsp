@@ -24,46 +24,65 @@
 						<h5 class="pb-2 fw-bold fs-2">
 							<i class="bi bi-book"></i> ${sessionScope.member.userName}님의 원데이플러스 결과
 						</h5>
-						<c:forEach var="dto" items="${qlist}">
-						    <div>
-						        <div class="row border-bottom border-info">
-						            <div class="col-12 p-2">
-						                <span class="fw-semibold text-black fs-5"><i class="bi bi-lightbulb"></i>${status.count} ${dto.subject}</span>
-						            </div>
-						        </div>
-						        <div>
-							        <c:forEach var="vo" items="${list}">
-							            <c:if test="${dto.num == vo.num}">
-							                <div class="form-check form-check-inline m-2">
-							                    <label class="form-check-label"><i class="bi bi-check-circle"></i> ${vo.content}</label>
-							                </div>
-							            </c:if>
-							        </c:forEach>
-						        </div>
-						    </div>
-						</c:forEach>
+						<c:choose>
+							<c:when test="${list !=null}">
+								<c:forEach var="dto" items="${qlist}">
+								    <div>
+								        <div class="row border-bottom border-info">
+								            <div class="col-12 p-2">
+								                <span class="fw-semibold text-black fs-5"><i class="bi bi-lightbulb"></i>${status.count} ${dto.subject}</span>
+								            </div>
+								        </div>
+								        <div>
+									        <c:forEach var="vo" items="${list}">
+									            <c:if test="${dto.num == vo.num}">
+									                <div class="form-check form-check-inline m-2">
+									                    <label class="form-check-label"><i class="bi bi-check-circle"></i> ${vo.content}</label>
+									                </div>
+									            </c:if>
+									        </c:forEach>
+								        </div>
+								    </div>
+								</c:forEach>
 						
-						
-						<div class="row mt-5">
-							<c:forEach var="clist" items="${classList}" varStatus="status">
-								<div class="card p-1 me-3 mb-5 mx-4" id="box" style="width: 16rem; height: 30rem; border:0.8px solid #cccccc;">
-									<img src="${pageContext.request.contextPath}/uploads/lesson/${clist.firstPhoto}" class="card-img-top" height="200px" alt="...">
-										
 									
-									<div class="card-header" >
-										<h6 class="card-title pb-1 text-start" style="margin-top:10px;">
-											${status.count}. <a href="${pageContext.request.contextPath}/lesson/detail/${clist.classNum}" class="text-reset">${clist.className}</a>
-										</h6>
+									<div class="row mt-5">
+										<c:choose>
+											<c:when test="${classList != null }">
+												<c:forEach var="clist" items="${classList}" varStatus="status">
+													<div class="card p-1 me-3 mb-5 mx-4" id="box" style="width: 16rem; height: 30rem; border:0.8px solid #cccccc;">
+														<img src="${pageContext.request.contextPath}/uploads/lesson/${clist.firstPhoto}" class="card-img-top" height="200px" alt="...">
+														<div class="card-header" >
+															<h6 class="card-title pb-1 text-start" style="margin-top:10px;">
+																${status.count}. <a href="${pageContext.request.contextPath}/lesson/detail/${clist.classNum}" class="text-reset">${clist.className}</a>
+															</h6>
+														</div>
+														<div class="card-body">
+															<p class="card-text" style="margin-top:10px;">${clist.addr1} ${clist.addr2 }</p>
+														</div>
+														<div class="card-footer">
+															<p class="card-end" style="float:right; margin-top:10px;">₩ ${clist.price}</p>
+														</div>
+													</div>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<h5>결과에 해당하는 클래스가 없습니다.</h5>
+											</c:otherwise>
+										</c:choose>
 									</div>
-									<div class="card-body">
-										<p class="card-text" style="margin-top:10px;">${clist.addr1} ${clist.addr2 }</p>
+									<div class="text-end">
+										<button onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus'" class="btn btn-primary">다시 추천받기</button>								
 									</div>
-									<div class="card-footer">
-										<p class="card-end" style="float:right; margin-top:10px;">₩ ${clist.price}</p>
-									</div>
+									
+								</c:when>
+							<c:otherwise>
+								<div>
+									<h6>원데이 플러스 결과가 없습니다.</h6>
+									<button onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus'" class="btn btn-primary">체험하러가기</button>								
 								</div>
-							</c:forEach>
-						</div>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 			</div>
