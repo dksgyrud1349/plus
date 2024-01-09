@@ -47,6 +47,32 @@ i.fa{
 	text-decoration:none;
 	color:#fff;
 }
+.infoWelcome{
+	margin-top: 20px;
+	margin-left: 140px;
+	margin-bottom: 35px;
+	width: 150px;
+	float: left;
+	font-size: 20px;
+	font-weight: bold;
+
+}
+.iconStyle{
+	 margin-left: 50px;
+	 margin-right: 10px;
+	 float: left;
+	 position: absolute;
+	 top: 40px;
+}
+.btnStyle{
+	width: 200px;
+	background-color: #EAEAEA;
+	font-weight: bold;
+	border: 1px solid #BCBCBC;
+}
+.btnStyle:hover{
+	background-color: #D5D5D5;
+}
 </style>
 
 
@@ -137,36 +163,39 @@ i.fa{
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                    플러스 정보
+                                        	플러스 정보
                                     </div>
-                                    <div class="card-body" style="width: 100%; height: 250px;">
-										<div class="d-flex ms-5 ps-4" style="margin-right: 30px;">
-								            <div class="avatar avatar-xl rounded-circle">
-								              <i class="bi bi-github fa-4x"></i>
-								            </div>
-								            <div class="d-block h4 mt-4 mb-4 ms-4">
-								            안녕하세요<span class="ms-5 ps-4" style="float: right;"><i class="bi bi-cash-coin"></i>나만의 수익을 창출해보세요!</span>
-								            <div>${sessionScope.member.userName}님<span>🤗</span><span class="ms-5 ps-4" style="text-decoration-line: underline; float: right"><a href="${pageContext.request.contextPath}/pluszone/lessonPlus/main" >자세히 알아보기</a></span></div>
-								        </div>
-								     </div> 
-								     <div class="col-12" >
-								     <span class="d-block h5 ms-5 ps-4 mb-3"><button type="button" class="btn border" onclick="location.href='${pageContext.request.contextPath}/pluszone/member/pwd';" style="width: 200px">기본정보수정</button>
-								        <span class="me-5 fs-5 pe-3 mt-2" style="float: right">⊙ 개설된 클래스
-								            <a href="${pageContext.request.contextPath}/pluszone/booking/lessonList" class="h4 font-bolder mb-0">${bookingDataCount}개</a>
-								        </span>
-								     </span>
-								        <span class="d-block h5 ms-5 my-3 fw-bold">
-											<button type="button" class="btn border" onclick="location.href='${pageContext.request.contextPath}/pluszone/infoDetail/write';" style="width: 200px;">세부정보수정</button>
-								            <span class="d-block me-5 fs-5 pe-3" style="float: right">⊙ 이번달 판매건수
-								            	<a href="${pageContext.request.contextPath}/pluszone/salesStatus/main" class="h4 font-bolder mb-0">${thisMonth.COUNT}건</a>
-								            </span>
-								        </span>
-							          	<span class="d-block h5 ms-5 my-3">
-							          		<span class="d-block me-5 fs-5 pe-3"  style="float: right">⊙ 이번달 매출총액
-							          			<a href="${pageContext.request.contextPath}/pluszone/salesStatus/main" class="h4 font-bolder mb-0">${thisMonth.TOTAL}원</a>
-							          		</span>
-							          	</span>
-							          	
+                                     <div class="card-body" style="width: 100%; height: 250px;">
+                                    	<i class="bi bi-github fa-5x iconStyle"></i>
+                                    	<div class="infoWelcome">안녕하세요!<br>
+	                                    	${sessionScope.member.userName}님<span>🤗</span>
+	                                    	<div style="position: absolute; left: 70px;">
+		                                    	<div class="d-block" style="margin-top: 35px; margin-bottom: 15px;">
+		                                    		<button type="button" class="btn btnStyle"
+		                                    			onclick="location.href='${pageContext.request.contextPath}/pluszone/member/pwd';">기본정보수정</button>
+		                                    	</div>
+		                                    	<div class="d-block">
+		                                    		<button type="button" class="btn btnStyle"
+		                                    			onclick="location.href='${pageContext.request.contextPath}/pluszone/infoDetail/write';" style="width: 200px;">세부정보수정</button>
+		                                    	</div>
+	                                    	</div>
+                                    	</div>
+	                                    <div style="float: right; margin-top: 20px; margin-right: 60px;">
+	                                    	<div style="margin-top: 10px; font-size: 25px; margin-bottom: 15px;">
+	                                    		<i class="bi bi-cash-coin"></i>
+	                                    		나만의 수익을 창출해보세요!
+	                                    	</div>
+	                                    	<div style="font-size: 20px;">⊙ 개설된 클래스
+	                                    		<a href="${pageContext.request.contextPath}/pluszone/booking/lessonList" class="h4 font-bolder mb-0"><span style="color: blue;">${bookingDataCount}</span>개</a>
+	                                    	</div>
+	                                    	<div style="font-size: 20px;">⊙ 이번달 판매건수
+	                                    		<a href="${pageContext.request.contextPath}/pluszone/salesStatus/main" class="h4 font-bolder mb-0"><span style="color: blue;">${thisMonth.COUNT}</span>건</a>
+	                                    	</div>
+	                                    	<div style="font-size: 20px;">⊙ 이번달 매출총액
+	                                    		<a href="${pageContext.request.contextPath}/pluszone/salesStatus/main" class="h4 font-bolder mb-0"><span style="color: blue;">${thisMonth.TOTAL}</span>원</a>
+	                                    	</div>
+	                                    		<a href="${pageContext.request.contextPath}/pluszone/lessonPlus/main" style="float: right; margin-top: 10px; font-size: small;"> > 자세히 알아보기</a>	
+	                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -242,4 +271,5 @@ i.fa{
                      </div>
                   </div>
       		</div>
+      	</div>
       </main>
