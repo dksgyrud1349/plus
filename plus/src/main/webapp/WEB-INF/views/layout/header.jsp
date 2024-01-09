@@ -134,6 +134,54 @@
 		font-size: 18px;
 		color: #FF7F50;
 	}
+	
+	
+	
+	
+	
+	.hover-content {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    background-color: #47a3da;
+	    color: white;
+	    font-weight: bold;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    opacity: 0;
+	    transition: opacity 0.3s ease;
+	    border-radius: 15px;
+	}
+	
+	.checkbox-button:hover .hover-content,
+	.checkbox-container input[type="button"]:checked + .checkbox-button .hover-content {
+	    opacity: 1;
+	}
+	
+	.checkbox-container {
+	    display: inline-block;
+	    margin: 5px;
+	    padding: 10px;
+	    border-radius: 5px;
+	    cursor: pointer;
+	    position: relative;
+	    border: 2px solid transparent;
+	}
+	
+	input[type="button"] {
+	    display: none;
+	}
+	
+	.checkbox-container label {
+	    display: block;
+	    cursor: pointer;
+	}
+	
+	
+	
 </style>
 
 
@@ -370,27 +418,36 @@
 									<div>
 										<h4 class="tltle">문의<hr class="my-hr1"></h4>
 										<ul>
-											<li><a href="#" class="menu">자주 묻는 질문</a></li>
-											<li><a href="#" class="menu">신고 / 제안 / 문의</a></li>
-											<li><a href="#" class="menu">실시간 1:1 문의</a></li>
+											<li><a href="${pageContext.request.contextPath}/faq/main" class="menu">자주 묻는 질문</a></li>
+											<li><a href="${pageContext.request.contextPath}/notice/list" class="menu">공지사항</a></li>
+											<li><a href="${pageContext.request.contextPath}/declaration/article" class="menu">신고하기</a></li>
+											<li><a href="${pageContext.request.contextPath}/suggest/article" class="menu">제안하기</a></li>
+											<li><a href="${pageContext.request.contextPath}/inquiryAd/list" class="menu">1:1 문의</a></li>
+											<li><a href="${pageContext.request.contextPath}/etc/list" class="menu">연락처/위치 안내</a></li>
 										</ul>
 									</div>
 									<div>
 										<h4 class="tltle">공지사항<hr class="my-hr1"></h4>
 										<ul>
-											<li><a href="#" class="menu">공지사항1</a></li>
-											<li><a href="#" class="menu">공지사항2</a></li>
-											<li><a href="#" class="menu">공지사항3</a></li>
-											<li><a href="#" class="menu">공지사항4</a></li>
-											<li><a href="#" class="menu">공지사항5</a></li>
-											<li><a href="#" class="menu">공지사항6</a></li>
+										<c:forEach var="dto1" items="${NoticeService}">
+											<li><a href="#" class="menu">${dto1.subject}</a></li>
+										</c:forEach>
 										</ul>
+										
 									</div>
 									<div>
+										<h4 class="tltle">고객센터 바로가기<hr class="my-hr1"></h4>
 										<ul>
-											<li class="mt-5"><img src="${pageContext.request.contextPath}/resources/images/center.jpg" width="400px;" 
-											style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;"></li>
-											<li><a href="${pageContext.request.contextPath}/faq/main" style="text-decoration: underline; text-underline-position : under;">&gt;&gt;고객센터 바로가기</a></li>
+											<li>
+											<label class="checkbox-container">
+												<input type="button" onclick="location.href='${pageContext.request.contextPath}/faq/main'"></button>
+											 	<div class="checkbox-button">
+													<img src="${pageContext.request.contextPath}/resources/images/center.jpg" width="300px;" 
+													style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
+												 	<div class="hover-content">고객센터 바로가기</div>
+												</div>
+												</label>
+											</li>
 										</ul>
 
 									</div>
