@@ -82,6 +82,7 @@
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/wishList/myWishList" data-hover="위시리스트">위시리스트</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/bookingList/bLists" data-hover="예약내역">예약내역</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/mileage/myMileageList" data-hover="적립금내역">적립금내역</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/onedayplus/result" data-hover="원데이 플러스 결과">원데이 플러스 결과</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/note/receive/list" data-hover="쪽지 내역">쪽지 내역</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/bbs/myList" data-hover="내가 작성한 커뮤니티">내가작성한 커뮤니티</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/review" data-hover="내가 작성한 리뷰">내가 작성한 리뷰</a></li>
