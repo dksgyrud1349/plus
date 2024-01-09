@@ -66,7 +66,7 @@
                          </nav>
                      </div>
                      
-					<a class="nav-link" href="#">
+					<a class="nav-link" href="${pageContext.request.contextPath}/admin/onedayplusManage/question">
 					    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 					    원데이 플러스 관리
 					</a>
