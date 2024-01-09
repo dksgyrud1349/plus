@@ -22,6 +22,7 @@ import com.fa.plus.admin.service.LessonManageService;
 import com.fa.plus.admin.service.MemberManageService;
 import com.fa.plus.admin.service.NoticeManageService;
 import com.fa.plus.admin.service.PlusManageService;
+import com.fa.plus.admin.service.ReviewManageService;
 import com.fa.plus.pluszone.service.SalesStatusService;
 
 @Controller
@@ -42,6 +43,8 @@ public class MainManageController {
 	private SalesStatusService salesService;
 	@Autowired
 	private EventManageService Eventservice;
+	@Autowired
+	private ReviewManageService Reviewservice;
 		
 	@RequestMapping(value="/admin", method=RequestMethod.GET)
 	public String pluslist(@RequestParam(value = "page", defaultValue = "1") int current_page,
@@ -55,6 +58,7 @@ public class MainManageController {
 		int noticeDataCount = 0;
 		int declarationDataCount = 0;
 		int eventDataCount = 0;
+		int reviewDataCount = 0;
 		
 		int total_page = 0;
 		int size = 5;
@@ -78,7 +82,7 @@ public class MainManageController {
 		map.put("kwd", "");
 		map.put("category", "progress");
 		eventDataCount = Eventservice.dataCount(map);
-
+		reviewDataCount = Reviewservice.dataCount(map);
 		
 		
 		
@@ -89,6 +93,7 @@ public class MainManageController {
 		model.addAttribute("noticeDataCount", noticeDataCount);
 		model.addAttribute("declarationDataCount", declarationDataCount);
 		model.addAttribute("eventDataCount", eventDataCount);
+		model.addAttribute("reviewDataCount", reviewDataCount);
 		
 		if (total_page < current_page) {
 			current_page = total_page;

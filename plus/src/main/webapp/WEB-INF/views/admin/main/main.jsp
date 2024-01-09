@@ -101,11 +101,11 @@
 	                <div class="card-body">
 	                    <h3 class="text-center">리뷰 게시글</h3>
 	                    <hr>
-	                    <h4 class="text-center">150개</h4>
+	                    <h4 class="text-center">${reviewDataCount}개</h4>
 	                </div>
 	                <div class="card-footer d-flex align-items-center justify-content-between text-end">
 	                    <div class="small text-white">
-	                    전체보기 
+	                    <a href="${pageContext.request.contextPath}/admin/reviewManage/all/list" class="totaltitle">전체보기</a>
 	                    <i class="fas fa-angle-right"></i></div>
 	                </div>
 	            </div>
