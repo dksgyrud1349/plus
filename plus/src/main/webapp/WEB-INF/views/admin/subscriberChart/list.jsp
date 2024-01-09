@@ -2,19 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/tabs.css"
-	type="text/css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
 
 <style type="text/css">
 .barChartsContainer {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	align-items: center;
-	width: 2000px;
+	width: 100%;
 	margin: 0 auto;
 	text-align: center;
 }
@@ -22,7 +16,7 @@
 
 #barChartsLayout {
 	width: 100%;
-	height: 600px;
+	height: 500px;
 	border: 1px solid #cccccc;
 	margin: 0 auto;
 }
@@ -123,22 +117,20 @@ $(function(){
 				option && myChart.setOption(option);
 
 			}
-			
+		
 		});	
 </script>
-
-<div id="layoutSidenav_content">
-	<div class="container-fluid px-4 mt-5">
-
-
-		<div id="layoutSidenav_content">
-	<div class="container-fluid px-4 mt-5">
-		<div class="barChartsContainer">
-			<h3 class="barChart-title" style="height:30 auto;"></h3>
-			<div id="barChartsLayout" style="margin: 0 auto;"></div>
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content" style="background: #F8F8FF;">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width:80%; margin:5% auto; ">
+				<div class="body-main">
+					<div class="barChartsContainer">
+						<h3 class="barChart-title" style="height:30 auto;"></h3>
+						<div id="barChartsLayout" style="margin: 0 auto;"></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
-
-	</div>
-</div>
+</main>
