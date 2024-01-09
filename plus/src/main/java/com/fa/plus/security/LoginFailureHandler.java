@@ -38,7 +38,10 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 			
 			if(exception instanceof BadCredentialsException) {
 				// 패스워드가 일치하지 않는 경우
-				
+				Member dto2 = service.findById(userId);
+				if(dto2.getUserId() == null) {
+					return;
+				}
 				// 패스워드 실패 횟수 누적
 				service.updateFailureCount(userId);
 				
