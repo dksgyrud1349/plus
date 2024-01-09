@@ -13,15 +13,13 @@
 	text-align: center;
 }
 
-
 #barChartsLayout {
 	width: 100%;
 	height: 500px;
 	border: 1px solid #cccccc;
 	margin: 0 auto;
 }
-</style>
-<style type="text/css">
+
 .barChart-title {
 	font-family: 'Nanum Gothic', sans-serif; /* 원하는 폰트로 변경하세요. */
 	font-size: 35px; /* 원하는 크기로 변경하세요. */
