@@ -10,9 +10,13 @@
 
 <style type="text/css">
 .barChartsContainer {
-	
-	width: 1200px;
-	text-align: center
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 2000px;
+	margin: 0 auto;
+	text-align: center;
 }
 
 
@@ -20,8 +24,19 @@
 	width: 100%;
 	height: 600px;
 	border: 1px solid #cccccc;
+	margin: 0 auto;
 }
 </style>
+<style type="text/css">
+.barChart-title {
+	font-family: 'Nanum Gothic', sans-serif; /* 원하는 폰트로 변경하세요. */
+	font-size: 35px; /* 원하는 크기로 변경하세요. */
+	color: #222; /* 원하는 색상으로 변경하세요. */
+}
+</style>
+
+<script>
+
 
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -90,14 +105,23 @@ $(function(){
 				    }
 				  ],
 				  series: [
-				    {
-				      name: 'Direct',
-				      type: 'bar',
-				      barWidth: '60%',	
-				      data: chartData
-				      
-				    }
-				  ]
+					  {
+					    name: 'Direct',
+					    type: 'bar',
+					    barWidth: '80%',	
+					    data: chartData,
+					    itemStyle: {
+					      color: function(params) {
+					        var colorList = ['#c23531','#2f4554','#61a0a8','#d48265','#91c7ae','#749f83','#ca8622','#bda29a','#6e7074','#546570','#c4ccd3'];
+					        if(params.value == 0) {
+					          return '#d9d9d9'; // 값이 없는 달에 대한 색상
+					        } else {
+					          return colorList[params.dataIndex % colorList.length];
+					        }
+					      }
+					    }
+					  }
+					]
 				};
 
 				option && myChart.setOption(option);

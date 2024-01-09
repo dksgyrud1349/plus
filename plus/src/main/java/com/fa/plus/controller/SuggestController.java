@@ -68,7 +68,7 @@ public class SuggestController {
 			dto.setClassNum(suggestService.findByNum(dto.getClassName()));
 			suggestService.insertSuggest(dto);
 			rsltCode="true";
-			rsltMsg="제안 등록 완료";
+			rsltMsg="3일 이내 쪽지로 답변드리겠습니다";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

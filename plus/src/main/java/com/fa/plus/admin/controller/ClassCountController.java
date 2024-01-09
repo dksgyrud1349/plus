@@ -23,7 +23,6 @@ public class ClassCountController {
 		return ".admin.classCount.list";
 	}
 	
-	
 	//월별 클래스 개설
 	@GetMapping("charts")
 	@ResponseBody

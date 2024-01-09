@@ -38,7 +38,7 @@ import com.fa.plus.admin.service.SubscriberChartService;
 			if(dayOfMonth != null) {
 				dayOfMonth.put("month", month);
 			}
-			
+	
 			Map<String, Object> model = new HashMap<String, Object>();
 			
 			model.put("dayOfMonth", dayOfMonth); // 변경된 부분
