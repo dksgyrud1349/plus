@@ -123,7 +123,7 @@
 	}
 	
 	.checkbox-button:hover .hover-content,
-	.checkbox-container input[type="checkbox"]:checked + .checkbox-button .hover-content {
+	.checkbox-container input[type="radio"]:checked + .checkbox-button .hover-content {
 	    opacity: 1;
 	}
 	
@@ -137,7 +137,7 @@
 	    border: 2px solid transparent;
 	}
 	
-	input[type="checkbox"] {
+	input[type="radio"] {
 	    display: none;
 	}
 	
@@ -168,7 +168,7 @@
                     		<c:forEach var="dto" items="${list}" varStatus="status">
                     			<c:if test="${dto.num == 1}">
 	                    			<label class="checkbox-container">
-	                                    <input type="checkbox" value="${dto.plusNum}" name="plusNums">
+	                                    <input type="radio" value="${dto.plusNum}" name="plusNums">
 	                                    <div class="checkbox-button">
 	                                        <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="Hobby">
 	                                        <div class="hover-content">${dto.content}</div>
@@ -194,7 +194,7 @@
                     		<c:forEach var="dto" items="${list}" varStatus="status">
                     			<c:if test="${dto.num == 2}">
 	                    			<label class="checkbox-container">
-	                                    <input type="checkbox" value="${dto.plusNum}" name="plusNums">
+	                                    <input type="radio" value="${dto.plusNum}" name="plusNums">
 	                                    <div class="checkbox-button">
 	                                        <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="Hobby">
 	                                        <div class="hover-content">${dto.content}</div>
@@ -222,7 +222,7 @@
                                         <c:forEach var="dto" items="${list}" varStatus="status">
 			                    			<c:if test="${dto.num == 3}">
 				                    			<label class="checkbox-container">
-				                                    <input type="checkbox" value="${dto.plusNum}" name="plusNums">
+				                                    <input type="radio" value="${dto.plusNum}" name="plusNums">
 				                                    <div class="checkbox-button">
 				                                        <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="Hobby">
 				                                        <div class="hover-content">${dto.content}</div>
@@ -250,7 +250,7 @@
                             <c:forEach var="dto" items="${list}" varStatus="status">
                     			<c:if test="${dto.num == 4}">
 	                    			<label class="checkbox-container">
-	                                    <input type="checkbox" value="${dto.plusNum}" name="plusNums">
+	                                    <input type="radio" value="${dto.plusNum}" name="plusNums">
 	                                    <div class="checkbox-button">
 	                                        <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="Hobby">
 	                                        <div class="hover-content">${dto.content}</div>
@@ -276,7 +276,7 @@
                         <c:forEach var="dto" items="${list}" varStatus="status">
                     			<c:if test="${dto.num == 5}">
 	                    			<label class="checkbox-container">
-	                                    <input type="checkbox" value="${dto.plusNum}" name="plusNums">
+	                                    <input type="radio" value="${dto.plusNum}" name="plusNums">
 	                                    <div class="checkbox-button">
 	                                        <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="Hobby">
 	                                        <div class="hover-content">${dto.content}</div>
