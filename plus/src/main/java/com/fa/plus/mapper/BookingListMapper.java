@@ -21,4 +21,5 @@ public interface BookingListMapper {
 	
 	// 리스트 중 한 개를 클릭하면 모달이 뜨는 데, 그때 보여줄 회원 주문 정보
 	public BookingList bookingDetail(Map<String, Object> map);
+	
 }

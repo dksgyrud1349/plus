@@ -103,6 +103,7 @@ public class BookingListController {
 		model.put("tel", dto.getTel());
 		model.put("email", dto.getEmail());
 		model.put("state", dto.getState());
+		model.put("orderNum", dto.getOrderNum());
 		return model;
 	}
 }

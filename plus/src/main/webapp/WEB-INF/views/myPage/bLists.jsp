@@ -2,11 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
-.bookingTotal{
+.bookingTotal {
 	width: 1200px;
 	height: 800px;
 }
-.bookingSubject{
+
+.bookingSubject {
 	margin-top: 110px;
 	width: 200px;
 	height: 70px;
@@ -14,16 +15,16 @@
 	font-size: 30px;
 	font-weight: bold;
 	text-align: left;
-	
 }
-.bookingSearch{
+
+.bookingSearch {
 	width: 1200px;
 	height: 110px;
 	border-top: 1px solid #8C8C8C;
 	border-bottom: 1px solid #8C8C8C;
-	
 }
-.selectDesign{
+
+.selectDesign {
 	width: 130px;
 	height: 40px;
 	margin-top: 35px;
@@ -31,7 +32,8 @@
 	float: left;
 	border: 1px solid #A6A6A6;
 }
-.dateDesgin{
+
+.dateDesgin {
 	width: 130px;
 	height: 40px;
 	margin-top: 35px;
@@ -39,7 +41,8 @@
 	margin-left: 10px;
 	border: 1px solid #A6A6A6;
 }
-.btnSearch{
+
+.btnSearch {
 	border: 1px solid #A6A6A6;
 	height: 40px;
 	margin-top: 35px;
@@ -47,172 +50,246 @@
 	font-weight: bold;
 	color: #353535;
 }
-.btnSearch:hover{
+
+.btnSearch:hover {
 	border: 2px solid black;
 }
-.tableTotal{
+
+.tableTotal {
 	width: 1200px;
 	height: auto;
 	margin-top: 55px;
 	border-top: 1px solid black;
 }
-.bookingDetailList{
+
+.bookingDetailList {
 	cursor: pointer;
 }
-.bookingDetailList:hover{
+
+.bookingDetailList:hover {
 	font-weight: bold;
 }
-.modal-backdrop{
+
+.modal-backdrop {
 	background-color: transparent;
 	zindex: 9999;
 	width: 0px;
 	height: 0px;
 }
-.modal-content{
+
+.modal-content {
 	position: absolute;
 	top: 200px;
 }
 
-
-
-
-
-
-.review-form textarea { width: 100%; height: 75px; resize: none; }
-.review-form .star { font-size: 0; letter-spacing: -4px; }
-.review-form .star a {
-	font-size: 22px; letter-spacing: 1px; display: inline-block;
-	 color: #ccc; text-decoration: none;
+.review-form textarea {
+	width: 100%;
+	height: 75px;
+	resize: none;
 }
-.review-form .star a:first-child { margin-left: 0; }
-.star a.on { color: #FFBB00; }
+
+.review-form .star {
+	font-size: 0;
+	letter-spacing: -4px;
+}
+
+.review-form .star a {
+	font-size: 22px;
+	letter-spacing: 1px;
+	display: inline-block;
+	color: #ccc;
+	text-decoration: none;
+}
+
+.review-form .star a:first-child {
+	margin-left: 0;
+}
+
+.star a.on {
+	color: #FFBB00;
+}
 
 .review-form .img-grid {
 	display: grid;
-	grid-template-columns:repeat(auto-fill, 54px);
+	grid-template-columns: repeat(auto-fill, 54px);
 	grid-gap: 2px;
 }
 
 .review-form .img-grid .item {
-	object-fit:cover;
-	width: 50px; height: 50px; border-radius: 10px;
+	object-fit: cover;
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
 	border: 1px solid #c2c2c2;
 	cursor: pointer;
 }
-
-
 </style>
 <form>
-<div class="bookingTotal">
-	<div class="bookingSubject">
-		<div><i class="bi bi-basket"></i> 예약내역</div>
+	<div class="bookingTotal">
+		<div class="bookingSubject">
+			<div>
+				<i class="bi bi-basket"></i> 예약내역
+			</div>
+		</div>
+
+		<div class="bookingSearch">
+			<select id="changeDate" class="form-select selectDesign"
+				onchange="changeList();">
+				<option value="all">전체</option>
+				<option value="oneWeek">1주일</option>
+				<option value="onetMonth">1개월</option>
+				<option value="ThreeMonth">3개월</option>
+				<option value="sixMonth">6개월</option>
+				<option value="oneYear">1년</option>
+				<option value="etc">직접입력</option>
+			</select> <input type="date" name="startDate" id="startDate"
+				class="form-control dateDesgin" value="startDate" placeholder="시작일자">
+			<a
+				style="font-size: 15px; float: left; margin-top: 45px; margin-left: 10px;">~</a>
+			<input type="date" name="endDate" id="endDate"
+				class="form-control dateDesgin" value="endDate" placeholder="마지막일자">
+			<button type="button" class="btn btnSearch">
+				검색 <i class="bi bi-search"></i>
+			</button>
+		</div>
+		<table class="table tableTotal">
+			<thead>
+				<tr>
+					<th scope="col"
+						style="background-color: #FFF3CD; padding-left: 20px;">번호</th>
+					<th scope="col" style="background-color: #FFF3CD;">클래스</th>
+					<th scope="col" style="background-color: #FFF3CD;">강사</th>
+					<th scope="col" style="background-color: #FFF3CD;">주소</th>
+					<th scope="col" style="background-color: #FFF3CD;">예약상태</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="dto" items="${rtnList}" varStatus="status">
+					<tr class="bookingDetailList" data-orderNum="${dto.orderNum}"
+						data-classNum="${dto.classNum}">
+						<th style="padding-left: 30px;">${dto.rnum}</th>
+						<td>${dto.className}</td>
+						<td>${dto.puserName}</td>
+						<td>${dto.addr1},${dto.addr2}</td>
+						<td style="padding-left: 10px;">${dto.mode}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</div>
-	
-	<div class="bookingSearch">
-		<select id="changeDate" class="form-select selectDesign" onchange="changeList();">
-			<option value="all">전체</option>
-			<option value="oneWeek">1주일</option>
-			<option value="onetMonth">1개월</option>
-			<option value="ThreeMonth">3개월</option>
-			<option value="sixMonth">6개월</option>
-			<option value="oneYear">1년</option>
-			<option value="etc">직접입력</option>
-		</select>
-		<input type="date" name="startDate" id="startDate" class="form-control dateDesgin" value="startDate" placeholder="시작일자">
-		<a style="font-size: 15px; float: left; margin-top: 45px; margin-left: 10px;">~</a>
-		<input type="date" name="endDate" id="endDate" class="form-control dateDesgin" value="endDate" placeholder="마지막일자">
-		<button type="button" class="btn btnSearch">검색 <i class="bi bi-search"></i></button>
-	</div>
-	<table class="table tableTotal">
-	  <thead>
-	    <tr>
-	      <th scope="col" style="background-color: #FFF3CD; padding-left: 20px;">번호</th>
-	      <th scope="col" style="background-color: #FFF3CD;">클래스</th>
-	      <th scope="col" style="background-color: #FFF3CD;">강사</th>
-	      <th scope="col" style="background-color: #FFF3CD;">주소</th>
-	      <th scope="col" style="background-color: #FFF3CD;">예약상태</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	  	<c:forEach var="dto" items="${rtnList}" varStatus="status">
-			<tr class="bookingDetailList" data-orderNum="${dto.orderNum}" data-classNum="${dto.classNum}">
-				<th style="padding-left: 30px;">${dto.rnum}</th>
-				<td>${dto.className}</td>
-				<td>${dto.puserName}</td>
-				<td>${dto.addr1}, ${dto.addr2}</td>
-				<td style="padding-left: 10px;">${dto.mode}</td>
-			</tr>
-		</c:forEach>
-	  </tbody>
-	</table>
-</div>
 </form>
 <div class="modal" id="orderDetailModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">상세 주문 정보</h5>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-      
-      	<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        
-      </div>
-      <div class="modal-backdrop"></div>
-    </div>
-  </div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">상세 주문 정보</h5>
+			</div>
+			<div class="modal-body"></div>
+			<div class="modal-footer">
+
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal">Close</button>
+
+			</div>
+			<div class="modal-backdrop"></div>
+		</div>
+	</div>
 </div>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">리뷰</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="review-form p-3 mt-2 ">
-			<form name="reviewForm">
-				<div class="p-1">
-					<p class="star">
-						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
-						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
-						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
-						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
-						<a href="#" class="on"><i class="bi bi-star-fill"></i></a>
-						<input type="hidden" name="reviewScore" value="5">
-						<input type="hidden" name="classNum">
-					</p>
+<div class="modal fade" id="exampleModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5 text-center" id="exampleModalLabel">리뷰</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="review-form p-3 mt-2 ">
+					<form name="reviewForm">
+						<div class="p-1">
+							<p class="star">
+								<a href="#" class="on"><i class="bi bi-star-fill"></i></a> <a
+									href="#" class="on"><i class="bi bi-star-fill"></i></a> <a
+									href="#" class="on"><i class="bi bi-star-fill"></i></a> <a
+									href="#" class="on"><i class="bi bi-star-fill"></i></a> <a
+									href="#" class="on"><i class="bi bi-star-fill"></i></a> <input
+									type="hidden" name="reviewScore" value="5"> <input
+									type="hidden" name="classNum">
+							</p>
+						</div>
+
+						<div class="p-1">
+							<input type="text" name="reviewSubject" class="form-control"
+								placeholder="제목을 입력해주세요.">
+						</div>
+
+						<div class="p-1">
+							<textarea name="reviewContent" class="form-control"></textarea>
+						</div>
+						<div class="p-1">
+							<div class="img-grid">
+								<img class="item img-add"
+									src="${pageContext.request.contextPath}/resources/images/add_photo.png">
+							</div>
+							<input type="file" name="selectFile" accept="image/*" multiple
+								class="form-control" style="display: none;">
+						</div>
+						<div class="p-1 text-end">
+							<input type="hidden" name="orderNum">
+						</div>
+					</form>
 				</div>
-				
-				<div class="p-1">
-					<input type="text" name="reviewSubject" class="form-control" placeholder="제목을 입력해주세요.">
-				</div>
-				
-				<div class="p-1">
-					<textarea name="reviewContent" class="form-control"></textarea>
-				</div>
-				<div class="p-1">
-					<div class="img-grid">
-						<img class="item img-add" src="${pageContext.request.contextPath}/resources/images/add_photo.png">
-					</div>
-					<input type="file" name="selectFile" accept="image/*" multiple class="form-control" style="display: none;">
-				</div>
-				<div class="p-1 text-end">
-					<input type="hidden" name="orderNum">
-				</div>
-			</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary btnReviewSend">등록하기</button>
+			</div>
 		</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary btnReviewSend">등록하기</button>
-      </div>
-    </div>
-  </div>
+	</div>
+</div>
+
+<!-- 환불 모달 -->
+<div class="modal fade" id="refundModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<form name="refundForm" method="post" action="${pageContext.request.contextPath}/refund/refund">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5 text-center" id="exampleModalLabel">
+						<i class="bi bi-currency-dollar"></i> 환불
+					</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="review-form p-3 mt-2 ">
+						<div class="p-1">
+							<input type="text" name="bankName" class="form-control"
+								placeholder="은행명을 입력해주세요.">
+						</div>
+						<div class="p-1">
+							<input type="text" name="account" class="form-control"
+								placeholder="반환계좌를 입력해주세요.('-'은 생략해주세요.)">
+						</div>
+						<div class="p-1 text-end">
+							<input type="hidden" name="oNum"> <input type="hidden"
+								name="pay">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary"
+						onclick="refundSend();">환불하기</button>
+				</div>
+			</div>
+		</div>
+	</form>
 </div>
 
 
@@ -272,6 +349,17 @@ $(function(){
 			var tel = data.tel;
 			var email = data.email;
 			var state = data.state;
+			var orderNum = data.orderNum;
+			
+			var classDate = new Date(cDate);
+			
+			var currentDate = new Date();
+			var previousDate = new Date(currentDate);
+			previousDate.setDate(previousDate.getDate() - 1);
+			
+			var inputDateObj = Date.parse(classDate);
+			var previousDateObj = Date.parse(previousDate);
+			
 			let htmlText;
 			
 			htmlText = '<div class="modal-body">';
@@ -289,6 +377,12 @@ $(function(){
 			    htmlText += '    <button type="button" class="btn btn-dark reviewbtn" style="float:right;" data-bs-toggle="modal" data-bs-target="#exampleModal">리뷰쓰기</button>';
 			}
 			
+			if(inputDateObj > previousDateObj && state === 0){
+				htmlText += '	<button type="button" class="btn btn-dark refundBtn" style="float:left;" data-bs-toggle="modal" data-bs-target="#refundModal">환불하기</button>';
+			}
+			
+			$("input[name=oNum]").val(orderNum);
+			$("input[name=pay]").val(pay);
 			$("#orderDetailModal .modal-body").html(htmlText);
 			$("#orderDetailModal").modal("show");
 			
@@ -319,7 +413,25 @@ if (exampleModal) {
   });
 }
 
-
+function refundSend(){
+	const f = document.refundForm;
+	
+	if (!f.bankName.value.trim()) {
+		alert("은행명을 입력해주세요.");
+	    return;
+	}
+	
+	if (!f.account.value.trim()) {
+		alert("반환계좌를 입력해주세요.");
+	    return;
+	}
+	
+	if(!confirm("환불을 진행하시겠습니까?")){
+		return;
+	}
+	
+	f.submit();
+}
 
 $(function() {
 	  var sel_files = [];

@@ -69,7 +69,7 @@
 											<td class="left">${dto.className}</td>
 											<td>${dto.point}</td>
 											<td>${dto.mDate}</td>
-											<td>${dto.mState == 0 ? "적립" : "사용"}</td>
+											<td>${dto.mState == 0 ? "적립" : dto.mState == 1 ? "사용" : "환불"}</td>
 											<input type="hidden" name="mNum" value="${dto.mNum}">
 										</tr>
 									</c:forEach>

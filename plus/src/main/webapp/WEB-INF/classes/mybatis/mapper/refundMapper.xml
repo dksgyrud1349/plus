@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.RefundMapper">
+	<insert id="insertRefund" parameterType="com.fa.plus.domain.Refund">
+		INSERT INTO refund(orderNum, cancelAmount, cancelDate, account, refund, bankName) 
+			VALUES (#{orderNum}, #{cancelAmount}, SYSDATE, #{account}, 0, #{bankName})
+	</insert>
+	
+	<select id="findByMileage" parameterType="map" resultType="com.fa.plus.domain.Refund">
+		SELECT point
+		FROM mileage
+		WHERE orderNum = #{orderNum} AND userId = #{userId} AND mState = #{mState}
+	</select>
+	
+	<update id="updateMinusMileage" parameterType="map">
+		UPDATE member1 SET totalMileage = totalMileage - #{point} WHERE userId = #{userId}
+	</update>
+	
+	<update id="updatePlusMileage" parameterType="map">
+		UPDATE member1 SET totalMileage = totalMileage + #{point} WHERE userId = #{userId}
+	</update>
+	
+	<select id="findByCount" parameterType="Long" resultType="com.fa.plus.domain.Refund">
+		SELECT od.orderNum, os.detailNum, count AS count1
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+		WHERE od.orderNum = #{orderNum}
+	</select>
+	
+	<update id="updatePlusCount" parameterType="map">
+		UPDATE lessonDetail SET count = count + #{count1} WHERE detailNum = #{detailNum}
+	</update>
+	
+	<update id="updateMState" parameterType="Long">
+		UPDATE mileage SET mState = 2 WHERE orderNum = #{orderNum}
+	</update>
+	
+	<update id="updateState" parameterType="Long">
+		UPDATE orderDetail SET state = 2 WHERE orderNum = #{orderNum}
+	</update>
+</mapper>

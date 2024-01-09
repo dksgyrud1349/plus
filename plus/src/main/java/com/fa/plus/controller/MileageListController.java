@@ -135,6 +135,10 @@ public class MileageListController {
 			state = "사용";
 		}
 		
+		if(mState == 2) {
+			state = "환불";
+		}
+		
 		model.put("className", className);
 		model.put("classDate", classDate);
 		model.put("point", point);

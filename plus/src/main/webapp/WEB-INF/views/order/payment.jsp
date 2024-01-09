@@ -42,8 +42,8 @@ function payOk(){
 		return;
 	}
 	
-	f.action = "${pageContext.request.contextPath}/order/insert"
-	f.submit();
+	f.action = "${pageContext.request.contextPath}/order/insert";
+    f.submit();
 }
 </script>
 
