@@ -36,7 +36,7 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/paginate-boot.js"></script>
 
-<c:url var="listUrl" value="/bbs/list">
+<c:url var="listUrl" value="/bbs/myList">
 	<c:if test="${not empty kwd}">
 		<c:param name="schType" value="${schType}"/>
 		<c:param name="kwd" value="${kwd}"/>
@@ -77,10 +77,9 @@ function searchList() {
 				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 	    			<i class="bi bi-app"></i> 커뮤니티
 	    			
-	    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/bbs/list';" title="새로고침" style="float:right;">
+	    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/myBbs/list';" title="새로고침" style="float:right;">
 		            	<i class="fa-solid fa-arrow-rotate-left"></i>
 		            </button>
-					<button type="button" class="btn btn-success me-3" onclick="location.href='${pageContext.request.contextPath}/bbs/write';"  style="float:right;">글올리기</button>
 	    		</h3>
 	    		
 	    		<div id="tab-content">
@@ -92,7 +91,7 @@ function searchList() {
 								</td>
 								
 								<td align="right">	
-									<form class="row" name="searchForm" action="${pageContext.request.contextPath}/bbs/list" method="post" style="width:300px; margin-left:15px;">
+									<form class="row" name="searchForm" action="${pageContext.request.contextPath}/myBbs/list" method="post" style="width:300px; margin-left:15px;">
 										<div class="input-group mb-1">
 											<select name="schType" class="form-select">
 												<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
@@ -108,6 +107,7 @@ function searchList() {
 								</td>
 							</tr>
 						</table>
+						
 						<c:forEach var="dto" items="${list}" varStatus="status">	
 							<div class="border communityBox mb-5">
 								<div class="clobTitleBox">
@@ -130,8 +130,7 @@ function searchList() {
 									</c:url>
 							    </div>
 						
-								<div class="feed_img">
-									
+								<div class="feed_img">	
 								   <img src="${dto.imageFilename}" class="d-block w-100" alt="게시글">
 								</div>
 								
@@ -140,12 +139,6 @@ function searchList() {
 									<span class="me-1" style="float:right;">
 					                	${dto.regDate}
 					                </span>
-	                    			<br>
-		                    		<span class="mx-2">
-		                    			<button type="button" class="btn btn-outline-secondary btnSendBoardLike" title="좋아요" style="border:none;" data-num="${dto.num}"><i class="bi ${dto.userLiked ? 'bi-heart-fill':'bi-heart' }"></i>&nbsp;&nbsp;<span id="boardLikeCount${dto.num}">${dto.boardLikeCount}</span></button>
-		                    		</span>
-                					<div>
-                				</div>
             				</div>
             				
             				  <div class="mx-2">
@@ -159,77 +152,3 @@ function searchList() {
 			</div>
 		</div>
 </main>
-
-<script>
-function login() {
-	location.href = '${pageContext.request.contextPath}/member/login';
-}
-
-function ajaxFun(url, method, formData, dataType, fn, file = false) {
-	const settings = {
-			type: method, 
-			data: formData,
-			success:function(data) {
-				fn(data);
-			},
-			beforeSend: function(jqXHR) {
-				jqXHR.setRequestHeader('AJAX', true);
-			},
-			complete: function () {
-			},
-			error: function(jqXHR) {
-				if(jqXHR.status === 403) {
-					login();
-					return false;
-				} else if(jqXHR.status === 400) {
-					alert('요청 처리가 실패 했습니다.');
-					return false;
-		    	}
-		    	
-				console.log(jqXHR.responseText);
-			}
-	};
-	
-	if(file) {
-		settings.processData = false;  // file 전송시 필수. 서버로전송할 데이터를 쿼리문자열로 변환여부
-		settings.contentType = false;  // file 전송시 필수. 서버에전송할 데이터의 Content-Type. 기본:application/x-www-urlencoded
-	}
-	
-	$.ajax(url, settings);
-}
-//게시글 공감 여부
-$(function(){
-	$('.btnSendBoardLike').click(function(){
-		const $i = $(this).find('i');
-		let userLiked = $i.hasClass('bi-heart-fill');
-		let num = $(this).attr("data-num");
-		let msg = userLiked ? '게시글 공감을 취소하시겠습니까 ? ' : '게시글에 공감하십니까 ? ';
-		
-		if(! confirm( msg )) {
-			return false;
-		}
-		
-		let url = '${pageContext.request.contextPath}/bbs/insertBoardLike';
-		let query = 'num=' + num + '&userLiked=' + userLiked;
-		const fn = function(data){
-			let state = data.state;
-			if(state === 'true') {
-				if( userLiked ) {
-					$i.removeClass('bi-heart-fill').addClass('bi-heart');
-				} else {
-					$i.removeClass('bi-heart').addClass('bi-heart-fill');
-				}
-				
-				let count = data.boardLikeCount;
-				$('#boardLikeCount' + num).text(count);
-			} else if(state === 'liked') {
-				alert('게시글 공감은 한번만 가능합니다. !!!');
-			} else if(state === "false") {
-				alert('게시물 공감 여부 처리가 실패했습니다. !!!');
-			}
-		};
-		
-		ajaxFun(url, 'post', query, 'json', fn);
-	});
-});
-</script>

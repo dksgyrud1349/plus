@@ -92,7 +92,6 @@ public class BoardController {
 			map.put("num", dto.getNum());
 			boolean userBoardLiked = service.userBoardLiked(map);
 			dto.setUserLiked(userBoardLiked);
-			
 		}
 		
 		String query = "";
@@ -108,7 +107,6 @@ public class BoardController {
 		}
 			String paging = myUtil.paging(current_page, total_page, listUrl);
 			
-
 			model.addAttribute("list", list);
 			model.addAttribute("dataCount", dataCount);
 			model.addAttribute("size", size);
@@ -122,75 +120,6 @@ public class BoardController {
 
 			return ".bbs.list";
 		}
-	
-	@GetMapping("myList")
-	public String myList(@RequestParam(value = "page", defaultValue = "1") int current_page,
-			@RequestParam(defaultValue = "all") String schType,
-			@RequestParam(defaultValue = "") String kwd,
-			HttpServletRequest req, HttpSession session,
-			Model model) throws Exception {
-		
-		SessionInfo info = (SessionInfo) session.getAttribute("member");
-		long memberIdx = info.getMemberIdx();
-		List<Board> myList = service.myList(memberIdx);
-
-		String cp = req.getContextPath();
-
-		int size = 8;
-		int total_page;
-		int dataCount;
-
-		if (req.getMethod().equalsIgnoreCase("GET")) { // GET 방식인 경우
-			kwd = URLDecoder.decode(kwd, "utf-8");
-		}
-
-		// 전체 페이지 수
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("schType", schType);
-		map.put("kwd", kwd);
-
-		dataCount = service.dataCount(map);
-		total_page = myUtil.pageCount(dataCount, size);
-
-		if (total_page < current_page) {
-			current_page = total_page;
-		}
-
-		int offset = (current_page - 1) * size;
-		if(offset < 0) offset = 0;
-
-		map.put("offset", offset);
-		map.put("size", size);
-				
-		String query = "";
-		String listUrl = cp + "/bbs/myList";
-		String articleUrl = cp + "/bbs/article?page=" + current_page;
-		if (kwd.length() != 0) {
-			query = "schType=" + schType + "&kwd=" + URLEncoder.encode(kwd, "utf-8");
-		}
-		
-		if (query.length() != 0) {
-			listUrl = cp + "/bbs/myList?" + query;
-			articleUrl = cp + "/bbs/article?page=" + current_page + "&" + query;
-		}
-			String paging = myUtil.paging(current_page, total_page, listUrl);
-
-			model.addAttribute("dataCount", dataCount);
-			model.addAttribute("size", size);
-			model.addAttribute("total_page", total_page);
-			model.addAttribute("articleUrl", articleUrl);
-			model.addAttribute("page", current_page);
-			model.addAttribute("paging", paging);
-
-			model.addAttribute("schType", schType);
-			model.addAttribute("kwd", kwd);
-			
-			model.addAttribute("mode", "myList");
-			model.addAttribute("myList", myList);
-
-			return ".bbs.list";
-	}
-
 	
 	@GetMapping("write")
 	public String writeForm(Model model) throws Exception {

@@ -43,6 +43,9 @@
 			<if test="kwd != null and kwd != '' ">
 				<include refid="where-list"/>
 			</if>
+			<if test="myId != null and myId != ''">
+				AND c.userId = #{myId}
+			</if>
 		</where>   
 	</select>
 	
@@ -67,22 +70,14 @@
 			<if test="kwd != null and kwd != ''">
 				<include refid="where-list"/>
 			</if>
+			<if test="myId != null and myId != ''">
+				AND c.userId = #{myId}
+			</if>			
 		</where>
 		ORDER BY c.num DESC
 		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
 	</select>
-	
-	<select id="myList" parameterType="long" resultType="com.fa.plus.domain.Board">
-		SELECT c.num, c.userId, m.userName, subject,
-			   TO_CHAR(c.regDate, 'YYYY-MM-DD') regDate,
-			   hitCount
-		FROM commu c
-		JOIN member1 m ON c.userId=m.userId
-		WHERE memberIdx = #{memberIdx}
-		ORDER BY userId
-	</select>
-	
-	
+		
 	<!-- 글보기 -->
 	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.Board">
 		SELECT c.num, c.userId, userName, subject, content,
@@ -111,7 +106,7 @@
 		<where>
 			<if test="kwd != null and kwd != '' ">
 				<include refid="where-list"/>
-			</if>
+			</if>		
 			AND (num &gt; #{num})
 		</where>
 		ORDER BY num ASC
@@ -126,7 +121,7 @@
 		<where>
 			<if test="kwd != null and kwd != '' ">
 				<include refid="where-list"/>
-			</if>
+			</if>		
 			AND (num &lt; #{num})
 		</where>
 		ORDER BY num DESC

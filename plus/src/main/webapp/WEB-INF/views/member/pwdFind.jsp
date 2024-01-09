@@ -48,7 +48,7 @@ input::placeholder {
 }
 .box{
 	width: 500px;
-	height: 700px;
+	height: 441px;
 	padding: 40px 20px 40px 45px;
 	margin: 0 auto;
 }
@@ -95,31 +95,30 @@ function sendOk() {
                     <form name="pwdForm" method="post" class="row g-3">
                         
 		                <div class="d-grid">
-							<span class="form-control-plaintext anno pb-0">가입 아이디와 이메일주소를 입력해주세요.</span>
+							<span class="form-control-plaintext anno pb-1">가입 아이디를 입력해주세요.</span>
 		                </div>
                         
-                        <div class="d-grid">
-                        	<div class="mt-0 mb-2 fw-bold">아이디</div>
+                        <div class="d-grid mt-0">
                             <input type="text" name="userId" class="p-3 find" placeholder="아이디를 입력해주세요.">
                         </div>
                      
                         
                         <div class="d-grid">
-							<p class="form-control-plaintext anno1 pt-0 mt-4">입력하신 정보는 인증 이외의 용도로 <br>이용 및 저장되지 않습니다.</p>
+							<p class="form-control-plaintext anno1 pt-0 mt-4">가입하신 아이디를 입력해주시면 <br>이메일로 고객님의 임시 패스워드를 보내드립니다.</p>
 		                </div>
 		                
                         <div class="d-grid">
-	                        <button type="button" class="btn btn-outline-success send mb-3 text-light fs-5" style="height:60px" onclick="sendOk()">
-	                            전송하기&nbsp;<i class="bi bi-send"></i>
+	                        <button type="button" class="btn btn-outline-success send text-light fs-5" style="height:60px" onclick="sendOk()">
+	                            아이디 전송하기&nbsp;<i class="bi bi-send"></i>
 	                        </button>
                 		</div>
                 	</form>
-				<hr class="mt-4 mb-4" style="width: 400px">
+				<hr class="mb-3" style="width: 400px">
                     <div class="col-12">
                         <p class="text-center mb-0">
-                        	<a href="${pageContext.request.contextPath}/member/idFind" class="text-decoration-none me-2">아이디 찾기</a>
-                        	&nbsp;&nbsp;<span class="border-end border-Secondary border-2"></span>&nbsp;&nbsp;&nbsp;
-                        	<a href="${pageContext.request.contextPath}/member/member" class="text-decoration-none me-5">회원가입</a>
+                        	<a href="${pageContext.request.contextPath}/member/member" class="text-decoration-none ms-5 me-3">회원가입</a>
+                        	<span class="border-end border-Secondary border-2  me-4 ms-4"></span>
+                        	<a href="${pageContext.request.contextPath}/member/idFind" class="text-decoration-none me-5 pe-5 ms-3">아이디 찾기</a>
                         </p>
                     </div>
                    

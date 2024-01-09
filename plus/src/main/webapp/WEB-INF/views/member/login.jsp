@@ -80,12 +80,6 @@ function sendLogin() {
                             			<div class="mt-1" style="font-size:11px; color:#a0a0a0">특수문자,영문,숫자 조합 8자 이상으로 입력해주세요.
                             	</div>
                         	</div>
-                        <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="rememberMe">
-                                <label class="form-check-label left" for="rememberMe"> 로그인 상태 유지</label>                                
-                            </div>
-                        </div>
                         <div>
                             <button type="button" style="border-radius: 100px;" class="btn btn-outline-primary text-white col-12 mt-3 log-in" onclick="sendLogin();">&nbsp;로그인&nbsp;<i class="bi bi-unlock"></i></button>
                             <button type="button" style="border-radius: 100px;" class="btn btn-outline-warning border border-black text-black col-12 mt-3 sign-up"
