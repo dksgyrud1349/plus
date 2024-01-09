@@ -74,7 +74,6 @@
 									<div class="text-end">
 										<button onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus'" class="btn btn-primary">다시 추천받기</button>								
 									</div>
-									
 								</c:when>
 							<c:otherwise>
 								<div>
