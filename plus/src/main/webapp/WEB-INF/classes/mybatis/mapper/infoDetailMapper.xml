@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.pluszone.mapper.InfoDetailMapper">
+	
+	<select id="findByNull" parameterType="String" resultType="com.fa.plus.pluszone.domain.InfoDetail">
+		/* infoDetailMapper_findByNull 사업자ID(session)으로 null 구별하기 */
+		SELECT photo, content, nickName
+		FROM plus
+		WHERE userId = #{userId}
+	</select>
+	
+	<insert id="insertInfoDetail" parameterType="com.fa.plus.pluszone.domain.InfoDetail">
+		/* infoDetailMapper_insertInfoDetail mode가 write일 때 데이터 insert함 */
+		INSERT INTO plus(userId, photo, nickName, content)
+			VALUES (#{userId}, #{photo}, #{nickName}, #{content})
+	</insert>
+	
+	<update id="updateInfoDetail" parameterType="com.fa.plus.pluszone.domain.InfoDetail">
+		/* infoDetailMapper_updateInfoDetail mode가 update일 때 데이터 update함 */
+		UPDATE plus SET 
+		  photo = #{photo}
+		, content = #{content}
+		, nickName = #{nickName}
+		WHERE userId = #{userId}
+	</update>
+	
+</mapper>
