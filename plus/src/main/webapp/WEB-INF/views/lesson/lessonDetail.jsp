@@ -264,6 +264,8 @@ header.masthead h1, header.masthead .h1 {
 .contentImg{
 	overflow:hidden;
 }
+.score-star .on { color: #89B6F5; }
+.score-star .off{ color: #EAEAEA; }
 </style>
 
 
@@ -382,20 +384,22 @@ function sendOk(mode) {
 								<span><fmt:formatNumber value="${dto.price}" pattern="#,###원" /></span>
 								
 								
-								<div class="row pt-1 pb-1 border-bottom">
-								<div class="col">
-									<label class="align-middle"><a href="#myTabContent">리뷰 <span class="fs-5 fw-semibold product-reviewCount">(${dto.reviewCount})</span></a></label>
-									<label class="align-middle pt-0 ps-2 score-star product-star">
-										<c:forEach var="n" begin="1" end="5">
-											<c:set var="reviewScore" value="${dto.reviewScore + ((dto.reviewScore%1>=0.5) ? (1-dto.reviewScore%1)%1 : -(dto.reviewScore%1))}"/>
-											<span class="fs-6 item ${reviewScore>=n?'on':''}"><i class="bi bi-star-fill"></i></span>
-										</c:forEach>
-									</label>
-									<label class="align-middle "><span class="product-score ps-1">(${dto.reviewScore} / 5)</span></label>
-								</div>
+								<div class="row pt-1 pb-2 border-bottom">
+									<div class="col">
+										<label class="align-middle"><a href="#myTabContent">리뷰 <span class="fs-5 fw-semibold product-reviewCount">(${dto.reviewCount})</span></a></label>
+										<label class="align-middle pt-0 ps-2 score-star product-star">
+											<c:forEach var="n" begin="1" end="5">
+												<c:set var="reviewScore" value="${dto.reviewScore + ((dto.reviewScore%1>=0.5) ? (1-dto.reviewScore%1)%1 : -(dto.reviewScore%1))}"/>
+												<span class="fs-6 item ${reviewScore>=n?'on':'off'}">
+													<i class="bi bi-star-fill"></i>
+												</span>
+											</c:forEach>
+										</label>
+										<label class="align-middle "><span class="product-score ps-1">(${dto.reviewScore} / 5)</span></label>
+									</div>
 							</div>
 								
-							<div>
+							<div class="mt-2">
 								<button type="button" class="btn singo" style="width: 60x;" onclick="location.href='${pageContext.request.contextPath}/declaration/article';">
 									<span style="font-size: medium; font-family: 'EASTARJET-Medium';">신고</span><i class="bi bi-exclamation-triangle-fill"></i>
 								</button>
@@ -453,15 +457,18 @@ function sendOk(mode) {
 										<!-- Product name-->
 										<h5 class="fw-bolder">${newList.className}</h5>
 										<!-- Product reviews-->
-										<div
-											class="d-flex justify-content-center small text-warning mb-2">
-											<span class="fs-6 item ${newList.reviewScore>=n?'on':''}">
-												<i class="bi bi-star-fill"></i>
-											</span>
+										<div class="d-flex justify-content-center small mb-2 score-star">
+											<c:forEach var="n" begin="1" end="5">
+												<c:set var="score" value="${newList.reviewScore + ((newList.reviewScore%1>=0.5) ? (1-newList.reviewScore%1)%1 : -(newList.reviewScore%1))}"/>
+												<span class="fs-6 item ${reviewScore>=n?'on':'off'}">
+													<i class="bi bi-star-fill"></i>
+												</span>
+											</c:forEach>
 											<label class="align-middle ">
 												<span class="product-score ps-1">(${newList.reviewScore} / 5)</span>
 											</label>
 										</div>
+										
 										<!-- Product price-->
 										${newList.price}
 									</div>
@@ -560,7 +567,7 @@ function sendOk(mode) {
 				<div class="score-star review-score-star">
 					<c:forEach var="n" begin="1" end="5">
 						<c:set var="reviewScore" value="${dto.reviewScore + ((dto.reviewScore%1>=0.5) ? (1-dto.reviewScore%1)%1 : -(dto.reviewScore%1))}"/>
-						<span class="item fs-2 ${dto.reviewScore>=n?'on':''}"><i class="bi bi-star-fill"></i></span>
+						<span class="item fs-2 ${dto.reviewScore>=n?'on':'off'}"><i class="bi bi-star-fill"></i></span>
 					</c:forEach>
 				</div>
 				<div class="fs-2">
@@ -637,7 +644,7 @@ function sendOk(mode) {
 			out += '  <div class="row p-2">';
 			out += '    <div class="col-auto pt-0 ps-2 pe-1 score-star">';
 			for(let i=1; i<=5; i++) {
-				out += '  <span class="item fs-6 ' + (reviewScore>=i ? 'on' : '') + '"><i class="bi bi-star-fill"></i></span>';
+				out += '  <span class="item fs-6 ' + (reviewScore>=i ? 'on' : 'off') + '"><i class="bi bi-star-fill"></i></span>';
 			}
 			out += '    </div>';
 			out += '    <div class="col-auto ps-0 fs-6"><span>' + reviewScore + '점<span></div>';
