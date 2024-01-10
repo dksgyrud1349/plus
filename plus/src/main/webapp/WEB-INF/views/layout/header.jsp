@@ -271,14 +271,11 @@
 									<div>
 										<h4 class="tltle">이달의 추천 클래스<hr class="my-hr1"></h4>
 										<ul>
-											<li><a href="#" class="menu">전통공예 클래스</a></li>
-											<li><a href="#" class="menu">전통공예 클래스</a></li>
-											<li><a href="#" class="menu">전통공예 클래스</a></li>
-											<li><a href="#" class="menu">전통공예 클래스</a></li>
-											<li><a href="#" class="menu">전통공예 클래스</a></li>
-											<li><a href="#" class="menu">전통공예 클래스</a></li>
-											<li><a href="#" class="menu">전통공예 클래스</a></li>
-											<li><a href="#" class="menu">전통공예 클래스</a></li>
+											<li><a href="${pageContext.request.contextPath}/lesson/detail/116" class="menu">겉바속촉 마들렌과 스콘만들기</a></li>
+											<li><a href="${pageContext.request.contextPath}/lesson/detail/119" class="menu">3D피부테스트 & 맞춤형화장품 만들기</a></li>
+											<li><a href="${pageContext.request.contextPath}/lesson/detail/120" class="menu">꽃꽂이-프렌치스타일의꽃바구니 만들기</a></li>
+											<li><a href="${pageContext.request.contextPath}/lesson/detail/121" class="menu">명작모작 페인팅 원데이클래스</a></li>
+											<li><a href="${pageContext.request.contextPath}/lesson/detail/122" class="menu">반려 동물과 함께하는 펫 목걸이 만들기</a></li>
 										</ul>
 									</div>
 									
