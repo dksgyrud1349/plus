@@ -268,8 +268,27 @@
 				<div class="modal-body">
 					<div class="review-form p-3 mt-2 ">
 						<div class="p-1">
-							<input type="text" name="bankName" class="form-control"
-								placeholder="은행명을 입력해주세요.">
+							<select name="bankName" class="form-select">
+								<option value="">::은행선택::</option>
+								<option value="KB국민은행" ${bankName=="KB국민은행"?"selected":""}>KB국민은행</option>
+								<option value="IBK기업은행" ${bankName=="IBK기업은행"?"selected":""}>IBK기업은행</option>
+								<option value="BS부산은행" ${bankName=="BS부산은행"?"selected":""}>BS부산은행</option>
+								<option value="우리은행" ${bankName=="우리은행"?"selected":""}>우리은행</option>
+								<option value="우리은행" ${bankName=="우리은행"?"selected":""}>우리은행</option>
+								<option value="새마을금고" ${bankName=="새마을금고"?"selected":""}>새마을금고</option>
+								<option value="전북은행" ${bankName=="전북은행"?"selected":""}>전북은행</option>
+								<option value="신한은행" ${bankName=="신한은행"?"selected":""}>신한은행</option>
+								<option value="NH농협" ${bankName=="NH농협"?"selected":""}>NH농협</option>
+								<option value="수협은행" ${bankName=="수협은행"?"selected":""}>수협은행</option>
+								<option value="대구은행" ${bankName=="대구은행"?"selected":""}>대구은행</option>
+								<option value="하나은행" ${bankName=="하나은행"?"selected":""}>하나은행</option>
+								<option value="kdb산업은행" ${bankName=="kdb산업은행"?"selected":""}>kdb산업은행</option>
+								<option value="신협" ${bankName=="신협"?"selected":""}>신협</option>
+								<option value="광주은행" ${bankName=="광주은행"?"selected":""}>광주은행</option>
+								<option value="SC제일은행" ${bankName=="SC제일은행"?"selected":""}>SC제일은행</option>
+								<option value="citibank" ${bankName=="citibank"?"selected":""}>citibank</option>
+								<option value="경남은행" ${bankName=="경남은행"?"selected":""}>경남은행</option>
+							</select>
 						</div>
 						<div class="p-1">
 							<input type="text" name="account" class="form-control"
