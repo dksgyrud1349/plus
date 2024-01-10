@@ -13,7 +13,6 @@
 				( c.cateNum = #{cateNum} )
 			</if>
 			AND c.showFaq = 1 
-			AND (c.showUser = 0 OR c.showUser = 1)
 		</where>
 		
 	</select>
@@ -28,8 +27,7 @@
 			<if test="cateNum!=0">
 				( c.cateNum = #{cateNum} )
 			</if>
-			AND c.showFaq = 1 
-			AND (c.showUser = 0 OR c.showUser = 1)
+			AND c.showFaq = 1
 		</where>
 		ORDER BY orderNo, num ASC
 	</select>
@@ -39,8 +37,7 @@
 		FROM faqCategory
         
 		<where>
-			showFaq = 1 
-			AND (showUser = 0 OR showUser = 1)
+			showFaq = 1
 		</where>
 		ORDER BY orderNo
 	</select>

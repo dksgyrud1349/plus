@@ -217,10 +217,13 @@ public class LessonController {
 			dto.setPhotoName(dto.getFirstPhoto());
 			listPhoto.add(0, dto);
 			
+			List<Lesson> newClassList = lessonService.newClassList();
+			
 			model.addAttribute("dto", dto);
 			model.addAttribute("listPhoto", listPhoto);
+			model.addAttribute("newClassList", newClassList);
 			model.addAttribute("lessonDtlDate", lessonDtlDate);
-					
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "redirect:/lesson/main";

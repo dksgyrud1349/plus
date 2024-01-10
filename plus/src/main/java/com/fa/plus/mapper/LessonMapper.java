@@ -26,4 +26,5 @@ public interface LessonMapper {
 	public List<LessonDetail> getLessonDtlDate(long classNum);				// 클래스 상세 페이지(수강 날짜)
 	public List<LessonDetail> getLessonDtlTime(Map<String, Object> map);	// 클래스 상세 페이지(수강 시간)
 
+	public List<Lesson> newClassList();
 }

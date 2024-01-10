@@ -161,4 +161,15 @@ public class LessonServiceImpl implements LessonService{
 		return list;
 	}
 
+	@Override
+	public List<Lesson> newClassList() {
+		List<Lesson> list = null;
+		try {
+			list = mapper.newClassList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

@@ -439,153 +439,52 @@ function sendOk(mode) {
 				
 		<div class="container px-4 px-lg-5 mt-5">
 			<h2 class="fw-bolder mb-4">NEW 클래스</h2>
-			<div
-				class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-				
-				<div class="col mb-5">
-					<div class="card h-100">
-					<div class="badge bg-dark text-white position-absolute"
-							style="top: 0.5rem; right: 0.5rem">NEW</div>
-						<!-- Product image-->
-						<img class="card-img-top"
-							src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">인기상품</h5>
-								<!-- Product reviews-->
-								<div
-									class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
+			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+					<c:forEach var="newList" items="${newClassList}">
+						<div class="col mb-5">
+							<div class="card h-100">
+							<div class="badge bg-dark text-white position-absolute"
+									style="top: 0.5rem; right: 0.5rem">NEW</div>
+								<!-- Product image-->
+								<img class="card-img-top" src="${pageContext.request.contextPath}/uploads/lesson/${newList.firstPhoto}" />
+								<!-- Product details-->
+								<div class="card-body p-4">
+									<div class="text-center">
+										<!-- Product name-->
+										<h5 class="fw-bolder">${newList.className}</h5>
+										<!-- Product reviews-->
+										<div
+											class="d-flex justify-content-center small text-warning mb-2">
+											<span class="fs-6 item ${newList.reviewScore>=n?'on':''}">
+												<i class="bi bi-star-fill"></i>
+											</span>
+											<label class="align-middle ">
+												<span class="product-score ps-1">(${newList.reviewScore} / 5)</span>
+											</label>
+										</div>
+										<!-- Product price-->
+										${newList.price}
+									</div>
 								</div>
-								<!-- Product price-->
-								60,000원
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center">
-								<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col mb-5">
-					<div class="card h-100">
-					<div class="badge bg-dark text-white position-absolute"
-							style="top: 0.5rem; right: 0.5rem">NEW</div>
-						<!-- Product image-->
-						<img class="card-img-top"
-							src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">인기상품</h5>
-								<!-- Product reviews-->
-								<div
-									class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-								</div>
-								<!-- Product price-->
-								60,000원
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center">
-								<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col mb-5">
-					<div class="card h-100">
-					<div class="badge bg-dark text-white position-absolute"
-							style="top: 0.5rem; right: 0.5rem">NEW</div>
-						<!-- Product image-->
-						<img class="card-img-top"
-							src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">인기상품</h5>
-								<!-- Product reviews-->
-								<div
-									class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-								</div>
-								<!-- Product price-->
-								60,000원
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center">
-								<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col mb-5">
-					<div class="card h-100">
-					<div class="badge bg-dark text-white position-absolute"
-							style="top: 0.5rem; right: 0.5rem">NEW</div>
-						<!-- Product image-->
-						<img class="card-img-top"
-							src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">인기상품</h5>
-								<!-- Product reviews-->
-								<div
-									class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-								</div>
-								<!-- Product price-->
-								60,000원
-							</div>
-						</div>
-						<!-- Product actions-->
+								<!-- Product actions-->
 								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 									<div class="text-center">
-										<a class="btn btn-outline-dark mt-auto" href="#">보러 가기</a>
+										<a class="btn btn-outline-dark mt-auto" href="${pageContext.request.contextPath}/lesson/detail/${newList.classNum}">보러 가기</a>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					</c:forEach>
 				</div>
 			</div>
-		</header>
-	</form>
+		</div>
+	</header>
+</form>
+
 <!-- Services-->
 <section class="page-section mt-5" id="services">
 	<div class="container px-5 px-lg-5">
-		<h2 class="text-center mt-5">카테고리 · 해쉬태그</h2>
+		<h2 class="text-center mt-5">카테고리 · 해시태그</h2>
 		<hr class="divider">
 		
 		<div class="row">
