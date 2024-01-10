@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.MainpageMapper">
+
+
+<select id="lessonList" resultType="com.fa.plus.domain.Lesson">
+	SELECT * 
+		FROM (
+	        SELECT l.classNum, className, price, firstPhoto, nickName, l.addr1
+			FROM lesson l
+			JOIN member1 m1 ON m1.memberIdx = l.memberIdx
+			JOIN plus p ON p.userId = m1.userId
+			WHERE l.showClass = 0 
+			ORDER BY classNum DESC
+        ) WHERE ROWNUM &lt; 12
+</select>
+
+<select id="reviewList" resultType="com.fa.plus.domain.Review">
+SELECT * FROM(        
+	SELECT r.reviewNum, reviewScore, reviewContent, reviewSubject,
+		replyContent, r.orderNum, filename, showReview, l.className, m1.userName
+		FROM review r
+		JOIN orders o ON o.orderNum = r.orderNum
+		JOIN lessonDetail cd ON cd.detailNum = o.detailNum
+		JOIN lesson l on l.classNum = cd.classNum
+		JOIN member1 m1 on m1.memberIdx = o.memberIdx
+	          LEFT OUTER JOIN (
+				SELECT reviewNum, LISTAGG(filename, ',') WITHIN GROUP(ORDER BY photoNum) filename
+	            FROM reviewPhoto
+	            GROUP BY reviewNum	
+			) f ON r.reviewNum = f.reviewNum
+		WHERE showReview = 1
+		ORDER BY r.reviewNum DESC
+) WHERE ROWNUM &lt; 10
+</select>
+
+</mapper>

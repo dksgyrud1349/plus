@@ -1,7 +1,6 @@
 package com.fa.plus.controller;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,27 +11,33 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fa.plus.common.MyUtil;
+import com.fa.plus.domain.Lesson;
+import com.fa.plus.domain.Review;
+import com.fa.plus.service.MainpageService;
 
 @Controller
 @RequestMapping(value = "/*")
 public class MainController {
 	
+	@Autowired
+	private MainpageService mainService;
 	
 	@Autowired
 	@Qualifier("myUtil")
 	private MyUtil myUtil;
 	
-	public String header(
+	public String list(
 			HttpServletRequest req,
 			Model model) throws Exception {
 		
-		int size = 6;
-		int	offset = 0;
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("offset", offset);
-		map.put("size", size);
+		List<Lesson> classList = mainService.lessonList();
+		List<Review> reviewList = mainService.reviewList();
 		
-		return ".layout.header";
+		
+		model.addAttribute("classList", classList);
+		model.addAttribute("reviewList", reviewList);
+		
+		return ".home";
 		
 	}
 	
