@@ -43,6 +43,9 @@ public class SuggestController {
 	public String article(Suggest dto, HttpSession session, Model model) throws Exception{
 		
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		if(info == null) {
+			return "redirect:/member/login";
+		}
 		List<Suggest> listClass = null;
 		
 		try {

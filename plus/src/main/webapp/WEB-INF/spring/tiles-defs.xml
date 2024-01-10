@@ -113,6 +113,9 @@
 	<definition name=".inquiryAd.*" extends=".centerLayout">
     	<put-attribute name="body" value="/WEB-INF/views/inquiryAd/{1}.jsp" />
 	</definition>
+	<definition name=".suggest.*" extends=".centerLayout">
+    	<put-attribute name="body" value="/WEB-INF/views/suggest/{1}.jsp" />
+	</definition>
 	<definition name=".etc.*" extends=".centerLayout">
     	<put-attribute name="body" value="/WEB-INF/views/etc/{1}.jsp" />
 	</definition>

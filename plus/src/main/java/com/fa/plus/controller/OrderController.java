@@ -31,7 +31,9 @@ public class OrderController {
 						@RequestParam String classTime,
 						HttpSession session, Model model) {
 		SessionInfo info = (SessionInfo)session.getAttribute("member");
-		
+		if(info == null) {
+			return "redirect:/member/login";
+		}
 		// 주문자의 userId, userName, birth, totalMileage 가져오기
 		Order user = service.findByOrderHuman(info.getUserId());
 		

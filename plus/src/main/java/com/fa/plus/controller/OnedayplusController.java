@@ -28,7 +28,11 @@ public class OnedayplusController {
 	private OnedayplusService service;
 	
 	@RequestMapping(value = "onedayplus")
-	public String list(Model model) {
+	public String list(Model model, HttpSession session) {
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		if(info == null) {
+			return "redirect:/member/login";
+		}
 		List<PlusQ> qSubject = service.QSubject();
 		
 		List<PlusQ> list = service.listQuestion();

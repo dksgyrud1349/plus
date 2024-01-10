@@ -75,6 +75,9 @@ public class BoardController {
 		map.put("size", size);
 		
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		if(info == null) {
+			return "redirect:/member/login";
+		}
 		// 게시글 좋아요 여부
 		map.put("userId", info.getUserId());
 

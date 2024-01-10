@@ -27,6 +27,9 @@ public class MyPageController {
 	public String main(HttpSession session, Model model) {
 		
 		SessionInfo info = (SessionInfo)session.getAttribute("member");
+		if(info == null) {
+			return "redirect:/member/login";
+		}
 		BookingList paramDto = new BookingList();
 		BookingList rtnDto = new BookingList();
 		List<BookingList> orderNumList = new ArrayList<BookingList>();
@@ -83,8 +86,12 @@ public class MyPageController {
 		@GetMapping("review")
 		public String review(
 				@RequestParam(defaultValue = "review") String mode,
+				HttpSession session,
 				Model model) throws Exception {
-			
+			SessionInfo info = (SessionInfo)session.getAttribute("member");
+			if(info == null) {
+				return "redirect:/member/login";
+			}
 			model.addAttribute("mode", mode);
 			return ".myPage.review";
 		}

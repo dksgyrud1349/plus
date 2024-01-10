@@ -36,6 +36,9 @@ public class DeclarationController {
 	public String article(Declaration dto, HttpSession session, Model model) throws Exception{
 		
 		SessionInfo info = (SessionInfo)session.getAttribute("member");
+		if(info == null) {
+			return "redirect:/member/login";
+		}
 		List<Declaration> listClass = null;
 		
 		try {
