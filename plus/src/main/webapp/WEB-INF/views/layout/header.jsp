@@ -226,32 +226,32 @@
 				<li><p>인기검색어</p></li>
 				<li>
 					<dl class="time1">
-						<dd><a class="t" href="#"><div class="num">1</div>공예</a></dd>
-						<dd><a class="t" href="#"><div class="num">2</div>다이어트</a></dd>
-						<dd><a class="t" href="#"><div class="num">3</div>향수</a></dd>
-						<dd><a class="t" href="#"><div class="num">4</div>새로운 경험</a></dd>
-						<dd><a class="t" href="#"><div class="num">5</div>데이트</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=1&mainNum=1"><div class="num">1</div>간식</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=2&mainNum=1"><div class="num">2</div>장난감</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=3&mainNum=1"><div class="num">3</div>미용</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=4&mainNum=2"><div class="num">4</div>천연화장품</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=5&mainNum=2"><div class="num">5</div>메이크업</a></dd>
 					</dl>
 					<dl class="time2" style="display:none;">
-						<dd><a class="t" href="#"><div class="num">6</div>선물</a></dd>
-						<dd><a class="t" href="#"><div class="num">7</div>뷰티</a></dd>
-						<dd><a class="t" href="#"><div class="num">8</div>스트레스 해소</a></dd>
-						<dd><a class="t" href="#"><div class="num">9</div>핸드메이드</a></dd>
-						<dd><a class="t" href="#"><div class="num">10</div>드로잉</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=6&mainNum=2"><div class="num">6</div>헤어</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=7&mainNum=2"><div class="num">7</div>네일아트</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=8&mainNum=2"><div class="num">8</div>향수</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=9&mainNum=3"><div class="num">9</div>스킨스쿠버</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=10&mainNum=3"><div class="num">10</div>서핑</a></dd>
 					</dl>
 					<dl class="time3" style="display:none;">
-						<dd><a class="t" href="#"><div class="num">11</div>음악</a></dd>
-						<dd><a class="t" href="#"><div class="num">12</div>쿠킹</a></dd>
-						<dd><a class="t" href="#"><div class="num">13</div>미용</a></dd>
-						<dd><a class="t" href="#"><div class="num">14</div>학업</a></dd>
-						<dd><a class="t" href="#"><div class="num">15</div>도예</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=11&mainNum=3"><div class="num">11</div>클라이밍</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=12&mainNum=3"><div class="num">12</div>펜싱</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=13&mainNum=3"><div class="num">13</div>카약</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=14&mainNum=3"><div class="num">14</div>테니스</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=15&mainNum=3"><div class="num">15</div>배드민턴</a></dd>
 					</dl>
 					<dl class="time4" style="display:none;">
-						<dd><a class="t" href="#"><div class="num">16</div>사진</a></dd>
-						<dd><a class="t" href="#"><div class="num">17</div>미술</a></dd>
-						<dd><a class="t" href="#"><div class="num">18</div>아크릴화</a></dd>
-						<dd><a class="t" href="#"><div class="num">19</div>칵테일</a></dd>
-						<dd><a class="t" href="#"><div class="num">20</div>금속공예</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=16&mainNum=4"><div class="num">16</div>프로듀싱</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=17&mainNum=4"><div class="num">17</div>보컬</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=18&mainNum=4"><div class="num">18</div>국악</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=19&mainNum=4"><div class="num">19</div>댄스</a></dd>
+						<dd><a class="t" href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=20&mainNum=4"><div class="num">20</div>악기</a></dd>
 					</dl>
 				</li>
 				<li>
