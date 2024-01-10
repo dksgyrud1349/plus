@@ -318,5 +318,37 @@ public class MemberServiceImpl implements MemberService{
 		}
 		
 	}
+
+	@Override
+	public void updateMemberDropout(Map<String, Object> map) throws Exception {
+		try {
+			String userId = (String)map.get("userId");
+			// enabled : 0
+			mapper.updateMemberEnabled(map);
+
+			// 회원 상태 변경 사항 저장
+			Member dto = new Member();
+			dto.setUserId(userId);
+			dto.setStateCode(9);
+			dto.setMemo("본인 회원 탈퇴");
+			dto.setAdminId(userId);
+			mapper.insertMemberState(dto);
+			
+			// member2 테이블 삭제 ------
+			/*
+			 1) xml에서 deleteMember2(String userId) 
+			 2) mapper 인터페이스 작성
+			 
+			 mapper.deleteMember2(userId);
+
+			 */
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
+	}
 	
 }

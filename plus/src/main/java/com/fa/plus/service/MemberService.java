@@ -26,4 +26,5 @@ public interface MemberService {
 	public void updateMemberEnabled(Map<String, Object> map) throws Exception;
 	public void insertMemberState(Member dto) throws Exception;		
 	
+	public void updateMemberDropout(Map<String, Object> map) throws Exception;
 }

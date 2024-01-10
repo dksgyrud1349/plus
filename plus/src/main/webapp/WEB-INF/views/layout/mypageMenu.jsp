@@ -89,7 +89,7 @@
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/inquiryAd/list" data-hover="1:1 문의내역">1:1 문의내역</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/classInq/myInqList" data-hover="클래스 문의내역">클래스 문의내역</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/pwd" data-hover="내정보 및 수정">내정보 수정</a></li>
-            <li class="nav-item"><a class="nav-link" href="#" data-hover="탈퇴">탈퇴</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/pwd?dropout" data-hover="탈퇴">탈퇴</a></li>
         </ul>
     </div>
 </nav>

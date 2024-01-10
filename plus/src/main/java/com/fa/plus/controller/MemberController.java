@@ -142,16 +142,23 @@ public class MemberController {
 			model.addAttribute("message", "패스워드가 일치하지 않습니다.");
 			return ".member.pwd";
 		}
-		/*
+
 		if (mode.equals("dropout")) {
 			// 게시판 테이블등 자료 삭제
 
 			// 회원탈퇴 처리
 			
 			  Map<String, Object> map = new HashMap<>();
-			  map.put("memberIdx", info.getMemberIdx());
 			  map.put("userId", info.getUserId());
-			
+
+			  map.put("enabled", 0);
+			  
+			try {
+				service.updateMemberDropout(map);
+				
+			} catch (Exception e) {
+
+			} 
 
 			// 세션 정보 삭제
 			session.removeAttribute("member");
@@ -166,7 +173,7 @@ public class MemberController {
 
 			return "redirect:/member/complete";
 		}
-		*/
+	
 		// 회원정보수정폼
 		model.addAttribute("dto", dto);
 		model.addAttribute("mode", "update");

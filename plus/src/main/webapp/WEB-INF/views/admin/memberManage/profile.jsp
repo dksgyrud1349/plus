@@ -65,7 +65,6 @@
 					<option value="4">다른 유저 비방</option>
 					<option value="5">타계정 도용</option>
 					<option value="6">기타 약관 위반</option>
-					<option value="9">탈퇴</option>
 				</select>
 			</td>
 		</tr>
