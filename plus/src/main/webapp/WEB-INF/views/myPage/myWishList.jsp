@@ -141,7 +141,7 @@ $(function(){
 			  return false;
 		  }
 		  
-		  let url = '${pageContext.request.contextPath}/wishList/insertLessonLike';
+		  let url = '${pageContext.request.contextPath}/myPage/wishList/insertLessonLike';
 		  let classNum = $(this).attr("data-classNum");
 		  let query = 'classNum=' + classNum + '&userLiked=' + userLiked;
 		  

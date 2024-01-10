@@ -1,8 +1,13 @@
 package com.fa.plus.controller;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,16 +17,32 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fa.plus.common.MyUtil;
+import com.fa.plus.domain.Board;
 import com.fa.plus.domain.BookingList;
+import com.fa.plus.domain.Lesson;
+import com.fa.plus.domain.PlusAns;
+import com.fa.plus.domain.PlusQ;
 import com.fa.plus.domain.SessionInfo;
+import com.fa.plus.service.BoardService;
 import com.fa.plus.service.BookingListService;
+import com.fa.plus.service.OnedayplusService;
 
 @Controller
-@RequestMapping(("/myPage/*"))
+@RequestMapping("/myPage/*")
 public class MyPageController {
 	
 	@Autowired
+	private BoardService boardService;
+	
+	@Autowired
+	private MyUtil myUtil;
+	
+	@Autowired
 	private BookingListService bookingListSerivce;
+	
+	@Autowired
+	private OnedayplusService onedayService;
 	
 	@RequestMapping(value = "main")
 	public String main(HttpSession session, Model model) {
@@ -96,8 +117,123 @@ public class MyPageController {
 			return ".myPage.review";
 		}
 	
+		@RequestMapping(value = "mybbs")
+		public String list(@RequestParam(value = "page", defaultValue = "1") int current_page,
+				@RequestParam(defaultValue = "all") String schType,
+				@RequestParam(defaultValue = "") String kwd,
+				HttpServletRequest req,
+				HttpSession session,
+				Model model) throws Exception {
+
+			SessionInfo info = (SessionInfo) session.getAttribute("member");
+
+			String cp = req.getContextPath();
+			int size = 5;
+			int total_page;
+			int dataCount;
+
+			if (req.getMethod().equalsIgnoreCase("GET")) { // GET 방식인 경우
+				kwd = URLDecoder.decode(kwd, "utf-8");
+			}
+
+			// 전체 페이지 수
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("myId", info.getUserId());
+			map.put("schType", schType);
+			map.put("kwd", kwd);
+			
+			dataCount = boardService.dataCount(map);
+
+			total_page = myUtil.pageCount(dataCount, size);
+
+			if (total_page < current_page) {
+				current_page = total_page;
+			}
+
+			int offset = (current_page - 1) * size;
+			if(offset < 0) offset = 0;
+
+			map.put("offset", offset);
+			map.put("size", size);
+			List<Board> list = boardService.listBoard(map);
+			
+			for(Board dto : list) {
+				List<String> imgs = myUtil.getImgSrc(dto.getContent());
+				if(imgs.size() > 0) {
+					dto.setImageFilename(imgs.get(0));
+				} else {
+					dto.setImageFilename(cp + "/resources/images/keyimage3.jpg");
+				}
+			}		
+			
+			String query = "";
+			String listUrl = cp + "/myBbs/list";
+			String articleUrl = cp + "/bbs/article?page=" + current_page;
+			if (kwd.length() != 0) {
+				query = "schType=" + schType + "&kwd=" + URLEncoder.encode(kwd, "utf-8");
+			}
+			
+			if (query.length() != 0) {
+				listUrl = cp + "/myBbs/list?" + query;
+				articleUrl = cp + "/bbs/article?page=" + current_page + "&" + query;
+			}
+			String paging = myUtil.paging(current_page, total_page, listUrl);
+			
+			model.addAttribute("dataCount", dataCount);
+			model.addAttribute("dataCount", dataCount);
+			model.addAttribute("size", size);
+			model.addAttribute("total_page", total_page);
+			model.addAttribute("articleUrl", articleUrl);
+			model.addAttribute("page", current_page);
+			model.addAttribute("paging", paging);
+
+			model.addAttribute("schType", schType);
+			model.addAttribute("kwd", kwd);
+			
+			model.addAttribute("list", list);
+
+			return ".myPage.mybbs";
+		}
 	
-	
-	
+		@GetMapping("onedayplus")
+		public String result(HttpSession session,
+				Model model) throws Exception {
+			SessionInfo info = (SessionInfo) session.getAttribute("member");
+			String userId = info.getUserId();
+			// 질문 제목
+			List<PlusQ> qlist = onedayService.QSubject();
+			
+			// 결과지 내용
+			List<PlusAns> list = onedayService.listAnswer(userId);
+			
+			int answerCount = onedayService.answerCount(userId);
+			
+			if(answerCount != 0) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				String purpose = onedayService.resultPurpose(userId);
+				String category = onedayService.resultCategory(userId);
+				String location = onedayService.resultLocation(userId);
+				long classprice = onedayService.resultPrice(userId);
+				
+				map.put("purpose", purpose);
+				map.put("category", category);
+				map.put("location", location);
+				map.put("classprice", classprice);
+				map.put("userId", userId);
+
+				List<Lesson> classList = onedayService.resultClass(map);
+				int resultCount = onedayService.resultCount(userId);
+				
+				model.addAttribute("classList", classList);
+				model.addAttribute("resultCount", resultCount);
+			}
+			
+			model.addAttribute("qlist", qlist);
+			model.addAttribute("list", list);
+			model.addAttribute("userId", userId);
+			model.addAttribute("answerCount", answerCount);
+			
+			return ".myPage.onedayplus";
+		}
 	
 }

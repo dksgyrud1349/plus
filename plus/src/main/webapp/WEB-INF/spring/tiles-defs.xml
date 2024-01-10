@@ -80,6 +80,9 @@
 	<definition name=".myPage.*" extends=".myPageLayout">
     	  <put-attribute name="body" value="/WEB-INF/views/myPage/{1}.jsp" />
 	</definition>
+	<definition name=".classInq.*" extends=".myPageLayout">
+    	<put-attribute name="body" value="/WEB-INF/views/classInq/{1}.jsp" />
+	</definition>
 	
 	<!-- 고객문의 (faq 등)-->
 	<definition name=".centerLayout" template="/WEB-INF/views/layout/layout4.jsp">

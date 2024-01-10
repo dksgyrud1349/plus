@@ -32,7 +32,7 @@
 						<i class="bi bi-question-circle"></i> 적립금 사용/적립 내역
 
 						<button type="button" class="btn btn-success"
-							onclick="location.href='${pageContext.request.contextPath}/mileage/myMileageList';"
+							onclick="location.href='${pageContext.request.contextPath}/myPage/mileage/list';"
 							title="새로고침" style="float: right;">
 							<i class="bi bi-arrow-counterclockwise"></i>
 						</button>
@@ -80,7 +80,7 @@
 								<tr>
 									<td align="center">
 										<form name="searchForm"
-											action="${pageContext.request.contextPath}/mileage/myMileageList"
+											action="${pageContext.request.contextPath}/myPage/mileage/list"
 											style="width: 300px; margin-left: 100px">
 											<div class="input-group mb-1">
 												<select name="schType" class="form-select">
@@ -164,7 +164,7 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 		$(".MileageDetail").click(function(){
 			
 			let mNum = $(this).find("input[name='mNum']").val();
-			let url = '${pageContext.request.contextPath}/mileage/mileageDetail';
+			let url = '${pageContext.request.contextPath}//myPage/mileage/mileageDetail';
 			let query = 'mNum=' + mNum;
 			
 			const fn = function(data){

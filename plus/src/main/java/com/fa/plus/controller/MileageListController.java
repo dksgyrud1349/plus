@@ -23,7 +23,7 @@ import com.fa.plus.domain.SessionInfo;
 import com.fa.plus.service.MileageListService;
 
 @Controller
-@RequestMapping("/mileage/*")
+@RequestMapping("/myPage/mileage/*")
 public class MileageListController {
 	
 	@Autowired
@@ -32,7 +32,7 @@ public class MileageListController {
 	@Autowired
 	private MyUtil myUtil;
 	
-	@RequestMapping("myMileageList")
+	@RequestMapping("list")
 	public String myMileageList(@RequestParam(value = "page", defaultValue = "1") int current_page,
 			@RequestParam(defaultValue = "all") String schType, 
 			@RequestParam(defaultValue = "") String kwd,

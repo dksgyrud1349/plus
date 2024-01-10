@@ -20,13 +20,13 @@ import com.fa.plus.domain.SessionInfo;
 import com.fa.plus.service.BookingListService;
 
 @Controller
-@RequestMapping("/bookingList/*")
+@RequestMapping("/myPage/booking/*")
 public class BookingListController {
 
 	@Autowired
 	private BookingListService service;
 	
-	@RequestMapping("bLists")
+	@RequestMapping("list")
 	public String list(
 				  HttpSession session
 				, Model model) throws Exception{

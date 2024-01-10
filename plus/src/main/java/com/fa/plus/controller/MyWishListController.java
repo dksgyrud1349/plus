@@ -22,7 +22,7 @@ import com.fa.plus.domain.SessionInfo;
 import com.fa.plus.service.MyWishListService;
 
 @Controller
-@RequestMapping("/wishList/*")
+@RequestMapping("/myPage/wishList/*")
 public class MyWishListController {
 	
 	@Autowired
@@ -31,7 +31,7 @@ public class MyWishListController {
 	@Autowired
 	private MyUtil myUtil;
 	
-	@RequestMapping("myWishList")
+	@RequestMapping("mylist")
 	public String myWishList(@RequestParam(value = "page", defaultValue = "1") int current_page,
 				HttpSession session, Model model, HttpServletRequest req) throws Exception{
 		

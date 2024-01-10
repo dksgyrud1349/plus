@@ -354,7 +354,7 @@ $(function(){
 		let classNum = $(this).attr("data-classNum");
 		$('form[name=reviewForm]').find("input[name=classNum]").val(classNum);
 		
-		let url = '${pageContext.request.contextPath}/bookingList/detail';
+		let url = '${pageContext.request.contextPath}/myPage/booking/detail';
 		let query = 'orderNum='+orderNum;
 		
 		const fn = function(data){
