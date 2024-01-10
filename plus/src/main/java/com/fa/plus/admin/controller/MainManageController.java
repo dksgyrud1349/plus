@@ -63,7 +63,7 @@ public class MainManageController {
 		int total_page = 0;
 		int size = 5;
 		
-		Map<String, Object> thisMonth = salesService.thisMonthProduct();
+		Map<String, Object> thisMonth = salesService.thisMonthProduct1();
 
 		
 		Map<String, Object> map = new HashMap<String, Object>();

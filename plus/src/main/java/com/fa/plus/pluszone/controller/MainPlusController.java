@@ -35,7 +35,9 @@ public class MainPlusController {
 		
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		
-		Map<String, Object> thisMonth = salesService.thisMonthProduct();
+		Map<String, Object> map1 = new HashMap<String, Object>();
+		map1.put("memberIdx", info.getMemberIdx());
+		Map<String, Object> thisMonth = salesService.thisMonthProduct(map1);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userId", info.getUserId());

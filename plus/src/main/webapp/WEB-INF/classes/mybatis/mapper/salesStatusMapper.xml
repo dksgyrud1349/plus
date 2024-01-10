@@ -2,117 +2,176 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fa.plus.pluszone.mapper.SalesStatusMapper">
-	<select id="todayProduct" resultType="map">
+	<select id="todayProduct" parameterType="map" resultType="map">
 		SELECT COUNT(*) count, NVL(SUM(pay), 0) total
-		FROM orderDetail
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD') AND le.memberIdx = #{memberIdx}
 	</select>
 	
-	<select id="thisMonthProduct" resultType="map">
+	<select id="thisMonthProduct" parameterType="map" resultType="map">
+		SELECT COUNT(*) count, NVL(SUM(pay), 0) total
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 6 AND TO_CHAR(oDate, 'YYYYMM') = TO_CHAR(SYSDATE, 'YYYYMM') AND le.memberIdx = #{memberIdx}
+	</select>
+	
+	<select id="thisMonthProduct1" resultType="map">
 		SELECT COUNT(*) count, NVL(SUM(pay), 0) total
 		FROM orderDetail
 		WHERE state != 6 AND TO_CHAR(oDate, 'YYYYMM') = TO_CHAR(SYSDATE, 'YYYYMM')
 	</select>
 	
-	<select id="previousMonthProduct" resultType="map">
+	<select id="previousMonthProduct" parameterType="map" resultType="map">
 		SELECT COUNT(*) count, NVL(SUM(pay), 0) total
-		FROM orderDetail
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = TO_CHAR(ADD_MONTHS(SYSDATE, -1), 'YYYYMM')
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = TO_CHAR(ADD_MONTHS(SYSDATE, -1), 'YYYYMM') AND le.memberIdx = #{memberIdx}
 	</select>
 	
-	<select id="dayTotalMoney"  parameterType="String" resultType="map">
+	<select id="dayTotalMoney"  parameterType="map" resultType="map">
 		/* 7일간 일별 판매 금액 */
 		SELECT TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-6, 'YYYY-MM-DD') oDate, 
 		            NVL(SUM(pay), 0) totalMoney 
-		FROM orderDetail 
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-6, 'YYYY-MM-DD') 
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-6, 'YYYY-MM-DD') AND le.memberIdx = #{memberIdx}
 		    UNION ALL
 				  
 		SELECT TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-5, 'YYYY-MM-DD') oDate, 
 		            NVL(SUM(pay), 0) totalMoney 
-		FROM orderDetail 
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-5, 'YYYY-MM-DD') 
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-5, 'YYYY-MM-DD') AND le.memberIdx = #{memberIdx}
 		    UNION ALL
 				  
 		SELECT TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-4, 'YYYY-MM-DD') oDate, 
 		            NVL(SUM(pay), 0) totalMoney 
-		FROM orderDetail 
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-4, 'YYYY-MM-DD') 
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-4, 'YYYY-MM-DD') AND le.memberIdx = #{memberIdx}
 		    UNION ALL
 				  
 		SELECT TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-3, 'YYYY-MM-DD') oDate, 
 		            NVL(SUM(pay), 0) totalMoney 
-		FROM orderDetail 
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-3, 'YYYY-MM-DD') 
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-3, 'YYYY-MM-DD') AND le.memberIdx = #{memberIdx}
 		    UNION ALL
 				  
 		SELECT TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-2, 'YYYY-MM-DD') oDate, 
 		            NVL(SUM(pay), 0) totalMoney 
-		FROM orderDetail 
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-2, 'YYYY-MM-DD') 
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-2, 'YYYY-MM-DD') AND le.memberIdx = #{memberIdx}
 		    UNION ALL
 				  
 		SELECT TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-1, 'YYYY-MM-DD') oDate, 
 		            NVL(SUM(pay), 0) totalMoney 
-		FROM orderDetail 
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-1, 'YYYY-MM-DD') 
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = TO_CHAR(TO_DATE(#{date}, 'YYYY-MM-DD')-1, 'YYYY-MM-DD') AND le.memberIdx = #{memberIdx}
 		    UNION ALL
 				  
 		SELECT #{date} oDate, 
 		            NVL(SUM(pay), 0) totalMoney 
-		FROM orderDetail 
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = #{date}
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYY-MM-DD') = #{date} AND le.memberIdx = #{memberIdx}
 	</select>
 	
 	<!-- 6개월간 월별 판매 금액 -->
-	<select id="monthTotalMoney"  parameterType="String" resultType="map">
+	<select id="monthTotalMoney"  parameterType="map" resultType="map">
 		SELECT TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -5), 'YYYYMM') oDate, 
         		NVL(SUM(pay), 0) totalMoney 
-		FROM orderDetail 
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -5), 'YYYYMM') 
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -5), 'YYYYMM') AND le.memberIdx = #{memberIdx} 
 		  UNION ALL
 		  
 		SELECT TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -4), 'YYYYMM') oDate, 
 		        NVL(SUM(pay), 0) totalMoney 
-		FROM orderDetail 
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -4), 'YYYYMM') 
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -4), 'YYYYMM') AND le.memberIdx = #{memberIdx}
 		  UNION ALL
 		  
 		SELECT TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -3), 'YYYYMM') oDate, 
 		        NVL(SUM(pay), 0) totalMoney 
-		FROM orderDetail 
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -3), 'YYYYMM') 
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -3), 'YYYYMM') AND le.memberIdx = #{memberIdx}
 		  UNION ALL
 		  
 		SELECT TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -2), 'YYYYMM') oDate, 
 		        NVL(SUM(pay), 0) totalMoney 
-		FROM orderDetail 
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -2), 'YYYYMM') 
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -2), 'YYYYMM') AND le.memberIdx = #{memberIdx}
 		  UNION ALL
 		  
 		SELECT TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -1), 'YYYYMM') oDate, 
 		        NVL(SUM(pay), 0) totalMoney 
-		FROM orderDetail 
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -1), 'YYYYMM') 
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = TO_CHAR(ADD_MONTHS(TO_DATE(#{month}, 'YYYYMM'), -1), 'YYYYMM') AND le.memberIdx = #{memberIdx}
 		  UNION ALL
 		  
 		SELECT #{month} oDate, 
 		        NVL(SUM(pay), 0) totalMoney 
-		FROM orderDetail 
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = #{month}
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = #{month} AND le.memberIdx = #{memberIdx}
+		
+		
 	</select>
 	
 	<!--  요일별 판매 건수 -->
-	<select id="dayOfWeekTotalCount" parameterType="String" resultType="map">
+	<select id="dayOfWeekTotalCount" parameterType="map" resultType="map">
 		SELECT COUNT(*) total,
-		       NVL(COUNT(DECODE(TO_CHAR(oDate, 'D'), 1, 1)), 0) "SUN",
-		       NVL(COUNT(DECODE(TO_CHAR(oDate, 'D'), 2, 1)), 0) "MON",
-		       NVL(COUNT(DECODE(TO_CHAR(oDate, 'D'), 3, 1)), 0) "TUE",
-		       NVL(COUNT(DECODE(TO_CHAR(oDate, 'D'), 4, 1)), 0) "WED",
-		       NVL(COUNT(DECODE(TO_CHAR(oDate, 'D'), 5, 1)), 0) "THU",
-		       NVL(COUNT(DECODE(TO_CHAR(oDate, 'D'), 6, 1)), 0) "FRI",
-		       NVL(COUNT(DECODE(TO_CHAR(oDate, 'D'), 7, 1)), 0) "SAT"
-		FROM orderDetail
-		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = #{month}
+		       NVL(COUNT(DECODE(TO_CHAR(od.oDate, 'D'), 1, 1)), 0) "SUN",
+		       NVL(COUNT(DECODE(TO_CHAR(od.oDate, 'D'), 2, 1)), 0) "MON",
+		       NVL(COUNT(DECODE(TO_CHAR(od.oDate, 'D'), 3, 1)), 0) "TUE",
+		       NVL(COUNT(DECODE(TO_CHAR(od.oDate, 'D'), 4, 1)), 0) "WED",
+		       NVL(COUNT(DECODE(TO_CHAR(od.oDate, 'D'), 5, 1)), 0) "THU",
+		       NVL(COUNT(DECODE(TO_CHAR(od.oDate, 'D'), 6, 1)), 0) "FRI",
+		       NVL(COUNT(DECODE(TO_CHAR(od.oDate, 'D'), 7, 1)), 0) "SAT"
+		FROM orderDetail od
+        JOIN orders os ON od.orderNum = os.orderNum
+        JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+        JOIN lesson le ON ld.classNum = le.classNum
+		WHERE state != 2 AND TO_CHAR(oDate, 'YYYYMM') = #{month} AND le.memberIdx = #{memberIdx}
 	</select>
 </mapper>

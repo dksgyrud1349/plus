@@ -15,44 +15,56 @@ public class SalesStatusServiceImpl implements SalesStatusService{
 	private SalesStatusMapper mapper;
 	
 	@Override
-	public Map<String, Object> todayProduct() {
-		Map<String, Object> map =  null;
+	public Map<String, Object> todayProduct(Map<String, Object> map) {
+		Map<String, Object> map1 =  null;
 		try {
-			map = mapper.todayProduct();
+			map1 = mapper.todayProduct(map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return map;
+		return map1;
 	}
 
 	@Override
-	public Map<String, Object> thisMonthProduct() {
-		Map<String, Object> map = null;
+	public Map<String, Object> thisMonthProduct(Map<String, Object> map) {
+		Map<String, Object> map1 = null;
 		try {
-			map = mapper.thisMonthProduct();
+			map1 = mapper.thisMonthProduct(map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return map;
+		return map1;
 	}
-
+	
 	@Override
-	public Map<String, Object> previousMonthProduct() {
-		Map<String, Object> map = null;
+	public Map<String, Object> thisMonthProduct1() {
+		Map<String, Object> map1 = null;
 		try {
-			map = mapper.previousMonthProduct();
+			map1 = mapper.thisMonthProduct1();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return map;
+		return map1;
 	}
 
 	@Override
-	public List<Map<String, Object>> dayTotalMoney(String date) {
+	public Map<String, Object> previousMonthProduct(Map<String, Object> map) {
+		Map<String, Object> map1 = null;
+		try {
+			map1 = mapper.previousMonthProduct(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return map1;
+	}
+	
+
+	@Override
+	public List<Map<String, Object>> dayTotalMoney(Map<String, Object> map) {
 		List<Map<String, Object>> list = null;
 		
 		try {
-			list = mapper.dayTotalMoney(date);
+			list = mapper.dayTotalMoney(map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -61,11 +73,11 @@ public class SalesStatusServiceImpl implements SalesStatusService{
 	}
 
 	@Override
-	public List<Map<String, Object>> monthTotalMoney(String month) {
+	public List<Map<String, Object>> monthTotalMoney(Map<String, Object> map) {
 		List<Map<String, Object>> list = null;
 		
 		try {
-			list = mapper.monthTotalMoney(month);
+			list = mapper.monthTotalMoney(map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -74,11 +86,11 @@ public class SalesStatusServiceImpl implements SalesStatusService{
 	}
 
 	@Override
-	public Map<String, Object> dayOfWeekTotalCount(String month) {
+	public Map<String, Object> dayOfWeekTotalCount(Map<String, Object> map) {
 		Map<String, Object> resultMap = null;
 		
 		try {
-			resultMap = mapper.dayOfWeekTotalCount(month);
+			resultMap = mapper.dayOfWeekTotalCount(map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
