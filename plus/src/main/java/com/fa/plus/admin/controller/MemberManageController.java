@@ -1,7 +1,6 @@
 package com.fa.plus.admin.controller;
 
 import java.net.URLDecoder;
-
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +9,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +30,7 @@ public class MemberManageController {
 	private MemberManageService service;
 
 	@Autowired
-	@Qualifier("myUtilGeneral")
+	// @Qualifier("myUtilGeneral")
 	private MyUtil myUtil;
 
 	@RequestMapping("list")

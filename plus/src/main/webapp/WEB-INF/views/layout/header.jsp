@@ -163,10 +163,6 @@
 	
 	.checkbox-container {
 	    display: inline-block;
-	    margin: 5px;
-	    padding: 10px;
-	    border-radius: 5px;
-	    cursor: pointer;
 	    position: relative;
 	    border: 2px solid transparent;
 	}
@@ -226,23 +222,6 @@
 			</form>
 		</header>
 			
-			
-			
-						
-								
-									
-							
-											
-								
-			
-			
-			
-			
-			
-			
-			
-			
-
 			<ul id="best_search" style="margin-left: 30px;">
 				<li><p>인기검색어</p></li>
 				<li>
@@ -288,122 +267,104 @@
 						<li>
 							<a href="#" class="bar">원데이 클래스</a><span class="border-end"></span>
 							<div class="cbp-hrsub">
-								<div class="cbp-hrsub-inner"> 
+								<div class="cbp-hrsub-inner">
 									<div>
-										<h4 class="tltle">베스트 &amp; 클래스<hr class="my-hr1"></h4>
+										<h4 class="tltle">이달의 추천 클래스<hr class="my-hr1"></h4>
 										<ul>
-											<li><a href="#" class="menu">향수 공방</a></li>
-											<li><a href="#" class="menu">쿠킹 클래스</a></li>
-											<li><a href="#" class="menu">드로잉 클래스</a></li>
-											<li><a href="#" class="menu">다이어트 클래스</a></li>
-											<li><a href="#" class="menu">보컬 클래스</a></li>
-											<li><a href="#" class="menu">댄스 클래스</a></li>
-											<li><a href="#" class="menu">도예 클래스</a></li>
+											<li><a href="#" class="menu">전통공예 클래스</a></li>
+											<li><a href="#" class="menu">전통공예 클래스</a></li>
+											<li><a href="#" class="menu">전통공예 클래스</a></li>
+											<li><a href="#" class="menu">전통공예 클래스</a></li>
+											<li><a href="#" class="menu">전통공예 클래스</a></li>
+											<li><a href="#" class="menu">전통공예 클래스</a></li>
+											<li><a href="#" class="menu">전통공예 클래스</a></li>
+											<li><a href="#" class="menu">전통공예 클래스</a></li>
 										</ul>
 									</div>
 									
 									<div>
-										<h4 class="tltle">SALE<hr class="my-hr1"></h4>
+										<h4 class="tltle">메인 카테고리<hr class="my-h	r1"></h4>
 										<ul>
-											<li><a href="#" class="menu">전통공예 클래스</a></li>
-											<li><a href="#" class="menu">플라워 공예 클래스</a></li>
-											<li><a href="#" class="menu">가죽 공예 클래스</a></li>
-										</ul>
-										<h4 class="tltle">이벤트 클래스<hr class="my-hr1"></h4>
-										<ul>
-											<li><a href="#" class="menu">드럼 클래스</a></li>
-											<li><a href="#" class="menu">수채화 클래스</a></li>
+											<li><a href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=1" class="menu">반려동물</a></li>
+											<li><a href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=2" class="menu">뷰티</a></li>
+											<li><a href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=3" class="menu">스포츠</a></li>
+											<li><a href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=4" class="menu">음악</a></li>
+											<li><a href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=5" class="menu">쿠킹</a></li>
+											<li><a href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=6" class="menu">핸드메이드</a></li>
+											<li><a href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=7" class="menu">플라워가드닝</a></li>
+											<li><a href="${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=8" class="menu">드로잉</a></li>
 										</ul>
 									</div>
-
+									
 									<div>
-										<h4 class="tltle">NEW 클래스<hr class="my-hr1"></h4>
+										<h4 class="tltle">원데이 클래스 더보기<hr class="my-hr1"></h4>
 										<ul>
-											<li><a href="#" class="menu">댄스 클래스</a></li>
-											<li><a href="#" class="menu">쿠킹 클래스</a></li>
-											<li><a href="#" class="menu">목공예 클래스</a></li>
-											<li><a href="#" class="menu">네일아트 클래스</a></li>
-											<li><a href="#" class="menu">프로듀싱 클래스</a></li>
-											<li>&nbsp;</li>
-											<li>&nbsp;</li>
-											<li><a href="${pageContext.request.contextPath}/lesson/main" class="go-ahead">
-											&gt;&gt;모든 원데이 클래스 보러가기&nbsp;<i class="bi bi-calendar2-plus"></i></a></li>
+											
+											<li>
+												<label class="checkbox-container">
+													<input type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/main'">
+												 	<div class="checkbox-button">
+														<img src="${pageContext.request.contextPath}/resources/images/center.jpg" width="300px;" 
+														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
+													 	<div class="hover-content">원데이 클래스 더보기</div>
+													</div>
+												</label>
+											</li>
 										</ul>
 									</div>
 								</div>
 							</div>
 						</li>
-						<li>
-							<a href="#" class="bar">원데이 플러스</a><span class="border-end"></span>
-							<div class="cbp-hrsub">
-								<div class="cbp-hrsub-inner">
-									<div>
-										<h4 class="tltle">인기 콘텐츠<hr class="my-hr1"></h4>
-										<ul>
-											<li><a href="#" class="menu">핸드 메이드</a></li>
-											<li><a href="#" class="menu">필라테스</a></li>
-											<li><a href="#" class="menu">스포츠</a></li>
-										</ul>
-										<h4 class="tltle">추천 콘텐츠<hr class="my-hr1"></h4>
-										<ul>
-											<li><a href="#" class="menu">플라워 가드닝</a></li>
-											<li><a href="#" class="menu">쿠킹</a></li>
-										</ul>
-									</div>
-									<div>
-										<h4 class="tltle">추천 키워드<hr class="my-hr1"></h4>
-										<ul>
-											<li><a href="#" class="menu">#재미</a></li>
-											<li><a href="#" class="menu">#추억</a></li>
-											<li><a href="#" class="menu">#데이트</a></li>
-											<li><a href="#" class="menu">#이색데이트</a></li>
-											<li><a href="#" class="menu">#가족</a></li>
-											<li><a href="#" class="menu">#단체</a></li>
-											<li><a href="#" class="menu">#음악</a></li>
-										</ul>
-									</div>
-									<div>
-										<h4 class="tltle">원데이 추천 플러스<hr class="my-hr1"></h4>
-										<ul>
-											<img src="${pageContext.request.contextPath}/resources/images/center.jpg"  
-												style="width: 400px; border-radius: 20px; 
-												box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
-										</ul>
-									</div>
-								</div>
-							</div>
-						</li>
+						
 						<li>
 							<a href="#" class="bar">이벤트</a><span class="border-end"></span>
 							<div class="cbp-hrsub">
-								<div class="cbp-hrsub-inner"> 
+								<div class="cbp-hrsub-inner">
 									<div>
-										<h4 class="tltle">첫 구매 이벤트<hr class="my-hr1"></h4>
+										<h4 class="tltle">첫 구매시 쿠폰 지급<hr class="my-hr1"></h4>
 										<ul>
-											<li class="mt-3"><img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" style="width: 300px; height: 200px; background-size: cover; border-radius: 20px;"></li>
-											<li><a href="#" class="menu">- 첫 구매시 쿠폰 지급</a></li>
-											<li><a href="#" class="go-ahead">&gt;&gt;
-												원데이 클래스 보러가기&nbsp;<i class="bi bi-calendar2-minus"></i></a></li>
+											<li>
+												<label class="checkbox-container">
+													<input type="button" onclick="location.href='${pageContext.request.contextPath}/event/progress/article?page=1&&eventNum=12'">
+												 	<div class="checkbox-button">
+														<img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" width="300px;" 
+														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
+													 	<div class="hover-content">첫 구매 이벤트</div>
+													</div>
+												</label>
+											</li>
 										</ul>
 										
 									</div>
 									<div>
-										<h4 class="tltle">리뷰 이벤트<hr class="my-hr1"></h4>
+										<h4 class="tltle">나만의 리뷰 이벤트<hr class="my-hr1"></h4>
 										<ul>
-											<li class="mt-3"><img src="${pageContext.request.contextPath}/resources/images/review.jpg" style="width: 300px; height: 200px; background-size: cover; border-radius: 20px;"></li>
-											<li><a href="#" class="menu">- 리뷰 작성 시 포인트 지급</a></li>
-											<li><a href="#" class="go-ahead">
-												&gt;&gt; 리뷰 게시판 바로가기&nbsp;<i class="bi bi-pencil"></i></a></li>
+											<li>
+												<label class="checkbox-container">
+													<input type="button" onclick="location.href='${pageContext.request.contextPath}/event/progress/article?page=1&&eventNum=9'">
+												 	<div class="checkbox-button">
+														<img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" width="300px;" 
+														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
+													 	<div class="hover-content">리뷰 이벤트</div>
+													</div>
+												</label>
+											</li>
 										</ul>
 										
 									</div>
 									<div>
-										<h4 class="tltle">추가 쿠폰 이벤트<hr class="my-hr1"></h4>
+										<h4 class="tltle">이벤트 더보기<hr class="my-hr1"></h4>
 										<ul>
-											<li class="mt-3"><img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" style="width: 300px; height: 200px; background-size: cover; border-radius: 20px;"></li>
-											<li><a href="#" class="menu">- 오늘만 추가 쿠폰 지급</a></li>
-											<li><a href="${pageContext.request.contextPath}/event/progress/list" class="go-ahead">
-												&gt;&gt; 이벤트 페이지 바로가기&nbsp;<i class="bi bi-balloon-heart"></i></a></li>
+											<li>
+												<label class="checkbox-container">
+													<input type="button" onclick="location.href='${pageContext.request.contextPath}/event/progress/list'">
+												 	<div class="checkbox-button">
+														<img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" width="300px;" 
+														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
+													 	<div class="hover-content">이벤트 더보기</div>
+													</div>
+												</label>
+											</li>
 										</ul>
 										
 									</div>
@@ -427,11 +388,18 @@
 										</ul>
 									</div>
 									<div>
-										<h4 class="tltle">공지사항<hr class="my-hr1"></h4>
+										<h4 class="tltle">공지사항 바로가기<hr class="my-hr1"></h4>
 										<ul>
-										<c:forEach var="nlist" items="${noticeList}">
-											<li><a href="#" class="menu">${nlist.subject}</a></li>
-										</c:forEach>
+											<li>
+												<label class="checkbox-container">
+													<input type="button" onclick="location.href='${pageContext.request.contextPath}/notice/list'"></button>
+												 	<div class="checkbox-button">
+														<img src="${pageContext.request.contextPath}/resources/images/center.jpg" width="300px;" height="200px;" 
+														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
+													 	<div class="hover-content">공지사항 바로가기</div>
+													</div>
+												</label>
+											</li>
 										</ul>
 										
 									</div>
@@ -439,17 +407,16 @@
 										<h4 class="tltle">고객센터 바로가기<hr class="my-hr1"></h4>
 										<ul>
 											<li>
-											<label class="checkbox-container">
-												<input type="button" onclick="location.href='${pageContext.request.contextPath}/faq/main'"></button>
-											 	<div class="checkbox-button">
-													<img src="${pageContext.request.contextPath}/resources/images/center.jpg" width="300px;" 
-													style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
-												 	<div class="hover-content">고객센터 바로가기</div>
-												</div>
+												<label class="checkbox-container">
+													<input type="button" onclick="location.href='${pageContext.request.contextPath}/faq/main'"></button>
+												 	<div class="checkbox-button">
+														<img src="${pageContext.request.contextPath}/resources/images/center.jpg" width="300px;" height="200px;" 
+														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
+													 	<div class="hover-content">고객센터 바로가기</div>
+													</div>
 												</label>
 											</li>
 										</ul>
-
 									</div>
 								</div>
 							</div>
@@ -461,6 +428,10 @@
 						
 						<li>
 							<li onclick="urlOk('/sitemap/sitemap')" class="menubtn bar">사이트맵</li><span class="border-end"></span>
+						</li>
+						
+						<li>
+						    <li onclick="urlOk('/onedayplus/onedayplus')" class="menubtn bar">원데이 플러스</li><span class="border-end"></span>
 						</li>
 						
 						<c:choose>

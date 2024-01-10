@@ -1,7 +1,6 @@
 package com.fa.plus.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,15 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fa.plus.common.MyUtil;
-import com.fa.plus.domain.Notice;
-import com.fa.plus.service.NoticeService;
 
 @Controller
 @RequestMapping(value = "/*")
 public class MainController {
 	
-	@Autowired
-	private NoticeService noticeService;
 	
 	@Autowired
 	@Qualifier("myUtil")
@@ -37,11 +32,8 @@ public class MainController {
 		map.put("offset", offset);
 		map.put("size", size);
 		
-		List<Notice> noticeList = noticeService.listNotice(map);
-		model.addAttribute("noticeList", noticeList);
-		
 		return ".layout.header";
-		//
+		
 	}
 	
 }
