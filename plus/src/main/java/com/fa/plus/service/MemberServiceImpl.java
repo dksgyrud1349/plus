@@ -334,6 +334,7 @@ public class MemberServiceImpl implements MemberService{
 			dto.setAdminId(userId);
 			mapper.insertMemberState(dto);
 			
+			
 			// member2 테이블 삭제 ------
 			/*
 			 1) xml에서 deleteMember2(String userId) 

@@ -35,6 +35,12 @@
 .modal-backdrop {
 	position: static;
 }
+.plus {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
@@ -100,20 +106,21 @@ function sendOk() {
 								<td>
 									<div class="row">
 										<div class="col-auto pe-0">
-											<button type="button" class="btn btn-success btnReceiverDialog">추가</button>
+											<button type="button" class="btn btn-outline-success plus btnReceiverDialog">추가&nbsp;<i class="bi bi-envelope-plus fs-5 text-center align-middle""></i>
+											</button>
 										</div>
 										<div class="col">
 											<div class="forms-receiver-name"></div>
 										</div>
 									</div>
-									<small class="form-control-plaintext">한번에 보낼수 있는 최대 인원은 5명입니다.</small>
+									<small class="form-control-plaintext">※ 최대 5명까지 전송 가능합니다.</small>
 								</td>
 							</tr>
 		        
 							<tr>
 								<td class="bg-light col-sm-2" scope="row">내 용</td>
 								<td>
-									<textarea name="content" id="content" class="form-control">${dto.content}</textarea>
+									<textarea name="content" id="content" class="form-control" placeholder="전송하실 내용을 입력해주세요.">${dto.content}</textarea>
 								</td>
 							</tr>
 							
@@ -164,7 +171,7 @@ function sendOk() {
 							<input type="text" name="kwd" id="kwd" class="form-control">
 						</div>
 						<div class="col-auto p-1">
-							<button type="button" class="btn btn-success btnReceiverFind"> <i class="bi bi-search"></i> </button>
+							<button type="button" class="btn btn-outline-success plus btnReceiverFind"> <i class="bi bi-search"></i> </button>
 						</div>				
 					</div>
 					<div class="row p-1">

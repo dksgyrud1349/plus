@@ -109,7 +109,7 @@ function sendOk() {
 		                
                         <div class="d-grid">
 	                        <button type="button" class="btn btn-outline-success send text-light fs-5" style="height:60px" onclick="sendOk()">
-	                            아이디 전송하기&nbsp;<i class="bi bi-send"></i>
+	                            이메일 전송하기&nbsp;<i class="bi bi-send"></i>
 	                        </button>
                 		</div>
                 	</form>

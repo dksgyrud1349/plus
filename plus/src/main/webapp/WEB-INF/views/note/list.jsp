@@ -30,15 +30,39 @@
 	right: 9px;
 	cursor: pointer;
 }
+
 .table .ellipsis:before {
 	content: '';
 	display: inline-block;
+}
+.miyul {
+	color: #828282;
+}
+.yul {
+	color: #3c3c3c;
+}
+.circle {
+	font-size: 10px;
+}
+.write {
+	color: white;
+	background: #46AA46;
+	padding: 10px;
+	border: none;
+}
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
 }
 </style>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
 <script type="text/javascript">
+
+
 $(function(){
 	let menu = "${menuItem}";
 	$("#tab-"+menu).addClass("active");
@@ -89,17 +113,17 @@ $(function() {
 				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 					<i class="bi bi-messenger"></i> 쪽지함 
 					
-					<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/note/${menuItem}/list';" title="새로고침" style="float:right;">
+					<button type="button" class="btn btn-outline-success rere" onclick="location.href='${pageContext.request.contextPath}/note/${menuItem}/list';" title="새로고침" style="float:right;">
 						<i class="bi bi-arrow-counterclockwise"></i>
 					</button>
 				</h3>
 		
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">
-					<button class="nav-link" id="tab-receive" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="receive" aria-selected="true" data-tab="receive">받은 쪽지함</button>
+					<button class="nav-link border border-1.5" id="tab-receive" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="receive" aria-selected="true" data-tab="receive">받은 쪽지함</button>
 				</li>
 				<li class="nav-item" role="presentation">
-					<button class="nav-link" id="tab-send" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="send" aria-selected="true" data-tab="send">보낸 쪽지함</button>
+					<button class="nav-link border border-1.5" id="tab-send" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="send" aria-selected="true" data-tab="send">보낸 쪽지함</button>
 				</li>
 			</ul>
 			
@@ -109,38 +133,57 @@ $(function() {
 					<table class="table table-borderless mb-0">
 						<tr>
 							<td align="left" width="50%">
-								<button type="button" class="btn btnDelete p-1" title="삭제"><i class="bi bi-trash"></i></button>
+								<button type="button" class="btn btnDelete border border-1.5 border-black px-2 py-1" title="삭제"><i class="bi bi-trash3-fill"></i></button>
 							</td>
 							<td align="right">
-								<button type="button" class="btn btn-success" onclick="javascript:location.href='${pageContext.request.contextPath}/note/write';">쪽지 쓰기</button>
+								<button type="button" class="btn btn-outline-success write" onclick="javascript:location.href='${pageContext.request.contextPath}/note/write';">쪽지 쓰기&nbsp;<i class="bi bi-send"></i></button>
 							</td>
 						</tr>
 					</table>
 					
 					<form name="listForm" method="post">
-						<table class="table table-hover board-list">
-							<thead class="table-light">
+						<table class="table table-hover board-list" style="">
+							<thead class="table-light text-center align-middle" style="height: 57px">
 								<tr>
-									<th width="40"><input type="checkbox" name="chkAll" id="chkAll" class="form-check-input"></th>
-									<th>내용</th>
+									<th width="40"><input type="checkbox" name="chkAll" id="chkAll" class="form-check-input border border-1.5"></th>
+									<th>번호</th>
 									<th width="100">${menuItem=="receive"?"보낸사람":"받는사람"}</th>
+									<th>내용</th>
 									<th width="150">${menuItem=="receive"?"받은날짜":"보낸날짜"}</th>
 									<th width="150">읽은날짜</th>
+									<th>상태</th>
 								</tr>
 							</thead>
 							
-							<tbody>
-								<c:forEach var="dto" items="${list}">
+							<tbody class="text-center align-middle">
+								<c:forEach var="dto" items="${list}" varStatus="status">
 									<tr>
 										<td><input type="checkbox" name="nums" value="${dto.noteNum}" class="form-check-input"></td>
-										<td class="left ellipsis">
-											<span>
-												<a href="${articleUrl}&noteNum=${dto.noteNum}" class="text-reset">${dto.content}</a>
-											</span>
-										</td>
+										<td>${dataCount - (page-1) * size - status.index}</td>
 										<td>${menuItem=="receive"?dto.senderName:dto.receiverName}</td>
+										<td class="left ellipsis">
+												<a href="${articleUrl}&noteNum=${dto.noteNum}" class="text-reset">
+												<c:choose>
+									                <c:when test="${dto.identifyDate == null}">
+									                    <span><i class="bi bi-envelope"></i>&nbsp;${dto.content}</span>
+									                </c:when>
+									                <c:otherwise>
+									                    <span><i class="bi bi-envelope-open"></i>&nbsp;${dto.content}</span>
+									                </c:otherwise>
+									            </c:choose></a>
+										</td>
 										<td>${dto.sendDate}</td>
 										<td>${dto.identifyDate}</td>
+										<td>
+										<c:choose>
+							                <c:when test="${dto.identifyDate == null}">
+							                    <span class="fw-bold miyul"><i class="bi bi-circle-fill circle" style="color:red"></i>&nbsp;미열람</span>
+							                </c:when>
+							                <c:otherwise>
+							                    <span class="fw-bold yul"><i class="bi bi-circle-fill circle" style="color:green"></i>&nbsp;열람</span>
+							                </c:otherwise>
+							            </c:choose>
+							            </td>
 									</tr>
 								</c:forEach>
 							</tbody>
