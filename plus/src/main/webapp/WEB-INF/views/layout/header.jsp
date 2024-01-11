@@ -204,10 +204,20 @@
 				<nav>
 				<c:choose>
 					<c:when test="${empty sessionScope.member}">
+						<audio id="myAudio" autoplay>
+						    <source src="${pageContext.request.contextPath}/resources/sound/mainSound.mp3" type="audio/mp3">
+						</audio>
+						
+						
+						<a href="#" class="icon-arrow-left bi bi-play-fill" data-info="노래" onclick="togglePlayPause()">노래</a>
 						<a href="${pageContext.request.contextPath}/member/member" class="icon-drop bi bi-person" data-info="회원가입">회원가입</a>
 						<a href="javascript:dialogLogin();" class="icon-arrow-left bi bi-person-fill-gear" data-info="로그인">로그인</a>
 					</c:when>
 					<c:otherwise>
+						<a href="#" class="icon-arrow-left bi bi-play-fill" data-info="노래" onclick="togglePlayPause()">노래</a>
+						<audio id="myAudio" autoplay>
+						    <source src="${pageContext.request.contextPath}/resources/sound/mainSound.mp3" type="audio/mp3">
+						</audio>
 						<a href="${pageContext.request.contextPath}/note/receive/list" class="icon-arrow-left bi bi-envelope-open" data-info="쪽지">쪽지</a>
 						<a href="${pageContext.request.contextPath}/member/logout" class="icon-drop bi bi-person" data-info="로그아웃"></a>
 						<c:if test="${sessionScope.member.membership > 90}">
@@ -221,6 +231,18 @@
 				</nav>
 			</form>
 		</header>
+		
+		<script>
+		    var audio = document.getElementById("myAudio");
+			
+		    function togglePlayPause() {
+		        if (audio.paused) {
+		            audio.play();
+		        } else {
+		            audio.pause();
+		        }
+		    }
+		</script>
 			
 			<ul id="best_search" style="margin-left: 30px;">
 				<li><p>인기검색어</p></li>
