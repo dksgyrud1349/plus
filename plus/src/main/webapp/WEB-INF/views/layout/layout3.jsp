@@ -94,6 +94,19 @@
 	    border: none;
 	    box-shadow: none;
 	}
+	
+	@keyframes expandInModal {
+	    0% {
+	        transform: scale(0);
+	    }
+	    100% {
+	        transform: scale(1);
+	    }
+	}
+	
+	.modal.expand .modal-dialog {
+	    animation: expandInModal 1.0s ease-in-out;
+	}
 </style>
 </head>
 
@@ -175,6 +188,14 @@
 		
 	    $("form[name=modelLoginForm] input[name=userId]").focus();
 	}
+	
+	$('#loginModal').on('show.bs.modal', function (e) {
+        $(this).addClass('expand');
+    });
+
+    $('#loginModal').on('shown.bs.modal', function (e) {
+        $(this).removeClass('expand');
+    });
 
 	function sendModelLogin() {
 	    var f = document.modelLoginForm;
@@ -196,7 +217,7 @@
 	    f.submit();
 	}
 </script>
-<div class="modal fade loginfade" id="loginModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="loginModalLabel" aria-hidden="true">
+<div class="modal expand loginfade" id="loginModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered memberdialog">
         <div class="modal-content membercontent">
             <div class="modal-header text-white">
