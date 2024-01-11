@@ -2,11 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
-.bookingTotal {
-	width: 1200px;
-	height: 800px;
-}
-
 .bookingSubject {
 	margin-top: 110px;
 	width: 200px;
@@ -124,6 +119,7 @@
 	cursor: pointer;
 }
 </style>
+
 
 <form name="searchForm" method="get" action="${pageContext.request.contextPath}/myPage/booking/list">
 	<div class="bookingTotal">
