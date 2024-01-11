@@ -248,7 +248,7 @@ $(function(){
 			    <c:forEach var="dto" items="${list}" varStatus="status">
 			        <div class="card col-4 p-1 m-3" style="width: 25rem; height: 35rem; border:none; background:#F5F5F5">
 			            <div class="zoom">
-			                <img src="${pageContext.request.contextPath}/uploads/lesson/${dto.firstPhoto}" class="card-img-top" width="390px" height="260px;";>
+			                <img src="${pageContext.request.contextPath}/uploads/lesson/${dto.firstPhoto}" class="card-img-top" width="390px" height="260px;">
 			                <div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">
 			                    <i class="bi bi-star"></i> ${dto.reviewScore} (${dto.reviewCount})
 			                </div>
