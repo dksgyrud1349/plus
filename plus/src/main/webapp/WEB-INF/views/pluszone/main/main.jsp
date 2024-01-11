@@ -54,7 +54,6 @@ i.fa{
 
 }
 .btnStyle{
-	width: 200px;
 	background-color: #EAEAEA;
 	font-weight: bold;
 	border: 1px solid #BCBCBC;
@@ -63,28 +62,49 @@ i.fa{
 	background-color: #D5D5D5;
 }
 .imgStyle{
-	width: 250px;
+	width: 30%;
 	height: 220px;
-	margin-right: 20px;
+	margin-right: 2%;
+	border: 1px solid gray;
 	
 }
-.dateStyle{
+.dateYMonth{
 	float: left;
-	font-size: 25px;
-	text-align: center;
-	margin-left: 40px;
+	margin-left: 2%;
+	margin-top: 5%;
 }
 .scheduleSize{
-	width: 540px;
-	height: 200px;
+	width: 70%;
+	height: 93%;
 	border: 1px solid #D5D5D5;
 	border-radius: 15px;
-	float: right;
-	margin-top: 10px;
-	margin-right: 20px;
+	margin-left: 27%;
+	margin-top: 1%;
 	background-color: #EAEAEA;
 	box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
 }
+.col-xl-6{
+	height: 300px;
+}
+.canvas{
+	width: 100%;
+	height: 100%;
+}
+.col-xl-3{
+	width: 24.62%;
+}
+.reviewSize{
+	width: 90%;
+	height: 40%;
+	border: 1px solid #FFF3CD;
+	border-radius: 15px;
+	margin-left: 5%;
+	margin-top: 5%;
+	background-color: #FFF3CD;
+	box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+	color: #4C4C4C;
+}
+ 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
 <script type="text/javascript">
@@ -156,7 +176,7 @@ $(function(){
 <main class="wrapper" style="margin:0% auto;">
 		<div id="layoutSidenav_content">
                     <div class="container-fluid px-4">
-                        <div class="row mt-5">
+                        <div class="row mt-3">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">
@@ -177,12 +197,16 @@ $(function(){
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">
-                                        <h3 class="text-center">남은 개설 수업</h3>
+                                        <h3 class="text-center">미승인 수업</h3>
                                         <hr>
-                                        <h4 class="text-center">15건 </h4>
+                                        <h4 class="text-center">${lessonPlusCount}건 </h4>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between text-end">
-                                        <div class="small text-white">전체보기 <i class="fas fa-angle-right"></i></div>
+                                        <div class="small text-white">
+                                        <a href="${pageContext.request.contextPath}/pluszone/lessonPlus/main" class="totaltitle">
+                                        	전체보기 
+                                        </a>
+                                       <i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -230,9 +254,9 @@ $(function(){
                                     오늘의 할일 <a href="${pageContext.request.contextPath}/pluszone/schedule/main" style="float:right; text-decoration:underline">자세히 보기 <span style="font-weight:bolder;">></span></a>
                                     </div>
                                     <div class="card-body" style="width: 100%;  height: 250px;">
-										<div class="dateStyle">
-											<div style="margin-top: 20px;">${year}-${month}</div>
-										<div style="font-size: 100px; font-weight: 900; position: absolute; top: 90px; left: 43px;">${day}</div>
+										<div class="dateYMonth">
+											<div style="width: 100%; margin-left: 30%; font-size: 25px;">${year}-${month}</div>
+											<div style="font-size: 600%; font-weight: 900; width: 100%; position: absolute; top: 34%; left: 6%;">${day}</div>
 										</div>
                                     <c:if test="${not empty scheduleList}">
 										<div class="scheduleSize">
@@ -265,30 +289,28 @@ $(function(){
                                     
                                     <div class="card-body" style="width: 100%;  height: 250px;">
                                     <c:if test="${not empty infoDto}">
-	                                    <div style="left; margin-left: 30px; float: left;">
+	                                    <div style="margin-left: 30px;">
 	                                    	<div class="imageFile"></div>
-	                                    	<div>
-	                                    		<c:if test="${empty infoDto.photo}">
-													<img src ="${pageContext.request.contextPath}/resources/images/person_photo.png" class="imgStyle">
-												</c:if>
-												<c:if test="${not empty infoDto.photo}">
-													<img src="${pageContext.request.contextPath}/uploads/infoDetail/${infoDto.photo}" class="card-img-top imgStyle">
-												</c:if>
-	                                    	</div>
+	                                    	<c:if test="${empty infoDto.photo}">
+												<img src ="${pageContext.request.contextPath}/resources/images/person_photo.png" class="imgStyle" style=" float: left;">
+											</c:if>
+											<c:if test="${not empty infoDto.photo}">
+												<img src="${pageContext.request.contextPath}/uploads/infoDetail/${infoDto.photo}" class="card-img-top imgStyle" style=" float: left;">
+											</c:if>
 	                                    </div>
                                     	<div class="infoWelcome">
                                     		안녕하세요!<span> ${infoDto.nickName}님</span><span>🤗</span>
                                     	</div>
-		                                <div class="d-block" style="margin-bottom: 10px;">
-			                                    <button type="button" class="btn btnStyle" style="margin-left: 30px;"
+		                                <div style="margin-bottom: 10px;">
+			                                    <button type="button" class="btn btnStyle" style="margin-left: 4.2%; width: 25.5%;"
 			                                    	onclick="location.href='${pageContext.request.contextPath}/pluszone/member/pwd';">기본정보수정</button>
-			                                <div class="d-block" style="float: right; margin-right: 20px;">
-			                                    <button type="button" class="btn btnStyle"
-			                                    	onclick="location.href='${pageContext.request.contextPath}/pluszone/infoDetail/write';" style="width: 200px;">세부정보수정</button>
-			                                </div>
+			                                <span style="">
+			                                    <button type="button" class="btn btnStyle" style="width: 25.5%; margin-right: 4%; float: right;"
+			                                    	onclick="location.href='${pageContext.request.contextPath}/pluszone/infoDetail/write';">세부정보수정</button>
+			                                </span>
 		                                </div>
-		                                <div><span style="font-size: 15px; font-weight: 200; margin-left: 30px; font-weight: bold;">플러스 소개</span>
-		                                	<div style="width: 400px; height: 100px; border: 1px solid black; border-radius: 3px; margin-left: 337px;">
+		                                <div><span style="font-size: 15px; font-weight: 200; margin-left: 32px; font-weight: bold;">플러스 소개</span>
+		                                	<div style="width: 57%; border: 1px solid black; border-radius: 3px; margin-left: 39%;">
 		                                		<span style="margin-left: 5px;">${infoDto.content}</span>
 		                                	</div>
                                      	</div>
@@ -305,65 +327,9 @@ $(function(){
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                    원데이 클래스 관리 
-                                    </div>
-                                    <div class="card-body" style="width: 100%; height: 250px;">
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                    매출 현황<a href="${pageContext.request.contextPath}/pluszone/salesStatus/main" style="float:right; text-decoration:underline">자세히 보기 <span style="font-weight:bolder;">></span></a>
-                                    </div>
-                                    <div class="card-body" style="width: 100%; height: 250px;">
-                                    	<div class="charts-day border rounded" style="height: 220px;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-						
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                    리뷰 관리 <a href="${pageContext.request.contextPath}/pluszone/review/list" style="float:right; text-decoration:underline">자세히 보기 <span style="font-weight:bolder;">></span></a>
-                                    </div>
-                                    <div class="card-body" style="width: 100%; height: 250px;">
-                                    	<div style="width: 200px; height: 40px; margin-left: 10px; margin-top: 10px;">
-											<div style="font-size: 20px; font-weight: 800;">총 리뷰 개수 : <span style="color: blue; font-weight: bold;">${reviewDataCount}</span>개</div>
-                                    	</div>
-									<table style="width: 550px; height: 170px; border: 1px solid black;">
-										<tr>
-											<th>번호</th>
-											<th>제목</th>
-											<th>별점</th>
-											<th>날짜</th>
-										</tr>
-										<c:forEach var="reviewDto" items="${reviewList}" varStatus="status">
-											<tr>
-												<td>${status.count}</td>
-												<td>${reviewDto.reviewSubject}</td>
-												<td>${reviewDto.reviewScore}</td>
-												<td>${reviewDto.reviewDate}</td>
-											</tr>									
-										</c:forEach>
-									</table>                                    	
-                                    </div>
-                                </div>
-                            </div>
-
+                     </div>
+		
+						<div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
@@ -395,9 +361,67 @@ $(function(){
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-xl-6" style="float: right;">
+                                <div class="card mb-4" >
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                    매출 현황<a href="${pageContext.request.contextPath}/pluszone/salesStatus/main" style="float:right; text-decoration:underline">자세히 보기 <span style="font-weight:bolder;">></span></a>
+                                    </div>
+                                    <div class="card-body" style="width: 100%; height: 550px;">
+                                    	<div style="font-size: 20px; font-weight: 800; margin-bottom: 10px;">최근 1주일 매출 현황</div>
+                                    		<div class="charts-day border rounded" style="height: 480px;"></div>
+                                    </div>
+                                </div>
+                        	</div>
+                         </div>
+                        
+
+					 	 <div class="row" style="float: left;">
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                    리뷰 관리 <a href="${pageContext.request.contextPath}/pluszone/review/list" style="float:right; text-decoration:underline">자세히 보기 <span style="font-weight:bolder;">></span></a>
+                                    </div>
+                                    <div class="card-body" style="width: 100%; height: 250px;">
+                                    	<div style="margin-left: 10px; margin-top: 8px;">
+											<div style="font-size: 20px; font-weight: 800;">총 리뷰 개수 : <span style="color: blue; font-weight: bold;">${reviewDataCount}</span>개</div>
+											<span style="color: gray;">최대 리뷰 3개만 보여집니다.</span>
+                                    	</div>
+                                    <c:if test="${not empty reviewList}">
+	                                    <div style="margin-left: 10px; margin-top: 10px;">
+											<table style="border-top: 1px solid gray;">
+												<tr style="background-color: #FFF3CD;">
+													<th width="70">번호</th>
+													<th width="250">클래스명</th>
+													<th width="220">제목</th>
+													<th width="90">별점</th>
+													<th width="100">날짜</th>
+												</tr>
+												<c:forEach var="reviewDto" items="${reviewList}" varStatus="status" begin="${status.index}" end="${status.index+2}">
+													<tr style="border-bottom: 1px solid gray;">
+														<td>${status.count}</td>
+														<td>${reviewDto.className}</td>
+														<td>${reviewDto.reviewSubject}</td>
+														<td>${reviewDto.reviewScore}/5점</td>
+														<td>${reviewDto.reviewDate}</td>
+													</tr>									
+												</c:forEach>
+											</table>
+										  </div>
+									  </c:if>
+									  <c:if test="${empty reviewList}">
+									  	<div class="reviewSize">
+											<div style="font-size: 18px; text-align: center; margin-top: 33px;">
+												리뷰가 존재하지 않습니다.
+											</div>
+										</div>
+									  </c:if>                                	
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                      </div>
                   </div>
       		  </div>
-      	</div>
-      </main>
+      		</main>

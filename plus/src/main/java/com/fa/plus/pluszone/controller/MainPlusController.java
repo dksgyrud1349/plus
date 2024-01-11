@@ -23,6 +23,7 @@ import com.fa.plus.pluszone.domain.NoticePlus;
 import com.fa.plus.pluszone.domain.PlusSchedule;
 import com.fa.plus.pluszone.service.BookingPlusService;
 import com.fa.plus.pluszone.service.InfoDetailService;
+import com.fa.plus.pluszone.service.LessonPlusService;
 import com.fa.plus.pluszone.service.NoticePlusService;
 import com.fa.plus.pluszone.service.PlusInqService;
 import com.fa.plus.pluszone.service.PlusScheduleService;
@@ -45,6 +46,8 @@ public class MainPlusController {
 	private ReviewService reviewService;
 	@Autowired 
     private SalesStatusService saleStatusService;
+	@Autowired
+	private LessonPlusService lessonPlusService;
 	
 	@RequestMapping(value="/pluszone", method=RequestMethod.GET)
 	public String method(HttpSession session,
@@ -52,6 +55,7 @@ public class MainPlusController {
 		int noticeDataCount = 0;
 		int bookingDataCount = 0;
 		int plusInqDataCount = 0;
+		int lessonPlusCount = 0;
 		
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		
@@ -80,11 +84,16 @@ public class MainPlusController {
 		// 문의내역 개수
 		plusInqDataCount = plusInqService.dataCount(map);
 		
+		// 승인안된 클래스 개수
+		lessonPlusCount = lessonPlusService.plusClassList(info.getMemberIdx());
+		
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("noticeDataCount", noticeDataCount);
 		model.addAttribute("bookingDataCount", bookingDataCount);
 		model.addAttribute("plusInqDataCount", plusInqDataCount);
+		model.addAttribute("lessonPlusCount", lessonPlusCount);
 		//model.addAttribute("thisMonth", thisMonth);
+		
 		
 		// 오늘의 할일
 		// 오늘 날짜 가져오기
