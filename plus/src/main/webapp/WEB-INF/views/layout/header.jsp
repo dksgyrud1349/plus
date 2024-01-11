@@ -208,7 +208,6 @@
 						    <source src="${pageContext.request.contextPath}/resources/sound/mainSound.mp3" type="audio/mp3">
 						</audio>
 						
-						
 						<a href="#" class="icon-arrow-left bi bi-play-fill" data-info="노래" onclick="togglePlayPause()">노래</a>
 						<a href="${pageContext.request.contextPath}/member/member" class="icon-drop bi bi-person" data-info="회원가입">회원가입</a>
 						<a href="javascript:dialogLogin();" class="icon-arrow-left bi bi-person-fill-gear" data-info="로그인">로그인</a>
