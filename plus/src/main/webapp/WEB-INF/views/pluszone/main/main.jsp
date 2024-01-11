@@ -86,6 +86,72 @@ i.fa{
 	box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
 }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    let url = "${pageContext.request.contextPath}/charts";
+
+    $.getJSON(url, function(data){
+        chartsDay(data);
+    });
+
+    function chartsDay(data) {
+        let chartData = [];
+
+        for(let item of data.days) {
+            let s = parseInt(item.ODATE.substring(5, 7))+'월 ';
+            s += parseInt(item.ODATE.substring(8))+'일';
+
+            let obj = {value:item.TOTALMONEY, name:s};
+            chartData.push(obj);
+        }
+
+        const chartDom = document.querySelector(".charts-day");
+        let myChart = echarts.init(chartDom);
+        let option;
+
+        option = {
+          tooltip: {
+            trigger: 'item'
+          },
+          legend: {
+            top: '5%',
+            left: 'center'
+          },
+          series: [
+            {
+              name: '일별 판매현황',
+              type: 'pie',
+              radius: ['40%', '70%'],
+              avoidLabelOverlap: false,
+              itemStyle: {
+                borderRadius: 10,
+                borderColor: '#fff',
+                borderWidth: 2
+              },
+              label: {
+                show: false,
+                position: 'center'
+              },
+              emphasis: {
+                label: {
+                  show: true,
+                  fontSize: '40',
+                  fontWeight: 'bold'
+                }
+              },
+              labelLine: {
+                show: false
+              },
+              data: chartData
+            }
+          ]
+        };
+
+        option && myChart.setOption(option);
+    }
+});
+</script>
 
 <main class="wrapper" style="margin:0% auto;">
 		<div id="layoutSidenav_content">
@@ -275,9 +341,25 @@ i.fa{
                                     리뷰 관리 <a href="${pageContext.request.contextPath}/pluszone/review/list" style="float:right; text-decoration:underline">자세히 보기 <span style="font-weight:bolder;">></span></a>
                                     </div>
                                     <div class="card-body" style="width: 100%; height: 250px;">
-                                    	<div style="width: 200px; height: 50px; margin-left: 10px; margin-top: 10px;">
+                                    	<div style="width: 200px; height: 40px; margin-left: 10px; margin-top: 10px;">
 											<div style="font-size: 20px; font-weight: 800;">총 리뷰 개수 : <span style="color: blue; font-weight: bold;">${reviewDataCount}</span>개</div>
                                     	</div>
+									<table style="width: 550px; height: 170px; border: 1px solid black;">
+										<tr>
+											<th>번호</th>
+											<th>제목</th>
+											<th>별점</th>
+											<th>날짜</th>
+										</tr>
+										<c:forEach var="reviewDto" items="${reviewList}" varStatus="status">
+											<tr>
+												<td>${status.count}</td>
+												<td>${reviewDto.reviewSubject}</td>
+												<td>${reviewDto.reviewScore}</td>
+												<td>${reviewDto.reviewDate}</td>
+											</tr>									
+										</c:forEach>
+									</table>                                    	
                                     </div>
                                 </div>
                             </div>

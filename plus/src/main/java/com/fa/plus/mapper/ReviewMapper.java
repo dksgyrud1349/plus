@@ -29,4 +29,7 @@ public interface ReviewMapper {
 	
 	public List<Review>classReviewList(Map<String, Object> map);
 	public int dataCountClass(Map<String, Object> map);
+	
+	// 사업자 메인 페이지에서 offset, size 빼고 검색
+	public List<Review> classMainReviewList(long memberIdx);
 }

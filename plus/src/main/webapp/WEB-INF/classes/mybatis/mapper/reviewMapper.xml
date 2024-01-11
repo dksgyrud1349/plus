@@ -173,4 +173,23 @@
 			</if>
 		</where>
 	</select>
+	
+	<select id="classMainReviewList" parameterType="long" resultType="com.fa.plus.domain.Review">
+		SELECT r.reviewNum, reviewScore, reviewSubject,
+			TO_CHAR(reviewDate, 'YYYY-MM-DD') reviewDate
+		FROM review r
+		JOIN member1 m ON r.memberIdx = m.memberIdx 
+		JOIN orders o ON r.orderNum = o.orderNum
+        JOIN LessonDetail cd ON o.detailNum = cd.detailNum
+		JOIN Lesson c ON cd.classNum = c.classNum
+		JOIN member1 m2 on m2.memberIdx = c.memberIdx
+            JOIN plus p on p.userId = m2.userId 
+		LEFT OUTER JOIN (
+			SELECT reviewNum, LISTAGG(filename, ',') WITHIN GROUP(ORDER BY photoNum) filename
+            FROM reviewPhoto
+            GROUP BY reviewNum	
+		) f ON r.reviewNum=f.reviewNum
+		WHERE m2.memberIdx = #{memberIdx}
+		ORDER BY reviewDate DESC
+	</select>
 </mapper>

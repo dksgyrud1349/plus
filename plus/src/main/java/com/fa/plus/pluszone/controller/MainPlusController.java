@@ -11,8 +11,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fa.plus.domain.Review;
 import com.fa.plus.domain.SessionInfo;
@@ -24,6 +26,7 @@ import com.fa.plus.pluszone.service.InfoDetailService;
 import com.fa.plus.pluszone.service.NoticePlusService;
 import com.fa.plus.pluszone.service.PlusInqService;
 import com.fa.plus.pluszone.service.PlusScheduleService;
+import com.fa.plus.pluszone.service.SalesStatusService;
 import com.fa.plus.service.ReviewService;
 
 @Controller
@@ -40,6 +43,8 @@ public class MainPlusController {
 	private PlusInqService plusInqService;
 	@Autowired
 	private ReviewService reviewService;
+	@Autowired 
+    private SalesStatusService saleStatusService;
 	
 	@RequestMapping(value="/pluszone", method=RequestMethod.GET)
 	public String method(HttpSession session,
@@ -116,17 +121,67 @@ public class MainPlusController {
 		long memberIdx = info.getMemberIdx();
 		Map<String, Object> reviewMap = new HashMap<String, Object>();
 		reviewMap.put("memberIdx", memberIdx);
+		map.put("offset", 0);
+		map.put("size", 5);
 		int reviewDataCount = 0;
 		
 		// 리뷰 개수
 		reviewDataCount = reviewService.dataCountClass(reviewMap);
 		
 		// 로그인한 플러스가 볼 리뷰 리스트 출력
-		List<Review> reviewList = reviewService.classReviewList(reviewMap);
+		List<Review> reviewList = reviewService.classMainReviewList(memberIdx);
 		
 		model.addAttribute("reviewDataCount", reviewDataCount);
 		model.addAttribute("reviewList", reviewList);
 		
 		return ".plusLayout";
 	}
+	@GetMapping("charts")
+    @ResponseBody
+    public Map<String, Object> total(HttpSession session){
+
+        SessionInfo info = (SessionInfo) session.getAttribute("member");
+
+        Calendar cal = Calendar.getInstance();
+        int y = cal.get(Calendar.YEAR);
+        int m = cal.get(Calendar.MONTH) + 1;
+        int d = cal.get(Calendar.DATE);
+
+        String date = String.format("%04d-%02d-%02d", y, m, d);
+        String month = String.format("%04d%02d", y, m);
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("date", date);
+        map.put("memberIdx", info.getMemberIdx());
+        List<Map<String, Object>> days = saleStatusService.dayTotalMoney(map);
+
+        Map<String, Object> map2 = new HashMap<String, Object>();
+        map2.put("month", month);
+        map2.put("memberIdx", info.getMemberIdx());
+        List<Map<String, Object>> months = saleStatusService.monthTotalMoney(map2);
+
+        if(d < 20) {
+            cal.add(Calendar.MONTH, -1);
+            m = cal.get(Calendar.MONTH) + 1;
+            if(m == 12) {
+                y = y - 1;
+            }
+            month = String.format("%04d%02d", y, m);
+        }
+
+        Map<String, Object> map3 = new HashMap<String, Object>();
+        map3.put("month", month);
+        map3.put("memberIdx", info.getMemberIdx());
+        Map<String, Object> dayOfWeek = saleStatusService.dayOfWeekTotalCount(map3);
+
+        dayOfWeek.put("month", month);
+
+        Map<String, Object> model = new HashMap<String, Object>();
+
+        model.put("days", days);
+        model.put("months", months);
+        model.put("dayOfWeek", dayOfWeek);
+
+        return model;
+    }
 }

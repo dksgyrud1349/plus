@@ -197,4 +197,14 @@ public class ReviewServiceImpl implements ReviewService {
 		return result;
 	}
 	
+	@Override
+	public List<Review> classMainReviewList(long memberIdx) {
+		List<Review> list = null;
+		try {
+			list = mapper.classMainReviewList(memberIdx);
+		} catch (Exception e) {
+
+		}
+		return list;
+	}
 }
