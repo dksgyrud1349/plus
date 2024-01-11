@@ -175,7 +175,7 @@
 	</select>
 	
 	<select id="classMainReviewList" parameterType="long" resultType="com.fa.plus.domain.Review">
-		SELECT r.reviewNum, reviewScore, reviewSubject,
+		SELECT r.reviewNum, reviewScore, reviewSubject, c.className,
 			TO_CHAR(reviewDate, 'YYYY-MM-DD') reviewDate
 		FROM review r
 		JOIN member1 m ON r.memberIdx = m.memberIdx 
