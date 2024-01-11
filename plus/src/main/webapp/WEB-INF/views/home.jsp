@@ -24,6 +24,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 }
 .recommend img{
 	transition: all 0.2s linear;
+	height:190px;
 }
 .recommend img:hover{
 	transform: scale(1.2);
