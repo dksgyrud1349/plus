@@ -36,11 +36,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 	border-left:3px solid #47a3da;
 	padding-left : 10px;
 }
-#myCarousel{
-	width:1700px;
-	margin-left:-200px;
-	padding:0;
-}
+
 .clist{
   	text-overflow: ellipsis;
 	overflow: hidden;
@@ -59,7 +55,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</div>
 		<div class="carousel-inner">
 		  <div class="carousel-item active" data-bs-interval="10000">
-			<img src="${pageContext.request.contextPath}/resources/images/keyimage1.jpg" class="d-block w-100" alt="Slide 1">
+			<img src="${pageContext.request.contextPath}/resources/images/newyearevent.png" class="d-block w-100" alt="Slide 1">
 		  </div>
 		  <div class="carousel-item" data-bs-interval="2000">
 			<img src="${pageContext.request.contextPath}/resources/images/keyimage2.jpg" class="d-block w-100" alt="Slide 2">
