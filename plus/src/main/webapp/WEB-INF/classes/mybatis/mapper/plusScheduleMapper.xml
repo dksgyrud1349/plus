@@ -95,4 +95,13 @@
 				#{sTime, jdbcType=VARCHAR}, #{eTime, jdbcType=VARCHAR}, SYSDATE, #{color}, #{ㅊ, jdbcType=INTEGER}, #{userId})
 	</insert>
 	 -->
+	 
+	 <select id="todaySchedule" parameterType="String" resultType="com.fa.plus.pluszone.domain.PlusSchedule">
+	 	/* plusScheduleMapper_todaySchedule 오늘의 할일(오늘 일정만 출력) */
+	 	SELECT sNum as id, subject as title, sContent, sDay, eDay, sTime, eTime, sRegDate, color,
+			s.cNum, cName, s.userId
+		FROM schedule s
+		LEFT OUTER JOIN schCategory sc ON s.cNum = sc.cNum
+		WHERE s.userId = #{userId} AND (sDay &lt;= SYSDATE AND eDay &gt;= SYSDATE)
+	 </select>
 </mapper>

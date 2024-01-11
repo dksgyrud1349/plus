@@ -21,4 +21,7 @@ public interface PlusScheduleService {
 	public List<PlusSchedule> listCategory(Map<String, Object> map) throws Exception ;
 
 	public void insertClassCategory(LessonPlus dto) throws Exception;
+	
+	// 오늘의 할일
+	public List<PlusSchedule> todaySchedule(String userId);
 }

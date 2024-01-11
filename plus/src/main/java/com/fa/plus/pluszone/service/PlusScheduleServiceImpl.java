@@ -137,5 +137,16 @@ public class PlusScheduleServiceImpl implements PlusScheduleService {
 			throw e;
 		}
 	}
+	
+	@Override
+	public List<PlusSchedule> todaySchedule(String userId) {
+		List<PlusSchedule> list = null;
+		try {
+			list = mapper.todaySchedule(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 }

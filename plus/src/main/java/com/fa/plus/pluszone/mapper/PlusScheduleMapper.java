@@ -26,4 +26,6 @@ public interface PlusScheduleMapper {
 	public List<PlusSchedule> listCategory(Map<String, Object> map);
 	public void insertClassCategory(LessonPlus dto) throws SQLException;
 	
+	// 오늘의 할일
+	public List<PlusSchedule> todaySchedule(String userId);
 }
