@@ -46,6 +46,7 @@
 	        <intercept-url pattern="/event/ended/list" access="permitAll"/>
 	        <intercept-url pattern="/event/progress/article" access="permitAll"/>
 	        <intercept-url pattern="/event/ended/article" access="permitAll"/>
+	        <intercept-url pattern="/uploads/**" access="permitAll"/>
 	        
 			<intercept-url pattern="/notice/list" access="permitAll"/>
 			<intercept-url pattern="/notice/article" access="permitAll"/>
