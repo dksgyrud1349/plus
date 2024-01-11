@@ -402,7 +402,7 @@ dd .num {
 }
 
 .review {
-	width: 3000px;
+	width: 2000px;
 	margin: 0 auto;
 	display: flex;
 	gap: 3px;
@@ -417,6 +417,7 @@ dd .num {
 	text-align: center;
 	border-radius: 10px;
 	height: 300px;
+	width: 330.84px;
 	flex: 1;
 	transition: 0.2s ease-in-out;
 }
@@ -450,6 +451,11 @@ dd .num {
 	color: white;
 	text-align: center;
 	font-size: 1rem;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap; 		
+  	word-break:break-all;
+	height:120px;
 }
 
 @keyframes slideAnimation {

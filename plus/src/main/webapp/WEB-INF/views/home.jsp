@@ -40,6 +40,14 @@ for (let i = 0; i < reviewBars.length; i++) {
 	margin-left:-200px;
 	padding:0;
 }
+.clist{
+  	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap; 		
+  	word-break:break-all;
+}
+.score-star .on { color: #89B6F5; }
+.score-star .off{ color: #EAEAEA; }
 </style>
 
 	<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -116,23 +124,22 @@ for (let i = 0; i < reviewBars.length; i++) {
 			<img src="${pageContext.request.contextPath}/uploads/lesson/${clist.firstPhoto}" class="card-img-top " alt="...">
 		</div>
 			 <div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">원데이 클래스</div>
-			<div class="card-header" style="height:65px;">
-			  <h6 class="card-title text-center">${clist.className}</h6>
-			</div>
-			<ul class="list-group list-group-flush card-body pt-5 pb-5">
-			  <li class="list-group-item">강사이름 : ${clist.nickName}</li>
-			  <li class="list-group-item">가격 : ${clist.price}원</li>
-			  <li class="list-group-item">주소 : ${clist.addr1}</li>
-			  <li class="list-group-item">기간 : ${clist.startDate} ~ ${clist.endDate}</li>
-			</ul>
-			<div class="card-footer text-center">
-				<button type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/detail/${clist.classNum}';" class="btn btn-success w-100" style="border-radius:25px;">예약하기</button>
-			</div>
+				<div class="card-header p-10">
+				  <h6 class="card-title text-center clist">${clist.className}</h6>
+				</div>
+				<ul class="list-group list-group-flush card-body pt-5 pb-5">
+				  <li class="list-group-item">강사이름 : ${clist.nickName}</li>
+				  <li class="list-group-item">가격 : ${clist.price}원</li>
+				  <li class="list-group-item clist">주소 : ${clist.addr1}</li>
+				  <li class="list-group-item">기간 : ${clist.startDate} ~ ${clist.endDate}</li>
+				</ul>
+				<div class="card-footer text-center">
+					<button type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/detail/${clist.classNum}';" class="btn btn-success w-100" style="border-radius:25px;">예약하기</button>
+				</div>
 		 </div>
 		</c:forEach>
-	  <button class="nav-btn-right" onclick="showNext()" style="background: white; border: none;"><i class="bi bi-caret-right"></i>
-	  </button>
-	  </div>
+	  			<button class="nav-btn-right" onclick="showNext()" style="background: white; border: none;"><i class="bi bi-caret-right"></i></button>
+	  		</div>
 		<hr style="border: 3px dotted #47a3da;">
 
 	<script>
@@ -204,128 +211,37 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  }
 	</script>
     
-<h3 class="mt-5 title">실시간 리뷰</h3>
-<hr style="border: 3px dotted #47a3da;">
-<div class="review">
-	<div class="review_bar">
-	  <div class="cardreview">
-		<img src="${pageContext.request.contextPath}/resources/images/review_1.jpg" alt="Menu Image">
-		<div class="card_content">
-			초코가 말을 잘들어요! ★★★★★<br>
-			<span class="c-t">[서울]반려동물 훈련 클래스<br></span>
-			우리집 강아지가 달라졌어요~^^<br>
-			(김준호)
-		</div>
-	 </div>
-	</div>
+	<h3 class="mt-5 title">실시간 리뷰</h3>
+		<hr style="border: 3px dotted #47a3da;">
+			<div class="review">
 
-	<div class="review_bar">
-		<div class="cardreview">
-		  <img src="${pageContext.request.contextPath}/resources/images/review_2.jpg" alt="Menu Image">
-		  <div class="card_content">
-			생각보다 재밌어요. ★★★★☆<br>
-			<span class="c-t">[서울]목공 클래스<br></span>
-			생각했던것보다 재밌고 색다른경험이었습니다.<br>
-			(이정환)
+			<c:forEach items="${reviewList}" var="rlist">
+				<div class="review_bar">
+				  <div class="cardreview">
+				  <c:choose>
+				  	<c:when test="${rlist.fileName != null }">
+				  		<img src="${pageContext.request.contextPath}/uploads/review/${rlist.fileName}" alt="Menu Image">
+					</c:when>
+				  	<c:otherwise>
+				  		<img alt="Menu Image" src="${pageContext.request.contextPath}/resources/images/Image-folder.jpg">
+				  	</c:otherwise>
+				  </c:choose>
+					<div class="card_content">
+						<span>${rlist.reviewSubject}</span><br>
+						<c:forEach var="n" begin="1" end="5">
+							<c:set var="score" value="${rlist.reviewScore + ((rlist.reviewScore%1>=0.5) ? (1-rlist.reviewScore%1)%1 : -(rlist.reviewScore%1))}"/>
+							<span class="fs-6 item ${rlist.reviewScore>=n?'on':'off'}">
+								<i class="bi bi-star-fill"></i>
+							</span>
+						</c:forEach>
+						
+						<br>
+						<span class="c-t">${rlist.className}<br></span>
+						${rlist.reviewContent}
+					</div>
+				 </div>
+				</div>
+			</c:forEach>
 		</div>
-	   </div>
-	  </div>
-	  <div class="review_bar">
-		<div class="cardreview">
-		  <img src="${pageContext.request.contextPath}/resources/images/review_3.jpg" alt="Menu Image">
-		  <div class="card_content">
-			완전 색다른경험! ★★★★★<br>
-			<span class="c-t">[서울]스쿠버다이빙 클래스<br></span>
-			너무좋은 경험이고 여행 다녀온기분이에요. 다음에 또올게요~<br>
-			(이설화)
-		</div>
-	   </div>
-	  </div>
-
-	  <div class="review_bar">
-		<div class="cardreview">
-		  <img src="${pageContext.request.contextPath}/resources/images/review_4.jpg" alt="Menu Image">
-		  <div class="card_content">
-			스콧 개맛집! ★★★★★<br>
-			<span class="c-t">[천안]스콘 만들기 클래스<br></span>
-			스콘은 역시 천안~!<br>
-			(선경호)
-		</div>
-	   </div>
-	  </div>
-
-	  <div class="review_bar">
-		<div class="cardreview">
-		  <img src="${pageContext.request.contextPath}/resources/images/review_5.jpg" alt="Menu Image">
-		  <div class="card_content">
-			강추합니다!! ★★★★★<br>
-			<span class="c-t">[광주]런던 플라워 클래스<br></span>
-			꽃을 좋아하시는분이면 이 클래스 강추! 꼭 들어보세요.<br>
-			(김지혜)
-		</div>
-	   </div>
-	  </div>
-
-	  <div class="review_bar">
-		<div class="cardreview">
-		  <img src="${pageContext.request.contextPath}/resources/images/review_6.jpg" alt="Menu Image">
-		  <div class="card_content">
-			맛있어요. ★★★★☆<br>
-			<span class="c-t">[용인]수제쿠키 만들기 클래스<br></span>
-			쿠키 잘~먹고갑니다~ ^^7<br>
-			(박정화)
-		</div>
-	   </div>
-	  </div>
-
-	  <div class="review_bar">
-		<div class="cardreview">
-		  <img src="${pageContext.request.contextPath}/resources/images/review_7.jpg" alt="Menu Image">
-		  <div class="card_content">
-			재밌어요! ★★★★★<br>
-			<span class="c-t">[서울]지갑 / 파우치 클래스<br></span>
-			찾았다 내 인생지갑!! 지갑도 너무 만족스럽고 클래스도 재밌었어요~<br>
-			(최지연)
-		</div>
-	   </div>
-	  </div>
-
-	  <div class="review_bar">
-		<div class="cardreview">
-		  <img src="${pageContext.request.contextPath}/resources/images/review_8.jpg" alt="Menu Image">
-		  <div class="card_content">
-			오늘거의 이승철빙의. ★★★★★<br>
-			<span class="c-t">[서울]보컬 트레이닝 클래스<br></span>
-			밖으로~ 나가버리고~~<br>
-			(강지수)
-		</div>
-	   </div>
-	  </div>
-
-	  <div class="review_bar">
-		<div class="cardreview">
-		  <img src="${pageContext.request.contextPath}/resources/images/review_9.jpg" alt="Menu Image">
-		  <div class="card_content">
-			완전재밌어요! ★★★★★<br>
-			<span class="c-t">[성남]필라테스 클래스<br></span>
-			평소 자세교정 필요했는데 재미도 챙기고 몸도 챙긴기분이에요.감사합니다~<br>
-			(선예지)
-		</div>
-	   </div>
-	  </div>
-
-	  <div class="review_bar">
-		<div class="cardreview">
-		  <img src="${pageContext.request.contextPath}/resources/images/review_10.jpg" alt="Menu Image">
-		  <div class="card_content">
-			수업이 재밌어요ㅋㅋ ★★★★★<br>
-			<span class="c-t">[수원]드로우 페인팅 클래스<br></span>
-			정쌤 페인팅수업 들으면서 너무웃기고 너무재밌었어요!bb<br>
-			(최수진)
-		</div>
-	   </div>
-	  </div>
-	  
-	</div>
 			
 			
