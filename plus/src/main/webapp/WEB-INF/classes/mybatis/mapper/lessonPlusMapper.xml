@@ -180,4 +180,12 @@
 		FROM report
 		WHERE classNum = #{classNum}
 	</select>
+	
+	<!-- 사업자 메인 화면에서 승인을 제외한 클래스 카운트 -->
+	<select id="plusClassList" parameterType="Long" resultType="Integer">
+		SELECT NVL(COUNT(le.classNum), 0)
+		FROM approval a
+		JOIN lesson le ON le.classNum = a.classNum
+		WHERE le.memberIdx = #{memberIdx} AND approvalNum != 2
+	</select>
 </mapper>

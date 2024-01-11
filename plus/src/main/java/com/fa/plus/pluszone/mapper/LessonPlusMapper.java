@@ -41,4 +41,7 @@ public interface LessonPlusMapper {
 	public void deleteLessonPhoto(long photoNum) throws SQLException;
 	
 	public int reportCount(long classNum);
+	
+	// 사업자 메인 화면 승인 안된 클래스 개수
+	public int plusClassList(long memberIdx);
 }

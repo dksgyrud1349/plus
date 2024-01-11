@@ -281,4 +281,15 @@ public class LessonPlusServiceImpl implements LessonPlusService{
 		}
 		return result;
 	}
+
+	@Override
+	public int plusClassList(long memberIdx) {
+		int count = 0;
+		try {
+			count = mapper.plusClassList(memberIdx);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 }
