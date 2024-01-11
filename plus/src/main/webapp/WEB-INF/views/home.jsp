@@ -119,37 +119,47 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  </div>
 
 	   <div class="row" style="margin: 3% auto;">
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/girl_dog.jpg'); background-size: cover;">
+		<button type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=1';"
+			class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/girl_dog.jpg'); background-size: cover;">
   			<p class="cbt">반려동물</p>
 		</button>
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/makeup.jpg'); background-size: cover;">
+		<button type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=2';"
+			class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/makeup.jpg'); background-size: cover;">
 			<p class="cbt">뷰티</p>
 		</button>
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/ground.jpg'); background-size: cover;">
+		<button type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=3';"
+			class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/ground.jpg'); background-size: cover;">
 			<p class="cbt">스포츠</p>
 		</button>
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/mic.jpg'); background-size: cover;">
+		<button type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=4';"
+			class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/mic.jpg'); background-size: cover;">
 			<p class="cbt">음악</p>
 		</button>
 	  </div>
 	  <div class="row" style="margin: 3% auto;">
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/handmade.jpg'); background-size: cover;">
+		<button type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=5';"
+			class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/handmade.jpg'); background-size: cover;">
   			<p class="cbt">쿠킹</p>
 		</button>
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/pottery.jpg'); background-size: cover;">
+		<button type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=6';"
+			class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/pottery.jpg'); background-size: cover;">
 			<p class="cbt">핸드 메이드</p>
 		</button>
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/plant.jpg'); background-size: cover;">
+		<button type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=7';"
+			class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/plant.jpg'); background-size: cover;">
 			<p class="cbt">플라워가드닝</p>
 		</button>
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/art.jpg'); background-size: cover;">
+		<button type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/main?kwd=&schType=all&subNum=&mainNum=8';"
+			class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/art.jpg'); background-size: cover;">
 			<p class="cbt">드로잉</p>
 		</button>
 	  </div>
 	
-	  <div class="mt-5" >
-		<img src="${pageContext.request.contextPath}/resources/images/baner_1.jpg" width="100%" height="250px" style="border-radius: 20px;">
-	  </div>
+	  <div class="mt-5">
+	    <a href="${pageContext.request.contextPath}/onedayplus/onedayplus">
+	        <img src="${pageContext.request.contextPath}/resources/images/baner_1.png" width="100%" height="250px" style="border-radius: 20px;">
+	    </a>
+	</div>
 		
 	  <!-- card - 1-->
 		<hr style="border: 3px dotted #47a3da;">
