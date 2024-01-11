@@ -150,7 +150,7 @@ $(function(){
 						      <c:forEach var="dto" items="${list}" varStatus="status">
 							      <div class="col imgHoverEvent event5" style="float: left;">
 							          <div class="imgBox" style="margin-top: 20px;">
-								          <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="">
+								          <img src="${pageContext.request.contextPath}/uploads/review/${dto.filename}" alt="">
 							          </div>
 							          
 							          <a href="${articleUrl}&reviewNum=${dto.reviewNum}">
@@ -170,7 +170,7 @@ $(function(){
 						      <c:forEach var="dto" items="${listHide}" varStatus="status">
 							      <div class="col imgHoverEvent event5" style="float: left;">
 							          <div class="imgBox" style="margin-top: 20px;">
-								          <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="">
+								          <img src="${pageContext.request.contextPath}/uploads/review/${dto.filename}" alt="">
 							          </div>
 							          
 							          <a href="${articleUrl}&reviewNum=${dto.reviewNum}">

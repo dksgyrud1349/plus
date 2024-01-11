@@ -94,7 +94,7 @@ function hideOrShowOk(){
 
 					<tr>
 						<td colspan="2" style="border-bottom: none;">
-							<img src="${pageContext.request.contextPath}/uploads/photo/${dto.filename}"
+							<img src="${pageContext.request.contextPath}/uploads/review/${dto.filename}"
 								class="img-fluid img-thumbnail w-100 h-auto">
 						</td>
 					</tr>
