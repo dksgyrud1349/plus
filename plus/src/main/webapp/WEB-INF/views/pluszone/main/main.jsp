@@ -197,7 +197,7 @@ $(function(){
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">
-                                        <h3 class="text-center">미승인 수업</h3>
+                                        <h3 class="text-center">미승인 클래스</h3>
                                         <hr>
                                         <h4 class="text-center">${lessonPlusCount}건 </h4>
                                     </div>
