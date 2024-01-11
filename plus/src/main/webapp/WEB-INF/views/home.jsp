@@ -35,6 +35,11 @@ for (let i = 0; i < reviewBars.length; i++) {
 	border-left:3px solid #47a3da;
 	padding-left : 10px;
 }
+#myCarousel{
+	width:1700px;
+	margin-left:-200px;
+	padding:0;
+}
 </style>
 
 	<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -66,16 +71,30 @@ for (let i = 0; i < reviewBars.length; i++) {
 
 	  <div class="row" style="margin: 3% auto;">
 		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/couple.jpg'); background-size: cover;">
-  			<p class="cbtn_1">데이트</p>
+  			<p class="cbtn_1">반려동물</p>
 		</button>
 		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/pottery.jpg'); background-size: cover;">
-			<p class="cbtn_1">공예</p>
+			<p class="cbtn_1">뷰티</p>
+		</button>
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/handmade.jpg'); background-size: cover;">
+			<p class="cbtn_1">스포츠</p>
+		</button>
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/exercise.jpg'); background-size: cover;">
+			<p class="cbtn_1">음악</p>
+		</button>
+	  </div>
+	  <div class="row" style="margin: 3% auto;">
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/couple.jpg'); background-size: cover;">
+  			<p class="cbtn_1">쿠킹</p>
 		</button>
 		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/handmade.jpg'); background-size: cover;">
 			<p class="cbtn_1">핸드 메이드</p>
 		</button>
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/pottery.jpg'); background-size: cover;">
+			<p class="cbtn_1">플라워가드닝</p>
+		</button>
 		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/exercise.jpg'); background-size: cover;">
-			<p class="cbtn_1">건강·운동</p>
+			<p class="cbtn_1">드로잉</p>
 		</button>
 	  </div>
 	
@@ -83,277 +102,39 @@ for (let i = 0; i < reviewBars.length; i++) {
 		<img src="${pageContext.request.contextPath}/resources/images/baner_1.jpg" width="100%" height="250px" style="border-radius: 20px;">
 	  </div>
 		
-	
-	
-	 
-
-
 	  <!-- card - 1-->
-	  
-
-	  <!--  -->
-	  
-	  <hr style="border: 3px dotted #47a3da;">
-	  <div class="card-container d-flex justify-content-between" id="card-container">
-
+		<hr style="border: 3px dotted #47a3da;">
+		<div class="card-container d-flex justify-content-between" id="card-container">
+		
 		<button class="nav-btn-left" onclick="showPrevious()" style="background: white; border: none;">
 				<i class="bi bi-caret-left"></i>
 		</button>
-
-	  <div class="card" style="width: 18rem;">
-	  	<div class="recommend">
-			<img src="${pageContext.request.contextPath}/resources/images/wood_1.jpg" class="card-img-top " alt="...">
+		
+	  <c:forEach items="${classList}" var="clist">
+		  <div class="card" style="width: 18rem;">
+		 	<div class="recommend">
+			<img src="${pageContext.request.contextPath}/uploads/lesson/${clist.firstPhoto}" class="card-img-top " alt="...">
 		</div>
-			 <div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
-			<div class="card-body">
-			  <h5 class="card-title">[서울]목공 클래스</h5>
-			  <p class="card-text">-&nbsp;원하는 목재,사이즈를 선택가능.<br>-&nbsp;버닝펜으로 자신만의 문구완성.<br>-&nbsp;퀄리티높은 나만의 도마 완성.</p>
+			 <div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">원데이 클래스</div>
+			<div class="card-header" style="height:65px;">
+			  <h6 class="card-title text-center">${clist.className}</h6>
 			</div>
-			<ul class="list-group list-group-flush">
-			  <li class="list-group-item">강사이름 : 이승준</li>
-			  <li class="list-group-item">가격 : 30,000원</li>
-			  <li class="list-group-item">주소 : 서울특별시 강남구 반송로 148-9 4층 402호</li>
+			<ul class="list-group list-group-flush card-body pt-5 pb-5">
+			  <li class="list-group-item">강사이름 : ${clist.nickName}</li>
+			  <li class="list-group-item">가격 : ${clist.price}원</li>
+			  <li class="list-group-item">주소 : ${clist.addr1}</li>
+			  <li class="list-group-item">기간 : ${clist.startDate} ~ ${clist.endDate}</li>
 			</ul>
-			<div class="card-body">
-				<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-			  <a href="${pageContext.request.contextPath}/" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
+			<div class="card-footer text-center">
+				<button type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/detail/${clist.classNum}';" class="btn btn-success w-100" style="border-radius:25px;">예약하기</button>
 			</div>
-	  </div>
-
-	  <div class="card" style="width: 18rem;">
-	  <div class="recommend">
-		<img src="${pageContext.request.contextPath}/resources/images/pouch_1.jpg" class="card-img-top" alt="...">
-	  </div>
-		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
-		<div class="card-body">
-			<h5 class="card-title">[서울]지갑 / 파우치 클래스</h5>
-			<p class="card-text">-&nbsp;엣지코트, 이니셜불박 무료<br>-&nbsp;일상생활에서 사용하기에 유용.<br>-&nbsp;데이트, 취미, 모임활동 모두적합</p>
-		</div>
-		<ul class="list-group list-group-flush">
-			<li class="list-group-item">강사이름 : 신유라</li>
-		  <li class="list-group-item">가격 : 50,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 송파구 송파대로 555 (우)05510</li>
-		</ul>
-		<div class="card-body" style="margin:0 auto;">
-			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  <a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
-		</div>
-	  </div>
-
-	  <div class="card" style="width: 18rem;">
-	  <div class="recommend">
-		<img src="${pageContext.request.contextPath}/resources/images/flower_1.jpg" class="card-img-top" alt="...">
-	  </div>
-		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
-		<div class="card-body">
-			<h5 class="card-title">[대구]플라워 클래스</h5>
-			<p class="card-text">-&nbsp;홀더는 직접말린 생화를 이용<br>-&nbsp;티라이트있으면 지속사용가능<br>-&nbsp;지인에게 선물하기좋은 힐링수업</p>
-		</div>
-		<ul class="list-group list-group-flush">
-			<li class="list-group-item">강사이름 : 이민주</li>
-		  	<li class="list-group-item">가격 : 35,000원</li>
-		  	<li class="list-group-item">주소 : 대전 중구 대종로451번길 엑스포로 107</li>
-		</ul>
-		<div class="card-body" style="margin:0 auto;">
-			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  <a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
-		</div>
-	  </div>
-
-	  <div class="card" style="width: 18rem;">
-	  <div class="recommend">
-		<img src="${pageContext.request.contextPath}/resources/images/flower_2.jpg" class="card-img-top" alt="...">
-	  </div>	
-		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
-		<div class="card-body">
-			<h5 class="card-title">[서울]보컬 트레이닝 클래스</h5>
-			<p class="card-text">-&nbsp;호흡,발성 카피 및 분석<br>-&nbsp;본인 원하는곡 선정<br>-&nbsp;악보 및 수업에 필요 준비물 구비</p>
-		</div>
-		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름 : 안정희</li>
-		  <li class="list-group-item">가격 : 40,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 마포구 월드컵북로 321 (우)03488</li>
-		</ul>
-		<div class="card-body" style="margin:0 auto;">
-			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
-		</div>
-	  </div>
-
-	  <div class="card" style="width: 18rem;">
-	  <div class="recommend">
-		<img src="${pageContext.request.contextPath}/resources/images/pouch_1.jpg" class="card-img-top" alt="...">
-	  </div>	
-		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
-		<div class="card-body">
-			<h5 class="card-title">[천안]스콘 만들기 클래스</h5>
-			<p class="card-text">-&nbsp;레시피가 제공되는 수업.<br>-&nbsp;비교적 난이도쉬운 베이킹수업.<br>-&nbsp;맛있는 커피와 간식도 제공.</p>
-		</div>
-		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름 : 김정현</li>
-		  <li class="list-group-item">가격 : 40,000원</li>
-		  <li class="list-group-item">주소 : 충청남도 천안시 동남구 담방로21번길</li>
-		</ul>
-		<div class="card-body" style="margin:0 auto;">
-			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
-		</div>
-	  </div>
-
-	  <div class="card" style="width: 18rem;">
-	  <div class="recommend">
-		<img src="${pageContext.request.contextPath}/resources/images/flower_1.jpg" class="card-img-top" alt="...">
-	  </div>	
-		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
-		<div class="card-body">
-			<h5 class="card-title">[성남]필라테스 클래스</h5>
-			<p class="card-text">-&nbsp;스트레스 해소/자세교정/다이어트<br>-&nbsp;4:1 소그룹 필라테스 수업<br>-&nbsp;필라테스 처음 접하시는분 환영</p>
-		</div>
-		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름 : 김예진</li>
-		  <li class="list-group-item">가격 : 25,000원</li>
-		  <li class="list-group-item">주소 : 경기도 성남시 분당구 판교로726번길 2</li>
-		</ul>
-		<div class="card-body" style="margin:0 auto;">
-			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
-		</div>
-	  </div>
-
-	  <div class="card" style="width: 18rem;">
-	  <div class="recommend">
-		<img src="${pageContext.request.contextPath}/resources/images/flower_2.jpg" class="card-img-top" alt="...">
-	  </div>	
-		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
-		<div class="card-body">
-			<h5 class="card-title">[서울]스쿠버다이빙 클래스</h5>
-			<p class="card-text">-&nbsp;다이빙 방법 설명뒤 즉시 체험<br>-&nbsp;수중 인생샷 촬영<br>-&nbsp;부부와 커플 이색취미</p>
-		</div>
-		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름 : 최강남</li>
-		  <li class="list-group-item">가격 : 65,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강서구 등촌동 513-11</li>
-		</ul>
-		<div class="card-body" style="margin:0 auto;">
-			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
-		</div>
-	  </div>
-
-	  <div class="card" style="width: 18rem;">
-	  <div class="recommend">
-		<img src="${pageContext.request.contextPath}/resources/images/wood_1.jpg" class="card-img-top" alt="...">
-	  </div>	
-		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
-		<div class="card-body">
-			<h5 class="card-title">[수원]드로우 페인팅 클래스</h5>
-			<p class="card-text">-&nbsp;설명-스케치-채색까지 현장지도<br>-&nbsp;감성 인테리어 소품<br>-&nbsp;모든재료 준비물 구비</p>
-		</div>
-		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름 : 정유진</li>
-		  <li class="list-group-item">가격 : 30,000원</li>
-		  <li class="list-group-item">주소 : 경기도 수원시 권선구 세권로315번길 33-6</li>
-		</ul>
-		<div class="card-body" style="margin:0 auto;">
-			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
-		</div>
-	  </div>
-
-	  <div class="card" style="width: 18rem;">
-	  <div class="recommend">
-		<img src="${pageContext.request.contextPath}/resources/images/flower_1.jpg" class="card-img-top" alt="...">
-	  </div>	
-		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
-		<div class="card-body">
-			<h5 class="card-title">[용인]쿠키 만들기 클래스</h5>
-			<p class="card-text">-&nbsp;1:1수업 가능<br>-&nbsp;2명이상 수강시 인기빵 지급.<br>-&nbsp;레시피 제공</p>
-		</div>
-		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름 : 박세리</li>
-		  <li class="list-group-item">가격 : 35,000원</li>
-		  <li class="list-group-item">주소 : 경기도 용인시 처인구 포곡읍 전대리 1387</li>
-		</ul>
-		<div class="card-body" style="margin:0 auto;">
-			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
-		</div>
-	  </div>
-
-	  <div class="card" style="width: 18rem;">
-	  <div class="recommend">
-		<img src="${pageContext.request.contextPath}/resources/images/flower_2.jpg" class="card-img-top" alt="...">
-	  </div>	
-		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
-		<div class="card-body">
-			<h5 class="card-title">[대구]코딩 클래스</h5>
-			<p class="card-text">-&nbsp;원하는 프로그램 개별맞춤<br>-&nbsp;기초다지기 액기스 수업<br>-&nbsp;시간협상후 개별레슨 가능</p>
-		</div>
-		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름 : 김호준</li>
-		  <li class="list-group-item">가격 : 50,000원</li>
-		  <li class="list-group-item">주소 : 대구광역시 서구 덕소로97번길 6721</li>
-		</ul>
-		<div class="card-body" style="margin:0 auto;">
-			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
-		</div>
-	  </div>
-
-	  <div class="card" style="width: 18rem;">
-	  <div class="recommend">
-		<img src="${pageContext.request.contextPath}/resources/images/wood_1.jpg" class="card-img-top" alt="...">
-	  </div>	
-		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
-		<div class="card-body">
-			<h5 class="card-title">[서울]반려동물 훈련 클래스</h5>
-			<p class="card-text">-&nbsp;원하는 훈련 개별맞춤<br>-&nbsp;다양한 사진스팟<br>-&nbsp;반려동물 간식제공</p>
-		</div>
-		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름 : 이웅종</li>
-		  <li class="list-group-item">가격 : 40,000원</li>
-		  <li class="list-group-item">주소 : 서울특별시 강남구 봉은사로944번길 1554</li>
-		</ul>
-		<div class="card-body " style="margin:0 auto;">
-			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
-		</div>
-	  </div>
-
-	  <div class="card" style="width: 18rem;">
-	  <div class="recommend">
-		<img src="${pageContext.request.contextPath}/resources/images/pouch_1.jpg" class="card-img-top" alt="...">
-	  </div>	
-		<div class="badge bg-dark text-white position-absolute" style="top: 1.0rem; left: 1.0rem; font-size:16px;">추천 클래스</div>
-		<div class="card-body">
-			<h5 class="card-title">[광주]플라워 클래스</h5>
-			<p class="card-text">-&nbsp;런던 스타일 플라워 제작<br>-&nbsp;런던느낌 스타일링과 포장지사용<br>-&nbsp;필요한 재료,도구 모두구비</p>
-		</div>
-		<ul class="list-group list-group-flush">
-		  <li class="list-group-item">강사이름 : 이소리</li>
-		  <li class="list-group-item">가격 : 30,000원</li>
-		  <li class="list-group-item">주소 : 광주광역시 광산구 우산동 오성로 1773-5</li>
-		</ul>
-		<div class="card-body" style="margin:0 auto;">
-			<a href="#" class="card-link" style="float: left; margin: 4% auto">예약하기</a>
-		  	<a href="#" class="card-link1" style="float: right; margin: 4% auto">자세히보기</a>
-		</div>
-		
-		
-	  </div>
+		 </div>
+		</c:forEach>
 	  <button class="nav-btn-right" onclick="showNext()" style="background: white; border: none;"><i class="bi bi-caret-right"></i>
 	  </button>
 	  </div>
-	  
 		<hr style="border: 3px dotted #47a3da;">
-	  
-	  <div class="mt-5" >
-		<img src="${pageContext.request.contextPath}/resources/images/baner_2.jpg" width="100%" height="150px" style="border-radius: 20px;">
-	  </div>
 
-	
-		
-	  
 	<script>
         const cardContainer = document.getElementById('card-container');
         const totalCards = document.querySelectorAll('.card').length;
@@ -413,7 +194,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 	    <div id="indoor" class="explain">밖으로 돌아다니기는 부담스럽고 집에만 있기에는 너무 답답하시나요? <br>원데이플러스에서 다양한 실내운동을 즐겨봐요!</div>
 	    <div id="leather" class="explain">부담없이 의미있는 체험을 원하시는 분들! <br>친구 연인 가족 누구와 함께해도 부담되지않고,쉽고 재미있게 우리만의 추억을 쌓을수 있는 목공체험은 어떠신가요?</div>
 	    <div id="leisure" class="explain">레저스포츠 취미를 갖는건 어떠신가요? 관심이 있었지만 혼자 시작하기에 부담되셨나요? <br>원데이플러스에서 부담없이 새로운 추억을 만들어드립니다~</div>
-	    <div id="flower" class="explain">벌써 코 앞으로 다가온 크리스마스! 나만의 크리스마스 트리를 조화가 아닌 생화로 직접 만들어 보는 건 어떨까요?</div>
+	    <div id="flower" class="explain">기억에 남는 크리스마스! 나만의 크리스마스 트리를 조화가 아닌 생화로 직접 만들어 보는 건 어떨까요?</div>
 	    <div id="sports" class="explain">살면서 스스로 여러 쿠킹경험도 가져볼만하지 않아요? <br>초보자도 재미있고 쉽게 만들 수 있도록 도와드려요. 힐링하시는 마음만 가지고 즐겨봐요~</div>
 	
 	
@@ -423,8 +204,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 	  }
 	</script>
     
-	
-<h1 class="mt-5 title">실시간 리뷰</h1>
+<h3 class="mt-5 title">실시간 리뷰</h3>
 <hr style="border: 3px dotted #47a3da;">
 <div class="review">
 	<div class="review_bar">
