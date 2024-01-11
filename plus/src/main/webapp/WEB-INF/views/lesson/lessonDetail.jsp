@@ -139,12 +139,6 @@ header.masthead h1, header.masthead .h1 {
 	}
 }
 
-@media ( min-width : 1200px) {
-	header.masthead h1, header.masthead .h1 {
-		font-size: 3.5rem;
-	}
-}
-
 header.masthead {
 	padding-top: 10rem;
 	padding-bottom: calc(10rem - 4.5rem);
@@ -156,7 +150,7 @@ header.masthead {
 }
 
 header.masthead h1, header.masthead .h1 {
-	font-size: 2.25rem;
+	font-size: 2rem;
 }
 
 @media ( min-width : 992px) {
@@ -176,7 +170,7 @@ header.masthead h1, header.masthead .h1 {
 
 @media ( min-width : 1200px) {
 	header.masthead h1, header.masthead .h1 {
-		font-size: 3.5rem;
+		font-size: 3rem;
 	}
 }
 
@@ -266,6 +260,36 @@ header.masthead h1, header.masthead .h1 {
 }
 .score-star .on { color: #89B6F5; }
 .score-star .off{ color: #EAEAEA; }
+
+.impText{
+	text-decoration:underline; 
+	color:#47a3da; 
+	font-weight:bold;
+}
+
+.selbox{
+	width:150px;
+	font-family: "Noto Sansf KR", sans-serif;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	
+	
+	color: #444;
+	background-color: #fff;
+	
+	padding: 0.6em 1.4em 0.5em 0.8em;
+	margin: 0;
+	
+	border: 1px solid #aaa;
+	border-radius: 0.5em;
+	box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.title{
+	border-left:3px solid #47a3da;
+	padding-left : 10px;
+}
 </style>
 
 
@@ -374,14 +398,13 @@ function sendOk(mode) {
 							<img  src="${pageContext.request.contextPath}/uploads/lesson/${dto.firstPhoto}" class="card-img-top mb-5 mb-md-0">
 						</div>
 						<div class="col-md-6">
-							<div class="small mb-1">${dto.mainName}</div>
+							<div class="small mb-1"><i class="bi bi-tag"></i> ${dto.mainName}</div>
 							<h1 class="display-5 fw-bolder">${dto.className}</h1>
 							<div class="fs-5 mb-5">
 								<input type="hidden" name="classNum" value="${dto.classNum}">
-								<span style="color: red">${dto.startDate} ~
-									${dto.endDate}</span><br>
+								<span style="color: red"><i class="bi bi-calendar-check" style="color:black"></i> ${dto.startDate} ~ ${dto.endDate}</span><br>
 								<!-- <span class="text-decoration-line-through">15,000원</span> -->
-								<span><fmt:formatNumber value="${dto.price}" pattern="#,###원" /></span>
+								<span><i class="bi bi-wallet-fill"></i> <fmt:formatNumber value="${dto.price}" pattern="#,###원" /></span>
 								
 								
 								<div class="row pt-1 pb-2 border-bottom">
@@ -411,21 +434,19 @@ function sendOk(mode) {
 						<p class="lead">
 
 							1. 강사 : ${dto.nickName}<br> 2. 상세주소 : ${dto.addr1}
-							${dto.addr2}<br> <br> 예약하기를 눌러 예약가능 시간과 안원수를 확인해주세요.
+							${dto.addr2}<br> <br> 
+							<i class="bi bi-stars"></i> 예약하기를 눌러 <font class="impText">예약가능 시간</font>과 <font class="impText">안원수</font>를 확인해주세요.
 						</p>
 						<div>
-							<select name="classDay" id="classDay"
-								style="width: 115px; height: 30px;">
+							<select name="classDay" id="classDay" class="selbox">
 								<option value="">일자</option>
 								<c:forEach var="vo" items="${lessonDtlDate}" varStatus="status">
 									<option value="${vo.classDate}">${vo.classDate}</option>
 								</c:forEach>
-							</select> <select name="classTime" id="classTime"
-								style="width: 120px; height: 30px;">
+							</select> <select name="classTime" id="classTime" class="selbox">
 								<option value="">시간</option>
 								<c:forEach var="vo" items="${lessonDtlTime}">
-									<option value="${vo.startTime}${vo.endTime}">${vo.startTime}
-										~ ${vo.endTime}</option>
+									<option value="${vo.startTime}${vo.endTime}">${vo.startTime} ~ ${vo.endTime}</option>
 								</c:forEach>
 							</select>
 							<div class="d-flex" style="float: right; margin-bottom: 15px;">
@@ -558,12 +579,12 @@ function sendOk(mode) {
 
 	<div class="tab-content pt-2" id="myTabContent">
 		<div class="mt-3 pt-3 border-bottom">
-			<p class="fs-4 fw-semibold">상품 리뷰</p> 
+			<p class="fs-4 fw-semibold title">원데이 클래스 리뷰</p> 
 		</div>
 
 		<div class="row border-bottom">
 			<div class="col p-3 text-center">
-				<div class="fs-6 fw-semibold">상품만족도</div>
+				<div class="fs-6 fw-semibold">클래스 만족도</div>
 				<div class="score-star review-score-star">
 					<c:forEach var="n" begin="1" end="5">
 						<c:set var="reviewScore" value="${dto.reviewScore + ((dto.reviewScore%1>=0.5) ? (1-dto.reviewScore%1)%1 : -(dto.reviewScore%1))}"/>
@@ -646,7 +667,7 @@ function sendOk(mode) {
 				out += '     <div class="col pt-3 text-end"><span>'+reviewDate+'</span>';
 				out += '  </div>';
 				out += '  </div>';
-				out += '     <div class="col pt-3 ps-0 fw-semibold"><span>(제목) : '+reviewSubject+'</span>';
+				out += '     <div class="col pt-3 ps-0 fw-semibold"><span style="font-size:1.2rem"><i class="bi bi-journal-text"></i> '+reviewSubject+'</span>';
 				out += '  <div class="row p-2">';
 				out += '    <div class="col-auto pt-0 ps-2 pe-1 score-star">';
 				for(let i=1; i<=5; i++) {
