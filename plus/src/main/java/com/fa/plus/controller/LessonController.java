@@ -65,18 +65,10 @@ public class LessonController {
 			return "redirect:/member/login";
 		}
 		
-		/*
-		if(mainNum == 0 && listMainCategory.size() != 0) {
-			mainNum = listMainCategory.get(0).getMainNum();
+		List<Lesson> listSubCategory = null;
+		if(mainNum != 0 && listMainCategory.size() != 0) {
+			listSubCategory = lessonService.listSubCategory(mainNum);
 		}
-		*/
-		
-		//List<Lesson> listSubCategory = lessonService.listSubCategory(mainNum);
-		/*
-		if(subNum == 0 && listSubCategory.size() != 0) {
-			subNum = listSubCategory.get(0).getSubNum();
-		}
-		*/
 		
 		// 전체 페이지 수
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -135,12 +127,14 @@ public class LessonController {
 		
 		model.addAttribute("list", list);
 		model.addAttribute("listMainCategory", listMainCategory);
-		//model.addAttribute("listSubCategory", listSubCategory);
+		model.addAttribute("listSubCategory", listSubCategory);
 		model.addAttribute("page", current_page);
 		model.addAttribute("dataCount", dataCount);
 		model.addAttribute("size", size);
 		model.addAttribute("total_page", total_page);
 		model.addAttribute("paging", paging);
+		model.addAttribute("subNum", subNum);
+		model.addAttribute("mainNum", mainNum);
 		
 		model.addAttribute("schType", schType);
 		model.addAttribute("kwd", kwd);
