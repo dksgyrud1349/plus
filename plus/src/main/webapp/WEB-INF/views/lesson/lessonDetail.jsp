@@ -621,62 +621,68 @@ function sendOk(mode) {
 		
 		
 		let out = '';
-		for(let item of data.list) {
-			let reviewNum = item.reviewNum;
-			let userName = item.userName;
-			let reviewSubject = item.reviewSubject;
-			let reviewScore = item.reviewScore;
-			let reviewContent = item.reviewContent;
-			let reviewDate = item.reviewDate;
-			let replyContent = item.replyContent;
-			let replyDate = item.replyDate;
-			let fileName = item.fileName;
-			// let deletePermit = item.deletePermit;
-
-			out += '<div class="mt-3 border-bottom">';
-			out += '  <div class="row p-2">';
-			out += '     <div class="col-auto fs-2"><i class="bi bi-person-circle text-muted icon"></i></div>';
-			out += '     <div class="col pt-3 ps-0 fw-semibold">'+userName+'</div>';
-			out += '     <div class="col pt-3 text-end"><span>'+reviewDate+'</span>';
-			out += '  </div>';
-			out += '  </div>';
-			out += '     <div class="col pt-3 ps-0 fw-semibold"><span>(제목) : '+reviewSubject+'</span>';
-			out += '  <div class="row p-2">';
-			out += '    <div class="col-auto pt-0 ps-2 pe-1 score-star">';
-			for(let i=1; i<=5; i++) {
-				out += '  <span class="item fs-6 ' + (reviewScore>=i ? 'on' : 'off') + '"><i class="bi bi-star-fill"></i></span>';
-			}
-			out += '    </div>';
-			out += '    <div class="col-auto ps-0 fs-6"><span>' + reviewScore + '점<span></div>';
-			out += '  </div>';
-			out += '  <div class="mt-2 p-2">' + reviewContent + '</div>';
-
-			if(fileName && fileName.length > 0) {
-				out += '<div class="row gx-1 mt-2 mb-1 p-1">';
-					
-				out += '<div class="col-md-auto md-img">';
-				out += '  <img class="border rounded" style="height:150px; width:150px;" src="${pageContext.request.contextPath}/uploads/review/'+fileName+'">';
-				out += '</div>';
-			
-				out += '</div>';
-			}
-			
-			if(replyContent) {
-				out += '  <div class="p-3 pt-0">';
-				out += '    <div class="bg-light">';
-				out += '      <div class="p-3 pb-0">';
-				out += '        <label class="text-bg-primary px-2"> ${dto.nickName} 강사님 </label> <label>' + replyDate + '</label>';
-				out += '      </div>';
-				out += '      <div class="p-3 pt-1">' + replyContent + '</div>';
-				out += '    </div>';
+		if(dataCount == 0){
+			out += '<div class="border-top">';
+			out += "<div class='text-center my-5'><h5>등록된 리뷰가 없습니다.</h5></div>";
+			out += '</div>'
+		}
+		else {
+			for(let item of data.list) {
+				let reviewNum = item.reviewNum;
+				let userName = item.userName;
+				let reviewSubject = item.reviewSubject;
+				let reviewScore = item.reviewScore;
+				let reviewContent = item.reviewContent;
+				let reviewDate = item.reviewDate;
+				let replyContent = item.replyContent;
+				let replyDate = item.replyDate;
+				let fileName = item.fileName;
+				// let deletePermit = item.deletePermit;
+	
+				out += '<div class="mt-3 border-bottom">';
+				out += '  <div class="row p-2">';
+				out += '     <div class="col-auto fs-2"><i class="bi bi-person-circle text-muted icon"></i></div>';
+				out += '     <div class="col pt-3 ps-0 fw-semibold">'+userName+'</div>';
+				out += '     <div class="col pt-3 text-end"><span>'+reviewDate+'</span>';
 				out += '  </div>';
+				out += '  </div>';
+				out += '     <div class="col pt-3 ps-0 fw-semibold"><span>(제목) : '+reviewSubject+'</span>';
+				out += '  <div class="row p-2">';
+				out += '    <div class="col-auto pt-0 ps-2 pe-1 score-star">';
+				for(let i=1; i<=5; i++) {
+					out += '  <span class="item fs-6 ' + (reviewScore>=i ? 'on' : 'off') + '"><i class="bi bi-star-fill"></i></span>';
+				}
+				out += '    </div>';
+				out += '    <div class="col-auto ps-0 fs-6"><span>' + reviewScore + '점<span></div>';
+				out += '  </div>';
+				out += '  <div class="mt-2 p-2">' + reviewContent + '</div>';
+	
+				if(fileName && fileName.length > 0) {
+					out += '<div class="row gx-1 mt-2 mb-1 p-1">';
+						
+					out += '<div class="col-md-auto md-img">';
+					out += '  <img class="border rounded" style="height:150px; width:150px;" src="${pageContext.request.contextPath}/uploads/review/'+fileName+'">';
+					out += '</div>';
+				
+					out += '</div>';
+				}
+				
+				if(replyContent) {
+					out += '  <div class="p-3 pt-0">';
+					out += '    <div class="bg-light">';
+					out += '      <div class="p-3 pb-0">';
+					out += '        <label class="text-bg-primary px-2"> ${dto.nickName} 강사님 </label> <label>' + replyDate + '</label>';
+					out += '      </div>';
+					out += '      <div class="p-3 pt-1">' + replyContent + '</div>';
+					out += '    </div>';
+					out += '  </div>';
+				}
+				out += '</div>';
 			}
-			out += '</div>';
+			if(dataCount > 0) {
+				out += '<div class="page-navigation">' + paging + '</div>';
+			}
 		}
-		if(dataCount > 0) {
-			out += '<div class="page-navigation">' + paging + '</div>';
-		}
-		
 		$('.list-review').html(out);
 	}
 	</script>
