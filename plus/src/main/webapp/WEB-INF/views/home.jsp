@@ -102,10 +102,10 @@ for (let i = 0; i < reviewBars.length; i++) {
 			<img src="${pageContext.request.contextPath}/resources/images/eventsale_2.png" class="d-block w-100" alt="Slide 1">
 		  </div>
 		  <div class="carousel-item" data-bs-interval="2000">
-			<img src="${pageContext.request.contextPath}/resources/images/keyimage2.jpg" class="d-block w-100" alt="Slide 2">
+			<img src="${pageContext.request.contextPath}/resources/images/eventsale_4.png" class="d-block w-100" alt="Slide 2">
 		  </div>
 		  <div class="carousel-item">
-			<img src="${pageContext.request.contextPath}/resources/images/eventsale_1.png" class="d-block w-100" alt="Slide 3">
+			<img src="${pageContext.request.contextPath}/resources/images/eventsale_3.png" class="d-block w-100" alt="Slide 3">
 		  </div>
 		</div>
 		<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">

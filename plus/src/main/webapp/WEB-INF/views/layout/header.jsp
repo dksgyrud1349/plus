@@ -204,7 +204,7 @@
 				<nav>
 				<c:choose>
 					<c:when test="${empty sessionScope.member}">
-						<audio id="myAudio" autoplay>
+						<audio id="myAudio">
 						    <source src="${pageContext.request.contextPath}/resources/sound/mainSound.mp3" type="audio/mp3">
 						</audio>
 						
@@ -214,7 +214,7 @@
 					</c:when>
 					<c:otherwise>
 						<a href="#" class="icon-arrow-left bi bi-play-fill" data-info="노래" onclick="togglePlayPause()">노래</a>
-						<audio id="myAudio" autoplay>
+						<audio id="myAudio">
 						    <source src="${pageContext.request.contextPath}/resources/sound/mainSound.mp3" type="audio/mp3">
 						</audio>
 						<a href="${pageContext.request.contextPath}/note/receive/list" class="icon-arrow-left bi bi-envelope-open" data-info="쪽지">쪽지</a>
@@ -339,15 +339,15 @@
 							<div class="cbp-hrsub">
 								<div class="cbp-hrsub-inner">
 									<div>
-										<h4 class="tltle">첫 구매시 쿠폰 지급<hr class="my-hr1"></h4>
+										<h4 class="tltle">NEW 이벤트<hr class="my-hr1"></h4>
 										<ul>
 											<li>
 												<label class="checkbox-container">
 													<input type="button" onclick="location.href='${pageContext.request.contextPath}/event/progress/article?page=1&&eventNum=12'">
 												 	<div class="checkbox-button">
-														<img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" width="300px;" 
+														<img src="${pageContext.request.contextPath}/resources/images/eventsale_1.png" width="300px;" height="200px;"
 														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
-													 	<div class="hover-content">첫 구매 이벤트</div>
+													 	<div class="hover-content">신년맞이 이벤트</div>
 													</div>
 												</label>
 											</li>
@@ -355,15 +355,15 @@
 										
 									</div>
 									<div>
-										<h4 class="tltle">나만의 리뷰 이벤트<hr class="my-hr1"></h4>
+										<h4 class="tltle">기획전<hr class="my-hr1"></h4>
 										<ul>
 											<li>
 												<label class="checkbox-container">
 													<input type="button" onclick="location.href='${pageContext.request.contextPath}/event/progress/article?page=1&&eventNum=9'">
 												 	<div class="checkbox-button">
-														<img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" width="300px;" 
+														<img src="${pageContext.request.contextPath}/resources/images/eventsale_4.png" width="300px;" height="200px;"
 														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
-													 	<div class="hover-content">리뷰 이벤트</div>
+													 	<div class="hover-content">마음을 선물하는 방법</div>
 													</div>
 												</label>
 											</li>
