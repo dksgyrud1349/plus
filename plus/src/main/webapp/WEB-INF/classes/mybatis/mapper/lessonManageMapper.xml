@@ -8,7 +8,7 @@
 				INSTR(le.className, #{kwd}) &gt; 0
 			</when>
 			<when test="schType == 'regDate'">
-				TO_CHAR(le.regDate, 'YYYYMMDD') = #{kwd} OR TO_CHAR(le.regDate, 'YYYY-MM-DD') = #{kwd}
+				(TO_CHAR(le.regDate, 'YYYYMMDD') = #{kwd} OR TO_CHAR(le.regDate, 'YYYY-MM-DD') = #{kwd})
 			</when>
 			<otherwise>
 				INSTR(${schType}, #{kwd}) &gt; 0
@@ -26,7 +26,7 @@
 				AND <include refid="where-list"/>
 			</if>
 		</where>
-		ORDER BY classNum ASC
+		ORDER BY approvalNum DESC
 		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
 	</select>
 	
