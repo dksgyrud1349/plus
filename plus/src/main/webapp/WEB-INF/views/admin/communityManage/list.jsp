@@ -111,7 +111,7 @@ function searchList() {
 										<select name="schType" class="form-select">
 											<option value="all" ${schType=="all"?"selected":""}>제목+내용</option>
 											<option value="userName" ${schType=="userName"?"selected":""}>작성자</option>
-											<option value="reg_date" ${schType=="regDate"?"selected":""}>등록일</option>
+											<option value="regDate" ${schType=="regDate"?"selected":""}>등록일</option>
 											<option value="subject" ${schType=="subject"?"selected":""}>제목</option>
 											<option value="content" ${schType=="content"?"selected":""}>내용</option>
 										</select>
@@ -128,7 +128,7 @@ function searchList() {
 						</tr>
 					</table>
 					
-					<div class="page-navigation dataCount">
+					<div class="page-navigation dataCount text-center mb-3">
 						${dataCount == 0 ? "등록된 이벤트가 없습니다." : paging}
 					</div>
 				</div>
