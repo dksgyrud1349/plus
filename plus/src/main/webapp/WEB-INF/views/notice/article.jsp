@@ -13,11 +13,11 @@
 				<div class="body-main">
 				
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-		    			<i class="fas fa-clipboard-list" ></i> 공지사항
+		    			<i class="bi bi-pin-angle-fill"></i> 공지사항
 		    		</h3>
 				
-				<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
-				    <table class="table">
+				<div id="tab-content" style="padding: 5px; clear: both;">
+				    <table class="table mb-0">
 						<tr>
 							<td align="left" width="50%">
 								&nbsp;
@@ -33,19 +33,19 @@
 						<table class="table board-list">
 							<thead>
 								<tr>
-									<td colspan="2" align="center">
+									<td class="text-center align-middle p-3 fs-5 fw-bold" colspan="2">
 									    ${dto.subject}
 									</td>
 								</tr>
 							</thead>
 							
 							<tbody>
-								<tr>
-									<td width="50%">
+								<tr class="fs-5">
+									<td width="50%" class="p-2">
 										이름 : 관리자
 									</td>
-									<td align="right">
-										${dto.regDate} | 조회 ${dto.hitCount}
+									<td align="right" class="p-2">
+										${dto.regDate} <i class="bi bi-three-dots-vertical"></i> 조회 ${dto.hitCount}
 									</td>
 								</tr>
 								

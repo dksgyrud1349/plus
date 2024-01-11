@@ -28,7 +28,7 @@ function searchList() {
 				<div class="body-main">
 				
 				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-	    			<i class="fas fa-clipboard-list"></i> 공지사항 관리
+	    			<i class="bi bi-pin-angle-fill"></i> 공지사항 관리
 	    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/noticeManage/list';" title="새로고침" style="float:right;">
 		            	<i class="fa-solid fa-arrow-rotate-left"></i>
 		            </button>

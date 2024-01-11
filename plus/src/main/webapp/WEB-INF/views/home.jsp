@@ -43,8 +43,52 @@ for (let i = 0; i < reviewBars.length; i++) {
 	white-space: nowrap; 		
   	word-break:break-all;
 }
+.cbt{
+	font-size: 30px;
+	font-weight: 700;
+	color: white;
+}
 .score-star .on { color: #89B6F5; }
 .score-star .off{ color: #EAEAEA; }
+
+.card-link2{
+	background-color: #7DEEBC;
+	border: 1px solid #7DEEBC;
+	border-radius:  25px;
+	padding: 10px 20px;
+	margin-left: 10px;
+	cursor: pointer;
+	float: right;
+	transition: transform 0.3s ease;
+	color: black;
+}
+
+.card-link2:hover{
+	transform: scale(1.1); 
+}
+.explainbtn{
+	color: #FFFFFF;
+}
+
+.button3{
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;	
+}
+.button3:hover{
+	background-color: white;
+	color: black;
+	font-weight: bold;
+	background-color: #5AD18F;
+}
+.button3:focus{
+	font-weight: bold;
+	background-color: #288C28;
+}
 </style>
 
 	<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -55,13 +99,13 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</div>
 		<div class="carousel-inner">
 		  <div class="carousel-item active" data-bs-interval="10000">
-			<img src="${pageContext.request.contextPath}/resources/images/newyearevent.png" class="d-block w-100" alt="Slide 1">
+			<img src="${pageContext.request.contextPath}/resources/images/eventsale_2.png" class="d-block w-100" alt="Slide 1">
 		  </div>
 		  <div class="carousel-item" data-bs-interval="2000">
 			<img src="${pageContext.request.contextPath}/resources/images/keyimage2.jpg" class="d-block w-100" alt="Slide 2">
 		  </div>
 		  <div class="carousel-item">
-			<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="d-block w-100" alt="Slide 3">
+			<img src="${pageContext.request.contextPath}/resources/images/eventsale_1.png" class="d-block w-100" alt="Slide 3">
 		  </div>
 		</div>
 		<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
@@ -74,32 +118,32 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</button>
 	  </div>
 
-	  <div class="row" style="margin: 3% auto;">
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/couple.jpg'); background-size: cover;">
-  			<p class="cbtn_1">반려동물</p>
+	   <div class="row" style="margin: 3% auto;">
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/girl_dog.jpg'); background-size: cover;">
+  			<p class="cbt">반려동물</p>
 		</button>
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/pottery.jpg'); background-size: cover;">
-			<p class="cbtn_1">뷰티</p>
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/makeup.jpg'); background-size: cover;">
+			<p class="cbt">뷰티</p>
 		</button>
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/handmade.jpg'); background-size: cover;">
-			<p class="cbtn_1">스포츠</p>
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/ground.jpg'); background-size: cover;">
+			<p class="cbt">스포츠</p>
 		</button>
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/exercise.jpg'); background-size: cover;">
-			<p class="cbtn_1">음악</p>
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/mic.jpg'); background-size: cover;">
+			<p class="cbt">음악</p>
 		</button>
 	  </div>
 	  <div class="row" style="margin: 3% auto;">
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/couple.jpg'); background-size: cover;">
-  			<p class="cbtn_1">쿠킹</p>
-		</button>
 		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/handmade.jpg'); background-size: cover;">
-			<p class="cbtn_1">핸드 메이드</p>
+  			<p class="cbt">쿠킹</p>
 		</button>
 		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/pottery.jpg'); background-size: cover;">
-			<p class="cbtn_1">플라워가드닝</p>
+			<p class="cbt">핸드 메이드</p>
 		</button>
-		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/exercise.jpg'); background-size: cover;">
-			<p class="cbtn_1">드로잉</p>
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/plant.jpg'); background-size: cover;">
+			<p class="cbt">플라워가드닝</p>
+		</button>
+		<button type="button" class="btn btn-light col cbtn" style="background: url('${pageContext.request.contextPath}/resources/images/art.jpg'); background-size: cover;">
+			<p class="cbt">드로잉</p>
 		</button>
 	  </div>
 	
@@ -131,7 +175,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 				  <li class="list-group-item">기간 : ${clist.startDate} ~ ${clist.endDate}</li>
 				</ul>
 				<div class="card-footer text-center">
-					<button type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/detail/${clist.classNum}';" class="btn btn-success w-100" style="border-radius:25px;">예약하기</button>
+					<button type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/detail/${clist.classNum}';" class="btn btn-success w-100 card-link2 mb-2 button3 btn-2" style="border-radius:25px;">예약하기</button>
 				</div>
 		 </div>
 		</c:forEach>

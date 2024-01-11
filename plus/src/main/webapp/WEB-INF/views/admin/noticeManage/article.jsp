@@ -41,7 +41,7 @@
 					<div class="card mb-5 w-80 " style="margin:0 auto">
 					    <div class="card-header text-center">
 					    	<h3>
-					    		<i class="fas fa-clipboard-list"></i> 공지사항 관리
+					    		<i class="bi bi-pin-angle-fill"></i> 공지사항 관리
 					    	</h3>
 						</div>
 						<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">

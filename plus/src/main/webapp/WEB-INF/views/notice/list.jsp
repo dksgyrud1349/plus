@@ -7,6 +7,12 @@
 	height:60px;
 	line-height: 60px;
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 
 <script type="text/javascript">
@@ -22,9 +28,9 @@ function searchList() {
 			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
 				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-	    			<i class="fas fa-clipboard-list"  ></i> 공지사항
+	    			<i class="bi bi-pin-angle-fill"></i> 공지사항
 	    			
-	    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/notice/list';" title="새로고침" style="float:right;">
+	    			<button type="button" class="btn btn-outline-success rere" onclick="location.href='${pageContext.request.contextPath}/notice/list';" title="새로고침" style="float:right;">
 		            	<i class="fa-solid fa-arrow-rotate-left"></i>
 		            </button>
 	    		</h3>

@@ -136,7 +136,7 @@ $(function() {
 								<button type="button" class="btn btnDelete border border-1.5 border-black px-2 py-1" title="삭제"><i class="bi bi-trash3-fill"></i></button>
 							</td>
 							<td align="right">
-								<button type="button" class="btn btn-outline-success write" onclick="javascript:location.href='${pageContext.request.contextPath}/note/write';">쪽지 쓰기&nbsp;<i class="bi bi-send"></i></button>
+								<button type="button" class="btn btn-outline-success write" onclick="javascript:location.href='${pageContext.request.contextPath}/note/write';">쪽지 쓰기&nbsp;<i class="bi bi-pencil"></i></button>
 							</td>
 						</tr>
 					</table>

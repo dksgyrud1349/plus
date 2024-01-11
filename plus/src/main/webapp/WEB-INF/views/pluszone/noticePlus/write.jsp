@@ -39,7 +39,7 @@
 				<div class="body-main">
 				
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-	                	<i class="fas fa-clipboard-list"></i> 공지사항 관리
+	                	<i class="bi bi-pin-angle-fill"></i> 공지사항 관리
 		            </h3>
 				
 				<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
