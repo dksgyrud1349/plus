@@ -21,6 +21,34 @@ public class BookingList {
 	private String mode;				// state 모드
 	
 	private int rnum;					// 쿼리에서 차순 정리
+	
+	private String classDate;           // 수업 일자
+	private int memberIdx;
+	private long detailNum;
+	
+	public int getMemberIdx() {
+		return memberIdx;
+	}
+
+	public void setMemberIdx(int memberIdx) {
+		this.memberIdx = memberIdx;
+	}
+
+	public long getDetailNum() {
+		return detailNum;
+	}
+
+	public void setDetailNum(long detailNum) {
+		this.detailNum = detailNum;
+	}
+
+	public String getClassDate() {
+		return classDate;
+	}
+
+	public void setClassDate(String classDate) {
+		this.classDate = classDate;
+	}
 
 	public String getUserId() {
 		return userId;

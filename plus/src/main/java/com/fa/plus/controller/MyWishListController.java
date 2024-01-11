@@ -78,7 +78,7 @@ public class MyWishListController {
 			wl.setUserLessonLiked(userLessonLiked);
 		}
 		
-		String listUrl = cp + "/wishList/myWishList";
+		String listUrl = cp + "/myPage/wishList/mylist";
 		String paging = myUtil.paging(current_page, total_page, listUrl);
 		
 		String name = info.getUserName();

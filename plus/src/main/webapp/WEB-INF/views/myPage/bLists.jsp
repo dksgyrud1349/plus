@@ -124,7 +124,8 @@
 	cursor: pointer;
 }
 </style>
-<form>
+
+<form name="searchForm" method="get" action="${pageContext.request.contextPath}/myPage/booking/list">
 	<div class="bookingTotal">
 		<div class="bookingSubject">
 			<div>
@@ -133,23 +134,19 @@
 		</div>
 
 		<div class="bookingSearch">
-			<select id="changeDate" class="form-select selectDesign"
-				onchange="changeList();">
+			<select id="changeDate" name="changeDate" class="form-select selectDesign" onchange="changeList();">
 				<option value="all">전체</option>
 				<option value="oneWeek">1주일</option>
-				<option value="onetMonth">1개월</option>
+				<option value="oneMonth">1개월</option>
 				<option value="ThreeMonth">3개월</option>
 				<option value="sixMonth">6개월</option>
 				<option value="oneYear">1년</option>
 				<option value="etc">직접입력</option>
-			</select> <input type="date" name="startDate" id="startDate"
-				class="form-control dateDesgin" value="startDate" placeholder="시작일자">
-			<a
-				style="font-size: 15px; float: left; margin-top: 45px; margin-left: 10px;">~</a>
-			<input type="date" name="endDate" id="endDate"
-				class="form-control dateDesgin" value="endDate" placeholder="마지막일자">
-			<button type="button" class="btn btnSearch">
-				검색 <i class="bi bi-search"></i>
+			</select> 
+			<input type="date" name="startDate" id="startDate" class="form-control dateDesgin" value="startDate" placeholder="시작일자">
+			<a style="font-size: 15px; float: left; margin-top: 45px; margin-left: 10px;">~</a>
+			<input type="date" name="endDate" id="endDate" class="form-control dateDesgin" value="endDate" placeholder="마지막일자">
+			<button type="button" class="btn btnSearch" onclick="search();"> 검색 <i class="bi bi-search"></i>
 			</button>
 		</div>
 		<table class="table tableTotal">
@@ -165,13 +162,12 @@
 			</thead>
 			<tbody>
 				<c:forEach var="dto" items="${rtnList}" varStatus="status">
-					<tr class="bookingDetailList" data-orderNum="${dto.orderNum}"
-						data-classNum="${dto.classNum}">
-						<th style="padding-left: 30px;">${dto.rnum}</th>
+					<tr class="bookingDetailList" data-orderNum="${dto.orderNum}" data-classNum="${dto.classNum}">
+						<th style="padding-left: 30px;">${dataCount - (page-1) * size - status.index}</th>
 						<td>${dto.className}</td>
-						<td>${dto.puserName}</td>
+						<td>${dto.userName}</td>
 						<td>${dto.addr1},${dto.addr2}</td>
-						<td style="padding-left: 10px;">${dto.mode}</td>
+						<td style="padding-left: 10px;">${dto.state == 0 ? "예약대기" : dto.state == 1 ? "예약확정" : "환불"}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -313,6 +309,12 @@
 
 
 <script type="text/javascript">
+
+function search(){
+	const f = document.searchForm;
+	f.submit();
+}
+
 function ajaxFun(url, method, formData, dataType, fn, file = false) {
 	const settings = {
 			type: method, 

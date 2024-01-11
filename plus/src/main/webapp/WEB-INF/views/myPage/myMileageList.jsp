@@ -75,7 +75,8 @@
 									</c:forEach>
 								</tbody>
 							</table>
-
+							
+<!--
 							<table class="table">
 								<tr>
 									<td align="center">
@@ -98,6 +99,7 @@
 									<td align="right" width="120"></td>
 								</tr>
 							</table>
+ -->
 
 							<div class="modal fade" id="MileageDetailModal" tabindex="-2"
 								aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -164,7 +166,7 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 		$(".MileageDetail").click(function(){
 			
 			let mNum = $(this).find("input[name='mNum']").val();
-			let url = '${pageContext.request.contextPath}//myPage/mileage/mileageDetail';
+			let url = '${pageContext.request.contextPath}/myPage/mileage/mileageDetail';
 			let query = 'mNum=' + mNum;
 			
 			const fn = function(data){

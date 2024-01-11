@@ -58,4 +58,73 @@
 		JOIN orderDetail od ON od.orderNum = o.orderNum
 		WHERE m1.userId = #{userId} AND od.orderNum = #{orderNum}
 	</select>
+	
+	
+	<sql id="search-list">
+		<choose>
+			<when test="changeDate == 'all'">
+				(TO_CHAR(ld.classDate, 'YYYYMMDD') &gt;= TO_CHAR(SYSDATE, 'YYYYMMDD') 
+					OR TO_CHAR(ld.classDate, 'YYYYMMDD') &lt;= TO_CHAR(SYSDATE, 'YYYYMMDD'))
+			</when>
+			
+			<when test="changeDate == 'oneWeek'">
+				TO_CHAR(ld.classDate, 'YYYYMMDD') &gt;= TO_CHAR(SYSDATE, 'YYYYMMDD') 
+					AND TO_CHAR(ld.classDate, 'YYYYMMDD') &lt;= TO_CHAR(SYSDATE + INTERVAL '7' DAY, 'YYYYMMDD')
+			</when>
+			
+			<when test="changeDate == 'oneMonth'">
+				TO_CHAR(ld.classDate, 'YYYYMMDD') &gt;= TO_CHAR(SYSDATE, 'YYYYMMDD') 
+					AND TO_CHAR(ld.classDate, 'YYYYMMDD') &lt;= TO_CHAR(SYSDATE + INTERVAL '1' MONTH, 'YYYYMMDD')				
+			</when>
+			<when test="changeDate == 'ThreeMonth'">
+				TO_CHAR(ld.classDate, 'YYYYMMDD') &gt;= TO_CHAR(SYSDATE, 'YYYYMMDD') 
+					AND TO_CHAR(ld.classDate, 'YYYYMMDD') &lt;= TO_CHAR(SYSDATE + INTERVAL '3' MONTH, 'YYYYMMDD')
+			</when>
+			<when test="changeDate == 'sixMonth'">
+				TO_CHAR(ld.classDate, 'YYYYMMDD') &gt;= TO_CHAR(SYSDATE, 'YYYYMMDD') 
+					AND TO_CHAR(ld.classDate, 'YYYYMMDD') &lt;= TO_CHAR(SYSDATE + INTERVAL '6' MONTH, 'YYYYMMDD')
+			</when>
+			<when test="changeDate == 'oneYear'">
+				TO_CHAR(ld.classDate, 'YYYYMMDD') &gt;= TO_CHAR(SYSDATE, 'YYYYMMDD') 
+					AND TO_CHAR(ld.classDate, 'YYYYMMDD') &lt;= TO_CHAR(SYSDATE + INTERVAL '1' YEAR, 'YYYYMMDD')
+			</when>
+			<when test="changeDate == 'etc'">
+				TO_CHAR(ld.classDate, 'YYYYMMDD') &gt;= #{startDate} AND TO_CHAR(ld.classDate, 'YYYYMMDD') &lt;= #{endDate}
+			</when>
+		</choose>
+	</sql>
+	
+	<select id="list" parameterType="map" resultType="com.fa.plus.domain.BookingList">
+		SELECT le.classNum, le.className, le.addr1, le.addr2, le.memberIdx, ld.detailNum, 
+			TO_CHAR(ld.classDate, 'YYYY-MM-DD HH24:MI:SS') classDate, os.orderNum, od.state, m1.userName
+		FROM lesson le
+		JOIN lessonDetail ld ON le.classNum = ld.classNum
+		JOIN orders os ON ld.detailNum = os.detailNum
+		JOIN orderDetail od ON os.orderNum = od.orderNum
+		JOIN member m ON le.memberIdx = m.memberIdx
+		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
+		<where>
+			os.memberIdx = #{memberIdx}
+			<if test="changeDate != null">
+				AND <include refid="search-list"/>
+			</if>
+		</where>
+		ORDER BY orderNum DESC
+	</select>
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM lesson le
+		JOIN lessonDetail ld ON le.classNum = ld.classNum
+		JOIN orders os ON ld.detailNum = os.detailNum
+		JOIN orderDetail od ON os.orderNum = od.orderNum
+		JOIN member m ON le.memberIdx = m.memberIdx
+		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
+		<where>
+			os.memberIdx = #{memberIdx}
+			<if test="changeDate != null">
+				AND <include refid="search-list"/>
+			</if>
+		</where>
+	</select>
 </mapper>

@@ -29,7 +29,11 @@ public class BookingListController {
 	@RequestMapping("list")
 	public String list(
 				  HttpSession session
-				, Model model) throws Exception{
+				, Model model
+				, @RequestParam(defaultValue = "all") String changeDate
+				, @RequestParam(defaultValue = "") String startDate
+				, @RequestParam(defaultValue = "") String endDate) throws Exception{
+		/*
 		List<BookingList> list = new ArrayList<BookingList>();
 		List<BookingList> rtnList = new ArrayList<BookingList>();
 		BookingList paramDto = new BookingList();
@@ -69,6 +73,38 @@ public class BookingListController {
 		}
 		
 		model.addAttribute("rtnList", rtnList);
+		
+		return ".myPage.bLists";
+		*/
+		
+		SessionInfo info = (SessionInfo)session.getAttribute("member");
+		
+		if(info == null) {
+			return "redirect:/member/login";
+		}
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		int dataCount = 0;
+		int size = 10;
+		int page = 1;
+		try {
+			map.put("memberIdx", info.getMemberIdx());
+			map.put("changeDate", changeDate);
+			map.put("startDate", startDate.replaceAll("-", ""));
+			map.put("endDate", endDate.replaceAll("-", ""));
+			
+			dataCount = service.dataCount(map);
+			
+			List<BookingList> rtnList = service.list(map);
+			
+			model.addAttribute("rtnList", rtnList);
+			model.addAttribute("dataCount", dataCount);
+			model.addAttribute("page", page);
+			model.addAttribute("size", size);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return ".myPage.bLists";
 	}

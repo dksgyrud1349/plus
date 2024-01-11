@@ -76,7 +76,7 @@ public class MileageListController {
 			totalMileage = dto.getTotalMileage();
 		}
 		
-		String listUrl = cp + "/mileage/myMileageList";
+		String listUrl = cp + "/myPage/mileage/list";
 		String query = "";
 		
 		if(kwd.length() != 0) {
@@ -84,7 +84,7 @@ public class MileageListController {
 		}
 		
 		if(query.length() != 0) {
-			listUrl = cp + "/mileage/myMileageList?" + query;
+			listUrl = cp + "/myPage/mileage/list?" + query;
 		}
 		
 		String paging = myUtil.paging(current_page, total_page, listUrl);
