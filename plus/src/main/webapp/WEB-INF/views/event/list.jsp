@@ -28,6 +28,13 @@
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   transform: translateY(-10px);
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
+
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
@@ -56,7 +63,7 @@ function searchList() {
 				<div class="body-main">
 				<h3>
 	    			<i class="bi bi-calendar-event"></i> 이벤트 
-	    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list';" title="새로고침" style="float:right;">
+	    			<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list';" title="새로고침" style="float:right;">
 		            	<i class="fa-solid fa-arrow-rotate-left"></i>
 		            </button>
 	    		</h3>

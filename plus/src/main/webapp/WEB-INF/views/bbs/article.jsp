@@ -11,6 +11,13 @@ img {
         max-height: 100%;
         object-fit: cover;
     }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
+
 </style>
 
 <c:if test="${sessionScope.member.userId==dto.userId||sessionScope.member.membership>90}">
@@ -108,7 +115,7 @@ img {
 								    	</c:choose>
 									</td>
 									<td class="text-end">
-										<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/bbs/list?${query}';">리스트</button>
+										<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/bbs/list?${query}';">리스트</button>
 									</td>
 								</tr>
 							</table>
@@ -127,7 +134,7 @@ img {
 										</tr>
 										<tr>
 										   <td align='right'>
-										        <button type='button' class='btn btn-success btnSendReply'>댓글 등록</button>
+										        <button type='button' class='btn btn-success rere btnSendReply'>댓글 등록</button>
 										    </td>
 										 </tr>
 									</table>

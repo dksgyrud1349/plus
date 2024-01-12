@@ -30,7 +30,9 @@
 	height: 37px;
 	border-radius: 6px;
 }
-
+.chat{
+	color: #FF0000;
+}
 
 </style>
 
@@ -107,7 +109,7 @@
 					<div class="body-title">
 						<h3 class="font1"
 							style="border-top: 1px solid black; padding-top: 20px;">
-							<br><img width="60" height="60" src="https://img.icons8.com/officel/80/faq.png" alt="faq"/>&nbsp;자주하는 질문<br><br>
+							<br><i class="bi bi-wechat fa-2x chat"></i>&nbsp;자주하는 질문<br><br>
 						</h3>
 					</div>
 					<div class="body-main main-color">

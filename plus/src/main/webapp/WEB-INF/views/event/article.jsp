@@ -26,6 +26,13 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -162,7 +169,7 @@ $(function(){
 					<tr>
 						<td width="50%">&nbsp;</td>
 						<td class="text-end">
-							<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list?${query}';">리스트</button>
+							<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/event/${category}/list?${query}';">리스트</button>
 						</td>
 					</tr>
 				</table>
@@ -181,7 +188,7 @@ $(function(){
 							</tr>
 							<tr>
 							   <td align='right'>
-							        <button type='button' class='btn btn-success btnSendReply'>댓글 등록</button>
+							        <button type='button' class='btn btn-success rere btnSendReply'>댓글 등록</button>
 							    </td>
 							 </tr>
 						</table>

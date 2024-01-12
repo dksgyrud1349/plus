@@ -3,6 +3,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
@@ -99,11 +105,11 @@ function deleteInquiryAd() {
 						<table class="table table-borderless mb-2">
 							<tr>
 								<td class="text-start">
-									<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/inquiryAd/update?inquiryNum=${dto.inquiryNum}&page=${page}';">수정</button>
-									<button type="button" class="btn btn-success" onclick="deleteInquiryAd();">삭제</button>
+									<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/inquiryAd/update?inquiryNum=${dto.inquiryNum}&page=${page}';">수정</button>
+									<button type="button" class="btn btn-success rere" onclick="deleteInquiryAd();">삭제</button>
 								</td>
 								<td class="text-end">
-									<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/inquiryAd/list?${query}';">리스트</button>
+									<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/inquiryAd/list?${query}';">리스트</button>
 								</td>
 							</tr>
 						</table>
