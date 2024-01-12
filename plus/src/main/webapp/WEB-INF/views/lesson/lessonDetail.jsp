@@ -435,7 +435,7 @@ function sendOk(mode) {
 
 							1. 강사 : ${dto.nickName}<br> 2. 상세주소 : ${dto.addr1}
 							${dto.addr2}<br> <br> 
-							<i class="bi bi-stars"></i> 예약하기를 눌러 <font class="impText">예약가능 시간</font>과 <font class="impText">안원수</font>를 확인해주세요.
+							<i class="bi bi-stars"></i> 예약하기를 눌러 <font class="impText">예약가능 시간</font>과 <font class="impText">인원수</font>를 확인해주세요.
 						</p>
 						<div>
 							<select name="classDay" id="classDay" class="selbox">
