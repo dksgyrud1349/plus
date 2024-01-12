@@ -343,7 +343,7 @@
 										<ul>
 											<li>
 												<label class="checkbox-container">
-													<input type="button" onclick="location.href='${pageContext.request.contextPath}/event/progress/article?page=1&&eventNum=12'">
+													<input type="button" onclick="location.href='${pageContext.request.contextPath}/event/progress/article?page=1&&eventNum=15'">
 												 	<div class="checkbox-button">
 														<img src="${pageContext.request.contextPath}/resources/images/eventsale_1.png" width="300px;" height="200px;"
 														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
@@ -359,7 +359,7 @@
 										<ul>
 											<li>
 												<label class="checkbox-container">
-													<input type="button" onclick="location.href='${pageContext.request.contextPath}/event/progress/article?page=1&&eventNum=9'">
+													<input type="button" onclick="location.href='${pageContext.request.contextPath}/event/progress/article?page=1&&eventNum=17'">
 												 	<div class="checkbox-button">
 														<img src="${pageContext.request.contextPath}/resources/images/eventsale_4.png" width="300px;" height="200px;"
 														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">

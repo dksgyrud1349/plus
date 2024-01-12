@@ -99,13 +99,19 @@ for (let i = 0; i < reviewBars.length; i++) {
 		</div>
 		<div class="carousel-inner">
 		  <div class="carousel-item active" data-bs-interval="10000">
-			<img src="${pageContext.request.contextPath}/resources/images/eventsale_2.png" class="d-block w-100" alt="Slide 1">
-		  </div>
+		    <a href="${pageContext.request.contextPath}/event/progress/article?page=1&&eventNum=15">
+		        <img src="${pageContext.request.contextPath}/resources/images/eventsale_2.png" class="d-block w-100" alt="Slide 1">
+		    </a>
+		</div>
 		  <div class="carousel-item" data-bs-interval="2000">
-			<img src="${pageContext.request.contextPath}/resources/images/eventsale_4.png" class="d-block w-100" alt="Slide 2">
+		  	<a href="${pageContext.request.contextPath}/event/progress/article?page=1&&eventNum=17">
+				<img src="${pageContext.request.contextPath}/resources/images/eventsale_4.png" class="d-block w-100" alt="Slide 2">
+		  	</a>
 		  </div>
 		  <div class="carousel-item">
-			<img src="${pageContext.request.contextPath}/resources/images/eventsale_3.png" class="d-block w-100" alt="Slide 3">
+		  	<a href="${pageContext.request.contextPath}/event/progress/article?page=1&&eventNum=16">
+				<img src="${pageContext.request.contextPath}/resources/images/eventsale_3.png" class="d-block w-100" alt="Slide 3">
+		  	</a>
 		  </div>
 		</div>
 		<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
