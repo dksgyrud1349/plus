@@ -21,7 +21,7 @@ import com.fa.plus.domain.SessionInfo;
 import com.fa.plus.pluszone.domain.InfoDetail;
 import com.fa.plus.pluszone.domain.NoticePlus;
 import com.fa.plus.pluszone.domain.PlusSchedule;
-import com.fa.plus.pluszone.service.BookingPlusService;
+import com.fa.plus.pluszone.service.BookingListPlusService;
 import com.fa.plus.pluszone.service.InfoDetailService;
 import com.fa.plus.pluszone.service.LessonPlusService;
 import com.fa.plus.pluszone.service.NoticePlusService;
@@ -35,8 +35,6 @@ public class MainPlusController {
 	@Autowired
 	private NoticePlusService noticeService;
 	@Autowired
-	private BookingPlusService bookingService;
-	@Autowired
 	private PlusScheduleService scheduleService;
 	@Autowired
 	private InfoDetailService infoService;
@@ -48,12 +46,13 @@ public class MainPlusController {
     private SalesStatusService saleStatusService;
 	@Autowired
 	private LessonPlusService lessonPlusService;
+	@Autowired
+	private BookingListPlusService bookingListPlusService;
 	
 	@RequestMapping(value="/pluszone", method=RequestMethod.GET)
 	public String method(HttpSession session,
 			Model model) throws Exception {
 		int noticeDataCount = 0;
-		int bookingDataCount = 0;
 		int plusInqDataCount = 0;
 		int lessonPlusCount = 0;
 		
@@ -78,20 +77,23 @@ public class MainPlusController {
 		map.put("kwd", "");
 		map.put("memberIdx", info.getMemberIdx());
 		
-		// 개설된 클래스 개수
-		bookingDataCount = bookingService.dataCount(map);
-		
 		// 문의내역 개수
 		plusInqDataCount = plusInqService.allInquiry(info.getMemberIdx());
 		
-		// 승인안된 클래스 개수
+		// 개설된 클래스 개수
 		lessonPlusCount = lessonPlusService.plusClassList(info.getMemberIdx());
+		
+		// 예약 건수
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("memberIdx", info.getMemberIdx());
+		map2.put("state", 0);
+		int bookCount = bookingListPlusService.bookingCount(map2);
 		
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("noticeDataCount", noticeDataCount);
-		model.addAttribute("bookingDataCount", bookingDataCount);
 		model.addAttribute("plusInqDataCount", plusInqDataCount);
 		model.addAttribute("lessonPlusCount", lessonPlusCount);
+		model.addAttribute("bookCount", bookCount);
 		//model.addAttribute("thisMonth", thisMonth);
 		
 		

@@ -192,11 +192,11 @@ $(function(){
                                     <div class="card-body">
                                         <h3 class="text-center">개설된 클래스</h3>
                                         <hr>
-                                        <h4 class="text-center">${bookingDataCount}개</h4>
+                                        <h4 class="text-center">${lessonPlusCount}개</h4>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between text-end">
                                         <div class="small text-white">
-                                        	<a href="${pageContext.request.contextPath}/pluszone/booking/lessonList" class="totaltitle">
+                                        	<a href="${pageContext.request.contextPath}/pluszone/lessonPlus/main" class="totaltitle">
                                         		전체보기
                                         	</a>
                                         <i class="fas fa-angle-right"></i></div>
@@ -207,13 +207,13 @@ $(function(){
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">
-                                        <h3 class="text-center">미승인 클래스</h3>
+                                        <h3 class="text-center">예약 건수</h3>
                                         <hr>
-                                        <h4 class="text-center">${lessonPlusCount}건 </h4>
+                                        <h4 class="text-center">${bookCount}건 </h4>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between text-end">
                                         <div class="small text-white">
-                                        <a href="${pageContext.request.contextPath}/pluszone/lessonPlus/main" class="totaltitle">
+                                        <a href="${pageContext.request.contextPath}/pluszone/bookingList/list" class="totaltitle">
                                         	전체보기 
                                         </a>
                                        <i class="fas fa-angle-right"></i></div>
