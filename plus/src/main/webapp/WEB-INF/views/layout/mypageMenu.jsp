@@ -71,7 +71,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light fixed-top" id="sideNav">
     <a class="navbar-brand" href="#page-top">
         <span class="d-none d-lg-block">
-            <img class="img-fluid img-profile mx-auto mb-1" src="${pageContext.request.contextPath}/resources/images/mypagePerson.png"/>
+            <img class="img-fluid img-profile mx-auto mb-1" src="${pageContext.request.contextPath}/resources/images/main/mypagePerson.png"/>
         </span>
     </a>
 

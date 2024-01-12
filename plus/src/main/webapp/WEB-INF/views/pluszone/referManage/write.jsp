@@ -7,7 +7,13 @@
 <style>
 	.delete-file { cursor: pointer; }
 	.delete-file:hover { color: #0d58ba; }
-</style>
+	.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+} 
+</style> 
 
 <script type="text/javascript">
     function check() {
@@ -111,8 +117,8 @@
 										<tr> 
 											<td align="center">
 												<button type="button" class="btn btn-dark" onclick="submitContents(this.form);">${mode=='update'?'수정완료':'등록하기'}</button>
-												<button type="reset" class="btn btn-success">다시입력</button>
-												<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/referManage/list';">
+												<button type="reset" class="btn btn-success rere">다시입력</button>
+												<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/referManage/list';">
 													${mode=='update'?'수정취소':'등록취소'}
 												</button>
 												<c:if test="${mode=='update'}">

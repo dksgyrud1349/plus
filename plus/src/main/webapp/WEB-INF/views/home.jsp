@@ -163,7 +163,7 @@ for (let i = 0; i < reviewBars.length; i++) {
 	
 	  <div class="mt-5">
 	    <a href="${pageContext.request.contextPath}/onedayplus/onedayplus">
-	        <img src="${pageContext.request.contextPath}/resources/images/baner_1.png" width="100%" height="250px" style="border-radius: 20px;">
+	        <img src="${pageContext.request.contextPath}/resources/images/main/baner_1.png" width="100%" height="250px" style="border-radius: 20px;">
 	    </a>
 	</div>
 		

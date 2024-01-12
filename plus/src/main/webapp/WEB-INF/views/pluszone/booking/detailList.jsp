@@ -3,6 +3,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+} 
 </style>
 
 <script type="text/javascript"
@@ -22,11 +28,11 @@
 				<div class="body-main">
 				
 					<h3 class="mb-3 p-2 text-center" style="border-bottom:3px solid black;">
-						<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/booking/lessonList';" title="뒤로가기" style="float: left;">
+						<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/booking/lessonList';" title="뒤로가기" style="float: left;">
 							<i class="bi bi-arrow-left"></i>
 						</button>
 						<i class="bi bi-app"></i> 클래스의 상세시간
-						<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/booking/detailList?classNum=${classNum}';" title="새로고침" style="float: right;">
+						<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/booking/detailList?classNum=${classNum}';" title="새로고침" style="float: right;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
 						</button>
 					</h3>

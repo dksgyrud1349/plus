@@ -4,7 +4,14 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tabs.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
-
+<style>
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none; 
+}
+</style>
 <script type="text/javascript">
 function ajaxFun(url, method, formData, dataType, fn, file = false) {
 	const settings = {
@@ -96,7 +103,7 @@ $(function(){
     				
     				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
                       	<i class="fa-solid fa-user-group"></i> 예약관리 
-	                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/booking/bookingOk?detailNum=${detailNum}';" style="float:right;">
+	                    <button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/booking/bookingOk?detailNum=${detailNum}';" style="float:right;">
 	                    	<i class="fa-solid fa-arrow-rotate-left"></i>
 	                    </button>
 	                </h3>

@@ -3,6 +3,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+} 
+
 </style>
 
 <script type="text/javascript"
@@ -118,13 +125,13 @@
 
 					<h3 class="mb-3 p-2" style="border-bottom: 3px solid black;">
 						<i class="bi bi-bag-plus"></i> 클래스 관리
-						<button type="button" class="btn btn-success"
+						<button type="button" class="btn btn-success rere"
 							onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/main';"
 							title="새로고침" style="float: right;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
 						</button>
 
-						<button type="button" class="btn btn-success me-3"
+						<button type="button" class="btn btn-success rere me-3"
 							onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/write';"
 							style="float: right;">등록하기</button>
 					</h3>
@@ -232,7 +239,7 @@
 														${schType=="lowPrice"?"selected":""}>낮은가격순</option>
 												</select> <input type="text" name="kwd" value="${kwd}"
 													class="form-control">
-												<button type="button" class="btn btn-success"
+												<button type="button" class="btn btn-success rere"
 													onclick="searchList()">
 													<i class="bi bi-search"></i>
 												</button>

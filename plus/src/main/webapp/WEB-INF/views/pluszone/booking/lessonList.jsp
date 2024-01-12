@@ -3,6 +3,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+} 
+
 </style>
 
 <script type="text/javascript"
@@ -23,7 +30,7 @@
 				
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 						<i class="bi bi-app"></i> 클래스 리스트
-						<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/booking/lessonList';" title="새로고침" style="float: right;">
+						<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/booking/lessonList';" title="새로고침" style="float: right;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
 						</button>
 					</h3>
