@@ -1,12 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<style>
-.totalSize{
-	margin-top: 70px;
-	margin-left: 380px;
-}
-</style>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
 <script type="text/javascript">
@@ -176,7 +171,11 @@ $(function(){
 	}
 });
 </script>
-<div class="container body-container totalSize">
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width:80%; margin:5% auto; ">
+				<div class="body-main">
     <div class="inner-page">
     
     	<div class="row g-1 mt-4 p-1">
@@ -235,3 +234,7 @@ $(function(){
 
     </div>
 </div>
+</div>
+</div>
+</div>
+</main>
