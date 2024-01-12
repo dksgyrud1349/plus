@@ -2,13 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
-.totalBox{
-	position: absolute;
-	top: 480px;
-	left: 55%;
-	width: 1200px;
-	height: 800px;
-}
+
 
 .nameTitle{
 	color: black;
@@ -128,12 +122,11 @@ $(function(){
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:5% auto; ">
-				<div class = "nameTitle">
+				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 					<i class="bi bi-chat-left-text-fill"></i>
 						리뷰 관리
-				</div>
+				</h3>
 				
-				<div class="translate-middle totalBox">
 					<div class="card text-center">
 					  <div class="card-header">
 					    <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -146,7 +139,7 @@ $(function(){
 					    </ul>
 					  </div>
 					  <div class="cart-text tab-content" id="myTabContent">
-						  <div class="row tab-pane fade tab-all show" id="all" role="tabpanel" aria-labelledby="all-tab" style="margin-left: 125px;">
+						  <div class="row tab-pane fade tab-all show" id="all" role="tabpanel" aria-labelledby="all-tab" style="margin-left: 80px;">
 						      <c:forEach var="dto" items="${list}" varStatus="status">
 							      <div class="col imgHoverEvent event5" style="float: left;">
 							          <div class="imgBox" style="margin-top: 20px;">
@@ -166,7 +159,7 @@ $(function(){
 						    	</c:forEach>
 						    </div>
 						    	
-						  <div class="row tab-pane fade tab-hide show" id="hide" role="tabpanel" aria-labelledby="hide-tab" style="margin-left: 125px;">
+						  <div class="row tab-pane fade tab-hide show" id="hide" role="tabpanel" aria-labelledby="hide-tab" style="margin-left: 80px;">
 						      <c:forEach var="dto" items="${listHide}" varStatus="status">
 							      <div class="col imgHoverEvent event5" style="float: left;">
 							          <div class="imgBox" style="margin-top: 20px;">

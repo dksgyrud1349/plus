@@ -3,13 +3,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-.body-container {
-	max-width: 800px;
-}
+
 </style>
 
-<div class="container">
-	<div class="body-container">	
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width:80%; margin:5% auto; ">
+				<div class="body-main">	
 
         <div class="row justify-content-md-center mt-5">
             <div class="col-md-8">
@@ -32,3 +33,6 @@
 
 	</div>
 </div>
+</div>
+</div>
+</main>
