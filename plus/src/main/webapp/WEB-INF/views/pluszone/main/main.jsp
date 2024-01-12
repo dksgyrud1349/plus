@@ -355,9 +355,9 @@ $(function(){
 	                                    <div style="margin-left: 10px; margin-top: 10px;">
 											<table class="table table-bordered table-hover text-center p-3">
 												<tr class="table-warning">
-											        <th style="width: 10%">번호</th>
-											        <th style="width: 20%" class="clist">클래스명</th>
-											        <th style="width: 30%" class="clist">제목</th>
+											        <th style="width: 20">번호</th>
+											        <th style="width: 30" class="clist">클래스명</th>
+											        <th style="width: 50" class="clist">제목</th>
 											    </tr>
 												<c:forEach var="reviewDto" items="${noticeList}" varStatus="status" begin="${status.index}" end="${status.index+2}">
 													<tr class="text-center" style="border-bottom: 1px solid gray;">
@@ -414,14 +414,12 @@ $(function(){
 	                                    <div style="margin-left: 10px; margin-top: 10px;">
 											<table class="table table-bordered table-hover text-center">
 												 <tr class="table-warning">
-													<th width="70">번호</th>
-													<th width="250" class="clist">클래스명</th>
-													<th class="clist">제목</th>
-													<th width="90">별점</th>
+													<th>클래스명</th>
+													<th>제목</th>
+													<th>별점</th>
 												</tr>
 												<c:forEach var="reviewDto" items="${reviewList}" varStatus="status" begin="${status.index}" end="${status.index+2}">
-													<tr class="text-center" style="border-bottom: 1px solid gray;">
-														<td>${status.count}</td>
+													<tr class="text-center">
 														<td class="clist">${reviewDto.className}</td>
 														<td class="clist">${reviewDto.reviewSubject}</td>
 														<td>${reviewDto.reviewScore}/5점</td>
