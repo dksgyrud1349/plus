@@ -25,7 +25,7 @@
 	
 	 <select id="listInquiryAd" parameterType="map" resultType="com.fa.plus.domain.InquiryAd">
 		SELECT inquiryNum, i.inquiryId, subject, m.userName,
-			   TO_CHAR(inquiryDate, 'YYYY-MM-DD') inquiryDate, reInquiryDate, reInquiryNum
+			   TO_CHAR(inquiryDate, 'YYYY-MM-DD') inquiryDate, reInquiryDate
 		FROM inquiryAd i
 		JOIN member1 m ON i.inquiryId=m.userId
 		<where>
@@ -52,7 +52,7 @@
 	
 	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.InquiryAd">
 		SELECT inquiryNum, i.inquiryId, m1.userName, subject, content, inquiryDate, 
-		i.reInquiryId, reContent, reInquiryDate, reInquiryNum
+		i.reInquiryId, reContent, reInquiryDate
 		FROM inquiryAd i
 		JOIN member1 m1 ON i.inquiryId=m1.userId
 		LEFT OUTER JOIN member1 m2 ON i.reInquiryId=m2.userId

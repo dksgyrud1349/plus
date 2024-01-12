@@ -109,6 +109,12 @@ i.fa{
 	text-decoration:none;
 	color:black;
 }
+.clist{
+  	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap; 		
+  	word-break:break-all;
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
 <script type="text/javascript">
@@ -174,15 +180,6 @@ $(function(){
 
         option && myChart.setOption(option);
     }
-});
-$(function(){
-	//enter => <br>
-	var text = document.getElementById("textarea").value;
-	text = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
-
-	//<br> => enter
-	var text = document.getElementById("textarea").value;
-	text = text.replaceAll("<br>", "\r\n");
 });
 </script>
 
@@ -322,10 +319,9 @@ $(function(){
 			                                    	onclick="location.href='${pageContext.request.contextPath}/pluszone/infoDetail/write';">세부정보수정</button>
 			                                </span>
 		                                </div>
-		                                <div>
-		                                	<span style="font-size: 15px; font-weight: 200; margin-left: 32px; font-weight: bold;">플러스 소개</span>
+		                                <div><span style="font-size: 15px; font-weight: 200; margin-left: 32px; font-weight: bold;">플러스 소개</span>
 		                                	<div style="width: 57%; border-top: 1px solid #cccccc; margin-left: 39%;">
-		                                		<textarea style="width: 100%; resize: none; margin-left: 5px;" readonly="readonly">${infoDto.content}</textarea>
+		                                		<span style="margin-left: 5px;">${infoDto.content}</span>
 		                                	</div>
                                      	</div>
                                      </c:if>
@@ -351,30 +347,46 @@ $(function(){
                                     공지사항 <a href="${pageContext.request.contextPath}/pluszone/noticePlus/list" class="memberall"> 자세히 보기 <span style="font-weight:bolder;">&gt;</span></a>
                                     </div>
                                     <div class="card-body" style="width: 100%; height: 250px;">
+                                    	<div style="margin-left: 10px; margin-top: 8px;">
+											<div style="font-size: 20px; font-weight: 800;">총 공지사항 개수 : <span style="color: blue; font-weight: bold;">${noticeDataCount}</span>개</div>
+											<span style="color: gray;">공지사항은 3개까지만 보여집니다.</span>
+                                    	</div>
                                     <c:if test="${not empty noticeList}">
-										<div class="communitybox buy-with-us-box">
-											<c:forEach var="dto" items="${noticeList}">
-												<ul>
-									                <li> 
-									                	<i class="fa fa-user circle"></i>
-									                    <h5 class="title">
-									                    	<a href="${pageContext.request.contextPath}/pluszone/noticePlus/article?page=1&num=${dto.num}">${dto.subject}</a> 
-														</h5>
-									                    <p>${dto.content} <font style="float:right;">${dto.regDate}</font> </p>
-									                </li>
-									            </ul> 
-											  </c:forEach>
-								           </div>
-								        </c:if>
-								        <c:if test="${empty noticeList}">
-								        	<div style="font-size: 20px; text-align: center; margin-top: 75px;">
-								        		<div style="margin-bottom: 5px; text-decoration: underline;">공지하신 게시글이 없습니다!</div>
-								        		공지사항 목록에서 게시글을 올려주세요<span>😊</span>
-								        	</div>
-								        </c:if>
+	                                    <div style="margin-left: 10px; margin-top: 10px;">
+											<table style="border-top: 1px solid gray;">
+												<tr class="text-center" style="background-color: #FFF3CD;">
+													<th width="70">번호</th>
+													<th width="250" class="clist" >클래스명</th>
+													<th class="clist">제목</th>
+													<th width="130">조회수</th>
+													<th width="200">날짜</th>
+												</tr>
+												<c:forEach var="reviewDto" items="${noticeList}" varStatus="status" begin="${status.index}" end="${status.index+2}">
+													<tr class="text-center" style="border-bottom: 1px solid gray;">
+														<td>${status.count}</td>
+														<td class="clist">${reviewDto.className}</td>
+														<td class="clist">${reviewDto.subject}</td>
+														<td>${reviewDto.hitCount}</td>
+														<td>${reviewDto.regDate}</td>
+													</tr>									
+												</c:forEach>
+											</table>
+										  </div>
+									  </c:if>
+									  <c:if test="${empty noticeList}">
+									  	<div style="font-size: 20px; text-align: center; margin-top: 75px;">
+							        		<div style="margin-bottom: 5px; text-decoration: underline;">공지하신 게시글이 없습니다!</div>
+							        		공지사항 목록에서 게시글을 올려주세요<span>😊</span>
+							        	</div>
+									  </c:if>                                	
                                     </div>
                                 </div>
                             </div>
+                            
+                            
+                           
+                        
+                        
                             <div class="col-xl-6" style="float: right;">
                                 <div class="card mb-4" >
                                     <div class="card-header">
@@ -405,18 +417,18 @@ $(function(){
                                     <c:if test="${not empty reviewList}">
 	                                    <div style="margin-left: 10px; margin-top: 10px;">
 											<table style="border-top: 1px solid gray;">
-												<tr style="background-color: #FFF3CD;">
+												<tr class="text-center" style="background-color: #FFF3CD;">
 													<th width="70">번호</th>
-													<th width="250">클래스명</th>
-													<th width="220">제목</th>
+													<th width="250" class="clist">클래스명</th>
+													<th class="clist">제목</th>
 													<th width="90">별점</th>
-													<th width="100">날짜</th>
+													<th width="200">날짜</th>
 												</tr>
 												<c:forEach var="reviewDto" items="${reviewList}" varStatus="status" begin="${status.index}" end="${status.index+2}">
-													<tr style="border-bottom: 1px solid gray;">
+													<tr class="text-center" style="border-bottom: 1px solid gray;">
 														<td>${status.count}</td>
-														<td>${reviewDto.className}</td>
-														<td>${reviewDto.reviewSubject}</td>
+														<td class="clist">${reviewDto.className}</td>
+														<td class="clist">${reviewDto.reviewSubject}</td>
 														<td>${reviewDto.reviewScore}/5점</td>
 														<td>${reviewDto.reviewDate}</td>
 													</tr>									
