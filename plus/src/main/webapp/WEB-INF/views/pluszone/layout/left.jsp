@@ -45,7 +45,7 @@
 	                            <div class="collapse" id="MemberLayout" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 	                                <nav class="sb-sidenav-menu-nested nav">
 	                                    <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/lessonPlus/main">클래스 관리</a>
-	                                    <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/booking/lessonList">예약 현황</a>
+	                                    <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/bookingList/list">예약 현황</a>
 	                                    <a class="nav-link" href="<c:url value='/pluszone/review/list'/>">리뷰</a>
 	                                    <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/plusInq/inqList">클래스 문의내역</a>
 	                                    <a class="nav-link" href="<c:url value='/pluszone/referManage/list'/>">자료실</a>

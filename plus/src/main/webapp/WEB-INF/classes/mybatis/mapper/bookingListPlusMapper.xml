@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.pluszone.mapper.BookingListPlusMapper">
+
+	<select id="bookingList" parameterType="map" resultType="com.fa.plus.pluszone.domain.BookingPlus">
+		SELECT m1.userName, TO_CHAR(m2.birth, 'YYYY-MM-DD') birth, m2.tel, le.className, od.orderNum, od.count AS orderCount, od.state, TO_CHAR(od.oDate, 'YYYY-MM-DD HH24:MI:SS') oDate
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+		JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+		JOIN lesson le ON ld.classNum = le.classNum
+		JOIN member m ON os.memberIdx = m.memberIdx
+		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
+		JOIN member2 m2 ON m1.userId = m2.userId
+		WHERE le.memberIdx = #{memberIdx} AND od.state = #{state}
+		ORDER BY orderNum ASC
+		OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<select id="bookingCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM orderDetail od
+		JOIN orders os ON od.orderNum = os.orderNum
+		JOIN lessonDetail ld ON os.detailNum = ld.detailNum
+		JOIN lesson le ON ld.classNum = le.classNum
+		JOIN member m ON os.memberIdx = m.memberIdx
+		JOIN member1 m1 ON m.memberIdx = m1.memberIdx
+		JOIN member2 m2 ON m1.userId = m2.userId
+		WHERE le.memberIdx = #{memberIdx} AND od.state = #{state}
+	</select>
+
+	<update id="updateState" parameterType="map">
+		UPDATE orderDetail SET state = #{state} WHERE orderNum = #{orderNum}
+	</update>
+	
+</mapper>
