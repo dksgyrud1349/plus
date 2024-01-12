@@ -173,7 +173,7 @@ $(function() {
 						<td>
 							<input type="checkbox" name="declarats" value="${dto.rNum}" style="margin-left: 15px;">
 						</td>			
-						<td class="userId">${dto.userId}(${dto.userName})</td>
+						<td class="userId">${dto.userName}</td>
 						<td class="className">${dto.className}</td>
 						<td class="rContent">${dto.rContent}</td>
 						<td class="reportDate">${dto.reportDate}</td>
@@ -202,7 +202,7 @@ $(function() {
 		<input type="hidden" name="page" value="${page}">
 	</form>	
 	
-	<div class="page-navigation" style="opacity: 0.7;">
+	<div class="page-navigation">
 		${dataCount==0?"등록된 게시물이 없습니다.":paging}
 	</div>
 	
