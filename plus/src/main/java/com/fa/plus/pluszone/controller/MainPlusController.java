@@ -82,7 +82,7 @@ public class MainPlusController {
 		bookingDataCount = bookingService.dataCount(map);
 		
 		// 문의내역 개수
-		plusInqDataCount = plusInqService.dataCount(map);
+		plusInqDataCount = plusInqService.allInquiry(info.getMemberIdx());
 		
 		// 승인안된 클래스 개수
 		lessonPlusCount = lessonPlusService.plusClassList(info.getMemberIdx());

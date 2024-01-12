@@ -30,4 +30,7 @@ public interface PlusInqMapper {
 	
 	// 답변 삭제
 	public void deleteAnswer(long inquiryNum) throws SQLException;
+	
+	// 문의 전체 개수
+	public int allInquiry(long memberIdx);
 }

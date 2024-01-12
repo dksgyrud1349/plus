@@ -78,4 +78,12 @@
 	<update id="deleteAnswer" parameterType="map">
 		UPDATE inquiry SET reSubject = NULL, reContent = NULL, reInquiryDate = NULL, reInquiryNum = 0, reInquiryId = NULL WHERE inquiryNum = #{inquiryNum}
 	</update>
+	
+	<!-- 사업자 페이지에서 활용 -->
+	<select id="allInquiry" parameterType="Long" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM inquiry iq
+		JOIN lesson le ON iq.classNum = le.classNum
+		WHERE le.memberIdx = #{memberIdx}
+	</select>
 </mapper>

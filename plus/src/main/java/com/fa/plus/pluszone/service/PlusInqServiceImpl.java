@@ -99,4 +99,14 @@ public class PlusInqServiceImpl implements PlusInqService{
 		}
 	}
 
+	@Override
+	public int allInquiry(long memberIdx) {
+		int dataCount = 0;
+		try {
+			dataCount = mapper.allInquiry(memberIdx);
+		} catch (Exception e) {
+		}
+		return dataCount;
+	}
+
 }

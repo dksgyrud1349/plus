@@ -19,4 +19,7 @@ public interface PlusInqService {
 	public void updateAnswer(Map<String, Object> map) throws Exception;
 	
 	public void deleteAnswer(long inquiryNum) throws Exception;
+	
+	// 문의 전체 개수
+	public int allInquiry(long memberIdx);
 }
