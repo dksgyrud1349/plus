@@ -25,4 +25,7 @@ public interface BookingListMapper {
 	//
 	public List<BookingList> list(Map<String, Object> map);
 	public int dataCount(Map<String, Object> map);
+	
+	// 회원의 예약 건수 구하기 (마이페이지에서 사용)
+	public int bookCount(long memberIdx);
 }

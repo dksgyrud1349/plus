@@ -80,4 +80,15 @@ public class BookingListServiceImpl implements BookingListService{
 		}
 		return result;
 	}
+
+	@Override
+	public int bookCount(long memberIdx) {
+		int result = 0;
+		try {
+			result = mapper.bookCount(memberIdx);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

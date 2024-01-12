@@ -127,4 +127,10 @@
 			</if>
 		</where>
 	</select>
+	
+	<select id="bookCount" parameterType="Long" resultType="Integer">
+		select COUNT(*)
+		FROM orders
+		WHERE memberIdx = #{memberIdx}
+	</select>
 </mapper>
