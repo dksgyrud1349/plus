@@ -98,15 +98,15 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<td colspan="2" class="bg-primary text-white fs-4 fw-medium">
+										<td colspan="2" class="text-white fs-4 fw-medium align-middle p-3 fw-bold" style="background: #32A4FF">
 											Q. ${dto.subject}</td>
 									</tr>
 									<tr>
-										<td>클래스 : ${dto.className}</td>
+										<td class="align-middle fs-5">클래스 : ${dto.className}</td>
 									</tr>
 									<tr>
-										<td width="50%">작성자 : ${dto.userName}</td>
-										<td align="right">문의일 : ${dto.inquiryDate}</td>
+										<td width="50%" class="align-middle fs-5">작성자 : ${dto.userName}</td>
+										<td align="right" class="align-middle fs-5">문의일 : ${dto.inquiryDate}</td>
 									</tr>
 									<tr>
 										<td colspan="2" valign="top" height="200"
@@ -116,12 +116,12 @@
 								<tbody>
 									<c:if test="${dto1.reInquiryNum == 1}">
 										<tr id="answer1">
-											<td colspan="2" class="bg-danger text-white fs-4 fw-medium">
+											<td colspan="2" class="text-white fs-4 fw-medium align-middle p-3 fw-bold" style="background: #FF4646">
 												A. ${dto1.reSubject}</td>
 										</tr>
 										<tr id="answer2">
-											<td width="50%">작성자 : ${dto1.nickName}</td>
-											<td align="right">답변일 : ${dto1.reInquiryDate}</td>
+											<td width="50%" class="align-middle fs-5">작성자 : ${dto1.nickName}</td>
+											<td align="right" class="align-middle fs-5">답변일 : ${dto1.reInquiryDate}</td>
 										</tr>
 										<tr id="answer3">
 											<td colspan="2" valign="top" height="200"
@@ -144,7 +144,7 @@
 								<table class="table table-borderless mb-2" id="answerInsertTable" style="display: none;">
 									<tbody>
 										<tr>
-											<td class="col-sm-2" scope="row" colspan="2">
+											<td class="col-sm-2 align-middle fs-5" scope="row" colspan="2">
 												제목 : 
 												<c:if test="${mode == 'write'}">
 													<input type="text" name="reSubject" class="form-control" style="width: 100%;">
@@ -157,7 +157,7 @@
 										</tr>
 										<tr>
 											<c:if test="${mode == 'write'}">
-												<td colspan="2">
+												<td class="col-sm-2 align-middle fs-5" colspan="2">
 													내용 : <textarea name="reContent" class="form-control"></textarea>
 												</td>
 											</c:if>

@@ -16,6 +16,10 @@
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
+a{
+	text-decoration:none;
+	color:black;
+}
 </style>
 <script type="text/javascript">
 	$(function() {
