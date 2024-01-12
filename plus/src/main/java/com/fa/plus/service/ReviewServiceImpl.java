@@ -207,4 +207,15 @@ public class ReviewServiceImpl implements ReviewService {
 		}
 		return list;
 	}
+
+	@Override
+	public int reviewCount(long memberIdx) {
+		int result = 0;
+		try {
+			result = mapper.reviewCount(memberIdx);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

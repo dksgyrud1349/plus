@@ -192,4 +192,10 @@
 		WHERE m2.memberIdx = #{memberIdx}
 		ORDER BY reviewDate DESC
 	</select>
+	
+	<select id="reviewCount" parameterType="Long" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM review
+		WHERE memberIdx = #{memberIdx}
+	</select>
 </mapper>

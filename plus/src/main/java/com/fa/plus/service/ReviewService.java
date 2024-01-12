@@ -24,4 +24,7 @@ public interface ReviewService {
 	
 	// 사업자 메인 페이지에서 offset, size 빼고 검색
 	public List<Review> classMainReviewList(long memberIdx);
+	
+	// 리뷰 개수 (마이페이지에서 사용)
+	public int reviewCount(long memberIdx);
 }
