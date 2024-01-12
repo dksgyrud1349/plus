@@ -28,12 +28,6 @@
   cursor: pointer;
 }
 
-.clist{
-  	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap; 		
-  	word-break:break-all;
-}
 </style>
 
 <script type="text/javascript">
@@ -179,7 +173,7 @@ $(function() {
 						<c:forEach var="dto" items="${wishList}" varStatus="status" begin="${status.index}" end="${status.index+4}">
 					  		<div class="itembox_bar">
 					  			<button class="btn btn-light w-100" style="height:80px;">${dto.className}</button>
-					  			<img src="${pageContext.request.contextPath}/uploads/lesson/${dto.firstPhoto}" width="100%;">
+					  			<img src="${pageContext.request.contextPath}/uploads/lesson/${dto.firstPhoto}" width="100%;" height="100%;">
 					  			<button class="btn btn-warning w-100 product-item" data-productNum="${dto.classNum}">예약하러가기</button>
 					  		</div>
 					  	</c:forEach>
