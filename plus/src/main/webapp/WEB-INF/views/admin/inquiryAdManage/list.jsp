@@ -7,6 +7,13 @@
 	height:60px;
 	line-height: 60px;
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -25,7 +32,7 @@ function searchList() {
 				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 				<i class="bi bi-question-diamond"></i> 1:1 문의 
 				
-				<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/inquiryAdManage/list';" title="새로고침" style="float:right;">
+				<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/inquiryAdManage/list';" title="새로고침" style="float:right;">
 					<i class="bi bi-arrow-counterclockwise"></i>
 				</button>
 			</h3>
@@ -82,7 +89,7 @@ function searchList() {
 									<option value="content" ${schType=="content"?"selected":""}>내용</option>
 								</select>
 								<input type="text" name="kwd" value="${kwd}" class="form-control">
-								<button type="button" class="btn btn-success" onclick="searchList()" style="float:right;"> <i class="bi bi-search"></i> </button>	
+								<button type="button" class="btn btn-success rere	" onclick="searchList()" style="float:right;"> <i class="bi bi-search"></i> </button>	
 							</div>
 						</form>
 					</td>

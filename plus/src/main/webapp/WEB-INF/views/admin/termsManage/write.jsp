@@ -3,7 +3,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
+<style>
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 
+</style>
 <script type="text/javascript">
 function sendOk() {
     const f = document.termsForm;
@@ -58,8 +66,8 @@ function sendOk() {
 				<tr>
 					<td align="center">
 						<button type="button" class="btn btn-dark" onclick="sendOk();">${mode=='update'?'수정완료':'등록하기'}</button>
-						<button type="reset" class="btn">다시입력</button>
-						<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/admin/termsManage/list?page=${page}';">${mode=='update'?'수정취소':'등록취소'}</button>
+						<button type="reset" class="btn btn-success rere">다시입력</button>
+						<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/termsManage/list?page=${page}';">${mode=='update'?'수정취소':'등록취소'}</button>
 						<c:if test="${mode=='update'}">
 							<input type="hidden" name="num" value="${dto.num}">
 							<input type="hidden" name="page" value="${page}">

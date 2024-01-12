@@ -5,7 +5,12 @@
 <style type="text/css">
 
 .board-article img { max-width: 650px; }
-
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 
 <c:if test="${sessionScope.member.membership>90}">
@@ -87,7 +92,7 @@
 								<td width="50%">
 									<c:choose>
 							    		<c:when test="${sessionScope.member.membership>90}">
-							    			<button type="button" class="btn btn-success" onclick="deleteBoard();">삭제</button>
+							    			<button type="button" class="btn btn-success rere" onclick="deleteBoard();">삭제</button>
 							    		</c:when>
 							    		<c:otherwise>
 							    			<button type="button" class="btn btn-light" disabled>삭제</button>
@@ -95,7 +100,7 @@
 							    	</c:choose>
 								</td>
 								<td class="text-end">
-									<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/communityManage/list?${query}';">리스트</button>
+									<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/communityManage/list?${query}';">리스트</button>
 								</td>
 							</tr>
 						</table>

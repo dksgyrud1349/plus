@@ -31,6 +31,12 @@ $(function(){
 a{
 	text-decoration:none;
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
@@ -41,10 +47,10 @@ a{
 				
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 	                     <i class="fa-regular fa-calendar"></i> 이벤트 관리 
-	                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/list';" title="새로고침" style="float:right;">
+	                    <button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/list';" title="새로고침" style="float:right;">
 	                    	<i class="fa-solid fa-arrow-rotate-left"></i>
 	                    </button>
-	                    <button type="button" class="btn btn-success me-3" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/write';" style="float:right;">이벤트 등록</button>
+	                    <button type="button" class="btn btn-success rere me-3" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/write';" style="float:right;">이벤트 등록</button>
 	                </h3>
 				
 					<div>

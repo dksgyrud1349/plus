@@ -3,6 +3,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
@@ -110,14 +116,14 @@ function sendReContentAd() {
 					<table class="table table-borderless mb-2">
 						<tr>
 							<td width="50%" align="left">
-								<button type="button" class="btn btn-success" onclick="deleteInquiryAd('${dto.inquiryNum}');">질문삭제</button>
+								<button type="button" class="btn btn-success rere" onclick="deleteInquiryAd('${dto.inquiryNum}');">질문삭제</button>
 								<c:if test="${not empty dto.reContent}">
 									<button type="button" class="btn btn-success" onclick="deleteReContentAd('${dto.inquiryNum}')">답변삭제</button>
 								</c:if>
 							</td>
 							
 							<td align="right">
-								<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/inquiryAdManage/list?${query}';">리스트</button>
+								<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/inquiryAdManage/list?${query}';">리스트</button>
 							</td>
 						</tr>
 					</table>
@@ -137,7 +143,7 @@ function sendReContentAd() {
 									</tr>
 									<tr>
 										<td align="right">
-											<button type="button" class="btn btn-success" onclick="sendReContentAd()">답변 등록</button>
+											<button type="button" class="btn btn-success rere" onclick="sendReContentAd()">답변 등록</button>
 											<input type="hidden" name="inquiryNum" value="${dto.inquiryNum}">
 											<input type="hidden" name="page" value="${page}">
 											<input type="hidden" name="schType" value="${schType}">

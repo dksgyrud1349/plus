@@ -13,6 +13,12 @@
 	height:60px;
 	line-height: 60px;
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 
 </style>
 
@@ -30,10 +36,10 @@ function searchList() {
 				
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 		    			<i class="fas fa-clipboard-list"></i> 서비스 이용약관
-		    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/termsManage/list';" title="새로고침"  style="float:right;">
+		    			<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/termsManage/list';" title="새로고침"  style="float:right;">
 			            	<i class="fa-solid fa-arrow-rotate-left"></i>
 			            </button>
-			            <button type="button" class="btn btn-success me-3" onclick="location.href='${pageContext.request.contextPath}/admin/termsManage/write';" style="float:right;">글올리기</button>
+			            <button type="button" class="btn btn-success rere me-3" onclick="location.href='${pageContext.request.contextPath}/admin/termsManage/write';" style="float:right;">글올리기</button>
 		    		</h3>
 		    			
 		    	<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
@@ -80,7 +86,7 @@ function searchList() {
 													<option value="content" ${schType=="content"?"selected":""}>내용</option>
 												</select>
 												<input type="text" name="kwd" value="${kwd}" class="form-control">
-												<button type="button" class="btn btn-success" onclick="searchList()">검색</button>
+												<button type="button" class="btn btn-success rere" onclick="searchList()">검색</button>
 											</div>
 										</form>
 									</td>

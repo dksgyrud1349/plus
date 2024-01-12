@@ -4,6 +4,12 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
 <style type="text/css">
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 
 
 .table-article img { max-width: 650px; }
@@ -83,12 +89,12 @@
 							<table class="table">
 								<tr>
 									<td width="50%" align="left">
-								    	<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/termsManage/update?num=${dto.num}&page=${page}';">수정</button>
-						    			<button type="button" class="btn btn-success" onclick="deleteOk();">삭제</button>
+								    	<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/termsManage/update?num=${dto.num}&page=${page}';">수정</button>
+						    			<button type="button" class="btn btn-success rere" onclick="deleteOk();">삭제</button>
 									</td>
 								
 									<td align="right">
-										<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/termsManage/list?${query}';">리스트</button>
+										<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/termsManage/list?${query}';">리스트</button>
 									</td>
 								</tr>
 							</table>

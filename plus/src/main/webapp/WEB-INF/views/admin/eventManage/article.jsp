@@ -30,6 +30,12 @@ $(function(){
 img{
 	width:80%;
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
@@ -165,12 +171,12 @@ img{
 								<table class="table">
 									<tr>
 										<td width="50%" align="left">
-								    		<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/update?eventNum=${dto.eventNum}&page=${page}';">수정</button>
-							    			<button type="button" class="btn btn-success" onclick="deleteOk();">삭제</button>
+								    		<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/update?eventNum=${dto.eventNum}&page=${page}';">수정</button>
+							    			<button type="button" class="btn btn-success rere" onclick="deleteOk();">삭제</button>
 										</td>
 						
 										<td align="right">
-											<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/list?${query}';">리스트</button>
+											<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/eventManage/${category}/list?${query}';">리스트</button>
 										</td>
 									</tr>
 								</table>

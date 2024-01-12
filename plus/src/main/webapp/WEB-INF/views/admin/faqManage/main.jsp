@@ -70,6 +70,12 @@
 	font-weight: 600;
 	background-color: #f8f9fa;
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 
 <script type="text/javascript">
@@ -212,10 +218,10 @@ function deleteFaq(num, page) {
 				<div class="body-main">
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 						<i class="fa-solid fa-clipboard-question"></i> 자주하는 질문
-						<button type="button" class="btn btn-success" onclick="reloadFaq();" title="새로고침" style="float: right;">
+						<button type="button" class="btn btn-success rere" onclick="reloadFaq();" title="새로고침" style="float: right;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
 						</button>
-						<button type="button" class="btn btn-success me-3" onclick="location.href='${pageContext.request.contextPath}/admin/faqManage/write';" style="float: right;">글올리기</button>
+						<button type="button" class="btn btn-success rere me-3" onclick="location.href='${pageContext.request.contextPath}/admin/faqManage/write';" style="float: right;">글올리기</button>
 					</h3>
 
 					<div>
@@ -240,7 +246,7 @@ function deleteFaq(num, page) {
 											<option value="content" ${schType=="content"?"selected":""}>내용</option>
 										</select>
 										<input type="text" id="kwd" name="kwd" class="form-control" value="${kwd}">
-										<button type="button" class="btn btn-success" onclick="searchList();">검색</button>
+										<button type="button" class="btn btn-success rere" onclick="searchList();">검색</button>
 									</div>
 								</form>
 							</td>
