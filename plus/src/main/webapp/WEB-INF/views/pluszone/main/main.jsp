@@ -263,29 +263,29 @@ $(function(){
                                         <i class="fas fa-chart-bar me-1"></i>
                                     오늘의 할일 <a href="${pageContext.request.contextPath}/pluszone/schedule/main" class="memberall">자세히 보기 <span style="font-weight:bolder;">&gt;</span></a>
                                     </div>
-                                    <div class="card-body" style="width: 100%;  height: 250px;">
+                                    <div class="card-body" style="width: 100%;  height: 300px;">
 										<div class="dateYMonth">
 											<div style="width: 100%; margin-left: 30%; font-size: 25px;">${year}-${month}</div>
 											<div style="font-size: 600%; font-weight: 900; width: 100%; position: absolute; top: 34%; left: 6%;">${day}</div>
 										</div>
-                                    <c:if test="${not empty scheduleList}">
-										<div class="scheduleSize">
-											<c:forEach var="scheduleDto" items="${scheduleList}" varStatus="status" begin="${status.index}" end="${status.index +2}">
-												<div>
-													<div style="font-size: 20px; font-weight: bold; margin-left: 10px; margin-top: 10px;">◎ ${scheduleDto.title}</div>
-													<div style="margin-left: 25px;"> : ${scheduleDto.sContent}</div>
-												</div>
-											</c:forEach>
-										</div>
-									</c:if>
-									<c:if test="${empty scheduleList}">
-										<div class="scheduleSize">
-											<div style="font-size: 18px; text-align: center; margin-top: 70px;">
-												오늘의 일정이 비어있습니다.<br>
-												오늘의 할일을 정해보세요!
+	                                    <c:if test="${not empty scheduleList}">
+											<div class="scheduleSize">
+												<c:forEach var="scheduleDto" items="${scheduleList}" varStatus="status" begin="${status.index}" end="${status.index +2}">
+													<div>
+														<div style="font-size: 20px; font-weight: bold; margin-left: 10px; margin-top: 10px;">◎ ${scheduleDto.title}</div>
+														<div style="margin-left: 25px;"> : ${scheduleDto.sContent}</div>
+													</div>
+												</c:forEach>
 											</div>
-										</div>
-									</c:if>
+										</c:if>
+										<c:if test="${empty scheduleList}">
+											<div class="scheduleSize">
+												<div style="font-size: 18px; text-align: center; margin-top: 70px;" class="">
+													오늘의 일정이 비어있습니다.<br>
+													오늘의 할일을 정해보세요!
+												</div>
+											</div>
+										</c:if>
                                     </div>
                                 </div>
                             </div>
@@ -297,7 +297,7 @@ $(function(){
                                         	플러스 정보
                                     </div>
                                     
-                                    <div class="card-body" style="width: 100%;  height: 250px;">
+                                    <div class="card-body" style="width: 100%;  height: 300px;">
                                     <c:if test="${not empty infoDto}">
 	                                    <div style="margin-left: 30px;">
 	                                    	<div class="imageFile"></div>
@@ -339,35 +339,31 @@ $(function(){
                         </div>
                      </div>
 		
-						<div class="row">
+						<div class="row mt-5">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
                                     공지사항 <a href="${pageContext.request.contextPath}/pluszone/noticePlus/list" class="memberall"> 자세히 보기 <span style="font-weight:bolder;">&gt;</span></a>
                                     </div>
-                                    <div class="card-body" style="width: 100%; height: 250px;">
+                                    <div class="card-body" style="width: 100%; height: 300px;">
                                     	<div style="margin-left: 10px; margin-top: 8px;">
 											<div style="font-size: 20px; font-weight: 800;">총 공지사항 개수 : <span style="color: blue; font-weight: bold;">${noticeDataCount}</span>개</div>
 											<span style="color: gray;">공지사항은 3개까지만 보여집니다.</span>
                                     	</div>
                                     <c:if test="${not empty noticeList}">
 	                                    <div style="margin-left: 10px; margin-top: 10px;">
-											<table style="border-top: 1px solid gray;">
-												<tr class="text-center" style="background-color: #FFF3CD;">
-													<th width="70">번호</th>
-													<th width="250" class="clist" >클래스명</th>
-													<th class="clist">제목</th>
-													<th width="130">조회수</th>
-													<th width="200">날짜</th>
-												</tr>
+											<table class="table table-bordered table-hover text-center p-3">
+												<tr class="table-warning">
+											        <th style="width: 10%">번호</th>
+											        <th style="width: 20%" class="clist">클래스명</th>
+											        <th style="width: 30%" class="clist">제목</th>
+											    </tr>
 												<c:forEach var="reviewDto" items="${noticeList}" varStatus="status" begin="${status.index}" end="${status.index+2}">
 													<tr class="text-center" style="border-bottom: 1px solid gray;">
 														<td>${status.count}</td>
 														<td class="clist">${reviewDto.className}</td>
 														<td class="clist">${reviewDto.subject}</td>
-														<td>${reviewDto.hitCount}</td>
-														<td>${reviewDto.regDate}</td>
 													</tr>									
 												</c:forEach>
 											</table>
@@ -393,36 +389,35 @@ $(function(){
                                         <i class="fas fa-chart-bar me-1"></i>
                                     매출 현황<a href="${pageContext.request.contextPath}/pluszone/salesStatus/main" class="memberall">자세히 보기 <span style="font-weight:bolder;">&gt;</span></a>
                                     </div>
-                                    <div class="card-body" style="width: 100%; height: 550px;">
+                                    <div class="card-body" style="width: 100%; height: 650px;">
                                     	<div style="font-size: 20px; font-weight: 800; margin-bottom: 10px;">최근 1주일 매출 현황</div>
-                                    		<div class="charts-day border rounded" style="height: 480px;"></div>
+                                    		<div class="charts-day border rounded" style="height: 550px;"></div>
                                     </div>
                                 </div>
                         	</div>
                          </div>
                         
 
-					 	 <div class="row" style="float: left;">
+					 	 <div class="row mt-5" style="float: left;">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
                                     리뷰 관리 <a href="${pageContext.request.contextPath}/pluszone/review/list" class="memberall">자세히 보기 <span style="font-weight:bolder;">&gt;</span></a>
                                     </div>
-                                    <div class="card-body" style="width: 100%; height: 250px;">
+                                    <div class="card-body" style="width: 100%; height: 300px;">
                                     	<div style="margin-left: 10px; margin-top: 8px;">
 											<div style="font-size: 20px; font-weight: 800;">총 리뷰 개수 : <span style="color: blue; font-weight: bold;">${reviewDataCount}</span>개</div>
 											<span style="color: gray;">최대 리뷰 3개만 보여집니다.</span>
                                     	</div>
                                     <c:if test="${not empty reviewList}">
 	                                    <div style="margin-left: 10px; margin-top: 10px;">
-											<table style="border-top: 1px solid gray;">
-												<tr class="text-center" style="background-color: #FFF3CD;">
+											<table class="table table-bordered table-hover text-center">
+												 <tr class="table-warning">
 													<th width="70">번호</th>
 													<th width="250" class="clist">클래스명</th>
 													<th class="clist">제목</th>
 													<th width="90">별점</th>
-													<th width="200">날짜</th>
 												</tr>
 												<c:forEach var="reviewDto" items="${reviewList}" varStatus="status" begin="${status.index}" end="${status.index+2}">
 													<tr class="text-center" style="border-bottom: 1px solid gray;">
@@ -430,7 +425,6 @@ $(function(){
 														<td class="clist">${reviewDto.className}</td>
 														<td class="clist">${reviewDto.reviewSubject}</td>
 														<td>${reviewDto.reviewScore}/5점</td>
-														<td>${reviewDto.reviewDate}</td>
 													</tr>									
 												</c:forEach>
 											</table>
