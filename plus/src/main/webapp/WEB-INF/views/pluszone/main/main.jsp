@@ -109,7 +109,6 @@ i.fa{
 	text-decoration:none;
 	color:black;
 }
- 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
 <script type="text/javascript">
@@ -175,6 +174,15 @@ $(function(){
 
         option && myChart.setOption(option);
     }
+});
+$(function(){
+	//enter => <br>
+	var text = document.getElementById("textarea").value;
+	text = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
+
+	//<br> => enter
+	var text = document.getElementById("textarea").value;
+	text = text.replaceAll("<br>", "\r\n");
 });
 </script>
 
@@ -314,9 +322,10 @@ $(function(){
 			                                    	onclick="location.href='${pageContext.request.contextPath}/pluszone/infoDetail/write';">세부정보수정</button>
 			                                </span>
 		                                </div>
-		                                <div><span style="font-size: 15px; font-weight: 200; margin-left: 32px; font-weight: bold;">플러스 소개</span>
+		                                <div>
+		                                	<span style="font-size: 15px; font-weight: 200; margin-left: 32px; font-weight: bold;">플러스 소개</span>
 		                                	<div style="width: 57%; border-top: 1px solid #cccccc; margin-left: 39%;">
-		                                		<span style="margin-left: 5px;">${infoDto.content}</span>
+		                                		<textarea style="width: 100%; resize: none; margin-left: 5px;" readonly="readonly">${infoDto.content}</textarea>
 		                                	</div>
                                      	</div>
                                      </c:if>
