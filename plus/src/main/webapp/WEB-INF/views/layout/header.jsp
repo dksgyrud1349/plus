@@ -322,7 +322,7 @@
 												<label class="checkbox-container">
 													<input type="button" onclick="location.href='${pageContext.request.contextPath}/lesson/main'">
 												 	<div class="checkbox-button">
-														<img src="${pageContext.request.contextPath}/resources/images/center.jpg" width="300px;" 
+														<img src="${pageContext.request.contextPath}/resources/images/main/onedayclass_1.png" width="300px;" height="200px;"
 														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
 													 	<div class="hover-content">원데이 클래스 더보기</div>
 													</div>
@@ -345,7 +345,7 @@
 												<label class="checkbox-container">
 													<input type="button" onclick="location.href='${pageContext.request.contextPath}/event/progress/article?page=1&&eventNum=15'">
 												 	<div class="checkbox-button">
-														<img src="${pageContext.request.contextPath}/resources/images/eventsale_1.png" width="300px;" height="200px;"
+														<img src="${pageContext.request.contextPath}/resources/images/main/eventsales_1.png" width="300px;" height="200px;"
 														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
 													 	<div class="hover-content">신년맞이 이벤트</div>
 													</div>
@@ -361,7 +361,7 @@
 												<label class="checkbox-container">
 													<input type="button" onclick="location.href='${pageContext.request.contextPath}/event/progress/article?page=1&&eventNum=17'">
 												 	<div class="checkbox-button">
-														<img src="${pageContext.request.contextPath}/resources/images/eventsale_4.png" width="300px;" height="200px;"
+														<img src="${pageContext.request.contextPath}/resources/images/main/eventsales_4.png" width="300px;" height="200px;"
 														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
 													 	<div class="hover-content">마음을 선물하는 방법</div>
 													</div>
@@ -377,7 +377,7 @@
 												<label class="checkbox-container">
 													<input type="button" onclick="location.href='${pageContext.request.contextPath}/event/progress/list'">
 												 	<div class="checkbox-button">
-														<img src="${pageContext.request.contextPath}/resources/images/cupon.jpg" width="300px;" 
+														<img src="${pageContext.request.contextPath}/resources/images/main/event_1.png" width="300px;" height="200px;"
 														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
 													 	<div class="hover-content">이벤트 더보기</div>
 													</div>
