@@ -21,12 +21,16 @@ import com.fa.plus.common.MyUtil;
 import com.fa.plus.domain.Board;
 import com.fa.plus.domain.BookingList;
 import com.fa.plus.domain.Lesson;
+import com.fa.plus.domain.MyWishList;
 import com.fa.plus.domain.PlusAns;
 import com.fa.plus.domain.PlusQ;
 import com.fa.plus.domain.SessionInfo;
 import com.fa.plus.service.BoardService;
 import com.fa.plus.service.BookingListService;
+import com.fa.plus.service.MileageListService;
+import com.fa.plus.service.MyWishListService;
 import com.fa.plus.service.OnedayplusService;
+import com.fa.plus.service.ReviewService;
 
 @Controller
 @RequestMapping("/myPage/*")
@@ -43,6 +47,18 @@ public class MyPageController {
 	
 	@Autowired
 	private OnedayplusService onedayService;
+	
+	// 적립금
+	@Autowired
+	private MileageListService mileageListService;
+	
+	// 리뷰
+	@Autowired
+	private ReviewService reviewService;
+	
+	// 위시리스트
+	@Autowired
+	private MyWishListService myWishListService;
 	
 	@RequestMapping(value = "main")
 	public String main(HttpSession session, Model model) {
@@ -98,6 +114,22 @@ public class MyPageController {
 		}
 		
 		model.addAttribute("rtnList", rtnList);
+		
+		// 적립금
+		int mileage = mileageListService.findByMyMileage(info.getUserId());
+		model.addAttribute("mileage", mileage);
+		
+		// 예약 건수
+		int bookCount = bookingListSerivce.bookCount(info.getMemberIdx());
+		model.addAttribute("bookCount", bookCount);
+		
+		// 리뷰 개수
+		int reviewCount = reviewService.reviewCount(info.getMemberIdx());
+		model.addAttribute("reviewCount", reviewCount);
+		
+		// 위시리스트
+		List<MyWishList> wishlist = myWishListService.wishList(info.getUserId());
+		model.addAttribute("wishList", wishlist);
 		
 		return ".myPage.main";
 	}

@@ -82,4 +82,15 @@ public class MyWishListServiceImpl implements MyWishListService{
 		return result;
 	}
 
+	@Override
+	public List<MyWishList> wishList(String userId) {
+		List<MyWishList> list = null;
+		try {
+			list = mapper.wishList(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

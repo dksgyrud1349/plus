@@ -170,12 +170,11 @@ $(function(){
 	<div class="row justify-content-center">
 		<div class="col-8 mt-5" style="width: 180rem;">
 			<div class="colortext">
-				<div style="background-color: #ff99cc;">원</div>
-				<div style="background-color: #66ccff;">데</div>
-				<div style="background-color: #99cc00;">이</div>
-				<div style="background-color: #ffcc00;">클</div>
-				<div style="background-color: #FF9966;">래</div>
-				<div style="background-color: #CC33FF;">스</div>
+				<div style="background-color: #ff99cc;">위</div>
+				<div style="background-color: #66ccff;">시</div>
+				<div style="background-color: #99cc00;">리</div>
+				<div style="background-color: #ffcc00;">스</div>
+				<div style="background-color: #FF9966;">트</div>
 			</div>
 			<div class="row d-flex" style="clear: both;">
 				<div class="col-2 mt-5" style="float: left; width: 16.66%;">${dataCount}개(${page}/${total_page} 페이지)</div>

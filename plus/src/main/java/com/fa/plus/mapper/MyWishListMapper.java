@@ -17,4 +17,7 @@ public interface MyWishListMapper {
 	public void deleteLessonLike(Map<String, Object> map) throws SQLException;  // 게시글 좋아요 삭제
 	public int lessonLikeCount(long classNum);  // 게시글 좋아요 개수
 	public MyWishList userLessonLiked(Map<String, Object> map);  // 게시글 좋아요 여부
+	
+	// 위시리스트 (마이페이지에서 사용)
+	public List<MyWishList> wishList(String userId);
 }

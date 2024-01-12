@@ -29,6 +29,16 @@
 }
 </style>
 
+<script type="text/javascript">
+$(function() {
+    $(".product-item").click(function() {
+      let classNum = $(this).attr("data-productNum");
+      let url = "${pageContext.request.contextPath}/lesson/detail/" + classNum;
+      location.href = url;
+    });
+  });
+</script>
+
 <div class=" p-0">
     <section class="resume-section" id="about">
         <div class="resume-section-content">
@@ -47,7 +57,7 @@
 	        	<div class="body-main me-5">
 	        	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 					  <ol class="breadcrumb">
-					    <li class="breadcrumb-item"><a href="#">마이페이지</a></li>
+					    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/myPage/main">마이페이지</a></li>
 					    <!-- <li class="breadcrumb-item active" aria-current="page">Library</li> -->
 					  </ol>
 					</nav>
@@ -56,19 +66,19 @@
 					  <div class="row me-5" style="background:#lightgrey;">
 					    <div class="col">
 					    	<h5><i class="bi bi-trophy-fill fa-3x align-middle box-shadow"></i>  
-					    	<font style="color:#47a3da; font-weight:bold;">홍길동님</font> 반갑습니다</h5>
+					    	<font style="color:#47a3da; font-weight:bold;">${sessionScope.member.userName}님</font> 반갑습니다</h5>
 					    </div>
 					    <div class="col">
 					    	<h6 style="color:#828282">적립금</h6>
-				  			<h3>1000원</h3>
+				  			<h3>${mileage} 원</h3>
 					    </div>
 					    <div class="col">
 					    	<h6 style="color:#828282">예약</h6>
-				  			<h3>3건</h3>
+				  			<h3>${bookCount} 건</h3>
 					    </div>
 					    <div class="col">
-					     	<h6 style="color:#828282">후기</h6>
-						    <h3>1 건</h3>
+					     	<h6 style="color:#828282">리뷰</h6>
+						    <h3>${reviewCount} 건</h3>
 					    </div>
 					  </div>
 					</div>
@@ -78,7 +88,7 @@
 						<span style="font-weight: bold;">최근 예약 내역</span>
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<span style="font-size: small; color:#828282">최근 주문하신 3개 내역입니다.</span>
-						<a href="${pageContext.request.contextPath}/bookingList/bLists" style="float:right; color:#828282">전체예약조회&nbsp;&nbsp;<i class="fas fa-angle-right align-middle;" style="color: #828282"></i></a>
+						<a href="${pageContext.request.contextPath}/myPage/booking/list" style="float:right; color:#828282">전체예약조회&nbsp;&nbsp;<i class="fas fa-angle-right align-middle;" style="color: #828282"></i></a>
 						  	</div>
 						<div class="container text-center" style="margin-top:10px;" >
 						  
@@ -147,7 +157,7 @@
 				
 				<div style="margin-top:50px;">
 					<span style="font-weight: bold;">MY LIKE ITEMS</span>
-					<a href="#" style="float:right; color:#828282">더보기<i class="fas fa-angle-right align-middle; style=color: #828282"></i></a>
+					<a href="${pageContext.request.contextPath}/myPage/wishList/mylist" style="float:right; color:#828282">더보기<i class="fas fa-angle-right align-middle; style=color: #828282"></i></a>
 				</div>
 				  			
 				<div class="row" style="margin-top:10px;">
@@ -159,31 +169,13 @@
 				
 				<div class="text-center" style="margin-top:50px">
 					<div class="itembox">
-					  <div class="itembox_bar">
-					  	<button class="btn btn-light w-100">나만의 공예</button>
-					  	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" width="100%">
-					  	<button class="btn btn-warning w-100">예약하러가기</button>
-					  </div>
-					  <div class="itembox_bar">
-					  	<button class="btn btn-light w-100">나만의 공예</button>
-					  	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" width="100%">
-					  	<button class="btn btn-warning w-100">예약하러가기</button>
-					  </div>
-					  <div class="itembox_bar">
-					  	<button class="btn btn-light w-100">나만의 공예</button>
-					  	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" width="100%">
-					  	<button class="btn btn-warning w-100">예약하러가기</button>
-					  </div>
-					  <div class="itembox_bar">
-					  	<button class="btn btn-light w-100">나만의 공예</button>
-					  	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" width="100%">
-					  	<button class="btn btn-warning w-100">예약하러가기</button>
-					  </div>
-					  <div class="itembox_bar">
-					  	<button class="btn btn-light w-100">나만의 공예</button>
-					  	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" width="100%">
-					  	<button class="btn btn-warning w-100">예약하러가기</button>
-					  </div>
+						<c:forEach var="dto" items="${wishList}" varStatus="status" begin="${status.index}" end="${status.index+4}">
+					  		<div class="itembox_bar">
+					  			<button class="btn btn-light w-100">${dto.className}</button>
+					  			<img src="${pageContext.request.contextPath}/uploads/lesson/${dto.firstPhoto}" width="100%">
+					  			<button class="btn btn-warning w-100 product-item" data-productNum="${dto.classNum}">예약하러가기</button>
+					  		</div>
+					  	</c:forEach>
 					</div>
 				</div>
 

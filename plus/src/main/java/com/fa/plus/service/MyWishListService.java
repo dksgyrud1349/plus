@@ -13,4 +13,7 @@ public interface MyWishListService {
 	public void deleteLessonLike(Map<String, Object> map) throws Exception;
 	public int lessonLikeCount(long classNum);
 	public boolean userLessonLiked(Map<String, Object> map);
+	
+	// 위시리스트 (마이페이지에서 사용)
+	public List<MyWishList> wishList(String userId);
 }

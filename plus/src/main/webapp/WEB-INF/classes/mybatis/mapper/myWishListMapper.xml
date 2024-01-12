@@ -44,4 +44,12 @@
 		FROM wishList
 		WHERE classNum = #{classNum} AND userId = #{userId}
 	</select>
+	
+	<select id="wishList" parameterType="String" resultType="com.fa.plus.domain.MyWishList">
+		SELECT le.classNum, className, firstPhoto
+		FROM wishList Wl
+		JOIN lesson le ON wl.classNum = le.classNum
+		WHERE wl.userId = #{userId}
+		ORDER BY wl.wishDate DESC
+	</select>
 </mapper>
