@@ -280,7 +280,7 @@ function sendOk(userId) {
 															</c:choose>
 												
 														</td>
-														<td>
+														<td class="event.stopPropagation()">
 															<button type="button" class="btn btn-primary" onclick="sendOk('${dto.userId}');" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">확인</button>
 														</td>
 													</tr>

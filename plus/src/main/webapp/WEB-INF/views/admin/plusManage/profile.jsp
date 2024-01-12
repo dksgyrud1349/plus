@@ -52,7 +52,7 @@
 			<td class="ps-5">
 				<select class="form-select" name="stateCode" id="stateCode" onchange="selectStateChange()">
 					<option value="">::상태코드::</option>
-					<c:if test="${${dto.enabled==0&&memberState.stateCode!=9}}">
+					<c:if test="${dto.enabled==0&&memberState.stateCode!=9}">
 						<option value="0">잠금 해제</option>
 					</c:if>
 					<option value="2">불법적인 방법으로 로그인</option>
