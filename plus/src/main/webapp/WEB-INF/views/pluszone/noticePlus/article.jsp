@@ -50,25 +50,25 @@ function deleteOk() {
 						<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 							<table class="table">
 								<thead>
-									<tr>
+									<tr class="text-center align-middle p-3 fs-5 fw-bold">
 										<td colspan="2" align="center">
 										클래스명 : ${dto.className}										
 											</td>
 									</tr>
-									<tr>
+									<tr class="fs-5">
 										<td colspan="2" align="center">
-										제목 : ${dto.subject}${dto.showNotice == 1 ? "" : " [숨김]" }
+										${dto.subject}${dto.showNotice == 1 ? "" : " [숨김]" }
 										</td>
 									</tr>
 								</thead>
 								
 								<tbody>
-									<tr>
+									<tr class="fs-5">
 										<td width="50%" align="left">
 											이름 : ${dto.userName}
 										</td>
 										<td width="50%" align="right">
-											${dto.regDate} | 조회 ${dto.hitCount}
+											${dto.regDate} <i class="bi bi-three-dots-vertical"></i> 조회 ${dto.hitCount}
 										</td>
 									</tr>
 									

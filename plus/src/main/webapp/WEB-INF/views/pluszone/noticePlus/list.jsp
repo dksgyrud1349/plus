@@ -17,7 +17,10 @@ a{
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
-
+a{
+	text-decoration:none;
+	color:black;
+}
 </style>
 
 <script type="text/javascript">
@@ -78,7 +81,7 @@ function searchList() {
 												<td>${dto.userName}</td>
 												<td class="text-center">${dto.regDate}</td>
 												<td class="text-center">${dto.hitCount}</td>
-												
+												<td>${dto.showNotice == 1 ? "표시" : "숨김" }</td>
 											</tr>
 										</c:forEach>
 					
@@ -86,7 +89,7 @@ function searchList() {
 										<tr> 
 											<td>${dataCount - (page-1) * size - status.index}</td>
 											<td>${dto.className}</td>
-											<td class="left">
+											<td class="left sub">
 												<a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
 												<c:if test="${dto.gap < 1}">
 													<!-- 이미지 변경 요망 <img src='${pageContext.request.contextPath}/resources/images/new.gif'> -->
