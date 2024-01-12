@@ -33,7 +33,7 @@ SELECT * FROM(
 			) f ON r.reviewNum = f.reviewNum
 		WHERE showReview = 1
 		ORDER BY r.reviewNum DESC
-) WHERE ROWNUM &lt; 11
+) WHERE ROWNUM &lt; 9
 </select>
 
 </mapper>
