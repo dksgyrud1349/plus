@@ -91,6 +91,15 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 	
 	$.ajax(url, settings);
 }
+function(){
+	//enter => <br>
+	var text = document.getElementById("textarea").value;
+	text = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
+
+	//<br> => enter
+	var text = document.getElementById("textarea").value;
+	text = text.replaceAll("<br>", "\r\n");
+}
 </script>
 
 <main class="wrapper totalSize" style="margin:0 auto; width:100%;">
@@ -135,7 +144,7 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 									</div>
 									<div>
 										<div style="font-weight: bold;">플러스 소개: </div>
-											<input name="content" id="content" value = "${dto.content}" placeholder="소개" style="resize: none; width: 800px; height: 200px;"></input>
+											<textarea name="content" id="content" placeholder="소개" style="resize: none; width: 800px; height: 200px;">${dto.content}</textarea>
 									</div>
 							    </div>
 							<div>
