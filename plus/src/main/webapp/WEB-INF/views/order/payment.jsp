@@ -65,7 +65,7 @@ function payOk(){
 #left {
 	position: relative;
 	background:
-		url("${pageContext.request.contextPath}/resources/images/keyimage3.jpg");
+		url("${pageContext.request.contextPath}/resources/images/main/payment.png");
 	background-size: cover;
 	background-position: center;
 	height: calc(100% + 50px);
@@ -75,7 +75,8 @@ function payOk(){
 	padding: 10px 25px;
 	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px
 		rgba(0, 0, 0, 0.22);
-	color: white;
+	color: #1E0F75;
+	font-weight:bold;
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: space-between;
@@ -229,7 +230,7 @@ $(function(){
 					<main id="main" style="width: 1000px; height: 1000px;">
 						<section id="left">
 							<div id="head">
-								<p class="fs-3">${lesson.className}</p>
+								<p class="fs-3 pt-3">${lesson.className}</p>
 								<p>${lesson.userName}</p>
 							</div>
 							<h3><fmt:formatNumber value="${dto.price}" pattern="#,###" />${lesson.price}원</h3>
