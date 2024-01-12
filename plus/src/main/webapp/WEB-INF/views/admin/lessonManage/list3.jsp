@@ -7,6 +7,12 @@
 	height:60px;
 	line-height: 60px;
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 
 <script type="text/javascript"
@@ -47,7 +53,7 @@
 				
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 						<i class="bi bi-app"></i> 승인취소 클래스 관리
-						<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/lessonManage/list3';" title="새로고침" style="float: right;">
+						<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/lessonManage/list3';" title="새로고침" style="float: right;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
 						</button>
 					</h3>
@@ -115,7 +121,7 @@
 													<option value="regDate" ${schType=="regDate"?"selected":""}>등록일</option>
 												</select>
 												<input type="text" name="kwd" value="${kwd}" class="form-control">
-												<button type="button" class="btn btn-success" onclick="searchList()">
+												<button type="button" class="btn btn-success rere" onclick="searchList()">
 													<i class="bi bi-search"></i>
 												</button>
 											</div>

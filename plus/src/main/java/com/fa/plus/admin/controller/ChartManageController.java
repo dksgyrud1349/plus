@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fa.plus.admin.service.ChartManageService;
 
 @Controller
-@RequestMapping("/admin/Chart/*")
+@RequestMapping("/admin/chart/*")
 public class ChartManageController {
 	@Autowired
 	private ChartManageService service;
@@ -26,6 +26,8 @@ public class ChartManageController {
 		int m = cal.get(Calendar.MONTH) + 1;
 		
 		String month = String.format("%04d%02d", y, m);
+		
+		// String 로그인시 데이터개수 1증가 = 
 		
 		Map<String, Object> dayOfWeek = service.dayOfWeekTotalCount(month);
 		if(dayOfWeek != null) {

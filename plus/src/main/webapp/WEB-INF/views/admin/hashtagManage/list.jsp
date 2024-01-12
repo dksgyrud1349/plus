@@ -2,7 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
-
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 <script type="text/javascript">
 
@@ -95,7 +100,7 @@ function deleteHashtag(tagNum) {
     				
     				<div class="mt-5">
     					<c:forEach var="dto" items="${list}" varStatus="status">
-		    				<span class="btn btn-success position-relative m-3">
+		    				<span class="btn btn-success rere position-relative m-3">
 		 						${dto.tagName} <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" onclick="deleteHashtag('${dto.tagNum}');"> x </span>
 							</span>
     					</c:forEach>

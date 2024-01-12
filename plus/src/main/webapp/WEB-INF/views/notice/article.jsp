@@ -3,7 +3,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-	
+	.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
@@ -91,7 +96,7 @@
 								
 								<td width="50%">&nbsp;</td>
 								<td class="text-end">
-									<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/notice/list?${query}';">리스트</button>
+									<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/notice/list?${query}';">리스트</button>
 								</td>
 							</tr>
 						</table>

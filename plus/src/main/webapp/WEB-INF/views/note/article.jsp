@@ -34,6 +34,12 @@
 	content: '';
 	display: inline-block;
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
@@ -113,11 +119,11 @@ function deleteNote() {
 						<tr>
 							<td align="left" width="50%">
 								<c:if test="${menuItem=='receive'}">
-									<button type="button" class="btn btn-success btnReplyNote" >답변</button>
+									<button type="button" class="btn btn-success btnReplyNote rere" >답변</button>
 								</c:if>
 							</td>
 							<td align="right">
-								<button type="button" class="btn btn-success" onclick="javascript:location.href='${pageContext.request.contextPath}/note/write';">쪽지 쓰기</button>
+								<button type="button" class="btn btn-success rere" onclick="javascript:location.href='${pageContext.request.contextPath}/note/write';">쪽지 쓰기</button>
 							</td>
 						</tr>
 					</table>
@@ -181,10 +187,10 @@ function deleteNote() {
 					<table class="table table-borderless">
 						<tr>
 							<td width="50%">
-						    	<button type="button" class="btn btn-success" onclick="deleteNote();">삭제</button>
+						    	<button type="button" class="btn btn-success rere" onclick="deleteNote();">삭제</button>
 							</td>
 							<td class="text-end">
-								<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/note/${menuItem}/list?${query}';">리스트</button>
+								<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/note/${menuItem}/list?${query}';">리스트</button>
 							</td>
 						</tr>
 					</table>

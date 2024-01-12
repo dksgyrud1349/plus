@@ -6,7 +6,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
 
 <style>
-
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 <script type="text/javascript">
 
@@ -128,7 +133,7 @@ function deleteOk(mainNum) {
     			
 	    			<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 	                   	<i class="bi bi-archive-fill"></i> 카테고리 관리 
-	                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/categoryManage/list';" style="float:right;">
+	                    <button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/categoryManage/list';" style="float:right;">
 		                    <i class="fa-solid fa-arrow-rotate-left"></i>
 		                </button>
 		            </h3>

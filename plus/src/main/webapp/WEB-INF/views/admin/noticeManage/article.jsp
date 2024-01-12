@@ -8,6 +8,12 @@
 
 .table-article img { max-width: 650px; }
 .file-item { padding: 7px; margin-bottom: 3px; border: 1px solid #ced4da; color: #777777; }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 
 <script type="text/javascript">
@@ -19,6 +25,7 @@
 			location.href = url;
 		}
 	}
+	
 </script>
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
@@ -107,18 +114,18 @@
 									<td width="50%" align="left">
 										<c:choose>
 											<c:when test="${sessionScope.member.userId == dto.userId}">
-								    			<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/noticeManage/update?num=${dto.num}&page=${page}';">수정</button>
+								    			<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/noticeManage/update?num=${dto.num}&page=${page}';">수정</button>
 								    		</c:when>
 								    		<c:otherwise>
-								    			<button type="button" class="btn" disabled>수정</button>
+								    			<button type="button" class="btn rere" disabled>수정</button>
 								    		</c:otherwise>
 								    	</c:choose>
 								    	
-						    			<button type="button" class="btn btn-success" onclick="deleteOk();">삭제</button>
+						    			<button type="button" class="btn btn-success rere" onclick="deleteOk();">삭제</button>
 									</td>
 								
 									<td align="right">
-										<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/noticeManage/list?${query}';">리스트</button>
+										<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/noticeManage/list?${query}';">리스트</button>
 									</td>
 								</tr>
 							</table>
