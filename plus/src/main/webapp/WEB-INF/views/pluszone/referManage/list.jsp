@@ -13,7 +13,7 @@
 	height:60px;
 	line-height: 60px;
 }
-a{
+a{ 
 	text-decoration: none;
 }
 .rere {
@@ -94,7 +94,7 @@ function searchList() {
 													<option value="subject" ${schType=="subject"?"selected":""}>제목</option>
 													<option value="content" ${schType=="r.content"?"selected":""}>내용</option>
 												</select>
-												<input type="text" name="kwd" value="${kwd}" class="form-control">
+												<input type="text" name="kwd" value="${kwd}" class="form-control"> 
 												<button type="button" class="btn btn-success rere" onclick="searchList()">검색</button>
 											</div>
 										</form>

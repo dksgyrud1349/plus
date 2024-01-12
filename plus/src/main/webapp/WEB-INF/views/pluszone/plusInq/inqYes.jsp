@@ -11,7 +11,7 @@
 
 <style>
 .rere {
-	color: white;
+	color: white; 
 	background: #46AA46;
 	padding: 6px 12px 6px 12px;
 	border: none;

@@ -8,7 +8,7 @@
 	background: #46AA46;
 	padding: 6px 12px 6px 12px;
 	border: none;
-}
+} 
 </style>
 
 <script type="text/javascript"
