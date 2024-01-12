@@ -39,7 +39,7 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 	$.ajax(url, settings);
 }
 $(function(){
-	$("#tab-0").addClass("active");
+	$("#tab-1").addClass("active");
 
 	$("ul.tabs li").click(function() {
 		let tab = $(this).attr("data-tab");
@@ -104,10 +104,10 @@ $(function(){
 						<div>
 							<ul class="tabs">
 								<li id="tab-0" data-tab="0">
-									<i class="fa-solid fa-person"></i>&nbsp;예약확정 리스트
+									<i class="fa-solid fa-chart-column"></i>&nbsp;예약대기 리스트
 								</li>
 								<li id="tab-1" data-tab="1">
-									<i class="fa-solid fa-chart-column"></i>&nbsp;예약대기 리스트
+									<i class="fa-solid fa-person"></i>&nbsp;예약확정 리스트
 								</li>
 							</ul>
 						</div>
