@@ -6,6 +6,12 @@
 .board-article img {
 	max-width: 650px;
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 <script type="text/javascript">
 
@@ -80,10 +86,10 @@
 							<h3>
 								<i class="bi bi-app"></i> 문의내역 
 								<c:if test="${mode == 'write'}">
-									<button type="button" style="float: right;" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqList?${query}';">리스트</button>
+									<button type="button" style="float: right;" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqList?${query}';">리스트</button>
 								</c:if>
 								<c:if test="${mode == 'update' }">
-									<button type="button" style="float: right;" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqOkList?${query}';">리스트</button>
+									<button type="button" style="float: right;" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqOkList?${query}';">리스트</button>
 								</c:if>
 							</h3>
 						</div>

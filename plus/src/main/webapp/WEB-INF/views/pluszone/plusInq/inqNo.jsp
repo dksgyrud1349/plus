@@ -8,7 +8,14 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/board.css"
 	type="text/css">
-
+<style>
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
+</style>
 <script type="text/javascript">
 	$(function() {
 		$("#tab-0").addClass("active");
@@ -47,7 +54,7 @@
 
 					<h3 class="mb-3 p-2" style="border-bottom: 3px solid black;">
 						<i class="fa-solid fa-user-group"></i> 클래스 문의 내역
-						<button type="button" class="btn btn-success"
+						<button type="button" class="btn btn-success rere"
 							onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqList';"
 							style="float: right;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
@@ -82,7 +89,7 @@
 												<option value="content" ${schType=="content"?"selected":""}>내용</option>
 											</select> <input type="text" name="kwd" value="${kwd}"
 												class="form-control">
-											<button type="button" class="btn btn-success"
+											<button type="button" class="btn btn-success rere"
 												onclick="searchList()">
 												<i class="bi bi-search"></i>
 											</button>

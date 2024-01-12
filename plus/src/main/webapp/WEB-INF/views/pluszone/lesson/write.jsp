@@ -56,6 +56,13 @@
 	border: 1px solid #c2c2c2;
 	cursor: pointer;
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
+
 </style>
 
 <script type="text/javascript">
