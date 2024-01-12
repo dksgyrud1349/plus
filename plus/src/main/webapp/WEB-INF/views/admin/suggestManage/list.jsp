@@ -145,7 +145,7 @@ $(function() {
 	<table class="table-border table">
 		<tr>
 			<td align="left" width="50%" style="margin-top: 20px;">
-				<button type="button" class="btn btnHideList eventHide">공개/비공개</button>
+				<button type="button" class="btn btnHideList eventHide">제안하기</button>
 				<span style="margin-left: 5px; position: inherit;">${dataCount}개(${page}/${total_page} 페이지)</span>
 			</td>
 		</tr>
