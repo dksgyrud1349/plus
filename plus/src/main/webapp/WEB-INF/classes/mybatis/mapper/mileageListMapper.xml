@@ -63,4 +63,10 @@
 		JOIN mileage mi ON os.orderNum = mi.orderNum
 		WHERE mi.mState = #{mState} AND os.memberIdx = #{memberIdx} AND mNum = #{mNum}
 	</select>
+	
+	<select id="findByMyMileage" parameterType="String" resultType="Integer">
+		SELECT totalMileage
+		FROM member1
+		WHERE userId = #{userId}
+	</select>
 </mapper>

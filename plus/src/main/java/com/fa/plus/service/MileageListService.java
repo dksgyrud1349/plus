@@ -15,4 +15,7 @@ public interface MileageListService {
 
 	// 적립인 적립금 정보
 	public Mileage findByMileage(Map<String, Object> map);
+	
+	// 총 적립금 찾기(마이페이지에서 사용)
+	public int findByMyMileage(String userId);
 }

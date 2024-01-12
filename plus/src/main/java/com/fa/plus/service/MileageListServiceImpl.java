@@ -59,5 +59,16 @@ public class MileageListServiceImpl implements MileageListService{
 		return dto;
 	}
 
+	@Override
+	public int findByMyMileage(String userId) {
+		int result = 0;
+		try {
+			result = mapper.findByMyMileage(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 
 }
