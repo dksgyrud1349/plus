@@ -113,11 +113,11 @@
 <main class="wrapper" style="margin: 0 auto; width: 100%;">
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width: 80%; margin: 5% auto;">
+			<div class="body-container" style="width: 100%; margin: 5% auto;">
 				<div class="body-main">
 
 					<h3 class="mb-3 p-2" style="border-bottom: 3px solid black;">
-						<i class="bi bi-app"></i> 클래스 등록
+						<i class="bi bi-bag-plus"></i> 클래스 관리
 						<button type="button" class="btn btn-success"
 							onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/main';"
 							title="새로고침" style="float: right;">

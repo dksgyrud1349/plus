@@ -412,7 +412,7 @@
 												<label class="checkbox-container">
 													<input type="button" onclick="location.href='${pageContext.request.contextPath}/notice/list'"></button>
 												 	<div class="checkbox-button">
-														<img src="${pageContext.request.contextPath}/resources/images/center.jpg" width="300px;" height="200px;" 
+														<img src="${pageContext.request.contextPath}/resources/images/main/notice_1.png" width="300px;" height="200px;" 
 														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
 													 	<div class="hover-content">공지사항 바로가기</div>
 													</div>
@@ -428,7 +428,7 @@
 												<label class="checkbox-container">
 													<input type="button" onclick="location.href='${pageContext.request.contextPath}/faq/main'"></button>
 												 	<div class="checkbox-button">
-														<img src="${pageContext.request.contextPath}/resources/images/center.jpg" width="300px;" height="200px;" 
+														<img src="${pageContext.request.contextPath}/resources/images/main/center_1.png" width="300px;" height="200px;" 
 														style="border-radius: 20px; box-shadow: -5px -3px 3px  3px black inset, 3px 2px 3px 3px white;">
 													 	<div class="hover-content">고객센터 바로가기</div>
 													</div>
