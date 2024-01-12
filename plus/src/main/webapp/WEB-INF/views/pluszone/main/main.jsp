@@ -104,6 +104,11 @@ i.fa{
 	box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
 	color: #4C4C4C;
 }
+.memberall{
+	float:right;
+	text-decoration:none;
+	color:black;
+}
  
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
@@ -251,7 +256,7 @@ $(function(){
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                    오늘의 할일 <a href="${pageContext.request.contextPath}/pluszone/schedule/main" style="float:right; text-decoration:underline">자세히 보기 <span style="font-weight:bolder;">></span></a>
+                                    오늘의 할일 <a href="${pageContext.request.contextPath}/pluszone/schedule/main" class="memberall">자세히 보기 <span style="font-weight:bolder;">&gt;</span></a>
                                     </div>
                                     <div class="card-body" style="width: 100%;  height: 250px;">
 										<div class="dateYMonth">
@@ -310,7 +315,7 @@ $(function(){
 			                                </span>
 		                                </div>
 		                                <div><span style="font-size: 15px; font-weight: 200; margin-left: 32px; font-weight: bold;">플러스 소개</span>
-		                                	<div style="width: 57%; border: 1px solid black; border-radius: 3px; margin-left: 39%;">
+		                                	<div style="width: 57%; border-top: 1px solid #cccccc; margin-left: 39%;">
 		                                		<span style="margin-left: 5px;">${infoDto.content}</span>
 		                                	</div>
                                      	</div>
@@ -334,7 +339,7 @@ $(function(){
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                    공지사항 <a href="${pageContext.request.contextPath}/pluszone/noticePlus/list" style="float:right; text-decoration:underline">자세히 보기 <span style="font-weight:bolder;">></span></a>
+                                    공지사항 <a href="${pageContext.request.contextPath}/pluszone/noticePlus/list" class="memberall"> 자세히 보기 <span style="font-weight:bolder;">&gt;</span></a>
                                     </div>
                                     <div class="card-body" style="width: 100%; height: 250px;">
                                     <c:if test="${not empty noticeList}">
@@ -365,7 +370,7 @@ $(function(){
                                 <div class="card mb-4" >
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                    매출 현황<a href="${pageContext.request.contextPath}/pluszone/salesStatus/main" style="float:right; text-decoration:underline">자세히 보기 <span style="font-weight:bolder;">></span></a>
+                                    매출 현황<a href="${pageContext.request.contextPath}/pluszone/salesStatus/main" class="memberall">자세히 보기 <span style="font-weight:bolder;">&gt;</span></a>
                                     </div>
                                     <div class="card-body" style="width: 100%; height: 550px;">
                                     	<div style="font-size: 20px; font-weight: 800; margin-bottom: 10px;">최근 1주일 매출 현황</div>
@@ -381,7 +386,7 @@ $(function(){
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                    리뷰 관리 <a href="${pageContext.request.contextPath}/pluszone/review/list" style="float:right; text-decoration:underline">자세히 보기 <span style="font-weight:bolder;">></span></a>
+                                    리뷰 관리 <a href="${pageContext.request.contextPath}/pluszone/review/list" class="memberall">자세히 보기 <span style="font-weight:bolder;">&gt;</span></a>
                                     </div>
                                     <div class="card-body" style="width: 100%; height: 250px;">
                                     	<div style="margin-left: 10px; margin-top: 8px;">
