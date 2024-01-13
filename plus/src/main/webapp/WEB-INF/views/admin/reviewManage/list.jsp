@@ -80,11 +80,20 @@ img{
 .event5 .hoverBox p{
 	color:#fff;
 }
+.event5:hover{	/*           */
+
+	width: 300px;
+	height: 300px;
+}
 .event5:hover .imgBox{
+	width: 300px;
+	height: 300px;
 	transform: rotateX(90deg); 
 	animation: event5Ani 0.5s linear 1;
 }
 .event5:hover .hoverBox{
+/* 	width: 300px; */
+	height: 300px;
 	transform: rotateX(0deg); animation: event5Ani2 0.8s linear 1;
 }
 @keyframes event5Ani {
@@ -98,6 +107,16 @@ img{
 }
 .tab-content{
 	height: 650px;
+}
+.star{
+	color: yellow;
+}
+.cont{
+	background: white;
+	color: black;
+}
+.bor{
+	border-bottom: 1px solid white;
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
@@ -147,11 +166,12 @@ $(function(){
 							          </div>
 							          
 							          <a href="${articleUrl}&reviewNum=${dto.reviewNum}">
-							          <div class="hoverBox">
+							          <div class="hoverBox p-4 cont" style="right: 0px; bottom: 0px; left: 12px; top: 24px; padding-right: 48px; width: 288px;">
 							            <span>
-							              <p class="p1">${dto.reviewSubject}</p>
+							              <p class="p1 pb-0 mb-1">${dto.reviewSubject}</p>
+							              <p class="p1" style="float:right"><i class="bi bi-star-fill star my-0"></i>${dto.reviewScore}/5점</p>
+							              <br><div class="p1 bor mt-3 p-0" style="color: white; width: 100%"></div>
 							              <p class="p2">${dto.reviewContent}</p>
-							              <p class="p1">${dto.reviewScore}/5점</p>
 							            </span>
 							          </div>
 							          </a>
