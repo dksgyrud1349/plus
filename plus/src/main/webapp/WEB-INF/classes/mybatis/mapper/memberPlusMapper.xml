@@ -119,5 +119,26 @@
 	<update id="updateAuthority" parameterType="com.fa.plus.pluszone.domain.MemberPlus">
 		UPDATE memberAuthority SET authority = #{authority} WHERE userId = #{userId}
 	</update>
+	
+		<select id="noApprovedPlus" resultType="Integer">
+		/* memberPlusMapper_noApprovedPlus 미승인 플러스 수*/
+		SELECT NVL(COUNT(*), 0)
+		FROM member
+		WHERE membership = 49
+	</select>
+	
+	<select id="requestPlus" resultType="Integer">
+		/* memberPlusMapper_requestPlus 승인 요청 플러스 수*/
+		SELECT NVL(COUNT(*), 0)
+		FROM member
+		WHERE membership = 50
+	</select>
+	
+	<select id="approvedPlus" resultType="Integer">
+		/* memberPlusMapper_requestPlus 승인된 플러스 수*/
+		SELECT NVL(COUNT(*), 0)
+		FROM member
+		WHERE membership = 51
+	</select>
 
 </mapper>

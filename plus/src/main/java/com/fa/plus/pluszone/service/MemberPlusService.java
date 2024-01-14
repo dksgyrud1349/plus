@@ -24,5 +24,15 @@ public interface MemberPlusService {
 	public void updateFailureCountReset(String userId) throws Exception;
 	public void updateMemberEnabled(Map<String, Object> map) throws Exception;
 	public void insertMemberState(MemberPlus dto) throws Exception;
+	
+	// 관리자 메인 페이지
+	// 미승인 플러스 수
+	public int noApprovedPlus();
+	
+	// 요청 플러스 수
+	public int requestPlus();
+	
+	// 승인된 플러스 수
+	public int approvedPlus();
 
 }

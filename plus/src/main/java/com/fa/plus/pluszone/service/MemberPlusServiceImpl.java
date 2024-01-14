@@ -283,6 +283,39 @@ public class MemberPlusServiceImpl implements MemberPlusService{
 			throw e;
 		}
 	}
+	
+	@Override
+	public int noApprovedPlus() {
+		int count = 0;
+		try {
+			count = mapper.noApprovedPlus();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+
+	@Override
+	public int requestPlus() {
+		int count = 0;
+		try {
+			count = mapper.requestPlus();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+
+	@Override
+	public int approvedPlus() {
+		int count = 0;
+		try {
+			count = mapper.approvedPlus();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 
 	
 }

@@ -32,4 +32,14 @@ public interface MemberPlusMapper {
 	public void insertAuthority(MemberPlus dto) throws SQLException;
 	public void updateAuthority(MemberPlus dto) throws SQLException;
 	
+	// 관리자 메인 페이지
+	// 미승인 플러스 수
+	public int noApprovedPlus();
+	
+	// 요청 플러스 수
+	public int requestPlus();
+	
+	// 승인된 플러스 수
+	public int approvedPlus();
+	
 }

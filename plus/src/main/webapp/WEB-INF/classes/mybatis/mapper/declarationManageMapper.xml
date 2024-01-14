@@ -63,5 +63,21 @@
 		  END
 		WHERE classNum = #{classNum}
 	</update>
+	
+	<select id="adminListDeclarations" resultType="com.fa.plus.domain.Declaration">
+		SELECT rNum
+		       , re.userId
+		       , userName
+		       , re.classNum
+		       , className
+		       , rContent
+		       , result
+		       , TO_CHAR(reportDate, 'YYYY-MM-DD') reportDate
+		FROM lesson le
+		JOIN report re ON re.classNum = le.classNum
+		JOIN member1 m1 ON m1.userId = re.userId
+		WHERE reportDate = SYSDATE
+		ORDER BY reportDate DESC
+	</select>
 
 </mapper>

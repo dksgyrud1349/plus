@@ -16,11 +16,117 @@
 	text-decoration:none;
 	color:black;
 }
+.reviewBox{
+	max-width: 30%;
+	min-height: 230px;
+	border: 1px solid black;
+	border-radius: 5px;
+	margin-top: 1%;
+	margin-right: 2%;
+	float: left;
+	text-align: center;
+}
+img{
+	min-height: 100%; 
+	max-width: 100%; 
+}
+.imgHoverEvent{
+	min-width: 30%;
+	min-height: 230px;
+	margin: 5px; 
+	position: relative; 
+	overflow: hidden; 
+	display: inline-block;
+}
+.imgHoverEvent .imgBox{
+	min-width: 30%;
+	min-height: 230px; 
+	text-align: center; 
+	background: black; 
+	background-size: auto 100%;
+}
+.imgHoverEvent .hoverBox{
+	position: absolute; 
+	top:0; 
+	left: 0; 
+	min-width: 100%;
+	min-height: 230px; 
+}
+.hoverBox p.p1{
+	text-align:center; font-size:18px;
+}
+.hoverBox p.p2{
+	margin-top: 40px;
+} 
+.imgHoverEvent{
+	position: relative;
+}
+.event5 .imgBox{
+	transform-origin: 0% 0%;
+}
+.event5 .hoverBox{
+	transform: rotateX(-90deg);
+	transform-origin: 100% 100%; 
+	background: #000
+}
+.event5 .hoverBox p{
+	color:#fff;
+}
+.event5:hover .imgBox{
+	transform: rotateX(90deg); 
+	animation: event5Ani 0.5s linear 1;
+}
+.event5:hover .hoverBox{
+	transform: rotateX(0deg); animation: event5Ani2 0.8s linear 1;
+}
+@keyframes event5Ani {
+    0%{transform: rotateX(0)}
+    100%{transform: rotateX(90deg)}
+}
+@keyframes event5Ani2 {
+    0%{transform: rotateX(-90deg)}
+    30%{transform: rotateX(-90deg)}
+    100%{transform: rotateX(0)}
+}
+.scheduleSize{
+	width: 65%;
+	height: 70%;
+	border: 1px solid #D5D5D5;
+	border-radius: 15px;
+	background-color: #EAEAEA;
+	box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+	position: absolute;
+	top: 20%;
+	left: 32%;
+	
+}
+.classListSize{
+	width: 90%;
+	height: 40%;
+	border: 1px solid #FFF3CD;
+	border-radius: 15px;
+	margin-left: 5%;
+	margin-top: 8%;
+	background-color: #FFF3CD;
+	box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+	color: #4C4C4C;
+}
+.col-xl-3{
+	width: 24.62%;
+}
+.plusBox{
+	min-width: 30%;
+	min-height: 230px;
+	border-radius: 5px;
+	margin-right: 2%;
+	float: left;
+	text-align: center;
+}
 </style>
 
 <div id="layoutSidenav_content">
 	<div class="container-fluid px-4">
-	    <div class="row mt-5">
+	    <div class="row mt-3">
 	        <div class="col-xl-3 col-md-6">
 	            <div class="card bg-success text-white mb-4">
 	                <div class="card-body">
@@ -66,20 +172,6 @@
 	                </div>
 	            </div>
 	        </div>
-	        <div class="col-xl-3 col-md-6">
-	            <div class="card bg-success text-white mb-4">
-	                <div class="card-body">
-	                    <h3 class="text-center">공지사항</h3>
-	                    <hr>
-	                    <h4 class="text-center">${noticeDataCount}개</h4>
-	                </div>
-	                <div class="card-footer d-flex align-items-center justify-content-between text-end">
-	                    <div class="small text-white">
-	                    <a href="${pageContext.request.contextPath}/admin/noticeManage/list" class="totaltitle">전체보기</a> 
-	                    <i class="fas fa-angle-right"></i></div>
-	                </div>
-	            </div>
-	        </div>
 	
 	        <div class="col-xl-3 col-md-6">
 	            <div class="card bg-success text-white mb-4">
@@ -96,96 +188,80 @@
 	            </div>
 	        </div>
 	
-	        <div class="col-xl-3 col-md-6">
-	            <div class="card bg-success text-white mb-4">
-	                <div class="card-body">
-	                    <h3 class="text-center">리뷰 게시글</h3>
-	                    <hr>
-	                    <h4 class="text-center">${reviewDataCount}개</h4>
-	                </div>
-	                <div class="card-footer d-flex align-items-center justify-content-between text-end">
-	                    <div class="small text-white">
-	                    <a href="${pageContext.request.contextPath}/admin/reviewManage/all/list" class="totaltitle">전체보기</a>
-	                    <i class="fas fa-angle-right"></i></div>
-	                </div>
-	            </div>
-	        </div>
-	
-	        <div class="col-xl-3 col-md-6">
-	            <div class="card bg-success text-white mb-4">
-	                <div class="card-body">
-	                    <h3 class="text-center">커뮤니티 게시글</h3>
-	                    <hr>
-	                    <h4 class="text-center">${communityDataCount}개</h4>
-	                </div>
-	                <div class="card-footer d-flex align-items-center justify-content-between text-end">
-	                    <div class="small text-white">
-	                    <a href="${pageContext.request.contextPath}/admin/communityManage/list" class="totaltitle">전체보기</a>
-	                    <i class="fas fa-angle-right"></i></div>
-	                </div>
-	            </div>
-	        </div>
-	        <div class="col-xl-3 col-md-6">
-	            <div class="card bg-success text-white mb-4">
-	                <div class="card-body">
-	                    <h3 class="text-center">총 신고건수</h3>
-	                    <hr>
-	                    <h4 class="text-center">${declarationDataCount}명</h4>
-	                </div>
-	                <div class="card-footer d-flex align-items-center justify-content-between text-end">
-	                    <div class="small text-white">
-	                    <a href="${pageContext.request.contextPath}/admin/declarationManage/list" class="totaltitle">전체보기</a>
-	                    <i class="fas fa-angle-right"></i></div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	
 	    <div class="row">
+	    	<div class="col-xl-6">
+	            <div class="card mb-4">
+	                <div class="card-header">
+	                    <i class="fas fa-chart-bar me-1"></i>
+	                클래스 신고 관리 <a href="${pageContext.request.contextPath}/admin/declarationManage/list" class="memberall">전체보기<i class="fas fa-angle-right"></i></a>
+	                </div>
+	                <div class="card-body" style="width: 100%; height: 300px;">
+	                	<div style="font-size: 20px; font-weight: bold;">오늘 신고목록</div>
+	                	<div style="color: #A6A6A6; font-size: 15px;"> (최근 목록 3개만 보여집니다.)</div>
+							<div style="font-size: 25px; margin-top: 2%; margin-left: 7%;">${year}-${month}</div>
+							<div style="font-size: 110px; font-weight: 900; vertical-align: top; position: absolute; top: 38%; left: 6%;">${day}</div>
+					<c:if test="${not empty declarationList}">
+						<div class="scheduleSize">
+							<c:forEach var="declarationDto" items="${declarationList}" varStatus="status" begin="${status.index}" end="${status.index +2}">
+								<div>
+									<div style="font-size: 20px; font-weight: bold; margin-left: 10px; margin-top: 17px;">${declarationDto.className}</div>
+									<div style="margin-left: 25px;"> : ${declarationDto.rContent}</div>
+								</div>
+							</c:forEach>
+						</div>
+					</c:if>
+					<c:if test="${empty declarationList}">
+						<div class="scheduleSize">
+							<div style="font-size: 18px; text-align: center; margin-top: 90px;">
+								오늘의 신고 목록은 없습니다.<br>
+								<a href="${pageContext.request.contextPath}/admin/declarationManage/list">전체보기</a>를 눌러 자세한 신고 목록을 확인하세요!
+							</div>
+						</div>
+					</c:if>
+                    </div>
+                </div>
+            </div>
+            
 	        <div class="col-xl-6">
 	            <div class="card mb-4">
 	                <div class="card-header">
 	                    <i class="fas fa-chart-bar me-1"></i>
-	                	오늘의 할일  
+	                	플러스 관리 <a href="${pageContext.request.contextPath}/admin/plusManage/plusList" class="memberall">전체보기<i class="fas fa-angle-right"></i></a>
 	                </div>
 	                <div class="card-body" style="width: 100%; height: 300px;">
-	
-	                </div>
-	            </div>
-	        </div>
-	        
-	        <div class="col-xl-6">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-chart-bar me-1"></i>
-                    관리자 정보
-                    </div>
-                        <div class="card-body" style="width: 100%; height: 300px;">
-							<div class="d-flex ms-5 ps-4" >
-								<div class="avatar avatar-xl rounded-circle">
-								    
-								</div>
-							<div class="d-block h4 mt-4 mb-4 ms-4">
-									
-								</div>
-							</div> 
-							<div class="col-12" >
-							
-                            </div>
-                     	</div>
-                   	</div>	         
-	     	</div>
+	                	<div class="plusBox" style="margin-left: 20px;">
+	                		<i class="bi bi-person-fill-x fa-7x"></i>
+	                		<div style="font-size: 18px; font-weight: 600;"> 미승인 플러스 수</div>
+	                			<div style="font-size: 30px; font-weight: bold;"><span style="color: blue;">${noAppPlusCount}</span>명</div>
+	                	</div>
+	                	<div class="plusBox">
+	                		<i class="bi bi-person-fill fa-7x"></i>
+	                		<div style="font-size: 18px; font-weight: 600;">요청한 플러스 수</div>
+	                			<div style="font-size: 30px; font-weight: bold;"><span style="color: blue;">${requestPlusCount}</span>명</div>
+	                	</div>
+	                	<div class="plusBox">
+	                		<i class="bi bi-person-fill-check fa-7x"></i>
+	                		<div style="font-size: 18px; font-weight: 600;">승인된 플러스 수</div>
+	                			<div style="font-size: 30px; font-weight: bold;"><span style="color: blue;">${appPlusCount}</span>명</div>
+	                	</div>
+	                	
+                	</div>
+                </div>
+            </div>
+        </div>
 	     
 	     <div class="row">
 	         <div class="col-xl-6">
 	             <div class="card mb-4">
 	                 <div class="card-header">
 	                    <i class="fas fa-chart-bar me-1"></i>
-	                 	승인대기 클래스 관리
+	                 	클래스 관리
 	                 	<a href="${pageContext.request.contextPath}/admin/lessonManage/list0" class="memberall">전체보기<i class="fas fa-angle-right"></i></a>
 	                 </div>
 	                 <div class="card-body" style="width: 100%; height: 300px;">
+	                 <div style="font-size: 20px; font-weight: bold; margin-bottom: 5px;">승인대기 클래스 목록</div>
 						<table class="table table-bordered table-hover text-center">
+		                    <c:if test="${not empty list0}">
 		                    <thead>
 		                        <tr class="table-warning">
 		                            <th>클래스 이름</th>
@@ -200,25 +276,62 @@
 			                        </tr>
 		                        </c:forEach>
 		                    </tbody>
+		                    </c:if>
+	                        <c:if test="${empty list0}">
+	                        	<div class="classListSize">
+									<div style="font-size: 18px; text-align: center; margin-top: 40px; font-weight: 600;">
+										승인 대기 중인 클래스가 존재하지 않습니다!
+									</div>
+								</div>
+	                        </c:if>
                 		</table>
 	                </div>
 	            </div>
 	        </div>
 	
 	        <div class="col-xl-6">
-	            <div class="card mb-4">
-	                <div class="card-header">
-	                    <i class="fas fa-chart-bar me-1"></i>
-	                <label class="charts-dayOfWeek-title">접속자 수 현황</label>
-	                </div>
-	                <div class="card-body charts-dayOfWeek border rounded" style="width: 100%; height: 300px;">
-						
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar me-1"></i>
+                    리뷰 관리<a href="${pageContext.request.contextPath}/admin/reviewManage/all/list" class="memberall">전체보기<i class="fas fa-angle-right"></i></a>
                     </div>
-                </div>
-            </div>
+                    <div class="card-body" style="width: 100%; height: 300px;">
+						<div style="font-size: 20px; margin-left: 5px;">
+						<span style="font-weight: bolder;">최근 리뷰 목록</span>
+						<span style="color: #A6A6A6; font-size: 15px;"> (최근 목록 3개만 보여집니다.)</span>
+						</div>
+						
+						<c:if test="${not empty reviewManageList}">
+						<div style="margin-left: 5%;">
+							<c:forEach var="reviewDto" items="${reviewManageList}" varStatus="status" begin="${status.index}" end="${status.index+2}">
+								<div class="col imgHoverEvent event5 reviewBox">
+									<div class="imgBox">
+								         <img src="${pageContext.request.contextPath}/uploads/review/${dto.filename}" alt="">
+							        </div>
+							        <div class="hoverBox">
+							        	<span>
+							            <p class="p1">${reviewDto.reviewSubject}</p>
+							            <p class="p2">${reviewDto.reviewContent}</p>
+							            <p class="p1">${reviewDto.reviewScore}/5점</p>
+							            </span>
+							       </div>
+								</div>
+							</c:forEach>
+						</div>
+						</c:if>
+						<c:if test="${empty reviewManageList}">
+							<div style="font-size: 20px; text-align: center; margin-top: 90px;">
+								<div style="margin-bottom: 5px; text-decoration: underline;">
+									작성된 리뷰 목록이 존재하지 않습니다.<span>🙂</span>
+								</div>
+							</div>
+						</c:if>
+					</div>
+                 </div>
+             </div>
         </div>
-	        
-	
+	<div class="row">
+		<div class="col-xl-2">
 	        <div class="card mb-4">
 	            <div class="card-header">
 	                <i class="fas fa-table me-1"></i>
@@ -250,10 +363,13 @@
 									<td>${dto.email}</td>
 								</tr>
 							</c:forEach>
-	                    </tbody>
-	                </table>
-	            </div>
-	        </div>
+	                      </tbody>
+	                   </table>
+	                 </div>
+	              </div>
+	          </div>
+	   	   </div>
 	    </div>
-	</div>
+     </div>
+  </div>
 </div>

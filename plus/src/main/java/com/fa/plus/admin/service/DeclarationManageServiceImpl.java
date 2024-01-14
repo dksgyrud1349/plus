@@ -55,5 +55,16 @@ public class DeclarationManageServiceImpl implements DeclarationManageService{
 			e.printStackTrace();
 		}
 	}
+	
+	@Override
+	public List<Declaration> adminListDeclarations() {
+		List<Declaration> list = null;
+		try {
+			list = mapper.adminListDeclarations();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 }
