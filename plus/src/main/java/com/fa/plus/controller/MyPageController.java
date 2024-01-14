@@ -254,7 +254,7 @@ public class MyPageController {
 				map.put("userId", userId);
 
 				List<Lesson> classList = onedayService.resultClass(map);
-				int resultCount = onedayService.resultCount(userId);
+				int resultCount = onedayService.resultCount(map);
 				
 				model.addAttribute("classList", classList);
 				model.addAttribute("resultCount", resultCount);

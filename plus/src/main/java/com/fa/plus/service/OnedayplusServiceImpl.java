@@ -131,10 +131,10 @@ public class OnedayplusServiceImpl implements OnedayplusService {
 	}
 
 	@Override
-	public int resultCount(String userId) {
+	public int resultCount(Map<String,Object> map) {
 		int result = 0;
 		try {
-			result = mapper.resultCount(userId);
+			result = mapper.resultCount(map);
 		} catch (Exception e) {
 		}
 		return result;

@@ -83,10 +83,9 @@ public class OnedayplusController {
 			map.put("category", category);
 			map.put("location", location);
 			map.put("classprice", classprice);
-			map.put("userId", userId);
 
 			List<Lesson> classList = service.resultClass(map);
-			int resultCount = service.resultCount(userId);
+			int resultCount = service.resultCount(map);
 			
 			model.addAttribute("classList", classList);
 			model.addAttribute("resultCount", resultCount);
