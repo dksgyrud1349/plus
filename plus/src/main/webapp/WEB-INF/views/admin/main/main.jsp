@@ -122,6 +122,27 @@ img{
 	float: left;
 	text-align: center;
 }
+.plusBoxDetail{
+	font-size: 18px;
+	font-weight: 600;
+}
+.plusBoxDetail2{
+	font-size: 30px;
+	font-weight: bold;
+}
+.monthYear{
+	font-size: 25px;
+	margin-top: 2%;
+	margin-left: 7%;
+}
+.day{
+	font-size: 110px;
+	font-weight: 900;
+	vertical-align: top;
+	position: absolute;
+	top: 38%;
+	left: 6%;
+}
 </style>
 
 <div id="layoutSidenav_content">
@@ -198,8 +219,8 @@ img{
 	                <div class="card-body" style="width: 100%; height: 300px;">
 	                	<div style="font-size: 20px; font-weight: bold;">오늘 신고목록</div>
 	                	<div style="color: #A6A6A6; font-size: 15px;"> (최근 목록 3개만 보여집니다.)</div>
-							<div style="font-size: 25px; margin-top: 2%; margin-left: 7%;">${year}-${month}</div>
-							<div style="font-size: 110px; font-weight: 900; vertical-align: top; position: absolute; top: 38%; left: 6%;">${day}</div>
+							<div class="monthYear">${year}-${month}</div>
+							<div class="day">${day}</div>
 					<c:if test="${not empty declarationList}">
 						<div class="scheduleSize">
 							<c:forEach var="declarationDto" items="${declarationList}" varStatus="status" begin="${status.index}" end="${status.index +2}">
@@ -231,20 +252,19 @@ img{
 	                <div class="card-body" style="width: 100%; height: 300px;">
 	                	<div class="plusBox" style="margin-left: 20px;">
 	                		<i class="bi bi-person-fill-x fa-7x"></i>
-	                		<div style="font-size: 18px; font-weight: 600;"> 미승인 플러스 수</div>
-	                			<div style="font-size: 30px; font-weight: bold;"><span style="color: blue;">${noAppPlusCount}</span>명</div>
+	                		<div class="plusBoxDetail"> 미승인 플러스 수</div>
+	                			<div class="plusBoxDetail2"><span style="color: blue;">${noAppPlusCount}</span>명</div>
 	                	</div>
 	                	<div class="plusBox">
 	                		<i class="bi bi-person-fill fa-7x"></i>
-	                		<div style="font-size: 18px; font-weight: 600;">요청한 플러스 수</div>
-	                			<div style="font-size: 30px; font-weight: bold;"><span style="color: blue;">${requestPlusCount}</span>명</div>
+	                		<div class="plusBoxDetail">요청한 플러스 수</div>
+	                			<div class="plusBoxDetail2"><span style="color: blue;">${requestPlusCount}</span>명</div>
 	                	</div>
 	                	<div class="plusBox">
 	                		<i class="bi bi-person-fill-check fa-7x"></i>
-	                		<div style="font-size: 18px; font-weight: 600;">승인된 플러스 수</div>
-	                			<div style="font-size: 30px; font-weight: bold;"><span style="color: blue;">${appPlusCount}</span>명</div>
+	                		<div class="plusBoxDetail">승인된 플러스 수</div>
+	                			<div class="plusBoxDetail2"><span style="color: blue;">${appPlusCount}</span>명</div>
 	                	</div>
-	                	
                 	</div>
                 </div>
             </div>
