@@ -54,12 +54,14 @@
 	</sql>
  
 	<select id="resultClass" parameterType="map" resultType="com.fa.plus.domain.Lesson">
-		SELECT classNum, className, price, mainName, tagName, firstPhoto, addr1, addr2
-		FROM lesson l
-		JOIN subcategory sc ON sc.subNum = l.subNum
-		JOIN maincategory mc ON sc.mainNum = mc.mainNum
-		JOIN hashtag h ON h.tagNum = l.tagNum
-		WHERE  
+		SELECT l.classNum, className, price, mainName, tagName, firstPhoto, addr1, addr2
+			FROM lesson l
+			JOIN subcategory sc ON sc.subNum = l.subNum
+			JOIN maincategory mc ON sc.mainNum = mc.mainNum
+			JOIN hashtag h ON h.tagNum = l.tagNum
+			JOIN approval a ON l.classNum = a.classNum
+			WHERE a.approvalCode = 1 and
+			
 			INSTR(addr1, #{location}) > 0
 			<if test="classprice != null and classprice != 25">
 		     	<include refid="price-list"/>
