@@ -118,7 +118,6 @@
 	border: 1px solid #c2c2c2;
 	cursor: pointer;
 }
-
 </style>
 
 
@@ -200,12 +199,12 @@
 					<form name="reviewForm">
 						<div class="p-1">
 							<p class="star">
-								<a href="#" class="on"><i class="bi bi-star-fill"></i></a> <a
-									href="#" class="on"><i class="bi bi-star-fill"></i></a> <a
-									href="#" class="on"><i class="bi bi-star-fill"></i></a> <a
-									href="#" class="on"><i class="bi bi-star-fill"></i></a> <a
-									href="#" class="on"><i class="bi bi-star-fill"></i></a> <input
-									type="hidden" name="reviewScore" value="5"> <input
+								<a href="#" class="off"><i class="bi bi-star-fill"></i></a> <a
+									href="#" class="off"><i class="bi bi-star-fill"></i></a> <a
+									href="#" class="off"><i class="bi bi-star-fill"></i></a> <a
+									href="#" class="off"><i class="bi bi-star-fill"></i></a> <a
+									href="#" class="off"><i class="bi bi-star-fill"></i></a> <input
+									type="hidden" name="reviewScore" value="0"> <input
 									type="hidden" name="classNum">
 							</p>
 						</div>
