@@ -71,7 +71,7 @@ $(function() {
 					    </div>
 					    <div class="col">
 					    	<h6 style="color:#828282">적립금</h6>
-				  			<h3>${mileage} 원</h3>
+				  			<h3><fmt:formatNumber value="${mileage}" pattern="#,###원" /></h3>
 					    </div>
 					    <div class="col">
 					    	<h6 style="color:#828282">예약</h6>
