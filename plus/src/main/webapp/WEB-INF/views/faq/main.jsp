@@ -31,7 +31,7 @@
 	border-radius: 6px;
 }
 .chat{
-	color: #FF0000;
+	color: #3CB371;
 }
 
 </style>
