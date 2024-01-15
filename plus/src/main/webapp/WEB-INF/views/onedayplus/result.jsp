@@ -2,20 +2,66 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<style type="text/css">
-#box {
-  border-radius: 8px;
-  transition: all 0.3s cubic-bezier(0.42, 0.0, 0.58, 1.0);
-}
 
-#box:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  transform: translateY(-10px);
-}
+
+
+<style type="text/css">
+
+	#box {
+	  border-radius: 8px;
+	  transition: all 0.3s cubic-bezier(0.42, 0.0, 0.58, 1.0);
+	  
+	}
+	
+	#box:hover {
+	  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	  transform: translateY(-10px);
+	}
+    body {
+        font-family: 'Roboto', sans-serif; /* Use the 'Poppins' font or replace it with your preferred font */
+    	.body-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+    }
+
+    h5, h6 {
+        font-family: 'Roboto', sans-serif; /* 폰트
+    }
+
+    .fw-bold {
+        font-weight: bold;
+    }
+
+    .fs-2 {
+        font-size: 2rem; /*  font size */
+    }
+
+    .text-black {
+        color: #000000; /* color */
+    }
+
+    .bi-lightbulb, .bi-check-circle {
+        /* Add any additional styling for these icons if needed */
+    }
+
+    .card-title {
+        font-size: 1.5rem; /*  font size */
+    }
+
+    .text-dark {
+        color: #333333; /*  text color */
+    }
+
+    .btn-primary {
+        background-color: #007bff; /*  button color */
+        color: #ffffff; /* text color */
+    }
 </style>
 
 
-<main class="wrapper" style="margin:0 auto; width:100%;">
+<main class="wrapper" style="margin: 5 auto; width: 100%; margin-bottom: 0; padding-bottom: 20;">
 	<div id="layoutSidenav_content" style="background: #FFFFFF;">
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:5% auto; padding-top:5%">
@@ -23,17 +69,21 @@
 					<div class="col-8">
 						<h5 class="pb-2 fw-bold fs-2">
 							<i class="bi bi-book"></i> ${sessionScope.member.userName}님의 원데이플러스 결과
+						
 						</h5>
 						<c:choose>
 							<c:when test="${answerCount != 0}">
 								<c:forEach var="dto" items="${qlist}">
-								    <div>
+								    
+								    		<div class="body-container" style=" margin:5% auto; paddng-top:5%">
 								        <div class="row border-bottom border-info">
+								        <div class="row justify-content-center">
 								            <div class="col-12 p-2">
-								                <span class="fw-semibold text-black fs-5"><i class="bi bi-lightbulb"></i>${status.count} ${dto.subject}</span>
+								                <span class="fw-semibold text-black fs-5"><i class="bi bi-lightbulb"></i>${status.count} ${dto.subject}</span>								   
 								            </div>
 								        </div>
 								        <div>
+								        </div>
 									        <c:forEach var="vo" items="${list}">
 									            <c:if test="${dto.num == vo.num}">
 									                <div class="form-check form-check-inline m-2">
@@ -67,7 +117,8 @@
 												</c:forEach>
 											</c:when>
 											<c:otherwise>
-												<div class="mx-5 px-5">
+												  <div class="m-5 center-message">
+												  
 													<h5 class="text-center mb-5">결과에 해당하는 클래스가 없습니다.</h5>
 												</div>
 											</c:otherwise>
@@ -79,6 +130,8 @@
 							</c:when>
 								
 							<c:otherwise>
+							
+							
 								<div class="m-5">
 									<h4 class="text-center mb-5">원데이 플러스 결과가 없습니다.</h4>
 									<button onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus'" class="btn btn-primary" style="float:right;">체험하러가기</button>								

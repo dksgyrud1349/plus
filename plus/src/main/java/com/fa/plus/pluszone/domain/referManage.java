@@ -18,14 +18,15 @@ public class referManage {
 	
 	private long num;
 	private String userName;
+	private String userId;
+	private long memberIdx;
+	
 	public String getUserName() {
 		return userName;
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	private String userId;
-	private long memberIdx;
 
 	public long getRefNum() {
 		return refNum;

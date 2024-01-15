@@ -24,8 +24,8 @@
          DBMS_LOB.INSTR( rcontent, #{kwd}) &gt; 0 
       </if>
       <if test="schType=='regDate' ">
-         ( TO_CHAR(regDate, 'YYYY-MM-DD') = #{kwd}
-            OR TO_CHAR(regDate, 'YYYYMMDD') = #{kwd} )
+         ( TO_CHAR(r.regDate, 'YYYY-MM-DD') = #{kwd}
+            OR TO_CHAR(r.regDate, 'YYYYMMDD') = #{kwd} )
       </if>
    </sql>
 
