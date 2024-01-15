@@ -4,7 +4,14 @@
 
 <style type="text/css">
 
-.board-article img { max-width: 650px; }
+img {
+    height: 600px;
+    width: 600px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius:0 !important;
+}
 .rere {
 	color: white;
 	background: #46AA46;
@@ -56,15 +63,9 @@
 										${dto.regDate} | 조회 ${dto.hitCount}
 									</td>
 								</tr>
-								<tr>
+								<tr class="text-center">
 									<td colspan="2" valign="top" height="200" style="border-bottom: none;">
 										${dto.content}
-									</td>
-								</tr>
-								
-								<tr>
-									<td colspan="2" class="text-center p-3" style="border-bottom: none;">
-										<button type="button" class="btn btn-outline-secondary btnSendBoardLike" title="좋아요"><i class="bi ${userBoardLiked ? 'bi-hand-thumbs-up-fill':'bi-hand-thumbs-up' }"></i>&nbsp;&nbsp;<span id="boardLikeCount">${dto.boardLikeCount}</span></button>
 									</td>
 								</tr>
 								

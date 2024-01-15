@@ -89,7 +89,7 @@ public class BoardController {
 			if(imgs.size() > 0) {
 				dto.setImageFilename(imgs.get(0));
 			} else {
-				dto.setImageFilename(cp + "/resources/images/keyimage3.jpg");
+				dto.setImageFilename(cp + "/resources/images/Image-folder.jpg");
 			}
 			
 			map.put("num", dto.getNum());

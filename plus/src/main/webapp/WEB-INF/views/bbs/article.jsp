@@ -5,12 +5,13 @@
 <style type="text/css">
 
 img {
-        height: 600px;
-        width: 600px;
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: cover;
-    }
+    height: 600px;
+    width: 600px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius:0 !important;
+}
 .rere {
 	color: white;
 	background: #46AA46;
@@ -283,7 +284,6 @@ $(function(){
 			$menu.fadeIn(100);
 
 			let pos = $(this).offset(); // 선택한 요소 집합의 첫 번째 요소의 위치를 HTML 문서를 기준으로 반환
-			$menu.offset( {left:pos.left-70, top:pos.top+20} );
 		}
 	});
 	
