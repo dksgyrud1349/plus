@@ -30,7 +30,7 @@ public class InquiryAdManageController {
 	private InquiryAdManageService service;
 	
 	@Autowired
-	@Qualifier("myUtilGeneral")
+	// @Qualifier("myUtilGeneral")
 	private MyUtil myUtil;
 	
 	@RequestMapping("list")

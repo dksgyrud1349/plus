@@ -28,7 +28,7 @@ import com.fa.plus.pluszone.service.referManageService;
 public class referManageController {
 
 	@Autowired
-	@Qualifier("myUtilGeneral")
+	// @Qualifier("myUtilGeneral")
 	private MyUtil myUtil;
 	
 	@Autowired
