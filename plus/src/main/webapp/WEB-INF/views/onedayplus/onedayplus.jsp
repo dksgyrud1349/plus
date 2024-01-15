@@ -170,7 +170,7 @@
 	                    			<label class="checkbox-container">
 	                                    <input type="radio" value="${dto.plusNum}" name="plusNums">
 	                                    <div class="checkbox-button">
-	                                        <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="Hobby">
+	                                        <img src="${pageContext.request.contextPath}/resources/images/main/onedayplusbtn1.png" alt="click">
 	                                        <div class="hover-content">${dto.content}</div>
 	                                    </div>
 	                                </label>
@@ -196,7 +196,7 @@
 	                    			<label class="checkbox-container">
 	                                    <input type="radio" value="${dto.plusNum}" name="plusNums">
 	                                    <div class="checkbox-button">
-	                                        <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="Hobby">
+	                                        <img src="${pageContext.request.contextPath}/resources/images/main/onedayplusbtn2.png" alt="click">
 	                                        <div class="hover-content">${dto.content}</div>
 	                                    </div>
 	                                </label>
@@ -224,8 +224,8 @@
 				                    			<label class="checkbox-container">
 				                                    <input type="radio" value="${dto.plusNum}" name="plusNums">
 				                                    <div class="checkbox-button">
-				                                        <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="Hobby">
-				                                        <div class="hover-content">${dto.content}</div>
+				                                        <img src="${pageContext.request.contextPath}/resources/images/main/onedayplusbtn.png" alt="click">
+	                                        			<div class="hover-content">${dto.content}</div>
 				                                    </div>
 				                                </label>
 			                                </c:if>
@@ -252,7 +252,7 @@
 	                    			<label class="checkbox-container">
 	                                    <input type="radio" value="${dto.plusNum}" name="plusNums">
 	                                    <div class="checkbox-button">
-	                                        <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="Hobby">
+	                                        <img src="${pageContext.request.contextPath}/resources/images/main/onedayplusbtn.png" alt="click">
 	                                        <div class="hover-content">${dto.content}</div>
 	                                    </div>
 	                                </label>
@@ -278,7 +278,7 @@
 	                    			<label class="checkbox-container">
 	                                    <input type="radio" value="${dto.plusNum}" name="plusNums">
 	                                    <div class="checkbox-button">
-	                                        <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" alt="Hobby">
+	                                        <img src="${pageContext.request.contextPath}/resources/images/main/onedayplusbtn.png" alt="click">
 	                                        <div class="hover-content">${dto.content}</div>
 	                                    </div>
 	                                </label>
