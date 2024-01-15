@@ -115,9 +115,6 @@
 		SELECT NVL(COUNT(*), 0)
 		FROM reply
 		WHERE num=#{num}
-		<if test="membership lt 91">
-			AND ( showReply=1 OR ( showReply=0 AND userId=#{userId} ) )
-		</if>
 	</select>
 	
 	<!-- 댓글리스트 -->

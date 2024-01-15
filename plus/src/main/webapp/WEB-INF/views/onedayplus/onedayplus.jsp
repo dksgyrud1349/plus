@@ -147,15 +147,15 @@
 	}
 </style>
     
-    <div class="body-container">
+    <div class="body-container" style="margin:5% auto; padding-top:3%">
             <div class="input-form-backgroud row">
                 <div class="input-form col-md-12 mx-auto">
                     <div class="body-title">
-                        <h3><i class="bi bi-person-square"></i> 원데이 플러스 +  </h3>
+                        <h3><i class="bi bi-ui-checks"></i> 원데이 플러스 +  </h3>
                     </div>
                     
-                    <div class="alert alert-info" role="alert">
-                        <i class="bi bi-person-check-fill"></i> 원데이 플러스 + 만의 사용자 맞춤형 서비스를 이용해보세요.  
+                    <div class="alert alert-light" role="alert">
+                        <i class="bi bi-clipboard-check"></i>&nbsp; 질문을 통해 원데이 플러스 + 만의 사용자 맞춤형 클래스 추천 서비스를 이용해보세요.  
                     </div>
                     
                         
@@ -224,7 +224,7 @@
 				                    			<label class="checkbox-container">
 				                                    <input type="radio" value="${dto.plusNum}" name="plusNums">
 				                                    <div class="checkbox-button">
-				                                        <img src="${pageContext.request.contextPath}/resources/images/main/onedayplusbtn.png" alt="click">
+				                                        <img src="${pageContext.request.contextPath}/resources/images/main/onedayplusbtn3.png" alt="click">
 	                                        			<div class="hover-content">${dto.content}</div>
 				                                    </div>
 				                                </label>
@@ -252,7 +252,7 @@
 	                    			<label class="checkbox-container">
 	                                    <input type="radio" value="${dto.plusNum}" name="plusNums">
 	                                    <div class="checkbox-button">
-	                                        <img src="${pageContext.request.contextPath}/resources/images/main/onedayplusbtn.png" alt="click">
+	                                        <img src="${pageContext.request.contextPath}/resources/images/main/onedayplusbtn4.png" alt="click">
 	                                        <div class="hover-content">${dto.content}</div>
 	                                    </div>
 	                                </label>
@@ -278,7 +278,7 @@
 	                    			<label class="checkbox-container">
 	                                    <input type="radio" value="${dto.plusNum}" name="plusNums">
 	                                    <div class="checkbox-button">
-	                                        <img src="${pageContext.request.contextPath}/resources/images/main/onedayplusbtn.png" alt="click">
+	                                        <img src="${pageContext.request.contextPath}/resources/images/main/onedayplusbtn5.png" alt="click">
 	                                        <div class="hover-content">${dto.content}</div>
 	                                    </div>
 	                                </label>
