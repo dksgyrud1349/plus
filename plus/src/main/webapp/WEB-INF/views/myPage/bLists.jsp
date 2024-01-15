@@ -118,6 +118,7 @@
 	border: 1px solid #c2c2c2;
 	cursor: pointer;
 }
+
 </style>
 
 
@@ -178,16 +179,12 @@
 			</div>
 			<div class="modal-body"></div>
 			<div class="modal-footer">
-
-				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">Close</button>
-
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 			</div>
 			<div class="modal-backdrop"></div>
 		</div>
 	</div>
 </div>
-
 
 <div class="modal fade" id="exampleModal" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
