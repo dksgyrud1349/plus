@@ -5,6 +5,16 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tabs.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
 
+<style>
+img {
+    height: 600px;
+    width: 600px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+</style>
+
 <script type="text/javascript">
 function ajaxFun(url, method, formData, dataType, fn, file = false) {
 	const settings = {
@@ -67,65 +77,78 @@ function hideOrShowOk(){
 	ajaxFun(url, "get", query, "json", fn);
 }
 </script>
-<div class="container" style="margin-top: 70px;">
-	<div class="body-container">	
+
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width:80%; margin:0% auto; padding-top:5%">
+				<div class="body-main">
 		
-		<div class="body-main">
+				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+	    			<i class="bi bi-app"></i> 리뷰
+	    		</h3>
 
-			<table class="table mt-5 mb-0 board-article" style="margin-left: 80px;">
-				<thead>
-					<tr>
-						<td colspan="2" align="center" style="border-top: 1px solid black;">
-							제목: ${dto.reviewSubject}
-						</td>
-					</tr>
-				</thead>
+				<table class="table">
+					<thead>
+						<tr>
+							<td colspan="2" align="center">
+								제목: ${dto.reviewSubject}
+							</td>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td width="50%">
+								이름 : ${dto.userName}(${dto.userId})						
+							</td>
+							<td align="right">
+								&nbsp;
+							</td>
+						</tr>
+						
+						<tr class="text-center">
+							<td colspan="2">
+								클래스명 : ${dto.className}
+								<span style="color: gray;">(수강일: ${dto.cDate}, 작성일: ${dto.reviewDate})</span>
+							</td>
+						</tr>
+	
+						<tr class="text-center">
+							<td colspan="2" style="border-bottom: none;">
+								<img src="${pageContext.request.contextPath}/uploads/review/${dto.filename}">
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td colspan="2">
+								${dto.reviewContent}
+							</td>
+						</tr>
+						<tr>
+							<td width="50%">
+								평점 : <span style="color: blue;">${dto.reviewScore}</span> / 5점
+							</td>
+							<td align="right">
+								숨김여부: <span style="color: red;">${showResult}</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 				
-				<tbody>
+				<table class="table table-borderless">
 					<tr>
 						<td width="50%">
-							이름 : ${dto.userName}(${dto.userId})						
+							<input type="hidden" name="category" value = "${category}">
+					    	<button type="button" class="btn btn-light" onclick="hideOrShowOk();">${mode}</button>
 						</td>
-						<td align="right">
-							클래스명 : ${dto.className}
-							<span style="color: gray;">(수강일: ${dto.cDate}, 작성일: ${dto.reviewDate})</span>
-						</td>
-					</tr>
-
-					<tr>
-						<td colspan="2" style="border-bottom: none;">
-							<img src="${pageContext.request.contextPath}/uploads/review/${dto.filename}"
-								class="img-fluid img-thumbnail w-100 h-auto">
+						<td class="text-end">
+							<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/admin/reviewManage/${category}/list?page=${page}';">돌아가기</button>
 						</td>
 					</tr>
-					<tr>
-						<td colspan="2">
-							${dto.reviewContent}
-						</td>
-					</tr>
-					<tr>
-						<td width="50%">
-							평점 : <span style="color: blue;">${dto.reviewScore}</span> / 5점
-						</td>
-						<td align="right">
-							숨김여부: <span style="color: red;">${showResult}</span>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			
-			<table class="table table-borderless" style="margin-left: 80px;">
-				<tr>
-					<td width="50%">
-						<input type="hidden" name="category" value = "${category}">
-				    	<button type="button" class="btn btn-light" onclick="hideOrShowOk();">${mode}</button>
-					</td>
-					<td class="text-end">
-						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/admin/reviewManage/${category}/list?page=${page}';">돌아가기</button>
-					</td>
-				</tr>
-			</table>
-
+				</table>
+	
+			</div>
 		</div>
 	</div>
 </div>
+</main>
