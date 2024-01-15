@@ -13,7 +13,10 @@
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
-
+a {
+	text-decoration:none;
+	color:black;
+}
 </style>
 
 <script type="text/javascript">
@@ -52,10 +55,10 @@ function searchList() {
 				<table class="table table-hover board-list">
 					<thead class="table-light">
 						<tr>
-							<th width="10" class="text-center">번호</th>
-							<th width="70" class="text-center">제목</th>
+							<th width="20" class="text-center">번호</th>
+							<th width="120" class="text-center">제목</th>
 							<th width="20" class="text-center">작성자</th>
-							<th width="60" class="text-center">문의일자</th>
+							<th width="50" class="text-center">문의일자</th>
 							<th width="60" class="text-center">처리일자</th>
 							<th width="40" class="text-center">처리결과</th>
 						</tr>
