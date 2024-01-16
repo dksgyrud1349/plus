@@ -107,6 +107,8 @@
 	.modal.expand .modal-dialog {
 	    animation: expandInModal 1.0s ease-in-out;
 	}
+	
+	.product-img { height: 150px; width: 150px; cursor: pointer; }
 </style>
 </head>
 
@@ -145,6 +147,8 @@
 		<c:otherwise>
 			<tr><td><button type="button" class="btn btn-light side" style="margin-top: 16px;" onclick="iconOk('/myPage/main')"><i class="bi bi-person"></i></button></td></tr>
 			<td class="fs-6 fw-light">마이페이지<div class="border-bottom" style="margin-top:8px;"></div></td>
+			<tr><td><button type="button" class="btn btn-light side" style="margin-top: 16px;" onclick="location.href='javascript:recentProductView()';"><i class="bi bi-credit-card-2-front"></i></button></td> </tr>
+			<td class="fs-6 fw-light">최근 본 클래스<div class="border-bottom" style="margin-top:8px;"></div></td>
 			<tr><td><button type="button" class="btn btn-light side" style="margin-top: 16px;" onclick="location.href='${pageContext.request.contextPath}/lesson/main';"><i class="bi bi-cart4"></i></button></td></tr>
 			<td class="fs-6 fw-light">원데이클래스<div class="border-bottom" style="margin-top:8px;"></div></td>
 			<tr><td><button type="button" class="btn btn-light side" style="margin-top: 16px;" onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus';"><i class="bi bi-camera"></i></button></td> </tr>
@@ -224,34 +228,79 @@
                 <h5 class="modal-title" id="loginViewerModalLabel">원데이 플러스 + </h5>
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="p-3">
-                    <form name="modelLoginForm" action="" method="post" class="row g-3">
-                        <div class="mb-3">
-                            <input type="text" name="userId" class="form-control" placeholder="아이디">
-                        </div>
-                        <div class="mb-3">
-                            <input type="password" name="userPwd" class="form-control" autocomplete="off"
-                                placeholder="패스워드">
-                        </div>
-                        <div class="mb-3">
-                            <button type="button" class="btn btn-primary w-100" onclick="sendModelLogin();">로그인</button>
-                        </div>
-                    </form>
-                    <hr style="color:white;">
-                        <p class="text-center">
-                            <button type="button" class="btn btn-light w-100" onclick="location.href='${pageContext.request.contextPath}/member/member'">회원가입</button>
-                        </p>
-                        <div class="mb-3">
-                            <p class="text-center">
-                                <a href="${pageContext.request.contextPath}/member/pwdFind" class="text-decoration-none me-2" style="color:#fff">패스워드를 잊으셨나요 ?</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+			<div class="modal-body">
+			    <div class="p-3">
+			        <form name="modelLoginForm" action="" method="post" class="row g-3">
+			            <div class="mb-3">
+			                <input type="text" name="userId" class="form-control" placeholder="아이디">
+			            </div>
+			            <div class="mb-3">
+			                <input type="password" name="userPwd" class="form-control" autocomplete="off"
+			                    placeholder="패스워드">
+			            </div>
+			            <div class="mb-3">
+			                <button type="button" class="btn btn-primary w-100" onclick="sendModelLogin();">로그인</button>
+			    </div>
+			</form>
+			<hr style="color:white;">
+			<p class="text-center">
+			    <button type="button" class="btn btn-light w-100" onclick="location.href='${pageContext.request.contextPath}/member/member'">회원가입</button>
+			</p>
+			<div class="mb-3">
+			    <p class="text-center">
+			        <a href="${pageContext.request.contextPath}/member/pwdFind" class="text-decoration-none me-2" style="color:#fff">패스워드를 잊으셨나요 ?</a>
+			            </p>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 최근본 클래스 -->
+<div class="modal fade" id="productViewModal" tabindex="-1" aria-labelledby="productViewModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	      <h1 class="modal-title fs-5" id="productViewModalLabel">최근 본 클래스 목록</h1>
+	      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	    </div>
+	    <div class="modal-body modal-recentProductView">
+	    	최근에 본 클래스 목록이 없습니다.
+	    </div>
+	  </div>
+	</div>
+</div>
+		
+<script type="text/javascript">
+function recentProductView() {
+	$(".modal-recentProductView").empty();
+	
+	let lesson = JSON.parse(localStorage.getItem("lesson")) || [];
+	let out = "";
+	
+	out += "<div class='row row-cols-3 g-3'>";
+	for(let item of lesson) {
+		let classNum = item.classNum;
+		let className = item.className;
+		let firstPhoto = item.firstPhoto;
+		
+		out += "<div class='col p-1' style='width=750px;'>";
+		out += "  <div class='border rounded'>";
+		out += "    <a href='${pageContext.request.contextPath}/lesson/detail/"+classNum+"'>";
+		out += "      <img class='product-img' src='${pageContext.request.contextPath}/uploads/lesson/"+firstPhoto+"'>";
+		out += "    </a>";
+		out += "    <div class='text-truncate p-2 mt-1'>" + className + "</div>";
+		out += "  </div>";
+		out += "</div>";
+	}
+	out += "</div>";
+	
+	$(".modal-recentProductView").html(out);
+	
+	$("#productViewModal").modal("show");
+}
+</script>
 
 
 </body>
