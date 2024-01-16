@@ -54,19 +54,19 @@ a{
 							<table class="table">
 								<thead>
 									<tr>
-										<td colspan="2" align="center">
+										<td colspan="2" align="center" class="fs-5">
 											${dto.subject}${dto.showNotice == 1 ? "" : " [숨김]" }
 										</td>
 									</tr>
 								</thead>
 								
 								<tbody>
-									<tr>
+									<tr class="fs-5">
 										<td width="50%" align="left">
 											이름 : ${dto.userName}
 										</td>
 										<td width="50%" align="right">
-											${dto.regDate} | 조회 ${dto.hitCount}
+											${dto.regDate} <i class="bi bi-three-dots-vertical"></i> 조회 ${dto.hitCount}
 										</td>
 									</tr>
 									

@@ -168,12 +168,12 @@ $(function(){
 							          </c:if>
 							          
 							          <c:if test="${empty reviewDto.filename}">
-							          	<div class="imgBox">
+							          	<div class="imgBox" style="margin-top: 20px;">
 											<img src="${pageContext.request.contextPath}/resources/images/Image-folder.jpg" alt="">
 										</div>
 									</c:if>
 							          <a href="${articleUrl}&reviewNum=${dto.reviewNum}">
-							          <div class="hoverBox p-4 cont" style="right: 0px; bottom: 0px; left: 12px; top: 24px; padding-right: 48px; width: 288px;">
+							          <div class="hoverBox p-4 cont" style="right: 0px; bottom: 0px; left: 12px; top: 20px; padding-right: 48px; width: 288px;">
 							            <span>
 							              <p class="p1 pb-0 mb-1">${dto.reviewSubject}</p>
 							              <p class="p1" style="float:right"><i class="bi bi-star-fill star my-0"></i>${dto.reviewScore}/5점</p>
@@ -194,7 +194,7 @@ $(function(){
 							          </div>
 							          
 							          <a href="${articleUrl}&reviewNum=${dto.reviewNum}">
-							          <div class="hoverBox p-4 cont" style="right: 0px; bottom: 0px; left: 12px; top: 24px; padding-right: 48px; width: 288px;">
+							          <div class="hoverBox p-4 cont" style="right: 0px; bottom: 0px; left: 12px; top: 20px; padding-right: 48px; width: 288px;">
 							            <span>
 							              <p class="p1 pb-0 mb-1">${dto.reviewSubject}</p>
 							              <p class="p1" style="float:right"><i class="bi bi-star-fill star my-0"></i>${dto.reviewScore}/5점</p>

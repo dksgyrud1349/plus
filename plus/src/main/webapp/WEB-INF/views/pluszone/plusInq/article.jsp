@@ -96,30 +96,32 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<td colspan="2" class="text-white fs-4 fw-medium align-middle p-3 fw-bold" style="background: #32A4FF">
-											Q. ${dto.subject}</td>
+										<td colspan="2" class="text-white bg-dark">
+											Q. ${dto.subject}
+										</td>
+										
 									</tr>
 									<tr>
-										<td class="align-middle fs-5">클래스 : ${dto.className}</td>
+										<td class="align-middle">클래스 : ${dto.className}</td>
 									</tr>
 									<tr>
-										<td width="50%" class="align-middle fs-5">작성자 : ${dto.userName}</td>
-										<td align="right" class="align-middle fs-5">문의일 : ${dto.inquiryDate}</td>
+										<td width="50%" class="align-middle">작성자 : ${dto.userName}</td>
+										<td align="right" class="align-middle">문의일 : ${dto.inquiryDate}</td>
 									</tr>
 									<tr>
-										<td colspan="2" valign="top" height="200"
+										<td valign="top" height="200"
 											style="border-bottom: none;">${dto.content}</td>
 									</tr>
 								</thead>
 								<tbody>
 									<c:if test="${dto1.reInquiryNum == 1}">
 										<tr id="answer1">
-											<td colspan="2" class="text-white fs-4 fw-medium align-middle p-3 fw-bold" style="background: #FF4646">
+											<td colspan="2" class="text-white bg-success">
 												A. ${dto1.reSubject}</td>
 										</tr>
 										<tr id="answer2">
-											<td width="50%" class="align-middle fs-5">작성자 : ${dto1.nickName}</td>
-											<td align="right" class="align-middle fs-5">답변일 : ${dto1.reInquiryDate}</td>
+											<td width="50%" class="align-middle">작성자 : ${dto1.nickName}</td>
+											<td align="right" class="align-middle">답변일 : ${dto1.reInquiryDate}</td>
 										</tr>
 										<tr id="answer3">
 											<td colspan="2" valign="top" height="200"

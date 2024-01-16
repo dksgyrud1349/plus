@@ -59,12 +59,12 @@ function searchList() {
 								<thead>
 									<tr>
 										<th width="60">번호</th>
-										<th width="200">클래스 이름</th>
+										<th width="180">클래스 이름</th>
 										<th>제목</th>
 										<th width="90">작성자</th>
-										<th width="150">작성일</th>
+										<th width="140">작성일</th>
 										<th width="70">조회수</th>
-										<th width="50">표시</th>
+										<th width="70">표시</th>
 									</tr>
 								</thead>
 							 
@@ -76,12 +76,19 @@ function searchList() {
 												<td class="right">
 													<a href="${articleUrl}&num=${dto.num}" class="text-reset">${dto.subject}</a>
 												</td>
-											
-												
 												<td>${dto.userName}</td>
 												<td class="text-center">${dto.regDate}</td>
 												<td class="text-center">${dto.hitCount}</td>
-												<td>${dto.showNotice == 1 ? "표시" : "숨김" }</td>
+												<td>
+												<c:choose>
+									                <c:when test="${dto.showNotice == 1}">
+									                    <span class="fw-bold"><i class="bi bi-eye"></i>&nbsp;표시</span>
+									                </c:when>
+									                <c:otherwise>
+									                    <span class="fw-bold"><i class="bi bi-incognito"></i>&nbsp;숨김</span>
+									                </c:otherwise>
+									            </c:choose>
+									            </td>
 											</tr>
 										</c:forEach>
 					
@@ -98,7 +105,16 @@ function searchList() {
 											<td>${dto.userName}</td>
 											<td>${dto.regDate}</td>
 											<td>${dto.hitCount}</td>
-											<td>${dto.showNotice == 1 ? "표시" : "숨김" }</td>
+											<td>
+											<c:choose>
+								                <c:when test="${dto.showNotice == 1}">
+								                    <span class="fw-bold"><i class="bi bi-eye"></i>&nbsp;표시</span>
+								                </c:when>
+								                <c:otherwise>
+								                    <span class="fw-bold"><i class="bi bi-incognito"></i>&nbsp;숨김</span>
+								                </c:otherwise>
+								            </c:choose>
+									        </td>
 										</tr>
 									</c:forEach>
 								</tbody>

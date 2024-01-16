@@ -63,11 +63,11 @@ function searchList() {
 									<tr>
 										<th width="60">번호</th>
 										<th>제목</th>
-										<th width="90">작성자</th>
-										<th width="110">작성일</th>
+										<th width="80">작성자</th>
+										<th width="100">작성일</th>
 										<th width="70">조회수</th>
 										<th width="50">첨부</th>
-										<th width="50">표시</th>
+										<th width="70">표시</th>
 									</tr>
 								</thead>
 							 
@@ -109,7 +109,16 @@ function searchList() {
 													<a href="${pageContext.request.contextPath}/admin/noticeManage/zipdownload?num=${dto.num}"><i class="fa-solid fa-file-zipper"></i></a>
 												</c:if>		      
 											</td>
-											<td>${dto.showNotice == 1 ? "표시" : "숨김" }</td>
+											<td>											
+											<c:choose>
+								                <c:when test="${dto.showNotice == 1}">
+								                    <span class="fw-bold"><i class="bi bi-eye"></i>&nbsp;표시</span>
+								                </c:when>
+								                <c:otherwise>
+								                    <span class="fw-bold"><i class="bi bi-incognito"></i>&nbsp;숨김</span>
+								                </c:otherwise>
+								            </c:choose>
+								            </td>
 										</tr>
 									</c:forEach>
 								</tbody>

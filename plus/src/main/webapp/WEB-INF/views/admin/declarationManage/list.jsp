@@ -174,12 +174,12 @@ $(function() {
 									<td class="className">${dto.className}</td>
 									<td class="rContent">${dto.rContent}</td>
 									<td class="reportDate">${dto.reportDate}</td>
-									<td style="text-align: center;">
+									<td style="text-align: left">
 										<c:if test="${dto.result eq '0'}">
-											공개
+											<span class="fw-bold"><i class="bi bi-eye"></i>&nbsp;공개</span>
 										</c:if>
 										<c:if test="${dto.result eq '1'}">
-											비공개
+											<span class="fw-bold"><i class="bi bi-incognito"></i>&nbsp;비공개</span>
 										</c:if>
 									</td>
 									<input type="hidden" name="rNum${dto.rNum}" id="rNum${dto.rNum}" value="${dto.rNum}">

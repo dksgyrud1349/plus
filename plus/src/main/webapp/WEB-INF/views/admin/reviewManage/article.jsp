@@ -89,17 +89,9 @@ function hideOrShowOk(){
 	    		</h3>
 
 				<table class="table">
-					<thead>
-						<tr>
-							<td colspan="2" align="center">
-								제목: ${dto.reviewSubject}
-							</td>
-						</tr>
-					</thead>
-					
 					<tbody>
 						<tr>
-							<td width="50%">
+							<td width="50%" class="fs-5">
 								이름 : ${dto.userName}(${dto.userId})						
 							</td>
 							<td align="right">
@@ -107,7 +99,7 @@ function hideOrShowOk(){
 							</td>
 						</tr>
 						
-						<tr class="text-center">
+						<tr class="text-center fs-5">
 							<td colspan="2">
 								클래스명 : ${dto.className}
 								<span style="color: gray;">(수강일: ${dto.cDate}, 작성일: ${dto.reviewDate})</span>

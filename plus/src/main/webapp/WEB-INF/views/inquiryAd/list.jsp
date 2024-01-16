@@ -79,7 +79,8 @@ function searchList() {
 										<td>${dto.userName}</td>
 										<td>${dto.inquiryDate}</td>
 										<td>${dto.reInquiryDate}</td>
-										<td><c:choose>
+										<td>
+										<c:choose>
 							                <c:when test="${dto.reInquiryDate == null}">
 							                    <span class="fw-bold miyul"><i class="bi bi-x-circle" style="color: red"></i>&nbsp;답변대기</span>
 							                </c:when>

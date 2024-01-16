@@ -118,7 +118,7 @@ function sendReContentAd() {
 							<td width="50%" align="left">
 								<button type="button" class="btn btn-success rere" onclick="deleteInquiryAd('${dto.inquiryNum}');">질문삭제</button>
 								<c:if test="${not empty dto.reContent}">
-									<button type="button" class="btn btn-success" onclick="deleteReContentAd('${dto.inquiryNum}')">답변삭제</button>
+									<button type="button" class="btn btn-success rere" onclick="deleteReContentAd('${dto.inquiryNum}')">답변삭제</button>
 								</c:if>
 							</td>
 							

@@ -17,6 +17,12 @@ a {
 	text-decoration:none;
 	color:black;
 }
+.miyul {
+	color: #828282;
+}
+.yul {
+	color: #3c3c3c;
+}
 </style>
 
 <script type="text/javascript">
@@ -74,7 +80,16 @@ function searchList() {
 								<td class="text-center">${dto.userName}</td>
 								<td class="text-center">${dto.inquiryDate}</td>
 								<td class="text-center">${dto.reInquiryDate}</td>
-								<td class="text-center">${(empty dto.reInquiryDate)?"답변대기":"답변완료"}</td>
+								<td class="text-center">
+								<c:choose>
+					                <c:when test="${dto.reInquiryDate == null}">
+					                    <span class="fw-bold miyul"><i class="bi bi-x-circle" style="color: red"></i>&nbsp;답변대기</span>
+					                </c:when>
+					                <c:otherwise>
+					                    <span class="fw-bold yul"><i class="bi bi-check-circle" style="color: green"></i>&nbsp;답변완료</span>
+					                </c:otherwise>
+					            </c:choose>
+					            </td>
 							</tr>
 						</c:forEach>
 					</tbody>
