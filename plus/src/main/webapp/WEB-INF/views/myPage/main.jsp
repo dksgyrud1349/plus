@@ -65,7 +65,7 @@ $(function() {
 					<hr width="22%">
 	             	<div class="container text-center mt-5 mb-5">
 					  <div class="row me-5" style="background:#lightgrey;">
-					    <div class="col">
+					    <div class="col-4">
 					    	<h5><i class="bi bi-trophy-fill fa-3x align-middle box-shadow"></i>  
 					    	<font style="color:#47a3da; font-weight:bold;">${sessionScope.member.userName}님</font> 반갑습니다</h5>
 					    </div>

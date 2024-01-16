@@ -47,7 +47,7 @@ img {
 						<div class="table table-hover board-list " id="nav-tabContent">
 							<table class="table">
 								<thead>
-									<tr>
+									<tr class="text-center align-middle p-3 fs-5 fw-bold">
 										<td colspan="2" align="center">
 											${dto.subject}
 										</td>
@@ -55,12 +55,12 @@ img {
 								</thead>
 								
 								<tbody>
-									<tr>
+									<tr class="fs-5">
 										<td width="50%">
 											이름 : ${dto.userName}
 										</td>
 										<td align="right">
-											${dto.regDate} | 조회 ${dto.hitCount}
+											${dto.regDate} <i class="bi bi-three-dots-vertical"></i> 조회 ${dto.hitCount}
 										</td>
 									</tr>
 									<tr class="text-center">
@@ -108,10 +108,10 @@ img {
 								    	
 										<c:choose>
 								    		<c:when test="${sessionScope.member.userId==dto.userId || sessionScope.member.membership>90}">
-								    			<button type="button" class="btn btn-success" onclick="deleteBoard();">삭제</button>
+								    			<button type="button" class="btn btn-success rere" onclick="deleteBoard();">삭제</button>
 								    		</c:when>
 								    		<c:otherwise>
-								    			<button type="button" class="btn btn-light" disabled>삭제</button>
+								    			<button type="button" class="btn btn-light rere" disabled>삭제</button>
 								    		</c:otherwise>
 								    	</c:choose>
 									</td>
