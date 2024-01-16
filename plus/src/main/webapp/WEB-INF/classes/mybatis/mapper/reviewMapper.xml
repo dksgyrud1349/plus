@@ -198,4 +198,9 @@
 		FROM review
 		WHERE memberIdx = #{memberIdx}
 	</select>
+	
+	<!-- 리뷰 작성 시 리뷰 완료로 상태 변경  -->
+	<update id="updateState" parameterType="com.fa.plus.domain.Review">
+		UPDATE orderDetail SET state = 3 WHERE orderNum = #{orderNum}
+	</update>
 </mapper>

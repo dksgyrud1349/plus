@@ -39,6 +39,8 @@ public class ReviewServiceImpl implements ReviewService {
 					}
 				}
 			}
+			
+			mapper.updateState(dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -218,4 +220,5 @@ public class ReviewServiceImpl implements ReviewService {
 		}
 		return result;
 	}
+
 }

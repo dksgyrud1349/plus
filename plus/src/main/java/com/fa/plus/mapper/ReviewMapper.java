@@ -35,4 +35,6 @@ public interface ReviewMapper {
 	
 	// 리뷰 개수 (마이페이지에서 사용)
 	public int reviewCount(long memberIdx);
+	
+	public void updateState(Review dto) throws SQLException;
 }

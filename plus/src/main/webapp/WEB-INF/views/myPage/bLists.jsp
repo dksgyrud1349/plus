@@ -163,7 +163,7 @@
 						<td>${dto.className}</td>
 						<td>${dto.userName}</td>
 						<td>${dto.addr1},${dto.addr2}</td>
-						<td style="padding-left: 10px;">${dto.state == 0 ? "예약대기" : dto.state == 1 ? "예약확정" : "환불"}</td>
+						<td style="padding-left: 10px;">${dto.state == 0 ? "예약대기" : dto.state == 1 ? "예약확정" : dto.state == 2 ? "환불" : "리뷰완료"}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -388,6 +388,8 @@ $(function(){
 			// 조건부로 버튼 추가
 			if (state === 1) {
 			    htmlText += '    <button type="button" class="btn btn-dark reviewbtn" style="float:right;" data-bs-toggle="modal" data-bs-target="#exampleModal">리뷰쓰기</button>';
+			} else if (state == 3) {
+				 htmlText += '    <button type="button" class="btn btn-dark reviewbtn" style="float:right;" disabled>리뷰 작성 완료</button>';
 			}
 			
 			if(inputDateObj > previousDateObj && state === 0){
