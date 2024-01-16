@@ -49,8 +49,8 @@ img{
 .imgHoverEvent .imgBox{
 	width: 300px; 
 	height: 300px; 
+	background-color: black;
 	text-align: center; 
-	background: black; 
 	background-size: auto 100%;
 }
 .imgHoverEvent .hoverBox{
@@ -161,10 +161,17 @@ $(function(){
 						  <div class="row tab-pane fade tab-all show" id="all" role="tabpanel" aria-labelledby="all-tab" style="margin-left: 80px;">
 						      <c:forEach var="dto" items="${list}" varStatus="status">
 							      <div class="col imgHoverEvent event5" style="float: left;">
-							          <div class="imgBox" style="margin-top: 20px;">
-								          <img src="${pageContext.request.contextPath}/uploads/review/${dto.filename}" alt="">
-							          </div>
+							          <c:if test="${not empty dto.filename}">
+							          	<div class="imgBox" style="margin-top: 20px;">
+								          	<img src="${pageContext.request.contextPath}/uploads/review/${dto.filename}" alt="">
+							          	</div>
+							          </c:if>
 							          
+							          <c:if test="${empty reviewDto.filename}">
+							          	<div class="imgBox">
+											<img src="${pageContext.request.contextPath}/resources/images/Image-folder.jpg" alt="">
+										</div>
+									</c:if>
 							          <a href="${articleUrl}&reviewNum=${dto.reviewNum}">
 							          <div class="hoverBox p-4 cont" style="right: 0px; bottom: 0px; left: 12px; top: 24px; padding-right: 48px; width: 288px;">
 							            <span>
