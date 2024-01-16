@@ -15,11 +15,11 @@ function login() {
 			<div class="body-container" style="width:80%; margin:5% auto; ">
 				<div class="row justify-content-center">
 					<div class="col-8">
-						<h5 class="pb-2 fw-bold fs-2 pb-5">
+						<h3 class="mb-5 p-2" style="border-bottom:3px solid black;">
 							<i class="bi bi-book"></i> 원데이플러스 질문 관리
-						</h5>
+						</h3>
 						<c:forEach var="dto" items="${qsubject}">
-						    <div>
+						    <div class="mb-3 px-2">
 						        <div class="row border bg-body-secondary">
 						            <div class="col-12 p-2">
 						                <span class="fw-semibold text-black fs-5"><i class="bi bi-lightbulb"></i> ${dto.subject}</span>
