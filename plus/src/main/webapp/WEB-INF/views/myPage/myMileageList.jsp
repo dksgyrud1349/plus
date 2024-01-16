@@ -13,6 +13,12 @@
 	width: 0px;
 	height: 0px;
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 
 <script type="text/javascript">
@@ -31,7 +37,7 @@
 					<h3 class="mb-3 p-2" style="border-bottom: 3px solid black;">
 						<i class="bi bi-question-circle"></i> 적립금 사용/적립 내역
 
-						<button type="button" class="btn btn-success"
+						<button type="button" class="btn btn-success rere"
 							onclick="location.href='${pageContext.request.contextPath}/myPage/mileage/list';"
 							title="새로고침" style="float: right;">
 							<i class="bi bi-arrow-counterclockwise"></i>

@@ -71,15 +71,15 @@ $(function() {
 					    </div>
 					    <div class="col">
 					    	<h6 style="color:#828282">적립금</h6>
-				  			<h3><fmt:formatNumber value="${mileage}" pattern="#,###원" /></h3>
+				  			<a href="${pageContext.request.contextPath}/myPage/mileage/list"><h3><fmt:formatNumber value="${mileage}" pattern="#,###원" /></h3></a>
 					    </div>
 					    <div class="col">
 					    	<h6 style="color:#828282">예약</h6>
-				  			<h3>${bookCount} 건</h3>
+				  			<a href="${pageContext.request.contextPath}/myPage/booking/list"><h3>${bookCount} 건</h3></a>
 					    </div>
 					    <div class="col">
 					     	<h6 style="color:#828282">리뷰</h6>
-						    <h3>${reviewCount} 건</h3>
+						    <a href="${pageContext.request.contextPath}/myPage/review"><h3>${reviewCount} 건</h3></a>
 					    </div>
 					  </div>
 					</div>
