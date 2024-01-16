@@ -32,7 +32,16 @@
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
+.imgcard {
+        max-width: 300px; /* Set your desired maximum width */
+        max-height: 400px; /* Set your desired maximum height */
+        margin: 10px; /* Add margin to create space between cards */
+    }
 
+.imgcard img {
+    max-width: 100%; /* Make sure the image doesn't exceed the card width */
+    height: auto; /* Maintain the aspect ratio of the image */
+}
 </style>
 
 <script type="text/javascript">
@@ -120,17 +129,16 @@ $(function(){
 						</tr>
 						
 						<tr>
-							<td class="row">
-							  <c:forEach var="clist" items="${classList}">
-							    <div class="card border-light col me-3">
-							      <img alt="" src="${pageContext.request.contextPath}/resources/images/Image-folder.jpg">
-							      <!-- <img src="${pageContext.request.contextPath}/uploads/lesson/${clist.firstPhoto}"/> -->
-							      <h5 class="card-header overflowText">${clist.className}</h5>
-							      <p class="card-body text-end overflowText">${clist.price}</p>
-							      <a href="${pageContext.request.contextPath}/lesson/detail/${clist.classNum}" class="btn btn-primary text-center">상세보기</a>
-							    </div>
-							  </c:forEach>
-							</td>
+						    <td class="row">
+						        <c:forEach var="clist" items="${classList}">
+						            <div class="card border-light col imgcard">
+						                <img src="${pageContext.request.contextPath}/uploads/lesson/${clist.firstPhoto}"/>
+						                <h5 class="card-header overflowText">${clist.className}</h5>
+						                <p class="card-body text-end overflowText">${clist.price}</p>
+						                <a href="${pageContext.request.contextPath}/lesson/detail/${clist.classNum}" class="btn btn-primary text-center">상세보기</a>
+						            </div>
+						        </c:forEach>
+						    </td>
 						</tr>
 						<tr>
 							<td colspan="2" class="text-center p-3" style="border-bottom: none;">
