@@ -7,57 +7,44 @@
 
 <style type="text/css">
 
-	#box {
-	  border-radius: 8px;
-	  transition: all 0.3s cubic-bezier(0.42, 0.0, 0.58, 1.0);
-	  
-	}
-	
-	#box:hover {
-	  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-	  transform: translateY(-10px);
-	}
-    body {
-        font-family: 'Roboto', sans-serif; /* Use the 'Poppins' font or replace it with your preferred font */
-    	.body-container {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-    }
+#box {
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.42, 0.0, 0.58, 1.0);
+}
+#box:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  transform: translateY(-10px);
+}
 
-    h5, h6 {
-        font-family: 'Roboto', sans-serif; /* 폰트
-    }
 
-    .fw-bold {
-        font-weight: bold;
-    }
+  h5, h6 {
+      font-family: 'Roboto', sans-serif;
+  }
 
-    .fs-2 {
-        font-size: 2rem; /*  font size */
-    }
+  .fw-bold {
+      font-weight: bold;
+  }
 
-    .text-black {
-        color: #000000; /* color */
-    }
+  .fs-2 {
+      font-size: 2rem;
+  }
 
-    .bi-lightbulb, .bi-check-circle {
-        /* Add any additional styling for these icons if needed */
-    }
+  .text-black {
+      color: #000000;
+  }
 
-    .card-title {
-        font-size: 1.5rem; /*  font size */
-    }
+  .card-title {
+      font-size: 1.5rem; 
+  }
 
-    .text-dark {
-        color: #333333; /*  text color */
-    }
+  .text-dark {
+      color: #333333;
+  }
 
-    .btn-primary {
-        background-color: #007bff; /*  button color */
-        color: #ffffff; /* text color */
-    }
+  .btn-primary {
+      background-color: #007bff; 
+      color: #ffffff;
+  }
 </style>
 
 
@@ -67,7 +54,7 @@
 			<div class="body-container" style="width:80%; margin:5% auto; padding-top:5%">
 				<div class="row justify-content-center">
 					<div class="col-8">
-						<h5 class="pb-2 fw-bold fs-2">
+						<h5 class="pb-2 fw-bold fs-2 text-center" style="border-bottom:1px solid #cccccc;">
 							<i class="bi bi-book"></i> ${sessionScope.member.userName}님의 원데이플러스 결과
 						
 						</h5>
@@ -75,7 +62,7 @@
 							<c:when test="${answerCount != 0}">
 								<c:forEach var="dto" items="${qlist}">
 								    
-								    		<div class="body-container" style=" margin:0% auto; paddng-top:5%">
+							    		<div class="body-container" style=" margin:0% auto; paddng-top:5%">
 								        <div class="row border-bottom border-info">
 								        <div class="row justify-content-center">
 								            <div class="col-12 p-2">
