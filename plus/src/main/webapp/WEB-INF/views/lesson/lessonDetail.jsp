@@ -706,4 +706,44 @@ function sendOk(mode) {
 		}
 		$('.list-review').html(out);
 	}
-	</script>
+
+// 오늘본 상품 목록
+$(function(){
+	let classNum = "${dto.classNum}";
+	let className = "${dto.className}";
+	let firstPhoto = "${dto.firstPhoto}";
+	
+	// localStorage.clear(); // localStorage 전체 지우기
+	
+	let lesson = JSON.parse(localStorage.getItem("lesson")) || [];
+	
+	// 동일한 상품이면 삭제
+	lesson.forEach(function(data){
+		if(data.classNum === classNum) {
+			let idx = lesson.indexOf(data);
+			if(idx > -1) lesson.splice(idx, 1);
+			return;
+		}
+	});
+	/*
+	// 필터를 사용한 경우
+	let result = product.filter(function(item, index, self){
+		return pnum != item.pnum;
+	});
+	product = result;
+	*/
+	
+	// 9개 이상이면 마지막 데이터 삭제
+	if(lesson.length >= 9) {
+		lesson.splice(lesson.length-1, 1);
+	}
+	
+	// 저장할 데이터
+	let obj = {classNum:classNum, className:className, firstPhoto:firstPhoto};
+	lesson.unshift(obj); // 배열 가장 앞에 추가
+	
+	// 웹스트로지에 저장
+	let p = JSON.stringify(lesson);
+	localStorage.setItem("lesson", p);
+});
+</script>

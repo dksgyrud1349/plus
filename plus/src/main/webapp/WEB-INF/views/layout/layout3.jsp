@@ -271,7 +271,7 @@
 	  </div>
 	</div>
 </div>
-		
+
 <script type="text/javascript">
 function recentProductView() {
 	$(".modal-recentProductView").empty();
