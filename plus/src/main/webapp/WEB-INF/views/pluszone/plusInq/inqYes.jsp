@@ -2,12 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/tabs.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/board.css"
-	type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tabs.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
 
 <style>
 .rere {
@@ -52,7 +48,7 @@ a{
 <main class="wrapper" style="margin: 0 auto; width: 100%;">
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width: 80%; margin: 5% auto;">
+			<div class="body-container" style="width: 100%; margin: 5% auto;">
 				<div class="body-main">
 
 					<h3 class="mb-3 p-2" style="border-bottom: 3px solid black;">
@@ -74,7 +70,8 @@ a{
 					<div id="tab-content" style="padding: 20px 0px 0;">
 						<table class="table">
 							<tr>
-								<td align="left" width="70%" style="font-weight: bold"> 답변완료 <font style="color: green; font-weight: bold; text-decoration: underline">${dataCount}명</font>
+								<td align="left" width="70%" style="font-weight: bold; vertical-align:middle;"> 
+									답변완료 <font style="color: green; font-weight: bold; text-decoration: underline; ">${dataCount}명</font>
 									(${page}/${total_page} 페이지)
 								</td>
 								<td align="right">

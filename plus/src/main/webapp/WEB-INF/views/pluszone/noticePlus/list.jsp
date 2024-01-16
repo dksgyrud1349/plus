@@ -32,7 +32,7 @@ function searchList() {
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:80%; margin:5% auto; ">
+			<div class="body-container" style="width:100%; margin:5% auto; ">
 				<div class="body-main">
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 		    			<i class="bi bi-pin-angle-fill"></i> 공지사항 관리
@@ -59,7 +59,7 @@ function searchList() {
 								<thead>
 									<tr>
 										<th width="60">번호</th>
-										<th width="120">클래스 이름</th>
+										<th width="200">클래스 이름</th>
 										<th>제목</th>
 										<th width="90">작성자</th>
 										<th width="150">작성일</th>

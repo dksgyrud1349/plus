@@ -78,22 +78,20 @@
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
 			<div class="body-container"
-				style="width: 100%; margin: 5% auto; padding-top: 5%">
+				style="width: 80%; margin: 5% auto; padding-top: 5%">
 				<div class="body-main">
+				
+				<h3 class="mb-3 p-2" style="border-bottom: 3px solid black;">
+					<i class="bi bi-app"></i> 문의내역 
+					<c:if test="${mode == 'write'}">
+						<button type="button" style="float: right;" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqList?${query}';">리스트</button>
+					</c:if>
+					<c:if test="${mode == 'update' }">
+						<button type="button" style="float: right;" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqOkList?${query}';">리스트</button>
+					</c:if>
+				</h3>
 
 					<div class="card mb-5 w-80" style="margin: 0 auto;">
-						<div class="card-header text-center">
-							<h3>
-								<i class="bi bi-app"></i> 문의내역 
-								<c:if test="${mode == 'write'}">
-									<button type="button" style="float: right;" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqList?${query}';">리스트</button>
-								</c:if>
-								<c:if test="${mode == 'update' }">
-									<button type="button" style="float: right;" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqOkList?${query}';">리스트</button>
-								</c:if>
-							</h3>
-						</div>
-
 						<div class="table table-hover board-list " id="nav-tabContent">
 							<table class="table">
 								<thead>

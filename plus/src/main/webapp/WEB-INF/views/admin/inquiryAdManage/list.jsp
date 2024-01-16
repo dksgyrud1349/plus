@@ -33,12 +33,12 @@ function searchList() {
 				<div class="body-main">
 				
 				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-				<i class="bi bi-question-diamond"></i> 1:1 문의 
-				
-				<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/inquiryAdManage/list';" title="새로고침" style="float:right;">
-					<i class="bi bi-arrow-counterclockwise"></i>
-				</button>
-			</h3>
+					<i class="bi bi-question-diamond"></i> 1:1 문의 
+					
+					<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/inquiryAdManage/list';" title="새로고침" style="float:right;">
+						<i class="bi bi-arrow-counterclockwise"></i>
+					</button>
+				</h3>
 
 	        <div id="tab-content">
 				<table class="table">
