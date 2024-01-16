@@ -2,12 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/tabs.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/board.css"
-	type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tabs.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
 
 <script type="text/javascript">
 function ajaxFun(url, method, formData, dataType, fn, file = false) {
@@ -96,7 +92,7 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 <main class="wrapper" style="margin: 0 auto; width: 100%;">
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width: 80%; margin: 5% auto;">
+			<div class="body-container" style="width: 100%; margin: 5% auto;">
 				<div class="body-main">
 
 					<h3 class="mb-3 p-2" style="border-bottom: 3px solid black;">

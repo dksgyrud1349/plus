@@ -37,8 +37,8 @@
 
 .answer-form textarea { width: 100%; height: 75px; resize: none; }
 
-.answerReview, .deleteReview { cursor: pointer; padding-left: 5px; }
-.answerReview:hover, .deleteReview:hover { font-weight: 500; color: #2478FF; }
+.deleteReview { cursor: pointer; padding-left: 5px; }
+.deleteReview:hover { font-weight: 500; color: #2478FF; }
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/boot-board.css" type="text/css">
 
@@ -61,7 +61,7 @@ $(function(){
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:80%; margin:5% auto; ">
+			<div class="body-container" style="width:100%; margin:5% auto; ">
 				<div class="body-main">
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
 						<i class="bi bi-chat-right-text"></i> 상품 리뷰
@@ -70,7 +70,8 @@ $(function(){
 
 			        <div class="row board-list-header">
 			            <div class="col-auto pt-2">
-			            	<span>${dataCount}개(${page}/${total_page} 페이지)</span>
+			            	<span>
+			            		리뷰 <font style="color: green; font-weight: bold; text-decoration: underline">${dataCount}개</font> (${page}/${total_page} 페이지)</span>
 			            </div>
 			        </div>
 					
@@ -102,7 +103,7 @@ $(function(){
 											<div class="bg-light p-2">
 												<div>
 													<div class="p-2 pb-0 fw-semibold">
-														${dto.className}
+														${dto.className} (${dto.reviewDate})
 													</div>
 													
 													<div class="row p-2">
@@ -110,10 +111,6 @@ $(function(){
 															<c:forEach var="n" begin="1" end="5">
 																<span class="item fs-6 ${dto.reviewScore>=n ? 'on' : ''}"><i class="bi bi-star-fill"></i></span>
 															</c:forEach>
-														</div>
-														<div class="col text-end">
-															<span>${dto.reviewDate}</span>
-															<span class="answerReview" data-reviewNum="${dto.reviewNum}">답변</span>
 														</div>
 													</div>
 													
@@ -126,7 +123,9 @@ $(function(){
 																</div>
 														</div>
 													</c:if>
-													
+													<div class="col text-end">
+														<button class="answerReview btn btn-success" data-reviewNum="${dto.reviewNum}">답변</button>
+													</div>
 												</div>
 												
 												<c:if test="${not empty dto.replyContent}">
