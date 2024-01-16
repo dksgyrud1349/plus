@@ -75,7 +75,7 @@
 							<c:when test="${answerCount != 0}">
 								<c:forEach var="dto" items="${qlist}">
 								    
-								    		<div class="body-container" style=" margin:5% auto; paddng-top:5%">
+								    		<div class="body-container" style=" margin:0% auto; paddng-top:5%">
 								        <div class="row border-bottom border-info">
 								        <div class="row justify-content-center">
 								            <div class="col-12 p-2">

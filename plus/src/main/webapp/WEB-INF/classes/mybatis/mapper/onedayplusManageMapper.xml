@@ -46,6 +46,7 @@
 	<select id="listQuestion" resultType="com.fa.plus.admin.domain.OnedayplusManage">
 		SELECT q.num, subject, content, plusNum
 		FROM plusQ q
+		
 		JOIN plusQue pq ON pq.num = q.num
 	</select>
 	
