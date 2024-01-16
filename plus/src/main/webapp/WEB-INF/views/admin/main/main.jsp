@@ -324,15 +324,19 @@ img{
 						<div style="margin-left: 5%;">
 							<c:forEach var="reviewDto" items="${reviewManageList}" varStatus="status" begin="${status.index}" end="${status.index+2}">
 								<div class="col imgHoverEvent event5 reviewBox">
-									<div class="imgBox">
-								         <img src="${pageContext.request.contextPath}/uploads/review/${reviewDto.filename}" alt="">
-							        </div>
+									<c:if test="${empty reviewDto.filename}">
+										<img src="${pageContext.request.contextPath}/resources/images/speech-bubble.png" alt="">
+									</c:if>
+									<c:if test="${not empty reviewDto.filename}">
+										<div class="imgBox">
+								         	<img src="${pageContext.request.contextPath}/uploads/review/${reviewDto.filename}" alt="">
+							        	</div>
+							        </c:if>
 							        <div class="hoverBox">
 							        	<span>
 							            <p class="p1">${reviewDto.reviewSubject}</p>
-							            <p class="p1" style="float:right"><i class="bi bi-star-fill star my-0"></i>${reviewDto.reviewScore}/5점</p>
-							            <br><div class="p1 bor mt-3 p-0" style="color: white; width: 100%"></div>
 							            <p class="p2">${reviewDto.reviewContent}</p>
+							            <p class="p1">${reviewDto.reviewScore}/5점</p>
 							            </span>
 							       </div>
 								</div>
