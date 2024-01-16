@@ -69,7 +69,7 @@
 
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-light fixed-top" id="sideNav">
-    <a class="navbar-brand" href="#page-top">
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/myPage/main">
         <span class="d-none d-lg-block">
             <img class="img-fluid img-profile mx-auto mb-1" src="${pageContext.request.contextPath}/resources/images/main/mypagePerson.png"/>
         </span>
@@ -78,7 +78,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav menu-4">
-          	<li class="nav-item"><a class="nav-link" href="#" data-hover="마이페이지" style="border-bottom: 3px solid orange !important;">마이페이지</a></li>
+          	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/main" data-hover="마이페이지" style="border-bottom: 3px solid orange !important;">마이페이지</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/wishList/mylist" data-hover="위시리스트">위시리스트</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/booking/list" data-hover="예약내역">예약내역</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/mileage/list" data-hover="적립금내역">적립금내역</a></li>
