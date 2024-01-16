@@ -17,8 +17,8 @@
 	color:black;
 }
 .reviewBox{
-	max-width: 30%;
-	min-height: 230px;
+	width: 30%;
+	height: 230px;
 	border: 1px solid black;
 	border-radius: 5px;
 	margin-top: 1%;
@@ -31,16 +31,15 @@ img{
 	max-width: 100%; 
 }
 .imgHoverEvent{
-	min-width: 30%;
-	min-height: 230px;
+	width: 30%;
+	height: 100%;
 	margin: 5px; 
 	position: relative; 
 	overflow: hidden; 
 	display: inline-block;
 }
 .imgHoverEvent .imgBox{
-	min-width: 30%;
-	min-height: 230px; 
+	height: 230px; 
 	text-align: center; 
 	background: black; 
 	background-size: auto 100%;
@@ -326,13 +325,14 @@ img{
 							<c:forEach var="reviewDto" items="${reviewManageList}" varStatus="status" begin="${status.index}" end="${status.index+2}">
 								<div class="col imgHoverEvent event5 reviewBox">
 									<div class="imgBox">
-								         <img src="${pageContext.request.contextPath}/uploads/review/${dto.filename}" alt="">
+								         <img src="${pageContext.request.contextPath}/uploads/review/${reviewDto.filename}" alt="">
 							        </div>
 							        <div class="hoverBox">
 							        	<span>
 							            <p class="p1">${reviewDto.reviewSubject}</p>
+							            <p class="p1" style="float:right"><i class="bi bi-star-fill star my-0"></i>${reviewDto.reviewScore}/5점</p>
+							            <br><div class="p1 bor mt-3 p-0" style="color: white; width: 100%"></div>
 							            <p class="p2">${reviewDto.reviewContent}</p>
-							            <p class="p1">${reviewDto.reviewScore}/5점</p>
 							            </span>
 							       </div>
 								</div>
