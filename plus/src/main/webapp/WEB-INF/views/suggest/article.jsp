@@ -203,7 +203,7 @@ function writeSubmit(){
 			</div>
 			<div style="margin-top: 35px; float: right; margin-right: 250px;">
 				<button type="button" class="bDelaration" id="btnOk" name="btnOk" class="bSuggest"
-					onclick="writeSubmit();" style="padding-top: 3px;">제안하기</button>
+					onclick="writeSubmit();" style="padding-top: 3px;">제안하기<i class="bi bi-lightbulb-fill"></i></button>
 			</div>
 		</div>
 	</form>

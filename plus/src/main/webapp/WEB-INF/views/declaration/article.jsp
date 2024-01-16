@@ -190,7 +190,7 @@ function writeSubmit(){
 				<textarea class="form-control" name="rContent" id="rContent" style="resize: none;" aria-label="With textarea">${dto.rContent}</textarea>
 			</div>
 			<div style="margin-top: 35px; float: right; margin-right: 250px;">
-				<button type="button" id="btnOk" name="btnOk" class="bDelaration" onclick="writeSubmit();" style="padding-top: 3px;">신고하기</button>
+				<button type="button" id="btnOk" name="btnOk" class="bDelaration" onclick="writeSubmit();" style="padding-top: 3px;">신고하기<i class="bi bi-bell-fill"></i></button>
 			</div>
 		</div>
 	</form>

@@ -129,7 +129,7 @@ function deleteNote() {
 					</table>
 					
 					<table class="table mb-0">
-						<tr class="border-top2">
+						<tr class="border-top2 fs-5">
 							<td colspan="2" align="left">
 								<c:choose>
 									<c:when test="${menuItem=='receive'}">
@@ -144,7 +144,7 @@ function deleteNote() {
 							</td>
 						</tr>
 						
-						<tr>
+						<tr class="fs-5">
 							<td width="50%">
 								<c:choose>
 									<c:when test="${menuItem=='receive'}">

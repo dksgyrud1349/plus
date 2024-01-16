@@ -13,7 +13,12 @@
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
-
+.miyul {
+	color: #828282;
+}
+.yul {
+	color: #3c3c3c;
+}
 </style>
 
 <script type="text/javascript">
@@ -55,12 +60,12 @@ function searchList() {
 						<table class="table table-border table-list table-hover">
 							<thead>
 								<tr>
-									<th width="60">번호</th>
+									<th width="50">번호</th>
 									<th>제목</th>
 									<th width="70">작성자</th>
-									<th width="150">문의일자</th>
+									<th width="140">문의일자</th>
 									<th width="230">처리일자</th>
-									<th width="90">처리결과</th>
+									<th width="110">처리결과</th>
 								</tr>
 							</thead>
 					
@@ -74,7 +79,15 @@ function searchList() {
 										<td>${dto.userName}</td>
 										<td>${dto.inquiryDate}</td>
 										<td>${dto.reInquiryDate}</td>
-										<td>${(empty dto.reInquiryDate)?"답변대기":"답변완료"}</td>
+										<td><c:choose>
+							                <c:when test="${dto.reInquiryDate == null}">
+							                    <span class="fw-bold miyul"><i class="bi bi-x-circle" style="color: red"></i>&nbsp;답변대기</span>
+							                </c:when>
+							                <c:otherwise>
+							                    <span class="fw-bold yul"><i class="bi bi-check-circle" style="color: green"></i>&nbsp;답변완료</span>
+							                </c:otherwise>
+							            </c:choose>
+							            </td>
 									</tr>
 								</c:forEach>
 							</tbody>
