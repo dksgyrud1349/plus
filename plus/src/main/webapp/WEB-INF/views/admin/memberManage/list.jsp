@@ -111,8 +111,11 @@ function profile(userId) {
     });
 	
 	dlg.closest('.ui-dialog').find('.ui-dialog-titlebar-close').css({
-        'position': 'absolute',
-        'right': '10px'
+		'position': 'absolute',
+        'right': '35px',
+        'height':'15px',
+        'width' : '25px',
+        'border-radius' : '20px'
     });
 	
 	dlg.closest('.ui-dialog').find('.ui-dialog-title').css({
@@ -170,6 +173,15 @@ function memberStateDetaileView() {
 	        "z-index": 10000,
 	        "margin": "70px"
 	 });
+	 var dlg = $('#memberStateDetaile');
+	    dlg.closest('.ui-dialog').find('.ui-dialog-titlebar-close').css({
+	        'position': 'absolute',
+	        'right': '35px',
+	        'height':'15px',
+	        'width' : '25px',
+	        'border-radius' : '20px',
+	        'background' : 'white'
+	    });
 }
 
 function selectStateChange() {
@@ -218,7 +230,7 @@ function selectStateChange() {
 						<div id="tab-content" style="padding: 20px 0px 0;">
 							<table class="table">
 								<tr>
-									<td align="left" width="70%" style="font-weight:bold">
+									<td align="left" width="70%" style="font-weight:bold; vertical-align:middle;">
 										전체 사용자 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}명</font> (${page}/${total_page} 페이지)
 									</td>
 									<td align="right">

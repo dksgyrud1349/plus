@@ -30,6 +30,7 @@ $(function(){
 }
 a{
 	text-decoration:none;
+	color:black;
 }
 .rere {
 	color: white;
@@ -111,7 +112,7 @@ a{
 														<option value="endDate" ${schType=="endDate"?"selected":""}>종료일</option>
 													</select>
 													<input type="text" name="kwd" value="${kwd}" class="form-control">
-													<button type="button" class="btn btn-outline-secondary" onclick="searchList()">
+													<button type="button" class="btn btn-outline-secondary rere" onclick="searchList()">
 														검색
 													</button>
 												</div>

@@ -243,7 +243,7 @@ function sendOk(userId) {
 						<div id="tab-content" style="padding: 20px 0px 0;">
 							<table class="table">
 								<tr>
-									<td align="left" width="70%" style="font-weight:bold">
+									<td align="left" width="70%" style="font-weight:bold; vertical-align:middle;">
 										전체 플러스 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}명</font> (${page}/${total_page} 페이지)
 									</td>
 									<td align="right">

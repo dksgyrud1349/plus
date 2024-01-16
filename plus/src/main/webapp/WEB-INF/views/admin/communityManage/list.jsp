@@ -13,6 +13,9 @@
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
+a{
+	text-decoration:none;
+}
 </style>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/paginate-boot.js"></script>
@@ -123,7 +126,7 @@ function searchList() {
 										</select>
 									
 										<input type="text" name="kwd" value="${kwd}" class="form-control">
-										<button type="button" class="btn btn-outline-secondary" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+										<button type="button" class="btn btn-outline-secondary rere" onclick="searchList()"> <i class="bi bi-search"></i> </button>
 									</div>
 								</form>
 							</td>
