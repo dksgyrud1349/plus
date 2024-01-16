@@ -324,7 +324,9 @@ img{
 							<c:forEach var="reviewDto" items="${reviewManageList}" varStatus="status" begin="${status.index}" end="${status.index+2}">
 								<div class="col imgHoverEvent event5 reviewBox">
 									<c:if test="${empty reviewDto.filename}">
-										<img src="${pageContext.request.contextPath}/resources/images/Image-folder.jpg" alt="">
+										<div class="imgBox">
+											<img src="${pageContext.request.contextPath}/resources/images/Image-folder.jpg" alt="">
+										</div>
 									</c:if>
 									<c:if test="${not empty reviewDto.filename}">
 										<div class="imgBox">
