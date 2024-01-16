@@ -16,12 +16,6 @@
     font-weight: 500;
     font-style: normal;
 }
-.body-container{
-	width: 1100px;
-	height: 100%;
-	margin-top: 150px;
-	margin-left: 480px;
-}
 .body-title{
 	font-family: 'JalnanGothic';
 }
@@ -39,54 +33,54 @@
 }
 </style>
 
-</head>
-<body>
-
-<div class="body-container">
-<div class="body-title">
-	<h3><i class="bi bi-exclamation-diamond-fill" style="margin-left: 2px;"></i> 제안 문의</h3>
-</div>
-	<table class="table-border table">
-		<tr>
-			<td align="left" width="50%" style="margin-top: 20px;">
-				<span style="margin-left: 5px; position: inherit;">${dataCount}개(${page}/${total_page} 페이지)</span>
-			</td>
-		</tr>
-	</table>
-		
-	<form name="listForm" method="post">
-		<table class="table-list table">
-			<thead>
-				<tr style="font-family: 'EASTARJET-Medium';">
-					<th style="text-align: center; width: 20px;">번호</th>
-					<th style="text-align: center; width: 20px;">제안자</th>
-					<th style="text-align: center; width: 120px;">클래스명</th>
-					<th style="text-align: center; width: 120px;">제안 내용</th>
-					<th style="text-align: center; width: 40px;">등록일</th>
-				</tr>
-			</thead>
-	
-			<tbody>
-				<c:forEach var="dto" items="${list}">
+<main class="wrapper" style="margin:0 auto; width:100%;">
+	<div id="layoutSidenav_content">
+		<div class="container-fluid px-5">
+			<div class="body-container" style="width:80%; margin:5% auto; ">
+				<div class="body-main">
+				<h3><i class="bi bi-exclamation-diamond-fill" style="margin-left: 2px;"></i> 제안 문의</h3>
+				<table class="table-border table">
 					<tr>
-						<td style="text-align: center;">${dataCount - (page-1) * size - status.index}</td>			
-						<td class="userId" style="text-align: center;">${dto.userName}</td>
-						<td class="className" style="text-align: center;">${dto.className}</td>
-						<td class="content" style="text-align: center;">${dto.content}</td>
-						<td class="regDate" style="text-align: center;">${dto.regDate}</td>
+						<td align="left" width="50%" style="margin-top: 20px;">
+							<span style="margin-left: 5px; position: inherit;">${dataCount}개(${page}/${total_page} 페이지)</span>
+						</td>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		
-		<input type="hidden" name="page" value="${page}">
-	</form>	
-	
-	<div class="page-navigation" style="opacity: 0.7;">
-		${dataCount==0?"등록된 게시물이 없습니다.":paging}
+				</table>
+					
+				<form name="listForm" method="post">
+					<table class="table-list table">
+						<thead>
+							<tr style="font-family: 'EASTARJET-Medium';">
+								<th style="text-align: center; width: 20px;">번호</th>
+								<th style="text-align: center; width: 20px;">제안자</th>
+								<th style="text-align: center; width: 120px;">클래스명</th>
+								<th style="text-align: center; width: 120px;">제안 내용</th>
+								<th style="text-align: center; width: 40px;">등록일</th>
+							</tr>
+						</thead>
+				
+						<tbody>
+							<c:forEach var="dto" items="${list}">
+								<tr>
+									<td style="text-align: center;">${dataCount - (page-1) * size - status.index}</td>			
+									<td class="userId" style="text-align: center;">${dto.userName}</td>
+									<td class="className" style="text-align: center;">${dto.className}</td>
+									<td class="content" style="text-align: center;">${dto.content}</td>
+									<td class="regDate" style="text-align: center;">${dto.regDate}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					
+					<input type="hidden" name="page" value="${page}">
+				</form>	
+				
+				<div class="page-navigation" style="opacity: 0.7;">
+					${dataCount==0?"등록된 게시물이 없습니다.":paging}
+				</div>
+				
+			</div>
+		</div>
 	</div>
-	
 </div>
-
-</body>
-</html>
+</main>

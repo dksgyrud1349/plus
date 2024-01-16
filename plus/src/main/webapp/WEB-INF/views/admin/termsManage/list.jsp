@@ -45,7 +45,7 @@ function searchList() {
 			            <button type="button" class="btn btn-success rere me-3" onclick="location.href='${pageContext.request.contextPath}/admin/termsManage/write';" style="float:right;">글올리기</button>
 		    		</h3>
 		    			
-		    	<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+		    	<div id="tab-content" style="clear: both;">
 					<table class="table">
 						<tr>
 							<td align="left" width="50%">

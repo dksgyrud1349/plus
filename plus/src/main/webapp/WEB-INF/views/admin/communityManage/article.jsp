@@ -18,6 +18,10 @@ img {
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
+a{
+	text-decoration: none;
+	color : black;
+}
 </style>
 
 <c:if test="${sessionScope.member.membership>90}">

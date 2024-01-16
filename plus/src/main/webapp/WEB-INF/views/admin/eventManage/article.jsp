@@ -36,6 +36,10 @@ img{
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
+a{
+	text-decoration: none;
+	color : black;
+}
 </style>
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
@@ -57,7 +61,7 @@ img{
 						</ul>
 					</div>
 					
-					<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+					<div id="tab-content" style="clear: both;">
 				    	<table class="table">
 							<tr>
 								<td align="left" width="50%">

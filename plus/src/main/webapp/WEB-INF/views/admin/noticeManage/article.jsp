@@ -14,6 +14,10 @@
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
+a{
+	text-decoration: none;
+	color : black;
+}
 </style>
 
 <script type="text/javascript">
@@ -32,8 +36,9 @@
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:5% auto; ">
 				<div class="body-main">
-		    			
-				<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+		    			<i class="bi bi-pin-angle-fill"></i> 공지사항 관리
+			    	</h3>
 				    <table class="table">
 						<tr>
 							<td align="left" width="50%">
@@ -46,12 +51,6 @@
 					</table>
 				
 					<div class="card mb-5 w-80 " style="margin:0 auto">
-					    <div class="card-header text-center">
-					    	<h3>
-					    		<i class="bi bi-pin-angle-fill"></i> 공지사항 관리
-					    	</h3>
-						</div>
-						<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 							<table class="table">
 								<thead>
 									<tr>

@@ -10,7 +10,10 @@
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
-
+a{
+	text-decoration: none;
+	color : black;
+}
 
 .table-article img { max-width: 650px; }
 .file-item { padding: 7px; margin-bottom: 3px; border: 1px solid #ced4da; color: #777777; }
@@ -36,7 +39,7 @@
 		    		<i class="fas fa-clipboard-list"></i> 이용약관 관리
 		    	</h3>
 		    			
-				<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+				<div id="tab-content" style="clear: both;">
 				    <table class="table">
 						<tr>
 							<td align="left" width="50%">

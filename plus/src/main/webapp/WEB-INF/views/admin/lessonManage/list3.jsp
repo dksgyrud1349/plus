@@ -13,6 +13,9 @@
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
+a{
+	text-decoration: none;
+}
 </style>
 
 <script type="text/javascript"
