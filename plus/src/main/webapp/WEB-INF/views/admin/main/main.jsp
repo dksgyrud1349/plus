@@ -40,7 +40,6 @@ img{
 .imgHoverEvent .imgBox{
 	height: 230px; 
 	text-align: center; 
-	background: black; 
 	background-size: auto 100%;
 }
 .imgHoverEvent .hoverBox{
