@@ -80,9 +80,9 @@
 	<table class="table table-border mx-auto my-10">
 		<thead>
 			<tr class="bg-light border-top2">
-				<th>내용</th>
-				<th width="130">담당자</th>
-				<th width="200">등록일</th>
+				<th class="text-center">내용</th>
+				<th width="130" class="text-center">담당자</th>
+				<th width="200" class="text-center">등록일</th>
 			</tr>
 		</thead>
 		

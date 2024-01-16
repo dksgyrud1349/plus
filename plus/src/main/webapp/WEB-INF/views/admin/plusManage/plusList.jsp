@@ -113,7 +113,10 @@ function profile(userId) {
 	
 	dlg.closest('.ui-dialog').find('.ui-dialog-titlebar-close').css({
         'position': 'absolute',
-        'right': '10px'
+        'right': '35px',
+        'height':'15px',
+        'width' : '25px',
+        'border-radius' : '20px'
     });
 	
 	dlg.closest('.ui-dialog').find('.ui-dialog-title').css({
@@ -157,20 +160,31 @@ function updateOk() {
 }
 
 function memberStateDetaileView() {
-	$('#memberStateDetaile').dialog({
-		  modal: true,
-		  minHeight: 100,
-		  maxHeight: 450,
-		  width: 750,
-		  title: '계정상태 상세',
-		  close: function(event, ui) {
-			   $(this).dialog("destroy"); // 이전 대화상자가 남아 있으므로 필요
-		  }
-	  });
-	 $('#memberStateDetaile').dialog("widget").css({
-	        "z-index": 10000,
-	        "margin": "70px"
-	 });
+    $('#memberStateDetaile').dialog({
+        modal: true,
+        minHeight: 100,
+        maxHeight: 450,
+        width: 750,
+        title: '계정상태 상세',
+        close: function(event, ui) {
+            $(this).dialog("destroy"); // 이전 대화상자가 남아 있으므로 필요
+        }
+    });
+
+    $('#memberStateDetaile').dialog("widget").css({
+        "z-index": 10000,
+        "margin": "70px"
+    });
+
+    var dlg = $('#memberStateDetaile');
+    dlg.closest('.ui-dialog').find('.ui-dialog-titlebar-close').css({
+        'position': 'absolute',
+        'right': '35px',
+        'height':'15px',
+        'width' : '25px',
+        'border-radius' : '20px',
+        'background' : 'white'
+    });
 }
 
 function selectStateChange() {
