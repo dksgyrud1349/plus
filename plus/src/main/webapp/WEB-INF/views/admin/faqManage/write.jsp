@@ -115,13 +115,17 @@ function sendOk() {
 						<table class="table table-border border-top2 table-form">
 							<tr> 
 								<td>카테고리</td>
-								<td> 
-									<select name="cateNum" class="form-select">
-										<c:forEach var="vo" items="${listCategory}">
-											<option value="${vo.cateNum}" ${dto.faqName==vo.faqName?"selected":""}>${vo.faqName}</option>
-										</c:forEach>
-									</select>
-									<button type="button" class="btn btnCategoryDialog"> 변경 </button>
+								<td>
+									<div class="d-flex flex-row">
+										<div class="col-3">
+											<select name="cateNum" class="form-select">
+												<c:forEach var="vo" items="${listCategory}">
+													<option value="${vo.cateNum}" ${dto.faqName==vo.faqName?"selected":""}>${vo.faqName}</option>
+												</c:forEach>
+											</select>
+										</div>
+										<button type="button" class="btn btnCategoryDialog col-md-auto"> 변경 </button>
+									</div>
 								</td>
 							</tr>
 						
@@ -167,10 +171,10 @@ function sendOk() {
 							<table class="table-category">
 								<thead>
 									<tr> 
-										<th width="170">카테고리</th>
-										<th width="90">활성</th>
-										<th width="80">출력순서</th>
-										<th>변경</th>
+										<th>카테고리</th>
+										<th width="110">활성</th>
+										<th width="110">출력대상</th>
+										<th width="110">출력순서</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -182,7 +186,6 @@ function sendOk() {
 												<option value="0">비활성</option>
 											</select>
 										</td>
-										<td> <input type="text" name="orderNo"> </td>
 										<td>
 											<select name="showUser">
 												<option value="0">공통</option>
@@ -190,6 +193,7 @@ function sendOk() {
 												<option value="2">플러스</option>
 											</select>
 										</td>
+										<td> <input type="text" name="orderNo"> </td>
 										<td> <button type="button" class="btnCategoryAddOk">등록하기</button> </td>
 									</tr>
 								</tbody>
@@ -251,7 +255,7 @@ $(function(){
 		$("#category-dialog").dialog({
 			  modal: true,
 			  height: 500,
-			  width: 500,
+			  width: 700,
 			  title: '카테고리 수정',
 			  open : function(){
 				let url = "${pageContext.request.contextPath}/admin/faqManage/listAllCategory?tmp="+(new Date()).getTime();
@@ -350,9 +354,9 @@ $(function(){
 			return false;
 		}
 		
-		faqName = encodeURIComponent(faqName);
+		faqName = encodeURIComponent(category);
 		let url = "${pageContext.request.contextPath}/admin/faqManage/updateCategory";
-		let query = "cateNum="+cateNum+"&faqName="+faqName+"&showFaq="+showFaq+"&showUser="+showUser+"&orderNo="+orderNo;
+		let query = "cateNum="+categoryNum+"&faqName="+faqName+"&showFaq="+showFaq+"&showUser="+showUser+"&orderNo="+orderNo;
 		const fn = function(data){
 			let state = data.state;
 			if(state === "false") {

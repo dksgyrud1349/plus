@@ -12,25 +12,20 @@
 	margin: 15px auto 5px;
 }
 
-.accordion h3.question {
+.accordion div.question {
 	box-sizing: border-box;
     color:#333;
-    font-weight:500;
     border:1px solid #ccc;
     background-color:#fff;
-    padding:7px 15px 7px;
+    padding: 0 15px;
     border-radius:4px;	
-    cursor:pointer;
     margin: 3px 0 0;
 }
-.accordion h3.question:hover {
+.accordion div.question:hover {
 	 background-color: #F8FFFF;
 }
 
-.accordion h3.question .q {
-	font-weight: 600;
-}
-.accordion h3.question .subject:hover {
+.accordion div.question .subject:hover {
 	color: #0d58ba;
 }
 
@@ -66,7 +61,7 @@
 	text-align: right;
 }
 
-.accordion h3.active {
+.accordion div.active {
 	font-weight: 600;
 	background-color: #f8f9fa;
 }
@@ -80,7 +75,7 @@
 
 <script type="text/javascript">
 $(function(){
-	$("#tab-content").on("click", ".accordion h3.question", function(){
+	$("#tab-content").on("click", ".accordion div.question", function(){
 		 const $answer = $(this).next(".accordion div.answer");
 		 let isVisible = $answer.is(':visible');
 		 if(isVisible) {
@@ -88,7 +83,7 @@ $(function(){
 			 $(this).removeClass("active");
 		 } else {
 			 $(".accordion div.answer").hide();
-			 $(".accordion h3.question").removeClass("active");
+			 $(".accordion div.question").removeClass("active");
 			 
 			 $(this).next(".accordion div.answer").show();
 			 $(this).addClass("active");

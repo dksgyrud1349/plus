@@ -5,11 +5,12 @@
 <c:if test="${list.size() > 0}">
 	<div class="accordion"> 
 		<c:forEach var="dto" items="${list}">
-			<h3 class="question">
-				<span class="q">Q.</span> <span class="subject">${dto.subject}</span>
-			</h3>
-			<div class="answer">
-				<div class="faqName">분류 : ${dto.faqName}</div>
+			<div class="question d-flex flex-row">
+				<h4 class="q col-md-auto" style="line-height:68px;">Q.&nbsp;&nbsp;</h4> 
+				<h5 class="subject col-8 me-5" style="line-height:68px;">${dto.subject}</h5>
+				<span class="faqName col-2 text-end" style="line-height:68px;">(${dto.faqName})</span>
+			</div>
+			<div class="answer bg-white">
 				<div class="content">
 					<div>A.</div>
 					<div>${dto.content}</div>
@@ -25,5 +26,5 @@
 </c:if>
  
 <div class="page-navigation text-center mb-3">
-	${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
+	${dataCount == 0 ? "등록된 FAQ가 없습니다." : paging}
 </div>
