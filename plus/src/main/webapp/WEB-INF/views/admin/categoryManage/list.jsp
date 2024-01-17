@@ -57,7 +57,7 @@ function detail(mainNum) {
 	const dlg = $("#category-dialog").dialog({
 		  autoOpen: false,
 		  modal: true,
-		  height: 400,
+		  height: 500,
 		  width: 600,
 		  title: "카테고리 관리",
 		  buttons: {
@@ -82,8 +82,12 @@ function detail(mainNum) {
     });
 	
 	dlg.closest('.ui-dialog').find('.ui-dialog-titlebar-close').css({
-        'position': 'absolute',
-        'right': '10px'
+		'position': 'absolute',
+        'right': '35px',
+        'height':'15px',
+        'width' : '25px',
+        'border-radius' : '20px',
+        'background' : 'white'
     });
 	
 	dlg.closest('.ui-dialog').find('.ui-dialog-title').css({
@@ -141,7 +145,7 @@ function deleteOk(mainNum) {
 		            <div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 						<table class="table">
 							<tr>
-								<td align="left" width="50%">
+								<td align="left" width="50%" style="vertical-align:middle">
 									<span class="me-3">메인 카테고리: <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}개</font></span> 
 									<span>서브 카테고리: <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount2}개</font></span>
 								</td>
