@@ -2,8 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
-
-
 .nameTitle{
 	color: black;
 	font-size: 30px;
@@ -107,6 +105,7 @@ img{
 }
 .tab-content{
 	height: 650px;
+	margin-left: 60px;
 }
 .star{
 	color: yellow;
