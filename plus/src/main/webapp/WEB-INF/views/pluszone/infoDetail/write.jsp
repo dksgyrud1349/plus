@@ -27,6 +27,12 @@
 	height: 250px;
 	
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
 </style>
 
 <script type="text/javascript">
@@ -106,7 +112,7 @@ function(){
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 	  <form name="infoDetailForm" method="post" enctype="multipart/form-data">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:80%; margin:5% auto; ">
+			<div class="body-container" style="width:62%; margin:5% auto; ">
 				<div class="body-main">
 		    			
 					<div class="card mb-5 w-80" style="margin:0 auto">
@@ -122,9 +128,9 @@ function(){
 								
 								<div>
 									<div>
-										<div style="float: left; margin-left: 70px; margin-right: 20px;">
+										<div class="px-2 pt-2 pb-0" style="float: left; margin-left: 70px; margin-right: 20px;">
 											<div class="imageFile"></div>
-											<div>
+											<div class="mt-3">
 												<c:if test="${empty dto.photo}">
 													<img src ="${pageContext.request.contextPath}/resources/images/person_photo.png" class="imgStyle">
 												</c:if>
@@ -132,25 +138,27 @@ function(){
 													<img src="${pageContext.request.contextPath}/uploads/infoDetail/${dto.photo}" class="card-img-top imgStyle">
 												</c:if>
 											</div>
-											<span style="font-weight: bold;">대표사진:</span> <input type="file" name="photoFile" accept="image/*" class="form-control" style="width: 250px; height: 40px; border: 1px solid gray;"> 
+											<div class="mt-1">
+											<span style="font-weight: bold; margin-top: 20px;">대표사진</span> <input type="file" name="photoFile" accept="image/*" class="form-control" style="width: 250px; height: 40px; border: 1px solid gray;"> 
+											</div>
 										</div>
 									</div>
 								</div>
 							  </div>
 								<div>
 									<div>
-										<div style="font-weight: bold;">닉네임:</div>
+										<div class="mt-0" style="font-weight: bold;">닉네임</div>
 										<input type="text" name="nickName" value="${dto.nickName}" placeholder="닉네임">
 									</div>
 									<div>
-										<div style="font-weight: bold;">플러스 소개: </div>
-											<textarea name="content" id="content" placeholder="소개" style="resize: none; width: 800px; height: 200px;">${dto.content}</textarea>
+										<div class="mt-1" style="font-weight: bold;">플러스 소개 </div>
+											<textarea name="content" id="content" placeholder="소개" style="resize: none; width: 55%; height: 177px; border-radius: 8px;">${dto.content}</textarea>
 									</div>
 							    </div>
 							<div>
 								<div>
-									<div align="right" style="margin-right: 20px; margin-top: 10px;">
-										<button type="button" class="btn btn-success" onclick="sendOk();"> ${mode=="update"?"수정완료":"등록완료"}</button>
+									<div class="mt-3 mb-1" align="right" style="margin-right: 20px; margin-top: 10px;">
+										<button type="button" class="btn btn-success rere" onclick="sendOk();"> ${mode=="update"?"수정완료":"등록완료"}</button>
 										<button type="button" class="btn btn-return" onclick="location.href='${pageContext.request.contextPath}/pluszone';">돌아가기</button>
 									</div>
 								</div>
