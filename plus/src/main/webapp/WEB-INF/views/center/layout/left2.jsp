@@ -68,5 +68,6 @@
     		<li><a class="dropdown-item" href="${pageContext.request.contextPath}/suggest/article">제안하기</a></li>
     		<li><a class="dropdown-item" href="${pageContext.request.contextPath}/inquiryAd/list">문의하기</a></li>
   		</ul>
+  	<a href="${pageContext.request.contextPath}/chatting/main">실시간 상담</a>
   	<a href="${pageContext.request.contextPath}/etc/list">연락처/위치 안내</a>
 </div>

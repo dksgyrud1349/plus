@@ -123,6 +123,7 @@
                              
                              <a class="nav-link" href="${pageContext.request.contextPath}/admin/inquiryAdManage/list">문의사항</a>
                              <a class="nav-link" href="${pageContext.request.contextPath}/admin/termsManage/list">서비스 이용약관</a>
+                             <a class="nav-link" href="${pageContext.request.contextPath}/admin/chatting/main">실시간 채팅</a>
                              <a class="nav-link" href="https://pf.kakao.com/_cbxcnG">카카오톡</a>
                          </nav>
                      </div>
