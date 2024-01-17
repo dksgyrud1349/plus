@@ -10,7 +10,7 @@
 		<td width="15%" class="text-center bg-light">회원번호</td>
 		<td width="35%" class="ps-5">${dto.memberIdx}</td>
 		<td width="15%" class="text-center bg-light">아이디</td>
-		<td width="35%" class="ps-5">${dto.userId}${dto.membership==1?"일반회원":(dto.membership==31?"강사":"기타")}</td>
+		<td width="35%" class="ps-5">${dto.userId} (${dto.membership==1?"일반회원":(dto.membership==31?"강사":"기타")})</td>
 	</tr>
 	<tr>
 		<td class="text-center bg-light">이 름</td>
@@ -29,13 +29,6 @@
 		<td class="ps-5">${dto.regDate}</td>
 		<td class="text-center bg-light">최근로그인</td>
 		<td class="ps-5">${dto.lastLogin}</td>
-	</tr>
-	
-	<tr>
-		<td class="text-center bg-light">총 구매액</td>
-		<td class="ps-5">미완성</td>
-		<td class="text-center bg-light">적립 총 금액</td>
-		<td class="ps-5">미완성</td>
 	</tr>
 	
 	<tr>

@@ -51,7 +51,7 @@
 					        </a>
 					      </div>
 					      <div class="col-auto d-none d-lg-block">
-					        <img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="bd-placeholder-img" width="200" height="250"  role="img">
+					        <img src="${pageContext.request.contextPath}/resources/images/person_photo.png" class="bd-placeholder-img" width="200" height="250"  role="img">
 					      </div>
 					    </div>
 					  </div>
@@ -69,7 +69,7 @@
 					        </a>
 					      </div>
 					      <div class="col-auto d-none d-lg-block">
-					      	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="bd-placeholder-img" width="200" height="250"  role="img">
+					      	<img src="${pageContext.request.contextPath}/resources/images/person_photo.png" class="bd-placeholder-img" width="200" height="250"  role="img">
 					      </div>
 					    </div>
 					  </div>
@@ -87,7 +87,7 @@
 					        </a>
 					      </div>
 					      <div class="col-auto d-none d-lg-block">
-					      	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="bd-placeholder-img" width="200" height="250"  role="img">
+					      	<img src="${pageContext.request.contextPath}/resources/images/person_photo.png" class="bd-placeholder-img" width="200" height="250"  role="img">
 					      </div>
 					    </div>
 					  </div>
@@ -105,7 +105,7 @@
 					        </a>
 					      </div>
 					      <div class="col-auto d-none d-lg-block">
-					      	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="bd-placeholder-img" width="200" height="250"  role="img">
+					      	<img src="${pageContext.request.contextPath}/resources/images/person_photo.png" class="bd-placeholder-img" width="200" height="250"  role="img">
 					      </div>
 					    </div>
 					  </div>
@@ -123,7 +123,7 @@
 					        </a>
 					      </div>
 					      <div class="col-auto d-none d-lg-block">
-					      	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="bd-placeholder-img" width="200" height="250"  role="img">
+					      	<img src="${pageContext.request.contextPath}/resources/images/person_photo.png" class="bd-placeholder-img" width="200" height="250"  role="img">
 					      </div>
 					    </div>
 					  </div>
@@ -140,7 +140,7 @@
 					        </a>
 					      </div>
 					      <div class="col-auto d-none d-lg-block">
-					      	<img src="${pageContext.request.contextPath}/resources/images/keyimage3.jpg" class="bd-placeholder-img" width="200" height="250"  role="img">
+					      	<img src="${pageContext.request.contextPath}/resources/images/person_photo.png" class="bd-placeholder-img" width="200" height="250"  role="img">
 					      </div>
 					    </div>
 					  </div>

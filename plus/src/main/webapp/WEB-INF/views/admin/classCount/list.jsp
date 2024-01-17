@@ -43,7 +43,7 @@ $(function(){
 	    let y = data.dayOfMonth.month.substring(0, 4);
 	 	let m = parseInt(data.dayOfMonth.month.substring(4));
 		//$('.barChart-title').html(y + "년 " + m + "월");
-		$('.barChart-title').html("월별 클래스 개설 수");
+		// $('.barChart-title').html("월별 클래스 개설 수");
 		
 	    chartData.push(data.dayOfMonth.JAN);
 	    chartData.push(data.dayOfMonth.FEB);
@@ -123,8 +123,11 @@ $(function(){
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:5% auto; ">
 				<div class="body-main">
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+	    				<i class="bi bi-bar-chart-line-fill"></i> 월별 클래스 개설 수
+	    			</h3>
 					<div class="barChartsContainer">
-						<h3 class="barChart-title" style="height:30 auto;"></h3>
+						<!-- <h3 class="barChart-title" style="height:30 auto;"></h3>  -->
 						<div id="barChartsLayout" style="margin: 0 auto;"></div>
 					</div>
 				</div>

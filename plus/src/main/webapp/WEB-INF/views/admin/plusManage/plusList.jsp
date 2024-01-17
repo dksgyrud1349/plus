@@ -82,9 +82,6 @@ function profile(userId) {
 			   " 수정 " : function() {
 		    	   updateOk(); 
 		       },
-		       " 삭제 " : function() {
-		    	   deleteOk(userId);
-			   },
 		       " 닫기 " : function() {
 		    	   $(this).dialog("close");
 		       }
