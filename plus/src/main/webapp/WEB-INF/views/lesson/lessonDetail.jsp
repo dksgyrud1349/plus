@@ -481,7 +481,7 @@ function sendOk(mode) {
 										<div class="d-flex justify-content-center small mb-2 score-star">
 											<c:forEach var="n" begin="1" end="5">
 												<c:set var="score" value="${newList.reviewScore + ((newList.reviewScore%1>=0.5) ? (1-newList.reviewScore%1)%1 : -(newList.reviewScore%1))}"/>
-												<span class="fs-6 item ${reviewScore>=n?'on':'off'}">
+												<span class="fs-6 item ${newList.reviewScore>=n?'on':'off'}">
 													<i class="bi bi-star-fill"></i>
 												</span>
 											</c:forEach>
