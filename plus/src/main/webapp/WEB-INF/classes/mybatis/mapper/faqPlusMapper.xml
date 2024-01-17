@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fa.plus.mapper.FaqMapper">
+<mapper namespace="com.fa.plus.pluszone.mapper.FaqPlusMapper">
 
 	<select id="dataCount" parameterType="map" resultType="Integer">
 		SELECT NVL(COUNT(*), 0)
@@ -12,11 +12,12 @@
 			<if test="cateNum!=0">
 				( c.cateNum = #{cateNum} )
 			</if>
-			AND c.showFaq = 1  AND (showUser = 0 OR showUser = 1)
+			AND c.showFaq = 1  AND (showUser = 0 OR showUser = 2)
 		</where>
+		
 	</select>
 
-	<select id="listFaq" parameterType="map" resultType="com.fa.plus.domain.Faq">
+	<select id="listFaq" parameterType="map" resultType="com.fa.plus.pluszone.domain.FaqPlus">
 		SELECT f.num, subject, content,
 			c.cateNum, faqName, orderNo
 		FROM faq f
@@ -25,16 +26,16 @@
 			<if test="cateNum!=0">
 				( c.cateNum = #{cateNum} )
 			</if>
-			AND c.showFaq = 1  AND (showUser = 0 OR showUser = 1)
+			AND c.showFaq = 1 AND (showUser = 0 OR showUser = 2)
 		</where>
 		ORDER BY orderNo, num ASC
 	</select>
 
-	<select id="listCategory" parameterType="map" resultType="com.fa.plus.domain.Faq">
+	<select id="listCategory" parameterType="map" resultType="com.fa.plus.pluszone.domain.FaqPlus">
 		SELECT cateNum, faqName, showFaq, orderNo, showUser
 		FROM faqCategory
         <where>
-			showFaq = 1  AND (showUser = 0 OR showUser = 1)
+			showFaq = 1 AND (showUser = 0 OR showUser = 2)
 		</where>
 		ORDER BY orderNo
 	</select>
