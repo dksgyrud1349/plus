@@ -168,7 +168,7 @@ $(function(){
 							          </c:if>
 							          
 							          <c:if test="${empty reviewDto.filename}">
-							          	<div class="imgBox" style="margin-top: 20px;">
+							          	<div class="imgBox" style="margin-top: 20px; background-color: white;">
 											<img src="${pageContext.request.contextPath}/resources/images/Image-folder.jpg" alt="">
 										</div>
 									</c:if>
