@@ -76,6 +76,7 @@
                 	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/inquiryAd/list">1:1문의</a></li>
                 	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
                 	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/terms/list">서비스 이용약관</a></li>
+                	<li><a class="dropdown-item" href="https://pf.kakao.com/_cbxcnG">카카오톡</a></li>
 				</ul>            	
 			</div>
 		</div>

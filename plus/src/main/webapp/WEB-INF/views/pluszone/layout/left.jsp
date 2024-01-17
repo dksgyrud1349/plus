@@ -51,9 +51,7 @@
 	                                    <a class="nav-link" href="<c:url value='/pluszone/referManage/list'/>">자료실</a>
 	                                </nav>
 	                            </div>
-                            
-                            
-                            
+	                            
                             <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/schedule/main">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 일정 관리
@@ -70,23 +68,14 @@
                             </a>
                             
                             <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#onedayPages" aria-expanded="false" aria-controls="onedayPages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                           	<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#CenterLayout" aria-expanded="false" aria-controls="CenterLayout">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 고객센터
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="onedayPages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        채팅(1:1문의)
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="#">사용자 채팅</a>
-                                            <a class="nav-link" href="#">관리자 채팅</a>
-                                        </nav>
-                                    </div>
+                            <div class="collapse" id="CenterLayout" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/faq/main">자주묻는질문</a>
                                 </nav>
                             </div>
                         </div>
