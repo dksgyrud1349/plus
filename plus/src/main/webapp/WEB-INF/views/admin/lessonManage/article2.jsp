@@ -4,6 +4,13 @@
 
 <style type="text/css">
 .board-article img { max-width: 650px; }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
+
 </style>
 <script type="text/javascript">
 	function updateState(approvalCode){
@@ -35,7 +42,7 @@
 					<div class="table table-hover board-list " id="nav-tabContent">
 						<table class="table">
 							<thead>
-								<tr>
+								<tr class="fs-5">
 									<td colspan="2" align="center">
 										${dto.className}
 									</td>
@@ -43,12 +50,12 @@
 							</thead>
 							
 							<tbody>
-								<tr>
+								<tr class="fs-5">
 									<td width="50%">
 										이름 : ${dto.userName}
 									</td>
 									<td align="right">
-										시작일자 : ${dto.startDate} | 종료일자 : ${dto.endDate} | 등록일 : ${dto.regDate}
+										시작일자 : ${dto.startDate} <i class="bi bi-three-dots-vertical"></i> 종료일자 : ${dto.endDate} <i class="bi bi-three-dots-vertical"></i> 등록일 : ${dto.regDate}
 									</td>
 								</tr>
 								<tr>
@@ -68,7 +75,7 @@
 									<button type="button" class="btn btn-outline-danger" onclick="updateState(3)">취소 <i class="bi bi-x-lg"></i></button>
 								</td>
 								<td class="text-end">
-									<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/admin/lessonManage/list2?${query}';">리스트</button>
+									<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/lessonManage/list2?${query}';">리스트</button>
 								</td>
 							</tr>
 						</table>

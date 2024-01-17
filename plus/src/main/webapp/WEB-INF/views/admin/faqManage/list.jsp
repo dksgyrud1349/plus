@@ -16,7 +16,7 @@
 				</div>
 
 				<div class="update">
-					<a onclick="location.href='${pageContext.request.contextPath}/admin/faqManage/update?num=${dto.num}&pageNo=${pageNo}';">수정</a>&nbsp;|
+					<a onclick="location.href='${pageContext.request.contextPath}/admin/faqManage/update?num=${dto.num}&pageNo=${pageNo}';">수정</a>&nbsp;<i class="bi bi-three-dots-vertical"></i>
 					<a onclick="deleteFaq('${dto.num}', '${pageNo}');">삭제</a>
 				</div>
 			</div>

@@ -51,7 +51,7 @@ a{
 					<div class="table table-hover board-list " id="nav-tabContent">
 						<table class="table">
 							<thead>
-								<tr>
+								<tr class="fs-5">
 									<td colspan="2" align="center">
 										${dto.subject}
 									</td>
@@ -59,12 +59,12 @@ a{
 							</thead>
 							
 							<tbody>
-								<tr>
+								<tr class="fs-5">
 									<td width="50%">
 										이름 : ${dto.userName}
 									</td>
 									<td align="right">
-										${dto.regDate} | 조회 ${dto.hitCount}
+										${dto.regDate} <i class="bi bi-three-dots-vertical"></i> 조회 ${dto.hitCount}
 									</td>
 								</tr>
 								<tr class="text-center">

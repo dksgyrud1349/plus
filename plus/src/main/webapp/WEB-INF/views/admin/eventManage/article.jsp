@@ -77,7 +77,7 @@ a{
 							<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 								<table class="table	">
 									<thead>
-										<tr>
+										<tr class="fs-5">
 											<td colspan="2" align="center">
 												${dto.subject}
 											</td>
@@ -85,16 +85,16 @@ a{
 									</thead>
 									
 									<tbody>
-										<tr>
+										<tr class="fs-5">
 											<td width="50%" align="left">
 												작성자 : ${dto.userName}
 											</td>
 											<td width="50%" align="right">
-												조회 : ${dto.hitCount} / 출력여부 : ${dto.showEvent == 1 ? "표시" : "숨김" }
+												조회 : ${dto.hitCount} <i class="bi bi-three-dots-vertical"></i> 출력여부 : ${dto.showEvent == 1 ? "표시" : "숨김" }
 											</td>
 										</tr>
 						
-										<tr>
+										<tr class="fs-5">
 											<td colspan="2" width="50%" align="left">
 												이벤트 기간 : ${dto.startDate} ~ ${dto.endDate} 
 											</td>

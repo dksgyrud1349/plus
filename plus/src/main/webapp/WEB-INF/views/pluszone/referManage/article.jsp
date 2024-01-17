@@ -53,12 +53,12 @@ function deleteOk() {
 							<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
 								<table class="table">
 									<thead>
-										<tr>
+										<tr class="fs-5">
 											<td colspan="2" align="center">
 											클래스명 : ${dto.className}										
-												</td>
+											</td>
 										</tr>
-										<tr>
+										<tr class="fs-5">
 											<td colspan="2" align="center">
 											제목 : ${dto.subject}
 											</td>
@@ -66,7 +66,7 @@ function deleteOk() {
 									</thead>
 									
 									<tbody>
-										<tr>
+										<tr class="fs-5">
 											<td width="50%" align="left">
 												이름 : ${dto.userName}
 											</td>
