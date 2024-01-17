@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fa.plus.mapper.ClassNoticeMapper">
+	<sql id="search-list">
+		<if test="schType == 'all'">
+			( INSTR(np.subject, #{kwd}) &gt; 0 OR DBMS_LOB.INSTR(np.content, #{kwd}) &gt; 0 )
+		</if>
+		<if test="schType == 'subject'">
+			INSTR(np.subject, #{kwd}) &gt; 0
+		</if>
+		<if test="schType == 'content'">
+			DBMS_LOB.INSTR(np.content, #{kwd}) &gt; 0
+		</if>
+		<if test="schType == 'regDate'">
+			( TO_CHAR(np.regDate, 'YYYY-MM-DD') = #{kwd} OR TO_CHAR(np.regDate, 'YYYYMMDD') = #{kwd})
+		</if>
+	</sql>
+
+	<select id="notices" parameterType="Long" resultType="com.fa.plus.domain.ClassNotice">
+		SELECT num, subject, hitCount, TO_CHAR(np.regDate, 'YYYY-MM-DD') regDate, notice, pl.nickName
+		FROM noticePlus np
+		JOIN member1 m1 ON np.userId = m1.userId
+		JOIN plus pl ON m1.userId = pl.userId
+		WHERE classNum = #{classNum} AND notice = 0 AND showNotice = 0
+		ORDER BY num DESC
+	</select>
+	
+	<select id="noticeList" parameterType="map" resultType="com.fa.plus.domain.ClassNotice">
+		SELECT num, subject, hitCount, TO_CHAR(np.regDate, 'YYYY-MM-DD') regDate, notice, pl.nickName
+		FROM noticePlus np
+		JOIN member1 m1 ON np.userId = m1.userId
+		JOIN plus pl ON m1.userId = pl.userId
+		<where>
+			classNum = #{classNum} AND notice = 1 AND showNotice = 0
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="search-list"/>
+			</if>
+		</where>
+		ORDER BY num DESC
+	</select>
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM noticePlus np
+		JOIN member1 m1 ON np.userId = m1.userId
+		JOIN plus pl ON m1.userId = pl.userId
+		<where>
+			classNum = #{classNum} AND notice = 1 AND showNotice = 0
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="search-list"/>
+			</if>
+		</where>
+	</select>
+	
+	<select id="findById" parameterType="Long" resultType="com.fa.plus.domain.ClassNotice">
+		SELECT np.num, np.subject, np.content, np.hitCount, TO_CHAR(np.regDate,'YYYY-MM-DD') regDate, pl.nickName, np.classNum
+		FROM noticePlus np
+		JOIN member1 m1 ON np.userId = m1.userId
+		JOIN plus pl ON m1.userId = pl.userId
+		WHERE num = #{num}
+	</select>
+	
+	<update id="updateHitCount" parameterType="Long">
+		UPDATE noticePlus SET hitCount = hitCount + 1 WHERE num = #{num}
+	</update>
+	
+	<select id="findByPrev" parameterType="map" resultType="com.fa.plus.domain.ClassNotice">
+		SELECT num, np.subject
+		FROM noticePlus np
+		JOIN member1 m1 ON np.userId = m1.userId
+		<where>
+			showNotice = 0 AND classNum = #{classNum}
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="search-list"/>
+			</if>
+			AND (num &gt; #{num})
+		</where>
+		ORDER BY num ASC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+	
+	<select id="findByNext" parameterType="map" resultType="com.fa.plus.domain.ClassNotice">
+		SELECT num, np.subject
+		FROM noticePlus np
+		JOIN member1 m1 ON np.userId = m1.userId
+		<where>
+			showNotice = 0 AND classNum = #{classNum}
+			<if test="kwd != null and kwd != ''">
+				AND <include refid="search-list"/>
+			</if>
+			AND (num &lt; #{num})
+		</where>
+		ORDER BY num DESC
+		FETCH FIRST 1 ROWS ONLY
+	</select>
+</mapper>
