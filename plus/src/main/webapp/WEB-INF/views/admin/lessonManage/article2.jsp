@@ -70,7 +70,7 @@
 							<tr>
 								<td width="50%">
 									<button type="button" class="btn btn-outline-secondary" onclick="updateState(0)">대기 <i class="bi bi-hourglass"></i></button>
-									<button type="button" class="btn btn-outline-success" onclick="updateState(1)">승인<i class="bi bi-circle"></i></button>
+									<button type="button" class="btn btn-outline-success" onclick="updateState(1)">승인 <i class="bi bi-circle"></i></button>
 									<button type="button" class="btn btn-outline-warning" onclick="updateState(2)">보류 <i class="bi bi-hourglass-split"></i></button>
 									<button type="button" class="btn btn-outline-danger" onclick="updateState(3)">취소 <i class="bi bi-x-lg"></i></button>
 								</td>
