@@ -33,9 +33,9 @@ function searchList() {
 </script>
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
-	<div id="layoutSidenav_content">
+	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:80%; margin:10% auto; ">
+			<div class="body-container" style="width:80%; margin:5% auto; ">
 				<div class="body-main">
 				
 				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
