@@ -290,7 +290,7 @@ function selectStateChange() {
 															<input type="text" name="kwd" class="form-control" value="${kwd}">
 															<input type="hidden" name="enabled" value="${enabled}">
 															<input type="hidden" name="page" value="1">
-															<button type="button" class="btn btn-outline-secondary" onclick="searchList()">
+															<button type="button" class="btn btn-outline-success rere" onclick="searchList()">
 																검색
 															</button>
 														</div>
