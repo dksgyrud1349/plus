@@ -75,7 +75,7 @@ function sendOk() {
 
 $(function(){
 	$('.btnCategoryAdd').click(function(){
-		let $el = $(this).closest(".category-layout").find(".category-area");
+		let $el = $(".category-layout").find(".category-area");
 		
 		let $category = $(".category-layout .category-area .category-item:first-child").clone();
 		
@@ -114,7 +114,7 @@ $(function(){
 							<table class="table table-border border-top2 table-form">
 								<tr> 
 									<td> 메인 카테고리</td>
-									<td> 
+									<td colspan="2"> 
 										<input type="text" name="mainName" maxlength="100" class="form-control">
 									</td>
 								</tr>
@@ -131,12 +131,12 @@ $(function(){
 														<input type="text" name="categorys" class="form-control" style="width:40%;">
 														<button type="button" class="form-control category-minus btn btn-outline-dark" style="width:15%;">&nbsp;-&nbsp;</button>
 													</div>
-													<div class="col">
-														<button type="button" class="btn btnCategoryAdd btn-outline-dark" style="float: right;">&nbsp;+&nbsp;</button>
-													</div>
 												</div>
 											</div>
 										</div>
+										</td>
+										<td>
+											<button type="button" class="btn btnCategoryAdd btn-outline-dark text-end">&nbsp;+&nbsp;</button>
 										</td>
 									</tr>
 								</table>
