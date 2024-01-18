@@ -54,10 +54,10 @@ function login() {
 						<div class="bg-white border">
 							<div class="tab-content p-4">
 								<c:forEach var="dto" items="${qsubject}">
-								    <div class="mb-3 px-2">
-								        <div class="row border bg-body-secondary">
+								    <div class="mb-4 px-2">
+								        <div class="row border-bottom border-dark border-3 mb-2">
 								            <div class="col-12 p-2">
-								                <span class="fw-semibold text-black fs-5"><i class="bi bi-lightbulb"></i> ${dto.subject}</span>
+								                <span class="fw-semibold text-black fs-5"><i class="bi bi-pencil-square me-2"></i>${dto.subject}</span>
 								            </div>
 								        </div>
 								        <c:forEach var="vo" items="${qlist}">
