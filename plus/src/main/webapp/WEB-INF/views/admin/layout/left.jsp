@@ -66,9 +66,9 @@
                          </nav>
                      </div>
                      
-					<a class="nav-link" href="${pageContext.request.contextPath}/admin/onedayplusManage/question">
+					<a class="nav-link" href="${pageContext.request.contextPath}/admin/questionManage/onedayplus">
 					    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-					    원데이 플러스 관리
+					    질문지 관리
 					</a>
 
                      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#onedayPages" aria-expanded="false" aria-controls="onedayPages">

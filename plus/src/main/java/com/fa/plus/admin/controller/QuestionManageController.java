@@ -8,17 +8,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fa.plus.admin.domain.OnedayplusManage;
+import com.fa.plus.admin.domain.PluszoneQuestionManage;
 import com.fa.plus.admin.service.OnedayplusManageService;
+import com.fa.plus.admin.service.PluszoneQManageService;
 
 @Controller
-@RequestMapping("/admin/onedayplusManage/*")
-public class OnedayplusManageController {
+@RequestMapping("/admin/questionManage/*")
+public class QuestionManageController {
 	
 	@Autowired
 	private OnedayplusManageService service;
 	
+	@Autowired
+	private PluszoneQManageService pluszoneService;
 	
-	@RequestMapping(value = "question")
+	@RequestMapping(value = "onedayplus")
 	public String list(Model model) throws Exception{
 		int dataCount = 0;
 		
@@ -31,6 +35,21 @@ public class OnedayplusManageController {
 		model.addAttribute("qlist", qlist);
 		model.addAttribute("dataCount", dataCount);
 		
-		return ".admin.onedayplusManage.question";
+		return ".admin.questionManage.question";
+	}
+	
+	@RequestMapping(value="pluszone")
+	public String pluszonelist(Model model) throws Exception{
+		int dataCount = 0;
+		
+		
+		List<PluszoneQuestionManage> qsubject = pluszoneService.QSubject();
+		List<PluszoneQuestionManage> qlist = pluszoneService.listQuestion();
+		
+		model.addAttribute("qsubject", qsubject);
+		model.addAttribute("qlist", qlist);
+		model.addAttribute("dataCount", dataCount);
+		
+		return ".admin.questionManage.pluszonequestion";
 	}
 }
