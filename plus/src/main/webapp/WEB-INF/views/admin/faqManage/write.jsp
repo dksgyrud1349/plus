@@ -70,6 +70,10 @@
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
+.change{
+	border: 1px solid #b4b4b4;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -124,7 +128,7 @@ function sendOk() {
 												</c:forEach>
 											</select>
 										</div>
-										<button type="button" class="btn btnCategoryDialog col-md-auto"> 변경 </button>
+										<button type="button" class="btn btn-outline-secondary btnCategoryDialog col-md-auto"> 변경 </button>
 									</div>
 								</td>
 							</tr>
