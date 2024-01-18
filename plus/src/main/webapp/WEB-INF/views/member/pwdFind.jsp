@@ -86,49 +86,49 @@ function sendOk() {
 
 <main class="wrapper" style="margin:5% auto; width:80%;">
 	<div id="layoutSidenav_content">
-		 	<div class="container-fluid px-5">
-				<div class="body-container">	
-		<div class="row justify-content-md-center">
-            <div class="col-md-7 pt-5">
-            <h3 class="text-center fw-bold pe-3">패스워드 찾기</h3>
-                <div class="border mt-5 box">
-                    <form name="pwdForm" method="post" class="row g-3">
-                        
-		                <div class="d-grid">
-							<span class="form-control-plaintext anno pb-1">가입 아이디를 입력해주세요.</span>
-		                </div>
-                        
-                        <div class="d-grid mt-0">
-                            <input type="text" name="userId" class="p-3 find" placeholder="아이디를 입력해주세요.">
-                        </div>
-                     
-                        
-                        <div class="d-grid">
-							<p class="form-control-plaintext anno1 pt-0 mt-4">가입하신 아이디를 입력해주시면 <br>이메일로 고객님의 임시 패스워드를 보내드립니다.</p>
-		                </div>
-		                
-                        <div class="d-grid">
-	                        <button type="button" class="btn btn-outline-success send text-light fs-5" style="height:60px" onclick="sendOk()">
-	                            이메일 전송하기&nbsp;<i class="bi bi-send"></i>
-	                        </button>
-                		</div>
-                	</form>
-				<hr class="mb-3" style="width: 400px">
-                    <div class="col-12">
-                        <p class="text-center mb-0">
-                        	<a href="${pageContext.request.contextPath}/member/member" class="text-decoration-none ms-5 me-3">회원가입</a>
-                        	<span class="border-end border-Secondary border-2  me-4 ms-4"></span>
-                        	<a href="${pageContext.request.contextPath}/member/idFind" class="text-decoration-none me-5 pe-5 ms-3">아이디 찾기</a>
-                        </p>
-                    </div>
+	 	<div class="container-fluid px-5">
+			<div class="body-container">	
+				<div class="row justify-content-md-center">
+		            <div class="col-md-7 pt-5">
+		            <h2 class="text-center fw-bold pe-3">패스워드 찾기</h2>
+		                <div class="border my-5 box">
+		                    <form name="pwdForm" method="post" class="row g-3">
+		                        
+				                <div class="d-grid">
+									<span class="form-control-plaintext anno pb-1">가입 아이디를 입력해주세요.</span>
+				                </div>
+		                        
+		                        <div class="d-grid mt-0">
+		                            <input type="text" name="userId" class="p-3 find" placeholder="아이디를 입력해주세요.">
+		                        </div>
+		                     
+		                        
+		                        <div class="d-grid">
+									<p class="form-control-plaintext anno1 pt-0 mt-4" style="font-size:19px;">가입하신 아이디를 입력해주시면 <br>이메일로 고객님의 임시 패스워드를 보내드립니다.</p>
+				                </div>
+				                
+		                        <div class="d-grid">
+			                        <button type="button" class="btn btn-outline-success send text-light fs-5" style="height:60px" onclick="sendOk()">
+			                            이메일 전송하기&nbsp;<i class="bi bi-send"></i>
+			                        </button>
+		                		</div>
+		                	</form>
+							<hr class="mb-3" style="width: 400px">
+		                    <div class="col-12">
+		                        <p class="text-center mb-0">
+		                        	<a href="${pageContext.request.contextPath}/member/member" class="text-decoration-none ms-5 me-3">회원가입</a>
+		                        	<span class="border-end border-Secondary border-2  me-4 ms-4"></span>
+		                        	<a href="${pageContext.request.contextPath}/member/idFind" class="text-decoration-none me-5 pe-5 ms-3">아이디 찾기</a>
+		                        </p>
+		                    </div>
                    
-	                <div class="d-grid">
-						<p class="form-control-plaintext text-center py-3">${message}</p>
-	                </div>
-				</div>
-        	</div>
-        </div>
+			                <div class="d-grid">
+								<p class="form-control-plaintext text-center py-3">${message}</p>
+			                </div>
+						</div>
+		        	</div>
+		        </div>
+			</div>
+		</div>
 	</div>
-</div>
-</div>
 </main>

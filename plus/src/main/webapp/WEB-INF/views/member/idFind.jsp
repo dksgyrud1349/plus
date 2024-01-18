@@ -54,7 +54,6 @@ function sendOk() {
 	f.submit();
 }
 </script>
-<body class="all">
 <div class="container" style="margin-top:10%;">
     <div class="body-container mt-5">
         <div class="body-title">
@@ -63,7 +62,7 @@ function sendOk() {
         <div class="border rounded my-5 p-5">
             <form name="emailForm" method="post">
                 <div class="row">
-                    <p class="fs-5 fw-bold mt-3 mb-1">가입한 이메일 주소를 입력해주세요.</p>
+                    <p class="fw-bold mt-3 mb-1"style="font-size:19px;">가입한 이메일 주소를 입력해주세요.</p>
                     <input type="text" name="email" class="p-3 mail"  placeholder="email2@naver.com">
                 </div>
 
@@ -79,18 +78,16 @@ function sendOk() {
                     </div>
                 </div>
             </form>
-                    <div class="col-12">
-                        <p class="text-center mb-0">
-                        	<a href="${pageContext.request.contextPath}/member/member" class="text-decoration-none ms-3 me-2">회원가입</a>
-                        	<span class="border-end border-Secondary border-2 me-3 ms-4"></span>
-                        	<a href="${pageContext.request.contextPath}/member/pwdFind" class="text-decoration-none ms-4 me-2">패스워드 찾기</a>
-                        </p>
-                    </div>        
-                </div>
+			<div class="col-12">
+			    <p class="text-center mb-0">
+			    	<a href="${pageContext.request.contextPath}/member/member" class="text-decoration-none ms-3 me-2">회원가입</a>
+					<span class="border-end border-Secondary border-2 me-3 ms-4"></span>
+					<a href="${pageContext.request.contextPath}/member/pwdFind" class="text-decoration-none ms-4 me-2">패스워드 찾기</a>
+			    </p>
+			</div>        
+		</div>
         <div class="d-grid">
             <p class="form-control-plaintext text-center py-3">${message}</p>
         </div>
     </div>
 </div>
-<hr>
-</body>
