@@ -50,6 +50,29 @@
 .btnCategoryAddOk, .btnSpanIcon {
 	cursor: pointer;
 }
+.rere {
+	color: white;
+	background: #46AA46;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
+.plus{
+	background: #BEEFFF;
+	border: 1px solid #b4b4b4;
+}
+.plus:hover{
+	background: #47a3da;
+	border: 1px solid #b4b4b4;
+}
+.minus{
+	background: #FFF0F0;
+	border: 1px solid #b4b4b4;
+}
+.minus:hover{
+	background: #FFACB7;
+	border: 1px solid #b4b4b4;
+}
+
 </style>
 <script>
 function sendOk() {
@@ -129,14 +152,14 @@ $(function(){
 									    		<div class="col category-area">
 									    			<div class="col category-item d-flex flex-row ">
 														<input type="text" name="categorys" class="form-control" style="width:40%;">
-														<button type="button" class="form-control category-minus btn btn-outline-dark" style="width:15%;">&nbsp;-&nbsp;</button>
+														<button type="button" class="form-control minus category-minus btn btn-outline-dark" style="width:15%;">&nbsp;-&nbsp;</button>
 													</div>
 												</div>
 											</div>
 										</div>
 										</td>
 										<td>
-											<button type="button" class="btn btnCategoryAdd btn-outline-dark text-end">&nbsp;+&nbsp;</button>
+											<button type="button" class="btn btnCategoryAdd plus btn-outline-dark text-end">&nbsp;+&nbsp;</button>
 										</td>
 									</tr>
 								</table>
@@ -145,8 +168,8 @@ $(function(){
 								<tr>
 									<td align="center">
 										<button type="button" class="btn btn-dark" onclick="sendOk();">등록하기</button>
-										<button type="reset" class="btn">다시입력</button>
-										<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/admin/categoryManage/list';">등록취소</button>
+										<button type="reset" class="btn btn-outline-success rere">다시입력</button>
+										<button type="button" class="btn btn-outline-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/categoryManage/list';">등록취소</button>
 									</td>
 								</tr>
 							</table>
