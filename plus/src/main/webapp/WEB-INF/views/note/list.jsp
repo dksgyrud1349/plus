@@ -215,7 +215,7 @@ $(function() {
 												</c:choose>
 											</select>
 											<input type="text" name="kwd" value="${kwd}" class="form-control">
-											<button type="button" class="btn btn-light" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+											<button type="button" class="btn btn-light rere" onclick="searchList()"> <i class="bi bi-search"></i> </button>
 										</div>
 									</form>
 								</td>

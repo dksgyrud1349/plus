@@ -1,11 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <style type="text/css">
 @font-face {
@@ -185,16 +181,31 @@
     font-size: xx-large;
     font-family: 'GangwonEduPowerExtraBoldA';
 }
+
+.animation-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.img-fade-in {
+    opacity: 0;
+    animation: fadeIn 3.0s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
 </style>
 
-</head>
-<body>
 <div class="subject"> 회사 소개 + </div>
 
 <div class="total">
+<div class="animation-container">
 	<img src="${pageContext.request.contextPath}/resources/images/introduction_1.png"
-	style="width: 1200px; height: 500px; padding-top: 15px; object-fit: cover;">
-	
+	style="width: 1200px; height: 500px; padding-top: 15px; object-fit: cover;" class="img-fade-in">
+</div>	
 	<h1 class="main_image_text" style="font-size: 50px;">원데이 플러스 회사 소개</h1>
 	
 	<h5 class="body1_image_text">
@@ -262,4 +273,3 @@
 	</div>	
 </div>
 
-</html>

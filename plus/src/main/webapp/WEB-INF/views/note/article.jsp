@@ -128,8 +128,8 @@ function deleteNote() {
 						</tr>
 					</table>
 					
-					<table class="table mb-0">
-						<tr class="border-top2 fs-5">
+					<table class="table mb-0 border-top">
+						<tr class="fs-5">
 							<td colspan="2" align="left">
 								<c:choose>
 									<c:when test="${menuItem=='receive'}">
