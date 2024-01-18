@@ -280,7 +280,7 @@ $(function(){
 										</c:if>
 										<c:if test="${empty scheduleList}">
 											<div class="scheduleSize">
-												<div style="font-size: 18px; text-align: center; margin-top: 70px;" class="">
+												<div style="font-size: 18px; text-align: center; margin-top: 100px;" class="">
 													오늘의 일정이 비어있습니다.<br>
 													오늘의 할일을 정해보세요!
 												</div>
