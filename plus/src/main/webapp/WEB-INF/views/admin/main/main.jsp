@@ -140,6 +140,9 @@ img{
 	top: 38%;
 	left: 6%;
 }
+.bor{
+	border-bottom: 1px solid white;
+}
 </style>
 
 <div id="layoutSidenav_content">
@@ -332,9 +335,9 @@ img{
 								         	<img src="${pageContext.request.contextPath}/uploads/review/${reviewDto.filename}" alt="">
 							        	</div>
 							        </c:if>
-							        <div class="hoverBox">
+							        <div class="hoverBox p-3">
 							        	<span>
-							            <p class="p1">${reviewDto.reviewSubject}</p>
+							            <p class="p1 mb-0">${reviewDto.reviewSubject}</p>
 							            <p class="p1" style="float:right"><i class="bi bi-star-fill star my-0"></i>${reviewDto.reviewScore}/5점</p>
 							            <br><div class="p1 bor mt-3 p-0" style="color: white; width: 100%"></div>
 							            <p class="p2">${reviewDto.reviewContent}</p>
