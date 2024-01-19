@@ -149,7 +149,7 @@ $(function(){
 					  <div class="card-header">
 					    <ul class="nav nav-tabs" id="myTab" role="tablist">
 					      <li class="nav-all nav-item" data-category="all" role="presentation">
-					      	<button class="nav-link" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true" style="color: black;">전체 리뷰</button>
+					      	<button class="nav-link" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true" style="color: black;">공개 리뷰</button>
 					      </li>
 					      <li class="nav-hide nav-item" data-category="hide" role="presentation">
 					      	<button class="nav-link" id="hide-tab" data-bs-toggle="tab" data-bs-target="#hide" type="button" role="tab" aria-controls="hide" aria-selected="true" style="color: black;">숨긴 리뷰</button>
