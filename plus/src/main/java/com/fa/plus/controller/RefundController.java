@@ -83,6 +83,6 @@ public class RefundController {
 			throw e;
 		}
 		
-		return "redirect:/bookingList/bLists";
+		return "redirect:/myPage/booking/list";
 	}
 }
