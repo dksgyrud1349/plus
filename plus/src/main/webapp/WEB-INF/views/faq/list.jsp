@@ -21,7 +21,7 @@
 
 <c:if test="${list.size() > 0}">
 	<div class="accordion accordion-flush mt-1" id="accordionFlush">
-		<div class="row main-board fw-bold"><div class="col-2">Category</div><div class="col-7">FAQ Title</div></div>
+		<div class="row main-board fw-bold" style="margin-left: 0px; width: 1200px;"><div class="col-2">카테고리</div><div class="col-7">제목</div></div>
 		<c:forEach var="dto" items="${list}" varStatus="status">
 			<div class="accordion-item" style="border: none;">
 				<h2 class="accordion-header border" id="flush-heading-${status.index}">
