@@ -323,9 +323,6 @@
 	                                        &nbsp;<span class="text-danger">[필수]</span>&nbsp;
                                         <a href="#" class="text-decoration-none text-danger" style="color: red;">개인정보 수집 및 이용</a>에 동의합니다.
 	                                    </label>
-	                                   	<a href="#" class="text-decoration-underline terms fw-light" style="float:right;">
-	                                   		내용보기<i class="bi bi-chevron-right"></i>
-	                                   	</a>
 	                                </div>
 	                                <div>   
 	                                    <input type="checkbox" id="agree" name="agree"
@@ -334,9 +331,6 @@
 	                                    <label class="form-check-label mb-1">
 	                                        &nbsp;[선택]&nbsp; 광고성 정보 수신에 모두 동의합니다.
 	                                    </label>
-	                                    <a href="#" class="text-decoration-underline terms fw-light" >
-	                                   		내용보기<i class="bi bi-chevron-right"></i>
-	                                   	</a>
 	                                </div>
 	                                
                                 </div>

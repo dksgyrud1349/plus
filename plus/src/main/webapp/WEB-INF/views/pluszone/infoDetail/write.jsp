@@ -128,7 +128,7 @@ function(){
 								
 								<div>
 									<div>
-										<div class="px-2 pt-2 pb-0" style="float: left; margin-left: 70px; margin-right: 20px;">
+										<div class="px-2 pt-2 pb-0 mb-3" style="float: left; margin-left: 70px; margin-right: 20px;">
 											<div class="imageFile"></div>
 											<div class="mt-3">
 												<c:if test="${empty dto.photo}">
@@ -139,7 +139,7 @@ function(){
 												</c:if>
 											</div>
 											<div class="mt-1">
-											<span style="font-weight: bold; margin-top: 20px;">대표사진</span> <input type="file" name="photoFile" accept="image/*" class="form-control" style="width: 250px; height: 40px; border: 1px solid gray;"> 
+											 <input type="file" name="photoFile" accept="image/*" class="form-control" style="width: 250px; height: 40px; border: 1px solid gray;"> 
 											</div>
 										</div>
 									</div>
@@ -148,11 +148,11 @@ function(){
 								<div>
 									<div>
 										<div class="mt-0" style="font-weight: bold;">닉네임</div>
-										<input type="text" name="nickName" value="${dto.nickName}" placeholder="닉네임">
+										<input type="text" name="nickName" value="${dto.nickName}" placeholder="닉네임을 입력해주세요." >
 									</div>
 									<div>
 										<div class="mt-1" style="font-weight: bold;">플러스 소개 </div>
-											<textarea name="content" id="content" placeholder="소개" style="resize: none; width: 55%; height: 177px; border-radius: 8px;">${dto.content}</textarea>
+											<textarea name="content" id="content" placeholder=" 자신을 소개해주세요." style="resize: none; width: 55%; height: 177px; border-radius: 8px;">${dto.content}</textarea>
 									</div>
 							    </div>
 							<div>
