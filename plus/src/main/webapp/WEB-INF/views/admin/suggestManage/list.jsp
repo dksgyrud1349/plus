@@ -36,15 +36,15 @@
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:80%; margin:5% auto; ">
+			<div class="body-container" style="width:100%; margin:10% auto; ">
 				<div class="body-main">
-				<h3 class="p-2 mb-3" style="border-bottom:3px solid black;">
-					<i class="bi bi-exclamation-diamond-fill" style="margin-left: 2px;"></i> 제안 문의
+				<h3 class="p-2 mb-3" style="border-bottom:2px solid gray;">
+					제안 문의
 				</h3>
 				<table class="table-border table mt-4">
 					<tr>
 						<td align="left" width="50%" style="margin-top: 20px;">
-							<span style="margin-left: 5px; position: inherit;">${dataCount}개(${page}/${total_page} 페이지)</span>
+							<span style="margin-left: 5px; position: inherit;"><span style="color: #32B0E4;">${dataCount}개</span>(${page}/${total_page} 페이지)</span>
 						</td>
 					</tr>
 				</table>
