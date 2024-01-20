@@ -56,11 +56,16 @@ function searchList() {
 									<tr>
 										<td>${dataCount - (page-1) * size - status.index}</td>
 										<td class="left">
-											<a href="${pageContext.request.contextPath}/classInq/article?inquiryNum=${dto.inquiryNum}">${dto.subject}</a>
+											<a href="${pageContext.request.contextPath}/classInq/article?inquiryNum=${dto.inquiryNum}" style="font-weight: normal;">${dto.subject}</a>
 										</td>
 										<td>${dto.inquiryDate}</td>
 										<td>${empty dto.reInquiryDate ? "" : dto.reInquiryDate}</td>
-										<td>${dto.reInquiryNum == 0 ? "대기" : "완료"}</td>
+										<c:if test="${dto.reInquiryNum == 0}">
+											<td style="color: red;">대기</td>
+										</c:if>
+										<c:if test="${dto.reInquiryNum == 1}">
+											<td style="color: #32B0E4;">완료</td>
+										</c:if>
 									</tr>
 								</c:forEach>
 							</tbody>
