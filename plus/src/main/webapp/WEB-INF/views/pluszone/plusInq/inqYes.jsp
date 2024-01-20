@@ -8,7 +8,7 @@
 <style>
 .rere {
 	color: white; 
-	background: #46AA46;
+	background: #32B0E4;
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
@@ -51,10 +51,10 @@ a{
 			<div class="body-container" style="width: 100%; margin: 5% auto;">
 				<div class="body-main">
 
-					<h3 class="mb-3 p-2" style="border-bottom: 3px solid black;">
-						<i class="fa-solid fa-user-group"></i> 클래스 문의 내역
-						<button type="button" class="btn btn-success rere"
-							onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqOkList';" style="float: right;">
+					<h3 class="mb-3 p-2" style="border-bottom: 2px solid gray;">
+						클래스 문의 내역
+						<button type="button" class="btn rere"
+							onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqOkList';" style="float: right; background: #32B0E4; color: white;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
 						</button>
 					</h3>
@@ -71,8 +71,7 @@ a{
 						<table class="table">
 							<tr>
 								<td align="left" width="70%" style="font-weight: bold; vertical-align:middle;"> 
-									답변완료 <font style="color: green; font-weight: bold; text-decoration: underline; ">${dataCount}명</font>
-									(${page}/${total_page} 페이지)
+									답변완료 <span style="color: #32B0E4;">${dataCount}명</span> (${page}/${total_page} 페이지)
 								</td>
 								<td align="right">
 									<form name="searchForm" action="${pageContext.request.contextPath}/pluszone/plusInq/inqOkList" style="width:300px; margin-left:100px">

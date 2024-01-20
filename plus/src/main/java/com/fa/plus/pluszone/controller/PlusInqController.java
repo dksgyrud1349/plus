@@ -299,4 +299,16 @@ public class PlusInqController {
 			}
 			return "redirect:/pluszone/plusInq/inqOkList";
 		}
+		
+		@GetMapping("deleteQuestion")
+		public String deleteQuestion(@RequestParam long inquiryNum) {
+			try {
+				service.deleteQuestion(inquiryNum);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return "redirect:/pluszone/plusInq/inqList";
+		}
 }

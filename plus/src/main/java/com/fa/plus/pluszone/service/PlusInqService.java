@@ -20,6 +20,8 @@ public interface PlusInqService {
 	
 	public void deleteAnswer(long inquiryNum) throws Exception;
 	
+	public void deleteQuestion(long inquiryNum) throws Exception;
+	
 	// 문의 전체 개수
 	public int allInquiry(long memberIdx);
 }

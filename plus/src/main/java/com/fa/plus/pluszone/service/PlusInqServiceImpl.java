@@ -109,4 +109,14 @@ public class PlusInqServiceImpl implements PlusInqService{
 		return dataCount;
 	}
 
+	@Override
+	public void deleteQuestion(long inquiryNum) throws Exception {
+		try {
+			mapper.deleteQuestion(inquiryNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
 }

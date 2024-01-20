@@ -79,6 +79,10 @@
 		UPDATE inquiry SET reSubject = NULL, reContent = NULL, reInquiryDate = NULL, reInquiryNum = 0, reInquiryId = NULL WHERE inquiryNum = #{inquiryNum}
 	</update>
 	
+	<delete id="deleteQuestion" parameterType="Long">
+		DELETE FROM inquiry WHERE inquiryNum = #{inquiryNum}
+	</delete>
+	
 	<!-- 사업자 페이지에서 활용 -->
 	<select id="allInquiry" parameterType="Long" resultType="Integer">
 		SELECT NVL(COUNT(*), 0)

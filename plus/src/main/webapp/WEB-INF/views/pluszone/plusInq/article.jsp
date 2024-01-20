@@ -72,22 +72,27 @@
 			location.href = "${pageContext.request.contextPath}/pluszone/plusInq/deleteAnswer?inquiryNum=" + ${dto.inquiryNum};
 		}
 	}
+	
+	function deleteQuestion(){
+		if(confirm("질문을 삭제하시겠습니까?")){
+			location.href = "${pageContext.request.contextPath}/pluszone/plusInq/deleteQuestion?inquiryNum=" + ${dto.inquiryNum};
+		}
+	}
 </script>
 
 <main class="wrapper" style="margin: 0 auto; width: 100%;">
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container"
-				style="width: 80%; margin: 5% auto; padding-top: 5%">
+			<div class="body-container" style="width: 100%; margin: 5% auto; padding-top: 5%">
 				<div class="body-main">
 				
-				<h3 class="mb-3 p-2" style="border-bottom: 3px solid black;">
-					<i class="bi bi-app"></i> 문의내역 
+				<h3 class="mb-3 p-2" style="border-bottom: 2px solid gray;">
+					문의내역 
 					<c:if test="${mode == 'write'}">
-						<button type="button" style="float: right;" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqList?${query}';">리스트</button>
+						<button type="button" style="float: right; background: #32B0E4; color: white;" class="btn rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqList?${query}';">리스트</button>
 					</c:if>
 					<c:if test="${mode == 'update' }">
-						<button type="button" style="float: right;" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqOkList?${query}';">리스트</button>
+						<button type="button" style="float: right; background: #32B0E4; color: white;" class="btn rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqOkList?${query}';">리스트</button>
 					</c:if>
 				</h3>
 
@@ -96,7 +101,7 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<td colspan="2" class="text-white bg-dark">
+										<td colspan="2" class="text-white" style="background: #32B0E4;">
 											Q. ${dto.subject}
 										</td>
 										
@@ -131,11 +136,16 @@
 								</tbody>
 									<tr id="addButton">
 										<td width="50%">
-											<button type="button" class="btn btn-secondary" onclick="showInput();"><i class="bi bi-arrow-down"></i></button>
+											<button type="button" class="btn" style="background: #007EA5; color: white;" onclick="showInput();"><i class="bi bi-arrow-down"></i></button>
 										</td>
 										<c:if test="${mode == 'update'}">
 											<td>
-												<button type="button" style="float: right;" class="btn btn-danger" onclick="deleteAnswer();">답변삭제<i class="bi bi-trash3"></i></button>
+												<button type="button" style="float: right;" class="btn btn-danger" onclick="deleteAnswer();">답변삭제</button>
+											</td>
+										</c:if>
+										<c:if test="${mode == 'write'}">
+											<td>
+												<button type="button" style="float: right;" class="btn btn-danger" onclick="deleteQuestion();">질문삭제</button>
 											</td>
 										</c:if>
 									</tr>
@@ -171,13 +181,13 @@
 										<tr>
 											<c:if test="${mode == 'write'}">
 												<td width="50%">
-													<button type="button" style="float: right;" class="btn btn-primary" onclick="answerInsert();">입력하기</button>
+													<button type="button" style="float: right; background: #00B4DB; color: white;" class="btn" onclick="answerInsert();">입력하기</button>
 												</td>
 											</c:if>
 											
 											<c:if test="${mode == 'update'}">
 												<td width="50%">
-													<button type="button" style="float: right;" class="btn btn-primary" onclick="answerUpdate();">수정하기</button>
+													<button type="button" style="float: right; background: #00B4DB; color: white;" class="btn" onclick="answerUpdate();">수정하기</button>
 												</td>
 											</c:if>
 										</tr>
