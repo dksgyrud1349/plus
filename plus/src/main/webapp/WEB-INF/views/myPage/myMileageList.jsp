@@ -15,9 +15,27 @@
 }
 .rere {
 	color: white;
-	background: #46AA46;
+	background: #32B0E4;
 	padding: 6px 12px 6px 12px;
 	border: none;
+}
+.modal {
+        text-align: center;
+}
+ 
+@media screen and (min-width: 768px) { 
+        .modal:before {
+                display: inline-block;
+                vertical-align: middle;
+                content: " ";
+                height: 100%;
+        }
+}
+ 
+.modal-dialog {
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
 }
 </style>
 
@@ -30,36 +48,25 @@
 
 <main class="wrapper" style="margin: 0 auto; width: 100%;">
 	<div id="layoutSidenav_content">
-		<div class="container-fluid px-5">
-			<div class="body-container" style="width: 80%; margin: 10% auto;">
-				<div class="body-main">
+			<div class="body-container" style="width: 100%; margin: 10% auto;">
+				<div class="body-main" style="width: 100%;">
 
-					<h3 class="mb-3 p-2" style="border-bottom: 3px solid black;">
-						<i class="bi bi-question-circle"></i> 적립금 사용/적립 내역
+					<h3 class="mb-3 p-2" style="border-bottom: 2px solid gray;">적립금 사용/적립 내역
 
-						<button type="button" class="btn btn-success rere"
-							onclick="location.href='${pageContext.request.contextPath}/myPage/mileage/list';"
-							title="새로고침" style="float: right;">
+						<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/myPage/mileage/list';" title="새로고침" style="float: right; background: #32B0E4;">
 							<i class="bi bi-arrow-counterclockwise"></i>
 						</button>
 					</h3>
 
-					<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
-						<table class="table">
-							<tr>
-								<td align="left" width="50%">총 적립금 : ${totalMileage}, <font
-									style="color: green; font-weight: bold; text-decoration: underline"></font>총
-									${dataCount}개의 내역 (${page}/${total_page} 페이지)
-								</td>
-								<td align="right">&nbsp;</td>
-							</tr>
-						</table>
-
-						<div class="card mb-5 w-80 text-center"
+					<div id="tab-content" style="padding: 15px 0px 5px; clear: both;">
+						<div>
+							총 적립금 : ${totalMileage}, <font style="color: green; font-weight: bold; text-decoration: underline"></font>총 ${dataCount}개의 내역 (${page}/${total_page} 페이지)
+						</div>
+						<div class="card mb-5 w-80 mt-4 text-center"
 							style="margin: 0 auto; border: none;">
 							<table class="table table-border table-list table-hover">
 								<thead>
-									<tr>
+									<tr style="border-top: 1px solid #d8d8d8;">
 										<th width="60">번호</th>
 										<th>클래스</th>
 										<th width="90">포인트</th>
@@ -107,8 +114,7 @@
 							</table>
  -->
 
-							<div class="modal fade" id="MileageDetailModal" tabindex="-2"
-								aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal fade" id="MileageDetailModal" tabindex="-2" aria-labelledby="exampleModalLabel" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -117,10 +123,6 @@
 												data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body">...</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary"
-												data-bs-dismiss="modal">Close</button>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -132,7 +134,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 </main>
 
 <script type="text/javascript">
@@ -186,30 +187,30 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 				
 				var html;
 				html = '<div class="modal-body">';
-				html += '	<table style="width: 100%; border: 1px solid black; border-collapse: collapse;">'
+				html += '	<table style="width: 100%; border: 1px solid black; border-collapse: collapse; text-align: center;">'
 				html += '		<tr style="border: 1px solid black">';
-				html += '			<td style="border: 1px solid black">클래스</td>';
-				html += '			<td style="border: 1px solid black">' + className + '</td>';
+				html += '			<td style="border: 1px solid black; padding: 5px;">클래스</td>';
+				html += '			<td style="border: 1px solid black; padding: 5px;">' + className + '</td>';
 				html += '		</tr>';
 				html += '		<tr style="border: 1px solid black">';
-				html += '			<td style="border: 1px solid black">수업날짜</td>';
-				html += '			<td style="border: 1px solid black">' + classDate + '</td>';
+				html += '			<td style="border: 1px solid black; padding: 5px;">수업날짜</td>';
+				html += '			<td style="border: 1px solid black; padding: 5px;">' + classDate + '</td>';
 				html += '		</tr>';
 				html += '		<tr style="border: 1px solid black">';
-				html += '			<td style="border: 1px solid black">적립금</td>';
-				html += '			<td style="border: 1px solid black; color: red;">' + point + '</td>';
+				html += '			<td style="border: 1px solid black; padding: 5px;">적립금</td>';
+				html += '			<td style="border: 1px solid black; color: red; padding: 5px;">' + point + '</td>';
 				html += '		</tr>';
 				html += '		<tr style="border: 1px solid black">';
-				html += '			<td style="border: 1px solid black">수업시간</td>';
-				html += '			<td style="border: 1px solid black">' + classTime + '시간' + '</td>';
+				html += '			<td style="border: 1px solid black; padding: 5px;">수업시간</td>';
+				html += '			<td style="border: 1px solid black; padding: 5px;">' + classTime + '시간' + '</td>';
 				html += '		</tr>';
 				html += '		<tr style="border: 1px solid black">';
-				html += '			<td style="border: 1px solid black">사용/적립일</td>';
-				html += '			<td style="border: 1px solid black">' + mDate + '</td>';
+				html += '			<td style="border: 1px solid black; padding: 5px;">사용/적립일</td>';
+				html += '			<td style="border: 1px solid black; padding: 5px;">' + mDate + '</td>';
 				html += '		</tr>';
 				html += '		<tr style="border: 1px solid black">';
-				html += '			<td style="border: 1px solid black">상태</td>';
-				html += '			<td style="border: 1px solid black; color: red;">' + state + '</td>';
+				html += '			<td style="border: 1px solid black; padding: 5px;">상태</td>';
+				html += '			<td style="border: 1px solid black; color: red; padding: 5px;">' + state + '</td>';
 				html += '		</tr>';
 				html += '	</table>';
 				html += '</div>';
