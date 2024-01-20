@@ -91,12 +91,12 @@ $(function(){
 <main class="wrapper" style="margin:0 auto; width:100%;" >
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		 	<div class="container-fluid px-5">
-				<div class="body-container" style="width:80%; margin:5% auto; ">
+				<div class="body-container" style="width:100%; margin:5% auto; ">
     				<div class="body-main">
     				
-    				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-                      	<i class="fa-solid fa-user-group"></i> 예약관리 
-	                    <button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/pluszone/bookingList/reservation';" style="float:right;">
+    				<h3 class="mb-3 p-2" style="border-bottom: 2px solid gray;">
+                      	예약관리 
+	                    <button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/pluszone/bookingList/reservation';" style="float:right; background: #32B0E4; color: white;">
 	                    	<i class="fa-solid fa-arrow-rotate-left"></i>
 	                    </button>
 	                </h3>
@@ -116,15 +116,15 @@ $(function(){
 							<table class="table">
 								<tr>
 									<td align="left" width="70%" style="font-weight:bold">
-										예약확정 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}명</font> (${page}/${total_page} 페이지)
+										예약확정 <span style="color: #32B0E4;">${dataCount}명</span> (${page}/${total_page} 페이지)
 									</td>
 								</tr>
 							</table>
 			
 							<div class="card mb-5 w-80 text-center" style="margin:0 auto">
 								<div style="float: left; width: 13.33%;" class="mt-3 text-start ms-3">
-									<button type="button" class="btn btn-outline-success btnSend"
-										style="-bs-btn-padding-y: .25rem; - -bs-btn-padding-x: .5rem; - -bs-btn-font-size: .75rem;">예약대기</button>
+									<button type="button" class="btn btnSend"
+										style="-bs-btn-padding-y: .25rem; - -bs-btn-padding-x: .5rem; - -bs-btn-font-size: .75rem; background: #32B0E4; color: white;">예약대기</button>
 								</div>
 				                 <div class="card-body">
 				                 	<div class="table-responsive">
