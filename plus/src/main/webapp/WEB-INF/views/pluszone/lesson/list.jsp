@@ -5,7 +5,7 @@
 <style type="text/css">
 .rere {
 	color: white;
-	background: #46AA46;
+	background: #32B0E4;
 	padding: 6px 12px 6px 12px;
 	border: none;
 } 
@@ -87,7 +87,7 @@
 			let mainNum = $(this).val();
 			
 			$("form select[name=subNum]").find('option').remove().end()
-				.append("<option value=''>서브 카테고리</option>");	
+				.append("<option value=''>서브카테고리</option>");	
 			
 			if(! mainNum) {
 				return false;
@@ -123,25 +123,21 @@
 			<div class="body-container" style="width: 100%; margin: 5% auto;">
 				<div class="body-main">
 
-					<h3 class="mb-3 p-2" style="border-bottom: 3px solid black;">
-						<i class="bi bi-bag-plus"></i> 클래스 관리
-						<button type="button" class="btn btn-success rere"
-							onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/main';"
-							title="새로고침" style="float: right;">
+					<h3 class="mb-3 p-2" style="border-bottom: 2px solid gray;">
+						클래스 관리
+						<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/main';"
+							title="새로고침" style="float: right; background: #32B0E4; color: white;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
 						</button>
 
-						<button type="button" class="btn btn-success rere me-3"
-							onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/write';"
-							style="float: right;">등록하기</button>
+						<button type="button" class="btn btn-success rere me-3" onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/write';" style="float: right; background: #32B0E4; color: white;">등록하기</button>
 					</h3>
 
-					<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+					<div id="tab-content" style="padding: 15px 0px 5px; clear: both;">
 						<table class="table">
 							<tr>
-								<td align="left" width="50%">총 <font
-									style="color: green; font-weight: bold; text-decoration: underline">${dataCount}개</font>
-									(${page}/${total_page} 페이지)
+								<td align="left" width="50%">
+									총 <span style="color: #32B0E4;">${dataCount}개</span> (${page}/${total_page} 페이지)
 								</td>
 								<td align="right">&nbsp;</td>
 							</tr>
@@ -184,7 +180,7 @@
 											<td>${dto.tagName}</td>
 											<td>${dto.memo}</td>
 											<td>
-												<button type="button" class="btn btn-primary reportDetail">
+												<button type="button" class="btn reportDetail" style="background: #00D8FF; color: white;">
 												자세히<input type="hidden" name="classNum" id="classNum" value="${dto.classNum}">
 												</button>
 											</td>
@@ -197,13 +193,10 @@
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
-											<h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="bi bi-exclamation-triangle"></i> 신고</h1>
+											<h1 class="modal-title fs-5" id="staticBackdropLabel">신고</h1>
 											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body"> 
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 										</div>
 									</div>
 								</div>
@@ -216,31 +209,27 @@
 											action="${pageContext.request.contextPath}/pluszone/lessonPlus/main"
 											method="post" style="width: 600px;">
 											<div class="input-group mb-3">
-												<select name="mainNum" class="form-select">
+												<select name="mainNum" class="form-select" style="width: 80px;">
 													<option value="0">메인카테고리</option>
 													<c:forEach var="vo" items="${listMainCategory}">
-														<option value="${vo.mainNum}"
-															${mainNum == vo.mainNum ? "selected" : ""}>${vo.mainName}</option>
+														<option value="${vo.mainNum}" ${mainNum == vo.mainNum ? "selected" : ""}>${vo.mainName}</option>
 													</c:forEach>
-												</select> <select name="subNum" class="form-select">
+												</select>
+												<select name="subNum" class="form-select" style="width: 80px;">
 													<option value="0">서브카테고리</option>
 													<c:forEach var="vo" items="${listSubCategory}">
-														<option value="${vo.subNum}"
-															${subNum == vo.subNum ? "selected" : ""}>${vo.subName}</option>
+														<option value="${vo.subNum}" ${subNum == vo.subNum ? "selected" : ""}>${vo.subName}</option>
 													</c:forEach>
-												</select> <select name="schType" class="form-select">
-													<option value="className"
-														${schType=="className"?"selected":""}>클래스이름</option>
+												</select>
+												<select name="schType" class="form-select" style="width: 80px;">
+													<option value="className" ${schType=="className"?"selected":""}>클래스이름</option>
 													<option value="regDate" ${schType=="regDate"?"selected":""}>등록일</option>
 													<option value="memo" ${schType=="memo"?"selected":""}>승인상태</option>
-													<option value="highPrice"
-														${schType=="highPrice"?"selected":""}>높은가격순</option>
-													<option value="lowPrice"
-														${schType=="lowPrice"?"selected":""}>낮은가격순</option>
-												</select> <input type="text" name="kwd" value="${kwd}"
-													class="form-control">
-												<button type="button" class="btn btn-success rere"
-													onclick="searchList()">
+													<option value="highPrice" ${schType=="highPrice"?"selected":""}>높은가격순</option>
+													<option value="lowPrice" ${schType=="lowPrice"?"selected":""}>낮은가격순</option>
+												</select>
+												<input type="text" name="kwd" value="${kwd}" class="form-control">
+												<button type="button" class="btn btn-success rere" onclick="searchList()" style="background: #32B0E4; color: white;">
 													<i class="bi bi-search"></i>
 												</button>
 											</div>
