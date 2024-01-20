@@ -17,4 +17,5 @@ public interface ClassInqService {
 	public ClassInq findByYes(long inquiryNum);
 	
 	public void updateInq(Map<String, Object> map) throws Exception;
+	public void deleteInq(long inquiryNum) throws Exception;
 }

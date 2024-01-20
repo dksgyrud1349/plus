@@ -60,7 +60,7 @@
 
 					<div id="tab-content" style="padding: 15px 0px 5px; clear: both;">
 						<div>
-							총 적립금 : ${totalMileage}, <font style="color: green; font-weight: bold; text-decoration: underline"></font>총 ${dataCount}개의 내역 (${page}/${total_page} 페이지)
+							총 적립금 : <span class="fw-semibold" style="color: #32B0E4;"><fmt:formatNumber value="${totalMileage}" pattern="#,###원" /></span>, 총 <span class="fw-semibold">${dataCount}</span>개의 내역 (<span class="fw-semibold">${page}</span>/<span class="fw-semibold">${total_page}</span> 페이지)
 						</div>
 						<div class="card mb-5 w-80 mt-4 text-center"
 							style="margin: 0 auto; border: none;">
@@ -80,9 +80,25 @@
 										<tr class="MileageDetail">
 											<td>${dataCount - (page-1) * size - status.index}</td>
 											<td class="left">${dto.className}</td>
-											<td>${dto.point}</td>
+											<c:if test="${dto.mState == 0}">
+												<td style="color: #32B0E4;">${dto.point}</td>
+											</c:if>
+											<c:if test="${dto.mState == 1}">
+												<td style="color: red;">${dto.point}</td>
+											</c:if>
+											<c:if test="${dto.mState == 2}">
+												<td style="color: green;">${dto.point}</td>
+											</c:if>
 											<td>${dto.mDate}</td>
-											<td>${dto.mState == 0 ? "적립" : dto.mState == 1 ? "사용" : "환불"}</td>
+											<c:if test="${dto.mState == 0}">
+												<td style="color: #32B0E4;">적립</td>
+											</c:if>
+											<c:if test="${dto.mState == 1}">
+												<td style="color: red;">사용</td>
+											</c:if>
+											<c:if test="${dto.mState == 2}">
+												<td style="color: green;">환불</td>
+											</c:if>
 											<input type="hidden" name="mNum" value="${dto.mNum}">
 										</tr>
 									</c:forEach>
@@ -118,7 +134,7 @@
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
-											<h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-wallet2"></i> 적립금</h1>
+											<h1 class="modal-title fs-5" id="exampleModalLabel">적립금 상세 내역</h1>
 											<button type="button" class="btn-close"
 												data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
@@ -198,7 +214,7 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 				html += '		</tr>';
 				html += '		<tr style="border: 1px solid black">';
 				html += '			<td style="border: 1px solid black; padding: 5px;">적립금</td>';
-				html += '			<td style="border: 1px solid black; color: red; padding: 5px;">' + point + '</td>';
+				html += '			<td style="border: 1px solid black; padding: 5px;">' + point + '</td>';
 				html += '		</tr>';
 				html += '		<tr style="border: 1px solid black">';
 				html += '			<td style="border: 1px solid black; padding: 5px;">수업시간</td>';
@@ -210,7 +226,7 @@ function ajaxFun(url, method, formData, dataType, fn, file = false) {
 				html += '		</tr>';
 				html += '		<tr style="border: 1px solid black">';
 				html += '			<td style="border: 1px solid black; padding: 5px;">상태</td>';
-				html += '			<td style="border: 1px solid black; color: red; padding: 5px;">' + state + '</td>';
+				html += '			<td style="border: 1px solid black; padding: 5px;">' + state + '</td>';
 				html += '		</tr>';
 				html += '	</table>';
 				html += '</div>';

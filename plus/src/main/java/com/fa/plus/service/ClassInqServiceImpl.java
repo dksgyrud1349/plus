@@ -89,5 +89,15 @@ public class ClassInqServiceImpl implements ClassInqService{
 			throw e;
 		}
 	}
+
+	@Override
+	public void deleteInq(long inquiryNum) throws Exception {
+		try {
+			mapper.deleteInq(inquiryNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
 	
 }

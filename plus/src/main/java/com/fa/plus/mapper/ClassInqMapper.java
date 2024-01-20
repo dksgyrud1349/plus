@@ -30,4 +30,7 @@ public interface ClassInqMapper {
 	
 	// 문의글 수정
 	public void updateInq(Map<String, Object> map) throws SQLException;
+	
+	// 문의글 삭제
+	public void deleteInq(long inquiryNum) throws SQLException;
 }

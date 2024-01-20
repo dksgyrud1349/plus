@@ -206,4 +206,17 @@ public class ClassInqController {
 		
 		return "redirect:/classInq/myInqList";
 	}
+	
+	@GetMapping("deleteInq")
+	private String deleteInq(@RequestParam long inquiryNum) throws Exception{
+		
+		try {
+			service.deleteInq(inquiryNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
+		return "redirect:/classInq/myInqList";
+	}
 }

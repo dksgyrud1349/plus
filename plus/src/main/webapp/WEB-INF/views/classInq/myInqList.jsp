@@ -7,6 +7,13 @@
 	height:60px;
 	line-height: 60px;
 }
+.rere {
+	color: white;
+	background: #32B0E4;
+	padding: 6px 12px 6px 12px;
+	border: none;
+}
+a:hover {color: #32B0E4;}
 </style>
 
 <script type="text/javascript">
@@ -18,34 +25,24 @@ function searchList() {
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
-		<div class="container-fluid px-5">
-			<div class="body-container" style="width:80%; margin:10% auto; ">
-				<div class="body-main">
+			<div class="body-container" style="width: 100%; margin: 10% auto; ">
+				<div class="body-main" style="width: 100%;">
 				
-				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-					<i class="bi bi-question-circle"></i> 클래스 문의내역
+				<h3 class="mb-3 p-2" style="border-bottom:2px solid gray;">클래스 문의내역
 					
-					<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/classInq/myInqList';" title="새로고침" style="float:right;">
+					<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/classInq/myInqList';" title="새로고침" style="float:right; background: #32B0E4;">
 						<i class="bi bi-arrow-counterclockwise"></i>
 					</button>
 				</h3>
 				
-				<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
-					<table class="table">
-						<tr>
-						<td align="left" width="50%">
-								총 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}개</font> (${page}/${total_page} 페이지)
-							</td>
-							<td align="right">
-								&nbsp;
-							</td>
-						</tr>
-					</table>
-		
-					<div class="card mb-5 w-80 text-center" style="margin:0 auto; border:none;">
+				<div id="tab-content" style="padding: 15px 0px 5px; clear: both;">
+					<div>
+						총 <span class="fw-semibold" style="color: #32B0E4;">${dataCount}개</span> (${page}/${total_page} 페이지)
+					</div>
+					<div class="card mb-5 w-80 mt-4 text-center" style="margin:0 auto; border:none;">
 						<table class="table table-border table-list table-hover">
 							<thead>
-								<tr>
+								<tr style="border-top: 1px solid #d8d8d8;">
 									<th width="60">번호</th>
 									<th>제목</th>
 									<th width="150">문의일</th>
@@ -81,7 +78,7 @@ function searchList() {
 												<option value="content" ${schType=="content"?"selected":""}>내용</option>
 											</select>
 											<input type="text" name="kwd" value="${kwd}" class="form-control">
-											<button type="button" class="btn btn-success" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+											<button type="button" class="btn btn-success rere" onclick="searchList()" style="background: #32B0E4;"> <i class="bi bi-search"></i> </button>
 										</div>
 									</form>
 								</td>
@@ -96,6 +93,5 @@ function searchList() {
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </main>

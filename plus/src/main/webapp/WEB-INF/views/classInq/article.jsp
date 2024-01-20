@@ -8,14 +8,13 @@
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
-		<div class="container-fluid px-5">
 			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
-				<div class="body-main">
+				<div class="body-main" style="width: 100%;">
 				
 					<div class="card mb-5 w-80" style="margin:0 auto;">
 				    	<div class="card-header text-center">
-				    		<h3>
-				    			<i class="bi bi-app"></i> 문의내역
+				    		<h3 class="pt-2">
+				    			문의 내역
 				    		</h3>
 				    	</div>
 		
@@ -23,7 +22,7 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<td colspan="2" class="bg-primary text-white fs-4 fw-medium">
+									<td colspan="2" class="text-white fs-4 fw-medium" style="background: #32B0E4;">
 										Q. ${dto.subject}
 									</td>
 								</tr>
@@ -73,13 +72,14 @@
 						
 						<table class="table table-borderless mb-2">
 							<tr>
-							<c:if test="${dto.reInquiryNum == 0}">
-								<td width="50%">
-									<button type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/classInq/updateInq?inquiryNum=${dto.inquiryNum}';">수정하기</button>
+								<td class="text-left">
+									<c:if test="${dto.reInquiryNum == 0}">
+										<button type="button" class="btn" style="background: #32B0E4; color: white;" onclick="location.href='${pageContext.request.contextPath}/classInq/updateInq?inquiryNum=${dto.inquiryNum}';">수정하기</button>
+									</c:if>
+									<button type="button" class="btn btn-danger" onclick="location.href='${pageContext.request.contextPath}/classInq/deleteInq?inquiryNum=${dto.inquiryNum}';">삭제하기</button>
 								</td>
-							</c:if>
 								<td class="text-end">
-									<button type="button" class="btn btn-success" onclick="location.href='${pageContext.request.contextPath}/classInq/myInqList';">리스트</button>
+									<button type="button" class="btn" style="background: #00A2C9; color: white;" onclick="location.href='${pageContext.request.contextPath}/classInq/myInqList';">리스트</button>
 								</td>
 							</tr>
 						</table>
@@ -88,7 +88,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 </main>
 
 <script type="text/javascript">

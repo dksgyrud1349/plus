@@ -74,4 +74,8 @@
 	<update id="updateInq" parameterType="map">
 		UPDATE inquiry SET subject = #{subject}, content = #{content}, inquiryDate = SYSDATE WHERE inquiryNum = #{inquiryNum}
 	</update>
+	
+	<delete id="deleteInq" parameterType="Long">
+		DELETE FROM inquiry WHERE inquiryNum = #{inquiryNum}
+	</delete>
 </mapper>
