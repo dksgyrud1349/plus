@@ -9,7 +9,7 @@
 }
 .rere {
 	color: white;
-	background: #46AA46;
+	background: #32B0E4;
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
@@ -51,21 +51,20 @@ a{
 <main class="wrapper" style="margin: 0 auto; width: 100%;">
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width: 80%; margin: 5% auto;">
+			<div class="body-container" style="width: 100%; margin: 10% auto;">
 				<div class="body-main">
 				
-					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-						<i class="bi bi-app"></i> 승인취소 클래스 관리
-						<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/lessonManage/list3';" title="새로고침" style="float: right;">
+					<h3 class="mb-3 p-2" style="border-bottom:2px solid gray;">
+						승인취소 클래스 관리
+						<button type="button" class="btn rere" onclick="location.href='${pageContext.request.contextPath}/admin/lessonManage/list3';" title="새로고침" style="float: right; background: #32B0E4; color: white;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
 						</button>
 					</h3>
 				
-					<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+					<div id="tab-content" style="padding: 15px 0px 5px; clear: both;">
 						<table class="table">
 							<tr>
-								<td align="left" width="50%">총 <font
-									style="color: green; font-weight: bold; text-decoration: underline">${dataCount}개</font>
+								<td align="left" width="50%">총 <span style="color: #32B0E4;">${dataCount}개</span>
 									(${page}/${total_page} 페이지)
 								</td>
 								<td align="right">&nbsp;</td>
@@ -124,7 +123,7 @@ a{
 													<option value="regDate" ${schType=="regDate"?"selected":""}>등록일</option>
 												</select>
 												<input type="text" name="kwd" value="${kwd}" class="form-control">
-												<button type="button" class="btn btn-success rere" onclick="searchList()">
+												<button type="button" class="btn rere" onclick="searchList()" style="background: #32B0E4; color: white;">
 													<i class="bi bi-search"></i>
 												</button>
 											</div>

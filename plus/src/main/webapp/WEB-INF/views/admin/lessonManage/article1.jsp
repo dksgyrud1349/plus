@@ -6,7 +6,7 @@
 .board-article img { max-width: 650px; }
 .rere {
 	color: white;
-	background: #46AA46;
+	background: #32B0E4;
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
@@ -29,13 +29,13 @@
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
+			<div class="body-container" style="width:100%; margin:10% auto;">
 				<div class="body-main">
 				
 					<div class="card mb-5 w-80" style="margin:0 auto;">
 				    	<div class="card-header text-center">
 				    		<h3>
-				    			<i class="bi bi-app"></i> 승인대기 클래스
+				    			승인완료 클래스
 				    		</h3>
 				    	</div>
 		
@@ -69,13 +69,13 @@
 						<table class="table table-borderless mb-2">
 							<tr>
 								<td width="50%">
-									<button type="button" class="btn btn-outline-secondary" onclick="updateState(0)">대기 <i class="bi bi-hourglass"></i></button>
-									<button type="button" class="btn btn-outline-success" onclick="updateState(1)">승인 <i class="bi bi-circle"></i></button>
-									<button type="button" class="btn btn-outline-warning" onclick="updateState(2)">보류 <i class="bi bi-hourglass-split"></i></button>
-									<button type="button" class="btn btn-outline-danger" onclick="updateState(3)">취소 <i class="bi bi-x-lg"></i></button>
+									<button type="button" class="btn btn-secondary" onclick="updateState(0)">대기</button>
+									<button type="button" class="btn btn-success" onclick="updateState(1)">승인</button>
+									<button type="button" class="btn btn-warning" onclick="updateState(2)">보류</button>
+									<button type="button" class="btn btn-danger" onclick="updateState(3)">취소</button>
 								</td>
 								<td class="text-end">
-									<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/lessonManage/list1?${query}';">리스트</button>
+									<button type="button" class="btn rere" style="background: #32B0E4; color: white;" onclick="location.href='${pageContext.request.contextPath}/admin/lessonManage/list1?${query}';">리스트</button>
 								</td>
 							</tr>
 						</table>
