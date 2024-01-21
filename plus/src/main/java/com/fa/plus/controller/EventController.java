@@ -207,9 +207,15 @@ public class EventController {
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("eventNum", eventNum);
+
+		if(info != null) {
+			map.put("membership", info.getMembership());
+			map.put("userId", info.getUserId());
+		} else {
+			map.put("membership", 0);
+			map.put("userId", "guest");
+		}
 		
-		map.put("membership", info.getMembership());
-		map.put("userId", info.getUserId());
 		
 		dataCount = service.replyCount(map);
 		total_page = myUtil.pageCount(dataCount, size);
@@ -246,15 +252,21 @@ public class EventController {
 	public Map<String, Object> insertReply(EventReply dto, HttpSession session) {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		String state = "true";
-
+		
+		Map<String, Object> model = new HashMap<>();
+		if(info == null) {
+			state = "false";
+			model.put("state", state);
+			return model;
+		}
+		
 		try {
 			dto.setUserId(info.getUserId());
 			service.insertReply(dto);
 		} catch (Exception e) {
 			state = "false";
 		}
-
-		Map<String, Object> model = new HashMap<>();
+		
 		model.put("state", state);
 		return model;
 	}
