@@ -53,10 +53,10 @@
 
 	}
 	#txt>b{
-	   height:2.0rem;
+	   height:2.3rem;
 	   box-shadow:0 .4rem .3rem -.3rem #aaa;
 	   color:#979c9f;
-	   background:linear-gradient(#aaf,#acf,#afc);
+	  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(25,117,190,1) 100%);
 	   background-clip:text;
 	   text-fill-color:transparent;
 	   -webkit-background-clip:text;
