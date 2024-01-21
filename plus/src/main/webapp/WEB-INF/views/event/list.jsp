@@ -15,6 +15,11 @@
 	border-bottom: 1px solid #fff;
 	color: #47a3da;
 	padding-top: 10px;
+	
+}
+.nav-tabs:hover .nav-link:hover{
+	border-color: #fff;
+	color: #46AA46;
 }
 .tab-pane { min-height: 300px; }
 

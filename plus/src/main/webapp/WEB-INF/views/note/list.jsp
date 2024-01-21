@@ -4,16 +4,22 @@
 
 <style type="text/css">
 .nav-tabs .nav-link {
-	min-width: 170px;
-	background: #f3f5f7;
-	border-radius: 0;
-	border-right: 1px solid #dbdddf;
-	color: #333;
-	font-weight: 600;
+	margin:0;
+	list-style:none;
+	zoom: 1;
+	color:#c0c0c0;
 }
 .nav-tabs .nav-link.active {
-	background: #3d3d4f;
-	color: #fff;
+	background: #fff;
+	border-color: #d4d4d4;
+	border-bottom: 1px solid #fff;
+	color: #47a3da;
+	padding-top: 10px;
+	
+}
+.nav-tabs:hover .nav-link:hover{
+	border-color: #fff;
+	color: #46AA46;
 }
 .tab-pane { min-height: 300px; }
 
@@ -120,10 +126,10 @@ $(function() {
 		
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">
-					<button class="nav-link border border-1.5" id="tab-receive" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="receive" aria-selected="true" data-tab="receive">받은 쪽지함</button>
+					<button class="nav-link" id="tab-receive" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="receive" aria-selected="true" data-tab="receive">받은 쪽지함</button>
 				</li>
 				<li class="nav-item" role="presentation">
-					<button class="nav-link border border-1.5" id="tab-send" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="send" aria-selected="true" data-tab="send">보낸 쪽지함</button>
+					<button class="nav-link" id="tab-send" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="send" aria-selected="true" data-tab="send">보낸 쪽지함</button>
 				</li>
 			</ul>
 			
