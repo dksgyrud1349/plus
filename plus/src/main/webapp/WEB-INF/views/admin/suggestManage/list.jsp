@@ -77,7 +77,7 @@
 					<input type="hidden" name="page" value="${page}">
 				</form>	
 				
-				<div class="page-navigation" style="opacity: 0.7;">
+				<div class="page-navigation">
 					${dataCount==0?"등록된 게시물이 없습니다.":paging}
 				</div>
 				

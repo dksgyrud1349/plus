@@ -22,7 +22,7 @@
 		FROM noticePlus np
 		JOIN member1 m1 ON np.userId = m1.userId
 		JOIN plus pl ON m1.userId = pl.userId
-		WHERE classNum = #{classNum} AND notice = 0 AND showNotice = 0
+		WHERE classNum = #{classNum} AND notice = 1 AND showNotice = 1
 		ORDER BY num DESC
 	</select>
 	
@@ -32,7 +32,7 @@
 		JOIN member1 m1 ON np.userId = m1.userId
 		JOIN plus pl ON m1.userId = pl.userId
 		<where>
-			classNum = #{classNum} AND notice = 1 AND showNotice = 0
+			classNum = #{classNum} AND notice = 0 AND showNotice = 1
 			<if test="kwd != null and kwd != ''">
 				AND <include refid="search-list"/>
 			</if>
@@ -46,7 +46,7 @@
 		JOIN member1 m1 ON np.userId = m1.userId
 		JOIN plus pl ON m1.userId = pl.userId
 		<where>
-			classNum = #{classNum} AND notice = 1 AND showNotice = 0
+			classNum = #{classNum} AND notice = 0 AND showNotice = 1
 			<if test="kwd != null and kwd != ''">
 				AND <include refid="search-list"/>
 			</if>
@@ -70,7 +70,7 @@
 		FROM noticePlus np
 		JOIN member1 m1 ON np.userId = m1.userId
 		<where>
-			showNotice = 0 AND classNum = #{classNum}
+			showNotice = 1 AND classNum = #{classNum}
 			<if test="kwd != null and kwd != ''">
 				AND <include refid="search-list"/>
 			</if>
@@ -85,7 +85,7 @@
 		FROM noticePlus np
 		JOIN member1 m1 ON np.userId = m1.userId
 		<where>
-			showNotice = 0 AND classNum = #{classNum}
+			showNotice = 1 AND classNum = #{classNum}
 			<if test="kwd != null and kwd != ''">
 				AND <include refid="search-list"/>
 			</if>

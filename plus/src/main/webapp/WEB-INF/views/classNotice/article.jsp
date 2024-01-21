@@ -13,12 +13,11 @@
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
-		<div class="container-fluid px-5">
 			<div class="body-container" style="width:100%; margin:10% auto; ">
 				<div class="body-main">
 				
-					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-		    			<i class="bi bi-pin-angle-fill"></i> 공지사항
+					<h3 class="mb-3 p-2" style="border-bottom:3px solid #cccccc;">
+		    			공지사항
 		    		</h3>
 				
 				<div id="tab-content" style="padding: 5px; clear: both;">
@@ -84,7 +83,7 @@
 								
 								<td width="50%">&nbsp;</td>
 								<td class="text-end">
-									<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/classNotice/list?${query}&classNum=${classNum}';">리스트</button>
+									<button type="button" style="background: #46AA46; color: white;" class="btn rere" onclick="location.href='${pageContext.request.contextPath}/classNotice/list?${query}&classNum=${classNum}';">리스트</button>
 								</td>
 							</tr>
 						</table>
@@ -93,5 +92,4 @@
 			</div>
 		</div>
 	</div>
-</div>
 </main>

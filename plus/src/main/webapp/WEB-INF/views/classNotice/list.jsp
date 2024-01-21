@@ -24,13 +24,12 @@ function searchList() {
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
-		<div class="container-fluid px-5">
-			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
-				<div class="body-main">
-				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-	    			<i class="bi bi-pin-angle-fill"></i> 공지사항
+			<div class="body-container" style="width:100%; margin:10% auto;">
+				<div class="body-main" style="width: 100%;">
+				<h3 class="mb-3 p-2" style="border-bottom:3px solid #cccccc;">
+	    			공지사항
 	    			
-	    			<button type="button" class="btn btn-outline-success rere" onclick="location.href='${pageContext.request.contextPath}/classNotice/list?classNum=${classNum}';" title="새로고침" style="float:right;">
+	    			<button type="button" class="btn rere" onclick="location.href='${pageContext.request.contextPath}/classNotice/list?classNum=${classNum}';" title="새로고침" style="float:right; background: #46AA46; color: white;">
 		            	<i class="fa-solid fa-arrow-rotate-left"></i>
 		            </button>
 	    		</h3>
@@ -40,7 +39,7 @@ function searchList() {
 						<table class="table">
 							<tr>
 								<td align="left">
-									총 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}개</font> (${page}/${total_page} 페이지)
+									총 <span style="color: #32B0E4;">${dataCount}개</span> (${page}/${total_page} 페이지)
 								</td>
 								<td align="right">	
 									<form class="row" name="searchForm" action="${pageContext.request.contextPath}/classNotice/list" style="width:300px;">
@@ -52,7 +51,7 @@ function searchList() {
 												<option value="content" ${schType=="content"?"selected":""}>내용</option>
 											</select>
 											<input type="text" name="kwd" value="${kwd}" class="form-control">
-											<button type="button" class="btn btn-secondary" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+											<button type="button" class="btn" onclick="searchList()" style="background: #46AA46; color: white;"> <i class="bi bi-search"></i> </button>
 										</div>
 										<input type="hidden" name="classNum" value="${classNum}">
 									</form>
@@ -109,5 +108,5 @@ function searchList() {
 				</div>
 			</div>
 		</div>
-	</div>
+
 </main>
