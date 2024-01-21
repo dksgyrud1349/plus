@@ -39,8 +39,8 @@ img {
 			<div class="body-container" style="width:80%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
 				
-				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-		    			<i class="bi bi-app"></i> 커뮤니티
+					<h3 class="mb-3 p-2" style="border-bottom:2px solid #32B0E4;">
+		    			<i class="bi bi-chat-left-heart"></i> 커뮤니티
 		    		</h3>
 				
 					<div class="card mb-5 w-80" style="border:none;">

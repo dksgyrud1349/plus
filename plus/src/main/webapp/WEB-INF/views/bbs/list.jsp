@@ -109,7 +109,7 @@ function searchList() {
 												<option value="content" ${schType=="content"?"selected":""}>내용</option>
 											</select>
 											<input type="text" name="kwd" value="${kwd}" class="form-control">
-											<button type="button" class="btn btn-secondary rere" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+											<button type="button" class="btn btn-secondary" onclick="searchList()"> <i class="bi bi-search"></i> </button>
 										</div>
 									</form>
 								</td>

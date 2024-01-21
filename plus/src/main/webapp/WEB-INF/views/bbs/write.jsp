@@ -37,22 +37,22 @@ function check() {
 			<div class="body-container" style="width:80%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
 				
-					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-	                	<i class="bi bi-app"></i> 커뮤니티
+					<h3 class="mb-3 p-2" style="border-bottom:2px solid #32B0E4;">
+	                	<i class="bi bi-chat-left-heart"></i> 커뮤니티
 		            </h3>
 		
 						<div id="tab-content">
 							<form name="boardForm" method="post" enctype="multipart/form-data">	
 								<table class="table write-form">
 									<tr>
-										<td class="bg-light col-sm-2" scope="row">제 목</td>
+										<td class="bg-light col-sm-2 align-middle" scope="row">제 목</td>
 										<td>
 											<input type="text" name="subject" class="form-control" value="${dto.subject}">
 										</td>
 									</tr>
 				        
 									<tr>
-										<td class="bg-light col-sm-2" scope="row">작성자명</td>
+										<td class="bg-light col-sm-2 align-middle" scope="row">작성자명</td>
 				 						<td>
 											<p class="form-control-plaintext">${sessionScope.member.userName}</p>
 										</td>
