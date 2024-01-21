@@ -67,7 +67,7 @@ function searchList() {
 		            	<i class="fa-solid fa-arrow-rotate-left"></i>
 		            </button>
 	    		</h3>
-	    		<hr>
+	    		<hr style="color:#32B0E4;">
 				
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
 					<li class="nav-item" role="presentation">
@@ -80,10 +80,10 @@ function searchList() {
 			
 				
 			
-				<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+				<div id="tab-content">
 					<table class="table">
 						<tr>
-							<td align="left" width="50%">
+							<td align="left" width="50%" style="vertical-align:middle;">
 								총 <font style="color:green; font-weight:bold; text-decoration:underline">${dataCount}건</font> (${page}/${total_page} 페이지)
 							</td>
 							<td align="right">
@@ -95,7 +95,7 @@ function searchList() {
 											<option value="endDate" ${schType=="endDate"?"selected":""}>종료일</option>
 										</select>
 										<input type="text" name="kwd" value="${kwd}" class="form-control">
-										<button type="button" class="btn btn-secondary" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+										<button type="button" class="btn btn-secondary rere" onclick="searchList()"> <i class="bi bi-search"></i> </button>
 									</div>
 								</form>
 							</td>

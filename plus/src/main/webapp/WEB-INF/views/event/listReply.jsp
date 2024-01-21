@@ -9,7 +9,7 @@
 
 <table class='table table-borderless'>
 	<c:forEach var="vo" items="${listReply}">
-		<tr class='border table-light'>
+		<tr class='table-light' style='border:1px solid #32B0E4;'>
 			<td width='50%'>
 				<div class='row reply-writer'>
 					<div class='col-1'><i class='bi bi-person-circle text-muted icon'></i></div>
@@ -24,10 +24,10 @@
 				<div class="reply-menu">
 					<c:choose>
 						<c:when test="${sessionScope.member.userId==vo.userId}">
-							<div class='deleteReply reply-menu-item' data-replyNum='${vo.replyNum}' data-pageNo='${pageNo}'>삭제</div>
+							<div class='deleteReply reply-menu-item' data-replyNum='${vo.replyNum}' data-pageNo='${pageNo}'><i class="bi bi-trash3"></i></div>
 						</c:when>
 						<c:when test="${sessionScope.member.membership > 90}">
-							<div class='deleteReply reply-menu-item' data-replyNum='${vo.replyNum}' data-pageNo='${pageNo}'>삭제</div>
+							<div class='deleteReply reply-menu-item' data-replyNum='${vo.replyNum}' data-pageNo='${pageNo}'><i class="bi bi-trash3"></i></div>
 						</c:when>
 					</c:choose>
 				</div>

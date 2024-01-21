@@ -33,14 +33,14 @@
 	border: none;
 }
 .imgcard {
-        max-width: 300px; /* Set your desired maximum width */
-        max-height: 400px; /* Set your desired maximum height */
-        margin: 10px; /* Add margin to create space between cards */
+        max-width: 300px;
+        max-height: 400px; 
+        margin: 10px; 
     }
 
 .imgcard img {
-    max-width: 100%; /* Make sure the image doesn't exceed the card width */
-    height: auto; /* Maintain the aspect ratio of the image */
+    max-width: 100%; 
+    height: auto; 
 }
 </style>
 
@@ -67,7 +67,7 @@ $(function(){
 				<h3>
 	    			<i class="bi bi-calendar-event"></i> 이벤트
 	    		</h3>
-	    		<hr>
+	    		<hr style="color:#32B0E4;">
 
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">
@@ -78,7 +78,7 @@ $(function(){
 				</li>
 			</ul>
 			
-			<div id="tab-content" style="padding: 15px 10px 5px; clear: both;">
+			<div id="tab-content">
 				<table class="table">
 					<tr>
 						<td align="left" width="50%">
