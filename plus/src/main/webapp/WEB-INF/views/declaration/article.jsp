@@ -29,19 +29,10 @@
 	font-style: normal;
 }
 
-.body-container {
-	width: 1200px;
-	height: 70px;
-	padding-top: 20px;
-	margin-left: 20px;
-}
-
 .sContent {
 	margin-left: 40px;
 	padding-left: 10px;
 	margin-top: 20px;
-	width: 1200px;
-	height: 65px;
 	font-family: 'Pretendard-Regular';
 	font-weight: bold;
 }
@@ -66,6 +57,57 @@
 
 .bDelaration:hover {
 	border: 2px solid black;
+}
+
+.tabs {
+	font-size: 20px; line-height: 20px;
+}
+.tabs ul:before, .tabs ul:after {
+	content: ""; 
+	display: block; 
+	height: 0; 
+	visibility: hidden;	
+} 
+.tabs ul:after { 
+	clear: both; 
+}
+.tabs ul {
+	margin:0;
+	list-style:none;
+	border-bottom: 1px solid #e0e0e0;
+	zoom: 1;
+}
+
+.tabs ul li {
+	position: relative;
+	float: left;
+	margin: 0;
+}
+.tabs ul li a {
+	background: #f6f6f6;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+	border: 1px solid #e0e0e0;
+	color: #909090;
+	text-shadow: 0 1px 0 rgba(255,255,255, 0.75);
+	padding: 6px 25px; 
+	margin: 0 10px -1px 0;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 10px;
+	text-decoration:none;
+}
+.tabs ul li a:hover {
+	border-color: rgb(214, 241, 207);
+	color: #606060;
+}
+.tabs ul li.active a {
+	background: #fff;
+	border-color: #d4d4d4;
+	border-bottom: 1px solid #fff;
+	color: #dd390d;
+	margin-top: -4px;
+	padding-top: 10px;
 }
 </style>
 <script type="text/javascript">
@@ -148,50 +190,63 @@ function writeSubmit(){
 }
 </script>
 
-<main class="wrapper" style="margin: 0 auto; width: 100%;">
+<main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="margin: 100px auto;">
+			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
+				
+					<div class="tabs mb-5">
+					  <ul>
+						<li><a href="${pageContext.request.contextPath}/faq/main">자주 묻는 질문</a></li>
+						<li><a href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
+						<li><a href="${pageContext.request.contextPath}/etc/list">연락처/위치 안내</a></li>
+						<li><a href="${pageContext.request.contextPath}/chatting/main">실시간 채팅</a></li>
+						<li class="active"><a href="${pageContext.request.contextPath}/declaration/article">신고하기</a></li>
+						<li><a href="${pageContext.request.contextPath}/suggest/article">제안하기</a></li>
+						<li><a href="${pageContext.request.contextPath}/inquiryAd/list">문의하기</a></li>
+					  </ul>
+					</div>
+				
 					<h3 class="font1"
-						style="border-top: 1px solid black; padding-top: 20px; padding-left: 10px;">
+						style="padding-left: 10px;">
 						<i class="bi bi-exclamation-diamond-fill"></i> 신고하기
 					</h3>
 					<div class="sContent">
 						이곳은 부적절한 <span style="color: red;">클래스 신고</span>를 하는 곳입니다.<br>
 						허위 신고 시 서비스 이용제한 등의 불이익을 받을 수 있으니 주의해 주세요.
 					</div>
+
+	
+					<form name="declarationForm" method="post" style="margin-left:200px; margin-top:30px;">
+							<div class="input-group mb-3" style="width: 400px; float: left; margin-right: 50px; height: 40px;">
+								<span class="input-group-text title add" id="basic-addon1" style="padding-left: 50px; padding-top: 8px;">회원ID</span>
+								<input type="text" name="userId" id="userId" class="form-control" aria-label="Username" aria-describedby="basic-addon1" readonly="readonly" value="${dto.userId}">
+							</div>
+							<div class="input-group mb-3" style="width: 400px; height: 40px;">
+								<span class="input-group-text title" id="basic-addon2" style="padding-left: 55px; padding-top: 8px;">이름</span> 
+								<input type="text" name="userName" id="userName" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2" readonly="readonly" value="${dto.userName}">
+							</div>
+							<div class="input-group mb-3" style="width: 400px; height: 40px;">
+								<span class="input-group-text title" id="basic-addon3" style="padding-left: 40px; padding-top: 8px;">클래스 명</span>
+								<!-- <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">  -->
+								<select name="className" id="className" style="width: 250px;">
+									<option value="" style="text-align: center;">::선택::</option>
+									<c:forEach var="dto" items="${listClass}">
+										<option value="${dto.className}">${dto.className}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="input-group" style="width: 850px; height: 300px;">
+								<span class="input-group-text title" style="padding-left: 40px;">신고 사유</span>
+								<textarea class="form-control" name="rContent" id="rContent" style="resize: none;" aria-label="With textarea">${dto.rContent}</textarea>
+							</div>
+							<div style="float: right;">
+								<button type="button" id="btnOk" name="btnOk" class="bDelaration" onclick="writeSubmit();" style="padding-top: 3px;">신고하기<i class="bi bi-bell-fill"></i></button>
+							</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-	<form name="declarationForm" method="post">
-		<div style="margin-left: 200px; height: 500px;">
-			<div class="input-group mb-3" style="width: 400px; float: left; margin-right: 50px; height: 40px;">
-				<span class="input-group-text title add" id="basic-addon1" style="padding-left: 50px; padding-top: 8px;">회원ID</span>
-				<input type="text" name="userId" id="userId" class="form-control" aria-label="Username" aria-describedby="basic-addon1" readonly="readonly" value="${dto.userId}">
-			</div>
-			<div class="input-group mb-3" style="width: 400px; height: 40px;">
-				<span class="input-group-text title" id="basic-addon2" style="padding-left: 55px; padding-top: 8px;">이름</span> 
-				<input type="text" name="userName" id="userName" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2" readonly="readonly" value="${dto.userName}">
-			</div>
-			<div class="input-group mb-3" style="width: 400px; height: 40px;">
-				<span class="input-group-text title" id="basic-addon3" style="padding-left: 40px; padding-top: 8px;">클래스 명</span>
-				<!-- <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">  -->
-				<select name="className" id="className" style="width: 250px;">
-					<option value="" style="text-align: center;">::선택::</option>
-					<c:forEach var="dto" items="${listClass}">
-						<option value="${dto.className}">${dto.className}</option>
-					</c:forEach>
-				</select>
-			</div>
-			<div class="input-group" style="width: 850px; height: 300px;">
-				<span class="input-group-text title" style="padding-left: 40px;">신고 사유</span>
-				<textarea class="form-control" name="rContent" id="rContent" style="resize: none;" aria-label="With textarea">${dto.rContent}</textarea>
-			</div>
-			<div style="margin-top: 35px; float: right; margin-right: 250px;">
-				<button type="button" id="btnOk" name="btnOk" class="bDelaration" onclick="writeSubmit();" style="padding-top: 3px;">신고하기<i class="bi bi-bell-fill"></i></button>
-			</div>
-		</div>
-	</form>
 </main>

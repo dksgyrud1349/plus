@@ -17,7 +17,7 @@
 			<div class="body-container" style="width:100%; margin:10% auto; ">
 				<div class="body-main">
 				
-					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+					<h3 class="mb-3 p-2" style="border-bottom:2px solid #32B0E4;">
 		    			<i class="bi bi-pin-angle-fill"></i> 공지사항
 		    		</h3>
 				
