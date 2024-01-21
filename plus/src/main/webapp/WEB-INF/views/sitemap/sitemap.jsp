@@ -103,8 +103,8 @@ ul, li {
 	margin: 0 0 0 -20px;
 }
 
-.sitemapnav ul ul li a { border-top-color: #3498db; width: auto; }
-.sitemapnav ul ul li a:before, .sitemapnav ul ul li .fa { color: #3498db; }
+.sitemapnav ul ul li a { border-top-color: #47a3da; width: auto; }
+.sitemapnav ul ul li a:before, .sitemapnav ul ul li .fa { color: #47a3da; }
 
 /* --- Level 2 --- */
 .sitemapnav ul ul ul {
@@ -140,16 +140,9 @@ ul, li {
 	width: 20px;
 }
 
-.sitemapnav ul ul ul li a { border-top-color: #2ecc71; width: auto; }
-.sitemapnav ul ul ul li a:before, .sitemapnav ul ul ul li .fa { color: #2ecc71; }
+.sitemapnav ul ul ul li a { border-top-color: #005C00; width: auto; }
+.sitemapnav ul ul ul li a:before, .sitemapnav ul ul ul li .fa { color: #005C00; }
 
-/* --- Level 3 --- */
-.sitemapnav ul ul ul ul li a { border-top-color: #e67e22; }
-.sitemapnav ul ul ul ul li a:before, .sitemapnav ul ul ul ul li .fa { color: #e67e22; }
-
-/* --- Level 4 --- */
-.sitemapnav ul ul ul ul ul li a { border-top-color: #9b59b6; }
-.sitemapnav ul ul ul ul ul li a:before, .sitemapnav ul ul ul ul ul li .fa { color: #9b59b6; }
 
 /* --- Secondary --- */
 .secondary {
@@ -227,24 +220,14 @@ ul, li {
 				                 </li>
 				                 <li>
 				                    <a href="${pageContext.request.contextPath}/onedayplus/onedayplus"><i class="bi bi-dice-3"></i> 원데이플러스+</a>
-				                    <!--  
-				                    <ul>
-				                       <li>
-				                           <a href="${pageContext.request.contextPath}/">2</a>
-				                           <ul>
-				                               <li><a href="${pageContext.request.contextPath}/" class="multi">3</a></li>
-				                           </ul>
-				                       </li>
-				                    </ul>
-				                    -->
 				                 </li>
 				                 <li>
 				                    <a href="${pageContext.request.contextPath}/event/progress/list"><i class="bi bi-dice-4"></i> 이벤트 </a>
 				                 </li>
 				                 <li>
-				                    <a href="${pageContext.request.contextPath}/faq/main"><i class="bi bi-dice-5"></i> 고객센터 </a>
+				                    <a href="${pageContext.request.contextPath}/faq/main"><i class="bi bi-dice-5"></i> 고객센터(자주묻는질문) </a>
 				                    <ul>
-				                       <li><a href="${pageContext.request.contextPath}/faq/main">자주묻는질문</a></li>
+				                       <li><a href="${pageContext.request.contextPath}/chatting/main">실시간 채팅</a></li>
 				                       <li><a href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
 				                       <li><a href="${pageContext.request.contextPath}/declaration/article">신고하기</a></li>
 				                       <li><a href="${pageContext.request.contextPath}/proposal/list">제안하기</a></li>
