@@ -6,7 +6,7 @@
 .board-article img { max-width: 650px; }
 .rere {
 	color: white;
-	background: #32B0E4;
+	background: #46AA46;
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
@@ -29,7 +29,7 @@
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:100%; margin:10% auto;">
+			<div class="body-container" style="width:80%; margin:5% auto;">
 				<div class="body-main">
 				
 					<div class="card mb-5 w-80" style="margin:0 auto;">
@@ -75,7 +75,7 @@
 									<button type="button" class="btn btn-danger" onclick="updateState(3)">취소</button>
 								</td>
 								<td class="text-end">
-									<button type="button" class="btn rere" style="background: #32B0E4; color: white;" onclick="location.href='${pageContext.request.contextPath}/admin/lessonManage/list1?${query}';">리스트</button>
+									<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/lessonManage/list1?${query}';">리스트</button>
 								</td>
 							</tr>
 						</table>

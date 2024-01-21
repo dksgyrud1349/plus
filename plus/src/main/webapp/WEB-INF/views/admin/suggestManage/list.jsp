@@ -36,9 +36,9 @@
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:100%; margin:10% auto; ">
+			<div class="body-container" style="width:80%; margin:5% auto; ">
 				<div class="body-main">
-				<h3 class="p-2 mb-3" style="border-bottom:2px solid gray;">
+				<h3 class="p-2 mb-3" style="border-bottom:3px solid #cccccc;">
 					제안 문의
 				</h3>
 				<table class="table-border table mt-4">
