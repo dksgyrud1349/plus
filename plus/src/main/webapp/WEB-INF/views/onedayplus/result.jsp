@@ -13,49 +13,22 @@
 }
 #box:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  transform: translateY(-10px);
+  transform: translateY(10px);
 }
 
 
-  h5, h6 {
-      font-family: 'Roboto', sans-serif;
-  }
 
-  .fw-bold {
-      font-weight: bold;
-  }
-
-  .fs-2 {
-      font-size: 2rem;
-  }
-
-  .text-black {
-      color: #000000;
-  }
-
-  .card-title {
-      font-size: 1.5rem; 
-  }
-
-  .text-dark {
-      color: #333333;
-  }
-
-  .btn-primary {
-      background-color: #007bff; 
-      color: #ffffff;
-  }
 </style>
 
-
-<main class="wrapper" style="margin: 5 auto; width: 100%; margin-bottom: 0; padding-bottom: 20;">
+<main class="wrapper" style="margin: 5 auto; width: 100%; margin-bottom: 0; padding-bottom: 30;">
 	<div id="layoutSidenav_content" style="background: #FFFFFF;">
-		<div class="container-fluid px-5">
-			<div class="body-container" style="width:80%; margin:5% auto; padding-top:5%">
+		<div class="container-fluid px-7">
+			<div class="body-container" style="width:100%; margin:7% auto; padding-top:7%">
 				<div class="row justify-content-center">
-					<div class="col-8">
-						<h5 class="pb-2 fw-bold fs-2 text-center" style="border-bottom:1px solid #cccccc;">
+					<div class="col-12">
+						<h5 class="pb-2 fw-bold fs-2 text-center" style="border-bottom:1px solid #cccccc; ">
 							<i class="bi bi-book"></i> ${sessionScope.member.userName}님의 원데이플러스 결과
+							
 						
 						</h5>
 						<c:choose>
@@ -64,8 +37,8 @@
 								    
 							    		<div class="body-container" style=" margin:0% auto; paddng-top:5%">
 								        <div class="row border-bottom border-info">
-								        <div class="row justify-content-center">
-								            <div class="col-12 p-2">
+								        <div class="row justify-content-left">
+								            <div class="col-8 p-4">
 								                <span class="fw-semibold text-black fs-5"><i class="bi bi-lightbulb"></i>${status.count} ${dto.subject}</span>								   
 								            </div>
 								        </div>
@@ -80,14 +53,13 @@
 									        </c:forEach>
 								        </div>
 								    </div>
-								</c:forEach>
-						
-									
-									<div class="row mt-5">
+								</c:forEach>   
+									<div class="row mt-4">
 										<c:choose>
 											<c:when test="${resultCount != 0}">
 												<c:forEach var="clist" items="${classList}" varStatus="status">
 													<div class="card p-1 me-3 mb-5 mx-4" id="box" style="width: 16rem; height: 30rem; border:0.8px solid #cccccc;">
+														
 														<img src="${pageContext.request.contextPath}/uploads/lesson/${clist.firstPhoto}" class="card-img-top" height="200px" alt="...">
 														<div class="card-header" >
 															<h6 class="card-title pb-1 text-start" style="margin-top:10px;">
@@ -112,7 +84,7 @@
 										</c:choose>
 									</div>
 								<div class="text-end">
-									<button onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus'" class="btn btn-primary">다시 추천받기</button>								
+									<button onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus'" class="btn btn-primary"style="background-color: #47a3da;">다시 추천받기</button>								
 								</div>
 							</c:when>
 								
