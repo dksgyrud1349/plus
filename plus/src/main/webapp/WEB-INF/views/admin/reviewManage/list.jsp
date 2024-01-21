@@ -140,7 +140,7 @@ $(function(){
 	<div id="layoutSidenav_content" style="background: #F8F8FF;">
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:5% auto; ">
-				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+				<h3 class="mb-3 p-2" style="border-bottom:2px solid black;">
 					<i class="bi bi-chat-left-text-fill"></i>
 						리뷰 관리
 				</h3>
