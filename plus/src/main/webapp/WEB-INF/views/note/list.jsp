@@ -110,7 +110,7 @@ $(function() {
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:80%; margin:10% auto; ">
 				<div class="body-main">
-				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+				<h3 class="mb-3 p-2" style="border-bottom:2px solid #32B0E4;">
 					<i class="bi bi-messenger"></i> 쪽지함 
 					
 					<button type="button" class="btn btn-outline-success rere" onclick="location.href='${pageContext.request.contextPath}/note/${menuItem}/list';" title="새로고침" style="float:right;">
@@ -215,7 +215,7 @@ $(function() {
 												</c:choose>
 											</select>
 											<input type="text" name="kwd" value="${kwd}" class="form-control">
-											<button type="button" class="btn btn-light rere" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+											<button type="button" class="btn btn-secondary" onclick="searchList()"> <i class="bi bi-search"></i> </button>
 										</div>
 									</form>
 								</td>

@@ -4,16 +4,17 @@
 
 <style type="text/css">
 .nav-tabs .nav-link {
-	min-width: 170px;
-	background: #f3f5f7;
-	border-radius: 0;
-	border-right: 1px solid #dbdddf;
-	color: #333;
-	font-weight: 600;
+	margin:0;
+	list-style:none;
+	zoom: 1;
+	color:#c0c0c0;
 }
 .nav-tabs .nav-link.active {
-	background: #3d3d4f;
-	color: #fff;
+	background: #fff;
+	border-color: #d4d4d4;
+	border-bottom: 1px solid #fff;
+	color: #47a3da;
+	padding-top: 10px;
 }
 .tab-pane { min-height: 300px; }
 
@@ -94,7 +95,7 @@ function searchList() {
 											<option value="endDate" ${schType=="endDate"?"selected":""}>종료일</option>
 										</select>
 										<input type="text" name="kwd" value="${kwd}" class="form-control">
-										<button type="button" class="btn btn-secondary rere" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+										<button type="button" class="btn btn-secondary" onclick="searchList()"> <i class="bi bi-search"></i> </button>
 									</div>
 								</form>
 							</td>
