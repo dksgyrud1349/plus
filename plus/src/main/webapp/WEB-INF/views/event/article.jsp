@@ -42,6 +42,18 @@
     max-width: 100%; 
     height: auto; 
 }
+
+.detailbtn {
+	background-color:#47a3da;
+	border-radius: 10px;
+	color: #FFFFFF;
+	font-weight: 700;
+}
+
+.detailbtn:hover {
+	background-color:#3F8FBD;
+	color: #FFFFFF;
+}
 </style>
 
 <script type="text/javascript">
@@ -123,18 +135,15 @@ $(function(){
 								</td>
 							</tr>
 										
-						<tr>
-							<td colspan="2">이벤트 클래스 개수 : ${classCount}</td>
-						</tr>
 						
 						<tr>
-						    <td class="row">
+						    <td class="row" colspan="2">
 						        <c:forEach var="clist" items="${classList}">
 						            <div class="card border-light col imgcard">
 						                <img src="${pageContext.request.contextPath}/uploads/lesson/${clist.firstPhoto}"/>
 						                <h5 class="card-header overflowText">${clist.className}</h5>
 						                <p class="card-body text-end overflowText">${clist.price}</p>
-						                <a href="${pageContext.request.contextPath}/lesson/detail/${clist.classNum}" class="btn btn-primary text-center">상세보기</a>
+						                <a href="${pageContext.request.contextPath}/lesson/detail/${clist.classNum}" class="btn detailbtn text-center mb-2">상세보기</a>
 						            </div>
 						        </c:forEach>
 						    </td>

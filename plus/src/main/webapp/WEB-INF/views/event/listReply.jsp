@@ -8,6 +8,11 @@
 </div>
 
 <table class='table table-borderless'>
+	<c:if test="${replyCount == 0}">
+		<div class="border-top border-bottom mt-1">
+			<h6 class="text-center m-3">등록된 댓글이 없습니다.</h6>
+		</div>
+	</c:if>
 	<c:forEach var="vo" items="${listReply}">
 		<tr class='table-light' style='border:1px solid #32B0E4;'>
 			<td width='50%'>

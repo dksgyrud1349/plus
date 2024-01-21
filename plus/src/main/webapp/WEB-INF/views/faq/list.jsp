@@ -18,7 +18,11 @@
 	font-size: 19px;
 }
 </style>
-
+<c:if test="${list.size() == 0 }">
+	<div class="m-5 text-center">
+		<h6>등록된 FAQ가 없습니다.</h6>
+	</div>
+</c:if>
 <c:if test="${list.size() > 0}">
 	<div class="accordion accordion-flush mt-1" id="accordionFlush">
 		<div class="row main-board fw-bold" style="margin-left: 0px; width: 1200px;"><div class="col-2">카테고리</div><div class="col-7">제목</div></div>
