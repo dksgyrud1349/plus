@@ -150,20 +150,15 @@
     <div class="body-container" style="margin:5% auto; padding-top:3%">
             <div class="input-form-backgroud row">
                 <div class="input-form col-md-12 mx-auto">
-                    <div class="body-title">
-                        <h3><i class="bi bi-ui-checks"></i> 원데이 플러스 +  </h3>
-                    </div>
-                    
                     <div class="alert alert-light" role="alert">
-                        <i class="bi bi-clipboard-check"></i>&nbsp; 질문을 통해 원데이 플러스 + 만의 사용자 맞춤형 클래스 추천 서비스를 이용해보세요.  
+                        <i class="bi bi-clipboard-check"></i>&nbsp; 질문을 통해 <font style="color:#47a3da; font-weight:bold;">원데이 플러스 +</font> 만의 사용자 맞춤형 클래스 추천 서비스를 이용해보세요.  
                     </div>
                     
-                        
                     <div class="body-main">
                         <form name="memberForm1" method="post">
-                            <div class="text-start">
-                                <h3 style="text-align: center;">${qSubject[0].subject}</h3>
-                                <hr style="color: #cccccc;">
+                            <div class="text-center">
+                                <h3>${qSubject[0].subject}</h3>
+                                <hr style="color: #47a3da;">
                                 
                     		<c:forEach var="dto" items="${list}" varStatus="status">
                     			<c:if test="${dto.num == 1}">
@@ -187,9 +182,9 @@
                      
 
                         <form name="memberForm2" method="post" style="display: none;">
-                           <div class="text-start">
-                                <h3 style="text-align: center;">${qSubject[1].subject}</h3>
-                                <hr style="color: #cccccc;">
+                           <div class="text-center">
+                                <h3>${qSubject[1].subject}</h3>
+                                <hr style="color: #47a3da;">
                                 
                     		<c:forEach var="dto" items="${list}" varStatus="status">
                     			<c:if test="${dto.num == 2}">
@@ -215,9 +210,9 @@
 
 
                         <form name="memberForm3" method="post" style="display: none;">
-                                <div class="text-start">
-                                        <h3 style="text-align: center;">${qSubject[2].subject}</h3>
-                                        <hr style="color: #cccccc;">
+                                <div class="text-center">
+                                        <h3>${qSubject[2].subject}</h3>
+                                        <hr style="color: #47a3da;">
         
                                         <c:forEach var="dto" items="${list}" varStatus="status">
 			                    			<c:if test="${dto.num == 3}">
@@ -243,9 +238,9 @@
                                 </form>
 
                     <form name="memberForm4" method="post" style="display: none;">
-                        <div class="text-start">
-                            <h3 style="text-align: center;">${qSubject[3].subject}</h3>
-                            <hr style="color: #cccccc;">
+                        <div class="text-center">
+                            <h3>${qSubject[3].subject}</h3>
+                            <hr style="color: #47a3da;">
 
                             <c:forEach var="dto" items="${list}" varStatus="status">
                     			<c:if test="${dto.num == 4}">
@@ -269,9 +264,9 @@
                      </form>
 
                 <form name="memberForm5" method="post" style="display: none;">
-                    <div class="text-start">
-                        <h3 style="text-align: center;">${qSubject[4].subject}</h3>
-                        <hr style="color: #cccccc;">
+                    <div class="text-center">
+                        <h3>${qSubject[4].subject}</h3>
+                        <hr style="color: #47a3da;">
 
                         <c:forEach var="dto" items="${list}" varStatus="status">
                     			<c:if test="${dto.num == 5}">
