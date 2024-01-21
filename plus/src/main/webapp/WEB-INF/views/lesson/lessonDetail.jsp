@@ -164,13 +164,13 @@ header.masthead h1, header.masthead .h1 {
 		font-size: 1.15rem;
 	}
 	header.masthead h1, header.masthead .h1 {
-		font-size: 3rem;
+		font-size: 2rem;
 	}
 }
 
 @media ( min-width : 1200px) {
 	header.masthead h1, header.masthead .h1 {
-		font-size: 3rem;
+		font-size: 2.2rem;
 	}
 }
 
