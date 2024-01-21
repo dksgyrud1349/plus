@@ -56,14 +56,14 @@
 	</select>
 	
 	<select id="findByNo" parameterType="Long" resultType="com.fa.plus.domain.ClassInq">
-		SELECT inquiryNum, subject, iq.classNum, le.className, inquiryDate, iq.content, reInquiryNum
+		SELECT inquiryNum, subject, iq.classNum, le.className, inquiryDate, iq.content, reInquiryNum, le.classNum
 		FROM inquiry iq
 		JOIN lesson le ON iq.classNum = le.classNum
 		WHERE inquiryNum = #{inquiryNum}
 	</select>
 	
 	<select id="findByYes" parameterType="Long" resultType="com.fa.plus.domain.ClassInq">
-		SELECT inquiryNum, reSubject, reInquiryDate, reContent, nickName, reInquiryNum
+		SELECT inquiryNum, reSubject, reInquiryDate, reContent, nickName, reInquiryNum, le.classNum
 		FROM inquiry iq
 		JOIN lesson le ON iq.classNum = le.classNum
 		JOIN member1 m1 ON iq.reInquiryId = m1.userId

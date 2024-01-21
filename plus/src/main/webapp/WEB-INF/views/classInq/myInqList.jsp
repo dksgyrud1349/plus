@@ -9,7 +9,7 @@
 }
 .rere {
 	color: white;
-	background: #32B0E4;
+	background: #46AA46;
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
@@ -28,9 +28,9 @@ function searchList() {
 			<div class="body-container" style="width: 100%; margin: 10% auto; ">
 				<div class="body-main" style="width: 100%;">
 				
-				<h3 class="mb-3 p-2" style="border-bottom:2px solid gray;">클래스 문의내역
+				<h3 class="mb-3 p-2" style="border-bottom:3px solid #cccccc;">클래스 문의내역
 					
-					<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/classInq/myInqList';" title="새로고침" style="float:right; background: #32B0E4;">
+					<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/classInq/myInqList';" title="새로고침" style="float:right;">
 						<i class="bi bi-arrow-counterclockwise"></i>
 					</button>
 				</h3>
@@ -56,7 +56,7 @@ function searchList() {
 									<tr>
 										<td>${dataCount - (page-1) * size - status.index}</td>
 										<td class="left">
-											<a href="${pageContext.request.contextPath}/classInq/article?inquiryNum=${dto.inquiryNum}" style="font-weight: normal;">${dto.subject}</a>
+											<a href="${pageContext.request.contextPath}/classInq/article?inquiryNum=${dto.inquiryNum}&classNum=${classNum}" style="font-weight: normal;">${dto.subject}</a>
 										</td>
 										<td>${dto.inquiryDate}</td>
 										<td>${empty dto.reInquiryDate ? "" : dto.reInquiryDate}</td>
@@ -83,7 +83,7 @@ function searchList() {
 												<option value="content" ${schType=="content"?"selected":""}>내용</option>
 											</select>
 											<input type="text" name="kwd" value="${kwd}" class="form-control">
-											<button type="button" class="btn btn-success rere" onclick="searchList()" style="background: #32B0E4;"> <i class="bi bi-search"></i> </button>
+											<button type="button" class="btn btn-success rere" onclick="searchList()"> <i class="bi bi-search"></i> </button>
 										</div>
 									</form>
 								</td>

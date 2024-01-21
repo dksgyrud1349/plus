@@ -35,6 +35,18 @@ function check() {
 	
     f.submit();
 }
+
+function back(){
+	const f = document.boardForm;
+	f.method = 'GET';
+	
+	if(f.mode.value == 'update') {
+		f.action = "${pageContext.request.contextPath}/classInq/article";
+	} else{
+		f.action = "${pageContext.request.contextPath}/lesson/detail/${classNum}";
+	}
+	f.submit();
+}
 </script>
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
@@ -83,9 +95,9 @@ function check() {
 								<table class="table table-borderless">
 				 					<tr>
 										<td class="text-center">
-											<button type="button" class="btn" style="background: #32B0E4; color: white;" onclick="check();">${mode == 'update' ? "수정하기" : "등록하기"}&nbsp;<i class="bi bi-check2"></i></button>
+											<button type="button" class="btn" style="background: #32B0E4; color: white;" onclick="check();">${mode == 'update' ? "수정하기" : "등록하기"}&nbsp;</button>
 											<button type="reset" class="btn btn-secondary">다시입력</button>
-											<button type="button" class="btn btn-danger" onclick="location.href='#';">등록취소&nbsp;<i class="bi bi-x"></i></button>
+											<button type="button" class="btn btn-danger" onclick="back();">등록취소&nbsp;</button>
 											<input type="hidden" name="classNum" value="${classNum}">
 											<input type="hidden" name="className" value="${vo.className}">
 											<c:if test="${mode == 'update'}">

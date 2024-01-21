@@ -156,12 +156,13 @@ public class ClassInqController {
 		model.addAttribute("dto", dto);
 		model.addAttribute("dto1", dto1);
 		model.addAttribute("query", query);
+		model.addAttribute("classNum", dto.getClassNum());
 		
 		return ".classInq.article";
 	}
 	
 	@GetMapping("updateInq")
-	private String updateInqForm(@RequestParam long inquiryNum, Model model, HttpSession session) throws Exception{
+	private String updateInqForm(@RequestParam long inquiryNum, @RequestParam long classNum, Model model, HttpSession session) throws Exception{
 		
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		
@@ -177,6 +178,7 @@ public class ClassInqController {
 			model.addAttribute("findDto", findDto);
 			model.addAttribute("vo", vo);
 			model.addAttribute("mode", "update");
+			model.addAttribute("classNum", classNum);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -74,12 +74,12 @@
 							<tr>
 								<td class="text-left">
 									<c:if test="${dto.reInquiryNum == 0}">
-										<button type="button" class="btn" style="background: #32B0E4; color: white;" onclick="location.href='${pageContext.request.contextPath}/classInq/updateInq?inquiryNum=${dto.inquiryNum}';">수정하기</button>
+										<button type="button" class="btn" style="background: #32B0E4; color: white;" onclick="location.href='${pageContext.request.contextPath}/classInq/updateInq?inquiryNum=${dto.inquiryNum}&classNum=${classNum}';">수정하기</button>
 									</c:if>
 									<button type="button" class="btn btn-danger" onclick="location.href='${pageContext.request.contextPath}/classInq/deleteInq?inquiryNum=${dto.inquiryNum}';">삭제하기</button>
 								</td>
 								<td class="text-end">
-									<button type="button" class="btn" style="background: #00A2C9; color: white;" onclick="location.href='${pageContext.request.contextPath}/classInq/myInqList';">리스트</button>
+									<button type="button" class="btn" style="background: #46AA46; color: white;" onclick="location.href='${pageContext.request.contextPath}/classInq/myInqList';">리스트</button>
 								</td>
 							</tr>
 						</table>
