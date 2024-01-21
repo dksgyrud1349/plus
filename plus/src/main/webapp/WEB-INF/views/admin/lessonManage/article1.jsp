@@ -35,7 +35,7 @@
 					<div class="card mb-5 w-80" style="margin:0 auto;">
 				    	<div class="card-header text-center">
 				    		<h3>
-				    			승인완료 클래스
+				    			<i class="bi bi-check-lg"></i> 승인완료 클래스
 				    		</h3>
 				    	</div>
 		

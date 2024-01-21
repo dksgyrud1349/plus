@@ -55,7 +55,7 @@ a{
 				<div class="body-main">
 				
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid #cccccc;">
-						승인대기 클래스 관리
+						<i class="bi bi-hourglass-top"></i> 승인대기 클래스 관리
 						<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/admin/lessonManage/list0';" title="새로고침" style="float: right;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
 						</button>

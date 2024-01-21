@@ -28,7 +28,7 @@ function searchList() {
 			<div class="body-container" style="width: 100%; margin: 10% auto; ">
 				<div class="body-main" style="width: 100%;">
 				
-				<h3 class="mb-3 p-2" style="border-bottom:3px solid #cccccc;">클래스 문의내역
+				<h3 class="mb-3 p-2" style="border-bottom:3px solid #cccccc;"><i class="bi bi-question-circle-fill"></i> 클래스 문의내역
 					
 					<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/classInq/myInqList';" title="새로고침" style="float:right;">
 						<i class="bi bi-arrow-counterclockwise"></i>

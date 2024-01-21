@@ -95,7 +95,7 @@ $(function(){
     				<div class="body-main">
     				
     				<h3 class="mb-3 p-2" style="border-bottom: 3px solid #cccccc;">
-                      	예약관리 
+                      	<i class="bi bi-journal"></i> 예약관리 
 	                    <button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/pluszone/bookingList/reservation';" style="float:right; background: #46AA46; color: white;">
 	                    	<i class="fa-solid fa-arrow-rotate-left"></i>
 	                    </button>

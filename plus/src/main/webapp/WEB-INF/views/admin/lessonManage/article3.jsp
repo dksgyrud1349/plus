@@ -35,7 +35,7 @@
 					<div class="card mb-5 w-80" style="margin:0 auto;">
 				    	<div class="card-header text-center">
 				    		<h3>
-				    			승인취소 클래스
+				    			<i class="bi bi-trash3-fill"></i> 승인취소 클래스
 				    		</h3>
 				    	</div>
 		

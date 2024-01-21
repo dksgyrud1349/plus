@@ -35,7 +35,7 @@
 					<div class="card mb-5 w-80" style="margin:0 auto;">
 				    	<div class="card-header text-center">
 				    		<h3>
-				    			승인대기 클래스
+				    			<i class="bi bi-hourglass-top"></i> 승인대기 클래스
 				    		</h3>
 				    	</div>
 		

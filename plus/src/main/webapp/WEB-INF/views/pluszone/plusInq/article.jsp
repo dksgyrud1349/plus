@@ -87,7 +87,7 @@
 				<div class="body-main">
 				
 				<h3 class="mb-3 p-2" style="border-bottom: 3px solid #cccccc;">
-					문의내역 
+					<i class="bi bi-question-circle-fill"></i> 문의내역 
 					<c:if test="${mode == 'write'}">
 						<button type="button" style="float: right;" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqList?${query}';">리스트</button>
 					</c:if>

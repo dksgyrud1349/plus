@@ -14,7 +14,7 @@
 					<div class="card mb-5 w-80" style="margin:0 auto;">
 				    	<div class="card-header text-center">
 				    		<h3 class="pt-2">
-				    			문의 내역
+				    			<i class="bi bi-question-circle-fill"></i> 문의 내역
 				    		</h3>
 				    	</div>
 		

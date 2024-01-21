@@ -271,7 +271,7 @@ $(function(){
 			<div class="body-container" style="width: 80%; margin: 5% auto;">
 				<div class="body-main">
 					<h3 class="mb-3 p-2" style="border-bottom: 3px solid #cccccc;">
-						클래스 등록
+						<i class="bi bi-journal"></i> 클래스 등록
 					</h3>
 				</div>
 

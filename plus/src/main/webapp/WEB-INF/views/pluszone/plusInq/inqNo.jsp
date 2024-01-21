@@ -53,7 +53,7 @@ a{
 			<div class="body-container" style="width: 100%; margin: 5% auto;">
 				<div class="body-main">
 
-					<h3 class="mb-3 p-2" style="border-bottom: 3px solid #cccccc;">클래스 문의 내역
+					<h3 class="mb-3 p-2" style="border-bottom: 3px solid #cccccc;"><i class="bi bi-question-circle-fill"></i> 클래스 문의 내역
 						<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqList';"
 							style="float: right;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>

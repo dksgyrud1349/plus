@@ -39,7 +39,7 @@
 			<div class="body-container" style="width:80%; margin:5% auto; ">
 				<div class="body-main">
 				<h3 class="p-2 mb-3" style="border-bottom:3px solid #cccccc;">
-					제안 문의
+					<i class="bi bi-front"></i> 제안 문의
 				</h3>
 				<table class="table-border table mt-4">
 					<tr>

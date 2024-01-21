@@ -56,7 +56,7 @@ function back(){
 					<div class="card mb-5 w-80" style="margin:0 auto; border:none;">
 			        	<div class="card-header text-center">
 			            	<h3>
-			                	클래스 문의하기
+			                	<i class="bi bi-question-circle-fill"></i> 클래스 문의하기
 				            </h3>
 				        </div>
 		
