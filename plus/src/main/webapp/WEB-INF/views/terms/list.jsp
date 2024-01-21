@@ -9,8 +9,8 @@
 				<div class="body-main">
 					<c:if test="${not empty list}">
 					    <div class="accordion" id="accordionFlush">
-					        <h3 class="mb-3 p-3" style="border-bottom:3px solid black;">
-						    			<i class="fas fa-clipboard-list"  ></i> 서비스 이용 약관
+					        <h3 class="mb-3 p-2" style="border-bottom:2px solid #32B0E4;">
+						    	<i class="fas fa-clipboard-list"  ></i> 서비스 이용 약관
 						    </h3>
 					        <c:forEach var="dto" items="${list}" varStatus="status">
 					            <div class="accordion-item mt-3">

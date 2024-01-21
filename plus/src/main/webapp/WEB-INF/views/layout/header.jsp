@@ -135,10 +135,6 @@
 		color: #FF7F50;
 	}
 	
-	
-	
-	
-	
 	.hover-content {
 	    position: absolute;
 	    top: 0;
@@ -175,9 +171,6 @@
 	    display: block;
 	    cursor: pointer;
 	}
-	
-	
-	
 </style>
 
 
@@ -399,9 +392,10 @@
 										<ul>
 											<li><a href="${pageContext.request.contextPath}/faq/main" class="menu">자주 묻는 질문</a></li>
 											<li><a href="${pageContext.request.contextPath}/notice/list" class="menu">공지사항</a></li>
+											<li><a href="${pageContext.request.contextPath}/chatting/main" class="menu">실시간 채팅</a></li>
 											<li><a href="${pageContext.request.contextPath}/declaration/article" class="menu">신고하기</a></li>
 											<li><a href="${pageContext.request.contextPath}/suggest/article" class="menu">제안하기</a></li>
-											<li><a href="${pageContext.request.contextPath}/inquiryAd/list" class="menu">1:1 문의</a></li>
+											<li><a href="${pageContext.request.contextPath}/inquiryAd/list" class="menu">문의하기</a></li>
 											<li><a href="${pageContext.request.contextPath}/etc/list" class="menu">연락처/위치 안내</a></li>
 										</ul>
 									</div>
