@@ -64,10 +64,9 @@ $(function(){
 		<div class="container-fluid px-5">
 			<div class="body-container pt-5" style="width:100%; margin:5% auto;">
 				<div class="body-main">
-				<h3>
+				<h3 class="mb-3 p-2" style="border-bottom:2px solid #32B0E4;">
 	    			<i class="bi bi-calendar-event"></i> 이벤트
 	    		</h3>
-	    		<hr style="color:#32B0E4;">
 
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">

@@ -81,8 +81,8 @@ function searchList() {
 			<div class="body-container" style="width:80%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
 				
-				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-	    			<i class="bi bi-app"></i> 커뮤니티
+				<h3 class="mb-3 p-2" style="border-bottom:2px solid #32B0E4;">
+	    			<i class="bi bi-chat-left-heart"></i> 커뮤니티
 	    			
 	    			<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/bbs/list';" title="새로고침" style="float:right;">
 		            	<i class="fa-solid fa-arrow-rotate-left"></i>
@@ -109,7 +109,7 @@ function searchList() {
 												<option value="content" ${schType=="content"?"selected":""}>내용</option>
 											</select>
 											<input type="text" name="kwd" value="${kwd}" class="form-control">
-											<button type="button" class="btn btn-secondary" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+											<button type="button" class="btn btn-secondary rere" onclick="searchList()"> <i class="bi bi-search"></i> </button>
 										</div>
 									</form>
 								</td>
