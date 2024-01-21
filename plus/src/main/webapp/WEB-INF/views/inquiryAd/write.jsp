@@ -36,7 +36,7 @@ function sendOk() {
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width: 80%; margin: 10% auto;">
 				<div class="body-main">
-					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+					<h3 class="mb-3 p-2" style="border-bottom:2px solid #32B0E4;">
 						<i class="bi bi-question-diamond"></i> 1:1 문의 
 					</h3>
 		
@@ -44,14 +44,14 @@ function sendOk() {
 			<form name="myForm" method="post">
 				<table class="table mt-5 table-form" style="border-top:1px solid #cccccc;">
 					<tr>
-						<td class="bg-light col-sm-2" scope="row">제 목</td>
+						<td class="bg-light col-sm-2 align-middle" scope="row">제 목</td>
 						<td>
 							<input type="text" name="subject" class="form-control" value="${dto.subject}">
 						</td>
 					</tr>					
         
 					<tr>
-						<td class="bg-light col-sm-2" scope="row">작성자명</td>
+						<td class="bg-light col-sm-2 align-middle" scope="row">작성자명</td>
  						<td>
 							<p class="form-control-plaintext">${sessionScope.member.userName}</p>
 						</td>

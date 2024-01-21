@@ -84,7 +84,8 @@
     	<put-attribute name="body" value="/WEB-INF/views/classInq/{1}.jsp" />
 	</definition>
 	
-	<!-- 고객문의 (faq 등)-->
+	
+	<!-- 고객문의 (faq 등)
 	<definition name=".centerLayout" template="/WEB-INF/views/layout/layout4.jsp">
 	    <put-attribute name="title" value="mypage" />
 	    <put-attribute name="header" value="/WEB-INF/views/layout/subheader.jsp" />
@@ -117,11 +118,12 @@
     	<put-attribute name="body" value="/WEB-INF/views/inquiryAd/{1}.jsp" />
 	</definition>
 	<definition name=".suggest.*" extends=".centerLayout">
-    	<put-attribute name="body" value="/WEB-INF/views/suggest/{1}.jsp" />
+    	<put-attribute name="body" value="	/WEB-INF/views/suggest/{1}.jsp" />
 	</definition>
 	<definition name=".etc.*" extends=".centerLayout">
     	<put-attribute name="body" value="/WEB-INF/views/etc/{1}.jsp" />
 	</definition>
+	-->
 	
 	<!-- 순서가 바뀌면 안됨(* 많은것이 위에) -->
 	<definition name=".*.*.*" extends=".mainLayout2">

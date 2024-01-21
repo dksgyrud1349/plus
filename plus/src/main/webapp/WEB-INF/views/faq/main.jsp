@@ -34,6 +34,57 @@
 	color: #3CB371;
 }
 
+
+.tabs {
+	font-size: 20px; line-height: 20px;
+}
+.tabs ul:before, .tabs ul:after {
+	content: ""; 
+	display: block; 
+	height: 0; 
+	visibility: hidden;	
+} 
+.tabs ul:after { 
+	clear: both; 
+}
+.tabs ul {
+	margin:0;
+	list-style:none;
+	border-bottom: 1px solid #e0e0e0;
+	zoom: 1;
+}
+
+.tabs ul li {
+	position: relative;
+	float: left;
+	margin: 0;
+}
+.tabs ul li a {
+	background: #f6f6f6;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+	border: 1px solid #e0e0e0;
+	color: #909090;
+	text-shadow: 0 1px 0 rgba(255,255,255, 0.75);
+	padding: 6px 25px; 
+	margin: 0 10px -1px 0;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 10px;
+	text-decoration:none;
+}
+.tabs ul li a:hover {
+	border-color: rgb(214, 241, 207);
+	color: #606060;
+}
+.tabs ul li.active a {
+	background: #fff;
+	border-color: #d4d4d4;
+	border-bottom: 1px solid #fff;
+	color: #dd390d;
+	margin-top: -4px;
+	padding-top: 10px;
+}
 </style>
 
 <script type="text/javascript">
@@ -106,12 +157,24 @@
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
-					<div class="body-title">
-						<h3 class="font1"
-							style="border-top: 1px solid black; padding-top: 20px;">
-							<br><i class="bi bi-wechat fa-2x chat"></i>&nbsp;자주하는 질문<br><br>
-						</h3>
+				
+					<div class="tabs">
+					  <ul>
+						<li class="active"><a href="${pageContext.request.contextPath}/faq/main">자주 묻는 질문</a></li>
+						<li><a href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
+						<li><a href="${pageContext.request.contextPath}/etc/list">연락처/위치 안내</a></li>
+						<li><a href="${pageContext.request.contextPath}/chatting/main">실시간 채팅</a></li>
+						<li><a href="${pageContext.request.contextPath}/declaration/article">신고하기</a></li>
+						<li><a href="${pageContext.request.contextPath}/suggest/article">제안하기</a></li>
+						<li><a href="${pageContext.request.contextPath}/inquiryAd/list">문의하기</a></li>
+					  </ul>
 					</div>
+				
+					<h3 class="font1"
+						style="padding-top: 20px;">
+						<br><i class="bi bi-wechat fa-2x chat"></i>&nbsp;자주하는 질문<br><br>
+					</h3>
+					
 					<div class="body-main main-color">
 						
 						<ul class="nav nav-tabs" id="myTab" role="tablist">

@@ -13,6 +13,57 @@
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
+
+.tabs {
+	font-size: 20px; line-height: 20px;
+}
+.tabs ul:before, .tabs ul:after {
+	content: ""; 
+	display: block; 
+	height: 0; 
+	visibility: hidden;	
+} 
+.tabs ul:after { 
+	clear: both; 
+}
+.tabs ul {
+	margin:0;
+	list-style:none;
+	border-bottom: 1px solid #e0e0e0;
+	zoom: 1;
+}
+
+.tabs ul li {
+	position: relative;
+	float: left;
+	margin: 0;
+}
+.tabs ul li a {
+	background: #f6f6f6;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+	border: 1px solid #e0e0e0;
+	color: #909090;
+	text-shadow: 0 1px 0 rgba(255,255,255, 0.75);
+	padding: 6px 25px; 
+	margin: 0 10px -1px 0;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 10px;
+	text-decoration:none;
+}
+.tabs ul li a:hover {
+	border-color: rgb(214, 241, 207);
+	color: #606060;
+}
+.tabs ul li.active a {
+	background: #fff;
+	border-color: #d4d4d4;
+	border-bottom: 1px solid #fff;
+	color: #dd390d;
+	margin-top: -4px;
+	padding-top: 10px;
+}
 </style>
 
 <script type="text/javascript">
@@ -27,7 +78,20 @@ function searchList() {
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
 				<div class="body-main">
-				<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+				
+				<div class="tabs mb-5">
+					<ul>
+						<li><a href="${pageContext.request.contextPath}/faq/main">자주 묻는 질문</a></li>
+						<li class="active"><a href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
+						<li><a href="${pageContext.request.contextPath}/etc/list">연락처/위치 안내</a></li>
+						<li><a href="${pageContext.request.contextPath}/chatting/main">실시간 채팅</a></li>
+						<li><a href="${pageContext.request.contextPath}/declaration/article">신고하기</a></li>
+						<li><a href="${pageContext.request.contextPath}/suggest/article">제안하기</a></li>
+						<li><a href="${pageContext.request.contextPath}/inquiryAd/list">문의하기</a></li>
+					</ul>
+				</div>
+				
+				<h3 class="mb-3 p-2" style="border-bottom:2px solid #32B0E4;">
 	    			<i class="bi bi-pin-angle-fill"></i> 공지사항
 	    			
 	    			<button type="button" class="btn btn-outline-success rere" onclick="location.href='${pageContext.request.contextPath}/notice/list';" title="새로고침" style="float:right;">
