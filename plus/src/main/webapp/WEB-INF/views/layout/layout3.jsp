@@ -260,8 +260,8 @@
 <!-- 최근본 클래스 -->
 <div class="modal fade" id="productViewModal" tabindex="-1" aria-labelledby="productViewModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
-	  <div class="modal-content">
-	    <div class="modal-header">
+	  <div class="modal-content" style="border: 2px solid #32B0E4;">
+	    <div class="modal-header" style="border-bottom: 2px solid #32B0E4;">
 	      <h1 class="modal-title fs-5" id="productViewModalLabel">최근 본 클래스 목록</h1>
 	      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	    </div>
@@ -286,9 +286,9 @@ function recentProductView() {
 		let firstPhoto = item.firstPhoto;
 		
 		out += "<div class='col p-1' style='width=750px;'>";
-		out += "  <div class='border rounded'>";
+		out += "  <div class='rounded' style='border: 1px solid #32B0E4;'>";
 		out += "    <a href='${pageContext.request.contextPath}/lesson/detail/"+classNum+"'>";
-		out += "      <img class='product-img' src='${pageContext.request.contextPath}/uploads/lesson/"+firstPhoto+"'>";
+		out += "      <img class='product-img' src='${pageContext.request.contextPath}/uploads/lesson/"+firstPhoto+"' style='border-bottom: 1px solid #32B0E4;'>";
 		out += "    </a>";
 		out += "    <div class='text-truncate p-2 mt-1'>" + className + "</div>";
 		out += "  </div>";
