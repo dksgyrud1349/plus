@@ -111,7 +111,7 @@
 	    left: 0;
 	    width: 100%;
 	    height: 100%;
-	    background-color: #47a3da;
+	    background-color: #32B0E4;
 	    color: white;
 	    font-weight: bold;
 	    display: flex;
@@ -144,6 +144,24 @@
 	.checkbox-container label {
 	    display: block;
 	    cursor: pointer;
+	}	
+	.nextbtn {
+		border-radius: 10px;
+		background-color: #A3D5FF;
+		border: 1px soild #A3D5FF;
+	}
+	
+	.nextbtn:hover {
+		background-color: #47a3da;
+	}
+	
+	.prevbtn {
+		border-radius: 10px;
+		box-shadow : 0 0 0 1px #CCCCCC;
+	}
+	
+	.prevbtn:hover {
+		background-color: #CCCCCC;
 	}
 </style>
     
@@ -174,8 +192,7 @@
 								
                             </div>
                             <div class="row">
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-danger" onclick="toggleForms(1)">다음 <i class="bi bi-check2"></i></button>
+                                <div class="text-center"> <button type="button" class="btn nextbtn" onclick="toggleForms(1)">다음 <i class="bi bi-chevron-right"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -199,9 +216,9 @@
                     		</c:forEach>
                                 
                             <div class="row">
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-primary" onclick="toggleForms(0)"> 이전 <i class="bi bi-x"></i></button>
-                                    <button type="button" class="btn btn-danger" onclick="toggleForms(2)"> 다음 <i class="bi bi-check2"></i></button>
+                                <div class="text-center"> 
+                                	<button type="button" class="btn prevbtn" onclick="toggleForms(0)"><i class="bi bi-chevron-left"></i> 이전 </button>
+                                    <button type="button" class="btn nextbtn" onclick="toggleForms(2)"> 다음 <i class="bi bi-chevron-right"></i></button>
                                 </div>
                             </div>
                     
@@ -229,8 +246,8 @@
                                         
                                     <div class="row">
                                         <div class="text-center">
-                                            <button type="button" class="btn btn-primary" onclick="toggleForms(1)"> 이전 <i class="bi bi-x"></i></button>
-                                            <button type="button" class="btn btn-danger" onclick="toggleForms(3)"> 다음 <i class="bi bi-check2"></i></button>
+                                        	<button type="button" class="btn prevbtn" onclick="toggleForms(1)"><i class="bi bi-chevron-left"></i> 이전 </button>
+                                            <button type="button" class="btn nextbtn" onclick="toggleForms(3)"> 다음 <i class="bi bi-chevron-right"></i></button>
                                         </div>
                                     </div>
                             
@@ -256,8 +273,8 @@
 
                             <div class="row">
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-primary" onclick="toggleForms(2)"> 이전 <i class="bi bi-x"></i></button>
-                                    <button type="button" class="btn btn-danger" onclick="toggleForms(4)"> 다음 <i class="bi bi-check2"></i></button>
+                                    <button type="button" class="btn prevbtn" onclick="toggleForms(2)"><i class="bi bi-chevron-left"></i> 이전 </button>
+                                    <button type="button" class="btn nextbtn" onclick="toggleForms(4)"> 다음 <i class="bi bi-chevron-right"></i></button>
                                 </div>
                             </div>
 	                    </div>
@@ -283,8 +300,8 @@
 
                         <div class="row">
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary" onclick="toggleForms(3)"> 이전 <i class="bi bi-x"></i></button>
-                                <button type="button" class="btn btn-danger" onclick="sendOk();"> 완료 <i class="bi bi-check2"></i></button>
+                            	<button type="button" class="btn prevbtn" onclick="toggleForms(3)"><i class="bi bi-chevron-left"></i> 이전 </button>
+                                <button type="button" class="btn nextbtn" onclick="sendOk();"> 완료 <i class="bi bi-check2"></i></button>
                             </div>
                         </div>
                 	</div>
