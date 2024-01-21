@@ -94,9 +94,9 @@ $(function(){
 				<div class="body-container" style="width:100%; margin:5% auto; ">
     				<div class="body-main">
     				
-    				<h3 class="mb-3 p-2" style="border-bottom: 2px solid gray;">
+    				<h3 class="mb-3 p-2" style="border-bottom: 3px solid #cccccc;">
                       	예약관리 
-	                    <button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/pluszone/bookingList/reservation';" style="float:right; background: #32B0E4; color: white;">
+	                    <button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/pluszone/bookingList/reservation';" style="float:right; background: #46AA46; color: white;">
 	                    	<i class="fa-solid fa-arrow-rotate-left"></i>
 	                    </button>
 	                </h3>

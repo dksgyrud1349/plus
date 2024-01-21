@@ -8,7 +8,7 @@
 <style>
 .rere {
 	color: white;
-	background: #32B0E4; 
+	background: #46AA46; 
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
@@ -53,9 +53,9 @@ a{
 			<div class="body-container" style="width: 100%; margin: 5% auto;">
 				<div class="body-main">
 
-					<h3 class="mb-3 p-2" style="border-bottom: 2px solid gray;">클래스 문의 내역
-						<button type="button" class="btn rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqList';"
-							style="float: right; background: #32B0E4; color: white;">
+					<h3 class="mb-3 p-2" style="border-bottom: 3px solid #cccccc;">클래스 문의 내역
+						<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqList';"
+							style="float: right;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
 						</button>
 					</h3>
@@ -87,7 +87,7 @@ a{
 												<option value="content" ${schType=="content"?"selected":""}>내용</option>
 											</select> <input type="text" name="kwd" value="${kwd}"
 												class="form-control">
-											<button type="button" class="btn rere" onclick="searchList()" style="background: #32B0E4; color: white;">
+											<button type="button" class="btn btn-success rere" onclick="searchList()">
 												<i class="bi bi-search"></i>
 											</button>
 										</div>

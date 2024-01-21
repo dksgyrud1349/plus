@@ -86,13 +86,13 @@
 			<div class="body-container" style="width: 100%; margin: 5% auto; padding-top: 5%">
 				<div class="body-main">
 				
-				<h3 class="mb-3 p-2" style="border-bottom: 2px solid gray;">
+				<h3 class="mb-3 p-2" style="border-bottom: 3px solid #cccccc;">
 					문의내역 
 					<c:if test="${mode == 'write'}">
-						<button type="button" style="float: right; background: #32B0E4; color: white;" class="btn rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqList?${query}';">리스트</button>
+						<button type="button" style="float: right;" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqList?${query}';">리스트</button>
 					</c:if>
 					<c:if test="${mode == 'update' }">
-						<button type="button" style="float: right; background: #32B0E4; color: white;" class="btn rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqOkList?${query}';">리스트</button>
+						<button type="button" style="float: right;" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/plusInq/inqOkList?${query}';">리스트</button>
 					</c:if>
 				</h3>
 
@@ -136,7 +136,7 @@
 								</tbody>
 									<tr id="addButton">
 										<td width="50%">
-											<button type="button" class="btn" style="background: #007EA5; color: white;" onclick="showInput();"><i class="bi bi-arrow-down"></i></button>
+											<button type="button" class="btn" style="background: #47a3da; color: white;" onclick="showInput();"><i class="bi bi-arrow-down"></i></button>
 										</td>
 										<c:if test="${mode == 'update'}">
 											<td>

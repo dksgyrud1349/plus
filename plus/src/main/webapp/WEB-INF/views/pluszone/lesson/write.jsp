@@ -270,7 +270,7 @@ $(function(){
 		<div class="container-fluid px-5">
 			<div class="body-container" style="width: 80%; margin: 5% auto;">
 				<div class="body-main">
-					<h3 class="mb-3 p-2" style="border-bottom: 2px solid gray;">
+					<h3 class="mb-3 p-2" style="border-bottom: 3px solid #cccccc;">
 						클래스 등록
 					</h3>
 				</div>
@@ -477,8 +477,7 @@ $(function(){
 								</c:url>
 								<button type="button" id="btnSend" class="btn" onclick="submitContents(this.form);" style="background: #32B0E4; color: white;">${mode=="update"?"수정완료":"등록완료"}</button>
 								<button type="reset" class="btn btn-light">다시입력</button>
-								<button type="button" class="btn btn-light"
-									onclick="location.href='${url}';">${mode=="update"?"수정취소":"등록취소"}</button>
+								<button type="button" class="btn btn-light" onclick="location.href='${url}';">${mode=="update"?"수정취소":"등록취소"}</button>
 								<c:if test="${mode == 'update'}">
 									<button type="button" class="btn btn-danger"
 										onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/delete?classNum=${dto.classNum}';">삭제하기</button>

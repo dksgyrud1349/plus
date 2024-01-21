@@ -5,7 +5,7 @@
 <style type="text/css">
 .rere {
 	color: white;
-	background: #32B0E4;
+	background: #46AA46;
 	padding: 6px 12px 6px 12px;
 	border: none;
 } 
@@ -123,10 +123,9 @@
 			<div class="body-container" style="width: 100%; margin: 5% auto;">
 				<div class="body-main">
 
-					<h3 class="mb-3 p-2" style="border-bottom: 2px solid gray;">
+					<h3 class="mb-3 p-2" style="border-bottom: 3px solid #cccccc;">
 						클래스 관리
-						<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/main';"
-							title="새로고침" style="float: right; background: #32B0E4; color: white;">
+						<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/lessonPlus/main';" title="새로고침" style="float: right;">
 							<i class="fa-solid fa-arrow-rotate-left"></i>
 						</button>
 
@@ -180,7 +179,7 @@
 											<td>${dto.tagName}</td>
 											<td>${dto.memo}</td>
 											<td>
-												<button type="button" class="btn reportDetail" style="background: #00D8FF; color: white;">
+												<button type="button" class="btn reportDetail" style="background: #47a3da; color: white;">
 												자세히<input type="hidden" name="classNum" id="classNum" value="${dto.classNum}">
 												</button>
 											</td>
@@ -229,7 +228,7 @@
 													<option value="lowPrice" ${schType=="lowPrice"?"selected":""}>낮은가격순</option>
 												</select>
 												<input type="text" name="kwd" value="${kwd}" class="form-control">
-												<button type="button" class="btn btn-success rere" onclick="searchList()" style="background: #32B0E4; color: white;">
+												<button type="button" class="btn btn-success rere" onclick="searchList()" style="background: #46AA46; color: white;">
 													<i class="bi bi-search"></i>
 												</button>
 											</div>
