@@ -128,7 +128,7 @@ function searchList() {
 												<select name="schType" class="form-select">
 													<option value="all" ${schType=="all"?"selected":""}>제목 &amp; 내용</option>
 													<option value="userName" ${schType=="userName"?"selected":""}>작성자</option>
-													<option value="regDate" ${schType=="eegDate"?"selected":""}>등록일</option>
+													<option value="regDate" ${schType=="regDate"?"selected":""}>등록일</option>
 													<option value="subject" ${schType=="subject"?"selected":""}>제목</option>
 													<option value="content" ${schType=="content"?"selected":""}>내용</option>
 												</select>
