@@ -27,15 +27,20 @@
 	background-color: #47a3da;
 	color : #FFFFFF;
 }
-
+.shadow-box {
+    border-radius: 25px;
+    padding: 2.0em;
+    box-shadow: 0 20px 50px -25px rgba(0, 0, 0, 0.7);
+    background-color: #cee5f6;
+   	color:black;
+   	font-weight:bold;
+}
 </style>
 
 <main class="wrapper" style="margin: 5 auto; width: 100%; margin-bottom: 0; padding-bottom: 30;">
 	<div id="layoutSidenav_content" style="background: #FFFFFF;">
 		<div class="container-fluid px-7">
 			<div class="body-container" style="width:100%; margin:5% auto; padding-top:7%">
-				<div class="body-main me-5 mb-5">
-
 				<div class="row justify-content-center">
 					<div class="col-12">
 						<div class="mb-3" style="border-bottom:2px solid #32B0E4;">
@@ -47,21 +52,19 @@
 						<c:choose>
 							<c:when test="${answerCount != 0}">
 								<c:forEach var="dto" items="${qlist}">
-								    
-						    		<div class="container-fluid">
+						    		<div class="container-fluid mb-2 shadow-box" style="border:2px solid #ecf6fb; border-radius:30px; width:50%;">
 									    <div class="row justify-content-center">
-									        <div class="col-5 p-3">
-									            <div class="row border-bottom border-dark border-3">
-									                <span class="fw-semibold text-black fs-5"><i class="bi bi-pencil-square me-2"></i>${status.count} ${dto.subject}</span>								   
+									        <div class="col p-3 mx-4">
+									            <div class="row border-bottom border-2" style="color:black;">
+									                <span class="fw-semibold fs-5"><i class="bi bi-pencil-square me-2"></i>${status.count} ${dto.subject}</span>								   
 									            </div>
 									        </div>
 									    </div>
-									
 									    <c:forEach var="vo" items="${list}">
 									        <c:if test="${dto.num == vo.num}">
 									            <div class="row justify-content-center">
-									                <div class="col-5 p-3">
-									                    <div class="form-check form-check-inline mb-3">
+									                <div class="col p-3">
+									                    <div class="form-check form-check-inline mb-3 mx-4">
 									                        <label class="form-check-label"><i class="bi bi-check-circle me-2"></i> ${vo.content}</label>
 									                    </div>
 									                </div>
@@ -69,8 +72,8 @@
 									        </c:if>
 									    </c:forEach>
 									</div>
-
 								 </c:forEach>   
+								 
 									<div class="row mt-4 ms-1">
 										<c:choose>
 											<c:when test="${resultCount != 0}">
@@ -122,6 +125,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </main>
