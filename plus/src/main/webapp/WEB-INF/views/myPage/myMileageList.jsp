@@ -24,12 +24,12 @@
 }
  
 @media screen and (min-width: 768px) { 
-        .modal:before {
-                display: inline-block;
-                vertical-align: middle;
-                content: " ";
-                height: 100%;
-        }
+  .modal:before {
+          display: inline-block;
+          vertical-align: middle;
+          content: " ";
+          height: 100%;
+  }
 }
  
 .modal-dialog {
@@ -48,38 +48,38 @@
 
 <main class="wrapper" style="margin: 0 auto; width: 100%;">
 	<div id="layoutSidenav_content">
-			<div class="body-container" style="width: 100%; margin: 10% auto;">
-				<div class="body-main" style="width: 100%;">
+			<div class="body-container" style="width: 90%; margin: 10% auto;">
+				<div class="body-main">
 
-					<h3 class="mb-3 p-2" style="border-bottom: 3px solid #cccccc;"><i class="bi bi-piggy-bank-fill"></i> 적립금 사용/적립 내역
+					<h3 class="mb-3 p-2" style="border-bottom: 2px solid #32B0E4;">
+						<i class="bi bi-piggy-bank-fill"></i> 적립금 사용/적립 내역
 
 						<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/myPage/mileage/list';" title="새로고침" style="float: right; background: #46AA46;">
 							<i class="bi bi-arrow-counterclockwise"></i>
 						</button>
 					</h3>
 
-					<div id="tab-content" style="padding: 15px 0px 5px; clear: both;">
 						<div>
 							총 적립금 : <span class="fw-semibold" style="color: #32B0E4;"><fmt:formatNumber value="${totalMileage}" pattern="#,###원" /></span>, 총 <span class="fw-semibold">${dataCount}</span>개의 내역 (<span class="fw-semibold">${page}</span>/<span class="fw-semibold">${total_page}</span> 페이지)
 						</div>
-						<div class="card mb-5 w-80 mt-4 text-center"
+						<div class="card mb-5 mt-4"
 							style="margin: 0 auto; border: none;">
 							<table class="table table-border table-list table-hover">
 								<thead>
-									<tr style="border-top: 1px solid #d8d8d8;">
-										<th width="60">번호</th>
-										<th>클래스</th>
-										<th width="90">포인트</th>
-										<th width="150">사용일/적립일</th>
-										<th width="90">사용/적립</th>
+									<tr style="border-top: 1px solid #d8d8d8;" class="text-center">
+										<th width="10">번호</th>
+										<th width="80">클래스</th>
+										<th width="40">포인트</th>
+										<th width="50">사용일/적립일</th>
+										<th width="30">사용/적립</th>
 									</tr>
 								</thead>
 
 								<tbody>
 									<c:forEach var="dto" items="${list}" varStatus="status">
-										<tr class="MileageDetail">
+										<tr class="MileageDetail text-center">
 											<td>${dataCount - (page-1) * size - status.index}</td>
-											<td class="left">${dto.className}</td>
+											<td class="text-start">${dto.className}</td>
 											<c:if test="${dto.mState == 0}">
 												<td style="color: #32B0E4;">${dto.point}</td>
 											</c:if>
@@ -149,7 +149,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 </main>
 
 <script type="text/javascript">

@@ -56,11 +56,11 @@ $(function() {
 	    <div class="container-fluid px-7">
 	        <div class="body-container" style="width:100%; margin:0% auto; ">
 	        	<div class="body-main me-5">
-	        	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-					  <ol class="breadcrumb">
-					    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/myPage/main">마이페이지</a></li>
-					    <!-- <li class="breadcrumb-item active" aria-current="page">Library</li> -->
-					  </ol>
+		        	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+						  <ol class="breadcrumb">
+						    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/myPage/main">마이페이지</a></li>
+						    <!-- <li class="breadcrumb-item active" aria-current="page">Library</li> -->
+						  </ol>
 					</nav>
 					<hr width="22%">
 	             	<div class="container text-center mt-5 mb-5">

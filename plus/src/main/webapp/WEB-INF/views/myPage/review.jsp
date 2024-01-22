@@ -51,7 +51,7 @@
 
 					<div class="pt-2" id="myTabContent">
 						<div class="mt-3 pt-3">
-							<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
+							<h3 class="mb-3 p-2" style="border-bottom:2px solid #32B0E4;;">
 								클래스 리뷰
 							</h3>
 						</div>

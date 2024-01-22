@@ -34,10 +34,12 @@
 	<div id="layoutSidenav_content" style="background: #FFFFFF;">
 		<div class="container-fluid px-7">
 			<div class="body-container" style="width:100%; margin:5% auto; padding-top:7%">
+				<div class="body-main me-5 mb-5">
+
 				<div class="row justify-content-center">
 					<div class="col-12">
-						<div class="border-bottom mb-3">
-							<h5 class="pb-2 fw-bold fs-2 text-center">
+						<div class="mb-3" style="border-bottom:2px solid #32B0E4;">
+							<h5 class="pb-2 fw-bold fs-2">
 								<i class="bi bi-book me-2"></i> ${sessionScope.member.userName}님의 원데이플러스 결과
 							</h5>
 						</div>	
@@ -46,21 +48,28 @@
 							<c:when test="${answerCount != 0}">
 								<c:forEach var="dto" items="${qlist}">
 								    
-						    		<div class="row justify-content-left ms-3">
-							            <div class="col-8 p-4">
-							            	<div class="row border-bottom border-dark border-3">
-							                	<span class="fw-semibold text-black fs-5"><i class="bi bi-pencil-square me-2"></i>${status.count} ${dto.subject}</span>								   
-							            	</div>
-							            </div>
-							        </div>
-							      
-						        	<c:forEach var="vo" items="${list}">
-							            <c:if test="${dto.num == vo.num}">
-							                <div class="form-check form-check-inline mb-3 ms-3">
-							                    <label class="form-check-label"><i class="bi bi-check-circle me-2"></i> ${vo.content}</label>
-							                </div>
-							            </c:if>
-							        </c:forEach>
+						    		<div class="container-fluid">
+									    <div class="row justify-content-center">
+									        <div class="col-5 p-3">
+									            <div class="row border-bottom border-dark border-3">
+									                <span class="fw-semibold text-black fs-5"><i class="bi bi-pencil-square me-2"></i>${status.count} ${dto.subject}</span>								   
+									            </div>
+									        </div>
+									    </div>
+									
+									    <c:forEach var="vo" items="${list}">
+									        <c:if test="${dto.num == vo.num}">
+									            <div class="row justify-content-center">
+									                <div class="col-5 p-3">
+									                    <div class="form-check form-check-inline mb-3">
+									                        <label class="form-check-label"><i class="bi bi-check-circle me-2"></i> ${vo.content}</label>
+									                    </div>
+									                </div>
+									            </div>
+									        </c:if>
+									    </c:forEach>
+									</div>
+
 								 </c:forEach>   
 									<div class="row mt-4 ms-1">
 										<c:choose>
@@ -113,5 +122,6 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </main>

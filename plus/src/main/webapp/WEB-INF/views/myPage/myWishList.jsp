@@ -179,7 +179,7 @@ $(function(){
 			<div class="row d-flex" style="clear: both;">
 				<div class="col-2 mt-5" style="float: left; width: 16.66%;">${dataCount}개(${page}/${total_page} 페이지)</div>
 			</div>
-			<div class="row mt-5" style="border-top: 1px solid #cccccc; clear: both;">
+			<div class="row mt-5" style="border-top: 2px solid #32B0E4; clear: both;">
 				<c:forEach var="dto" items="${myWishList}" varStatus="status">
 					<div class="card col-4 p-1 m-3"
 						style="width: 25rem; height: 35rem; border: none; background: #F5F5F5">

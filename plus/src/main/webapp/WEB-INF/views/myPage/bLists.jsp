@@ -13,10 +13,7 @@
 }
 
 .bookingSearch {
-	width: 1200px;
-	height: 110px;
-	border-top: 1px solid #8C8C8C;
-	border-bottom: 1px solid #8C8C8C;
+	border-top: 2px solid #32B0E4;
 }
 
 .selectDesign {
@@ -148,12 +145,11 @@
 		<table class="table tableTotal">
 			<thead>
 				<tr>
-					<th scope="col"
-						style="background-color: #FFF3CD; padding-left: 20px;">번호</th>
-					<th scope="col" style="background-color: #FFF3CD;">클래스</th>
-					<th scope="col" style="background-color: #FFF3CD;">강사</th>
-					<th scope="col" style="background-color: #FFF3CD;">주소</th>
-					<th scope="col" style="background-color: #FFF3CD;">예약상태</th>
+					<th scope="col" style="background-color: #32B0E4; color:white;; padding-left: 20px;">번호</th>
+					<th scope="col" style="background-color: #32B0E4; color:white;">클래스</th>
+					<th scope="col" style="background-color: #32B0E4; color:white;">강사</th>
+					<th scope="col" style="background-color: #32B0E4; color:white;">주소</th>
+					<th scope="col" style="background-color: #32B0E4; color:white;">예약상태</th>
 				</tr>
 			</thead>
 			<tbody>

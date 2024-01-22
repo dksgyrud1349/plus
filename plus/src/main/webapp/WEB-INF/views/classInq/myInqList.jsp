@@ -25,10 +25,10 @@ function searchList() {
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
-			<div class="body-container" style="width: 100%; margin: 10% auto; ">
-				<div class="body-main" style="width: 100%;">
+			<div class="body-container" style="width: 80%; margin: 10% auto; ">
+				<div class="body-main">
 				
-				<h3 class="mb-3 p-2" style="border-bottom:3px solid #cccccc;"><i class="bi bi-question-circle-fill"></i> 클래스 문의내역
+				<h3 class="mb-3 p-2" style="border-bottom:2px solid #32B0E4;"><i class="bi bi-question-circle-fill"></i> 클래스 문의내역
 					
 					<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/classInq/myInqList';" title="새로고침" style="float:right;">
 						<i class="bi bi-arrow-counterclockwise"></i>
@@ -83,7 +83,7 @@ function searchList() {
 												<option value="content" ${schType=="content"?"selected":""}>내용</option>
 											</select>
 											<input type="text" name="kwd" value="${kwd}" class="form-control">
-											<button type="button" class="btn btn-success rere" onclick="searchList()"> <i class="bi bi-search"></i> </button>
+											<button type="button" class="btn btn-secondary" onclick="searchList()"> <i class="bi bi-search"></i> </button>
 										</div>
 									</form>
 								</td>
