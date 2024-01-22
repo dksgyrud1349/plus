@@ -43,7 +43,7 @@
 }
 </style>
 
-<main class="wrapper" style="margin: 5% auto; width: 80%;">
+<main class="wrapper" style="margin: 5% auto; width: 100%;">
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
 			<div class="body-container">
@@ -122,6 +122,10 @@ function printReview(data) {
 	let paging = data.paging;
 	
 	let out = '';
+	if (dataCount == 0) {
+		out += '<div class="text-center m-5"><h6 class="mb-5">등록된 리뷰가 없습니다.</h6></div>'
+	}
+	
 	for(let item of data.list) {
 		let reviewNum = item.reviewNum;
 		let userName = item.userName;

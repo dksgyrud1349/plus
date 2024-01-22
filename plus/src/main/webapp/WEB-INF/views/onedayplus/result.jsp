@@ -16,45 +16,53 @@
   transform: translateY(10px);
 }
 
+.recobtn {
+	border-radius: 10px;
+	background-color: #1CA7EC;
+	font-weight: 700;
+	color : #FFFFFF;
+}
 
+.recobtn:hover {
+	background-color: #47a3da;
+	color : #FFFFFF;
+}
 
 </style>
 
 <main class="wrapper" style="margin: 5 auto; width: 100%; margin-bottom: 0; padding-bottom: 30;">
 	<div id="layoutSidenav_content" style="background: #FFFFFF;">
 		<div class="container-fluid px-7">
-			<div class="body-container" style="width:100%; margin:7% auto; padding-top:7%">
+			<div class="body-container" style="width:100%; margin:5% auto; padding-top:7%">
 				<div class="row justify-content-center">
 					<div class="col-12">
-						<h5 class="pb-2 fw-bold fs-2 text-center" style="border-bottom:1px solid #cccccc; ">
-							<i class="bi bi-book"></i> ${sessionScope.member.userName}님의 원데이플러스 결과
-							
+						<div class="border-bottom mb-3">
+							<h5 class="pb-2 fw-bold fs-2 text-center">
+								<i class="bi bi-book me-2"></i> ${sessionScope.member.userName}님의 원데이플러스 결과
+							</h5>
+						</div>	
 						
-						</h5>
 						<c:choose>
 							<c:when test="${answerCount != 0}">
 								<c:forEach var="dto" items="${qlist}">
 								    
-							    		<div class="body-container" style=" margin:0% auto; paddng-top:5%">
-								        <div class="row border-bottom border-info">
-								        <div class="row justify-content-left">
-								            <div class="col-8 p-4">
-								                <span class="fw-semibold text-black fs-5"><i class="bi bi-lightbulb"></i>${status.count} ${dto.subject}</span>								   
-								            </div>
-								        </div>
-								        <div>
-								        </div>
-									        <c:forEach var="vo" items="${list}">
-									            <c:if test="${dto.num == vo.num}">
-									                <div class="form-check form-check-inline m-2">
-									                    <label class="form-check-label"><i class="bi bi-check-circle"></i> ${vo.content}</label>
-									                </div>
-									            </c:if>
-									        </c:forEach>
-								        </div>
-								    </div>
-								</c:forEach>   
-									<div class="row mt-4">
+						    		<div class="row justify-content-left ms-3">
+							            <div class="col-8 p-4">
+							            	<div class="row border-bottom border-dark border-3">
+							                	<span class="fw-semibold text-black fs-5"><i class="bi bi-pencil-square me-2"></i>${status.count} ${dto.subject}</span>								   
+							            	</div>
+							            </div>
+							        </div>
+							      
+						        	<c:forEach var="vo" items="${list}">
+							            <c:if test="${dto.num == vo.num}">
+							                <div class="form-check form-check-inline mb-3 ms-3">
+							                    <label class="form-check-label"><i class="bi bi-check-circle me-2"></i> ${vo.content}</label>
+							                </div>
+							            </c:if>
+							        </c:forEach>
+								 </c:forEach>   
+									<div class="row mt-4 ms-1">
 										<c:choose>
 											<c:when test="${resultCount != 0}">
 												<c:forEach var="clist" items="${classList}" varStatus="status">
@@ -76,24 +84,28 @@
 												</c:forEach>
 											</c:when>
 											<c:otherwise>
-												  <div class="m-5 center-message">
+												  <div class="my-5 center-message text-center">
 												  
-													<h5 class="text-center mb-5">결과에 해당하는 클래스가 없습니다.</h5>
+													<h5 class="mb-5">결과에 해당하는 클래스가 없습니다.</h5>
 												</div>
 											</c:otherwise>
 										</c:choose>
 									</div>
-								<div class="text-end">
-									<button onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus'" class="btn btn-primary"style="background-color: #47a3da;">다시 추천받기</button>								
+								<div class="text-end me-5">
+									<button onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus'" class="btn recobtn me-5">다시 추천받기</button>								
 								</div>
 							</c:when>
 								
 							<c:otherwise>
 							
 							
-								<div class="m-5">
-									<h4 class="text-center mb-5">원데이 플러스 결과가 없습니다.</h4>
-									<button onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus'" class="btn btn-primary" style="float:right;">체험하러가기</button>								
+								<div class="my-5">
+									<div class="text-center my-5">
+										<h4>원데이 플러스 결과가 없습니다.</h4>
+									</div>
+									<div class="text-end me-5">
+										<button onclick="location.href='${pageContext.request.contextPath}/onedayplus/onedayplus'" class="btn recobtn me-5">체험하러가기</button>								
+									</div>
 								</div>
 							</c:otherwise>
 						</c:choose>
