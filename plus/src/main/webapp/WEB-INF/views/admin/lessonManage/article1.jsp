@@ -44,7 +44,7 @@
 							<thead>
 								<tr class="fs-5">
 									<td colspan="2" align="center">
-										${dto.className}
+										${dto.className}&nbsp;(${dto.regDate})
 									</td>
 								</tr>
 							</thead>
@@ -55,7 +55,7 @@
 										이름 : ${dto.userName}
 									</td>
 									<td align="right">
-										시작일자 : ${dto.startDate} <i class="bi bi-three-dots-vertical"></i> 종료일자 : ${dto.endDate} <i class="bi bi-three-dots-vertical"></i> 등록일 : ${dto.regDate}
+										시작일자 : ${dto.startDate} <i class="bi bi-three-dots-vertical"></i> 종료일자 : ${dto.endDate}
 									</td>
 								</tr>
 								<tr>
