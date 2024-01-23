@@ -51,15 +51,14 @@ function back(){
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
-			<div class="body-container pt-5" style="width:100%; margin:5% auto;">
-				<div class="body-main" style="width: 100%;">
+			<div class="body-container pt-5" style="width:80%; margin:5% auto;">
+				<div class="body-main">
+				
+					<h3 class="mb-3 p-2" style="border-bottom:2px solid #32B0E4;">
+	                	<i class="bi bi-question-circle-fill"></i> 클래스 문의하기
+		            </h3>
+		            
 					<div class="card mb-5 w-80" style="margin:0 auto; border:none;">
-			        	<div class="card-header text-center">
-			            	<h3>
-			                	<i class="bi bi-question-circle-fill"></i> 클래스 문의하기
-				            </h3>
-				        </div>
-		
 						<div id="tab-content">
 							<form name="boardForm" method="post" enctype="multipart/form-data">	
 								<table class="table write-form">

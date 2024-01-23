@@ -24,9 +24,9 @@ function searchList() {
 
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
-			<div class="body-container" style="width:100%; margin:10% auto;">
-				<div class="body-main" style="width: 100%;">
-				<h3 class="mb-3 p-2" style="border-bottom:3px solid #cccccc;">
+			<div class="body-container" style="width:80%; margin:10% auto;">
+				<div class="body-main">
+				<h3 class="mb-3 p-2" style="border-bottom:2px solid #32B0E4;">
 	    			공지사항
 	    			
 	    			<button type="button" class="btn rere" onclick="location.href='${pageContext.request.contextPath}/classNotice/list?classNum=${classNum}';" title="새로고침" style="float:right; background: #46AA46; color: white;">
