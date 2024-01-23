@@ -56,22 +56,7 @@
 	padding: 6px 12px 6px 12px;
 	border: none;
 }
-.plus{
-	background: #BEEFFF;
-	border: 1px solid #b4b4b4;
-}
-.plus:hover{
-	background: #47a3da;
-	border: 1px solid #b4b4b4;
-}
-.minus{
-	background: #FFF0F0;
-	border: 1px solid #b4b4b4;
-}
-.minus:hover{
-	background: #FFACB7;
-	border: 1px solid #b4b4b4;
-}
+
 
 </style>
 <script>
@@ -81,16 +66,8 @@ function sendOk() {
 	if(! f.mainName.value.trim()) {
 		alert("메인 카테고리명을 입력 하세요");
 		f.mainName.focus();
-		return;
+		return false;
 	}
-	
-	$("input[name=categorys]").each(function(){
-		if(! $(this).val().trim()) {
-			alert("서브 카테고리를 입력하세요");
-			return;
-		}
-	});
-		
 	
 	f.action = "${pageContext.request.contextPath}/admin/categoryManage/write";
 	f.submit();

@@ -32,7 +32,7 @@ public class LessonManageController {
 	private MyUtil myUtil;
 	
 	@RequestMapping("list0")
-	public String list0(@RequestParam(value = "page", defaultValue = "1") int current_page,
+	public String lessonStandBy(@RequestParam(value = "page", defaultValue = "1") int current_page,
 			@RequestParam(defaultValue = "className") String schType, @RequestParam(defaultValue = "") String kwd,
 			HttpServletRequest req, Model model) throws Exception{
 		
@@ -98,7 +98,7 @@ public class LessonManageController {
 	}
 	
 	@RequestMapping("list1")
-	public String list1(@RequestParam(value = "page", defaultValue = "1") int current_page,
+	public String lessonComplete(@RequestParam(value = "page", defaultValue = "1") int current_page,
 			@RequestParam(defaultValue = "className") String schType, @RequestParam(defaultValue = "") String kwd,
 			HttpServletRequest req, Model model) throws Exception{
 		
@@ -164,7 +164,7 @@ public class LessonManageController {
 	}
 	
 	@RequestMapping("list2")
-	public String list2(@RequestParam(value = "page", defaultValue = "1") int current_page,
+	public String lessonDefer(@RequestParam(value = "page", defaultValue = "1") int current_page,
 			@RequestParam(defaultValue = "className") String schType, @RequestParam(defaultValue = "") String kwd,
 			HttpServletRequest req, Model model) throws Exception{
 		
@@ -230,7 +230,7 @@ public class LessonManageController {
 	}
 	
 	@RequestMapping("list3")
-	public String list3(@RequestParam(value = "page", defaultValue = "1") int current_page,
+	public String lessonCancel(@RequestParam(value = "page", defaultValue = "1") int current_page,
 			@RequestParam(defaultValue = "className") String schType, @RequestParam(defaultValue = "") String kwd,
 			HttpServletRequest req, Model model) throws Exception{
 		
@@ -296,7 +296,7 @@ public class LessonManageController {
 	}
 	
 	@GetMapping("article0")
-	public String article0(@RequestParam long classNum, @RequestParam String page, @RequestParam(defaultValue = "all") String schType,
+	public String articleStandBy(@RequestParam long classNum, @RequestParam String page, @RequestParam(defaultValue = "all") String schType,
 			@RequestParam(defaultValue = "") String kwd, HttpSession session, Model model) throws Exception{
 		
 		kwd = URLDecoder.decode(kwd, "utf-8");
@@ -319,7 +319,7 @@ public class LessonManageController {
 	}
 	
 	@GetMapping("article1")
-	public String article1(@RequestParam long classNum, @RequestParam String page, @RequestParam(defaultValue = "all") String schType,
+	public String articleComplete(@RequestParam long classNum, @RequestParam String page, @RequestParam(defaultValue = "all") String schType,
 			@RequestParam(defaultValue = "") String kwd, HttpSession session, Model model) throws Exception{
 		
 		kwd = URLDecoder.decode(kwd, "utf-8");
@@ -342,7 +342,7 @@ public class LessonManageController {
 	}
 	
 	@GetMapping("article2")
-	public String article2(@RequestParam long classNum, @RequestParam String page, @RequestParam(defaultValue = "all") String schType,
+	public String articleDefer(@RequestParam long classNum, @RequestParam String page, @RequestParam(defaultValue = "all") String schType,
 			@RequestParam(defaultValue = "") String kwd, HttpSession session, Model model) throws Exception{
 		
 		kwd = URLDecoder.decode(kwd, "utf-8");
@@ -365,7 +365,7 @@ public class LessonManageController {
 	}
 	
 	@GetMapping("article3")
-	public String article3(@RequestParam long classNum, @RequestParam String page, @RequestParam(defaultValue = "all") String schType,
+	public String articleCancel(@RequestParam long classNum, @RequestParam String page, @RequestParam(defaultValue = "all") String schType,
 			@RequestParam(defaultValue = "") String kwd, HttpSession session, Model model) throws Exception{
 		
 		kwd = URLDecoder.decode(kwd, "utf-8");
@@ -388,7 +388,7 @@ public class LessonManageController {
 	}
 	
 	@GetMapping("update0")
-	public String update0(@RequestParam long classNum, @RequestParam int approvalCode, HttpSession session) throws Exception{
+	public String updateStandBy(@RequestParam long classNum, @RequestParam int approvalCode, HttpSession session) throws Exception{
 		
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		
@@ -423,7 +423,7 @@ public class LessonManageController {
 	}
 	
 	@GetMapping("update1")
-	public String update1(@RequestParam long classNum, @RequestParam int approvalCode, HttpSession session) throws Exception{
+	public String updateComplete(@RequestParam long classNum, @RequestParam int approvalCode, HttpSession session) throws Exception{
 		
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		
@@ -458,7 +458,7 @@ public class LessonManageController {
 	}
 	
 	@GetMapping("update2")
-	public String update2(@RequestParam long classNum, @RequestParam int approvalCode, HttpSession session) throws Exception{
+	public String updateDefer(@RequestParam long classNum, @RequestParam int approvalCode, HttpSession session) throws Exception{
 		
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		
@@ -492,7 +492,7 @@ public class LessonManageController {
 	}
 	
 	@GetMapping("update3")
-	public String update3(@RequestParam long classNum, @RequestParam int approvalCode, HttpSession session) throws Exception{
+	public String updateCancel(@RequestParam long classNum, @RequestParam int approvalCode, HttpSession session) throws Exception{
 		
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		
