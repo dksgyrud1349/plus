@@ -119,9 +119,9 @@ hr {
 				<br>
 				<br>
 				<h3 class="subjectName2">
-					주문이 성공적으로 <span style="color: blue;">완료</span>되었습니다.
+					예약이 성공적으로 <span style="color: blue;">완료</span>되었습니다.
 				</h3>
-				<div class="orderNum">주문번호: ${dto.orderNum}</div>
+				<div class="orderNum">예약번호: ${dto.orderNum}</div>
 				<button class="myPageB" type="button" onclick="location.href='${pageContext.request.contextPath}/myPage/main';">마이
 					페이지</button>
 				<button class="centerName" type="button" onclick="location.href='${pageContext.request.contextPath}/faq/main';">고객센터</button>
@@ -132,7 +132,7 @@ hr {
 		</div>
 		<div>
 			<div style="margin-bottom: 10px; font-size: 20px;">
-				<div style="font-family: 'SejonghospitalBold';">주문상품내역</div>
+				<div style="font-family: 'SejonghospitalBold';">예약상품내역</div>
 			</div>
 		</div>
 
@@ -144,7 +144,7 @@ hr {
 					<th colspan="1">클래스명</th>
 					<th colspan="1">신청 인원수</th>
 					<th colspan="1">가격</th>
-					<th colspan="1">주문상태</th>
+					<th colspan="1">예약상태</th>
 				</tr>
 			</thead>
 		
@@ -160,7 +160,7 @@ hr {
 		</table>
 		<div>
 			<div style="margin-top: 40px; font-size: 20px;">
-				<div style="font-family: 'SejonghospitalBold';">주문정보(주문자)</div>
+				<div style="font-family: 'SejonghospitalBold';">예약정보(예약자)</div>
 			</div>
 		</div>
 		<table class="secondD" style="border-left: none;">

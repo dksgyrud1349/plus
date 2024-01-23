@@ -170,7 +170,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">상세 주문 정보</h5>
+				<h5 class="modal-title">상세 예약 정보</h5>
 			</div>
 			<div class="modal-body"></div>
 			<div class="modal-footer">

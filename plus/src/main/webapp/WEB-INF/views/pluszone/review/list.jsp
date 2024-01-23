@@ -64,7 +64,7 @@ $(function(){
 			<div class="body-container" style="width:100%; margin:5% auto; ">
 				<div class="body-main">
 					<h3 class="mb-3 p-2" style="border-bottom:3px solid black;">
-						<i class="bi bi-chat-right-text"></i> 상품 리뷰
+						<i class="bi bi-chat-right-text"></i> 클래스 리뷰
 					</h3>
 		
 
