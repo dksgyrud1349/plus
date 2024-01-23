@@ -35,6 +35,7 @@
    	color:black;
    	font-weight:bold;
 }
+
 </style>
 
 <main class="wrapper" style="margin: 5 auto; width: 100%; margin-bottom: 0; padding-bottom: 30;">
