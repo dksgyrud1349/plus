@@ -3,15 +3,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 @font-face {
-	font-family: 'JalnanGothic';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff')
-		format('woff');
-	font-weight: normal;
+	font-family: font-family: 'Lato', Arial, sans-serif;
+	font-weight: bold;
 	font-style: normal;
 }
 .font1 {
-	font-family: 'JalnanGothic';
+	font-family: font-family: 'Lato', Arial, sans-serif;
+	font-weight: bold;
+	font-style: normal;
 }
 
 .tabs {

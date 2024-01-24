@@ -3,16 +3,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 @font-face {
-	font-family: 'JalnanGothic';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff')
-		format('woff');
-	font-weight: normal;
+	font-family: font-family: 'Lato', Arial, sans-serif;
+	font-weight: bold;
 	font-style: normal;
 }
-
 .font1 {
-	font-family: 'JalnanGothic';
+	font-family: font-family: 'Lato', Arial, sans-serif;
+	font-weight: bold;
+	font-style: normal;
 }
 
 .kwd {
@@ -104,23 +102,22 @@
 <main class="wrapper" style="margin:0 auto; width:100%;">
 	<div id="layoutSidenav_content">
 		<div class="container-fluid px-5">
-			<div class="body-container" style="width:100%; margin:5% auto; padding-top:5%">
+			<div class="body-container" style="width:100%; margin:5% auto;">
 				<div class="body-main">
 					<div class="body-title">
-						<h3 class="font1"
+						<h2 class="font1"
 							style="border-top: 1px solid black; padding-top: 20px;">
 							<br><i class="bi bi-wechat fa-2x chat"></i>&nbsp;자주하는 질문<br><br>
-						</h3>
+						</h2>
 					</div>
 					<div class="body-main main-color">
-						
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
 							<li class="nav-item" role="presentation">
-								<button class="nav-link active" id="tab-0" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="0" aria-selected="true" data-cateNum="0">모두</button>
+								<button class="nav-link active" style="font-weight:bold;" id="tab-0" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="0" aria-selected="true" data-cateNum="0">모두</button>
 							</li>
 							<c:forEach var="dto" items="${listCategory}" varStatus="status">
 								<li class="nav-item" role="presentation">
-									<button class="nav-link" id="tab-${status.count}" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="${status.count}" aria-selected="true" data-cateNum="${dto.cateNum}">${dto.faqName}</button>
+									<button class="nav-link" style="font-weight:bold;" id="tab-${status.count}" data-bs-toggle="tab" data-bs-target="#nav-content" type="button" role="tab" aria-controls="${status.count}" aria-selected="true" data-cateNum="${dto.cateNum}">${dto.faqName}</button>
 								</li>
 							</c:forEach>
 						</ul>

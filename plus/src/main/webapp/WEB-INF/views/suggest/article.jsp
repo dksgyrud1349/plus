@@ -3,48 +3,28 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 @font-face {
-	font-family: 'JalnanGothic';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff')
-		format('woff');
-	font-weight: normal;
+	font-family: font-family: 'Lato', Arial, sans-serif;
+	font-weight: bold;
+	font-style: normal;
+}
+.font1 {
+	font-family: font-family: 'Lato', Arial, sans-serif;
+	font-weight: bold;
 	font-style: normal;
 }
 
-@font-face {
-	font-family: 'Pretendard-Regular';
-	src:
-		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
-		format('woff');
-	font-weight: 400;
-	font-style: normal;
-}
 
-@font-face {
-	font-family: 'GmarketSansMedium';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
 
 .sContent {
 	margin-left: 40px;
 	padding-left: 10px;
 	margin-top: 20px;
-	font-family: 'Pretendard-Regular';
 	font-weight: bold;
-}
-
-.font1 {
-	font-family: 'JalnanGothic';
 }
 
 .title {
 	width: 150px;
 	text-align: center;
-	font-family: 'GmarketSansMedium';
 	background-color: #D5D5D5;
 }
 
@@ -52,7 +32,6 @@
 	width: 100px;
 	height: 40px;
 	border: 1px solid black;
-	font-family: 'GmarketSansMedium';
 }
 
 .bDelaration:hover {
@@ -208,10 +187,10 @@ function writeSubmit(){
 						<li><a href="${pageContext.request.contextPath}/inquiryAd/list">문의하기</a></li>
 					  </ul>
 				
-					<h3 class="font1 mt-5"
+					<h2 class="font1 mt-5"
 						style="padding-left: 10px;">
 						<i class="bi bi-exclamation-diamond-fill"></i> 제안하기
-					</h3>
+					</h2>
 					<div class="sContent" style="font-size:16px;">
 						이곳은 <span style="color: red;">클래스 제안</span> 하는 곳입니다.<br> 
 						클래스의 제안사항을 적어주시면 됩니다.
