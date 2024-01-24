@@ -197,6 +197,11 @@ $(function() {
 									
 								</tr>
 							</c:forEach>
+							<tr>
+								<td colspan="6">
+									&nbsp;
+								</td>
+							</tr>
 						</tbody>
 					</table>
 					

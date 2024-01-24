@@ -71,6 +71,12 @@
 									<td class="regDate" style="text-align: center;">${dto.regDate}</td>
 								</tr>
 							</c:forEach>
+							
+							<tr>
+								<td colspan="5">
+									&nbsp;
+								</td>
+							</tr>
 						</tbody>
 					</table>
 					

@@ -92,7 +92,7 @@ function deleteHashtag(tagNum) {
     				<form name="hashtagForm" method="post">
 	    				<div class="input-group text-center mt-5">
 	    					<span class="input-group-text"> 해시태그 추가 </span>
-	    					<input type="text" name="tagName" style="width: 30%; border:none; border-bottom:1px solid #cccccc; border-top:1px solid #cccccc" placeholder="추가하실 해쉬태그를 입력해주세요">
+	    					<input type="text" name="tagName" style="width: 30%; border:none; border-bottom:1px solid #cccccc; border-top:1px solid #cccccc" placeholder="추가하실 해시태그를 입력해주세요">
 	    					<button type="button" class="btn btn-outline-dark" onclick="insertHashtag();"> + </button>
 	    				</div>
     				</form>

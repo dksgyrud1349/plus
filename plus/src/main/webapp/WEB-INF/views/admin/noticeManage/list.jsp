@@ -64,7 +64,7 @@ function searchList() {
 										<th width="60">번호</th>
 										<th>제목</th>
 										<th width="80">작성자</th>
-										<th width="100">작성일</th>
+										<th width="110">작성일</th>
 										<th width="70">조회수</th>
 										<th width="50">첨부</th>
 										<th width="70">표시</th>
@@ -112,10 +112,10 @@ function searchList() {
 											<td>											
 											<c:choose>
 								                <c:when test="${dto.showNotice == 1}">
-								                    <span class="fw-bold"><i class="bi bi-eye"></i>&nbsp;표시</span>
+								                    <span>표시</span>
 								                </c:when>
 								                <c:otherwise>
-								                    <span class="fw-bold"><i class="bi bi-incognito"></i>&nbsp;숨김</span>
+								                    <span>숨김</span>
 								                </c:otherwise>
 								            </c:choose>
 								            </td>
@@ -127,7 +127,7 @@ function searchList() {
 							<table class="table">
 								<tr>
 									<td align="center">
-										<form name="searchForm" action="${pageContext.request.contextPath}/admin/noticeManage/list" method="post" style="width:300px; margin-left:100px">
+										<form name="searchForm" action="${pageContext.request.contextPath}/admin/noticeManage/list" method="post" style="width:300px;">
 											<div class="input-group mb-1">
 												<select name="schType" class="form-select">
 													<option value="all" ${schType=="all"?"selected":""}>제목 &amp; 내용</option>

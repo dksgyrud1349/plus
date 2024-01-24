@@ -7,6 +7,11 @@
 	<span>[목록, ${pageNo}/${total_page} 페이지]</span>
 </div>
 
+<c:if test="${replyCount == 0}">
+	<div class="text-center my-3">
+		<h6 class="mb-3">등록된 댓글이 없습니다.</h6>
+	</div>
+</c:if>
 <table class='table table-borderless'>
 	<c:forEach var="vo" items="${listReply}">
 		<tr class='border table-light'>
