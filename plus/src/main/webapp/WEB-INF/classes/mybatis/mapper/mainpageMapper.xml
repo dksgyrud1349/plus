@@ -10,9 +10,10 @@
 	        SELECT l.classNum, className, price, firstPhoto, nickName, l.addr1,
 	        	TO_CHAR(startDate, 'YYYY-MM-DD') startDate, TO_CHAR(endDate, 'YYYY-MM-DD') endDate
 			FROM lesson l
+			JOIN approval a on l.classNum = a.classNum
 			JOIN member1 m1 ON m1.memberIdx = l.memberIdx
 			JOIN plus p ON p.userId = m1.userId
-			WHERE l.showClass = 0 
+			WHERE l.showClass = 0 AND approvalCode = 1
 			ORDER BY classNum DESC
         ) WHERE ROWNUM &lt; 13
 </select>
