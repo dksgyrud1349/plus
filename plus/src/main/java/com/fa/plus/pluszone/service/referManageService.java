@@ -13,7 +13,7 @@ public interface referManageService {
 	public List<referManage> listClass(Long memberIdx);
 	
 	public int dataCount(Map<String, Object> map);
-	
+	public long findByIdx(String userId);
 	
 	public List<referManage> listRefer(Map<String, Object> map);
 	

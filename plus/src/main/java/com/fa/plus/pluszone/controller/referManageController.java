@@ -42,7 +42,9 @@ public class referManageController {
 			Model model) throws Exception {
 		
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
-
+		referManage dto = new referManage();
+		
+		
 		int size = 10;
 		int total_page =0;
 		int dataCount = 0;
@@ -55,6 +57,8 @@ public class referManageController {
 		map.put("userId", info.getUserId());
 		map.put("schType", schType);
 		map.put("kwd", kwd);
+		dto.setMemberIdx(service.findByIdx(info.getUserId()));
+		map.put("memberIdx", dto.getMemberIdx());
 		
 		dataCount = service.dataCount(map);
 		if(dataCount != 0) {
