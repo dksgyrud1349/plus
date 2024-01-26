@@ -72,10 +72,11 @@
 	</select>
 
 	<select id="listTitle" parameterType="long" resultType="com.fa.plus.domain.Lesson">
-		SELECT classNum, className 
-		FROM lesson
-		WHERE memberIdx = #{memberIdx}
-		ORDER BY classNum
+		SELECT l.classNum, l.className
+		FROM lesson l
+		JOIN approval a ON l.classNum = a.classNum
+		WHERE l.memberIdx = #{memberIdx} AND approvalCode = 1 AND TO_CHAR(l.endDate, 'YYYYMMDD') > TO_CHAR(SYSDATE, 'YYYYMMDD') AND l.showClass = 0
+		ORDER BY l.classNum
 	</select>
 	
 	<select id="findById" parameterType="long" resultType="com.fa.plus.pluszone.domain.NoticePlus">

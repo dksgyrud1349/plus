@@ -58,10 +58,7 @@ public class ClassNoticeController {
 			current_page = total_page;
 		}
 		
-		List<ClassNotice> notices = null;
-		if(current_page == 1) {
-			notices = service.notices(classNum);
-		}
+		List<ClassNotice> notices = service.notices(classNum);
 		
 		int offset = (current_page - 1) * size;
 		if(offset < 0) {
