@@ -190,9 +190,9 @@ public class MemberServiceImpl implements MemberService{
 		Mail mail = new Mail();
 		mail.setReceiverEmail(dto.getEmail());
 
-		mail.setSenderEmail("이메일@gmail.com");
+		mail.setSenderEmail("xogml0326@naver.com");
 		mail.setSenderName("관리자");
-		mail.setSubject("임시 비밀번호");
+		mail.setSubject("임시패스워드");
 		mail.setContent(result);
 		
 		// DB 테이블 수정
@@ -223,9 +223,9 @@ public class MemberServiceImpl implements MemberService{
 	                mail.setReceiverEmail(email);
 
 	                // MainSender.java 에서 설정한 메일
-	                mail.setSenderEmail("이메일@gmail.com");
+	                mail.setSenderEmail("xogm0326@naver.com");
 	                mail.setSenderName("관리자");
-	                mail.setSubject("임시 패스워드");
+	                mail.setSubject("임시패스워드");
 	                mail.setContent(result);
 	                
 	               b = mailsender.mailSend(mail);
