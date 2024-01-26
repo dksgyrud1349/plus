@@ -7,6 +7,11 @@
       VALUES(refer_seq.NEXTVAL, #{subject}, #{rcontent}, SYSDATE, #{classNum})
    </insert>
    
+   <select id="findByIdx" parameterType="String" resultType="long">
+   SELECT memberIdx FROM member1 WHERE userId = #{userId}
+   </select>
+   
+   
    <select id="listClass" parameterType="Long" resultType="com.fa.plus.pluszone.domain.referManage">
 		SELECT className, classNum from lesson where memberIdx = #{memberIdx}
 		ORDER BY classNum
@@ -41,16 +46,18 @@
             FROM refFile
             GROUP BY refNum
          ) f on f.refNum = r.refNum
-         <where>
+	
+		  <where>
+             l.memberIdx = #{memberIdx}
             <if test="kwd != null and kwd!=''">
                <include refid="where-list"/>
             </if>
-            
-         </where>
-         
+        </where>
+     
          ORDER BY refNum DESC
          OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
       </select>
+      
    
    
    <!-- 데이터개수  -->

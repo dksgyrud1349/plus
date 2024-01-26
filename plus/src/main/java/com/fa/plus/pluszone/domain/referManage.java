@@ -11,7 +11,9 @@ public class referManage {
 	private String regDate;
 	private long classNum;
 	private String className;
+	private long memberIdx;
 	
+
 	private String originalFile;
 	private List<MultipartFile> selectFile;
 	private String saveFile;
@@ -19,7 +21,7 @@ public class referManage {
 	private long num;
 	private String userName;
 	private String userId;
-	private long memberIdx;
+
 	
 	public String getUserName() {
 		return userName;
@@ -61,9 +63,12 @@ public class referManage {
 	public String getClassName() {
 		return className;
 	}
+	
 	public void setClassName(String className) {
 		this.className = className;
 	}
+	
+	
 	public String getOriginalFile() {
 		return originalFile;
 	}

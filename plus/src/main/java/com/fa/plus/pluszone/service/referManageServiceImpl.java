@@ -139,4 +139,18 @@ public class referManageServiceImpl implements referManageService {
 		return list;
 	}
 
+	
+	@Override
+	public long findByIdx(String userId) {
+		long memberIdx = 0;
+		try {
+			memberIdx = mapper.findByIdx(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return memberIdx;
+	
+	}
+
 }

@@ -15,8 +15,9 @@ public interface referManageMapper {
 	public void updateRefer(referManage dto) throws SQLException;
 	public void deleteRefer(long refNum) throws SQLException;
 	
-	public List<referManage> listClass(Long memberIdx);
 	
+	public List<referManage> listClass(Long memberIdx);
+	public long findByIdx(String userId);
 	public int dataCount(Map<String, Object> map);
 	public List<referManage> listRefer(Map<String, Object> map);
 	
