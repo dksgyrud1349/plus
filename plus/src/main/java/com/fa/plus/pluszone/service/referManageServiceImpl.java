@@ -139,6 +139,7 @@ public class referManageServiceImpl implements referManageService {
 		return list;
 	}
 
+	
 	@Override
 	public long findByIdx(String userId) {
 		long memberIdx = 0;

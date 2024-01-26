@@ -110,7 +110,7 @@ function deleteOk() {
 												<button type="button" class="btn btn-success rere" onclick="location.href='${pageContext.request.contextPath}/pluszone/referManage/update?num=${dto.refNum}&page=${page}';">수정</button>
 											</c:when>			
 											<c:otherwise>
-												<button type="button" class="btn btn-light" disabled>수정</button>
+												<button type="button" class="btn btn-success rere" disabled>수정</button>
 											</c:otherwise>
 										</c:choose>
 								

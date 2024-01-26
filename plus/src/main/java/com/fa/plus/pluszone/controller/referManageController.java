@@ -73,6 +73,7 @@ public class referManageController {
 		map.put("offset", offset);
 		map.put("size", size);
 		
+		
 		// 글 리스트
 		
 		List<referManage> list = service.listRefer(map);

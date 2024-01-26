@@ -57,6 +57,7 @@
          ORDER BY refNum DESC
          OFFSET #{offset} ROWS FETCH FIRST #{size} ROWS ONLY
       </select>
+      
    
    
    <!-- 데이터개수  -->

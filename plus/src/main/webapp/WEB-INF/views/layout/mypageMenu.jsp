@@ -82,13 +82,13 @@
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/wishList/mylist" data-hover="위시리스트">위시리스트</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/booking/list" data-hover="예약 내역">예약 내역</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/mileage/list" data-hover="적립금 내역">적립금 내역</a></li>
-            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/onedayplus" data-hover="원데이 플러스 결과">원데이 플러스 결과</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/onedayplus" data-hover="원데이플러스 결과">원데이플러스 결과</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/note/receive/list" data-hover="쪽지 내역" target="_blank;">쪽지 내역</a></li>
-            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/mybbs" data-hover="내가 작성한 커뮤니티">내가 작성한 커뮤니티</a></li>
-            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/review" data-hover="내가 작성한 리뷰">내가 작성한 리뷰</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/mybbs" data-hover="커뮤니티 내역">커뮤니티 내역</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage/review" data-hover="리뷰 내역">리뷰 내역</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/inquiryAd/list" data-hover="1:1 문의 내역" target="_blank;">1:1 문의 내역</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/classInq/myInqList" data-hover="클래스 문의 내역">클래스 문의 내역</a></li>
-            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/pwd" data-hover="내 정보 수정">내 정보 수정</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/pwd" data-hover="정보 수정">정보 수정</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/pwd?dropout" data-hover="탈퇴">탈퇴</a></li>
         </ul>
     </div>

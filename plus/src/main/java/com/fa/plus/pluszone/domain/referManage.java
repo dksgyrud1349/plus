@@ -66,6 +66,7 @@ public class referManage {
 	public void setClassName(String className) {
 		this.className = className;
 	}
+	
 	public String getOriginalFile() {
 		return originalFile;
 	}
