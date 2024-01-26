@@ -190,7 +190,7 @@ public class MemberServiceImpl implements MemberService{
 		Mail mail = new Mail();
 		mail.setReceiverEmail(dto.getEmail());
 
-		mail.setSenderEmail("xogml0326@naver.com");
+		mail.setSenderEmail("");
 		mail.setSenderName("관리자");
 		mail.setSubject("임시패스워드");
 		mail.setContent(result);
@@ -223,7 +223,7 @@ public class MemberServiceImpl implements MemberService{
 	                mail.setReceiverEmail(email);
 
 	                // MainSender.java 에서 설정한 메일
-	                mail.setSenderEmail("xogm0326@naver.com");
+	                mail.setSenderEmail("");
 	                mail.setSenderName("관리자");
 	                mail.setSubject("임시패스워드");
 	                mail.setContent(result);
@@ -334,15 +334,7 @@ public class MemberServiceImpl implements MemberService{
 			dto.setAdminId(userId);
 			mapper.insertMemberState(dto);
 			
-			
-			// member2 테이블 삭제 ------
-			/*
-			 1) xml에서 deleteMember2(String userId) 
-			 2) mapper 인터페이스 작성
-			 
-			 mapper.deleteMember2(userId);
 
-			 */
 			
 			
 		} catch (Exception e) {
