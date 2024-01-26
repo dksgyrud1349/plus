@@ -56,12 +56,12 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 일정 관리
                             </a>
-                            <!--
+                            
                             <a class="nav-link" href="<c:url value='/pluszone/noticePlus/list'/>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 공지사항
                             </a>
-                            -->
+                            
                             <a class="nav-link" href="${pageContext.request.contextPath}/pluszone/salesStatus/main">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 매출 현황

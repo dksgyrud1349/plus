@@ -429,11 +429,11 @@ function sendOk(mode) {
 								<button type="button" class="btn singo" style="width: 60x;" onclick="location.href='${pageContext.request.contextPath}/classInq/insertInq?classNum=${dto.classNum}';">
 									<span style="font-size: medium; font-family: 'EASTARJET-Medium';">문의하기</span> <i class="bi bi-question-circle-fill"></i>
 								</button>
-								<!-- 
+								
 								<button type="button" class="btn singo" style="width: 60x;" onclick="location.href='${pageContext.request.contextPath}/classNotice/list?classNum=${dto.classNum}';">
 									<span style="font-size: medium; font-family: 'EASTARJET-Medium';">공지사항</span> <i class="bi bi-info-circle-fill"></i></i>
 								</button>
-								 -->
+								 
 							</div>
 						</div>
 						<p class="lead">
